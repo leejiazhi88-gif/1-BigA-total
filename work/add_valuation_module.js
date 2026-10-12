@@ -444,7 +444,8 @@ const js = `
         cfg.fixedRange ? cfg.subtitle + "（" + rangeLabel + "样本动态计算）" : cfg.subtitle;
       document.getElementById("valuationMetricNote").textContent = cfg.note +
         (activeMetric === "equityBondSpread" && valuationExtra.meta.bondStatus !== "refreshed"
-          ? " 国债收益率暂不能刷新，股债收益差保留截至 " + latestDate + " 的历史数据。PE与PB已独立更新。" : "");
+          ? " 部分日期的国债收益率缺失，收益差仅显示同日数据齐全的观测，最新为 " + latestDate + "。PE与PB独立更新。" : "") +
+        (activeMetric === "equityBondSpread" ? " 10年期国债收益率取中债到期收益率曲线；接口不可用时由中债官方公开数据补充。" : "");
       document.getElementById("valuationLatestReading").textContent =
         latestDate + "：上证 " + fmt(shLatest, 2) + cfg.unit + " / 深证 " + fmt(szLatest, 2) + cfg.unit;
 

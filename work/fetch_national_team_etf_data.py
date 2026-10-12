@@ -2,7 +2,6 @@ import json
 import math
 import re
 import time
-from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
 
@@ -17,16 +16,8 @@ PERIOD = (f"{refresh_year}0930" if refresh_month_day >= "1101" else
           f"{refresh_year}0630" if refresh_month_day >= "0901" else
           f"{refresh_year}0331" if refresh_month_day >= "0501" else
           f"{refresh_year - 1}0930")
-HISTORY_PERIODS = [
-    "20150630",
-    "20150831",
-    "20181031",
-    "20200229",
-    "20200331",
-    "20240630",
-    "20250331",
-    "20260331",
-]
+HISTORY_PERIODS = [f"{year}{month_day}" for year in range(2015, refresh_year + 1)
+                   for month_day in ("0630", "1231") if f"{year}{month_day}" <= PERIOD]
 HISTORY_PERIODS = sorted(set(HISTORY_PERIODS + [PERIOD]))
 
 ETF_POOL = [
@@ -45,14 +36,6 @@ ETF_POOL = [
 ]
 
 HISTORY_ETFS = ["510050.SH", "510300.SH"]
-
-HISTORY_PROXY_SYMBOLS = [
-    "600519.SH",
-    "601318.SH",
-    "600036.SH",
-    "601398.SH",
-    "601288.SH",
-]
 
 CRISIS_MARKS = [
     {"date": "2015-06-30", "name": "2015股灾"},
@@ -93,7 +76,7 @@ def normalized_holdings(rows):
     raw_sum = sum(row["rawWeight"] for row in usable)
     for row in usable:
         if raw_sum > 0:
-            row["weight"] = row["rawWeight"] / raw_sum
+            row["weight"] = row["rawWeight"] / 100
         elif total_mkv > 0:
             row["weight"] = row["mkv"] / total_mkv
         else:
@@ -101,39 +84,62 @@ def normalized_holdings(rows):
     return usable
 
 
-def build_history_period_rows(token, period, etf_codes):
-    snapshots = {}
-    for code in etf_codes:
-        time.sleep(0.05)
-        rows = call_api(
-            token,
-            "fund_portfolio",
-            {"ts_code": code, "period": period},
-            "ts_code,ann_date,end_date,symbol,mkv,amount,stk_mkv_ratio,stk_float_ratio",
-        )
-        snapshots[code] = normalized_holdings(rows)
+def disclosed_rows(rows, period):
+    rows = [row for row in rows if row.get("end_date") == period
+            and row.get("ann_date") and row["ann_date"] <= END_DATE]
+    if not rows:
+        return []
+    latest = max(row["ann_date"] for row in rows)
+    return [row for row in rows if row["ann_date"] == latest]
 
-    holder_exposure = {}
-    for symbol in HISTORY_PROXY_SYMBOLS:
-        time.sleep(0.05)
-        holders = call_api(
-            token,
-            "top10_floatholders",
-            {"ts_code": symbol, "period": period},
-            "ts_code,ann_date,end_date,holder_name,hold_amount,hold_ratio,hold_float_ratio,holder_type",
-        )
-        matched = [row for row in holders if is_national_team(row.get("holder_name"))]
-        holder_exposure[symbol] = sum(float(row.get("hold_float_ratio") or 0) for row in matched) / 100
 
-    point = {"date": f"{period[:4]}-{period[4:6]}-{period[6:]}"}
-    exposures = []
-    for code in etf_codes:
-        holdings = snapshots.get(code, [])
-        exposure = sum(row["weight"] * holder_exposure.get(row["symbol"], 0) for row in holdings)
-        point[code] = round(exposure * 100, 4)
-        exposures.append(exposure * 100)
-    point["averageExposure"] = round(sum(exposures) / len(exposures), 4) if exposures else 0.0
-    point["activeCount"] = len(exposures)
+def portfolio(token, code, period):
+    rows = call_api(token, "fund_portfolio", {"ts_code": code, "period": period},
+                    "ts_code,ann_date,end_date,symbol,mkv,amount,stk_mkv_ratio,stk_float_ratio")
+    return normalized_holdings(disclosed_rows(rows, period))
+
+
+def holder_snapshot(token, period):
+    grouped = {}
+    offset, previous_page = 0, None
+    while True:
+        rows = call_api(token, "top10_floatholders", {"period": period, "limit": 6000, "offset": offset},
+                        "ts_code,ann_date,end_date,holder_name,hold_amount,hold_ratio,hold_float_ratio,holder_type")
+        signature = json.dumps(rows, sort_keys=True)
+        if rows and signature == previous_page:
+            raise RuntimeError("Holder pagination repeated a page; aborting incomplete refresh.")
+        previous_page = signature
+        for row in rows:
+            grouped.setdefault(row["ts_code"], []).append(row)
+        if len(rows) < 6000:
+            break
+        offset += len(rows)
+        time.sleep(0.25)
+    exposure, details = {}, {}
+    for symbol, rows in grouped.items():
+        holders = disclosed_rows(rows, period)
+        if not holders:
+            continue
+        matched = {row["holder_name"]: row for row in holders if is_national_team(row.get("holder_name"))}
+        if any(row.get("hold_float_ratio") is None for row in matched.values()):
+            continue
+        exposure[symbol] = sum(float(row["hold_float_ratio"]) for row in matched.values()) / 100
+        details[symbol] = [{"holderName": row["holder_name"], "holdFloatRatio": row["hold_float_ratio"]}
+                           for row in matched.values()]
+    return exposure, details
+
+
+def history_point(period, snapshots, holder_exposure):
+    point = {"date": f"{period[:4]}-{period[4:6]}-{period[6:]}", "coverage": {}, "disclosedWeight": {}}
+    for code, holdings in snapshots.items():
+        known = [row for row in holdings if row["symbol"] in holder_exposure]
+        coverage = sum(row["weight"] for row in known) * 100
+        point["coverage"][code] = round(coverage, 2)
+        point["disclosedWeight"][code] = round(sum(row["weight"] for row in holdings) * 100, 2)
+        point[code] = round(sum(row["weight"] * holder_exposure[row["symbol"]] for row in known) * 100, 4) if known else None
+    values = [point[code] for code in snapshots if point[code] is not None]
+    point["averageExposure"] = round(sum(values) / len(values), 4) if len(values) == len(snapshots) else None
+    point["activeCount"] = len(values)
     return point
 
 
@@ -200,49 +206,22 @@ def main():
     symbols = set()
 
     for etf in ETF_POOL:
-        rows = call_api(
-            token,
-            "fund_portfolio",
-            {"ts_code": etf["ts_code"], "period": PERIOD},
-            "ts_code,ann_date,end_date,symbol,mkv,amount,stk_mkv_ratio,stk_float_ratio",
-        )
-        holdings = normalized_holdings(rows)
+        holdings = portfolio(token, etf["ts_code"], PERIOD)
         if not holdings:
             raise RuntimeError(f"No disclosed holdings for {etf['ts_code']} in {PERIOD}; retaining previous dataset.")
         symbols.update(row["symbol"] for row in holdings)
-        etfs.append({**etf, "holdings": holdings, "rawRows": len(rows)})
+        etfs.append({**etf, "holdings": holdings, "rawRows": len(holdings)})
 
-    history = [build_history_period_rows(token, period, HISTORY_ETFS) for period in HISTORY_PERIODS]
-
-    holder_exposure = {}
-    holder_details = {}
-    def fetch_holders(symbol):
-        time.sleep(0.4)
-        holders = call_api(
-            token,
-            "top10_floatholders",
-            {"ts_code": symbol, "period": PERIOD},
-            "ts_code,ann_date,end_date,holder_name,hold_amount,hold_ratio,hold_float_ratio,holder_type",
-        )
-        return symbol, holders
-
-    with ThreadPoolExecutor(max_workers=2) as executor:
-        holder_results = []
-        for result in executor.map(fetch_holders, sorted(symbols)):
-            holder_results.append(result)
-            if len(holder_results) % 100 == 0:
-                print(f"Checked {len(holder_results)}/{len(symbols)} disclosed stock holders", flush=True)
-    for symbol, holders in holder_results:
-        matched = [row for row in holders if is_national_team(row.get("holder_name"))]
-        exposure = sum(float(row.get("hold_float_ratio") or 0) for row in matched)
-        holder_exposure[symbol] = exposure / 100
-        holder_details[symbol] = [
-            {
-                "holderName": row.get("holder_name"),
-                "holdFloatRatio": round(float(row.get("hold_float_ratio") or 0), 4),
-            }
-            for row in matched
-        ]
+    history = []
+    for period in HISTORY_PERIODS:
+        period_exposure, period_details = holder_snapshot(token, period)
+        if period == PERIOD:
+            snapshots = {row["ts_code"]: row["holdings"] for row in etfs if row["ts_code"] in HISTORY_ETFS}
+            holder_exposure, holder_details = period_exposure, period_details
+        else:
+            snapshots = {code: portfolio(token, code, period) for code in HISTORY_ETFS}
+        history.append(history_point(period, snapshots, period_exposure))
+        print(f"Disclosed history {period}: {history[-1]['activeCount']} ETFs, {len(period_exposure)} stock holder observations", flush=True)
 
     for etf in etfs:
         exposure = sum(row["weight"] * holder_exposure.get(row["symbol"], 0) for row in etf["holdings"])
@@ -262,19 +241,22 @@ def main():
             key=lambda row: row["contribution"],
             reverse=True,
         )[:5]
-        etf["nationalTeamExposure"] = round(exposure * 100, 4)
+        etf["nationalTeamExposure"] = round(exposure * 100, 4) if coverage > 0 else None
         etf["coverageWeight"] = round(coverage * 100, 2)
+        etf["disclosedWeight"] = round(sum(row["weight"] for row in etf["holdings"]) * 100, 2)
         etf["holdingCount"] = len(etf["holdings"])
         etf["topNationalTeamContributors"] = top_national
         etf["holdings"] = [
             {
                 "symbol": row["symbol"],
                 "weight": round(row["weight"] * 100, 4),
-                "nationalTeamFloatRatio": round(holder_exposure.get(row["symbol"], 0) * 100, 4),
+                "nationalTeamFloatRatio": round(holder_exposure[row["symbol"]] * 100, 4) if row["symbol"] in holder_exposure else None,
             }
             for row in sorted(etf["holdings"], key=lambda item: item["weight"], reverse=True)
         ]
 
+    if any(row["nationalTeamExposure"] is None for row in etfs):
+        raise RuntimeError("Latest ETF snapshot has no usable stock holder coverage; retaining previous dataset.")
     cluster_labels = cluster_etfs(etfs)
     for etf in etfs:
         etf.update(cluster_labels[etf["ts_code"]])
@@ -297,16 +279,22 @@ def main():
     result = {
         "meta": {
             "updated": datetime.now().strftime("%Y-%m-%d"),
+            "requestedEnd": END_DATE,
+            "methodVersion": 2,
             "period": PERIOD,
             "historyPeriods": HISTORY_PERIODS,
             "crisisMarks": CRISIS_MARKS,
             "source": "Tushare fund_portfolio + top10_floatholders",
-            "method": "ETF disclosed stock holdings weighted by national-team float-holder ratios",
+            "method": "Sum of disclosed stock weights / 100 * identified national-team float-holder ratios",
+            "historyScope": "All disclosed A-share stocks of 510050.SH and 510300.SH; semiannual reporting periods since 2015",
             "directEtfHolding": False,
             "limitations": [
                 "fund_portfolio may be disclosed holdings rather than full index constituents",
                 "top10_floatholders only captures national-team accounts disclosed in top ten float holders",
                 "ratio is bottom-up stock exposure, not direct ETF unit ownership",
+                "Unidentified stock holder coverage is excluded; observations are disclosed lower bounds",
+                "Semiannual snapshots are not daily holdings or evidence of purchases between reports",
+                "State ownership includes long-standing holdings, not only market-stabilization purchases",
             ],
         },
         "history": history,

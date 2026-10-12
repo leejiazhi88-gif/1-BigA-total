@@ -5,7 +5,7 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 
-from tushare_client import END_DATE, call_api, get_token
+from tushare_client import END_DATE, call_api, call_api_pages, get_token
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -61,7 +61,7 @@ def main():
         ):
             date = row.get("ipo_date") or row.get("issue_date")
             funds = row.get("funds")
-            if not date or funds is None:
+            if not date or date > END_DATE or funds is None:
                 continue
             key = week_key(date)
             item = series_by_date.setdefault(key, {"rawDates": []})
@@ -69,11 +69,12 @@ def main():
             item["ipoFunds"] = item.get("ipoFunds", 0.0) + float(funds)
 
     for start, end in year_ranges(2018):
-        for row in call_api(
+        for row in call_api_pages(
             token,
             "stk_holdertrade",
             {"start_date": start, "end_date": end},
             "ts_code,ann_date,in_de,change_vol,avg_price",
+            page_size=3000,
         ):
             date = row.get("ann_date")
             if not date or row.get("avg_price") is None:
@@ -88,7 +89,7 @@ def main():
             item["netReduceAmount"] = item.get("netReduceAmount", 0.0) + signed_reduce
 
     for start, end in year_ranges():
-        for row in call_api(token, "shibor", {"start_date": start, "end_date": end}, "date,1y"):
+        for row in sorted(call_api(token, "shibor", {"start_date": start, "end_date": end}, "date,1y"), key=lambda row: row["date"]):
             date = row.get("date")
             if not date or row.get("1y") is None:
                 continue
@@ -135,7 +136,7 @@ def main():
     merged = {}
     for row in series:
         merged.setdefault(row["date"], {}).update(row)
-    series = [merged[date] for date in sorted(merged)]
+    series = [merged[date] for date in sorted(merged) if date <= iso_date(END_DATE)]
     result = {
         "meta": {
             "updated": datetime.now().strftime("%Y-%m-%d"),

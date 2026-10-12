@@ -379,7 +379,7 @@ async function main() {
     throw new Error("Unable to find a usable Python interpreter");
   }
   if (!process.argv.includes("--skip-refresh")) {
-    for (const name of ["market_overview", "official_sentiment", "retail_sentiment", "large_money_sentiment", "national_team_etf", "valuation"]) {
+    for (const name of ["market_overview", "official_sentiment", "retail_sentiment", "large_money_sentiment", "national_team_etf", "etf_flow", "valuation"]) {
       try {
         execFileSync(python, [path.join(ROOT, "work", "fetch_" + name + "_data.py")], { stdio: "inherit" });
       } catch (error) {

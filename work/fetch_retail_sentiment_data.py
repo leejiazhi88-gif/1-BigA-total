@@ -3,7 +3,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 from pathlib import Path
 
-from tushare_client import END_DATE, call_api, get_token
+from tushare_client import END_DATE, call_api, call_api_pages, get_token
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -42,11 +42,12 @@ def monthly_limit_counts(token):
             next_year = year + (month == 12)
             next_month = 1 if month == 12 else month + 1
             end = min((datetime(next_year, next_month, 1) - timedelta(days=1)).strftime("%Y%m%d"), END_DATE)
-            rows = call_api(
+            rows = call_api_pages(
                 token,
                 "limit_list_d",
                 {"start_date": start, "end_date": end, "limit_type": "U"},
                 "trade_date,ts_code",
+                page_size=6000,
             )
             for row in rows:
                 counts[row["trade_date"]] += 1
@@ -99,10 +100,7 @@ def main():
         margin_by_date[row["trade_date"]].append(row)
 
     series = []
-    latest_margin = {}
     for date in sorted(market_by_date):
-        for row in margin_by_date.get(date, []):
-            latest_margin[row["exchange_id"]] = row
         markets = market_by_date[date]
         if len(markets) < 2:
             continue
@@ -117,11 +115,8 @@ def main():
             if float_mv
             else None
         )
-        margin_rows = [
-            latest_margin[exchange]
-            for exchange in ("SSE", "SZSE")
-            if exchange in latest_margin
-        ]
+        daily_margins = {row["exchange_id"]: row for row in margin_by_date.get(date, [])}
+        margin_rows = [daily_margins[exchange] for exchange in ("SSE", "SZSE")] if all(exchange in daily_margins for exchange in ("SSE", "SZSE")) else []
         margin_balance = sum(float(row.get("rzye") or 0) for row in margin_rows) / 1e8
         margin_buy = sum(float(row.get("rzmre") or 0) for row in margin_rows) / 1e8
         series.append(

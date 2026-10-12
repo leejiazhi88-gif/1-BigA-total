@@ -4,7 +4,7 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 
-from tushare_client import END_DATE, call_api, get_token
+from tushare_client import END_DATE, call_api, call_api_pages, get_token
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -48,19 +48,21 @@ def main():
     holder_trades = []
     for start, end in month_ranges():
         blocks.extend(
-            call_api(
+            call_api_pages(
                 token,
                 "block_trade",
                 {"start_date": start, "end_date": end},
                 "ts_code,trade_date,amount,buyer,seller",
+                page_size=1000,
             )
         )
         holder_trades.extend(
-            call_api(
+            call_api_pages(
                 token,
                 "stk_holdertrade",
                 {"start_date": start, "end_date": end},
                 "ts_code,ann_date,holder_name,in_de,change_vol,change_ratio,avg_price",
+                page_size=3000,
             )
         )
 
@@ -125,6 +127,7 @@ def main():
         series.append(
             {
                 "date": f"{date[:4]}-{date[4:6]}-{date[6:]}",
+                "northDate": datetime.strptime(north_row["date"], "%Y%m%d").strftime("%Y-%m-%d") if north_row else None,
                 "northMoney": round(north_row["northMoney"], 2)
                 if "northMoney" in north_row
                 else None,

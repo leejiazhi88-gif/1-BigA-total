@@ -120,7 +120,7 @@ const moduleHtml = `
         <div class="official-method"><strong>政策利率</strong><span>用 1年期 SHIBOR 作为资金利率环境代理，取每周最后一个可用值，单位%；它不是央行政策利率本身，但可观察银行间资金价格趋势。</span></div>
         <div class="official-method"><strong>社融增量</strong><span>来源为 Tushare sf_month 的 inc_month，月度社会融资规模增量，落在月末，单位亿元；用于观察信用扩张或收缩。</span></div>
         <div class="official-method"><strong>M2增速</strong><span>来源为 Tushare cn_m 的 m2_yoy，月度 M2 同比增速，落在月末，单位%；需结合社融和利率判断流动性状态。</span></div>
-        <div class="official-method"><strong>国家队持仓规模</strong><span>暂未接入连续序列。后续若要做，需要先固定机构名单、证券范围、估值时点和是否纳入 ETF/申购工具，再从季报或公告逐期聚合。</span></div>
+        <div class="official-method"><strong>国家队持仓规模</strong><span>暂无统一的连续总市值序列。下方<a href="#national-team-etf">国家队观察</a>展示宽基ETF每日净申购估算和长期底层股票披露暴露；两者均不等于国家队实际持仓总规模。</span></div>
       </div>
     </div>
   </section>

@@ -47,3 +47,17 @@ def call_api(token, api_name, params, fields):
         raise RuntimeError(f"{api_name}: {result.get('msg')}")
     data = result.get("data") or {}
     return [dict(zip(data.get("fields", []), row)) for row in data.get("items", [])]
+
+
+def call_api_pages(token, api_name, params, fields, page_size):
+    rows, offset, previous = [], 0, None
+    while True:
+        page = call_api(token, api_name, {**params, "limit": page_size, "offset": offset}, fields)
+        signature = json.dumps(page, sort_keys=True)
+        if page and signature == previous:
+            raise RuntimeError(f"{api_name}: repeated page; refusing a truncated refresh")
+        previous = signature
+        rows.extend(page)
+        if len(page) < page_size:
+            return rows
+        offset += len(page)
