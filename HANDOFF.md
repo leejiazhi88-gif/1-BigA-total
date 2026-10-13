@@ -1,11 +1,14 @@
-# BigA-total 换机与部署说明
+# 1-BigA-total 换机与部署说明
 
 这个文档记录本项目在不同电脑之间继续迭代、同步代码、查看线上页面时需要的信息。
 
 ## 仓库地址
 
-- GitHub 仓库：https://github.com/leejiazhi88-gif/BigA-total
-- 线上页面：https://leejiazhi88-gif.github.io/BigA-total/
+- GitHub 仓库：https://github.com/leejiazhi88-gif/1-BigA-total
+- Git 远端（SSH）：`git@github.com:leejiazhi88-gif/1-BigA-total.git`
+- 线上页面：https://leejiazhi88-gif.github.io/1-BigA-total/
+
+仓库于2026-10-13改名为 `1-BigA-total`。GitHub仓库旧链接会跳转，但GitHub Pages旧路径不会自动跳转，请更新收藏夹与分享链接。
 
 ## 本机常用路径
 
@@ -14,6 +17,8 @@
 ```text
 /Users/fuguiplus/Documents/Codex/2026-06-08/bili-atotal/work/BigA-total
 ```
+
+本机目录保留原名 `BigA-total`，Git远端已连接新仓库名；目录名称不影响同步或部署。
 
 主要页面文件：
 
@@ -27,9 +32,18 @@ outputs/a_share_20y_dashboard.html
 首次使用时克隆仓库：
 
 ```bash
-git clone https://github.com/leejiazhi88-gif/BigA-total.git
-cd BigA-total
+git clone https://github.com/leejiazhi88-gif/1-BigA-total.git
+cd 1-BigA-total
 ```
+
+已在其他电脑克隆旧仓库的，在原项目目录执行一次以下命令更新远端：
+
+```bash
+git remote set-url origin https://github.com/leejiazhi88-gif/1-BigA-total.git
+git fetch origin
+```
+
+使用SSH认证的电脑可改用上面的SSH地址；原有提交历史保留。
 
 每次开始工作前先同步远端最新代码：
 
@@ -71,7 +85,7 @@ http://127.0.0.1:9876
 注意：`127.0.0.1:9876` 只是当前电脑的本地预览地址，电脑关机或预览服务停止后就不能访问。真正的线上地址是：
 
 ```text
-https://leejiazhi88-gif.github.io/BigA-total/
+https://leejiazhi88-gif.github.io/1-BigA-total/
 ```
 
 ## GitHub 登录

@@ -1,5 +1,8 @@
 # A股大顶研究仪表盘
 
+- 线上页面：https://leejiazhi88-gif.github.io/1-BigA-total/
+- GitHub仓库：https://github.com/leejiazhi88-gif/1-BigA-total
+
 这个仓库用于生成 A 股大顶研究的本地 HTML 仪表盘，目前包含：
 
 - 总览：依次展示指数价格、沪深A股交易规模（交易量与交易额）、PE(TTM)、过去12个月合计利润
