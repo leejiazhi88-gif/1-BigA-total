@@ -55,17 +55,21 @@ def monthly_limit_counts(token):
 
 
 def last_by_week(rows):
-    result = []
-    current = None
+    fields = list(dict.fromkeys(field for row in rows for field in row if field != "date"))
+    weeks = {}
     for row in rows:
         date = datetime.strptime(row["date"], "%Y-%m-%d")
         key = (date.isocalendar().year, date.isocalendar().week)
-        if key != current:
-            result.append(row)
-            current = key
-        else:
-            result[-1] = row
-    return result
+        observations = weeks.setdefault(key, {})
+        for field in fields:
+            if row.get(field) is not None:
+                observations[field] = (row["date"], row[field])
+    # Preserve each metric's own observation date when releases arrive at different times.
+    by_date = {}
+    for observations in weeks.values():
+        for field, (date, value) in observations.items():
+            by_date.setdefault(date, {"date": date, **{name: None for name in fields}})[field] = value
+    return [by_date[date] for date in sorted(by_date)]
 
 
 def main():

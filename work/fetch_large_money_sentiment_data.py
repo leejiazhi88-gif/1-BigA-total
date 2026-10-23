@@ -127,6 +127,8 @@ def main():
         series.append(
             {
                 "date": f"{date[:4]}-{date[4:6]}-{date[6:]}",
+                "blockDate": datetime.strptime(max(block["dates"]), "%Y%m%d").strftime("%Y-%m-%d") if block else None,
+                "holderDate": datetime.strptime(max(holder["dates"]), "%Y%m%d").strftime("%Y-%m-%d") if holder else None,
                 "northDate": datetime.strptime(north_row["date"], "%Y%m%d").strftime("%Y-%m-%d") if north_row else None,
                 "northMoney": round(north_row["northMoney"], 2)
                 if "northMoney" in north_row

@@ -1,5 +1,6 @@
 import unittest
 import json
+from datetime import datetime, timedelta
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
@@ -10,9 +11,28 @@ from fetch_etf_flow_data import daily_flow, build_series
 from fetch_national_team_etf_data import normalized_holdings, disclosed_rows, history_point, holder_snapshot
 from tushare_client import call_api_pages
 import fetch_retail_sentiment_data as retail
+import fetch_market_overview_data as overview
+import fetch_etf_flow_data as etf_flow
 
 
 class DataPipelineTests(unittest.TestCase):
+    def test_today_prices_do_not_wait_for_unpublished_valuation(self):
+        def fetch(token, api, code, fields):
+            if api == "index_dailybasic":
+                return [{"trade_date": "20261022", "pe_ttm": 20, "total_mv": 4e12}]
+            return [{"trade_date": "20261022", "close": 100}, {"trade_date": "20261023", "close": 110}]
+        with TemporaryDirectory() as directory:
+            output = Path(directory) / "overview.json"
+            with patch.object(overview, "get_token", return_value="test"), patch.object(overview, "fetch_by_year", side_effect=fetch), \
+                 patch.object(overview, "build_trading", return_value=[{"date": "2026-10-23", "volume": 1, "amount": 2}]), \
+                 patch.object(overview, "OUTPUT", output), patch("builtins.print"):
+                overview.main()
+            data = json.loads(output.read_text())
+        self.assertEqual(data["meta"]["end"], "2026-10-23")
+        self.assertEqual(data["prices"]["sh"][-1], {"date": "2026-10-23", "close": 110})
+        self.assertEqual(data["sh"][-1]["date"], "2026-10-22")
+        self.assertEqual(data["sh"][-1]["profit"], 2000)
+
     def test_trading_uses_full_a_share_markets_and_matching_dates(self):
         markets = {
             "000002.SH": [
@@ -56,6 +76,24 @@ class DataPipelineTests(unittest.TestCase):
                      "20261009": {"total_share": 110, "nav": 1}}}
         result = build_series(calendar, raw, pool=[{"ts_code": "A"}])
         self.assertTrue(all(row["total"] is None and row["coverage"] == 0 for row in result))
+
+    def test_etf_window_ends_at_last_published_date_and_still_has_90_days(self):
+        end = datetime(2026, 10, 23)
+        dates = [end - timedelta(days=offset) for offset in range(170, -1, -1)]
+        dates = [date.strftime("%Y%m%d") for date in dates if date.weekday() < 5]
+        calendar = [{"cal_date": day, "pretrade_date": dates[index - 1]} for index, day in enumerate(dates) if index]
+        observations = [{"trade_date": day, "total_share": 10000 + index * 100, "nav": 1} for index, day in enumerate(dates[:-1])]
+        with TemporaryDirectory() as directory:
+            output = Path(directory) / "flow.json"
+            with patch.object(etf_flow, "get_token", return_value="test"), patch.object(etf_flow, "OUTPUT", output), \
+                 patch.object(etf_flow, "END_DATE", "20261023"), \
+                 patch.object(etf_flow, "call_api", side_effect=lambda token, api, params, fields: calendar if api == "trade_cal" else observations), patch("builtins.print"):
+                etf_flow.main()
+            data = json.loads(output.read_text())
+        self.assertEqual(data["meta"]["requestedEnd"], "20261023")
+        self.assertEqual(data["meta"]["windowEnd"], "2026-10-22")
+        self.assertEqual(data["meta"]["completeDays"], 90)
+        self.assertEqual(len(data["series"]), 90)
 
     def test_partial_etf_disclosures_are_not_scaled_to_full_portfolio(self):
         holdings = normalized_holdings([{"symbol": "000001.SZ", "stk_mkv_ratio": 10, "mkv": 100},
@@ -111,11 +149,15 @@ class DataPipelineTests(unittest.TestCase):
             with patch.object(retail, "get_token", return_value="test"), patch.object(retail, "yearly", side_effect=yearly), \
                  patch.object(retail, "monthly_limit_counts", return_value={}), patch.object(retail, "OUTPUT", output), patch("builtins.print"):
                 retail.main()
-            last = json.loads(output.read_text())["series"][-1]
+            series = json.loads(output.read_text())["series"]
+            last = series[-1]
         self.assertEqual(last["date"], "2026-10-09")
         self.assertIsNone(last["marginBalance"])
         self.assertIsNone(last["marginBuyRatio"])
         self.assertEqual(last["amount"], 200)
+        self.assertEqual(series[0]["date"], "2026-10-08")
+        self.assertEqual(series[0]["marginBalance"], 2)
+        self.assertIsNone(series[0]["amount"])
 
 
 if __name__ == "__main__":

@@ -31,8 +31,9 @@ def fetch_by_year(token, api_name, ts_code, fields):
     return [unique[date] for date in sorted(unique)]
 
 
-def build_market(token, ts_code):
-    prices = fetch_by_year(token, "index_daily", ts_code, "trade_date,close")
+def build_market(token, ts_code, prices=None):
+    if prices is None:
+        prices = fetch_by_year(token, "index_daily", ts_code, "trade_date,close")
     basics = fetch_by_year(
         token, "index_dailybasic", ts_code, "trade_date,pe_ttm,total_mv"
     )
@@ -89,14 +90,21 @@ def build_trading(token):
 
 def main():
     token = get_token()
+    codes = {"sh": "000001.SH", "sz": "399001.SZ"}
+    prices = {market: fetch_by_year(token, "index_daily", code, "trade_date,close")
+              for market, code in codes.items()}
     result = {
         "meta": {"requestedEnd": END_DATE},
-        "sh": build_market(token, "000001.SH"),
-        "sz": build_market(token, "399001.SZ"),
+        **{market: build_market(token, code, prices[market]) for market, code in codes.items()},
+        "prices": {market: [{"date": f"{row['trade_date'][:4]}-{row['trade_date'][4:6]}-{row['trade_date'][6:]}",
+                              "close": float(row["close"])} for row in rows if row.get("close") is not None]
+                   for market, rows in prices.items()},
         "trading": build_trading(token),
     }
     result["meta"].update({
-        "end": min(result[market][-1]["date"] for market in ("sh", "sz", "trading")),
+        "end": max(result["prices"]["sh"][-1]["date"], result["prices"]["sz"][-1]["date"], result["trading"][-1]["date"]),
+        "priceEnd": {market: rows[-1]["date"] for market, rows in result["prices"].items()},
+        "valuationEnd": {market: result[market][-1]["date"] for market in codes},
         "tradingSource": "Tushare index_daily: 000002.SH + 399107.SZ",
         "tradingScope": "Shanghai and Shenzhen A shares; excludes B shares, Beijing, funds and bonds",
         "volumeUnit": "亿股", "amountUnit": "亿元",
@@ -114,6 +122,8 @@ def main():
                 "sz_points": len(result["sz"]),
                 "latest_sh": result["sh"][-1],
                 "latest_sz": result["sz"][-1],
+                "price_end": result["meta"]["priceEnd"],
+                "trading_end": result["trading"][-1]["date"],
             },
             ensure_ascii=False,
         )

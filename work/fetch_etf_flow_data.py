@@ -72,16 +72,17 @@ def main():
     if len(calendar_rows) < 91:
         raise RuntimeError("Insufficient trading-calendar history; retaining previous ETF flows.")
     calendar_rows.sort(key=lambda row: row["cal_date"])
-    baseline = calendar_rows[-90]["pretrade_date"]
     raw_by_code = {}
     for etf in ETF_POOL:
         rows = call_api(token, "etf_share_size", {
-            "ts_code": etf["ts_code"], "start_date": baseline, "end_date": END_DATE,
+            "ts_code": etf["ts_code"], "start_date": start, "end_date": END_DATE,
         }, "trade_date,ts_code,total_share,total_size,nav,close")
         if not rows:
             raise RuntimeError(f"No ETF share data for {etf['ts_code']}; retaining previous dataset.")
         raw_by_code[etf["ts_code"]] = {row["trade_date"]: row for row in rows if row["trade_date"] <= END_DATE}
-    series = build_series(calendar_rows, raw_by_code)
+    last_reported = max(date for rows in raw_by_code.values() for date in rows)
+    published_calendar = [day for day in calendar_rows if day["cal_date"] <= last_reported]
+    series = build_series(published_calendar, raw_by_code)
     complete_dates = [row["date"] for row in series if row["total"] is not None]
     if not complete_dates:
         raise RuntimeError("No complete ETF daily observations returned.")

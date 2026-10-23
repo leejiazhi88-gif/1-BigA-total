@@ -148,7 +148,8 @@ const script = `
     function renderChart() {
       const cfg = metrics[activeMetric];
       const rows = activeRows();
-      const points = rows.map(row => [activeMetric === "northMoney" ? (row.northDate || row.date) : row.date, row[activeMetric]]);
+      const dateField = activeMetric === "northMoney" ? "northDate" : activeMetric === "holderNetShares" ? "holderDate" : "blockDate";
+      const points = rows.map(row => [row[dateField] || row.date, row[activeMetric]]);
       const latest = points[points.length - 1]?.[1];
       document.getElementById("largeMoneyMetricSubtitle").textContent = cfg.subtitle;
       document.getElementById("largeMoneyMetricNote").textContent = cfg.note;

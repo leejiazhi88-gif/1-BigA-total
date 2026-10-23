@@ -28,16 +28,19 @@ function lastByWeek(rows) {
   return result;
 }
 
-function stats(rows) {
+function stats(rows, prices) {
   const latest = rows[rows.length - 1];
-  const oneYearAgoDate = new Date(`${END}T00:00:00Z`);
+  const latestPrice = prices[prices.length - 1];
+  const oneYearAgoDate = new Date(`${latestPrice.date}T00:00:00Z`);
   oneYearAgoDate.setUTCFullYear(oneYearAgoDate.getUTCFullYear() - 1);
-  const oneYearAgo = rows.find((row) => row.date >= oneYearAgoDate.toISOString().slice(0, 10)) || rows[0];
+  const oneYearAgo = prices.find((row) => row.date >= oneYearAgoDate.toISOString().slice(0, 10)) || prices[0];
   const peSorted = rows.map((row) => row.pe).sort((a, b) => a - b);
   const rank = peSorted.filter((value) => value <= latest.pe).length / peSorted.length;
   return {
     ...latest,
-    yearChange: (latest.close / oneYearAgo.close - 1) * 100,
+    ...latestPrice,
+    valuationDate: latest.date,
+    yearChange: (latestPrice.close / oneYearAgo.close - 1) * 100,
     pePercentile: rank * 100,
   };
 }
@@ -176,12 +179,12 @@ const COLORS = { sh: "#ff5d73", sz: "#36c2ff", volume: "#5cdbad", amount: "#f6c8
 const fmt = (n, digits = 2) => Number(n).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits });
 const signed = (n) => (n >= 0 ? "+" : "") + fmt(n, 1) + "%";
 const cards = [
-  ["上证综指", fmt(DATA.stats.sh.close), "近1年 " + signed(DATA.stats.sh.yearChange), "sh"],
-  ["上证PE(TTM)", fmt(DATA.stats.sh.pe), "20年分位 " + fmt(DATA.stats.sh.pePercentile, 0) + "%", "sh"],
-  ["上证合计利润", fmt(DATA.stats.sh.profit, 0), "亿元", "sh"],
-  ["深证成指", fmt(DATA.stats.sz.close), "近1年 " + signed(DATA.stats.sz.yearChange), "sz"],
-  ["深证PE(TTM)", fmt(DATA.stats.sz.pe), "20年分位 " + fmt(DATA.stats.sz.pePercentile, 0) + "%", "sz"],
-  ["深证合计利润", fmt(DATA.stats.sz.profit, 0), "亿元", "sz"],
+  ["上证综指", fmt(DATA.stats.sh.close), DATA.stats.sh.date + " · 近1年 " + signed(DATA.stats.sh.yearChange), "sh"],
+  ["上证PE(TTM)", fmt(DATA.stats.sh.pe), DATA.stats.sh.valuationDate + " · 20年分位 " + fmt(DATA.stats.sh.pePercentile, 0) + "%", "sh"],
+  ["上证合计利润", fmt(DATA.stats.sh.profit, 0), "亿元 · " + DATA.stats.sh.valuationDate, "sh"],
+  ["深证成指", fmt(DATA.stats.sz.close), DATA.stats.sz.date + " · 近1年 " + signed(DATA.stats.sz.yearChange), "sz"],
+  ["深证PE(TTM)", fmt(DATA.stats.sz.pe), DATA.stats.sz.valuationDate + " · 20年分位 " + fmt(DATA.stats.sz.pePercentile, 0) + "%", "sz"],
+  ["深证合计利润", fmt(DATA.stats.sz.profit, 0), "亿元 · " + DATA.stats.sz.valuationDate, "sz"],
 ];
 document.getElementById("cards").innerHTML = cards.map(([label, value, meta, cls]) =>
   '<article class="card"><div class="label">' + label + '</div><div class="value ' + cls + '">' + value +
@@ -218,12 +221,12 @@ function visibleSeries() {
   const result = [];
   const marksOnSh = visibleMarkets.sh;
   if (visibleMarkets.sh) {
-    result.push(series("上证价格", DATA.sh, "close", 0, 0, COLORS.sh, true));
+    result.push(series("上证价格", DATA.prices.sh, "close", 0, 0, COLORS.sh, true));
     result.push(series("上证合计利润", DATA.sh, "profit", 1, 1, COLORS.sh));
     result.push(series("上证PE(TTM)", DATA.sh, "pe", 2, 2, COLORS.sh));
   }
   if (visibleMarkets.sz) {
-    result.push(series("深证价格", DATA.sz, "close", 0, 0, COLORS.sz, !marksOnSh));
+    result.push(series("深证价格", DATA.prices.sz, "close", 0, 0, COLORS.sz, !marksOnSh));
     result.push(series("深证合计利润", DATA.sz, "profit", 1, 1, COLORS.sz));
     result.push(series("深证PE(TTM)", DATA.sz, "pe", 2, 2, COLORS.sz));
   }
@@ -245,8 +248,9 @@ function rowsInActiveRange(rows) {
 function visibleValues(field) {
   if (field === "volume" || field === "amount") return rowsInActiveRange(DATA.trading).map(row => row[field]).filter(Number.isFinite);
   const values = [];
-  if (visibleMarkets.sh) values.push(...rowsInActiveRange(DATA.sh).map(row => row[field]));
-  if (visibleMarkets.sz) values.push(...rowsInActiveRange(DATA.sz).map(row => row[field]));
+  const source = field === "close" ? DATA.prices : DATA;
+  if (visibleMarkets.sh) values.push(...rowsInActiveRange(source.sh).map(row => row[field]));
+  if (visibleMarkets.sz) values.push(...rowsInActiveRange(source.sz).map(row => row[field]));
   return values.filter(Number.isFinite);
 }
 function axisBounds(field, paddingRatio = 0.08) {
@@ -394,8 +398,9 @@ async function main() {
   const sh = lastByWeek(inRange(overview.sh));
   const sz = lastByWeek(inRange(overview.sz));
   const trading = lastByWeek(inRange(overview.trading));
+  const prices = Object.fromEntries(["sh", "sz"].map(market => [market, lastByWeek(inRange(overview.prices?.[market] || overview[market]))]));
   const echartsSource = fs.readFileSync(path.join(ROOT, "work", "echarts.min.js"), "utf8");
-  const data = { sh, sz, trading, stats: { sh: stats(sh), sz: stats(sz) } };
+  const data = { sh, sz, trading, prices, stats: { sh: stats(sh, prices.sh), sz: stats(sz, prices.sz) } };
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
   fs.writeFileSync(OUTPUT, htmlTemplate(data, echartsSource), "utf8");
   require("./add_valuation_module");
