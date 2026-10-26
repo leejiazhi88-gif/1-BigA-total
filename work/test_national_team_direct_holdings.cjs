@@ -1,6 +1,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const audit = require("../outputs/national-team-holdings-comparison-20261026.json");
+const historyAudit = require("./national_team_etf_history.json");
 const { buildDirectData } = require("./national_team_direct_holdings");
 
 test("2025 annual comparison uses the same period and excludes CCB H shares", () => {
@@ -57,4 +58,45 @@ test("a source missing coverage cannot silently produce a partial ETF total", ()
   const missingPeriod = structuredClone(audit);
   delete missingPeriod.etfs_20260630;
   assert.throws(() => buildDirectData(missingPeriod), /Missing ETF disclosure status/);
+});
+
+test("main chart combines audited ETF history with only the verified stock snapshots", () => {
+  const rows = buildDirectData(audit, historyAudit).snapshots;
+  assert.equal(rows.length, 23);
+  assert.equal(rows[0].period, "20150630");
+  assert.equal(rows.at(-1).period, "20260630");
+  assert.equal(rows.filter(r => Number.isFinite(r.etfAmount)).length, 22);
+  assert.equal(rows.filter(r => Number.isFinite(r.stockAmount)).length, 2);
+  assert.equal(rows[0].etfs.length, 8);
+  assert(Math.abs(rows[0].etfAmount - 67.006687745955) < 1e-8);
+  for (const row of rows.slice(0, -2)) {
+    assert.equal(row.stockStatus, "not_backfilled");
+    for (const key of ["stockAmount", "huijinAmount", "otherAmount", "combinedAmount", "companyCount", "holderCount"]) {
+      assert.equal(row[key], null, key + " must not imply an earlier stock observation");
+    }
+    assert.deepEqual(row.stocks, []);
+  }
+  for (const old of buildDirectData(audit).snapshots) {
+    const merged = rows.find(r => r.period === old.period);
+    assert.equal(merged.stockStatus, "verified");
+    for (const key of ["stockAmount", "huijinAmount", "otherAmount", "companyCount", "holderCount"]) {
+      assert.equal(merged[key], old[key]);
+    }
+    assert.deepEqual(merged.stocks, old.stocks);
+    assert.equal(merged.etfAmount === null, old.etfAmount === null);
+    if (old.etfAmount !== null) assert(Math.abs(merged.etfAmount - old.etfAmount) < 1e-8);
+  }
+  assert.equal(rows.at(-1).combinedAmount, null);
+  assert.equal(rows.at(-1).disclosedFunds, 0);
+});
+
+test("history cannot override an independently audited overlapping snapshot", () => {
+  const wrongAmount = structuredClone(historyAudit);
+  const changed = wrongAmount.reports.find(r => r.period === "20251231" && r.kind === "annual" && r.status === "identified");
+  changed.nav += 0.1;
+  changed.value_yi = changed.units * changed.nav / 1e8;
+  assert.throws(() => buildDirectData(audit, wrongAmount), /amount mismatch: ETF history 20251231/);
+  const missingTable = structuredClone(historyAudit);
+  missingTable.reports.find(r => r.period === "20251231" && r.kind === "annual").table_disclosed = false;
+  assert.throws(() => buildDirectData(audit, missingTable), /ETF history disclosure mismatch/);
 });
