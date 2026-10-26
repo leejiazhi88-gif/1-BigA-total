@@ -164,7 +164,6 @@ const html = `
         <p>每条明细附对应来源。2026年中报ETF缺失状态来自逐份报告核查；未披露不表示清仓。核算记录与逐条原始股数保存在仓库的国家队持仓对比文件中。</p>
       </details>
     </div>
-    <div class="nt-secondary-label">辅助观察 · ETF申赎与底层股票暴露</div>
 `;
 
 function renderDirectHoldings(data) {

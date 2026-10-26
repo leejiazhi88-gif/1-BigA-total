@@ -6,6 +6,7 @@ const OUTPUT = path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const DATA_FILE = path.join(ROOT, "work", "national_team_etf_data.json");
 const FLOW_FILE = path.join(ROOT, "work", "etf_flow_data.json");
 const directHoldings = require("./national_team_direct_holdings").directHoldingsModule();
+const etfHistory = require("./national_team_etf_history").etfHistoryModule();
 
 function stripExisting(html) {
   return html
@@ -13,12 +14,14 @@ function stripExisting(html) {
     .replace(/\s*<style id="national-team-etf-style">[\s\S]*?<\/style>/g, "")
     .replace(/\s*<script id="national-team-etf-script">[\s\S]*?<\/script>/g, "")
     .replace(/\s*<script id="national-team-direct-script">[\s\S]*?<\/script>/g, "")
+    .replace(/\s*<script id="national-team-etf-history-script">[\s\S]*?<\/script>/g, "")
     .replace(/\s*<a href="#national-team-etf"[^>]*>(?:国家队-ETF|国家队持仓)<\/a>/g, "");
 }
 
 const css = `
   <style id="national-team-etf-style">
     ${directHoldings.css.trim()}
+    ${etfHistory.css.trim()}
     .nt-etf-grid {
       display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(380px, .95fr);
       gap: 15px; align-items: stretch;
@@ -78,6 +81,8 @@ const moduleHtml = `
       <div class="module-status" id="nationalTeamEtfStatus">披露持仓样本</div>
     </div>
     ${directHoldings.html.trim()}
+    ${etfHistory.html.trim()}
+    <div class="nt-secondary-label">辅助观察 · ETF申赎与底层股票暴露</div>
     <div class="nt-block">
       <div class="nt-flow-controls">
         <div><div class="panel-title">重点宽基ETF · 每日净申购估算</div><div class="panel-subtitle" id="ntFlowPeriod"></div></div>
@@ -394,6 +399,6 @@ function insertBeforeLast(source, marker, content) {
 const ntEtfScript = script.replace("__NATIONAL_TEAM_ETF_DATA__", JSON.stringify(data)).replace("__ETF_FLOW_DATA__", JSON.stringify(flow));
 html = insertBeforeLast(html, "</head>", css + "\n");
 html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
-html = insertBeforeLast(html, "</body>", directHoldings.script + "\n" + ntEtfScript + "\n");
+html = insertBeforeLast(html, "</body>", directHoldings.script + "\n" + etfHistory.script + "\n" + ntEtfScript + "\n");
 fs.writeFileSync(OUTPUT, html, "utf8");
 console.log(JSON.stringify({ output: OUTPUT, bytes: fs.statSync(OUTPUT).size }, null, 2));

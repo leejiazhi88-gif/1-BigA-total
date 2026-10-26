@@ -138,6 +138,12 @@ python3 -m unittest discover -s work -p 'test_*.py'
 
 ### 2026-10-26 国家队直接持仓图表
 
+同日进一步增加“ETF具名持仓历史”，独立于直接A股两期快照。14只候选基金从2015-06-30回溯，核查794份报告（525份季报、269份中报/年报），产生22个有金额的半年末/年末时点。525份季报均未列具名持有人表；2026年中报14只均缺表，2026年三季报暂未在所查公告列表检索到，不能补零或续用旧份额。167条已识别基金/报告期记录的净值与独立Tushare基金净值数据全部核对一致。
+
+历史文件：`work/national_team_etf_history.json`、`work/fetch_national_team_etf_history.py`、`work/national_team_etf_history.js`；核查索引见 `outputs/national-team-etf-history-audit.md`。脚本使用公开报告与PDF，依赖 `pypdf`，不需要Tushare凭据；可用 `python3 work/fetch_national_team_etf_history.py --refresh-listings` 单独刷新，随后执行 `node work/build_market_dashboard.js --skip-refresh`。完整命令与断点续跑说明见README。
+
+2015-06-30仅8只候选基金已成立，2015年末9只，2022年三季度后14只。页面允许查看2015年已成立的固定8只或单只基金，避免把扩充样本当作同一范围的增持。缺失与榜内未发现保留区别，未达到具名表覆盖条件的时期不汇总。回溯范围仅为ETF；本次没有刷新行情、估值或直接A股历史。
+
 国家队章节顶部新增直接A股、ETF样本及以上可识别金额合计，主图按报告期展示金额，单位亿元。两条主曲线可单独勾选，纵轴随可见数据调整；可展开汇金投资、其他已识别账户的A股构成。按报告期查看股票/ETF明细、搜索名称或代码，并打开来源。
 
 数据固定来自 `outputs/national-team-holdings-comparison-20261026.json` 的逐项核验快照，由 `work/national_team_direct_holdings.js` 校验股数、价格、汇总及覆盖数量后内嵌入HTML。目前只包含2025-12-31和2026-06-30两期；ETF后一期没有具名披露表，主图缺口、详情空值及无法合计的状态必须保留。2025年底默认展示直接A股41,580.57亿元、ETF样本14,749.06亿元、合计56,329.63亿元；不表示国家队全部资产。

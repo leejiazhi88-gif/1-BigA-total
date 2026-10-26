@@ -56,6 +56,10 @@ http://127.0.0.1:9876
 - `work/add_national_team_etf_module.js`：国家队 ETF 暴露模块注入脚本
 - `work/national_team_direct_holdings.js`：直接A股与ETF金额、缺失状态校验及页面交互
 - `outputs/national-team-holdings-comparison-20261026.json`：2026-10-26逐项核验的直接持仓快照与来源，主图的数据依据
+- `work/fetch_national_team_etf_history.py`：2015年6月以来14只ETF定期报告核查，可从原始PDF恢复历史具名持有人
+- `work/national_team_etf_history.json`：794份报告的来源、持有份额、净值及披露状态
+- `work/national_team_etf_history.js`：ETF历史金额曲线、基金筛选与季度报告核查明细
+- `outputs/national-team-etf-history-audit.md`：历史覆盖与报告索引
 - `outputs/national-team-holdings-comparison-20261026.md`：直接持仓核算口径、金额对比与报告链接
 - `work/national_team_etf_data.json`：国家队 ETF 暴露数据缓存
 - `work/fetch_etf_flow_data.py`：最近90个交易日的ETF份额与净申购估算更新脚本
@@ -76,3 +80,17 @@ http://127.0.0.1:9876
 国家队直接持仓主图目前仅包含已核实的2025-12-31和2026-06-30两期。默认概览为双方都有可识别金额的2025年底：直接A股41,580.57亿元、14只ETF样本可识别持仓14,749.06亿元。2026年中报ETF缺少具名持有人表，ETF及两类资产合计保留空值。金额变化包含价格和披露覆盖变化，不能作为净买卖额。点击报告期数据点或切换报告期可查看对应明细；曲线可单独勾选，纵轴按可见曲线调整。
 
 上述直接持仓是独立核验的报告快照，普通行情刷新不会将旧份额滚动估值成新报告期持仓，也不会自动把底层暴露替换为直接持仓。扩展报告期须先核实具名持仓、A/H股份类别及同日价格，再更新核算文件和 `national_team_direct_holdings.js` 的数据入口。验证：`node --test work/test_national_team_direct_holdings.cjs`。
+
+国家队章节新增“ETF具名持仓历史”，回溯至2015-06-30。2026-10-26核查794份定期报告，其中525份季报均未提供具名持有人表；22个中报/年报时点可汇总金额，截止2025-12-31。2026年中报保留缺口，2026年三季报在所查公告列表暂未检索到。可切换全部样本、2015年已成立的8只样本或单只基金；每期列出报告原文、公布日期与份额。基金尚未成立、榜内未发现、未列具名表、未检索到报告分别显示，均不当作零持仓。
+
+独立更新这份历史核查数据（Python需要 `pypdf`；不需要Tushare凭据）：
+
+```bash
+python3 -m pip install pypdf
+python3 work/fetch_national_team_etf_history.py --refresh-listings
+python3 -m unittest discover -s work -p 'test_*.py'
+node --test work/test_national_team_direct_holdings.cjs work/test_national_team_etf_history.cjs
+node work/build_market_dashboard.js --skip-refresh
+```
+
+下载中断可重新运行，原始报告缓存在不入库的 `.tools/national-team-history/`。只有下载与解析问题全部解决、并通过2025年末已审计金额对账后才输出正式JSON。`--export-only --as-of 20261026` 可只用本地报告缓存重新解析。普通行情刷新不会反复下载这些历史报告。
