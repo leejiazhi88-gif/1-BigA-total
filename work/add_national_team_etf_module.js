@@ -5,17 +5,20 @@ const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const DATA_FILE = path.join(ROOT, "work", "national_team_etf_data.json");
 const FLOW_FILE = path.join(ROOT, "work", "etf_flow_data.json");
+const directHoldings = require("./national_team_direct_holdings").directHoldingsModule();
 
 function stripExisting(html) {
   return html
     .replace(/\s*<section class="module-shell" id="national-team-etf">[\s\S]*?<\/section>/g, "")
     .replace(/\s*<style id="national-team-etf-style">[\s\S]*?<\/style>/g, "")
     .replace(/\s*<script id="national-team-etf-script">[\s\S]*?<\/script>/g, "")
-    .replace(/\s*<a href="#national-team-etf"[^>]*>国家队-ETF<\/a>/g, "");
+    .replace(/\s*<script id="national-team-direct-script">[\s\S]*?<\/script>/g, "")
+    .replace(/\s*<a href="#national-team-etf"[^>]*>(?:国家队-ETF|国家队持仓)<\/a>/g, "");
 }
 
 const css = `
   <style id="national-team-etf-style">
+    ${directHoldings.css.trim()}
     .nt-etf-grid {
       display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(380px, .95fr);
       gap: 15px; align-items: stretch;
@@ -68,13 +71,13 @@ const moduleHtml = `
   <section class="module-shell" id="national-team-etf">
     <div class="module-head">
       <div>
-        <div class="module-kicker">Module 05 / National Team ETF Exposure</div>
+        <div class="module-kicker">Module 05 / National Team Holdings</div>
         <h2>国家队观察</h2>
-        <p>宽基ETF每日申赎与长期披露样本；实际持有人以定期报告和增持公告为准。</p>
+        <p>直接A股与ETF的已披露持仓金额、账户构成及报告期变化。</p>
       </div>
       <div class="module-status" id="nationalTeamEtfStatus">披露持仓样本</div>
     </div>
-
+    ${directHoldings.html.trim()}
     <div class="nt-block">
       <div class="nt-flow-controls">
         <div><div class="panel-title">重点宽基ETF · 每日净申购估算</div><div class="panel-subtitle" id="ntFlowPeriod"></div></div>
@@ -144,8 +147,8 @@ const script = `
     })[char]);
     const colors = ["#f6c85f", "#ff5d73", "#36c2ff", "#6bd98c", "#b58cff", "#ff9a5c"];
     document.getElementById("nationalTeamEtfStatus").textContent =
-      ntEtfData.meta.period.slice(0, 4) + "Q" + Math.ceil(Number(ntEtfData.meta.period.slice(4, 6)) / 3) +
-      "披露 / 日线至 " + flowData.meta.end;
+      "金额核验 ${directHoldings.checkedAt} / 底层暴露 " + ntEtfData.meta.period.slice(0, 4) + "Q" +
+      Math.ceil(Number(ntEtfData.meta.period.slice(4, 6)) / 3);
 
     const top = ntEtfData.etfs[0];
     const avg = ntEtfData.etfs.reduce((sum, row) => sum + row.nationalTeamExposure, 0) / ntEtfData.etfs.length;
@@ -381,7 +384,7 @@ if (!flow.series?.length) throw new Error("No daily ETF flow observations.");
 let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
 html = html.replace(
   '<a href="#official-sentiment">情绪-官方</a>',
-  '<a href="#official-sentiment">情绪-官方</a><a href="#national-team-etf">国家队-ETF</a>'
+  '<a href="#official-sentiment">情绪-官方</a><a href="#national-team-etf">国家队持仓</a>'
 );
 function insertBeforeLast(source, marker, content) {
   const index = source.lastIndexOf(marker);
@@ -391,6 +394,6 @@ function insertBeforeLast(source, marker, content) {
 const ntEtfScript = script.replace("__NATIONAL_TEAM_ETF_DATA__", JSON.stringify(data)).replace("__ETF_FLOW_DATA__", JSON.stringify(flow));
 html = insertBeforeLast(html, "</head>", css + "\n");
 html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
-html = insertBeforeLast(html, "</body>", ntEtfScript + "\n");
+html = insertBeforeLast(html, "</body>", directHoldings.script + "\n" + ntEtfScript + "\n");
 fs.writeFileSync(OUTPUT, html, "utf8");
 console.log(JSON.stringify({ output: OUTPUT, bytes: fs.statSync(OUTPUT).size }, null, 2));

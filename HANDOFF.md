@@ -136,6 +136,24 @@ python3 -m unittest discover -s work -p 'test_*.py'
 
 价格和估值按各自实际发布日期更新。`market_overview_data.json` 的 `prices` 保存独立行情序列，`sh`/`sz` 保留同日PE及利润序列；`meta.priceEnd` 和 `meta.valuationEnd` 分别标记截止日期。总览价格、交易规模不再等待估值接口；PE、利润及历史分位不会把上一交易日的数据标为今天，卡片逐项显示数据日期。
 
+### 2026-10-26 国家队直接持仓图表
+
+国家队章节顶部新增直接A股、ETF样本及以上可识别金额合计，主图按报告期展示金额，单位亿元。两条主曲线可单独勾选，纵轴随可见数据调整；可展开汇金投资、其他已识别账户的A股构成。按报告期查看股票/ETF明细、搜索名称或代码，并打开来源。
+
+数据固定来自 `outputs/national-team-holdings-comparison-20261026.json` 的逐项核验快照，由 `work/national_team_direct_holdings.js` 校验股数、价格、汇总及覆盖数量后内嵌入HTML。目前只包含2025-12-31和2026-06-30两期；ETF后一期没有具名披露表，主图缺口、详情空值及无法合计的状态必须保留。2025年底默认展示直接A股41,580.57亿元、ETF样本14,749.06亿元、合计56,329.63亿元；不表示国家队全部资产。
+
+普通行情刷新不重新估算此报告快照。增加报告期应先核对每份ETF持有人表，以及股票股东A/H股份类别，保持报告期、公布日期、金额和覆盖范围各自准确。不能由总份额申赎、底层股票暴露或旧份额乘新净值反推新的国家队持仓。
+
+验证命令：
+
+```bash
+node --test work/test_national_team_direct_holdings.cjs
+python3 -m unittest discover -s work -p 'test_*.py'
+node work/build_market_dashboard.js --skip-refresh
+```
+
+原有每日ETF申赎和底层暴露、聚类保留为辅助观察。此次更新图表，行情数据仍沿用10月23日刷新记录中的实际截止日期。
+
 ### 2026-10-23 收盘刷新记录
 
 刷新前执行 `git fetch` 与 `git pull --ff-only`，远端没有新提交，起点为 `64ab594`。本次查询上限为2026-10-23，各指标按实际发布日期展示。
