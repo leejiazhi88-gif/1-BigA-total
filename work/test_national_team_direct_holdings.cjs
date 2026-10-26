@@ -2,6 +2,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const audit = require("../outputs/national-team-holdings-comparison-20261026.json");
 const historyAudit = require("./national_team_etf_history.json");
+const stockHistory = require("./national_team_stock_history.json");
 const { buildDirectData } = require("./national_team_direct_holdings");
 
 test("2025 annual comparison uses the same period and excludes CCB H shares", () => {
@@ -99,4 +100,36 @@ test("history cannot override an independently audited overlapping snapshot", ()
   const missingTable = structuredClone(historyAudit);
   missingTable.reports.find(r => r.period === "20251231" && r.kind === "annual").table_disclosed = false;
   assert.throws(() => buildDirectData(audit, missingTable), /ETF history disclosure mismatch/);
+});
+
+test("A-share history covers every quarter since June 2015 without filling ETF gaps", () => {
+  const rows = buildDirectData(audit, historyAudit, stockHistory).snapshots;
+  assert.equal(rows.length, 45);
+  assert.equal(rows[0].period, "20150630");
+  assert.equal(rows.at(-1).period, "20260630");
+  assert(rows.every(row => Number.isFinite(row.stockAmount) && row.stockStatus === "verified"));
+  assert.equal(Math.round(rows[0].stockAmount), 22343);
+  assert.equal(rows[1].companyCount, 1166);
+  assert.equal(Math.round(rows[1].stockAmount), 26367);
+  assert.equal(rows.filter(r => r.etfAmount !== null).length, 22);
+  assert.equal(rows.filter(r => r.combinedAmount !== null).length, 22);
+  for (const row of rows.filter(r => r.etfReportKind === "quarterly")) {
+    assert.equal(row.etfAmount, null);
+    assert.equal(row.combinedAmount, null);
+  }
+  const ccb = rows[0].stocks.find(r => r.code === "601939.SH" && r.holder === "中央汇金投资有限责任公司");
+  assert.equal(ccb.units, 195941976);
+  assert.equal(rows.at(-1).etfAmount, null);
+});
+
+test("invalid stock backfill cannot publish inconsistent units, duplicates or coverage", () => {
+  const bad = structuredClone(stockHistory);
+  bad.stocks["20150630"].details[0].a_share_amount += 1e8;
+  assert.throws(() => buildDirectData(audit, historyAudit, bad), /amount mismatch/);
+  const duplicate = structuredClone(stockHistory);
+  duplicate.stocks["20150630"].details.push(duplicate.stocks["20150630"].details[0]);
+  assert.throws(() => buildDirectData(audit, historyAudit, duplicate), /Duplicate/);
+  const incomplete = structuredClone(stockHistory);
+  incomplete.failures.push({ period: "20150630" });
+  assert.throws(() => buildDirectData(audit, historyAudit, incomplete), /Unresolved/);
 });
