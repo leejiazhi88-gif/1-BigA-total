@@ -23,15 +23,17 @@ function buildHistoryData(audit) {
 }
 
 const css = `
-  #national-team-etf-history { margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line); scroll-margin-top: 72px; }
+  #national-team-etf-history { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); scroll-margin-top: 72px; }
+  #national-team-etf-history > summary { cursor: pointer; font-size: 14px; font-weight: 650; line-height: 1.8; }
+  #national-team-etf-history > summary:focus-visible { outline: 2px solid #36c2ff; outline-offset: 4px; }
+  #ntHistorySubtitle { margin-top: 12px; }
   .nt-history-controls { display: flex; flex-wrap: wrap; gap: 12px 20px; margin: 16px 0; }
   .nt-history-controls label { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; max-width: 100%; }
   .nt-history-controls select { color: var(--text); background: #101c2c; border: 1px solid #344760;
     border-radius: 4px; padding: 7px; min-height: 36px; font: inherit; min-width: 0; max-width: 100%; }
   .nt-history-controls select:focus-visible { outline: 2px solid #36c2ff; outline-offset: 2px; }
-  #ntHistoryChart { width: 100%; height: 370px; overflow: hidden; }
   .nt-history-reading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; margin: 16px 0 8px; }
-  .nt-history-reading strong { font-size: 25px; color: #f6c85f; }
+  .nt-history-reading strong { font-size: 20px; color: #f6c85f; }
   .nt-history-reading span { font-size: 12px; color: var(--muted); }
   #ntHistoryReports { max-height: 360px; }
   #ntHistoryReports table { min-width: 870px; }
@@ -42,35 +44,29 @@ const css = `
   @media (max-width: 620px) {
     .nt-history-controls label { width: 100%; justify-content: space-between; }
     .nt-history-controls select { max-width: 78%; }
-    #ntHistoryChart { height: 320px; }
   }
 `;
 
 const html = `
-  <div id="national-team-etf-history">
-    <div class="nt-direct-head"><div><h3>ETF具名持仓历史</h3><div class="panel-subtitle" id="ntHistorySubtitle"></div></div></div>
+  <details id="national-team-etf-history">
+    <summary>ETF报告核查与来源</summary>
+    <div class="panel-subtitle" id="ntHistorySubtitle"></div>
     <div class="nt-history-controls">
       <label>基金范围<select id="ntHistoryFund" aria-label="历史持仓基金范围"></select></label>
-      <label>时间点<select id="ntHistoryFrequency" aria-label="历史持仓时间点"><option value="half">中报 / 年报</option><option value="quarter">全部季度</option></select></label>
-      <label>区间<select id="ntHistoryRange" aria-label="历史持仓区间"><option value="all">2015年以来</option><option value="5">近5年</option><option value="3">近3年</option></select></label>
-    </div>
-    <div id="ntHistoryChart" role="img" aria-label="2015年6月以来国家队具名ETF持仓金额走势"></div>
-    <p class="nt-method">单位：亿元。持有份额 × 同期单位净值；虚线连接披露快照，缺失保持空白。金额变化含净值涨跌，不能直接当作增减持金额。样本包含后来成立的基金，单只基金与2015年已成立样本可分别查看。</p>
-    <div class="nt-direct-head"><div class="panel-title">报告核查与持仓依据</div></div>
-    <div class="nt-history-controls">
       <label>报告期<select id="ntHistoryPeriod" aria-label="ETF历史核查报告期"></select></label>
-      <label>报告类型<select id="ntHistoryKind" aria-label="ETF历史核查报告类型"><option value="all">全部报告</option><option value="quarterly">季报</option><option value="long">中报 / 年报</option></select></label>
+      <label>报告类型<select id="ntHistoryKind" aria-label="ETF历史核查报告类型"><option value="long">中报 / 年报</option><option value="quarterly">季报</option><option value="all">全部报告</option></select></label>
     </div>
     <div class="nt-history-reading" id="ntHistoryReading" aria-live="polite"></div>
     <p class="nt-direct-status" id="ntHistoryStatus"></p>
     <div class="nt-etf-table" id="ntHistoryReports"></div>
     <details class="nt-direct-method"><summary>历史统计范围与缺口</summary>
       <p id="ntHistoryAuditSummary"></p>
+      <p>金额单位为亿元，按持有份额 × 同期单位净值计算。金额变化含净值涨跌，不能直接当作增减持金额。样本包含后来成立的基金，未成立基金不计入当期统计。</p>
       <p>账户范围沿用上方口径：中央汇金投资、中央汇金资产管理、中国证券金融及明确具名的委托计划。未进入前十名不表示零持仓，未披露具名表不表示清仓；季报中的匿名大额投资者、基金总份额与机构合计不能直接识别国家队。</p>
       <p>合计仅在所选范围内当期已成立基金均有具名表，且至少识别出一个国家队账户时显示；否则保留缺口。尚未成立的基金不计入当期覆盖分母。若基金刚成立、报告不适用或未能检索到报告，状态单独列示，不推断为零。</p>
-      <p>图按报告期末排列，报告公布时间另列；这些数据并非在报告期当天就已公开。这里只展示ETF具名持仓，直接A股的季度历史见上方主图。</p>
+      <p>报告期末和公布日期分别列示，这些数据并非在报告期当天就已公开。ETF与直接A股的金额走势统一列在上方主图。</p>
     </details>
-  </div>
+  </details>
 `;
 
 function renderHistory(data) {
@@ -82,10 +78,8 @@ function renderHistory(data) {
   const statuses = { identified: "具名持仓", no_identified_account_in_top10: "榜内未发现，不代表零",
     named_holder_table_not_disclosed: "未列具名持有人表", not_established: "尚未成立", report_not_found: "暂未检索到报告" };
   const byKey = new Map(data.reports.map(r => [[r.code, r.period, r.kind].join(":"), r]));
-  const chart = echarts.init($("ntHistoryChart"), null, { renderer: "canvas" });
-  let plotted = [];
   $("ntHistorySubtitle").textContent = "2015-06-30起 · " + data.funds.length + "只重点宽基ETF · 核验 " + data.checkedAt;
-  $("ntHistoryFund").innerHTML = '<option value="all">全部14只样本</option><option value="original">2015年6月已成立样本</option>' +
+  $("ntHistoryFund").innerHTML = '<option value="all">全部' + data.funds.length + '只样本</option><option value="original">2015年6月已成立样本</option>' +
     data.funds.map(f => '<option value="' + f.code + '">' + f.code + ' ' + esc(f.name) + '</option>').join("");
   $("ntHistoryPeriod").innerHTML = [...data.periods].reverse().map(p => '<option value="' + p + '">' + date(p) + '</option>').join("");
   const quarters = data.reports.filter(r => r.kind === "quarterly");
@@ -115,44 +109,6 @@ function renderHistory(data) {
     return { period, amount: complete ? identified.reduce((n, r) => n + r.amount, 0) : null,
       eligible: rows.length, disclosed, identified: identified.length };
   }
-  function renderChart() {
-    const frequency = $("ntHistoryFrequency").value;
-    const range = $("ntHistoryRange").value;
-    const endYear = Number(data.periods.at(-1).slice(0, 4));
-    plotted = data.periods.filter(p => (frequency === "quarter" || /(?:0630|1231)$/.test(p)) &&
-      (range === "all" || Number(p.slice(0, 4)) > endYear - Number(range))).map(p => snapshot(p));
-    const numbers = plotted.map(p => p.amount).filter(Number.isFinite);
-    chart.setOption({ animation: false, grid: { left: 64, right: 20, top: 25, bottom: 82 },
-      title: numbers.length ? [] : [{ text: "所选范围暂无可核实的具名持仓", left: "center", top: "40%", textStyle: { color: "#8fa5bf", fontSize: 12 } }],
-      tooltip: { trigger: "axis", confine: true, transitionDuration: 0, backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f", textStyle: { color: "#edf4ff", fontSize: 12 },
-        formatter: params => {
-          const s = plotted[params[0].dataIndex];
-          return date(s.period) + "<br>已识别持仓：" + (s.amount === null ? "无法核实" : fmt(s.amount) + " 亿元") +
-            "<br>具名表：" + s.disclosed + " / " + s.eligible + "只当期已成立样本<br>识别出国家队：" + s.identified + "只";
-        } },
-      xAxis: { type: "category", data: plotted.map(s => date(s.period)), boundaryGap: true,
-        axisLine: { lineStyle: { color: "#344760" } }, axisLabel: { color: "#8fa5bf", hideOverlap: true, fontSize: 11 } },
-      yAxis: { type: "value", ...bounds(numbers),
-        axisLabel: { color: "#8fa5bf", formatter: n => fmt(n, 0) }, splitLine: { lineStyle: { color: "#233247" } } },
-      dataZoom: [{ type: "slider", xAxisIndex: 0, start: 0, end: 100, filterMode: "none", bottom: 8, height: 22,
-        borderColor: "#344760", fillerColor: "rgba(246,200,95,.15)", textStyle: { color: "#8fa5bf", fontSize: 10 } },
-        { type: "inside", xAxisIndex: 0, filterMode: "none" }],
-      series: [{ name: "已识别ETF持仓", type: "line", data: plotted.map(s => s.amount), connectNulls: false,
-        smooth: false, showSymbol: true, symbolSize: 7, lineStyle: { color: "#f6c85f", type: "dashed", width: 2 }, itemStyle: { color: "#f6c85f" } }]
-    }, true);
-  }
-  function bounds(numbers) {
-    const high = Math.max(...numbers, 1), low = numbers.length ? Math.min(...numbers) : 0;
-    const padding = Math.max((high - low) * .12, high * .05, 1);
-    const step = high > 10000 ? 1000 : high > 1000 ? 100 : high > 100 ? 10 : 1;
-    return { min: Math.max(0, Math.floor((low - padding) / step) * step), max: Math.ceil((high + padding) / step) * step };
-  }
-  chart.on("datazoom", () => {
-    const zoom = chart.getOption().dataZoom[0];
-    const first = zoom.startValue ?? Math.round(zoom.start / 100 * (plotted.length - 1));
-    const last = zoom.endValue ?? Math.round(zoom.end / 100 * (plotted.length - 1));
-    chart.setOption({ yAxis: bounds(plotted.slice(first, last + 1).map(s => s.amount).filter(Number.isFinite)) });
-  });
   function renderReports() {
     const period = $("ntHistoryPeriod").value, filter = $("ntHistoryKind").value;
     const long = period.endsWith("0630") ? "interim" : period.endsWith("1231") ? "annual" : null;
@@ -172,14 +128,16 @@ function renderHistory(data) {
         '</td><td>' + (r.status === "not_established" ? "—" : '<a target="_blank" rel="noopener noreferrer" href="' + esc(r.source) + '">' +
         (r.status === "report_not_found" ? "公告列表" : "报告原文") + '</a>') + '</td></tr>').join("") || '<tr><td colspan="7">该季度无中报或年报报告期</td></tr>') + '</tbody></table>';
   }
-  $("ntHistoryFund").addEventListener("change", () => { renderChart(); renderReports(); });
-  for (const id of ["ntHistoryFrequency", "ntHistoryRange"]) $(id).addEventListener("change", renderChart);
-  for (const id of ["ntHistoryPeriod", "ntHistoryKind"]) $(id).addEventListener("change", renderReports);
-  chart.on("click", p => { if (p.componentType === "series") { $("ntHistoryPeriod").value = plotted[p.dataIndex].period; renderReports(); } });
-  window.addEventListener("resize", () => { chart.dispatchAction({ type: "hideTip" }); chart.resize(); });
+  for (const id of ["ntHistoryFund", "ntHistoryPeriod", "ntHistoryKind"]) $(id).addEventListener("change", renderReports);
+  function openLinkedReports() {
+    if (location.hash !== "#national-team-etf-history") return;
+    $("national-team-etf-history").open = true;
+    requestAnimationFrame(() => $("national-team-etf-history").scrollIntoView({ block: "start" }));
+  }
+  window.addEventListener("hashchange", openLinkedReports);
   $("ntHistoryPeriod").value = data.periods.findLast(p => snapshot(p).amount !== null) || data.periods.at(-1);
-  renderChart();
   renderReports();
+  openLinkedReports();
 }
 
 function etfHistoryModule() {

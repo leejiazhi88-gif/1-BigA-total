@@ -62,7 +62,7 @@ http://127.0.0.1:9876
 - `outputs/national-team-holdings-comparison-20261026.json`：2026-10-26逐项核验的直接持仓快照与来源，主图的数据依据
 - `work/fetch_national_team_etf_history.py`：2015年6月以来14只ETF定期报告核查，可从原始PDF恢复历史具名持有人
 - `work/national_team_etf_history.json`：794份报告的来源、持有份额、净值及披露状态
-- `work/national_team_etf_history.js`：ETF历史金额曲线、基金筛选与季度报告核查明细
+- `work/national_team_etf_history.js`：ETF历史数据校验与可折叠的报告核查明细，保留基金筛选和原文来源
 - `outputs/national-team-etf-history-audit.md`：历史覆盖与报告索引
 - `outputs/national-team-holdings-comparison-20261026.md`：直接持仓核算口径、金额对比与报告链接
 - `work/national_team_etf_data.json`：国家队 ETF 暴露数据缓存
@@ -98,7 +98,7 @@ node work/build_market_dashboard.js --skip-refresh
 
 默认查询2015-06-30至2026-06-30、截至2026-10-26公布的数据。可用 `--start YYYYMMDD --end YYYYMMDD --as-of YYYYMMDD` 指定范围。三个阶段使用相同日期参数，断点重跑会复用 `.tools/national-team-stock-history/`。换电脑后已有JSON可直接构建，无需重新拉取。新增报告期的A/H股拆分必须先补充有原报告证据的调整文件；未知股份类别、缺价、价格冲突会阻止导出，不能推算补齐。
 
-国家队章节新增“ETF具名持仓历史”，回溯至2015-06-30。2026-10-26核查794份定期报告，其中525份季报均未提供具名持有人表；22个中报/年报时点可汇总金额，截止2025-12-31。2026年中报保留缺口，2026年三季报在所查公告列表暂未检索到。可切换全部样本、2015年已成立的8只样本或单只基金；每期列出报告原文、公布日期与份额。基金尚未成立、榜内未发现、未列具名表、未检索到报告分别显示，均不当作零持仓。
+ETF历史金额统一显示在国家队直接持仓主图，回溯至2015-06-30，不再另设重复曲线。下方“ETF报告核查与来源”默认折叠，展开后默认列出中报/年报，可切换季报或全部报告；旧链接 `#national-team-etf-history` 会自动展开核查区。2026-10-26核查794份定期报告，其中525份季报均未提供具名持有人表；22个中报/年报时点可汇总金额，截止2025-12-31。2026年中报保留缺口，2026年三季报在所查公告列表暂未检索到。可切换全部样本、2015年已成立的8只样本或单只基金；每期列出报告原文、公布日期与份额。基金尚未成立、榜内未发现、未列具名表、未检索到报告分别显示，均不当作零持仓。
 
 独立更新这份历史核查数据（Python需要 `pypdf`；不需要Tushare凭据）：
 
