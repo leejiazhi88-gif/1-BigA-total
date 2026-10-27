@@ -6,6 +6,7 @@ const HISTORY_SOURCE = path.join(__dirname, "national_team_etf_history.json");
 const STOCK_HISTORY_SOURCE = path.join(__dirname, "national_team_stock_history.json");
 const SOCIAL_HISTORY_SOURCE = path.join(__dirname, "social_security_history.json");
 const RATIO_SOURCE = path.join(__dirname, "holding_denominators.json");
+const MARKET_CAP_SOURCE = path.join(__dirname, "a_share_market_cap.json");
 const { attachHoldingRatios } = require("./holding_ratios");
 const { buildHistoryData } = require("./national_team_etf_history");
 const FUND_NAMES = {
@@ -245,7 +246,7 @@ const html = `
       </div>
       <div class="nt-direct-controls" id="ntDirectSeries" aria-label="持仓曲线"></div>
       <div id="nationalTeamDirectChart" role="img" aria-label="汇金、证金及社保投资组合已披露持仓金额走势图"></div>
-      <p class="nt-method" id="ntDirectRatioNote" hidden>比例＝已识别持仓金额÷当期所持标的总市值。A股只计对应公司的A股总股本，ETF按已识别持仓基金的总份额×同期净值；同一标的分母只计一次。各期样本会变化，比例仍受相对涨跌、增发和披露覆盖影响，不等于净买入。</p>
+      <p class="nt-method" id="ntDirectRatioNote" hidden>A股两条曲线：已识别持仓金额÷同期全A股总市值（沪深北，含限售A股）。ETF：已识别持仓金额÷各已识别持有基金的总净资产合计。A股分母不随识别到的持股公司数量变化；分子仍受股东榜披露覆盖及相对涨跌影响，不等于净买入。</p>
       <p class="nt-direct-status" id="ntDirectGap"></p>
       <p class="nt-method">2015年6月起，A股按季度展示；ETF为中报、年报已披露时点。虚线仅连接披露快照，不代表每日持仓路径。金额含价格涨跌及股东榜覆盖变化，不能把差额当作实际净买卖额。</p>
       <p class="nt-method">社保曲线为具名投资组合的直接A股持仓，含明确具名的委托组合；不含理事会直持、划转账户、基本养老保险及ETF。社保独立展示，不计入汇金／证金合计。</p>
@@ -266,7 +267,7 @@ const html = `
         <summary>统计口径与来源</summary>
         <p>汇金／证金曲线识别中央汇金投资、中央汇金资产管理、中国证券金融，以及明确具名的汇金委托计划。社保投资组合单独识别、单独展示，不加入原有汇金／证金股票与ETF合计；保险、财政部、诚通、国新等未纳入。金额是已披露可识别部分，不是相关机构全部资产。</p>
         <p>社保投资组合：识别“全国社保基金××组合”及基金公司、证券公司明确标注的社保基金委托组合；中文和阿拉伯数字编号统一，按股票与组合去重。统一采用前十大股东表，用Tushare核对；金额＝A股股数×期末参考价÷1亿。理事会直持、转持／划转及基本养老保险账户不包含在此线。完整覆盖及来源差异见<a href="https://github.com/leejiazhi88-gif/1-BigA-total/blob/main/outputs/social-security-history-audit.md" target="_blank" rel="noopener noreferrer">社保历史核查</a>。</p>
-        <p>持仓比例：A股分母为该曲线当期已识别持有公司的A股总股本×同一参考价，剔除H/B股，并按股票去重。ETF分母为当期已识别持有基金的总份额×同一净值，包含场外份额，未识别出持仓的基金不并入分母。金额加总后除以分母加总，不对各持股比例做简单平均；汇金投资与其他账户构成共用汇金／证金A股样本分母，两项比例可以相加。社保单独使用其持有公司范围；股票和ETF比例不合计。股本来自东方财富历史股本结构，ETF总份额及净资产来自同一期原始报告，均以报告期末为准。分母证据及差异见<a href="https://github.com/leejiazhi88-gif/1-BigA-total/blob/main/outputs/holding-ratio-audit.md" target="_blank" rel="noopener noreferrer">持仓比例核查</a>。</p>
+        <p>持仓比例：汇金／证金A股和社保投资组合A股共用同期全A股总市值作为分母，包含沪市主板、科创板、深市主板、创业板及开市后的北交所，含流通与限售A股，排除B/H股、基金和新三板。取报告期末最后交易日市值；沪深来自Tushare交易所市场统计，北交所来自官方日报。汇金投资与其他账户构成也使用该分母，两项比例可以相加。ETF分母仍为当期已识别持有基金的总份额×同一净值，含场外份额，按基金去重；股票和ETF比例不合计。明细中的“占该标的比例”仍以单家公司A股总股本或单只基金总份额计算，与全市场曲线含义不同。分母证据及差异见<a href="https://github.com/leejiazhi88-gif/1-BigA-total/blob/main/outputs/holding-ratio-audit.md" target="_blank" rel="noopener noreferrer">持仓比例核查</a>。</p>
         <p>直接A股：东方财富各期前十大股东表中的国家队A股股数 × 期末参考价 ÷ 1亿，以Tushare交叉核对。正常交易采用期末最后交易日未复权收盘价；停牌采用数据源期末参考市值折算价，明细以＊标记。按股票与账户去重，排除B/H股、优先股、上市前及退市后的记录；建行A/H股按各期原报告拆分。</p>
         <p>汇金／证金历史统一采用前十大股东表，未把前十大流通股东另行并入。仅识别上述三家机构及全称明确的委托账户，不把名称仅含“汇金”的普通私募、中证金融计划或转融通担保账户一概计入。各期公司数量会随进入、退出股东榜及披露覆盖变化，不等于国家队真实持股公司总数。</p>
         <p>ETF：14只重点宽基候选样本中具名国家队账户的持有份额 × 同期单位净值 ÷ 1亿；仅纳入当期已成立基金，2015年6月为8只。未进入前十名不能视为零持仓；缺少具名持有人表时不汇总该期ETF金额，也不沿用上一期份额。股票与ETF仅在同一报告期且均有可识别金额时相加，不再重复计入ETF底层股票。</p>
@@ -291,7 +292,8 @@ function renderDirectHoldings(data) {
   let view = "stocks";
   let mode = "amount";
   const valueOf = (row, key) => mode === "ratio" ? row.ratios[key] ?? null : row[key];
-  const displayValue = value => fmt(value, mode === "ratio" ? 2 : 0);
+  const ratioDigits = value => Math.abs(value) < 1 ? 3 : 2;
+  const displayValue = value => fmt(value, mode === "ratio" ? ratioDigits(value) : 0);
   const unit = () => mode === "ratio" ? "%" : "亿元";
   const seriesDefs = [
     { key: "stockAmount", name: "汇金／证金A股", color: "#36c2ff" },
@@ -353,8 +355,9 @@ function renderDirectHoldings(data) {
             const value = valueOf(row, def.key);
             const base = row.ratioBases[def.breakdown ? "stockAmount" : def.key];
             return '<span style="color:' + def.color + '">●</span> ' + def.name + "：" +
-              (value === null ? "未披露" : fmt(value, 2) + " " + unit()) +
-              (mode === "ratio" && value !== null ? "<br>　" + fmt(row[def.key], 2) + " ÷ " + fmt(base.amount, 2) + " 亿元" : "");
+              (value === null ? "未披露" : fmt(value, mode === "ratio" ? ratioDigits(value) : 2) + " " + unit()) +
+              (mode === "ratio" && value !== null ? "<br>　" + fmt(row[def.key], 2) + " ÷ " + fmt(base.amount, 2) + " 亿元" +
+                (base.scope === "all_a_shares" ? "（全A股 · " + dateLabel(base.date) + "）" : "（已识别持有基金）") : "");
           }).join("<br>") + "<br>A股：" + (row.stockStatus === "not_backfilled" ? "该期尚未回溯" : row.companyCount + "家公司 / " + row.holderCount + "条持仓") +
             "<br>ETF：具名表 " + row.disclosedFunds + "/" + row.etfs.length + " 只，已识别 " + row.identifiedFunds + " 只" +
             "<br>社保：" + (row.socialAmount === null ? "该期尚未核实" : row.socialCompanyCount + "家公司 / " + row.socialHolderCount + "条持仓");
@@ -438,7 +441,9 @@ function renderDirectHoldings(data) {
       const combinedRatio = mode === "ratio" && card.key === "combinedAmount";
       const base = row.ratioBases[card.key];
       const meta = combinedRatio ? "A股与ETF分母不同，比例分别展示" : mode === "ratio" && base?.amount
-        ? "分母 " + fmt(base.amount) + "亿元 · " + base.count + (card.key === "etfAmount" ? "只已识别持有基金" : "家持有公司A股市值") : card.meta;
+        ? (card.key === "etfAmount" ? "分母 " + fmt(base.amount) + "亿元 · " + base.count + "只已识别持有基金"
+          : "全A股总市值 " + fmt(base.amount) + "亿元 · " + dateLabel(base.date) + "<br>已识别持仓 " +
+            (card.key === "stockAmount" ? row.companyCount : row.socialCompanyCount) + "家公司") : card.meta;
       return '<div class="nt-direct-reading" data-metric="' + card.key + '">' +
         '<span class="label">' + (combinedRatio ? "汇金／证金综合比例" : card.label) + '</span><strong class="amount' + (value === null ? ' missing' : '') + '">' +
         (value === null ? (combinedRatio ? "不合并比例" : card.key === "combinedAmount" ? "暂不可合计" : "未披露") : displayValue(value) + '<small>' + unit() + '</small>') +
@@ -521,7 +526,7 @@ function renderDirectHoldings(data) {
 }
 
 function directHoldingsModule() {
-  const data = attachHoldingRatios(attachSocialData(buildDirectData(JSON.parse(fs.readFileSync(SOURCE, "utf8")), JSON.parse(fs.readFileSync(HISTORY_SOURCE, "utf8")), JSON.parse(fs.readFileSync(STOCK_HISTORY_SOURCE, "utf8"))), JSON.parse(fs.readFileSync(SOCIAL_HISTORY_SOURCE, "utf8"))), JSON.parse(fs.readFileSync(RATIO_SOURCE, "utf8")));
+  const data = attachHoldingRatios(attachSocialData(buildDirectData(JSON.parse(fs.readFileSync(SOURCE, "utf8")), JSON.parse(fs.readFileSync(HISTORY_SOURCE, "utf8")), JSON.parse(fs.readFileSync(STOCK_HISTORY_SOURCE, "utf8"))), JSON.parse(fs.readFileSync(SOCIAL_HISTORY_SOURCE, "utf8"))), JSON.parse(fs.readFileSync(RATIO_SOURCE, "utf8")), JSON.parse(fs.readFileSync(MARKET_CAP_SOURCE, "utf8")));
   const payload = JSON.stringify(data).replace(/</g, "\\u003c");
   return { css, html, checkedAt: data.checkedAt,
     script: '<script id="national-team-direct-script">(' + renderDirectHoldings.toString() + ')(' + payload + ');</script>' };

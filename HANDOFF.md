@@ -14,9 +14,11 @@
 
 “国家队与社保已披露持仓”右上角新增金额／持仓比例切换。纵轴、卡片、提示及明细同步切换，保留已选曲线和时间缩放；比例明细增加A股总股本或基金总份额、占该标的比例。页面地址为 https://leejiazhi88-gif.github.io/1-BigA-total/#national-team-direct ，本地文件仍为根目录 `index.html` 和 `outputs/a_share_20y_dashboard.html`。
 
-按当期识别到的持有标的计算分母：A股为对应公司的A股总股本乘同一参考价，排除H/B股与非上市外资股；ETF为对应基金总份额乘同一净值，含场外份额；同一标的只计一次。社保用自己的持有公司范围。汇金投资与其他账户构成共用主A股曲线分母，股票与ETF比例不合计。比例降低整体价格同幅变动的影响，仍受相对涨跌、增发及各期披露覆盖变化影响。
+按用户最新要求，汇金／证金直接A股与社保投资组合A股已统一改为“已识别持仓金额÷同期全A股总市值”，覆盖沪深北、含限售A股，排除B/H股、基金和新三板；汇金投资与其他账户构成共用这一分母。45个季度从2015年6月到2026年6月，分母不随持股公司数量变化。2025年末全A股1,087,535.06亿元，汇金／证金3.823%、社保0.179%。ETF比例口径保持原有已识别持有基金范围，股票与ETF比例不合计。分子仍受股东榜披露覆盖及相对涨跌影响，不能视为实际净买卖。单股明细的“占该标的比例”仍按单家公司股本计算。
 
-新增 `work/holding_ratios.js`、`work/fetch_holding_denominators.py`、`work/holding_denominators.json` 和 `work/holding_capital_adjustments.json`，覆盖45个季度、44,147条公司/季度股本及167份ETF报告分母。详细证据、两个股本分类修正及更新命令见 [持仓比例核查](outputs/holding-ratio-audit.md)。普通构建复用已提交分母，不额外请求数据；换电脑直接执行 `node work/build_market_dashboard.js --skip-refresh`。本次未刷新其他行情数据，也未填补ETF未披露时点。
+全市场数据来自 `work/a_share_market_cap.json`；运行 `python3 work/fetch_a_share_market_cap.py` 可重建，沪深使用Tushare交易所统计，北交所从 `work/bse_market_cap_history.json` 读取官方日报核验值。新增报告期先补齐北交所该期末最后交易日数据，缺项时脚本报错，不会自动当零或沿用上一期。原始沪深缓存位于 `.tools/a-share-market-cap/`，北交所公开查询地址为 https://www.bse.cn/static/statisticdata.html 。
+
+`work/holding_ratios.js`、`work/fetch_holding_denominators.py`、`work/holding_denominators.json` 和 `work/holding_capital_adjustments.json` 保留45个季度、44,147条公司/季度股本用于单股明细校验，以及167份ETF报告分母。详细证据、两个股本分类修正及更新命令见 [持仓比例核查](outputs/holding-ratio-audit.md)。普通构建复用已提交分母，不额外请求数据；换电脑直接执行 `node work/build_market_dashboard.js --skip-refresh`。本次未刷新其他行情数据，也未填补ETF未披露时点。
 
 ## 2026-10-27 散户情绪历史回溯
 

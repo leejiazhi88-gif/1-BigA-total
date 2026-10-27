@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-27",
+  "source": "https://www.bse.cn/static/statisticdata.html",
+  "method": "Official daily statistics: total market capitalization in CNY 100 million and listed company count, queried for each quarter's last trading day.",
+  "marketOpened": "20211115",
+  "rows": [
+    {"trade_date":"20211231","amount":2722.75,"count":82},
+    {"trade_date":"20220331","amount":2051.99,"count":89},
+    {"trade_date":"20220630","amount":2100.70,"count":100},
+    {"trade_date":"20220930","amount":1800.11,"count":114},
+    {"trade_date":"20221230","amount":2110.29,"count":162},
+    {"trade_date":"20230331","amount":2460.08,"count":184},
+    {"trade_date":"20230630","amount":2667.83,"count":204},
+    {"trade_date":"20230928","amount":2651.79,"count":222},
+    {"trade_date":"20231229","amount":4496.41,"count":239},
+    {"trade_date":"20240329","amount":3629.65,"count":247},
+    {"trade_date":"20240628","amount":3094.14,"count":249},
+    {"trade_date":"20240930","amount":4022.44,"count":253},
+    {"trade_date":"20241231","amount":5386.01,"count":262},
+    {"trade_date":"20250331","amount":7011.31,"count":265},
+    {"trade_date":"20250630","amount":8488.73,"count":268},
+    {"trade_date":"20250930","amount":8687.88,"count":277},
+    {"trade_date":"20251231","amount":8694.44,"count":288},
+    {"trade_date":"20260331","amount":7993.15,"count":303},
+    {"trade_date":"20260630","amount":8461.30,"count":323}
+  ]
+}
