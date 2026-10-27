@@ -21,6 +21,7 @@ const css = `
       gap: 15px; align-items: stretch;
     }
     #largeMoneyChart { height: 500px; width: 100%; }
+    #large-money-sentiment .panel-head { flex-wrap: wrap; gap: 12px; }
     @media (max-width: 980px) {
       .large-money-grid { grid-template-columns: 1fr; }
       #largeMoneyChart { height: 450px; }
@@ -44,7 +45,7 @@ const moduleHtml = `
         <div class="panel-head">
           <div>
             <div class="panel-title">连续走势图</div>
-            <div class="panel-subtitle" id="largeMoneyMetricSubtitle">全市场大宗交易周成交额</div>
+            <div class="panel-subtitle" id="largeMoneyMetricSubtitle">沪深A股大宗交易周成交额</div>
           </div>
           <div class="range-tabs" id="largeMoneyRangeTabs">
             <button class="range-tab" data-years="3">3年</button>
@@ -94,7 +95,7 @@ const moduleHtml = `
     </div>
 
     <div class="valuation-foot">
-      <div class="note"><strong>连续数据口径：</strong>大宗交易额按周汇总；机构净买入仅识别买卖方标记为“机构专用”的席位；产业资本净增减持按公告股数汇总，正值为净增持、负值为净减持。</div>
+      <div class="note"><strong>连续数据口径：</strong>大宗交易仅统计沪深A股，按周汇总，排除债券、基金、B股和北交所；金额由万元换算为亿元，并与成交价×成交量核对。历史包含当时上市、后来退市的股票。机构净买入＝“机构专用”买入额－卖出额，双方均为机构的交易净额为零；不按金额大小删去真实交易。产业资本净增减持按公告股数汇总，正值为净增持、负值为净减持。</div>
       <div class="note"><strong>北向口径提示：</strong>北向净流入序列保留至2024年8月16日。此后披露机制发生变化，页面不把新口径成交数据与旧口径净流入强行拼接。</div>
     </div>
   </section>
@@ -114,12 +115,12 @@ const script = `
     const metrics = {
       blockAmount: {
         title: "大宗交易额", unit: "亿元", digits: 1,
-        subtitle: "全市场大宗交易周成交额",
+        subtitle: "沪深A股大宗交易周成交额",
         note: "大宗交易放量代表大额筹码交换活跃，需要结合机构席位净方向判断。"
       },
       institutionBlockNet: {
         title: "机构大宗净买入", unit: "亿元", digits: 1,
-        subtitle: "机构专用席位大宗交易周净买入额",
+        subtitle: "沪深A股机构专用席位大宗交易周净买入额",
         note: "正值表示机构席位净买入，负值表示净卖出；极端负值可辅助识别机构撤退。"
       },
       holderNetShares: {
@@ -135,7 +136,29 @@ const script = `
     };
     let activeMetric = "blockAmount";
     let activeYears = 0;
+    let chartPoints = [];
     const chart = echarts.init(document.getElementById("largeMoneyChart"), null, { renderer: "canvas" });
+
+    function axisBounds(points) {
+      const values = points.map(point => point[1]).filter(Number.isFinite);
+      if (!values.length) return { min: 0, max: 1 };
+      const low = Math.min(0, ...values), high = Math.max(0, ...values);
+      const padding = Math.max((high - low) * 0.12, 0.1);
+      return { min: low < 0 ? low - padding : 0, max: high > 0 ? high + padding : 0.1 };
+    }
+
+    function rescaleVisible() {
+      if (!chartPoints.length) return;
+      const zoom = chart.getOption().dataZoom[0];
+      const first = Date.parse(chartPoints[0][0]), last = Date.parse(chartPoints[chartPoints.length - 1][0]);
+      const timestamp = value => typeof value === "number" ? value : Date.parse(value);
+      const startValue = timestamp(zoom.startValue), endValue = timestamp(zoom.endValue);
+      const start = Number.isFinite(startValue) ? startValue : first + (last - first) * zoom.start / 100;
+      const end = Number.isFinite(endValue) ? endValue : first + (last - first) * zoom.end / 100;
+      const visible = chartPoints.filter(point => Date.parse(point[0]) >= start && Date.parse(point[0]) <= end);
+      chart.setOption({ yAxis: axisBounds(visible) });
+    }
+    chart.on("datazoom", rescaleVisible);
 
     function activeRows() {
       const rows = largeMoneyData.series.filter(row => Number.isFinite(row[activeMetric]));
@@ -150,6 +173,7 @@ const script = `
       const rows = activeRows();
       const dateField = activeMetric === "northMoney" ? "northDate" : activeMetric === "holderNetShares" ? "holderDate" : "blockDate";
       const points = rows.map(row => [row[dateField] || row.date, row[activeMetric]]);
+      chartPoints = points;
       const latest = points[points.length - 1]?.[1];
       document.getElementById("largeMoneyMetricSubtitle").textContent = cfg.subtitle;
       document.getElementById("largeMoneyMetricNote").textContent = cfg.note;
@@ -157,10 +181,10 @@ const script = `
         (points[points.length - 1]?.[0] || "暂无") + "：" + fmt(latest, cfg.digits) + cfg.unit;
       chart.setOption({
         animation: false, backgroundColor: "transparent",
-        grid: { left: 72, right: 28, top: 42, bottom: 64 },
+        grid: { left: 12, right: 24, top: 42, bottom: 64, containLabel: true },
         tooltip: {
           trigger: "axis", axisPointer: { type: "cross" },
-          backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
+          confine: true, backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
           textStyle: { color: "#edf4ff" },
           formatter(params) {
             const item = params[0];
@@ -173,13 +197,14 @@ const script = `
           axisLabel: { color: "#7890aa", hideOverlap: true }, splitLine: { show: false }
         },
         yAxis: {
-          type: "value", scale: true,
-          axisLabel: { color: "#7890aa", formatter: "{value}" + cfg.unit },
+          type: "value", scale: true, ...axisBounds(points), name: cfg.unit,
+          nameTextStyle: { color: "#7890aa", align: "left" },
+          axisLabel: { color: "#7890aa", formatter: value => Math.abs(value) >= 10000 ? fmt(value / 10000, 1) + "万" : fmt(value, Math.abs(value) < 1 && value !== 0 ? 2 : 0) },
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [
           { type: "inside", filterMode: "none", start: 0, end: 100 },
-          { type: "slider", bottom: 12, height: 22, start: 0, end: 100,
+          { type: "slider", filterMode: "none", bottom: 12, height: 22, start: 0, end: 100,
             borderColor: "#263b58", backgroundColor: "#0d1929",
             fillerColor: "rgba(54,194,255,.17)", handleStyle: { color: "#36c2ff" },
             textStyle: { color: "#8fa5bf" } }

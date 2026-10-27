@@ -10,7 +10,7 @@
 - 估值事件 List：按年份和季度切换查看典型估值事件
 - 情绪-散户模块：两市成交额与换手率回溯至2006年，融资指标至2010年业务启动，非ST涨停数量至2020年；提供3/5/10/20年及全部范围
 - 散户情绪事件 List：按年份和季度切换查看开户、基金、融资监管与极端情绪事件
-- 情绪-大资金模块：大宗交易、机构席位大宗净买入、产业资本增减持、北向资金历史口径
+- 情绪-大资金模块：沪深A股大宗交易、机构席位大宗净买入、产业资本增减持、北向资金历史口径
 - 情绪-官方模块：IPO融资、产业资本净减持、印花税率、政策利率、社融/M2与政策事件
 - 国家队持仓：直接A股与ETF已披露金额、报告期走势、账户构成、逐条持仓来源；下方保留9只ETF每日净申购和长期底层股票暴露作为辅助观察，已移除聚类散点图及配套明细
 
@@ -51,6 +51,9 @@ http://127.0.0.1:9876
 - `outputs/retail-history-audit.md`：散户情绪20年回溯的覆盖范围、汇总核对及数据限制
 - `work/fetch_large_money_sentiment_data.py`：大资金连续数据更新脚本
 - `work/add_large_money_sentiment_module.js`：大资金模块注入脚本
+- `outputs/block-trade-audit.md`：大宗交易异常尖峰原因、数据核查及修复口径
+- `outputs/block-trade-audit.json`：大宗交易证券范围、逐周汇总及校验结果
+- `work/block_trade_adjustments.json`：有独立来源依据的逐笔数据修正
 - `work/fetch_official_sentiment_data.py`：官方情绪连续数据更新脚本
 - `work/add_official_sentiment_module.js`：官方情绪模块注入脚本
 - `work/fetch_national_team_etf_data.py`：国家队 ETF 底层暴露数据更新脚本
@@ -93,6 +96,18 @@ node work/build_market_dashboard.js --skip-refresh
 ```
 
 已结束年份和月份的原始响应缓存在 `.tools/retail-history/`，支持断点重跑；当前年市场及融资数据、当前月涨停数据每次重新拉取。重新核查历史修订时可清除相应缓存后重跑。换电脑时使用已提交的 `retail_sentiment_data.json` 即可构建，不必先重新下载全部数据。
+
+大宗交易和机构大宗净买入从2018年开始，统一仅统计沪深A股，包含后来退市的股票，排除债券、基金、B股和北交所。Tushare股票成交金额为万元，除以10,000换成亿元；逐笔核对成交价与成交量，按实际交易周汇总。机构净买入为“机构专用”买入额减卖出额，双方均为机构的交易净额为零。图表保留真实大额交易，纵轴随可见时间区间调整。2026-10-27已修复旧版混入债券及单位不一致导致的异常尖峰，详见[核查记录](outputs/block-trade-audit.md)。
+
+仅重算大宗交易两项指标（截止日须与已有 `large_money_sentiment_data.json` 的 `meta.end` 相同）：
+
+```bash
+MARKET_END_DATE=20261023 python3 work/fetch_large_money_sentiment_data.py --blocks-only
+python3 -m unittest discover -s work -p 'test_*.py'
+node work/build_market_dashboard.js --skip-refresh
+```
+
+去掉 `--blocks-only` 可刷新整个大资金模块。历史月份响应缓存在不入库的 `.tools/large-money-blocks/`，查询截止日所在月份每次重新获取；重新核查历史修订时移走对应缓存再运行。未核实的A股身份或价量金额差异会阻止替换正式数据。换电脑使用已提交的JSON可直接构建页面。
 
 国家队直接持仓主图覆盖2015-06-30至2026-06-30的45个季度，每期均有直接A股金额；ETF有22个中报/年报金额点。报告期选择、金额卡片、覆盖表和明细使用同一份合并数据。默认概览为双方都有可识别金额的2025年底：直接A股41,580.57亿元、14只ETF样本可识别持仓14,749.06亿元。ETF季报及2026年中报缺少具名持有人表，ETF及两类资产合计保留空值，不沿用上期份额。金额变化包含价格和披露覆盖变化，不能作为净买卖额。点击数据点或切换报告期可查看对应明细；曲线可单独勾选、拖动时间范围，纵轴按可见区间及曲线调整。
 

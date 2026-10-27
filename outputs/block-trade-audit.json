@@ -1,0 +1,2942 @@
+{
+  "sourceRows": 500885,
+  "includedRows": 247467,
+  "excludedNonShSzAShareRows": 253418,
+  "excludedCodePrefixes": {
+    "010.SH": 7,
+    "019.SH": 273,
+    "020.SH": 203,
+    "101.SZ": 173,
+    "102.SZ": 136,
+    "104.SZ": 41,
+    "105.SZ": 114,
+    "106.SZ": 52,
+    "107.SZ": 21,
+    "108.SZ": 4,
+    "109.SZ": 30,
+    "110.SH": 1153,
+    "111.SZ": 2308,
+    "112.SZ": 67539,
+    "113.SH": 1853,
+    "114.SZ": 37643,
+    "115.SZ": 1811,
+    "116.SZ": 1727,
+    "117.SZ": 4324,
+    "118.SH": 6,
+    "118.SZ": 24164,
+    "119.SZ": 1273,
+    "120.SH": 7,
+    "120.SZ": 60,
+    "121.SZ": 187,
+    "122.SH": 769,
+    "123.SZ": 6384,
+    "124.SH": 252,
+    "127.SH": 304,
+    "127.SZ": 5581,
+    "128.SZ": 4714,
+    "130.SH": 3,
+    "132.SH": 115,
+    "133.SZ": 4157,
+    "135.SZ": 30,
+    "136.SH": 1342,
+    "136.SZ": 3768,
+    "137.SZ": 5369,
+    "138.SZ": 6607,
+    "139.SZ": 5791,
+    "140.SH": 5,
+    "143.SH": 491,
+    "147.SH": 1,
+    "149.SZ": 46179,
+    "150.SZ": 9,
+    "152.SH": 107,
+    "155.SH": 474,
+    "157.SH": 3,
+    "158.SZ": 18,
+    "159.SZ": 2214,
+    "160.SZ": 20,
+    "161.SZ": 12,
+    "162.SZ": 21,
+    "163.SH": 332,
+    "163.SZ": 5,
+    "164.SZ": 6,
+    "166.SZ": 11,
+    "168.SZ": 5,
+    "169.SZ": 1,
+    "175.SH": 84,
+    "180.SZ": 1590,
+    "184.SZ": 90,
+    "188.SH": 77,
+    "190.SZ": 14,
+    "191.SZ": 17,
+    "192.SZ": 4,
+    "198.SZ": 7,
+    "200.SZ": 301,
+    "201.SZ": 1,
+    "430.BJ": 32,
+    "501.SH": 45,
+    "506.SH": 28,
+    "508.SH": 2604,
+    "510.SH": 792,
+    "511.SH": 291,
+    "512.SH": 1485,
+    "513.SH": 553,
+    "515.SH": 411,
+    "516.SH": 60,
+    "517.SH": 23,
+    "518.SH": 51,
+    "520.SH": 17,
+    "530.SH": 4,
+    "551.SH": 52,
+    "560.SH": 33,
+    "561.SH": 49,
+    "562.SH": 42,
+    "563.SH": 104,
+    "588.SH": 387,
+    "589.SH": 30,
+    "831.BJ": 14,
+    "832.BJ": 7,
+    "833.BJ": 66,
+    "838.BJ": 11,
+    "872.BJ": 19,
+    "900.SH": 92,
+    "920.BJ": 3722
+  },
+  "largestExcludedRows": [
+    {
+      "ts_code": "114512.SZ",
+      "trade_date": "20200930",
+      "price": 101.09,
+      "vol": 10000000.0,
+      "amount": 1010900000.0,
+      "buyer": "中信证券股份有限公司北京总部证券营业部",
+      "seller": "中信证券股份有限公司北京总部证券营业部"
+    },
+    {
+      "ts_code": "114512.SZ",
+      "trade_date": "20200917",
+      "price": 100.93,
+      "vol": 10000000.0,
+      "amount": 1009300000.0,
+      "buyer": "中信证券股份有限公司北京总部证券营业部",
+      "seller": "中信证券股份有限公司北京总部证券营业部"
+    },
+    {
+      "ts_code": "149035.SZ",
+      "trade_date": "20201012",
+      "price": 100.0,
+      "vol": 8300000.0,
+      "amount": 830000000.0,
+      "buyer": "国泰君安证券股份有限公司上海江苏路证券营业部",
+      "seller": "机构专用"
+    },
+    {
+      "ts_code": "119458.SZ",
+      "trade_date": "20201022",
+      "price": 107.86,
+      "vol": 6500000.0,
+      "amount": 701090000.0,
+      "buyer": "机构专用",
+      "seller": "机构专用"
+    },
+    {
+      "ts_code": "114784.SZ",
+      "trade_date": "20201009",
+      "price": 101.66,
+      "vol": 6000000.0,
+      "amount": 609960000.0,
+      "buyer": "民生证券股份有限公司北京北蜂窝路证券营业部",
+      "seller": "机构专用"
+    },
+    {
+      "ts_code": "114512.SZ",
+      "trade_date": "20200917",
+      "price": 100.93,
+      "vol": 5500000.0,
+      "amount": 555115000.0,
+      "buyer": "机构专用",
+      "seller": "机构专用"
+    },
+    {
+      "ts_code": "114613.SZ",
+      "trade_date": "20200922",
+      "price": 105.9,
+      "vol": 5217000.0,
+      "amount": 552480300.0,
+      "buyer": "中信建投证券股份有限公司郑州经三北路证券营业部",
+      "seller": "中原证券股份有限公司郑州分公司"
+    },
+    {
+      "ts_code": "117163.SZ",
+      "trade_date": "20200916",
+      "price": 129.75,
+      "vol": 4000000.0,
+      "amount": 519000000.0,
+      "buyer": "机构专用",
+      "seller": "机构专用"
+    },
+    {
+      "ts_code": "114769.SZ",
+      "trade_date": "20201009",
+      "price": 102.01,
+      "vol": 4700000.0,
+      "amount": 479447000.0,
+      "buyer": "民生证券股份有限公司北京北蜂窝路证券营业部",
+      "seller": "机构专用"
+    },
+    {
+      "ts_code": "119430.SZ",
+      "trade_date": "20201012",
+      "price": 106.52,
+      "vol": 4200000.0,
+      "amount": 447384000.0,
+      "buyer": "机构专用",
+      "seller": "机构专用"
+    }
+  ],
+  "validationErrors": [],
+  "checkedAt": "2026-10-27",
+  "requestedEnd": "20261023",
+  "scope": "Shanghai/Shenzhen A shares, including formerly listed stocks; excludes bonds, funds, B shares and Beijing",
+  "amountUnit": "亿元",
+  "conversion": "amount (万元) / 10000; checked against price * vol (万股)",
+  "stockMasterCount": 5560,
+  "adjustments": [
+    {
+      "original": {
+        "ts_code": "300825.SZ",
+        "trade_date": "20241203",
+        "price": 10.17,
+        "vol": 21.25,
+        "amount": 219.11,
+        "buyer": "国信证券股份有限公司北京分公司",
+        "seller": "国信证券股份有限公司北京分公司"
+      },
+      "replacement": {
+        "vol": 21.55
+      },
+      "checkedAt": "2026-10-27",
+      "reason": "Tushare volume differs from the matching Eastmoney record; retain the independently matching reported amount and price.",
+      "source": "https://data.eastmoney.com/dzjy/detail/300825.html",
+      "sourceReport": "RPT_DATA_BLOCKTRADE",
+      "sourceFilter": "(TRADE_DATE>='2024-12-03')(TRADE_DATE<='2024-12-03')(SECURITY_CODE=\"300825\")",
+      "sourceSnapshot": {
+        "TRADE_DATE": "2024-12-03 00:00:00",
+        "SECUCODE": "300825.SZ",
+        "SECURITY_NAME_ABBR": "阿尔特",
+        "DEAL_PRICE": 10.17,
+        "DEAL_VOLUME": 215500,
+        "DEAL_AMT": 2191100,
+        "BUYER_NAME": "国信证券股份有限公司北京分公司",
+        "SELLER_NAME": "国信证券股份有限公司北京分公司"
+      }
+    }
+  ],
+  "weeks": [
+    {
+      "week": "2018-W01",
+      "date": "20180105",
+      "amountYi": 54.12,
+      "institutionNetYi": 2.67
+    },
+    {
+      "week": "2018-W02",
+      "date": "20180112",
+      "amountYi": 112.32,
+      "institutionNetYi": -1.53
+    },
+    {
+      "week": "2018-W03",
+      "date": "20180119",
+      "amountYi": 151.63,
+      "institutionNetYi": -4.95
+    },
+    {
+      "week": "2018-W04",
+      "date": "20180126",
+      "amountYi": 144.73,
+      "institutionNetYi": -4.85
+    },
+    {
+      "week": "2018-W05",
+      "date": "20180202",
+      "amountYi": 107.33,
+      "institutionNetYi": 17.06
+    },
+    {
+      "week": "2018-W06",
+      "date": "20180209",
+      "amountYi": 115.93,
+      "institutionNetYi": 0.14
+    },
+    {
+      "week": "2018-W07",
+      "date": "20180214",
+      "amountYi": 27.4,
+      "institutionNetYi": -2.96
+    },
+    {
+      "week": "2018-W08",
+      "date": "20180223",
+      "amountYi": 17.9,
+      "institutionNetYi": -3.62
+    },
+    {
+      "week": "2018-W09",
+      "date": "20180302",
+      "amountYi": 64.59,
+      "institutionNetYi": 1.72
+    },
+    {
+      "week": "2018-W10",
+      "date": "20180309",
+      "amountYi": 76.65,
+      "institutionNetYi": -13.48
+    },
+    {
+      "week": "2018-W11",
+      "date": "20180316",
+      "amountYi": 81.03,
+      "institutionNetYi": -7.19
+    },
+    {
+      "week": "2018-W12",
+      "date": "20180323",
+      "amountYi": 90.33,
+      "institutionNetYi": -2.3
+    },
+    {
+      "week": "2018-W13",
+      "date": "20180330",
+      "amountYi": 126.88,
+      "institutionNetYi": -3.61
+    },
+    {
+      "week": "2018-W14",
+      "date": "20180404",
+      "amountYi": 30.63,
+      "institutionNetYi": -6.46
+    },
+    {
+      "week": "2018-W15",
+      "date": "20180413",
+      "amountYi": 89.31,
+      "institutionNetYi": -11.79
+    },
+    {
+      "week": "2018-W16",
+      "date": "20180420",
+      "amountYi": 121.94,
+      "institutionNetYi": 25.69
+    },
+    {
+      "week": "2018-W17",
+      "date": "20180427",
+      "amountYi": 116.72,
+      "institutionNetYi": 32.86
+    },
+    {
+      "week": "2018-W18",
+      "date": "20180504",
+      "amountYi": 48.32,
+      "institutionNetYi": -12.25
+    },
+    {
+      "week": "2018-W19",
+      "date": "20180511",
+      "amountYi": 126.36,
+      "institutionNetYi": -11.77
+    },
+    {
+      "week": "2018-W20",
+      "date": "20180518",
+      "amountYi": 127.08,
+      "institutionNetYi": 8.97
+    },
+    {
+      "week": "2018-W21",
+      "date": "20180525",
+      "amountYi": 104.68,
+      "institutionNetYi": -9.59
+    },
+    {
+      "week": "2018-W22",
+      "date": "20180601",
+      "amountYi": 63.97,
+      "institutionNetYi": 0.0
+    },
+    {
+      "week": "2018-W23",
+      "date": "20180608",
+      "amountYi": 86.69,
+      "institutionNetYi": -16.41
+    },
+    {
+      "week": "2018-W24",
+      "date": "20180615",
+      "amountYi": 128.38,
+      "institutionNetYi": -31.02
+    },
+    {
+      "week": "2018-W25",
+      "date": "20180622",
+      "amountYi": 84.51,
+      "institutionNetYi": -14.63
+    },
+    {
+      "week": "2018-W26",
+      "date": "20180629",
+      "amountYi": 99.8,
+      "institutionNetYi": 3.72
+    },
+    {
+      "week": "2018-W27",
+      "date": "20180706",
+      "amountYi": 48.09,
+      "institutionNetYi": -0.6
+    },
+    {
+      "week": "2018-W28",
+      "date": "20180713",
+      "amountYi": 80.2,
+      "institutionNetYi": -11.07
+    },
+    {
+      "week": "2018-W29",
+      "date": "20180720",
+      "amountYi": 47.49,
+      "institutionNetYi": -2.69
+    },
+    {
+      "week": "2018-W30",
+      "date": "20180727",
+      "amountYi": 89.8,
+      "institutionNetYi": -14.9
+    },
+    {
+      "week": "2018-W31",
+      "date": "20180803",
+      "amountYi": 55.42,
+      "institutionNetYi": -5.94
+    },
+    {
+      "week": "2018-W32",
+      "date": "20180810",
+      "amountYi": 94.16,
+      "institutionNetYi": 48.9
+    },
+    {
+      "week": "2018-W33",
+      "date": "20180817",
+      "amountYi": 38.95,
+      "institutionNetYi": -6.21
+    },
+    {
+      "week": "2018-W34",
+      "date": "20180824",
+      "amountYi": 44.35,
+      "institutionNetYi": -0.77
+    },
+    {
+      "week": "2018-W35",
+      "date": "20180831",
+      "amountYi": 38.83,
+      "institutionNetYi": -4.23
+    },
+    {
+      "week": "2018-W36",
+      "date": "20180907",
+      "amountYi": 38.94,
+      "institutionNetYi": -2.03
+    },
+    {
+      "week": "2018-W37",
+      "date": "20180914",
+      "amountYi": 99.87,
+      "institutionNetYi": 66.72
+    },
+    {
+      "week": "2018-W38",
+      "date": "20180921",
+      "amountYi": 97.22,
+      "institutionNetYi": 3.12
+    },
+    {
+      "week": "2018-W39",
+      "date": "20180928",
+      "amountYi": 70.5,
+      "institutionNetYi": -16.81
+    },
+    {
+      "week": "2018-W41",
+      "date": "20181012",
+      "amountYi": 30.72,
+      "institutionNetYi": 0.96
+    },
+    {
+      "week": "2018-W42",
+      "date": "20181019",
+      "amountYi": 106.74,
+      "institutionNetYi": -2.4
+    },
+    {
+      "week": "2018-W43",
+      "date": "20181026",
+      "amountYi": 40.49,
+      "institutionNetYi": 1.27
+    },
+    {
+      "week": "2018-W44",
+      "date": "20181102",
+      "amountYi": 49.39,
+      "institutionNetYi": -4.99
+    },
+    {
+      "week": "2018-W45",
+      "date": "20181109",
+      "amountYi": 45.14,
+      "institutionNetYi": -1.9
+    },
+    {
+      "week": "2018-W46",
+      "date": "20181116",
+      "amountYi": 43.21,
+      "institutionNetYi": -3.35
+    },
+    {
+      "week": "2018-W47",
+      "date": "20181123",
+      "amountYi": 65.76,
+      "institutionNetYi": -4.95
+    },
+    {
+      "week": "2018-W48",
+      "date": "20181130",
+      "amountYi": 54.46,
+      "institutionNetYi": 3.47
+    },
+    {
+      "week": "2018-W49",
+      "date": "20181207",
+      "amountYi": 63.24,
+      "institutionNetYi": -1.73
+    },
+    {
+      "week": "2018-W50",
+      "date": "20181214",
+      "amountYi": 64.12,
+      "institutionNetYi": 1.61
+    },
+    {
+      "week": "2018-W51",
+      "date": "20181221",
+      "amountYi": 93.92,
+      "institutionNetYi": -2.14
+    },
+    {
+      "week": "2018-W52",
+      "date": "20181228",
+      "amountYi": 179.54,
+      "institutionNetYi": -86.03
+    },
+    {
+      "week": "2019-W01",
+      "date": "20190104",
+      "amountYi": 36.28,
+      "institutionNetYi": 14.61
+    },
+    {
+      "week": "2019-W02",
+      "date": "20190111",
+      "amountYi": 51.08,
+      "institutionNetYi": 9.37
+    },
+    {
+      "week": "2019-W03",
+      "date": "20190118",
+      "amountYi": 63.85,
+      "institutionNetYi": 2.13
+    },
+    {
+      "week": "2019-W04",
+      "date": "20190125",
+      "amountYi": 41.95,
+      "institutionNetYi": 0.93
+    },
+    {
+      "week": "2019-W05",
+      "date": "20190201",
+      "amountYi": 46.82,
+      "institutionNetYi": 4.65
+    },
+    {
+      "week": "2019-W07",
+      "date": "20190215",
+      "amountYi": 339.19,
+      "institutionNetYi": 0.55
+    },
+    {
+      "week": "2019-W08",
+      "date": "20190222",
+      "amountYi": 83.73,
+      "institutionNetYi": -2.81
+    },
+    {
+      "week": "2019-W09",
+      "date": "20190301",
+      "amountYi": 91.88,
+      "institutionNetYi": 1.77
+    },
+    {
+      "week": "2019-W10",
+      "date": "20190308",
+      "amountYi": 98.3,
+      "institutionNetYi": 28.25
+    },
+    {
+      "week": "2019-W11",
+      "date": "20190315",
+      "amountYi": 109.59,
+      "institutionNetYi": 12.53
+    },
+    {
+      "week": "2019-W12",
+      "date": "20190322",
+      "amountYi": 85.58,
+      "institutionNetYi": 7.96
+    },
+    {
+      "week": "2019-W13",
+      "date": "20190329",
+      "amountYi": 63.45,
+      "institutionNetYi": 6.68
+    },
+    {
+      "week": "2019-W14",
+      "date": "20190404",
+      "amountYi": 39.82,
+      "institutionNetYi": -2.2
+    },
+    {
+      "week": "2019-W15",
+      "date": "20190412",
+      "amountYi": 50.41,
+      "institutionNetYi": -6.02
+    },
+    {
+      "week": "2019-W16",
+      "date": "20190419",
+      "amountYi": 58.11,
+      "institutionNetYi": 2.53
+    },
+    {
+      "week": "2019-W17",
+      "date": "20190426",
+      "amountYi": 58.22,
+      "institutionNetYi": -5.95
+    },
+    {
+      "week": "2019-W18",
+      "date": "20190430",
+      "amountYi": 28.89,
+      "institutionNetYi": 5.25
+    },
+    {
+      "week": "2019-W19",
+      "date": "20190510",
+      "amountYi": 64.46,
+      "institutionNetYi": 5.74
+    },
+    {
+      "week": "2019-W20",
+      "date": "20190517",
+      "amountYi": 56.14,
+      "institutionNetYi": 7.08
+    },
+    {
+      "week": "2019-W21",
+      "date": "20190524",
+      "amountYi": 69.72,
+      "institutionNetYi": 5.64
+    },
+    {
+      "week": "2019-W22",
+      "date": "20190531",
+      "amountYi": 64.12,
+      "institutionNetYi": 4.17
+    },
+    {
+      "week": "2019-W23",
+      "date": "20190606",
+      "amountYi": 51.22,
+      "institutionNetYi": 0.56
+    },
+    {
+      "week": "2019-W24",
+      "date": "20190614",
+      "amountYi": 91.51,
+      "institutionNetYi": 2.59
+    },
+    {
+      "week": "2019-W25",
+      "date": "20190621",
+      "amountYi": 78.45,
+      "institutionNetYi": 9.08
+    },
+    {
+      "week": "2019-W26",
+      "date": "20190628",
+      "amountYi": 71.92,
+      "institutionNetYi": 6.84
+    },
+    {
+      "week": "2019-W27",
+      "date": "20190705",
+      "amountYi": 76.95,
+      "institutionNetYi": 15.47
+    },
+    {
+      "week": "2019-W28",
+      "date": "20190712",
+      "amountYi": 36.56,
+      "institutionNetYi": 0.45
+    },
+    {
+      "week": "2019-W29",
+      "date": "20190719",
+      "amountYi": 63.96,
+      "institutionNetYi": 5.76
+    },
+    {
+      "week": "2019-W30",
+      "date": "20190726",
+      "amountYi": 76.1,
+      "institutionNetYi": 5.28
+    },
+    {
+      "week": "2019-W31",
+      "date": "20190802",
+      "amountYi": 58.35,
+      "institutionNetYi": -3.76
+    },
+    {
+      "week": "2019-W32",
+      "date": "20190809",
+      "amountYi": 36.69,
+      "institutionNetYi": 0.82
+    },
+    {
+      "week": "2019-W33",
+      "date": "20190816",
+      "amountYi": 48.14,
+      "institutionNetYi": -0.19
+    },
+    {
+      "week": "2019-W34",
+      "date": "20190823",
+      "amountYi": 104.41,
+      "institutionNetYi": 4.05
+    },
+    {
+      "week": "2019-W35",
+      "date": "20190830",
+      "amountYi": 61.77,
+      "institutionNetYi": 15.35
+    },
+    {
+      "week": "2019-W36",
+      "date": "20190906",
+      "amountYi": 107.64,
+      "institutionNetYi": 28.37
+    },
+    {
+      "week": "2019-W37",
+      "date": "20190912",
+      "amountYi": 95.12,
+      "institutionNetYi": 10.8
+    },
+    {
+      "week": "2019-W38",
+      "date": "20190920",
+      "amountYi": 92.54,
+      "institutionNetYi": 23.4
+    },
+    {
+      "week": "2019-W39",
+      "date": "20190927",
+      "amountYi": 134.93,
+      "institutionNetYi": 7.72
+    },
+    {
+      "week": "2019-W40",
+      "date": "20190930",
+      "amountYi": 10.26,
+      "institutionNetYi": -1.32
+    },
+    {
+      "week": "2019-W41",
+      "date": "20191011",
+      "amountYi": 29.6,
+      "institutionNetYi": 5.89
+    },
+    {
+      "week": "2019-W42",
+      "date": "20191018",
+      "amountYi": 46.22,
+      "institutionNetYi": 7.58
+    },
+    {
+      "week": "2019-W43",
+      "date": "20191025",
+      "amountYi": 77.37,
+      "institutionNetYi": 2.0
+    },
+    {
+      "week": "2019-W44",
+      "date": "20191101",
+      "amountYi": 56.12,
+      "institutionNetYi": 4.62
+    },
+    {
+      "week": "2019-W45",
+      "date": "20191108",
+      "amountYi": 105.18,
+      "institutionNetYi": 7.66
+    },
+    {
+      "week": "2019-W46",
+      "date": "20191115",
+      "amountYi": 75.12,
+      "institutionNetYi": 13.03
+    },
+    {
+      "week": "2019-W47",
+      "date": "20191122",
+      "amountYi": 96.25,
+      "institutionNetYi": 10.73
+    },
+    {
+      "week": "2019-W48",
+      "date": "20191129",
+      "amountYi": 82.11,
+      "institutionNetYi": 9.89
+    },
+    {
+      "week": "2019-W49",
+      "date": "20191206",
+      "amountYi": 68.79,
+      "institutionNetYi": 11.14
+    },
+    {
+      "week": "2019-W50",
+      "date": "20191213",
+      "amountYi": 141.81,
+      "institutionNetYi": 4.46
+    },
+    {
+      "week": "2019-W51",
+      "date": "20191220",
+      "amountYi": 149.54,
+      "institutionNetYi": 26.37
+    },
+    {
+      "week": "2019-W52",
+      "date": "20191227",
+      "amountYi": 187.79,
+      "institutionNetYi": 12.64
+    },
+    {
+      "week": "2020-W01",
+      "date": "20200103",
+      "amountYi": 92.34,
+      "institutionNetYi": 12.08
+    },
+    {
+      "week": "2020-W02",
+      "date": "20200110",
+      "amountYi": 89.97,
+      "institutionNetYi": 13.96
+    },
+    {
+      "week": "2020-W03",
+      "date": "20200117",
+      "amountYi": 119.96,
+      "institutionNetYi": 34.96
+    },
+    {
+      "week": "2020-W04",
+      "date": "20200123",
+      "amountYi": 71.6,
+      "institutionNetYi": 27.72
+    },
+    {
+      "week": "2020-W06",
+      "date": "20200207",
+      "amountYi": 65.86,
+      "institutionNetYi": 17.23
+    },
+    {
+      "week": "2020-W07",
+      "date": "20200214",
+      "amountYi": 105.12,
+      "institutionNetYi": 35.33
+    },
+    {
+      "week": "2020-W08",
+      "date": "20200221",
+      "amountYi": 82.78,
+      "institutionNetYi": 21.53
+    },
+    {
+      "week": "2020-W09",
+      "date": "20200228",
+      "amountYi": 102.03,
+      "institutionNetYi": 26.17
+    },
+    {
+      "week": "2020-W10",
+      "date": "20200306",
+      "amountYi": 109.15,
+      "institutionNetYi": 19.6
+    },
+    {
+      "week": "2020-W11",
+      "date": "20200313",
+      "amountYi": 117.84,
+      "institutionNetYi": 29.1
+    },
+    {
+      "week": "2020-W12",
+      "date": "20200320",
+      "amountYi": 92.26,
+      "institutionNetYi": 9.31
+    },
+    {
+      "week": "2020-W13",
+      "date": "20200327",
+      "amountYi": 87.32,
+      "institutionNetYi": 8.21
+    },
+    {
+      "week": "2020-W14",
+      "date": "20200403",
+      "amountYi": 114.84,
+      "institutionNetYi": -6.0
+    },
+    {
+      "week": "2020-W15",
+      "date": "20200410",
+      "amountYi": 37.02,
+      "institutionNetYi": 3.56
+    },
+    {
+      "week": "2020-W16",
+      "date": "20200417",
+      "amountYi": 48.82,
+      "institutionNetYi": 0.72
+    },
+    {
+      "week": "2020-W17",
+      "date": "20200424",
+      "amountYi": 36.39,
+      "institutionNetYi": 1.08
+    },
+    {
+      "week": "2020-W18",
+      "date": "20200430",
+      "amountYi": 56.12,
+      "institutionNetYi": 2.54
+    },
+    {
+      "week": "2020-W19",
+      "date": "20200508",
+      "amountYi": 106.33,
+      "institutionNetYi": 40.58
+    },
+    {
+      "week": "2020-W20",
+      "date": "20200515",
+      "amountYi": 158.66,
+      "institutionNetYi": 52.46
+    },
+    {
+      "week": "2020-W21",
+      "date": "20200522",
+      "amountYi": 98.03,
+      "institutionNetYi": 25.05
+    },
+    {
+      "week": "2020-W22",
+      "date": "20200529",
+      "amountYi": 104.17,
+      "institutionNetYi": 26.23
+    },
+    {
+      "week": "2020-W23",
+      "date": "20200605",
+      "amountYi": 113.38,
+      "institutionNetYi": 34.42
+    },
+    {
+      "week": "2020-W24",
+      "date": "20200612",
+      "amountYi": 110.43,
+      "institutionNetYi": 28.56
+    },
+    {
+      "week": "2020-W25",
+      "date": "20200619",
+      "amountYi": 220.88,
+      "institutionNetYi": 10.48
+    },
+    {
+      "week": "2020-W26",
+      "date": "20200624",
+      "amountYi": 118.92,
+      "institutionNetYi": 43.38
+    },
+    {
+      "week": "2020-W27",
+      "date": "20200703",
+      "amountYi": 165.8,
+      "institutionNetYi": 36.79
+    },
+    {
+      "week": "2020-W28",
+      "date": "20200710",
+      "amountYi": 188.98,
+      "institutionNetYi": 25.15
+    },
+    {
+      "week": "2020-W29",
+      "date": "20200717",
+      "amountYi": 173.04,
+      "institutionNetYi": 35.8
+    },
+    {
+      "week": "2020-W30",
+      "date": "20200724",
+      "amountYi": 271.5,
+      "institutionNetYi": 57.4
+    },
+    {
+      "week": "2020-W31",
+      "date": "20200731",
+      "amountYi": 177.6,
+      "institutionNetYi": 16.12
+    },
+    {
+      "week": "2020-W32",
+      "date": "20200807",
+      "amountYi": 114.78,
+      "institutionNetYi": -11.99
+    },
+    {
+      "week": "2020-W33",
+      "date": "20200814",
+      "amountYi": 77.97,
+      "institutionNetYi": 6.74
+    },
+    {
+      "week": "2020-W34",
+      "date": "20200821",
+      "amountYi": 119.18,
+      "institutionNetYi": 21.7
+    },
+    {
+      "week": "2020-W35",
+      "date": "20200828",
+      "amountYi": 113.5,
+      "institutionNetYi": 25.81
+    },
+    {
+      "week": "2020-W36",
+      "date": "20200904",
+      "amountYi": 227.63,
+      "institutionNetYi": 69.81
+    },
+    {
+      "week": "2020-W37",
+      "date": "20200911",
+      "amountYi": 165.85,
+      "institutionNetYi": 23.62
+    },
+    {
+      "week": "2020-W38",
+      "date": "20200918",
+      "amountYi": 186.37,
+      "institutionNetYi": -6.01
+    },
+    {
+      "week": "2020-W39",
+      "date": "20200925",
+      "amountYi": 217.2,
+      "institutionNetYi": 33.58
+    },
+    {
+      "week": "2020-W40",
+      "date": "20200930",
+      "amountYi": 77.75,
+      "institutionNetYi": 5.87
+    },
+    {
+      "week": "2020-W41",
+      "date": "20201009",
+      "amountYi": 12.18,
+      "institutionNetYi": 1.41
+    },
+    {
+      "week": "2020-W42",
+      "date": "20201016",
+      "amountYi": 119.96,
+      "institutionNetYi": 24.54
+    },
+    {
+      "week": "2020-W43",
+      "date": "20201023",
+      "amountYi": 86.88,
+      "institutionNetYi": 12.94
+    },
+    {
+      "week": "2020-W44",
+      "date": "20201030",
+      "amountYi": 165.4,
+      "institutionNetYi": 16.47
+    },
+    {
+      "week": "2020-W45",
+      "date": "20201106",
+      "amountYi": 249.94,
+      "institutionNetYi": 55.49
+    },
+    {
+      "week": "2020-W46",
+      "date": "20201113",
+      "amountYi": 175.27,
+      "institutionNetYi": 33.22
+    },
+    {
+      "week": "2020-W47",
+      "date": "20201120",
+      "amountYi": 243.71,
+      "institutionNetYi": 91.61
+    },
+    {
+      "week": "2020-W48",
+      "date": "20201127",
+      "amountYi": 125.71,
+      "institutionNetYi": -10.21
+    },
+    {
+      "week": "2020-W49",
+      "date": "20201204",
+      "amountYi": 186.29,
+      "institutionNetYi": -8.01
+    },
+    {
+      "week": "2020-W50",
+      "date": "20201211",
+      "amountYi": 243.91,
+      "institutionNetYi": 42.11
+    },
+    {
+      "week": "2020-W51",
+      "date": "20201218",
+      "amountYi": 287.27,
+      "institutionNetYi": 64.81
+    },
+    {
+      "week": "2020-W52",
+      "date": "20201225",
+      "amountYi": 191.42,
+      "institutionNetYi": 42.25
+    },
+    {
+      "week": "2020-W53",
+      "date": "20201231",
+      "amountYi": 214.36,
+      "institutionNetYi": 39.44
+    },
+    {
+      "week": "2021-W01",
+      "date": "20210108",
+      "amountYi": 156.51,
+      "institutionNetYi": 11.48
+    },
+    {
+      "week": "2021-W02",
+      "date": "20210115",
+      "amountYi": 169.9,
+      "institutionNetYi": -0.0
+    },
+    {
+      "week": "2021-W03",
+      "date": "20210122",
+      "amountYi": 146.05,
+      "institutionNetYi": 28.57
+    },
+    {
+      "week": "2021-W04",
+      "date": "20210129",
+      "amountYi": 148.31,
+      "institutionNetYi": 38.71
+    },
+    {
+      "week": "2021-W05",
+      "date": "20210205",
+      "amountYi": 282.8,
+      "institutionNetYi": 55.79
+    },
+    {
+      "week": "2021-W06",
+      "date": "20210210",
+      "amountYi": 95.17,
+      "institutionNetYi": 2.79
+    },
+    {
+      "week": "2021-W07",
+      "date": "20210219",
+      "amountYi": 72.1,
+      "institutionNetYi": 37.48
+    },
+    {
+      "week": "2021-W08",
+      "date": "20210226",
+      "amountYi": 150.31,
+      "institutionNetYi": 7.72
+    },
+    {
+      "week": "2021-W09",
+      "date": "20210305",
+      "amountYi": 186.73,
+      "institutionNetYi": 45.6
+    },
+    {
+      "week": "2021-W10",
+      "date": "20210312",
+      "amountYi": 143.68,
+      "institutionNetYi": 19.04
+    },
+    {
+      "week": "2021-W11",
+      "date": "20210319",
+      "amountYi": 111.26,
+      "institutionNetYi": 12.46
+    },
+    {
+      "week": "2021-W12",
+      "date": "20210326",
+      "amountYi": 142.91,
+      "institutionNetYi": 43.05
+    },
+    {
+      "week": "2021-W13",
+      "date": "20210402",
+      "amountYi": 88.67,
+      "institutionNetYi": -5.22
+    },
+    {
+      "week": "2021-W14",
+      "date": "20210409",
+      "amountYi": 68.34,
+      "institutionNetYi": 0.36
+    },
+    {
+      "week": "2021-W15",
+      "date": "20210416",
+      "amountYi": 107.72,
+      "institutionNetYi": 3.85
+    },
+    {
+      "week": "2021-W16",
+      "date": "20210423",
+      "amountYi": 113.63,
+      "institutionNetYi": 11.88
+    },
+    {
+      "week": "2021-W17",
+      "date": "20210430",
+      "amountYi": 182.21,
+      "institutionNetYi": -53.52
+    },
+    {
+      "week": "2021-W18",
+      "date": "20210507",
+      "amountYi": 32.84,
+      "institutionNetYi": -2.97
+    },
+    {
+      "week": "2021-W19",
+      "date": "20210514",
+      "amountYi": 121.32,
+      "institutionNetYi": 13.04
+    },
+    {
+      "week": "2021-W20",
+      "date": "20210521",
+      "amountYi": 156.1,
+      "institutionNetYi": 28.13
+    },
+    {
+      "week": "2021-W21",
+      "date": "20210528",
+      "amountYi": 179.81,
+      "institutionNetYi": 17.86
+    },
+    {
+      "week": "2021-W22",
+      "date": "20210604",
+      "amountYi": 131.15,
+      "institutionNetYi": 18.56
+    },
+    {
+      "week": "2021-W23",
+      "date": "20210611",
+      "amountYi": 188.39,
+      "institutionNetYi": -35.98
+    },
+    {
+      "week": "2021-W24",
+      "date": "20210618",
+      "amountYi": 82.56,
+      "institutionNetYi": 5.23
+    },
+    {
+      "week": "2021-W25",
+      "date": "20210625",
+      "amountYi": 132.6,
+      "institutionNetYi": 18.76
+    },
+    {
+      "week": "2021-W26",
+      "date": "20210702",
+      "amountYi": 142.76,
+      "institutionNetYi": 24.46
+    },
+    {
+      "week": "2021-W27",
+      "date": "20210709",
+      "amountYi": 133.17,
+      "institutionNetYi": 23.75
+    },
+    {
+      "week": "2021-W28",
+      "date": "20210716",
+      "amountYi": 157.3,
+      "institutionNetYi": 16.98
+    },
+    {
+      "week": "2021-W29",
+      "date": "20210723",
+      "amountYi": 155.87,
+      "institutionNetYi": 6.58
+    },
+    {
+      "week": "2021-W30",
+      "date": "20210730",
+      "amountYi": 168.11,
+      "institutionNetYi": 14.37
+    },
+    {
+      "week": "2021-W31",
+      "date": "20210806",
+      "amountYi": 129.74,
+      "institutionNetYi": 9.5
+    },
+    {
+      "week": "2021-W32",
+      "date": "20210813",
+      "amountYi": 155.24,
+      "institutionNetYi": 17.53
+    },
+    {
+      "week": "2021-W33",
+      "date": "20210820",
+      "amountYi": 140.28,
+      "institutionNetYi": 8.76
+    },
+    {
+      "week": "2021-W34",
+      "date": "20210827",
+      "amountYi": 179.29,
+      "institutionNetYi": -9.19
+    },
+    {
+      "week": "2021-W35",
+      "date": "20210903",
+      "amountYi": 220.33,
+      "institutionNetYi": -31.35
+    },
+    {
+      "week": "2021-W36",
+      "date": "20210910",
+      "amountYi": 208.46,
+      "institutionNetYi": 36.6
+    },
+    {
+      "week": "2021-W37",
+      "date": "20210917",
+      "amountYi": 187.97,
+      "institutionNetYi": 5.77
+    },
+    {
+      "week": "2021-W38",
+      "date": "20210924",
+      "amountYi": 125.49,
+      "institutionNetYi": 9.17
+    },
+    {
+      "week": "2021-W39",
+      "date": "20210930",
+      "amountYi": 111.39,
+      "institutionNetYi": 2.11
+    },
+    {
+      "week": "2021-W40",
+      "date": "20211008",
+      "amountYi": 12.22,
+      "institutionNetYi": -1.33
+    },
+    {
+      "week": "2021-W41",
+      "date": "20211015",
+      "amountYi": 99.99,
+      "institutionNetYi": -13.51
+    },
+    {
+      "week": "2021-W42",
+      "date": "20211022",
+      "amountYi": 125.83,
+      "institutionNetYi": 7.34
+    },
+    {
+      "week": "2021-W43",
+      "date": "20211029",
+      "amountYi": 157.78,
+      "institutionNetYi": 1.58
+    },
+    {
+      "week": "2021-W44",
+      "date": "20211105",
+      "amountYi": 208.07,
+      "institutionNetYi": 45.53
+    },
+    {
+      "week": "2021-W45",
+      "date": "20211112",
+      "amountYi": 212.51,
+      "institutionNetYi": 22.81
+    },
+    {
+      "week": "2021-W46",
+      "date": "20211119",
+      "amountYi": 205.32,
+      "institutionNetYi": 11.82
+    },
+    {
+      "week": "2021-W47",
+      "date": "20211126",
+      "amountYi": 222.8,
+      "institutionNetYi": 29.35
+    },
+    {
+      "week": "2021-W48",
+      "date": "20211203",
+      "amountYi": 183.85,
+      "institutionNetYi": 26.39
+    },
+    {
+      "week": "2021-W49",
+      "date": "20211210",
+      "amountYi": 192.92,
+      "institutionNetYi": 3.11
+    },
+    {
+      "week": "2021-W50",
+      "date": "20211217",
+      "amountYi": 257.18,
+      "institutionNetYi": 14.99
+    },
+    {
+      "week": "2021-W51",
+      "date": "20211224",
+      "amountYi": 292.67,
+      "institutionNetYi": 50.67
+    },
+    {
+      "week": "2021-W52",
+      "date": "20211231",
+      "amountYi": 251.19,
+      "institutionNetYi": 12.92
+    },
+    {
+      "week": "2022-W01",
+      "date": "20220107",
+      "amountYi": 88.07,
+      "institutionNetYi": 4.03
+    },
+    {
+      "week": "2022-W02",
+      "date": "20220114",
+      "amountYi": 147.91,
+      "institutionNetYi": 11.95
+    },
+    {
+      "week": "2022-W03",
+      "date": "20220121",
+      "amountYi": 135.74,
+      "institutionNetYi": 17.61
+    },
+    {
+      "week": "2022-W04",
+      "date": "20220128",
+      "amountYi": 107.95,
+      "institutionNetYi": 5.17
+    },
+    {
+      "week": "2022-W06",
+      "date": "20220211",
+      "amountYi": 94.33,
+      "institutionNetYi": 13.23
+    },
+    {
+      "week": "2022-W07",
+      "date": "20220218",
+      "amountYi": 92.41,
+      "institutionNetYi": 11.1
+    },
+    {
+      "week": "2022-W08",
+      "date": "20220225",
+      "amountYi": 121.1,
+      "institutionNetYi": 24.29
+    },
+    {
+      "week": "2022-W09",
+      "date": "20220304",
+      "amountYi": 112.31,
+      "institutionNetYi": 10.17
+    },
+    {
+      "week": "2022-W10",
+      "date": "20220311",
+      "amountYi": 137.11,
+      "institutionNetYi": 12.08
+    },
+    {
+      "week": "2022-W11",
+      "date": "20220318",
+      "amountYi": 128.86,
+      "institutionNetYi": 19.45
+    },
+    {
+      "week": "2022-W12",
+      "date": "20220325",
+      "amountYi": 110.27,
+      "institutionNetYi": 29.65
+    },
+    {
+      "week": "2022-W13",
+      "date": "20220401",
+      "amountYi": 115.57,
+      "institutionNetYi": 16.63
+    },
+    {
+      "week": "2022-W14",
+      "date": "20220408",
+      "amountYi": 44.28,
+      "institutionNetYi": 0.18
+    },
+    {
+      "week": "2022-W15",
+      "date": "20220415",
+      "amountYi": 86.03,
+      "institutionNetYi": 9.33
+    },
+    {
+      "week": "2022-W16",
+      "date": "20220422",
+      "amountYi": 76.0,
+      "institutionNetYi": 6.43
+    },
+    {
+      "week": "2022-W17",
+      "date": "20220429",
+      "amountYi": 67.18,
+      "institutionNetYi": 2.93
+    },
+    {
+      "week": "2022-W18",
+      "date": "20220506",
+      "amountYi": 32.85,
+      "institutionNetYi": 0.07
+    },
+    {
+      "week": "2022-W19",
+      "date": "20220513",
+      "amountYi": 147.9,
+      "institutionNetYi": -3.05
+    },
+    {
+      "week": "2022-W20",
+      "date": "20220520",
+      "amountYi": 133.03,
+      "institutionNetYi": 27.16
+    },
+    {
+      "week": "2022-W21",
+      "date": "20220527",
+      "amountYi": 115.05,
+      "institutionNetYi": 8.23
+    },
+    {
+      "week": "2022-W22",
+      "date": "20220602",
+      "amountYi": 74.24,
+      "institutionNetYi": 2.05
+    },
+    {
+      "week": "2022-W23",
+      "date": "20220610",
+      "amountYi": 138.88,
+      "institutionNetYi": 11.13
+    },
+    {
+      "week": "2022-W24",
+      "date": "20220617",
+      "amountYi": 149.51,
+      "institutionNetYi": 21.2
+    },
+    {
+      "week": "2022-W25",
+      "date": "20220624",
+      "amountYi": 228.19,
+      "institutionNetYi": 81.44
+    },
+    {
+      "week": "2022-W26",
+      "date": "20220701",
+      "amountYi": 190.14,
+      "institutionNetYi": 43.49
+    },
+    {
+      "week": "2022-W27",
+      "date": "20220708",
+      "amountYi": 154.4,
+      "institutionNetYi": 31.84
+    },
+    {
+      "week": "2022-W28",
+      "date": "20220715",
+      "amountYi": 106.19,
+      "institutionNetYi": 24.76
+    },
+    {
+      "week": "2022-W29",
+      "date": "20220722",
+      "amountYi": 125.69,
+      "institutionNetYi": 12.74
+    },
+    {
+      "week": "2022-W30",
+      "date": "20220729",
+      "amountYi": 113.31,
+      "institutionNetYi": 6.3
+    },
+    {
+      "week": "2022-W31",
+      "date": "20220805",
+      "amountYi": 96.44,
+      "institutionNetYi": 0.28
+    },
+    {
+      "week": "2022-W32",
+      "date": "20220812",
+      "amountYi": 115.02,
+      "institutionNetYi": 5.28
+    },
+    {
+      "week": "2022-W33",
+      "date": "20220819",
+      "amountYi": 123.21,
+      "institutionNetYi": 14.24
+    },
+    {
+      "week": "2022-W34",
+      "date": "20220826",
+      "amountYi": 108.36,
+      "institutionNetYi": 15.52
+    },
+    {
+      "week": "2022-W35",
+      "date": "20220902",
+      "amountYi": 110.65,
+      "institutionNetYi": -3.42
+    },
+    {
+      "week": "2022-W36",
+      "date": "20220909",
+      "amountYi": 167.13,
+      "institutionNetYi": 57.27
+    },
+    {
+      "week": "2022-W37",
+      "date": "20220916",
+      "amountYi": 102.92,
+      "institutionNetYi": 24.27
+    },
+    {
+      "week": "2022-W38",
+      "date": "20220923",
+      "amountYi": 182.84,
+      "institutionNetYi": 2.62
+    },
+    {
+      "week": "2022-W39",
+      "date": "20220930",
+      "amountYi": 168.53,
+      "institutionNetYi": 16.62
+    },
+    {
+      "week": "2022-W41",
+      "date": "20221014",
+      "amountYi": 95.59,
+      "institutionNetYi": 17.23
+    },
+    {
+      "week": "2022-W42",
+      "date": "20221021",
+      "amountYi": 65.04,
+      "institutionNetYi": 10.75
+    },
+    {
+      "week": "2022-W43",
+      "date": "20221028",
+      "amountYi": 93.54,
+      "institutionNetYi": -1.02
+    },
+    {
+      "week": "2022-W44",
+      "date": "20221104",
+      "amountYi": 136.33,
+      "institutionNetYi": 27.4
+    },
+    {
+      "week": "2022-W45",
+      "date": "20221111",
+      "amountYi": 151.48,
+      "institutionNetYi": 19.06
+    },
+    {
+      "week": "2022-W46",
+      "date": "20221118",
+      "amountYi": 170.3,
+      "institutionNetYi": 41.07
+    },
+    {
+      "week": "2022-W47",
+      "date": "20221125",
+      "amountYi": 130.27,
+      "institutionNetYi": 21.53
+    },
+    {
+      "week": "2022-W48",
+      "date": "20221202",
+      "amountYi": 157.31,
+      "institutionNetYi": 12.5
+    },
+    {
+      "week": "2022-W49",
+      "date": "20221209",
+      "amountYi": 209.37,
+      "institutionNetYi": 23.27
+    },
+    {
+      "week": "2022-W50",
+      "date": "20221216",
+      "amountYi": 190.78,
+      "institutionNetYi": 18.53
+    },
+    {
+      "week": "2022-W51",
+      "date": "20221223",
+      "amountYi": 144.84,
+      "institutionNetYi": 21.61
+    },
+    {
+      "week": "2022-W52",
+      "date": "20221230",
+      "amountYi": 173.28,
+      "institutionNetYi": 25.57
+    },
+    {
+      "week": "2023-W01",
+      "date": "20230106",
+      "amountYi": 108.19,
+      "institutionNetYi": 8.99
+    },
+    {
+      "week": "2023-W02",
+      "date": "20230113",
+      "amountYi": 183.36,
+      "institutionNetYi": 13.83
+    },
+    {
+      "week": "2023-W03",
+      "date": "20230120",
+      "amountYi": 146.41,
+      "institutionNetYi": 18.22
+    },
+    {
+      "week": "2023-W05",
+      "date": "20230203",
+      "amountYi": 147.96,
+      "institutionNetYi": 16.78
+    },
+    {
+      "week": "2023-W06",
+      "date": "20230210",
+      "amountYi": 124.18,
+      "institutionNetYi": 31.16
+    },
+    {
+      "week": "2023-W07",
+      "date": "20230217",
+      "amountYi": 128.06,
+      "institutionNetYi": 8.93
+    },
+    {
+      "week": "2023-W08",
+      "date": "20230224",
+      "amountYi": 114.32,
+      "institutionNetYi": 10.69
+    },
+    {
+      "week": "2023-W09",
+      "date": "20230303",
+      "amountYi": 156.42,
+      "institutionNetYi": 41.68
+    },
+    {
+      "week": "2023-W10",
+      "date": "20230310",
+      "amountYi": 101.52,
+      "institutionNetYi": 23.24
+    },
+    {
+      "week": "2023-W11",
+      "date": "20230317",
+      "amountYi": 134.79,
+      "institutionNetYi": 15.42
+    },
+    {
+      "week": "2023-W12",
+      "date": "20230324",
+      "amountYi": 139.43,
+      "institutionNetYi": 2.55
+    },
+    {
+      "week": "2023-W13",
+      "date": "20230331",
+      "amountYi": 139.98,
+      "institutionNetYi": 30.12
+    },
+    {
+      "week": "2023-W14",
+      "date": "20230407",
+      "amountYi": 78.59,
+      "institutionNetYi": 14.13
+    },
+    {
+      "week": "2023-W15",
+      "date": "20230414",
+      "amountYi": 115.13,
+      "institutionNetYi": 5.92
+    },
+    {
+      "week": "2023-W16",
+      "date": "20230421",
+      "amountYi": 124.1,
+      "institutionNetYi": 6.93
+    },
+    {
+      "week": "2023-W17",
+      "date": "20230428",
+      "amountYi": 128.03,
+      "institutionNetYi": 16.75
+    },
+    {
+      "week": "2023-W18",
+      "date": "20230505",
+      "amountYi": 33.42,
+      "institutionNetYi": -1.29
+    },
+    {
+      "week": "2023-W19",
+      "date": "20230512",
+      "amountYi": 130.99,
+      "institutionNetYi": 17.69
+    },
+    {
+      "week": "2023-W20",
+      "date": "20230519",
+      "amountYi": 144.08,
+      "institutionNetYi": 32.05
+    },
+    {
+      "week": "2023-W21",
+      "date": "20230526",
+      "amountYi": 135.99,
+      "institutionNetYi": 33.15
+    },
+    {
+      "week": "2023-W22",
+      "date": "20230602",
+      "amountYi": 133.84,
+      "institutionNetYi": 25.59
+    },
+    {
+      "week": "2023-W23",
+      "date": "20230609",
+      "amountYi": 152.82,
+      "institutionNetYi": 28.38
+    },
+    {
+      "week": "2023-W24",
+      "date": "20230616",
+      "amountYi": 178.51,
+      "institutionNetYi": 10.49
+    },
+    {
+      "week": "2023-W25",
+      "date": "20230621",
+      "amountYi": 90.32,
+      "institutionNetYi": 11.9
+    },
+    {
+      "week": "2023-W26",
+      "date": "20230630",
+      "amountYi": 213.31,
+      "institutionNetYi": 19.52
+    },
+    {
+      "week": "2023-W27",
+      "date": "20230707",
+      "amountYi": 177.47,
+      "institutionNetYi": 18.61
+    },
+    {
+      "week": "2023-W28",
+      "date": "20230714",
+      "amountYi": 154.88,
+      "institutionNetYi": 15.28
+    },
+    {
+      "week": "2023-W29",
+      "date": "20230721",
+      "amountYi": 128.22,
+      "institutionNetYi": 19.65
+    },
+    {
+      "week": "2023-W30",
+      "date": "20230728",
+      "amountYi": 198.68,
+      "institutionNetYi": 35.36
+    },
+    {
+      "week": "2023-W31",
+      "date": "20230804",
+      "amountYi": 93.2,
+      "institutionNetYi": 7.75
+    },
+    {
+      "week": "2023-W32",
+      "date": "20230811",
+      "amountYi": 65.91,
+      "institutionNetYi": 7.54
+    },
+    {
+      "week": "2023-W33",
+      "date": "20230818",
+      "amountYi": 150.81,
+      "institutionNetYi": 16.89
+    },
+    {
+      "week": "2023-W34",
+      "date": "20230825",
+      "amountYi": 110.34,
+      "institutionNetYi": 0.77
+    },
+    {
+      "week": "2023-W35",
+      "date": "20230901",
+      "amountYi": 129.55,
+      "institutionNetYi": 12.14
+    },
+    {
+      "week": "2023-W36",
+      "date": "20230908",
+      "amountYi": 81.52,
+      "institutionNetYi": 15.68
+    },
+    {
+      "week": "2023-W37",
+      "date": "20230915",
+      "amountYi": 89.05,
+      "institutionNetYi": 17.44
+    },
+    {
+      "week": "2023-W38",
+      "date": "20230922",
+      "amountYi": 87.75,
+      "institutionNetYi": -2.81
+    },
+    {
+      "week": "2023-W39",
+      "date": "20230928",
+      "amountYi": 83.37,
+      "institutionNetYi": 6.81
+    },
+    {
+      "week": "2023-W41",
+      "date": "20231013",
+      "amountYi": 70.28,
+      "institutionNetYi": 6.19
+    },
+    {
+      "week": "2023-W42",
+      "date": "20231020",
+      "amountYi": 70.86,
+      "institutionNetYi": 5.19
+    },
+    {
+      "week": "2023-W43",
+      "date": "20231027",
+      "amountYi": 91.2,
+      "institutionNetYi": 5.11
+    },
+    {
+      "week": "2023-W44",
+      "date": "20231103",
+      "amountYi": 81.17,
+      "institutionNetYi": 6.9
+    },
+    {
+      "week": "2023-W45",
+      "date": "20231110",
+      "amountYi": 99.07,
+      "institutionNetYi": 13.17
+    },
+    {
+      "week": "2023-W46",
+      "date": "20231117",
+      "amountYi": 81.46,
+      "institutionNetYi": 5.24
+    },
+    {
+      "week": "2023-W47",
+      "date": "20231124",
+      "amountYi": 81.76,
+      "institutionNetYi": -2.09
+    },
+    {
+      "week": "2023-W48",
+      "date": "20231201",
+      "amountYi": 78.05,
+      "institutionNetYi": -3.65
+    },
+    {
+      "week": "2023-W49",
+      "date": "20231208",
+      "amountYi": 87.08,
+      "institutionNetYi": 9.13
+    },
+    {
+      "week": "2023-W50",
+      "date": "20231215",
+      "amountYi": 89.98,
+      "institutionNetYi": 7.49
+    },
+    {
+      "week": "2023-W51",
+      "date": "20231222",
+      "amountYi": 134.38,
+      "institutionNetYi": 11.02
+    },
+    {
+      "week": "2023-W52",
+      "date": "20231229",
+      "amountYi": 124.29,
+      "institutionNetYi": 26.74
+    },
+    {
+      "week": "2024-W01",
+      "date": "20240105",
+      "amountYi": 75.77,
+      "institutionNetYi": 10.47
+    },
+    {
+      "week": "2024-W02",
+      "date": "20240112",
+      "amountYi": 84.58,
+      "institutionNetYi": 10.09
+    },
+    {
+      "week": "2024-W03",
+      "date": "20240119",
+      "amountYi": 80.46,
+      "institutionNetYi": 22.84
+    },
+    {
+      "week": "2024-W04",
+      "date": "20240126",
+      "amountYi": 104.7,
+      "institutionNetYi": 12.38
+    },
+    {
+      "week": "2024-W05",
+      "date": "20240202",
+      "amountYi": 60.69,
+      "institutionNetYi": 6.57
+    },
+    {
+      "week": "2024-W06",
+      "date": "20240208",
+      "amountYi": 67.36,
+      "institutionNetYi": -7.52
+    },
+    {
+      "week": "2024-W08",
+      "date": "20240223",
+      "amountYi": 98.27,
+      "institutionNetYi": 12.53
+    },
+    {
+      "week": "2024-W09",
+      "date": "20240301",
+      "amountYi": 87.61,
+      "institutionNetYi": 17.88
+    },
+    {
+      "week": "2024-W10",
+      "date": "20240308",
+      "amountYi": 95.01,
+      "institutionNetYi": 28.17
+    },
+    {
+      "week": "2024-W11",
+      "date": "20240315",
+      "amountYi": 103.72,
+      "institutionNetYi": 40.36
+    },
+    {
+      "week": "2024-W12",
+      "date": "20240322",
+      "amountYi": 63.36,
+      "institutionNetYi": 4.14
+    },
+    {
+      "week": "2024-W13",
+      "date": "20240329",
+      "amountYi": 87.76,
+      "institutionNetYi": 38.93
+    },
+    {
+      "week": "2024-W14",
+      "date": "20240403",
+      "amountYi": 63.08,
+      "institutionNetYi": 31.32
+    },
+    {
+      "week": "2024-W15",
+      "date": "20240412",
+      "amountYi": 36.06,
+      "institutionNetYi": 1.86
+    },
+    {
+      "week": "2024-W16",
+      "date": "20240419",
+      "amountYi": 72.49,
+      "institutionNetYi": 19.62
+    },
+    {
+      "week": "2024-W17",
+      "date": "20240426",
+      "amountYi": 68.51,
+      "institutionNetYi": 7.4
+    },
+    {
+      "week": "2024-W18",
+      "date": "20240430",
+      "amountYi": 30.24,
+      "institutionNetYi": 2.68
+    },
+    {
+      "week": "2024-W19",
+      "date": "20240510",
+      "amountYi": 90.92,
+      "institutionNetYi": 14.64
+    },
+    {
+      "week": "2024-W20",
+      "date": "20240517",
+      "amountYi": 53.82,
+      "institutionNetYi": 9.79
+    },
+    {
+      "week": "2024-W21",
+      "date": "20240524",
+      "amountYi": 39.8,
+      "institutionNetYi": -2.13
+    },
+    {
+      "week": "2024-W22",
+      "date": "20240531",
+      "amountYi": 46.82,
+      "institutionNetYi": 1.92
+    },
+    {
+      "week": "2024-W23",
+      "date": "20240607",
+      "amountYi": 53.02,
+      "institutionNetYi": 3.2
+    },
+    {
+      "week": "2024-W24",
+      "date": "20240614",
+      "amountYi": 38.05,
+      "institutionNetYi": 2.76
+    },
+    {
+      "week": "2024-W25",
+      "date": "20240621",
+      "amountYi": 49.2,
+      "institutionNetYi": 7.89
+    },
+    {
+      "week": "2024-W26",
+      "date": "20240628",
+      "amountYi": 69.9,
+      "institutionNetYi": -5.91
+    },
+    {
+      "week": "2024-W27",
+      "date": "20240705",
+      "amountYi": 47.46,
+      "institutionNetYi": 1.68
+    },
+    {
+      "week": "2024-W28",
+      "date": "20240712",
+      "amountYi": 34.19,
+      "institutionNetYi": 4.23
+    },
+    {
+      "week": "2024-W29",
+      "date": "20240719",
+      "amountYi": 23.45,
+      "institutionNetYi": 0.91
+    },
+    {
+      "week": "2024-W30",
+      "date": "20240726",
+      "amountYi": 51.06,
+      "institutionNetYi": 7.29
+    },
+    {
+      "week": "2024-W31",
+      "date": "20240802",
+      "amountYi": 61.43,
+      "institutionNetYi": 1.69
+    },
+    {
+      "week": "2024-W32",
+      "date": "20240809",
+      "amountYi": 35.05,
+      "institutionNetYi": -2.75
+    },
+    {
+      "week": "2024-W33",
+      "date": "20240816",
+      "amountYi": 39.97,
+      "institutionNetYi": 5.45
+    },
+    {
+      "week": "2024-W34",
+      "date": "20240823",
+      "amountYi": 32.15,
+      "institutionNetYi": -0.23
+    },
+    {
+      "week": "2024-W35",
+      "date": "20240830",
+      "amountYi": 39.3,
+      "institutionNetYi": 1.23
+    },
+    {
+      "week": "2024-W36",
+      "date": "20240906",
+      "amountYi": 73.14,
+      "institutionNetYi": 2.74
+    },
+    {
+      "week": "2024-W37",
+      "date": "20240913",
+      "amountYi": 53.96,
+      "institutionNetYi": 4.39
+    },
+    {
+      "week": "2024-W38",
+      "date": "20240920",
+      "amountYi": 25.17,
+      "institutionNetYi": -4.66
+    },
+    {
+      "week": "2024-W39",
+      "date": "20240927",
+      "amountYi": 67.22,
+      "institutionNetYi": -9.37
+    },
+    {
+      "week": "2024-W40",
+      "date": "20240930",
+      "amountYi": 12.87,
+      "institutionNetYi": 3.82
+    },
+    {
+      "week": "2024-W41",
+      "date": "20241011",
+      "amountYi": 79.68,
+      "institutionNetYi": 24.37
+    },
+    {
+      "week": "2024-W42",
+      "date": "20241018",
+      "amountYi": 66.75,
+      "institutionNetYi": 12.8
+    },
+    {
+      "week": "2024-W43",
+      "date": "20241025",
+      "amountYi": 86.11,
+      "institutionNetYi": 7.95
+    },
+    {
+      "week": "2024-W44",
+      "date": "20241101",
+      "amountYi": 89.66,
+      "institutionNetYi": 16.92
+    },
+    {
+      "week": "2024-W45",
+      "date": "20241108",
+      "amountYi": 99.31,
+      "institutionNetYi": 22.12
+    },
+    {
+      "week": "2024-W46",
+      "date": "20241115",
+      "amountYi": 110.52,
+      "institutionNetYi": 35.18
+    },
+    {
+      "week": "2024-W47",
+      "date": "20241122",
+      "amountYi": 65.94,
+      "institutionNetYi": 7.85
+    },
+    {
+      "week": "2024-W48",
+      "date": "20241129",
+      "amountYi": 81.38,
+      "institutionNetYi": 15.16
+    },
+    {
+      "week": "2024-W49",
+      "date": "20241206",
+      "amountYi": 78.72,
+      "institutionNetYi": 10.33
+    },
+    {
+      "week": "2024-W50",
+      "date": "20241213",
+      "amountYi": 188.55,
+      "institutionNetYi": 19.52
+    },
+    {
+      "week": "2024-W51",
+      "date": "20241220",
+      "amountYi": 78.31,
+      "institutionNetYi": 26.11
+    },
+    {
+      "week": "2024-W52",
+      "date": "20241227",
+      "amountYi": 132.27,
+      "institutionNetYi": 47.39
+    },
+    {
+      "week": "2025-W01",
+      "date": "20250103",
+      "amountYi": 60.48,
+      "institutionNetYi": 11.99
+    },
+    {
+      "week": "2025-W02",
+      "date": "20250110",
+      "amountYi": 35.03,
+      "institutionNetYi": 6.38
+    },
+    {
+      "week": "2025-W03",
+      "date": "20250117",
+      "amountYi": 50.2,
+      "institutionNetYi": 20.68
+    },
+    {
+      "week": "2025-W04",
+      "date": "20250124",
+      "amountYi": 54.16,
+      "institutionNetYi": 2.99
+    },
+    {
+      "week": "2025-W05",
+      "date": "20250127",
+      "amountYi": 5.92,
+      "institutionNetYi": 0.19
+    },
+    {
+      "week": "2025-W06",
+      "date": "20250207",
+      "amountYi": 37.48,
+      "institutionNetYi": 4.57
+    },
+    {
+      "week": "2025-W07",
+      "date": "20250214",
+      "amountYi": 50.45,
+      "institutionNetYi": 13.61
+    },
+    {
+      "week": "2025-W08",
+      "date": "20250221",
+      "amountYi": 58.02,
+      "institutionNetYi": 20.35
+    },
+    {
+      "week": "2025-W09",
+      "date": "20250228",
+      "amountYi": 63.31,
+      "institutionNetYi": 9.99
+    },
+    {
+      "week": "2025-W10",
+      "date": "20250307",
+      "amountYi": 62.81,
+      "institutionNetYi": 14.76
+    },
+    {
+      "week": "2025-W11",
+      "date": "20250314",
+      "amountYi": 108.17,
+      "institutionNetYi": 12.15
+    },
+    {
+      "week": "2025-W12",
+      "date": "20250321",
+      "amountYi": 78.66,
+      "institutionNetYi": 24.09
+    },
+    {
+      "week": "2025-W13",
+      "date": "20250328",
+      "amountYi": 47.05,
+      "institutionNetYi": 8.67
+    },
+    {
+      "week": "2025-W14",
+      "date": "20250403",
+      "amountYi": 29.52,
+      "institutionNetYi": 4.09
+    },
+    {
+      "week": "2025-W15",
+      "date": "20250411",
+      "amountYi": 42.81,
+      "institutionNetYi": 2.32
+    },
+    {
+      "week": "2025-W16",
+      "date": "20250418",
+      "amountYi": 39.85,
+      "institutionNetYi": 4.23
+    },
+    {
+      "week": "2025-W17",
+      "date": "20250425",
+      "amountYi": 48.22,
+      "institutionNetYi": 20.63
+    },
+    {
+      "week": "2025-W18",
+      "date": "20250430",
+      "amountYi": 27.97,
+      "institutionNetYi": 7.67
+    },
+    {
+      "week": "2025-W19",
+      "date": "20250509",
+      "amountYi": 67.55,
+      "institutionNetYi": 13.74
+    },
+    {
+      "week": "2025-W20",
+      "date": "20250516",
+      "amountYi": 38.34,
+      "institutionNetYi": 11.48
+    },
+    {
+      "week": "2025-W21",
+      "date": "20250523",
+      "amountYi": 56.53,
+      "institutionNetYi": 6.88
+    },
+    {
+      "week": "2025-W22",
+      "date": "20250530",
+      "amountYi": 55.84,
+      "institutionNetYi": 10.26
+    },
+    {
+      "week": "2025-W23",
+      "date": "20250606",
+      "amountYi": 55.95,
+      "institutionNetYi": -6.35
+    },
+    {
+      "week": "2025-W24",
+      "date": "20250613",
+      "amountYi": 101.2,
+      "institutionNetYi": 10.54
+    },
+    {
+      "week": "2025-W25",
+      "date": "20250620",
+      "amountYi": 54.84,
+      "institutionNetYi": 8.09
+    },
+    {
+      "week": "2025-W26",
+      "date": "20250627",
+      "amountYi": 70.29,
+      "institutionNetYi": 20.61
+    },
+    {
+      "week": "2025-W27",
+      "date": "20250704",
+      "amountYi": 78.48,
+      "institutionNetYi": 19.07
+    },
+    {
+      "week": "2025-W28",
+      "date": "20250711",
+      "amountYi": 63.94,
+      "institutionNetYi": 14.29
+    },
+    {
+      "week": "2025-W29",
+      "date": "20250718",
+      "amountYi": 67.02,
+      "institutionNetYi": 15.11
+    },
+    {
+      "week": "2025-W30",
+      "date": "20250725",
+      "amountYi": 101.58,
+      "institutionNetYi": 27.85
+    },
+    {
+      "week": "2025-W31",
+      "date": "20250801",
+      "amountYi": 103.73,
+      "institutionNetYi": 21.79
+    },
+    {
+      "week": "2025-W32",
+      "date": "20250808",
+      "amountYi": 92.24,
+      "institutionNetYi": 28.89
+    },
+    {
+      "week": "2025-W33",
+      "date": "20250815",
+      "amountYi": 61.99,
+      "institutionNetYi": 22.08
+    },
+    {
+      "week": "2025-W34",
+      "date": "20250822",
+      "amountYi": 67.61,
+      "institutionNetYi": 19.69
+    },
+    {
+      "week": "2025-W35",
+      "date": "20250829",
+      "amountYi": 135.37,
+      "institutionNetYi": 20.22
+    },
+    {
+      "week": "2025-W36",
+      "date": "20250905",
+      "amountYi": 94.95,
+      "institutionNetYi": 23.42
+    },
+    {
+      "week": "2025-W37",
+      "date": "20250912",
+      "amountYi": 188.58,
+      "institutionNetYi": 7.9
+    },
+    {
+      "week": "2025-W38",
+      "date": "20250919",
+      "amountYi": 191.78,
+      "institutionNetYi": 47.67
+    },
+    {
+      "week": "2025-W39",
+      "date": "20250926",
+      "amountYi": 140.99,
+      "institutionNetYi": 34.5
+    },
+    {
+      "week": "2025-W40",
+      "date": "20250930",
+      "amountYi": 55.51,
+      "institutionNetYi": 11.78
+    },
+    {
+      "week": "2025-W41",
+      "date": "20251010",
+      "amountYi": 48.13,
+      "institutionNetYi": 21.83
+    },
+    {
+      "week": "2025-W42",
+      "date": "20251017",
+      "amountYi": 98.13,
+      "institutionNetYi": 23.91
+    },
+    {
+      "week": "2025-W43",
+      "date": "20251024",
+      "amountYi": 95.47,
+      "institutionNetYi": 39.7
+    },
+    {
+      "week": "2025-W44",
+      "date": "20251031",
+      "amountYi": 85.31,
+      "institutionNetYi": 25.9
+    },
+    {
+      "week": "2025-W45",
+      "date": "20251107",
+      "amountYi": 115.5,
+      "institutionNetYi": 23.82
+    },
+    {
+      "week": "2025-W46",
+      "date": "20251114",
+      "amountYi": 104.72,
+      "institutionNetYi": 36.44
+    },
+    {
+      "week": "2025-W47",
+      "date": "20251121",
+      "amountYi": 71.69,
+      "institutionNetYi": 21.84
+    },
+    {
+      "week": "2025-W48",
+      "date": "20251128",
+      "amountYi": 79.29,
+      "institutionNetYi": 22.08
+    },
+    {
+      "week": "2025-W49",
+      "date": "20251205",
+      "amountYi": 88.52,
+      "institutionNetYi": 20.12
+    },
+    {
+      "week": "2025-W50",
+      "date": "20251212",
+      "amountYi": 107.56,
+      "institutionNetYi": 34.93
+    },
+    {
+      "week": "2025-W51",
+      "date": "20251219",
+      "amountYi": 144.19,
+      "institutionNetYi": 36.8
+    },
+    {
+      "week": "2025-W52",
+      "date": "20251226",
+      "amountYi": 167.49,
+      "institutionNetYi": 95.14
+    },
+    {
+      "week": "2026-W01",
+      "date": "20251231",
+      "amountYi": 57.48,
+      "institutionNetYi": 6.89
+    },
+    {
+      "week": "2026-W02",
+      "date": "20260109",
+      "amountYi": 126.88,
+      "institutionNetYi": 56.17
+    },
+    {
+      "week": "2026-W03",
+      "date": "20260116",
+      "amountYi": 153.68,
+      "institutionNetYi": 50.84
+    },
+    {
+      "week": "2026-W04",
+      "date": "20260123",
+      "amountYi": 105.43,
+      "institutionNetYi": 32.5
+    },
+    {
+      "week": "2026-W05",
+      "date": "20260130",
+      "amountYi": 82.35,
+      "institutionNetYi": 33.56
+    },
+    {
+      "week": "2026-W06",
+      "date": "20260206",
+      "amountYi": 78.22,
+      "institutionNetYi": 21.23
+    },
+    {
+      "week": "2026-W07",
+      "date": "20260213",
+      "amountYi": 88.56,
+      "institutionNetYi": 31.69
+    },
+    {
+      "week": "2026-W09",
+      "date": "20260227",
+      "amountYi": 62.58,
+      "institutionNetYi": 23.22
+    },
+    {
+      "week": "2026-W10",
+      "date": "20260306",
+      "amountYi": 75.9,
+      "institutionNetYi": 17.48
+    },
+    {
+      "week": "2026-W11",
+      "date": "20260313",
+      "amountYi": 61.92,
+      "institutionNetYi": 18.99
+    },
+    {
+      "week": "2026-W12",
+      "date": "20260320",
+      "amountYi": 83.52,
+      "institutionNetYi": 16.74
+    },
+    {
+      "week": "2026-W13",
+      "date": "20260327",
+      "amountYi": 59.08,
+      "institutionNetYi": 15.43
+    },
+    {
+      "week": "2026-W14",
+      "date": "20260403",
+      "amountYi": 45.73,
+      "institutionNetYi": 7.84
+    },
+    {
+      "week": "2026-W15",
+      "date": "20260410",
+      "amountYi": 64.05,
+      "institutionNetYi": 24.93
+    },
+    {
+      "week": "2026-W16",
+      "date": "20260417",
+      "amountYi": 87.89,
+      "institutionNetYi": 31.42
+    },
+    {
+      "week": "2026-W17",
+      "date": "20260424",
+      "amountYi": 79.95,
+      "institutionNetYi": 9.88
+    },
+    {
+      "week": "2026-W18",
+      "date": "20260430",
+      "amountYi": 77.36,
+      "institutionNetYi": 27.37
+    },
+    {
+      "week": "2026-W19",
+      "date": "20260508",
+      "amountYi": 48.54,
+      "institutionNetYi": 18.64
+    },
+    {
+      "week": "2026-W20",
+      "date": "20260515",
+      "amountYi": 91.74,
+      "institutionNetYi": 17.32
+    },
+    {
+      "week": "2026-W21",
+      "date": "20260522",
+      "amountYi": 161.7,
+      "institutionNetYi": 41.85
+    },
+    {
+      "week": "2026-W22",
+      "date": "20260529",
+      "amountYi": 104.54,
+      "institutionNetYi": 41.83
+    },
+    {
+      "week": "2026-W23",
+      "date": "20260605",
+      "amountYi": 128.16,
+      "institutionNetYi": 47.14
+    },
+    {
+      "week": "2026-W24",
+      "date": "20260612",
+      "amountYi": 117.03,
+      "institutionNetYi": 26.77
+    },
+    {
+      "week": "2026-W25",
+      "date": "20260618",
+      "amountYi": 91.46,
+      "institutionNetYi": 11.11
+    },
+    {
+      "week": "2026-W26",
+      "date": "20260626",
+      "amountYi": 142.15,
+      "institutionNetYi": 28.51
+    },
+    {
+      "week": "2026-W27",
+      "date": "20260703",
+      "amountYi": 129.41,
+      "institutionNetYi": 16.93
+    },
+    {
+      "week": "2026-W28",
+      "date": "20260710",
+      "amountYi": 136.77,
+      "institutionNetYi": 35.91
+    },
+    {
+      "week": "2026-W29",
+      "date": "20260717",
+      "amountYi": 105.29,
+      "institutionNetYi": 13.0
+    },
+    {
+      "week": "2026-W30",
+      "date": "20260724",
+      "amountYi": 72.07,
+      "institutionNetYi": 8.24
+    },
+    {
+      "week": "2026-W31",
+      "date": "20260731",
+      "amountYi": 77.96,
+      "institutionNetYi": 0.13
+    },
+    {
+      "week": "2026-W32",
+      "date": "20260807",
+      "amountYi": 70.7,
+      "institutionNetYi": 8.33
+    },
+    {
+      "week": "2026-W33",
+      "date": "20260814",
+      "amountYi": 68.65,
+      "institutionNetYi": 23.2
+    },
+    {
+      "week": "2026-W34",
+      "date": "20260821",
+      "amountYi": 55.13,
+      "institutionNetYi": 6.48
+    },
+    {
+      "week": "2026-W35",
+      "date": "20260828",
+      "amountYi": 59.95,
+      "institutionNetYi": 15.14
+    },
+    {
+      "week": "2026-W36",
+      "date": "20260904",
+      "amountYi": 57.23,
+      "institutionNetYi": 16.59
+    },
+    {
+      "week": "2026-W37",
+      "date": "20260911",
+      "amountYi": 68.06,
+      "institutionNetYi": 17.28
+    },
+    {
+      "week": "2026-W38",
+      "date": "20260918",
+      "amountYi": 38.96,
+      "institutionNetYi": 12.03
+    },
+    {
+      "week": "2026-W39",
+      "date": "20260924",
+      "amountYi": 55.7,
+      "institutionNetYi": 13.52
+    },
+    {
+      "week": "2026-W40",
+      "date": "20260930",
+      "amountYi": 22.69,
+      "institutionNetYi": 6.13
+    },
+    {
+      "week": "2026-W41",
+      "date": "20261009",
+      "amountYi": 12.31,
+      "institutionNetYi": 0.54
+    },
+    {
+      "week": "2026-W42",
+      "date": "20261016",
+      "amountYi": 88.71,
+      "institutionNetYi": 5.44
+    },
+    {
+      "week": "2026-W43",
+      "date": "20261023",
+      "amountYi": 70.5,
+      "institutionNetYi": 2.42
+    }
+  ]
+}
