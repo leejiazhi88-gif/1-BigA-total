@@ -77,7 +77,7 @@ class DataPipelineTests(unittest.TestCase):
         result = build_series(calendar, raw, pool=[{"ts_code": "A"}])
         self.assertTrue(all(row["total"] is None and row["coverage"] == 0 for row in result))
 
-    def test_etf_window_ends_at_last_published_date_and_still_has_90_days(self):
+    def test_etf_history_ends_at_last_published_date_without_90_day_truncation(self):
         end = datetime(2026, 10, 23)
         dates = [end - timedelta(days=offset) for offset in range(170, -1, -1)]
         dates = [date.strftime("%Y%m%d") for date in dates if date.weekday() < 5]
@@ -87,13 +87,43 @@ class DataPipelineTests(unittest.TestCase):
             output = Path(directory) / "flow.json"
             with patch.object(etf_flow, "get_token", return_value="test"), patch.object(etf_flow, "OUTPUT", output), \
                  patch.object(etf_flow, "END_DATE", "20261023"), \
-                 patch.object(etf_flow, "call_api", side_effect=lambda token, api, params, fields: calendar if api == "trade_cal" else observations), patch("builtins.print"):
+                 patch.object(etf_flow, "load_history", return_value=(calendar, {
+                     etf["ts_code"]: {row["trade_date"]: row for row in observations} for etf in etf_flow.ETF_POOL
+                 }, etf_flow.ETF_POOL)), patch("builtins.print"):
                 etf_flow.main()
             data = json.loads(output.read_text())
         self.assertEqual(data["meta"]["requestedEnd"], "20261023")
         self.assertEqual(data["meta"]["windowEnd"], "2026-10-22")
-        self.assertEqual(data["meta"]["completeDays"], 90)
-        self.assertEqual(len(data["series"]), 90)
+        self.assertEqual(data["meta"]["completeDays"], len(calendar) - 1)
+        self.assertEqual(len(data["series"]), len(calendar) - 1)
+        self.assertGreater(len(data["series"]), 90)
+
+    def test_verified_ETF_conversion_removes_non_subscription_share_changes(self):
+        previous = {"total_share": 1000000, "nav": 1}
+        self.assertEqual(daily_flow({"total_share": 500000, "nav": 2}, previous, factor=0.5), (0, None))
+        self.assertEqual(daily_flow({"total_share": 510000, "nav": 2}, previous, factor=0.5), (2, None))
+        with self.assertRaises(ValueError):
+            daily_flow({"total_share": 500000, "nav": 2}, previous, factor=-1)
+        factor = etf_flow.conversion_factor({"beforeUnits": 10207092000, "afterUnits": 3731217646, "factor": 0.36555})
+        self.assertEqual(daily_flow({"total_share": 373121.7646, "nav": 2.7109},
+                                   {"total_share": 1020709.2, "nav": 0.9823}, factor)[0], 0)
+        with self.assertRaises(ValueError):
+            etf_flow.conversion_factor({"beforeUnits": 1000, "afterUnits": 400, "factor": 0.5})
+
+    def test_later_ETF_listing_is_not_a_gap_or_a_fundraising_flow(self):
+        calendar = [{"cal_date": "20200102", "pretrade_date": "20191231"},
+                    {"cal_date": "20200103", "pretrade_date": "20200102"}]
+        pool = [{"ts_code": "A", "list_date": "20100101"}, {"ts_code": "B", "list_date": "20200103"}]
+        raw = {"A": {date: {"total_share": 100 + i, "nav": 1}
+                     for i, date in enumerate(["20191231", "20200102", "20200103"])},
+               "B": {"20200103": {"total_share": 1000000, "nav": 1}}}
+        rows = build_series(calendar, raw, pool=pool)
+        self.assertEqual(rows[0]["eligible"], 1)
+        self.assertEqual(rows[0]["total"], 0.0001)
+        self.assertEqual(rows[0]["issues"]["B"], "not_listed")
+        self.assertEqual(rows[1]["eligible"], 2)
+        self.assertIsNone(rows[1]["total"])
+        self.assertIsNone(rows[1]["flows"]["B"])
 
     def test_partial_etf_disclosures_are_not_scaled_to_full_portfolio(self):
         holdings = normalized_holdings([{"symbol": "000001.SZ", "stk_mkv_ratio": 10, "mkv": 100},
