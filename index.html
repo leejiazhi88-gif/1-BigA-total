@@ -351,11 +351,6 @@
     .nt-history-controls label { width: 100%; justify-content: space-between; }
     .nt-history-controls select { max-width: 78%; }
   }
-    .nt-etf-grid {
-      display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(380px, .95fr);
-      gap: 15px; align-items: stretch;
-    }
-    #nationalTeamEtfChart { height: 520px; width: 100%; min-height: 520px; }
     #nationalTeamEtfTrendChart { height: 320px; width: 100%; min-height: 320px; }
     #nationalTeamEtfFlowChart { height: 540px; width: 100%; }
     .nt-block { padding: 20px 0; border-top: 1px solid var(--line); min-width: 0; scroll-margin-top: 72px; }
@@ -371,14 +366,6 @@
     #national-team-etf .panel-title { font-size: 16px; }
     #national-team-etf .panel-subtitle { overflow-wrap: anywhere; }
     .nt-flow-table { margin: 12px 0; max-height: 240px; }
-    #national-team-etf .valuation-panel { outline: 1px solid rgba(246,200,95,.08); }
-    .nt-etf-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-    .nt-etf-stat {
-      border: 1px solid var(--line); border-radius: 8px; padding: 12px;
-      background: rgba(8, 18, 32, .66);
-    }
-    .nt-etf-stat span { display: block; color: var(--muted); font-size: 12px; margin-bottom: 6px; }
-    .nt-etf-stat strong { display: block; color: var(--text); font-size: 20px; }
     .nt-etf-table { margin-top: 12px; overflow: auto; max-height: 394px; border: 1px solid var(--line); border-radius: 8px; }
     .nt-etf-table table { width: 100%; border-collapse: collapse; min-width: 620px; font-size: 12px; }
     .nt-etf-table th, .nt-etf-table td { padding: 9px 10px; border-bottom: 1px solid rgba(32,49,73,.8); text-align: left; }
@@ -387,8 +374,7 @@
     .nt-etf-code { color: var(--accent); font-weight: 700; }
     .nt-etf-note-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     @media (max-width: 980px) {
-      .nt-etf-grid, .nt-etf-note-grid { grid-template-columns: 1fr; }
-      #nationalTeamEtfChart { height: 470px; }
+      .nt-etf-note-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
       .nt-flow-readings { gap: 10px; }
@@ -826,29 +812,6 @@
         <div id="nationalTeamEtfTrendChart"></div>
         <p class="nt-method">基于各期ETF披露股票权重与对应股票的前十大流通股东。已扩展至全部披露A股，不再只取五只股票；不把缺失值视为零，未披露的股东持仓不计入。覆盖不完整时为可识别部分的贡献，不能把比例变化解释为增减持金额。历史点标记报告期末，不表示当时已公开；当前仅使用本次截止日前的公告。</p>
     </div>
-    <div class="nt-etf-grid">
-      <article class="valuation-panel">
-        <div class="panel-head">
-          <div>
-            <div class="panel-title">聚类散点图</div>
-            <div class="panel-subtitle">横轴为披露持仓数量，纵轴为国家队底层暴露比例；颜色为持仓相似度聚类</div>
-          </div>
-        </div>
-        <div id="nationalTeamEtfChart"></div>
-      </article>
-
-      <aside class="valuation-panel">
-        <div class="panel-head">
-          <div>
-            <div class="panel-title">聚类与基金明细</div>
-            <div class="panel-subtitle">按国家队底层暴露比例从高到低排序</div>
-          </div>
-        </div>
-        <div class="nt-etf-summary" id="nationalTeamEtfSummary"></div>
-        <div class="nt-etf-table" id="nationalTeamEtfTable"></div>
-      </aside>
-    </div>
-
     <div class="valuation-foot nt-etf-note-grid">
       <div class="note"><strong>计算口径：</strong>ETF底层国家队暴露＝Σ(披露股票权重×该股国家队流通股持股比例)。权重保留原披露比例，缺少权重时才在披露样本内按市值归一化；股东信息缺失不当作零持仓。名单包括中央汇金、汇金资产、中国证券金融及明确证金账户。</div>
       <div class="note"><strong>限制说明：</strong>不是国家队直接持有ETF的份额比例，也不是持仓总市值。包含国家队长期战略持股，不能都解释为救市买入。基金样本及股东覆盖随报告变化，低于前十大流通股东门槛的持仓无法识别。</div>
@@ -2296,35 +2259,10 @@ window.addEventListener("resize", () => chart.resize());
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
-    const colors = ["#f6c85f", "#ff5d73", "#36c2ff", "#6bd98c", "#b58cff", "#ff9a5c"];
     document.getElementById("nationalTeamEtfStatus").textContent =
       "金额核验 2026-10-26 / 底层暴露 " + ntEtfData.meta.period.slice(0, 4) + "Q" +
       Math.ceil(Number(ntEtfData.meta.period.slice(4, 6)) / 3);
 
-    const top = ntEtfData.etfs[0];
-    const avg = ntEtfData.etfs.reduce((sum, row) => sum + row.nationalTeamExposure, 0) / ntEtfData.etfs.length;
-    const maxCluster = ntEtfData.clusters.slice().sort((a, b) => b.averageExposure - a.averageExposure)[0];
-    document.getElementById("nationalTeamEtfSummary").innerHTML = [
-      ["最高ETF", top.name + "<br><strong>" + fmt(top.nationalTeamExposure, 2) + "%</strong>"],
-      ["样本均值", "<strong>" + fmt(avg, 2) + "%</strong>"],
-      ["最高类别", maxCluster.clusterName + "<br><strong>" + fmt(maxCluster.averageExposure, 2) + "%</strong>"],
-      ["覆盖基金", "<strong>" + ntEtfData.etfs.length + "只</strong>"]
-    ].map(([label, value]) => '<div class="nt-etf-stat"><span>' + label + '</span><strong>' + value + '</strong></div>').join("");
-
-    document.getElementById("nationalTeamEtfTable").innerHTML =
-      '<table><thead><tr><th>代码</th><th>基金</th><th>类别</th><th>披露暴露</th><th>有效覆盖权重</th><th>主要贡献</th></tr></thead><tbody>' +
-      ntEtfData.etfs.map(row => {
-        const contributors = row.topNationalTeamContributors.slice(0, 2)
-          .map(item => item.symbol + " " + fmt(item.contribution, 2) + "%").join("<br>") || "--";
-        return '<tr><td class="nt-etf-code">' + escapeHtml(row.ts_code) + '</td>' +
-          '<td>' + escapeHtml(row.name) + '</td>' +
-          '<td>' + escapeHtml(row.clusterName) + '</td>' +
-          '<td>' + fmt(row.nationalTeamExposure, 2) + '%</td>' +
-          '<td>' + fmt(row.coverageWeight, 1) + '%</td>' +
-          '<td>' + contributors + '</td></tr>';
-      }).join("") + '</tbody></table>';
-
-    const chart = echarts.init(document.getElementById("nationalTeamEtfChart"), null, { renderer: "canvas" });
     const trendChart = echarts.init(document.getElementById("nationalTeamEtfTrendChart"), null, { renderer: "canvas" });
     const flowChart = echarts.init(document.getElementById("nationalTeamEtfFlowChart"), null, { renderer: "canvas" });
     const groups = [...new Set(flowData.etfs.map(row => row.group))];
@@ -2470,57 +2408,6 @@ window.addEventListener("resize", () => chart.resize());
       },
       series: trendSeries
     }, true);
-    const series = ntEtfData.clusters.map(cluster => {
-      const rows = ntEtfData.etfs.filter(row => row.cluster === cluster.cluster);
-      return {
-        name: cluster.clusterName,
-        type: "scatter",
-        symbolSize(value) { return Math.max(12, Math.min(42, value[3] * 2.2)); },
-        data: rows.map(row => [
-          row.holdingCount,
-          row.nationalTeamExposure,
-          row.name,
-          Math.max(row.topNationalTeamContributors.length, 1),
-          row.ts_code,
-          row.clusterName
-        ]),
-        emphasis: { focus: "series" }
-      };
-    });
-    chart.setOption({
-      animation: false,
-      color: colors,
-      backgroundColor: "transparent",
-      grid: { left: 64, right: 28, top: 44, bottom: 58 },
-      legend: { top: 8, textStyle: { color: "#8fa5bf" } },
-      tooltip: {
-        trigger: "item",
-        backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
-        textStyle: { color: "#edf4ff" },
-        formatter(params) {
-          const value = params.value;
-          return "<b>" + escapeHtml(value[2]) + "</b><br>" +
-            escapeHtml(value[4]) + " / " + escapeHtml(value[5]) + "<br>" +
-            "国家队底层暴露：<b>" + fmt(value[1], 2) + "%</b><br>" +
-            "披露持仓数：" + value[0];
-        }
-      },
-      xAxis: {
-        name: "披露持仓数", nameTextStyle: { color: "#8fa5bf" },
-        type: "value", minInterval: 1,
-        axisLine: { lineStyle: { color: "#344760" } },
-        axisLabel: { color: "#7890aa" },
-        splitLine: { lineStyle: { color: "#17283d" } }
-      },
-      yAxis: {
-        name: "国家队底层暴露比例", nameTextStyle: { color: "#8fa5bf" },
-        type: "value", scale: true,
-        axisLabel: { color: "#7890aa", formatter: "{value}%" },
-        splitLine: { lineStyle: { color: "#17283d" } }
-      },
-      series
-    }, true);
-    window.addEventListener("resize", () => chart.resize());
     window.addEventListener("resize", () => trendChart.resize());
     window.addEventListener("resize", () => flowChart.resize());
   })();
