@@ -138,10 +138,12 @@ class DataPipelineTests(unittest.TestCase):
                 call_api_pages("test", "example", {}, "id", 1)
 
     def test_margin_requires_both_exchanges_on_the_observation_date(self):
-        def yearly(token, api, params, fields):
+        def yearly(token, api, params, fields, start_year):
             if api == "daily_info":
-                return [{"trade_date": date, "ts_code": params["exchange"] + "_MARKET",
-                         "amount": 100, "float_mv": 1000, "tr": 1} for date in ("20261008", "20261009")]
+                return [{"trade_date": date, "ts_code": params["ts_code"],
+                         "amount": 100 if params["ts_code"] == "SH_MARKET" else 100 / 3,
+                         "float_mv": 1000 if params["ts_code"] == "SH_MARKET" else 1000 / 3,
+                         "tr": 1} for date in ("20261008", "20261009")]
             dates = ("20261008", "20261009") if params["exchange_id"] == "SSE" else ("20261008",)
             return [{"trade_date": date, "exchange_id": params["exchange_id"], "rzye": 1e8, "rzmre": 1e7} for date in dates]
         with TemporaryDirectory() as directory:
@@ -154,10 +156,53 @@ class DataPipelineTests(unittest.TestCase):
         self.assertEqual(last["date"], "2026-10-09")
         self.assertIsNone(last["marginBalance"])
         self.assertIsNone(last["marginBuyRatio"])
-        self.assertEqual(last["amount"], 200)
+        self.assertEqual(last["amount"], 133.33)
         self.assertEqual(series[0]["date"], "2026-10-08")
         self.assertEqual(series[0]["marginBalance"], 2)
         self.assertIsNone(series[0]["amount"])
+
+    def test_retail_backfill_combines_disjoint_boards_without_double_counting(self):
+        market = [{"trade_date": "20100331", "ts_code": code, "amount": amount, "float_mv": mv, "tr": tr}
+                  for code, amount, mv, tr in [("SH_A", 100, 1000, 1), ("SH_B", 5, 50, 2), ("SZ_MARKET", 200, 2000, 3)]]
+        margin = [{"trade_date": "20100331", "exchange_id": e, "rzye": 1e8, "rzmre": 1e7} for e in ("SSE", "SZSE")]
+        rows, _ = retail.build_daily_series(market, margin, {})
+        self.assertEqual(rows[0]["amount"], 305)
+        self.assertAlmostEqual(rows[0]["turnover"], round(7100 / 3050, 4))
+        self.assertEqual(rows[0]["marginBalance"], 2)
+        self.assertAlmostEqual(rows[0]["marginFloatRatio"], round(2 / 3050 * 100, 4))
+        self.assertIsNone(rows[0]["limitUpCount"])
+        market.append({"trade_date": "20100331", "ts_code": "SH_MARKET", "amount": 105, "float_mv": 1050})
+        with_total, checks = retail.build_daily_series(market, margin, {})
+        self.assertEqual(rows, with_total)
+        self.assertEqual(checks["shBoardChecks"], 2)
+        market[-1]["amount"] = 999
+        with self.assertRaisesRegex(ValueError, "total mismatch"):
+            retail.build_daily_series(market, margin, {})
+
+    def test_retail_missing_market_does_not_hide_margin_or_create_zero_turnover(self):
+        market = [{"trade_date": "20100331", "ts_code": "SH_A", "amount": 100, "float_mv": 1000, "tr": None},
+                  {"trade_date": "20100331", "ts_code": "SH_B", "amount": 5, "float_mv": 50, "tr": 1},
+                  {"trade_date": "20100331", "ts_code": "SZ_MARKET", "amount": 200, "float_mv": 2000, "tr": 3}]
+        margin = [{"trade_date": "20100401", "exchange_id": e, "rzye": 1e8, "rzmre": 0} for e in ("SSE", "SZSE")]
+        rows, _ = retail.build_daily_series(market, margin, {})
+        self.assertIsNone(rows[0]["turnover"])
+        self.assertIsNone(rows[0]["marginBalance"])
+        self.assertEqual(rows[1]["marginBalance"], 2)
+        self.assertIsNone(rows[1]["amount"])
+        self.assertIsNone(rows[1]["marginFloatRatio"])
+
+    def test_retail_star_board_required_only_after_launch_and_conflicts_rejected(self):
+        market = [{"trade_date": "20190722", "ts_code": code, "amount": 100, "float_mv": 1000, "tr": 1}
+                  for code in ("SH_A", "SH_B", "SZ_MARKET")]
+        rows, _ = retail.build_daily_series(market, [], {})
+        self.assertIsNone(rows[0]["amount"])
+        market.append({"trade_date": "20190722", "ts_code": "SH_STAR", "amount": 10, "float_mv": 100, "tr": 10})
+        rows, _ = retail.build_daily_series(market, [], {})
+        self.assertEqual(rows[0]["amount"], 310)
+        self.assertAlmostEqual(rows[0]["turnover"], round(4000 / 3100, 4))
+        market.append({**market[0], "amount": 999})
+        with self.assertRaisesRegex(ValueError, "Conflicting"):
+            retail.build_daily_series(market, [], {})
 
 
 if __name__ == "__main__":
