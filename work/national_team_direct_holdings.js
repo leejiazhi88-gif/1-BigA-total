@@ -5,6 +5,8 @@ const SOURCE = path.join(__dirname, "../outputs/national-team-holdings-compariso
 const HISTORY_SOURCE = path.join(__dirname, "national_team_etf_history.json");
 const STOCK_HISTORY_SOURCE = path.join(__dirname, "national_team_stock_history.json");
 const SOCIAL_HISTORY_SOURCE = path.join(__dirname, "social_security_history.json");
+const RATIO_SOURCE = path.join(__dirname, "holding_denominators.json");
+const { attachHoldingRatios } = require("./holding_ratios");
 const { buildHistoryData } = require("./national_team_etf_history");
 const FUND_NAMES = {
   "510050": "华夏上证50ETF", "510300": "华泰柏瑞沪深300ETF",
@@ -179,6 +181,7 @@ const css = `
   .nt-direct-controls label { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; }
   .nt-direct-controls input { accent-color: var(--series-color); width: 15px; height: 15px; margin: 0; }
   .nt-direct-controls label::after { content: ""; width: 18px; height: 3px; background: var(--series-color); }
+  .nt-direct-chart-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
   #nationalTeamDirectChart { height: 360px; width: 100%; overflow: hidden; }
   .nt-direct-status { font-size: 12px; color: #f6c85f; margin: 8px 0; line-height: 1.7; }
   .nt-direct-coverage { overflow: auto; max-height: 240px; margin-top: 14px; }
@@ -231,11 +234,18 @@ const html = `
       </div>
       <div class="nt-direct-cards" id="ntDirectCards" aria-live="polite"></div>
       <div class="nt-direct-tools">
-        <div class="panel-title">汇金／证金与社保投资组合 · 亿元</div>
-        <label class="nt-direct-period"><input type="checkbox" id="ntDirectBreakdown">汇金／证金A股构成</label>
+        <div class="panel-title" id="ntDirectChartTitle">汇金／证金与社保投资组合 · 亿元</div>
+        <div class="nt-direct-chart-tools">
+          <div class="range-tabs" id="ntDirectMode" role="group" aria-label="持仓展示口径">
+            <button type="button" class="range-tab active" data-mode="amount" aria-pressed="true">金额</button>
+            <button type="button" class="range-tab" data-mode="ratio" aria-pressed="false">持仓比例</button>
+          </div>
+          <label class="nt-direct-period"><input type="checkbox" id="ntDirectBreakdown">汇金／证金A股构成</label>
+        </div>
       </div>
       <div class="nt-direct-controls" id="ntDirectSeries" aria-label="持仓曲线"></div>
       <div id="nationalTeamDirectChart" role="img" aria-label="汇金、证金及社保投资组合已披露持仓金额走势图"></div>
+      <p class="nt-method" id="ntDirectRatioNote" hidden>比例＝已识别持仓金额÷当期所持标的总市值。A股只计对应公司的A股总股本，ETF按已识别持仓基金的总份额×同期净值；同一标的分母只计一次。各期样本会变化，比例仍受相对涨跌、增发和披露覆盖影响，不等于净买入。</p>
       <p class="nt-direct-status" id="ntDirectGap"></p>
       <p class="nt-method">2015年6月起，A股按季度展示；ETF为中报、年报已披露时点。虚线仅连接披露快照，不代表每日持仓路径。金额含价格涨跌及股东榜覆盖变化，不能把差额当作实际净买卖额。</p>
       <p class="nt-method">社保曲线为具名投资组合的直接A股持仓，含明确具名的委托组合；不含理事会直持、划转账户、基本养老保险及ETF。社保独立展示，不计入汇金／证金合计。</p>
@@ -256,6 +266,7 @@ const html = `
         <summary>统计口径与来源</summary>
         <p>汇金／证金曲线识别中央汇金投资、中央汇金资产管理、中国证券金融，以及明确具名的汇金委托计划。社保投资组合单独识别、单独展示，不加入原有汇金／证金股票与ETF合计；保险、财政部、诚通、国新等未纳入。金额是已披露可识别部分，不是相关机构全部资产。</p>
         <p>社保投资组合：识别“全国社保基金××组合”及基金公司、证券公司明确标注的社保基金委托组合；中文和阿拉伯数字编号统一，按股票与组合去重。统一采用前十大股东表，用Tushare核对；金额＝A股股数×期末参考价÷1亿。理事会直持、转持／划转及基本养老保险账户不包含在此线。完整覆盖及来源差异见<a href="https://github.com/leejiazhi88-gif/1-BigA-total/blob/main/outputs/social-security-history-audit.md" target="_blank" rel="noopener noreferrer">社保历史核查</a>。</p>
+        <p>持仓比例：A股分母为该曲线当期已识别持有公司的A股总股本×同一参考价，剔除H/B股，并按股票去重。ETF分母为当期已识别持有基金的总份额×同一净值，包含场外份额，未识别出持仓的基金不并入分母。金额加总后除以分母加总，不对各持股比例做简单平均；汇金投资与其他账户构成共用汇金／证金A股样本分母，两项比例可以相加。社保单独使用其持有公司范围；股票和ETF比例不合计。股本来自东方财富历史股本结构，ETF总份额及净资产来自同一期原始报告，均以报告期末为准。分母证据及差异见<a href="https://github.com/leejiazhi88-gif/1-BigA-total/blob/main/outputs/holding-ratio-audit.md" target="_blank" rel="noopener noreferrer">持仓比例核查</a>。</p>
         <p>直接A股：东方财富各期前十大股东表中的国家队A股股数 × 期末参考价 ÷ 1亿，以Tushare交叉核对。正常交易采用期末最后交易日未复权收盘价；停牌采用数据源期末参考市值折算价，明细以＊标记。按股票与账户去重，排除B/H股、优先股、上市前及退市后的记录；建行A/H股按各期原报告拆分。</p>
         <p>汇金／证金历史统一采用前十大股东表，未把前十大流通股东另行并入。仅识别上述三家机构及全称明确的委托账户，不把名称仅含“汇金”的普通私募、中证金融计划或转融通担保账户一概计入。各期公司数量会随进入、退出股东榜及披露覆盖变化，不等于国家队真实持股公司总数。</p>
         <p>ETF：14只重点宽基候选样本中具名国家队账户的持有份额 × 同期单位净值 ÷ 1亿；仅纳入当期已成立基金，2015年6月为8只。未进入前十名不能视为零持仓；缺少具名持有人表时不汇总该期ETF金额，也不沿用上一期份额。股票与ETF仅在同一报告期且均有可识别金额时相加，不再重复计入ETF底层股票。</p>
@@ -278,6 +289,10 @@ function renderDirectHoldings(data) {
   let selected = snapshots.findLastIndex(row => row.combinedAmount !== null);
   if (selected < 0) selected = snapshots.length - 1;
   let view = "stocks";
+  let mode = "amount";
+  const valueOf = (row, key) => mode === "ratio" ? row.ratios[key] ?? null : row[key];
+  const displayValue = value => fmt(value, mode === "ratio" ? 2 : 0);
+  const unit = () => mode === "ratio" ? "%" : "亿元";
   const seriesDefs = [
     { key: "stockAmount", name: "汇金／证金A股", color: "#36c2ff" },
     { key: "etfAmount", name: "汇金／证金ETF", color: "#f6c85f" },
@@ -308,18 +323,20 @@ function renderDirectHoldings(data) {
     const visible = seriesDefs.filter(def => (!def.breakdown || breakdown) && active.has(def.key));
     const first = Math.round(zoom.start / 100 * (snapshots.length - 1));
     const last = Math.round(zoom.end / 100 * (snapshots.length - 1));
-    const values = visible.flatMap(def => snapshots.slice(first, last + 1).map(row => row[def.key])).filter(Number.isFinite);
+    const values = visible.flatMap(def => snapshots.slice(first, last + 1).map(row => valueOf(row, def.key))).filter(Number.isFinite);
     const low = values.length ? Math.min(...values) : 0;
     const high = values.length ? Math.max(...values) : 1;
-    const padding = Math.max((high - low) * 0.15, high * 0.05, 1);
-    const step = high > 10000 ? 1000 : high > 1000 ? 100 : 1;
+    const padding = Math.max((high - low) * 0.15, high * 0.05, mode === "ratio" ? 0.01 : 1);
+    const step = mode === "ratio" ? (high > 10 ? 1 : high > 1 ? 0.1 : 0.01) : high > 10000 ? 1000 : high > 1000 ? 100 : 1;
     const minimum = Math.max(0, Math.floor((low - padding) / step) * step);
-    const maximum = Math.ceil((high + padding) / step) * step;
+    const maximum = mode === "ratio" ? Math.min(100, Math.ceil((high + padding) / step) * step) : Math.ceil((high + padding) / step) * step;
     return { yAxis: { min: minimum, max: maximum },
       title: values.length ? [] : [{ text: visible.length ? "该区间暂无已核实持仓" : "未选择持仓曲线", left: "center", top: "42%", textStyle: { color: "#8fa5bf", fontSize: 14 } }] };
   }
 
   function renderChart() {
+    $("ntDirectChartTitle").textContent = "汇金／证金与社保投资组合 · " + unit();
+    $("ntDirectRatioNote").hidden = mode !== "ratio";
     const visible = seriesDefs.filter(def => (!def.breakdown || breakdown) && active.has(def.key));
     const axes = axisState();
     chart.setOption({
@@ -332,10 +349,13 @@ function renderDirectHoldings(data) {
         formatter: params => {
           if (!params.length) return "";
           const row = snapshots.find(s => s.date === params[0].axisValue);
-          return "<strong>报告期末 " + row.date + "</strong><br>" + visible.map(def =>
-            '<span style="color:' + def.color + '">●</span> ' + def.name + "：" +
-            (row[def.key] === null ? (def.key !== "etfAmount" && row.stockStatus === "not_backfilled" ? "尚未回溯" : "未披露") : fmt(row[def.key], 2) + " 亿元")
-          ).join("<br>") + "<br>A股：" + (row.stockStatus === "not_backfilled" ? "该期尚未回溯" : row.companyCount + "家公司 / " + row.holderCount + "条持仓") +
+          return "<strong>报告期末 " + row.date + "</strong><br>" + visible.map(def => {
+            const value = valueOf(row, def.key);
+            const base = row.ratioBases[def.breakdown ? "stockAmount" : def.key];
+            return '<span style="color:' + def.color + '">●</span> ' + def.name + "：" +
+              (value === null ? "未披露" : fmt(value, 2) + " " + unit()) +
+              (mode === "ratio" && value !== null ? "<br>　" + fmt(row[def.key], 2) + " ÷ " + fmt(base.amount, 2) + " 亿元" : "");
+          }).join("<br>") + "<br>A股：" + (row.stockStatus === "not_backfilled" ? "该期尚未回溯" : row.companyCount + "家公司 / " + row.holderCount + "条持仓") +
             "<br>ETF：具名表 " + row.disclosedFunds + "/" + row.etfs.length + " 只，已识别 " + row.identifiedFunds + " 只" +
             "<br>社保：" + (row.socialAmount === null ? "该期尚未核实" : row.socialCompanyCount + "家公司 / " + row.socialHolderCount + "条持仓");
         } },
@@ -343,18 +363,18 @@ function renderDirectHoldings(data) {
         axisTick: { show: false }, axisLine: { lineStyle: { color: "#344760" } },
         axisLabel: { color: "#8fa5bf", fontSize: 12, hideOverlap: true } },
       yAxis: { type: "value", ...axes.yAxis, splitNumber: 4,
-        axisLabel: { color: "#8fa5bf", formatter: value => fmt(value) },
+        axisLabel: { color: "#8fa5bf", formatter: value => mode === "ratio" ? fmt(value, value < 1 && value !== 0 ? 2 : 1) + "%" : fmt(value) },
         splitLine: { lineStyle: { color: "#233247" } } },
       dataZoom: [{ type: "slider", xAxisIndex: 0, ...zoom, filterMode: "none", height: 22, bottom: 8,
         borderColor: "#344760", fillerColor: "rgba(54,194,255,.12)", textStyle: { color: "#8fa5bf", fontSize: 10 } },
         { type: "inside", xAxisIndex: 0, filterMode: "none" }],
       series: visible.map(def => ({ name: def.name, type: "line", connectNulls: false, smooth: false,
-        data: snapshots.filter(row => def.key !== "etfAmount" || row.etfReportKind !== "quarterly").map(row => [row.date, row[def.key]]), symbol: "circle", symbolSize: 8, showSymbol: true,
+        data: snapshots.filter(row => def.key !== "etfAmount" || row.etfReportKind !== "quarterly").map(row => [row.date, valueOf(row, def.key)]), symbol: "circle", symbolSize: 8, showSymbol: true,
         lineStyle: { color: def.color, type: "dashed", width: 2 }, itemStyle: { color: def.color },
         emphasis: { scale: 1.4 },
         label: { show: visible.length <= 2, position: "top", color: def.color, fontSize: 12,
           formatter: params => params.value[1] === null ? "" :
-            (snapshots.filter(row => row[def.key] !== null).length <= 3 || params.value[0] === snapshots.findLast(row => row[def.key] !== null)?.date ? fmt(params.value[1]) : "") }
+            (snapshots.filter(row => valueOf(row, def.key) !== null).length <= 3 || params.value[0] === snapshots.findLast(row => valueOf(row, def.key) !== null)?.date ? displayValue(params.value[1]) + (mode === "ratio" ? "%" : "") : "") }
       }))
     }, true);
   }
@@ -375,18 +395,21 @@ function renderDirectHoldings(data) {
     const headings = view !== "etfs"
       ? ["股票代码", "公司", "持有账户", "A股股数 / 亿股", "期末参考价 / 元", "持仓 / 亿元", "公告日期", "来源"]
       : ["基金代码", "基金", "披露状态", "已识别份额 / 亿份", "期末净值 / 元", "持仓 / 亿元", "来源"];
+    if (mode === "ratio") headings.push(view === "etfs" ? "基金总份额 / 亿份" : "A股总股本 / 亿股", "占该标的比例");
+    const ratioCells = row => mode !== "ratio" ? "" : '<td class="nt-number">' + (row.totalUnits == null ? "未核实" : fmt(row.totalUnits / 1e8, 4)) +
+      '</td><td class="nt-number">' + (row.ownershipPct == null ? "无法确认" : fmt(row.ownershipPct, 3) + "%") + '</td>';
     const cells = rows.map(row => {
       if (view !== "etfs") return '<tr><td class="nt-etf-code">' + escape(row.code) + '</td><td>' + escape(row.name) +
         '</td><td>' + escape(row.holder) + '</td><td class="nt-number">' + fmt(row.units / 1e8, 4) +
         '</td><td class="nt-number">' + fmt(row.close, 2) + (row.referencePrice ? '＊' : '') + '</td><td class="nt-number">' + fmt(row.amount, 2) +
-        '</td><td>' + dateLabel(row.announced) + '</td><td>' + sourceLink(row) + '</td></tr>';
+        '</td><td>' + dateLabel(row.announced) + '</td><td>' + sourceLink(row) + '</td>' + ratioCells(row) + '</tr>';
       const status = row.status === "identified" ? "具名持仓" : row.status === "no_identified_account_in_top10"
         ? "榜内未发现，不代表零" : row.status === "report_not_found" ? "暂未检索到报告" : "具名表未披露";
       return '<tr><td class="nt-etf-code">' + row.code + '</td><td>' + escape(row.name) + '</td><td>' + status +
         '</td><td class="nt-number">' + (row.units === null ? "—" : fmt(row.units / 1e8, 4)) +
         '</td><td class="nt-number">' + (row.nav === null ? "—" : fmt(row.nav, 4)) +
         '</td><td class="nt-number' + (row.amount === null ? ' nt-missing' : '') + '">' +
-        (row.amount === null ? "无法确认" : fmt(row.amount, 2)) + '</td><td>' + sourceLink(row) + '</td></tr>';
+        (row.amount === null ? "无法确认" : fmt(row.amount, 2)) + '</td><td>' + sourceLink(row) + '</td>' + ratioCells(row) + '</tr>';
     });
     $("ntDirectTable").innerHTML = '<table><thead><tr>' + headings.map(h => '<th scope="col">' + h + '</th>').join("") +
       '</tr></thead><tbody>' + (cells.join("") || '<tr><td colspan="' + headings.length + '">' +
@@ -410,10 +433,17 @@ function renderDirectHoldings(data) {
         ? (row.stockAmount === null ? "直接A股尚未回溯，暂不能合计" : "ETF金额缺失，未计算两类持仓合计") : "同一报告期A股＋ETF · 非全部资产" },
       { key: "socialAmount", label: "社保投资组合 · 直接A股", meta: row.socialAmount === null ? "该期尚未核实" : row.socialCompanyCount + "家公司 · " + row.socialHolderCount + "条持仓" }
     ];
-    $("ntDirectCards").innerHTML = cards.map(card => '<div class="nt-direct-reading" data-metric="' + card.key + '">' +
-      '<span class="label">' + card.label + '</span><strong class="amount' + (row[card.key] === null ? ' missing' : '') + '">' +
-      (row[card.key] === null ? (card.key === "combinedAmount" ? "暂不可合计" : card.key === "stockAmount" && row.stockStatus === "not_backfilled" ? "尚未回溯" : "未披露") : fmt(row[card.key]) + '<small>亿元</small>') +
-      '</strong><div class="meta">截至 ' + row.date + '<br>' + card.meta + '</div></div>').join("");
+    $("ntDirectCards").innerHTML = cards.map(card => {
+      const value = valueOf(row, card.key);
+      const combinedRatio = mode === "ratio" && card.key === "combinedAmount";
+      const base = row.ratioBases[card.key];
+      const meta = combinedRatio ? "A股与ETF分母不同，比例分别展示" : mode === "ratio" && base?.amount
+        ? "分母 " + fmt(base.amount) + "亿元 · " + base.count + (card.key === "etfAmount" ? "只已识别持有基金" : "家持有公司A股市值") : card.meta;
+      return '<div class="nt-direct-reading" data-metric="' + card.key + '">' +
+        '<span class="label">' + (combinedRatio ? "汇金／证金综合比例" : card.label) + '</span><strong class="amount' + (value === null ? ' missing' : '') + '">' +
+        (value === null ? (combinedRatio ? "不合并比例" : card.key === "combinedAmount" ? "暂不可合计" : "未披露") : displayValue(value) + '<small>' + unit() + '</small>') +
+        '</strong><div class="meta">截至 ' + row.date + '<br>' + meta + '</div></div>';
+    }).join("");
     $("ntDirectCoverage").innerHTML = '<table><thead><tr><th>报告期末</th><th>汇金／证金A股</th><th>ETF具名表 / 样本</th><th>已识别ETF持仓</th><th>社保A股覆盖</th></tr></thead><tbody>' +
       [...snapshots].reverse().map(s => '<tr aria-current="' + (s.period === row.period) + '"><td>' + s.date + '</td><td>' +
         (s.stockStatus === "not_backfilled" ? "尚未回溯" : s.companyCount + '家公司 / ' + s.holderCount + '条持仓') + '</td><td>' + s.disclosedFunds + ' / ' + s.etfs.length +
@@ -431,6 +461,17 @@ function renderDirectHoldings(data) {
     if (!key) return;
     if (event.target.checked) active.add(key); else active.delete(key);
     renderChart();
+  });
+  $("ntDirectMode").addEventListener("click", event => {
+    const button = event.target.closest("button[data-mode]");
+    if (!button || button.dataset.mode === mode) return;
+    mode = button.dataset.mode;
+    $("ntDirectMode").querySelectorAll("button").forEach(item => {
+      item.classList.toggle("active", item === button);
+      item.setAttribute("aria-pressed", String(item === button));
+    });
+    renderChart();
+    renderSnapshot();
   });
   $("ntDirectBreakdown").addEventListener("change", event => {
     breakdown = event.target.checked;
@@ -480,7 +521,7 @@ function renderDirectHoldings(data) {
 }
 
 function directHoldingsModule() {
-  const data = attachSocialData(buildDirectData(JSON.parse(fs.readFileSync(SOURCE, "utf8")), JSON.parse(fs.readFileSync(HISTORY_SOURCE, "utf8")), JSON.parse(fs.readFileSync(STOCK_HISTORY_SOURCE, "utf8"))), JSON.parse(fs.readFileSync(SOCIAL_HISTORY_SOURCE, "utf8")));
+  const data = attachHoldingRatios(attachSocialData(buildDirectData(JSON.parse(fs.readFileSync(SOURCE, "utf8")), JSON.parse(fs.readFileSync(HISTORY_SOURCE, "utf8")), JSON.parse(fs.readFileSync(STOCK_HISTORY_SOURCE, "utf8"))), JSON.parse(fs.readFileSync(SOCIAL_HISTORY_SOURCE, "utf8"))), JSON.parse(fs.readFileSync(RATIO_SOURCE, "utf8")));
   const payload = JSON.stringify(data).replace(/</g, "\\u003c");
   return { css, html, checkedAt: data.checkedAt,
     script: '<script id="national-team-direct-script">(' + renderDirectHoldings.toString() + ')(' + payload + ');</script>' };

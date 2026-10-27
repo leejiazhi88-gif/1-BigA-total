@@ -1,0 +1,20 @@
+{
+  "000666.SZ": {
+    "totalShares": 704130000,
+    "unlistedForeignShares": 180800000,
+    "aShares": 523330000,
+    "source": "https://data.eastmoney.com/notices/detail/000666/AN201603280014107639.html",
+    "pdf": "https://pdf.dfcfw.com/pdf/H2_AN201603280014107639_1.pdf",
+    "reason": "Delisted H shares remain unlisted foreign shares; TOTAL_A_SHARES conflicts with the A-share components and original annual report.",
+    "evidence": "公司发行股份共704,130,000股，包括180,800,000股非上市外资股（退市H股，占已发行股份总数25.68%）和523,330,000股A股（占已发行股份总数的74.32%）。"
+  },
+  "301039.SZ": {
+    "totalShares": 1874124420,
+    "unlistedForeignShares": 420444420,
+    "aShares": 1453680000,
+    "source": "https://data.eastmoney.com/notices/detail/301039/AN202408221639408007.html",
+    "pdf": "https://pdf.dfcfw.com/pdf/H2_AN202408221639408007_1.pdf",
+    "reason": "H-share delisting does not turn the remaining unlisted foreign shares into A shares; verify against the 2024 interim report.",
+    "evidence": "公司总股本由2,017,600,000股减少至1,874,124,420股，其中，A股1,453,680,000股，占公司总股本的77.57%；非上市外资股420,444,420股，占公司总股本的22.43%。"
+  }
+}
