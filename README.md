@@ -12,7 +12,7 @@
 - 散户情绪事件 List：按年份和季度切换查看开户、基金、融资监管与极端情绪事件
 - 情绪-大资金模块：沪深A股大宗交易、机构席位大宗净买入、产业资本增减持、北向资金历史口径
 - 情绪-官方模块：IPO融资、产业资本净减持、印花税率、政策利率、社融/M2与政策事件
-- 国家队持仓：直接A股与ETF已披露金额、报告期走势、账户构成、逐条持仓来源；下方保留9只ETF每日净申购和长期底层股票暴露作为辅助观察，已移除聚类散点图及配套明细
+- 国家队持仓：汇金／证金直接A股与ETF金额、社保投资组合独立曲线、报告期走势、账户构成、逐条持仓来源；下方保留9只ETF每日净申购和长期底层股票暴露作为辅助观察，已移除聚类散点图及配套明细
 
 换机同步、线上地址、部署与本地运行说明见 [HANDOFF.md](HANDOFF.md)。
 国家队 ETF 暴露聚类的候选基金池、统计公式与数据限制见 [NATIONAL_TEAM_ETF_CLUSTER.md](NATIONAL_TEAM_ETF_CLUSTER.md)。
@@ -59,6 +59,9 @@ http://127.0.0.1:9876
 - `work/fetch_national_team_etf_data.py`：国家队 ETF 底层暴露数据更新脚本
 - `work/add_national_team_etf_module.js`：国家队 ETF 暴露模块注入脚本
 - `work/national_team_direct_holdings.js`：直接A股与ETF金额、缺失状态校验及页面交互
+- `work/social_security_history.json`：2015年6月至2026年6月45个季度的社保组合A股金额与逐条明细
+- `work/fetch_social_security_history.py`：社保账户识别、历史取数及双源核对
+- `outputs/social-security-history-audit.md`：社保统计范围、各期覆盖和来源限制
 - `work/fetch_national_team_stock_history.py`：直接A股季度回溯、股东表交叉核查与导出脚本
 - `work/national_team_stock_history.json`：2015年6月至2026年6月45个季度的直接A股持仓、来源差异及覆盖数量
 - `work/national_team_stock_adjustments.json`：建行各期A/H股拆分、原报告链接及证据
@@ -110,6 +113,19 @@ node work/build_market_dashboard.js --skip-refresh
 去掉 `--blocks-only` 可刷新整个大资金模块。历史月份响应缓存在不入库的 `.tools/large-money-blocks/`，查询截止日所在月份每次重新获取；重新核查历史修订时移走对应缓存再运行。未核实的A股身份或价量金额差异会阻止替换正式数据。换电脑使用已提交的JSON可直接构建页面。
 
 国家队直接持仓主图覆盖2015-06-30至2026-06-30的45个季度，每期均有直接A股金额；ETF有22个中报/年报金额点。报告期选择、金额卡片、覆盖表和明细使用同一份合并数据。默认概览为双方都有可识别金额的2025年底：直接A股41,580.57亿元、14只ETF样本可识别持仓14,749.06亿元。ETF季报及2026年中报缺少具名持有人表，ETF及两类资产合计保留空值，不沿用上期份额。金额变化包含价格和披露覆盖变化，不能作为净买卖额。点击数据点或切换报告期可查看对应明细；曲线可单独勾选、拖动时间范围，纵轴按可见区间及曲线调整。
+
+社保投资组合A股作为绿色独立曲线，覆盖同一45个季度，附金额卡片、逐期公司数、可搜索的持仓明细及来源。2026年6月末已识别574家公司、714条持仓，金额2,118.46亿元；2025年末1,948.76亿元。识别“全国社保基金××组合”及明确具名的社保委托组合；不含社保理事会直持、转持/划转、基本养老保险、ETF和榜外持仓。社保金额不计入原有汇金／证金合计，也不代表社保全部资产。统一使用前十大股东表，数字编号规范化后按股票和组合去重，按期末A股未复权参考价估值；来源差异保留在JSON中。
+
+单独回溯或更新社保（普通行情刷新复用已提交的报告快照）：
+
+```bash
+python3 work/fetch_social_security_history.py --start 20150630 --end 20260630 --as-of 20261027
+python3 -m unittest discover -s work -p 'test_*.py'
+node --test work/test_national_team_direct_holdings.cjs work/test_national_team_etf_history.cjs
+node work/build_market_dashboard.js --skip-refresh
+```
+
+脚本复用 `.tools/national-team-stock-history/` 中的全市场股东与期末行情缓存，新增的 `social-primary-*` 保存东方财富分类检索及名称补充检索的分页响应，支持中断重跑。重新核查历史修订时先移走相应报告期缓存；换电脑直接使用已提交的JSON即可构建。新增日期需与主图报告期同步，缺失不补零；未知股份类别、价格冲突、缺价和重复持仓会阻止发布。
 
 上述直接持仓是独立核验的报告快照，普通行情刷新不会将旧份额滚动估值成新报告期持仓，也不会自动把底层暴露替换为直接持仓。主图由 `national_team_direct_holdings.js` 合并持仓对比JSON、`national_team_stock_history.json` 与 `national_team_etf_history.json`，重叠时期的金额与披露状态须通过校验。A股统一采用东方财富前十大股东表，Tushare用于股数及价格交叉核对；早期接口中混入的前十大流通股东不并入。只保留当期已上市、未退市的A股，建行逐期拆分A/H股。停牌等缺少期末行情时用数据源期末参考市值折算价，明细标＊。完整限制和差异见股票历史核查文件。
 

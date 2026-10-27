@@ -62,7 +62,7 @@ const moduleHtml = `
       <div>
         <div class="module-kicker">Module 05 / National Team Holdings</div>
         <h2>国家队观察</h2>
-        <p>直接A股与ETF的已披露持仓金额、账户构成及报告期变化。</p>
+        <p>汇金／证金A股与ETF、社保投资组合A股的已披露金额及报告期变化。</p>
       </div>
       <div class="module-status" id="nationalTeamEtfStatus">披露持仓样本</div>
     </div>

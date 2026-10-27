@@ -3,7 +3,7 @@ const assert = require("node:assert/strict");
 const audit = require("../outputs/national-team-holdings-comparison-20261026.json");
 const historyAudit = require("./national_team_etf_history.json");
 const stockHistory = require("./national_team_stock_history.json");
-const { buildDirectData } = require("./national_team_direct_holdings");
+const { buildDirectData, attachSocialData } = require("./national_team_direct_holdings");
 
 test("2025 annual comparison uses the same period and excludes CCB H shares", () => {
   const row = buildDirectData(audit).snapshots[0];
@@ -132,4 +132,36 @@ test("invalid stock backfill cannot publish inconsistent units, duplicates or co
   const incomplete = structuredClone(stockHistory);
   incomplete.failures.push({ period: "20150630" });
   assert.throws(() => buildDirectData(audit, historyAudit, incomplete), /Unresolved/);
+});
+
+test("social portfolios remain independent of national-team amounts and ETF missingness", () => {
+  const social = require("./social_security_history.json");
+  const original = buildDirectData(audit, historyAudit, stockHistory);
+  const rows = attachSocialData(original, social).snapshots;
+  assert.equal(rows.length, 45);
+  assert(rows.every(r => Number.isFinite(r.socialAmount) && r.socialCompanyCount > 0));
+  for (const [index, row] of rows.entries()) {
+    for (const key of ["stockAmount", "etfAmount", "combinedAmount", "companyCount", "holderCount"]) {
+      assert.equal(row[key], original.snapshots[index][key]);
+    }
+    assert.equal(row.socialHolderCount, row.social.length);
+    assert(Math.abs(row.socialAmount - row.social.reduce((sum, r) => sum + r.amount, 0)) < 0.01);
+  }
+  const partial = { ...social, snapshots: social.snapshots.slice(1) };
+  const missing = attachSocialData(original, partial).snapshots[0];
+  assert.equal(missing.socialAmount, null);
+  assert.deepEqual(missing.social, []);
+});
+
+test("social data cannot publish wrong amounts, duplicate accounts or unresolved audits", () => {
+  const original = buildDirectData(audit, historyAudit, stockHistory);
+  const social = require("./social_security_history.json");
+  const bad = structuredClone(social);
+  bad.snapshots[0].details[0].units *= 2;
+  assert.throws(() => attachSocialData(original, bad), /amount mismatch/);
+  const duplicate = structuredClone(social);
+  duplicate.snapshots[0].details.push(duplicate.snapshots[0].details[0]);
+  assert.throws(() => attachSocialData(original, duplicate), /Duplicate/);
+  const unresolved = { ...social, failures: [{ period: "20150630" }] };
+  assert.throws(() => attachSocialData(original, unresolved), /Unresolved/);
 });
