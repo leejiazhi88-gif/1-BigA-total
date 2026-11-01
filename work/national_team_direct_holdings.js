@@ -249,7 +249,7 @@ const html = `
       <div id="nationalTeamDirectChart" role="img" aria-label="汇金、证金及社保投资组合已披露持仓金额走势图"></div>
       <p class="nt-method" id="ntDirectRatioNote" hidden>A股两条曲线：已识别持仓金额÷同期全A股总市值（沪深北，含限售A股）。ETF：已识别持仓金额÷各已识别持有基金的总净资产合计。A股分母不随识别到的持股公司数量变化；分子仍受股东榜披露覆盖及相对涨跌影响，不等于净买入。</p>
       <p class="nt-direct-status" id="ntDirectGap"></p>
-      <p class="nt-method">A股已披露持仓从2010年6月起回溯。2010至2012年若干季度的来源覆盖明显不足，图上留空断线，不视作减仓或清仓；2015年6月后按季度展示，ETF为已核实的中报、年报时点。虚线仅连接披露快照，不代表每日持仓路径。金额含价格涨跌及股东榜覆盖变化，不能把差额当作实际净买卖额。</p>
+      <p class="nt-method">A股已披露持仓从2010年6月起回溯。2010至2013年若干季度的来源覆盖明显不足，图上留空断线，不视作减仓或清仓；2015年6月后按季度展示，ETF为已核实的中报、年报时点。虚线仅连接披露快照，不代表每日持仓路径。金额含价格涨跌及股东榜覆盖变化，不能把差额当作实际净买卖额。</p>
       <p class="nt-method">社保曲线为具名投资组合的直接A股持仓，含明确具名的委托组合；不含理事会直持、划转账户、基本养老保险及ETF。社保独立展示，不计入汇金／证金合计。</p>
       <div class="nt-direct-coverage" id="ntDirectCoverage"></div>
       <div class="nt-direct-details">
@@ -311,7 +311,7 @@ function renderDirectHoldings(data) {
   $("ntDirectPeriod").innerHTML = [...snapshots].reverse().map(row => '<option value="' + row.period + '">' + row.date + '</option>').join("");
   $("ntDirectPeriod").value = snapshots[selected].period;
   const latest = snapshots.at(-1);
-  $("ntDirectGap").textContent = "早期2010—2012年部分季度股东榜明显缺页，曲线在这些报告期断开；缺口不代表减仓。 " + (latest.etfAmount === null
+  $("ntDirectGap").textContent = "早期2010—2013年部分季度股东榜明显缺页，曲线在这些报告期断开；缺口不代表减仓。 " + (latest.etfAmount === null
     ? latest.date + "：核查的" + latest.etfs.length + "只ETF均缺少具名前十名持有人表，本期ETF及合计金额未披露。"
     : "ETF为固定样本中的已披露金额，不代表全市场ETF持仓。");
   const chart = echarts.init($("nationalTeamDirectChart"), null, { renderer: "canvas" });
