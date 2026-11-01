@@ -118,6 +118,39 @@ def build_daily_series(market_rows, margins, limit_counts):
     return series, {"shBoardChecks": len(comparisons), "maxRoundingDifferenceYi": max(comparisons, default=0)}
 
 
+def build_exchange_series(market_rows, margins):
+    market_by_date = indexed(market_rows, "ts_code")
+    margin_by_date = indexed(margins, "exchange_id")
+    result = {"sh": [], "sz": []}
+    for date in sorted(set(market_by_date) | set(margin_by_date)):
+        market = market_by_date.get(date, {})
+        sh_codes = ["SH_A", "SH_B"] + (["SH_STAR"] if date >= "20190722" else [])
+        sh_boards = [market[code] for code in sh_codes] if all(code in market for code in sh_codes) else []
+        sh = market.get("SH_MARKET")
+        sh_amount = sh.get("amount") if sh else complete_sum(sh_boards, "amount")
+        sh_float = sh.get("float_mv") if sh else complete_sum(sh_boards, "float_mv")
+        sh_turnover = None
+        sh_board_float = complete_sum(sh_boards, "float_mv")
+        if sh_board_float and all(number(row.get("tr")) for row in sh_boards):
+            sh_turnover = sum(row["tr"] * row["float_mv"] for row in sh_boards) / sh_board_float
+        sz = market.get("SZ_MARKET")
+        for key, amount, float_mv, turnover, exchange in (
+            ("sh", sh_amount, sh_float, sh_turnover, "SSE"),
+            ("sz", sz.get("amount") if sz else None, sz.get("float_mv") if sz else None,
+             sz.get("tr") if sz else None, "SZSE"),
+        ):
+            margin = margin_by_date.get(date, {}).get(exchange)
+            balance = margin.get("rzye") if margin else None
+            values = {"amount": amount, "turnover": turnover,
+                      "marginBalance": balance / 1e8 if number(balance) else None,
+                      "marginFloatRatio": balance / 1e8 / float_mv * 100 if number(balance) and number(float_mv) and float_mv else None}
+            if any(value is not None for value in values.values()):
+                result[key].append({"date": f"{date[:4]}-{date[4:6]}-{date[6:]}",
+                                    **{field: round(value, 4 if field in ("turnover", "marginFloatRatio") else 2)
+                                       if value is not None else None for field, value in values.items()}})
+    return {key: last_by_week(rows) for key, rows in result.items()}
+
+
 def last_by_week(rows):
     fields = list(dict.fromkeys(field for row in rows for field in row if field != "date"))
     weeks = {}
@@ -154,6 +187,7 @@ def main():
         margins.extend(yearly(token, "margin", {"exchange_id": exchange}, "trade_date,exchange_id,rzye,rzmre", 2010))
     series, checks = build_daily_series(market_rows, margins, monthly_limit_counts(token))
     weekly = last_by_week(series)
+    markets = build_exchange_series(market_rows, margins)
     if not weekly:
         raise ValueError("No retail sentiment observations returned")
     result = {
@@ -161,6 +195,7 @@ def main():
             "updated": datetime.now().strftime("%Y-%m-%d"), "requestedEnd": END_DATE,
             "requestedStart": f"{START_YEAR}-01-01", "start": series[0]["date"], "end": weekly[-1]["date"],
             "frequency": "weekly", "coverage": coverage(weekly), "dailyCoverage": coverage(series), "validation": checks,
+            "marketCoverage": {market: coverage(rows) for market, rows in markets.items()},
             "sources": {"market": "Tushare daily_info: SH_MARKET (SH_A + SH_B before 2019) + SZ_MARKET",
                         "turnover": "Tushare daily_info: float_mv-weighted tr of SH_A, SH_B, SH_STAR (since 2019-07-22), SZ_MARKET",
                         "margin": "Tushare margin: SSE + SZSE, from 2010-03-31",
@@ -171,6 +206,7 @@ def main():
                             "missing": "No zero fill or carry-forward; financing starts with the 2010 launch; limit list starts in 2020"},
         },
         "series": weekly,
+        "markets": markets,
     }
     OUTPUT.write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(json.dumps({"output": str(OUTPUT), "points": len(weekly), "coverage": result["meta"]["coverage"], "validation": checks}, ensure_ascii=False))
