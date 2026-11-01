@@ -494,7 +494,7 @@
     </div>
 
     <div class="valuation-foot single-note">
-      <div class="note"><strong>连续数据口径：</strong>三条线分别为沪深两市合计、沪市、深市，不是上证指数和深证成指成分股口径。沪深股票市场含A/B股，不含北交所、基金和债券；成交额单位亿元。两市完整成交额与换手率从2005年起；换手率按各市场股票板块流通市值加权，两市合计不是沪深换手率的简单平均。2019年前沪市金额及流通市值由A/B股分项加总。融资按沪深交易所余额分别统计，两市合计为两者之和；融资占比各自除以对应市场流通市值。每周取各指标最后可得交易日的单日值，不是周累计；缺失不补零。融资从2010年3月业务启动后统计。</div>
+      <div class="note" aria-live="polite"><strong>当前指标说明：</strong><span id="retailMetricExplanation">沪深股票成交额反映交易活跃度；三条线分别为两市合计、沪市和深市。</span></div>
     </div>
     <h3 class="retail-monthly-heading">月度入场趋势</h3>
     <div class="retail-monthly-grid">
@@ -556,9 +556,8 @@
 
     </div>
 
-    <div class="valuation-foot">
-      <div class="note"><strong>连续数据口径：</strong>大宗交易仅统计沪深A股，按周汇总，排除债券、基金、B股和北交所；金额由万元换算为亿元，并与成交价×成交量核对。历史包含当时上市、后来退市的股票；早年披露记录稀疏，曲线仅代表可得公告，不代表全市场没有其他交易。机构净买入＝“机构专用”买入额－卖出额，双方均为机构的交易净额为零；不按金额大小删去真实交易。产业资本净增减持按公告股数汇总，正值为净增持、负值为净减持。</div>
-      <div class="note"><strong>北向口径提示：</strong>北向净流入序列保留至2024年8月16日。此后披露机制发生变化，页面不把新口径成交数据与旧口径净流入强行拼接。</div>
+    <div class="valuation-foot single-note">
+      <div class="note" aria-live="polite"><strong>当前指标说明：</strong><span id="largeMoneyMetricExplanation">沪深A股大宗交易的已披露成交金额，按自然周汇总。</span></div>
     </div>
   </section>
 
@@ -606,16 +605,8 @@
 
     </div>
 
-    <div class="valuation-foot">
-      <div class="note"><strong>连续数据口径总览：</strong>M2月度增速可追溯至1991年；其他指标各有不同起点。周频指标按自然周汇总并落在该周最后一个可用日期；月度宏观指标落在月末；印花税率按政策生效日做阶梯序列，不做线性插值。早期股东增减持仅统计有均价的披露记录，缺失不作零值处理。</div>
-      <div class="official-methodology" aria-label="官方情绪指标统计口径">
-        <div class="official-method"><strong>IPO融资额</strong><span>来源为 Tushare new_share 的 funds 字段，按 IPO 日期或发行日期归入自然周求和，单位亿元；用于观察一级市场供给节奏。</span></div>
-        <div class="official-method"><strong>产业资本净减持额</strong><span>来源为 Tushare stk_holdertrade；仅统计公告中有均价的增减持记录，金额=变动股数×均价，减持记正、增持记负，按周汇总，单位亿元。</span></div>
-        <div class="official-method"><strong>印花税率</strong><span>手工维护证券交易印花税政策生效日与税率，单位%；图上按阶梯线展示，表示税率在下一次政策调整前保持不变。</span></div>
-        <div class="official-method"><strong>政策利率</strong><span>用 1年期 SHIBOR 作为资金利率环境代理，取每周最后一个可用值，单位%；它不是央行政策利率本身，但可观察银行间资金价格趋势。</span></div>
-        <div class="official-method"><strong>社融增量</strong><span>来源为 Tushare sf_month 的 inc_month，月度社会融资规模增量，落在月末，单位亿元；用于观察信用扩张或收缩。</span></div>
-        <div class="official-method"><strong>M2增速</strong><span>来源为 Tushare cn_m 的 m2_yoy，月度 M2 同比增速，落在月末，单位%；需结合社融和利率判断流动性状态。</span></div>
-      </div>
+    <div class="valuation-foot single-note">
+      <div class="note" aria-live="polite"><strong>当前指标说明：</strong><span id="officialMetricExplanation">A股IPO募集资金反映一级市场新股融资供给，按自然周汇总。</span></div>
     </div>
   </section>
 
@@ -1144,22 +1135,26 @@ window.addEventListener("resize", () => chart.resize());
       amount: {
         title: "两市成交额", unit: "亿元", digits: 0,
         subtitle: "两市合计、沪市与深市股票成交额",
-        note: "成交额快速放大代表交易热度上升，需结合指数涨幅判断是否出现巨量滞涨。"
+        note: "成交额快速放大代表交易热度上升，需结合指数涨幅判断是否出现巨量滞涨。",
+        explanation: "沪深股票成交额反映交易活跃度。来源为Tushare交易所市场统计；两市合计为沪市与深市股票成交额之和，含A/B股，不含北交所、基金和债券；不是上证指数、深证成指的成分股口径。2019年前沪市由A/B股分项加总。单位亿元，每周取最后可得交易日的单日值，不是周成交额总和；缺失不补零。"
       },
       turnover: {
         title: "市场换手率", unit: "%", digits: 2,
         subtitle: "两市合计、沪市与深市换手率，按流通市值加权",
-        note: "换手率越高，筹码交换越快；高位持续高换手通常意味着分歧显著扩大。"
+        note: "换手率越高，筹码交换越快；高位持续高换手通常意味着分歧显著扩大。",
+        explanation: "换手率衡量股票筹码交换速度。来源为Tushare交易所各股票板块换手率及流通市值；两市合计按各板块流通市值加权，不是沪、深换手率的简单平均。范围含沪深A/B股，不含北交所、基金和债券。单位%，每周取最后可得交易日的单日值；缺失不补零。"
       },
       marginBalance: {
         title: "融资余额", unit: "亿元", digits: 0,
         subtitle: "两市合计、沪市与深市融资余额",
-        note: "融资余额持续抬升表示杠杆资金扩张；融资融券业务于2010年3月启动，更早年份不适用。"
+        note: "融资余额持续抬升表示杠杆资金扩张；融资融券业务于2010年3月启动，更早年份不适用。",
+        explanation: "融资余额是投资者尚未偿还的融资买入资金余额，用来观察杠杆存量，不是当日融资买入额。来源为Tushare沪深交易所融资余额；两市合计为沪市与深市之和。单位亿元，每周取最后可得交易日的余额，不是周累计。融资融券业务于2010年3月启动，更早年份不适用；缺失不补零。"
       },
       marginFloatRatio: {
         title: "融资余额/流通市值", unit: "%", digits: 2,
         subtitle: "融资余额占对应市场流通市值比例",
-        note: "融资余额除以同期沪深股票流通市值，反映杠杆拥挤度；2010年3月以前不适用。"
+        note: "融资余额除以同期沪深股票流通市值，反映杠杆拥挤度；2010年3月以前不适用。",
+        explanation: "融资余额/流通市值用于观察杠杆资金相对市场规模的拥挤程度。沪市、深市各以本市场融资余额除以本市场股票流通市值；两市合计以两市融资余额之和除以两市流通市值之和，不是两个比例的平均。来源为Tushare交易所融资及市场统计，单位%；每周取最后可得交易日的值，2010年3月以前不适用，缺失不补零。"
       }
     };
     const coverage = Object.fromEntries(Object.keys(metrics).map(key => {
@@ -1199,6 +1194,7 @@ window.addEventListener("resize", () => chart.resize());
       document.getElementById("retailMetricSubtitle").textContent = cfg.subtitle + " · 周频 · 可用历史 " +
         (span.start ? span.start + " 至 " + span.end : "暂无");
       document.getElementById("retailMetricNote").textContent = cfg.note;
+      document.getElementById("retailMetricExplanation").textContent = cfg.explanation;
       document.getElementById("retailLatestReading").textContent = latest.join(" / ") || "暂无数据";
       chart.setOption({
         animation: false,
@@ -1346,22 +1342,26 @@ window.addEventListener("resize", () => chart.resize());
       blockAmount: {
         title: "大宗交易额", unit: "亿元", digits: 1,
         subtitle: "沪深A股大宗交易周成交额",
-        note: "大宗交易放量代表大额筹码交换活跃，需要结合机构席位净方向判断。"
+        note: "大宗交易放量代表大额筹码交换活跃，需要结合机构席位净方向判断。",
+        explanation: "大宗交易额反映已披露的大额股票交易活跃度，不直接代表机构净买入。来源为Tushare大宗交易记录，仅统计沪深A股，排除B股、北交所、债券和基金；按自然周汇总，金额由万元换算为亿元，并与成交价×成交量核对。历史包含后来退市的股票；早年记录较稀疏，未披露不等于没有交易。"
       },
       institutionBlockNet: {
         title: "机构大宗净买入", unit: "亿元", digits: 1,
         subtitle: "沪深A股机构专用席位大宗交易周净买入额",
-        note: "正值表示机构席位净买入，负值表示净卖出；极端负值可辅助识别机构撤退。"
+        note: "正值表示机构席位净买入，负值表示净卖出；极端负值可辅助识别机构撤退。",
+        explanation: "机构大宗净买入＝买方为“机构专用”的成交金额－卖方为“机构专用”的成交金额；买卖双方都是机构专用时净额为零。来源为Tushare沪深A股大宗交易席位记录，按自然周汇总，单位亿元。它只覆盖披露的机构专用席位，不代表机构通过普通交易账户的全部买卖。"
       },
       holderNetShares: {
         title: "产业资本净增减持", unit: "亿股", digits: 2,
         subtitle: "重要股东公告口径的周净增减持股数",
-        note: "正值为净增持，负值为净减持；该指标按股数汇总，不等同于交易金额。"
+        note: "正值为净增持，负值为净减持；该指标按股数汇总，不等同于交易金额。",
+        explanation: "产业资本净增减持按重要股东公告中的变动股数汇总：增持记正、减持记负，单位亿股。来源为Tushare stk_holdertrade，按公告日期归入自然周，按公告主体和变动记录去重。它不是成交金额，也不是所有大股东的实时持仓；公告缺失或延后会影响曲线。"
       },
       northMoney: {
         title: "北向资金净流入", unit: "亿元", digits: 1,
         subtitle: "沪深股通日净流入，周末值；序列截至2024年8月16日",
-        note: "披露机制变化后不再与旧口径拼接，因此选择最近3年时曲线会在2024年8月结束。"
+        note: "披露机制变化后不再与旧口径拼接，因此选择最近3年时曲线会在2024年8月结束。",
+        explanation: "北向资金净流入采用Tushare moneyflow_hsgt的历史north_money字段。图上每周取最后一个可得交易日的单日值，单位亿元，不是整周净流入合计。旧口径仅保留至2024年8月16日；披露机制变化后不与新口径成交数据拼接，之后留空不表示北向资金为零。"
       }
     };
     let activeMetric = "blockAmount";
@@ -1407,6 +1407,7 @@ window.addEventListener("resize", () => chart.resize());
       const latest = points[points.length - 1]?.[1];
       document.getElementById("largeMoneyMetricSubtitle").textContent = cfg.subtitle;
       document.getElementById("largeMoneyMetricNote").textContent = cfg.note;
+      document.getElementById("largeMoneyMetricExplanation").textContent = cfg.explanation;
       document.getElementById("largeMoneyLatestReading").textContent =
         (points[points.length - 1]?.[0] || "暂无") + "：" + fmt(latest, cfg.digits) + cfg.unit;
       chart.setOption({
@@ -1482,32 +1483,38 @@ window.addEventListener("resize", () => chart.resize());
       ipoFunds: {
         title: "IPO融资额", unit: "亿元", digits: 1,
         subtitle: "A股IPO募集资金，按周汇总",
-        note: "IPO融资额反映一级市场供给节奏，过快扩容可能压制二级市场风险偏好."
+        note: "IPO融资额反映一级市场供给节奏，过快扩容可能压制二级市场风险偏好.",
+        explanation: "IPO融资额是新股发行募集资金，反映一级市场资金供给节奏，不是二级市场成交额。来源为Tushare new_share的funds字段，按IPO日期或发行日期归入自然周求和，单位亿元；未披露的发行不估算。"
       },
       netReduceAmount: {
         title: "产业资本净减持额", unit: "亿元", digits: 1,
         subtitle: "重要股东增减持公告金额，按周汇总",
-        note: "正值为净减持，负值为净增持；仅统计公告披露均价的记录."
+        note: "正值为净减持，负值为净增持；仅统计公告披露均价的记录.",
+        explanation: "产业资本净减持额按重要股东增减持公告估算：变动股数×披露均价，减持记正、增持记负，再按自然周汇总，单位亿元。来源为Tushare stk_holdertrade；没有均价的记录不计入，缺失不补零。它是公告样本，不等于全部产业资本净卖出。"
       },
       stampTaxRate: {
         title: "印花税率", unit: "%", digits: 2,
         subtitle: "证券交易印花税政策阶梯序列",
-        note: "印花税调整直接改变交易摩擦成本，常用于传递活跃或抑制交易的政策信号."
+        note: "印花税调整直接改变交易摩擦成本，常用于传递活跃或抑制交易的政策信号.",
+        explanation: "印花税率反映证券交易印花税政策规定的税率，单位%。来源为人工核对并维护的政策生效日与税率；图上采用阶梯线，表示下次调整前税率保持不变，不做线性插值。它是政策参数，不是实际征收税额。"
       },
       policyRate: {
         title: "政策利率代理", unit: "%", digits: 2,
         subtitle: "1年期SHIBOR，周末值",
-        note: "用1年期SHIBOR代理资金利率环境，下降通常对应流动性边际改善."
+        note: "用1年期SHIBOR代理资金利率环境，下降通常对应流动性边际改善.",
+        explanation: "此页签使用1年期SHIBOR观察银行间资金价格，来源为Tushare shibor的1y字段，取每周最后一个可用值，单位%。它只是利率环境代理，并非央行直接设定的政策利率；图上升降不能单独解释为央行加息或降息。"
       },
       socialFinancing: {
         title: "社融增量", unit: "亿元", digits: 0,
         subtitle: "社会融资规模月度增量",
-        note: "社融增量反映实体信用扩张力度，权益市场常关注其趋势拐点."
+        note: "社融增量反映实体信用扩张力度，权益市场常关注其趋势拐点.",
+        explanation: "社融增量是当月新增社会融资规模，观察实体部门融资扩张速度；来源为Tushare sf_month的inc_month字段。按月展示并落在月末，单位亿元；它是增量，不是社融存量或同比增速，不与周频指标混作同一口径。"
       },
       m2Yoy: {
         title: "M2增速", unit: "%", digits: 1,
         subtitle: "M2同比增速，月度数据",
-        note: "M2同比用于观察广义流动性环境，需结合社融和政策利率判断."
+        note: "M2同比用于观察广义流动性环境，需结合社融和政策利率判断.",
+        explanation: "M2增速是广义货币供应量的同比增速，反映货币总量变化。来源为Tushare cn_m的m2_yoy字段，按月展示并落在月末，单位%；不是当月新增货币量。可结合社融与利率观察流动性，但不能单独推断股市涨跌。"
       }
     };
     let activeMetric = "ipoFunds";
@@ -1528,6 +1535,7 @@ window.addEventListener("resize", () => chart.resize());
       const latest = points[points.length - 1]?.[1];
       document.getElementById("officialMetricSubtitle").textContent = cfg.subtitle;
       document.getElementById("officialMetricNote").textContent = cfg.note;
+      document.getElementById("officialMetricExplanation").textContent = cfg.explanation;
       document.getElementById("officialLatestReading").textContent =
         (points[points.length - 1]?.[0] || "暂无") + "：" + fmt(latest, cfg.digits) + cfg.unit;
       chart.setOption({

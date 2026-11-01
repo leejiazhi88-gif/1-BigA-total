@@ -72,9 +72,8 @@ const moduleHtml = `
 
     </div>
 
-    <div class="valuation-foot">
-      <div class="note"><strong>连续数据口径：</strong>大宗交易仅统计沪深A股，按周汇总，排除债券、基金、B股和北交所；金额由万元换算为亿元，并与成交价×成交量核对。历史包含当时上市、后来退市的股票；早年披露记录稀疏，曲线仅代表可得公告，不代表全市场没有其他交易。机构净买入＝“机构专用”买入额－卖出额，双方均为机构的交易净额为零；不按金额大小删去真实交易。产业资本净增减持按公告股数汇总，正值为净增持、负值为净减持。</div>
-      <div class="note"><strong>北向口径提示：</strong>北向净流入序列保留至2024年8月16日。此后披露机制发生变化，页面不把新口径成交数据与旧口径净流入强行拼接。</div>
+    <div class="valuation-foot single-note">
+      <div class="note" aria-live="polite"><strong>当前指标说明：</strong><span id="largeMoneyMetricExplanation">沪深A股大宗交易的已披露成交金额，按自然周汇总。</span></div>
     </div>
   </section>
 `;
@@ -93,22 +92,26 @@ const script = `
       blockAmount: {
         title: "大宗交易额", unit: "亿元", digits: 1,
         subtitle: "沪深A股大宗交易周成交额",
-        note: "大宗交易放量代表大额筹码交换活跃，需要结合机构席位净方向判断。"
+        note: "大宗交易放量代表大额筹码交换活跃，需要结合机构席位净方向判断。",
+        explanation: "大宗交易额反映已披露的大额股票交易活跃度，不直接代表机构净买入。来源为Tushare大宗交易记录，仅统计沪深A股，排除B股、北交所、债券和基金；按自然周汇总，金额由万元换算为亿元，并与成交价×成交量核对。历史包含后来退市的股票；早年记录较稀疏，未披露不等于没有交易。"
       },
       institutionBlockNet: {
         title: "机构大宗净买入", unit: "亿元", digits: 1,
         subtitle: "沪深A股机构专用席位大宗交易周净买入额",
-        note: "正值表示机构席位净买入，负值表示净卖出；极端负值可辅助识别机构撤退。"
+        note: "正值表示机构席位净买入，负值表示净卖出；极端负值可辅助识别机构撤退。",
+        explanation: "机构大宗净买入＝买方为“机构专用”的成交金额－卖方为“机构专用”的成交金额；买卖双方都是机构专用时净额为零。来源为Tushare沪深A股大宗交易席位记录，按自然周汇总，单位亿元。它只覆盖披露的机构专用席位，不代表机构通过普通交易账户的全部买卖。"
       },
       holderNetShares: {
         title: "产业资本净增减持", unit: "亿股", digits: 2,
         subtitle: "重要股东公告口径的周净增减持股数",
-        note: "正值为净增持，负值为净减持；该指标按股数汇总，不等同于交易金额。"
+        note: "正值为净增持，负值为净减持；该指标按股数汇总，不等同于交易金额。",
+        explanation: "产业资本净增减持按重要股东公告中的变动股数汇总：增持记正、减持记负，单位亿股。来源为Tushare stk_holdertrade，按公告日期归入自然周，按公告主体和变动记录去重。它不是成交金额，也不是所有大股东的实时持仓；公告缺失或延后会影响曲线。"
       },
       northMoney: {
         title: "北向资金净流入", unit: "亿元", digits: 1,
         subtitle: "沪深股通日净流入，周末值；序列截至2024年8月16日",
-        note: "披露机制变化后不再与旧口径拼接，因此选择最近3年时曲线会在2024年8月结束。"
+        note: "披露机制变化后不再与旧口径拼接，因此选择最近3年时曲线会在2024年8月结束。",
+        explanation: "北向资金净流入采用Tushare moneyflow_hsgt的历史north_money字段。图上每周取最后一个可得交易日的单日值，单位亿元，不是整周净流入合计。旧口径仅保留至2024年8月16日；披露机制变化后不与新口径成交数据拼接，之后留空不表示北向资金为零。"
       }
     };
     let activeMetric = "blockAmount";
@@ -154,6 +157,7 @@ const script = `
       const latest = points[points.length - 1]?.[1];
       document.getElementById("largeMoneyMetricSubtitle").textContent = cfg.subtitle;
       document.getElementById("largeMoneyMetricNote").textContent = cfg.note;
+      document.getElementById("largeMoneyMetricExplanation").textContent = cfg.explanation;
       document.getElementById("largeMoneyLatestReading").textContent =
         (points[points.length - 1]?.[0] || "暂无") + "：" + fmt(latest, cfg.digits) + cfg.unit;
       chart.setOption({

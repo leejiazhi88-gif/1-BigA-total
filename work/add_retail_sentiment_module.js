@@ -93,7 +93,7 @@ const moduleHtml = `
     </div>
 
     <div class="valuation-foot single-note">
-      <div class="note"><strong>连续数据口径：</strong>三条线分别为沪深两市合计、沪市、深市，不是上证指数和深证成指成分股口径。沪深股票市场含A/B股，不含北交所、基金和债券；成交额单位亿元。两市完整成交额与换手率从2005年起；换手率按各市场股票板块流通市值加权，两市合计不是沪深换手率的简单平均。2019年前沪市金额及流通市值由A/B股分项加总。融资按沪深交易所余额分别统计，两市合计为两者之和；融资占比各自除以对应市场流通市值。每周取各指标最后可得交易日的单日值，不是周累计；缺失不补零。融资从2010年3月业务启动后统计。</div>
+      <div class="note" aria-live="polite"><strong>当前指标说明：</strong><span id="retailMetricExplanation">沪深股票成交额反映交易活跃度；三条线分别为两市合计、沪市和深市。</span></div>
     </div>
     <h3 class="retail-monthly-heading">月度入场趋势</h3>
     <div class="retail-monthly-grid">
@@ -128,22 +128,26 @@ const script = `
       amount: {
         title: "两市成交额", unit: "亿元", digits: 0,
         subtitle: "两市合计、沪市与深市股票成交额",
-        note: "成交额快速放大代表交易热度上升，需结合指数涨幅判断是否出现巨量滞涨。"
+        note: "成交额快速放大代表交易热度上升，需结合指数涨幅判断是否出现巨量滞涨。",
+        explanation: "沪深股票成交额反映交易活跃度。来源为Tushare交易所市场统计；两市合计为沪市与深市股票成交额之和，含A/B股，不含北交所、基金和债券；不是上证指数、深证成指的成分股口径。2019年前沪市由A/B股分项加总。单位亿元，每周取最后可得交易日的单日值，不是周成交额总和；缺失不补零。"
       },
       turnover: {
         title: "市场换手率", unit: "%", digits: 2,
         subtitle: "两市合计、沪市与深市换手率，按流通市值加权",
-        note: "换手率越高，筹码交换越快；高位持续高换手通常意味着分歧显著扩大。"
+        note: "换手率越高，筹码交换越快；高位持续高换手通常意味着分歧显著扩大。",
+        explanation: "换手率衡量股票筹码交换速度。来源为Tushare交易所各股票板块换手率及流通市值；两市合计按各板块流通市值加权，不是沪、深换手率的简单平均。范围含沪深A/B股，不含北交所、基金和债券。单位%，每周取最后可得交易日的单日值；缺失不补零。"
       },
       marginBalance: {
         title: "融资余额", unit: "亿元", digits: 0,
         subtitle: "两市合计、沪市与深市融资余额",
-        note: "融资余额持续抬升表示杠杆资金扩张；融资融券业务于2010年3月启动，更早年份不适用。"
+        note: "融资余额持续抬升表示杠杆资金扩张；融资融券业务于2010年3月启动，更早年份不适用。",
+        explanation: "融资余额是投资者尚未偿还的融资买入资金余额，用来观察杠杆存量，不是当日融资买入额。来源为Tushare沪深交易所融资余额；两市合计为沪市与深市之和。单位亿元，每周取最后可得交易日的余额，不是周累计。融资融券业务于2010年3月启动，更早年份不适用；缺失不补零。"
       },
       marginFloatRatio: {
         title: "融资余额/流通市值", unit: "%", digits: 2,
         subtitle: "融资余额占对应市场流通市值比例",
-        note: "融资余额除以同期沪深股票流通市值，反映杠杆拥挤度；2010年3月以前不适用。"
+        note: "融资余额除以同期沪深股票流通市值，反映杠杆拥挤度；2010年3月以前不适用。",
+        explanation: "融资余额/流通市值用于观察杠杆资金相对市场规模的拥挤程度。沪市、深市各以本市场融资余额除以本市场股票流通市值；两市合计以两市融资余额之和除以两市流通市值之和，不是两个比例的平均。来源为Tushare交易所融资及市场统计，单位%；每周取最后可得交易日的值，2010年3月以前不适用，缺失不补零。"
       }
     };
     const coverage = Object.fromEntries(Object.keys(metrics).map(key => {
@@ -183,6 +187,7 @@ const script = `
       document.getElementById("retailMetricSubtitle").textContent = cfg.subtitle + " · 周频 · 可用历史 " +
         (span.start ? span.start + " 至 " + span.end : "暂无");
       document.getElementById("retailMetricNote").textContent = cfg.note;
+      document.getElementById("retailMetricExplanation").textContent = cfg.explanation;
       document.getElementById("retailLatestReading").textContent = latest.join(" / ") || "暂无数据";
       chart.setOption({
         animation: false,
