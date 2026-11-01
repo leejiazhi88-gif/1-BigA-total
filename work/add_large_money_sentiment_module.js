@@ -4,7 +4,6 @@ const path = require("path");
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const DATA_FILE = path.join(ROOT, "work", "large_money_sentiment_data.json");
-const EVENTS_FILE = path.join(ROOT, "work", "large_money_sentiment_events.json");
 
 function stripExisting(html) {
   return html
@@ -17,7 +16,7 @@ function stripExisting(html) {
 const css = `
   <style id="large-money-sentiment-style">
     .large-money-grid {
-      display: grid; grid-template-columns: minmax(0, 1.68fr) minmax(360px, .82fr);
+      display: grid; grid-template-columns: minmax(0, 1fr);
       gap: 15px; align-items: stretch;
     }
     #largeMoneyChart { height: 500px; width: 100%; }
@@ -71,29 +70,6 @@ const moduleHtml = `
         <div id="largeMoneyChart"></div>
       </article>
 
-      <aside class="valuation-panel">
-        <div class="panel-head">
-          <div>
-            <div class="panel-title">大资金事件 List</div>
-            <div class="panel-subtitle">按年份和季度切换；分类对应飞书“A股指数”表</div>
-          </div>
-          <div class="event-controls">
-            <select id="largeMoneyEventYear" class="event-select" aria-label="大资金事件年份"></select>
-            <select id="largeMoneyEventQuarter" class="event-select" aria-label="大资金事件季度">
-              <option value="Q1">Q1</option><option value="Q2">Q2</option>
-              <option value="Q3">Q3</option><option value="Q4">Q4</option>
-            </select>
-          </div>
-        </div>
-        <div class="event-body">
-          <div class="quarter-summary">
-            <div class="quarter-label" id="largeMoneyEventPeriod"></div>
-            <div class="event-count" id="largeMoneyEventCount"></div>
-          </div>
-          <div class="quarter-dashboard" id="largeMoneyQuarterDashboard"></div>
-          <ul class="event-list" id="largeMoneyEventList"></ul>
-        </div>
-      </aside>
     </div>
 
     <div class="valuation-foot">
@@ -107,7 +83,6 @@ const script = `
   <script id="large-money-sentiment-script">
   (() => {
     const largeMoneyData = __LARGE_MONEY_DATA__;
-    const largeMoneyEvents = __LARGE_MONEY_EVENTS__;
     const fmt = (value, digits = 1) => Number.isFinite(value)
       ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits })
       : "--";
@@ -235,87 +210,14 @@ const script = `
       });
     });
 
-    const yearSelect = document.getElementById("largeMoneyEventYear");
-    const quarterSelect = document.getElementById("largeMoneyEventQuarter");
-    const latestDate = largeMoneyData.series[largeMoneyData.series.length - 1].date;
-    const latestYear = Number(latestDate.slice(0, 4));
-    const latestQuarter = "Q" + Math.ceil(Number(latestDate.slice(5, 7)) / 3);
-    for (let year = latestYear; year >= 2006; year--) {
-      const option = document.createElement("option");
-      option.value = String(year); option.textContent = String(year);
-      yearSelect.appendChild(option);
-    }
-    yearSelect.value = String(latestYear);
-    quarterSelect.value = latestQuarter;
-    function quarterKey(date) {
-      return date.slice(0, 4) + "-Q" + Math.ceil(Number(date.slice(5, 7)) / 3);
-    }
-    function quarterRows(key) {
-      return largeMoneyData.series.filter(row => quarterKey(row.date) === key);
-    }
-    function percentileAbs(values, value) {
-      const clean = values.filter(Number.isFinite).map(Math.abs);
-      return clean.length ? clean.filter(item => item <= Math.abs(value)).length / clean.length * 100 : NaN;
-    }
-    function automaticEvents(key, existing) {
-      if (existing.some(event => event.type === "机构集中撤退")) return [];
-      const rows = quarterRows(key);
-      if (!rows.length) return [];
-      const worst = rows.reduce(
-        (best, row) => Number.isFinite(row.institutionBlockNet) &&
-          (!best || row.institutionBlockNet < best.institutionBlockNet) ? row : best,
-        null
-      );
-      if (!worst || worst.institutionBlockNet >= 0) return [];
-      const pct = percentileAbs(
-        largeMoneyData.series.map(row => row.institutionBlockNet),
-        worst.institutionBlockNet
-      );
-      if (pct < 95) return [];
-      return [{
-        type: "机构集中撤退",
-        title: "机构席位大宗净卖出进入历史极端区间",
-        desc: "单周机构专用席位大宗净卖出" + fmt(Math.abs(worst.institutionBlockNet), 1) +
-          "亿元，绝对规模处于历史" + fmt(pct, 0) + "%分位。",
-        meta: "数据规则：机构大宗净卖出绝对值进入2018年以来前5%；自动识别"
-      }];
-    }
-    function renderEvents() {
-      const key = yearSelect.value + "-" + quarterSelect.value;
-      const curated = largeMoneyEvents[key] || [];
-      const events = curated.concat(automaticEvents(key, curated));
-      const rows = quarterRows(key);
-      const row = rows[rows.length - 1];
-      document.getElementById("largeMoneyEventPeriod").textContent =
-        yearSelect.value + " " + quarterSelect.value;
-      document.getElementById("largeMoneyEventCount").textContent = events.length + " 条事件";
-      document.getElementById("largeMoneyQuarterDashboard").innerHTML = [
-        ["大宗交易额", Number.isFinite(row?.blockAmount) ? fmt(row.blockAmount, 1) + "亿元" : "暂无数据"],
-        ["机构大宗净买入", Number.isFinite(row?.institutionBlockNet) ? fmt(row.institutionBlockNet, 1) + "亿元" : "暂无数据"],
-        ["产业资本净增减持", Number.isFinite(row?.holderNetShares) ? fmt(row.holderNetShares, 2) + "亿股" : "暂无数据"],
-        ["北向净流入", Number.isFinite(row?.northMoney) ? fmt(row.northMoney, 1) + "亿元" : "口径已停止"]
-      ].map(item => '<div class="quarter-stat"><span>' + item[0] + '</span><strong>' + item[1] + '</strong></div>').join("");
-      document.getElementById("largeMoneyEventList").innerHTML = events.length ? events.map(event =>
-        '<li class="event-item">' +
-        '<div class="event-type">' + escapeHtml(event.type) + '</div>' +
-        '<div class="event-title">' + escapeHtml(event.title) + '</div>' +
-        '<div class="event-desc">' + escapeHtml(event.desc) + '</div>' +
-        '<div class="event-meta">' + escapeHtml(event.meta || "") + '</div></li>'
-      ).join("") : '<li class="event-empty">该季度暂无符合大资金事件口径的记录</li>';
-    }
-    yearSelect.addEventListener("change", renderEvents);
-    quarterSelect.addEventListener("change", renderEvents);
     window.addEventListener("resize", () => chart.resize());
     renderChart();
-    renderEvents();
   })();
   </script>
 `;
 
 if (!fs.existsSync(DATA_FILE)) throw new Error("Missing large_money_sentiment_data.json.");
-if (!fs.existsSync(EVENTS_FILE)) throw new Error("Missing large_money_sentiment_events.json.");
 const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
-const events = JSON.parse(fs.readFileSync(EVENTS_FILE, "utf8"));
 let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
 html = html.replace(
   '<a href="#retail-sentiment">情绪-散户</a>',
@@ -327,8 +229,7 @@ function insertBeforeLast(source, marker, content) {
   return source.slice(0, index) + content + source.slice(index);
 }
 const largeMoneyScript = script
-  .replace("__LARGE_MONEY_DATA__", JSON.stringify(data))
-  .replace("__LARGE_MONEY_EVENTS__", JSON.stringify(events.quarters));
+  .replace("__LARGE_MONEY_DATA__", JSON.stringify(data));
 html = insertBeforeLast(html, "</head>", css + "\n");
 html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
 html = insertBeforeLast(html, "</body>", largeMoneyScript + "\n");
