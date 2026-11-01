@@ -80,16 +80,16 @@ const moduleHtml = `
           <button class="range-tab" data-range="1y" aria-pressed="false">1年</button>
           <button class="range-tab" data-range="3y" aria-pressed="false">3年</button>
           <button class="range-tab" data-range="5y" aria-pressed="false">5年</button>
-          <button class="range-tab active" data-range="all" aria-pressed="true">2015至今</button>
+          <button class="range-tab active" data-range="all" aria-pressed="true">2010至今</button>
         </div>
       </div>
       <div class="nt-flow-funds" id="ntFlowFunds" aria-label="ETF指数类别"></div>
       <div class="nt-flow-readings" id="ntFlowReadings"></div>
       <p class="nt-method" id="ntFlowCoverage" aria-live="polite"></p>
-      <div id="nationalTeamEtfFlowChart" role="img" aria-label="2015年以来重点宽基ETF日度净申购与区间累计走势图"></div>
+      <div id="nationalTeamEtfFlowChart" role="img" aria-label="2010年以来重点宽基ETF日度净申购与区间累计走势图"></div>
       <div class="nt-etf-table nt-flow-table" id="ntFlowTable"></div>
       <p class="nt-method"><strong>统计口径：</strong>每日净申购估算＝（当日总份额－前一交易日总份额×当日折算比例）×当日单位净值，单位亿元；无折算时比例为1。累计值从当前可见区间首日重算。正值为净申购，负值为净赎回。来源为Tushare每日份额及净值，已按原始年报核对3次份额折算。</p>
-      <p class="nt-method"><strong>历史覆盖：</strong>从2015年首个交易日开始，按当时已上市的样本汇总；南方中证1000从2016年11月、华夏科创50从2020年11月加入，上市募集规模不作为当日申购。缺失不填零、不跨缺失交易日计算；缺失日总量及累计曲线断开，后续累计仅加总已知部分，不代表完整区间净申购。明细＊表示存在缺失，覆盖数量及可得起点随所选区间更新。</p>
+      <p class="nt-method"><strong>历史覆盖：</strong>从2010年首个交易日开始；早期仅上证50ETF纳入，其他基金按上市日期逐步加入。2015年以前采用Tushare历史基金份额与净值，之后采用ETF日度份额接口；历史规模字段有不一致记录，未用于申赎计算。上市募集规模不作为当日申购。缺失不填零、不跨缺失交易日计算；缺失日总量及累计曲线断开，后续累计仅加总已知部分，不代表完整区间净申购。明细＊表示存在缺失，覆盖数量及可得起点随所选区间更新。</p>
       <p class="nt-method"><strong>归属限制：</strong>包含所有投资者及实物申赎，不能等同于现金流入或国家队买入。范围为下表9只宽基ETF，不代表全部宽基基金。<a href="https://github.com/leejiazhi88-gif/1-BigA-total/blob/main/outputs/etf-flow-history-audit.md" target="_blank" rel="noopener noreferrer">历史数据与折算核查</a></p>
     </div>
   </section>

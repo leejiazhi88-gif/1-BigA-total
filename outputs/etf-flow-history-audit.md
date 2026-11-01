@@ -1,6 +1,8 @@
 # 重点宽基ETF每日净申购历史核查
 
-核验日期：2026-10-27。数据窗口：2015-01-05至2026-10-23，2,867个交易日。页面：[ETF每日净申购](https://leejiazhi88-gif.github.io/1-BigA-total/#national-team-etf-flow)。
+更新日期：2026-11-01。当前数据窗口：2010-01-04至2026-10-23，4,079个交易日，其中3,960日可计算完整的当期已上市样本合计。页面：[ETF每日净申购](https://leejiazhi88-gif.github.io/1-BigA-total/#national-team-etf-flow)。下文详细覆盖表是原2015年起样本核查，最新逐基金覆盖以 `work/etf_flow_data.json` 的 `coverage` 字段为准。
+
+2015年以前增加使用Tushare [fund_share](https://tushare.pro/document/2?doc_id=207) 与 `fund_nav` 日度记录；份额和2014年末 `etf_share_size` 接口重合日交叉核对。2010年仅上证50ETF已上市且进入样本，其余基金依上市日加入。历史规模字段在嘉实沪深300的157日、易方达创业板的2日与份额乘净值不一致，已单独标记且不用于申赎公式。缺失交易日继续留空，不能把累计曲线当作完整的资金流或国家队交易记录。
 
 ## 公式和范围
 

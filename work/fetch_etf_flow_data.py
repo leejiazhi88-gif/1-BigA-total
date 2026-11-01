@@ -10,8 +10,8 @@ from tushare_client import END_DATE, call_api, get_token
 
 OUTPUT = Path(__file__).resolve().parent / "etf_flow_data.json"
 CACHE = OUTPUT.parent.parent / ".tools" / "etf-flow-history"
-START_DATE = "20150101"
-FETCH_START = "20141201"
+START_DATE = "20100101"
+FETCH_START = "20091201"
 FIELDS = "trade_date,ts_code,total_share,total_size,nav,close"
 ADJUSTMENTS = json.loads((OUTPUT.parent / "etf_flow_adjustments.json").read_text(encoding="utf-8"))
 ETF_POOL = [
@@ -122,11 +122,33 @@ def load_history(token, offline=False):
         fund = {**etf, "found_date": basic[0]["found_date"], "list_date": basic[0]["list_date"]}
         pool.append(fund)
         rows_by_date = {}
-        for year in range(max(2014, int(fund["list_date"][:4])), int(END_DATE[:4]) + 1):
+        for year in range(max(2009, int(fund["list_date"][:4])), int(END_DATE[:4]) + 1):
             start, end = max(FETCH_START, f"{year}0101"), min(END_DATE, f"{year}1231")
             suffix = str(year) if end == f"{year}1231" else f"{year}-{end}"
             rows = cached_api(token, "etf_share_size", {"ts_code": code, "start_date": start, "end_date": end},
                               FIELDS, f"shares-{code}-{suffix}", refresh=year == int(END_DATE[:4]), offline=offline)
+            if year <= 2014:
+                old_shares = cached_api(token, "fund_share", {"ts_code": code, "start_date": start, "end_date": end},
+                                        "ts_code,trade_date,fd_share", f"fund-shares-{code}-{year}", offline=offline)
+                old_nav = cached_api(token, "fund_nav", {"ts_code": code, "start_date": start, "end_date": end},
+                                     "ts_code,nav_date,unit_nav", f"fund-nav-{code}-{year}", offline=offline)
+                nav_by_date = {row["nav_date"]: row["unit_nav"] for row in old_nav if row.get("nav_date")}
+                newer = {row["trade_date"]: row for row in rows}
+                for row in old_shares:
+                    date = row["trade_date"]
+                    if date in newer:
+                        if abs(newer[date]["total_share"] - row["fd_share"]) > 0.01:
+                            raise RuntimeError("Old/new ETF share disagreement: " + code + " " + date)
+                        continue
+                    nav = nav_by_date.get(date)
+                    if not finite(nav) or nav <= 0:
+                        continue
+                    shares = row.get("fd_share")
+                    if not finite(shares) or shares <= 0:
+                        continue
+                    newer[date] = {"ts_code": code, "trade_date": date, "total_share": shares,
+                                   "total_size": round(shares * nav, 4), "nav": nav, "close": None}
+                rows = list(newer.values())
             if not rows and any(max(start, fund["list_date"]) <= day["cal_date"] <= end for day in calendar_rows):
                 raise RuntimeError("Empty ETF history for an active year: " + code + " " + str(year))
             for row in rows:
@@ -137,7 +159,10 @@ def load_history(token, offline=False):
                     raise RuntimeError("Conflicting ETF observations: " + code + " " + date)
                 shares, nav, size = row.get("total_share"), row.get("nav"), row.get("total_size")
                 if all(finite(x) and x > 0 for x in (shares, nav, size)) and abs(size / shares - nav) > 0.001:
-                    raise RuntimeError("ETF share/NAV/size disagreement: " + code + " " + date)
+                    if year > 2014:
+                        raise RuntimeError("ETF share/NAV/size disagreement: " + code + " " + date)
+                    row["size_issue"] = "historical_share_nav_size_disagreement"
+                    row["total_size"] = None
                 rows_by_date[date] = row
         if not rows_by_date:
             raise RuntimeError("No ETF history: " + code)
@@ -158,6 +183,8 @@ def build_result(calendar_rows, raw_by_code, pool=ETF_POOL):
     if not complete_dates:
         raise RuntimeError("No complete ETF daily observations returned.")
     coverage = {}
+    size_issues = {code: [row["trade_date"] for row in rows.values() if row.get("size_issue")]
+                   for code, rows in raw_by_code.items()}
     for fund in pool:
         code = fund["ts_code"]
         valid = [r["date"] for r in series if r["flows"][code] is not None]
@@ -169,10 +196,12 @@ def build_result(calendar_rows, raw_by_code, pool=ETF_POOL):
         "meta": {"updated": datetime.now().strftime("%Y-%m-%d"), "requestedEnd": END_DATE,
                  "start": series[0]["date"], "end": complete_dates[-1], "windowEnd": series[-1]["date"],
                  "frequency": "daily", "window": len(series), "completeDays": len(complete_dates),
-                 "unit": "亿元", "source": "Tushare etf_share_size + trade_cal",
+                 "unit": "亿元", "source": "Tushare etf_share_size; before 2015 fund_share + fund_nav; trade_cal",
                  "sourceUrl": "https://tushare.pro/document/2?doc_id=408",
                  "method": "(total_share[t] - total_share[previous trading day] * verified_conversion_factor[t]) * nav[t] / 10000",
                  "shareUnit": "万份", "nationalTeamIdentified": False,
+                 "historicalSizeIssues": {code: {"count": len(dates), "first": min(dates), "last": max(dates)}
+                                          for code, dates in size_issues.items() if dates},
                  "limitations": ["ETF subscriptions/redemptions include all investors and in-kind baskets",
                                  "Not cash inflows or confirmed national-team purchases",
                                  "Each fund joins the sample from its listing date; earlier dates are not applicable",
@@ -194,6 +223,6 @@ def main(stage="all"):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Fetch daily ETF subscriptions from 2015 using year-sized cached requests")
+    parser = argparse.ArgumentParser(description="Fetch daily ETF subscriptions from 2010 using year-sized cached requests")
     parser.add_argument("--stage", choices=("collect", "export", "all"), default="all")
     main(parser.parse_args().stage)
