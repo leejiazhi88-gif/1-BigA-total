@@ -102,15 +102,17 @@ test("history cannot override an independently audited overlapping snapshot", ()
   assert.throws(() => buildDirectData(audit, missingTable), /ETF history disclosure mismatch/);
 });
 
-test("A-share history covers every quarter since June 2015 without filling ETF gaps", () => {
+test("A-share history reaches June 2010 while sparse disclosures remain gaps", () => {
   const rows = buildDirectData(audit, historyAudit, stockHistory).snapshots;
-  assert.equal(rows.length, 45);
-  assert.equal(rows[0].period, "20150630");
+  assert.equal(rows.length, 64);
+  assert.equal(rows[0].period, "20100630");
   assert.equal(rows.at(-1).period, "20260630");
-  assert(rows.every(row => Number.isFinite(row.stockAmount) && row.stockStatus === "verified"));
-  assert.equal(Math.round(rows[0].stockAmount), 22343);
-  assert.equal(rows[1].companyCount, 1166);
-  assert.equal(Math.round(rows[1].stockAmount), 26367);
+  assert.equal(rows.filter(row => row.stockStatus === "disclosure_gap").length, 6);
+  assert(rows.filter(row => row.stockStatus === "disclosure_gap").every(row => row.stockAmount === null));
+  assert.equal(Math.round(rows[0].stockAmount), 10621);
+  const oldFirst = rows.find(row => row.period === "20150630");
+  assert.equal(Math.round(oldFirst.stockAmount), 22343);
+  assert.equal(rows.find(row => row.period === "20150930").companyCount, 1166);
   assert.equal(rows.filter(r => r.etfAmount !== null).length, 22);
   assert.equal(rows.filter(r => r.combinedAmount !== null).length, 22);
   for (const row of rows.filter(r => r.etfReportKind === "quarterly")) {
@@ -118,7 +120,7 @@ test("A-share history covers every quarter since June 2015 without filling ETF g
     assert.equal(row.combinedAmount, null);
   }
   const ccb = rows[0].stocks.find(r => r.code === "601939.SH" && r.holder === "中央汇金投资有限责任公司");
-  assert.equal(ccb.units, 195941976);
+  assert.equal(ccb.units, 144747455);
   assert.equal(rows.at(-1).etfAmount, null);
 });
 
@@ -138,14 +140,19 @@ test("social portfolios remain independent of national-team amounts and ETF miss
   const social = require("./social_security_history.json");
   const original = buildDirectData(audit, historyAudit, stockHistory);
   const rows = attachSocialData(original, social).snapshots;
-  assert.equal(rows.length, 45);
-  assert(rows.every(r => Number.isFinite(r.socialAmount) && r.socialCompanyCount > 0));
+  assert.equal(rows.length, 64);
+  assert.equal(rows.filter(r => Number.isFinite(r.socialAmount) && r.socialCompanyCount > 0).length, 58);
   for (const [index, row] of rows.entries()) {
     for (const key of ["stockAmount", "etfAmount", "combinedAmount", "companyCount", "holderCount"]) {
       assert.equal(row[key], original.snapshots[index][key]);
     }
-    assert.equal(row.socialHolderCount, row.social.length);
-    assert(Math.abs(row.socialAmount - row.social.reduce((sum, r) => sum + r.amount, 0)) < 0.01);
+    if (row.socialAmount === null) {
+      assert.equal(row.stockStatus, "disclosure_gap");
+      assert.deepEqual(row.social, []);
+    } else {
+      assert.equal(row.socialHolderCount, row.social.length);
+      assert(Math.abs(row.socialAmount - row.social.reduce((sum, r) => sum + r.amount, 0)) < 0.01);
+    }
   }
   const partial = { ...social, snapshots: social.snapshots.slice(1) };
   const missing = attachSocialData(original, partial).snapshots[0];

@@ -101,7 +101,8 @@ function buildDirectData(audit, historyAudit, stockHistory) {
     }
   }
   const reports = new Map(history.reports.map(row => [[row.code, row.period, row.kind].join(":"), row]));
-  const periods = [...new Set([...directByPeriod.keys(), ...history.periods.filter(period => /(?:0630|1231)$/.test(period))])].sort();
+  const gaps = new Set(stockHistory?.gaps || []);
+  const periods = [...new Set([...directByPeriod.keys(), ...gaps, ...history.periods.filter(period => /(?:0630|1231)$/.test(period))])].sort();
   const merged = periods.map(period => {
     const direct = directByPeriod.get(period);
     const kind = period.endsWith("0630") ? "interim" : period.endsWith("1231") ? "annual" : "quarterly";
@@ -120,7 +121,7 @@ function buildDirectData(audit, historyAudit, stockHistory) {
     // ETF history does not establish stock holdings for earlier periods.
     const stock = direct || { period, date: period.slice(0, 4) + "-" + period.slice(4, 6) + "-" + period.slice(6),
       stockAmount: null, huijinAmount: null, otherAmount: null, companyCount: null, holderCount: null, stocks: [] };
-    return { ...stock, stockStatus: direct ? "verified" : "not_backfilled", etfs, etfAmount,
+    return { ...stock, stockStatus: direct ? "verified" : gaps.has(period) ? "disclosure_gap" : "not_backfilled", etfs, etfAmount,
       combinedAmount: stock.stockAmount === null || etfAmount === null ? null : stock.stockAmount + etfAmount,
       identifiedFunds, disclosedFunds, candidateFunds: history.funds.length, etfReportKind: kind };
   });
@@ -248,7 +249,7 @@ const html = `
       <div id="nationalTeamDirectChart" role="img" aria-label="汇金、证金及社保投资组合已披露持仓金额走势图"></div>
       <p class="nt-method" id="ntDirectRatioNote" hidden>A股两条曲线：已识别持仓金额÷同期全A股总市值（沪深北，含限售A股）。ETF：已识别持仓金额÷各已识别持有基金的总净资产合计。A股分母不随识别到的持股公司数量变化；分子仍受股东榜披露覆盖及相对涨跌影响，不等于净买入。</p>
       <p class="nt-direct-status" id="ntDirectGap"></p>
-      <p class="nt-method">2015年6月起，A股按季度展示；ETF为中报、年报已披露时点。虚线仅连接披露快照，不代表每日持仓路径。金额含价格涨跌及股东榜覆盖变化，不能把差额当作实际净买卖额。</p>
+      <p class="nt-method">A股已披露持仓从2010年6月起回溯。2010至2012年若干季度的来源覆盖明显不足，图上留空断线，不视作减仓或清仓；2015年6月后按季度展示，ETF为已核实的中报、年报时点。虚线仅连接披露快照，不代表每日持仓路径。金额含价格涨跌及股东榜覆盖变化，不能把差额当作实际净买卖额。</p>
       <p class="nt-method">社保曲线为具名投资组合的直接A股持仓，含明确具名的委托组合；不含理事会直持、划转账户、基本养老保险及ETF。社保独立展示，不计入汇金／证金合计。</p>
       <div class="nt-direct-coverage" id="ntDirectCoverage"></div>
       <div class="nt-direct-details">
@@ -268,7 +269,7 @@ const html = `
         <p>汇金／证金曲线识别中央汇金投资、中央汇金资产管理、中国证券金融，以及明确具名的汇金委托计划。社保投资组合单独识别、单独展示，不加入原有汇金／证金股票与ETF合计；保险、财政部、诚通、国新等未纳入。金额是已披露可识别部分，不是相关机构全部资产。</p>
         <p>社保投资组合：识别“全国社保基金××组合”及基金公司、证券公司明确标注的社保基金委托组合；中文和阿拉伯数字编号统一，按股票与组合去重。统一采用前十大股东表，用Tushare核对；金额＝A股股数×期末参考价÷1亿。理事会直持、转持／划转及基本养老保险账户不包含在此线。完整覆盖及来源差异见<a href="https://github.com/leejiazhi88-gif/1-BigA-total/blob/main/outputs/social-security-history-audit.md" target="_blank" rel="noopener noreferrer">社保历史核查</a>。</p>
         <p>持仓比例：汇金／证金A股和社保投资组合A股共用同期全A股总市值作为分母，包含沪市主板、科创板、深市主板、创业板及开市后的北交所，含流通与限售A股，排除B/H股、基金和新三板。取报告期末最后交易日市值；沪深来自Tushare交易所市场统计，北交所来自官方日报。汇金投资与其他账户构成也使用该分母，两项比例可以相加。ETF分母仍为当期已识别持有基金的总份额×同一净值，含场外份额，按基金去重；股票和ETF比例不合计。明细中的“占该标的比例”仍以单家公司A股总股本或单只基金总份额计算，与全市场曲线含义不同。分母证据及差异见<a href="https://github.com/leejiazhi88-gif/1-BigA-total/blob/main/outputs/holding-ratio-audit.md" target="_blank" rel="noopener noreferrer">持仓比例核查</a>。</p>
-        <p>直接A股：东方财富各期前十大股东表中的国家队A股股数 × 期末参考价 ÷ 1亿，以Tushare交叉核对。正常交易采用期末最后交易日未复权收盘价；停牌采用数据源期末参考市值折算价，明细以＊标记。按股票与账户去重，排除B/H股、优先股、上市前及退市后的记录；建行A/H股按各期原报告拆分。</p>
+        <p>直接A股：东方财富各期前十大股东表中的国家队A股股数 × 期末参考价 ÷ 1亿，以Tushare交叉核对。正常交易采用期末最后交易日未复权收盘价；停牌采用数据源期末参考市值折算价，明细以＊标记。按股票与账户去重，排除B/H股、优先股、上市前及退市后的记录；建行A/H股按各期原报告拆分。2010—2014年的逐期覆盖、留空原因与拆分证据见<a href="https://github.com/leejiazhi88-gif/1-BigA-total/blob/main/outputs/early-disclosed-holdings-audit.md" target="_blank" rel="noopener noreferrer">早期披露核查</a>。</p>
         <p>汇金／证金历史统一采用前十大股东表，未把前十大流通股东另行并入。仅识别上述三家机构及全称明确的委托账户，不把名称仅含“汇金”的普通私募、中证金融计划或转融通担保账户一概计入。各期公司数量会随进入、退出股东榜及披露覆盖变化，不等于国家队真实持股公司总数。</p>
         <p>ETF：14只重点宽基候选样本中具名国家队账户的持有份额 × 同期单位净值 ÷ 1亿；仅纳入当期已成立基金，2015年6月为8只。未进入前十名不能视为零持仓；缺少具名持有人表时不汇总该期ETF金额，也不沿用上一期份额。股票与ETF仅在同一报告期且均有可识别金额时相加，不再重复计入ETF底层股票。</p>
         <p>“汇金投资”包含长期金融企业控参股持仓；“其他已识别账户”包括证金、汇金资管及具名计划。这是账户分类，不能直接等同于救市资金与非救市资金。仅展示已核实的报告期。</p>
@@ -278,6 +279,7 @@ const html = `
 `;
 
 function renderDirectHoldings(data) {
+  const stockMissing = row => row.stockStatus === "disclosure_gap" ? "原始股东榜覆盖不足，留空而非零持仓" : "该期尚未回溯，不能视为零持仓";
   const $ = id => document.getElementById(id);
   const escape = value => String(value).replace(/[&<>"']/g, char => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
@@ -309,9 +311,9 @@ function renderDirectHoldings(data) {
   $("ntDirectPeriod").innerHTML = [...snapshots].reverse().map(row => '<option value="' + row.period + '">' + row.date + '</option>').join("");
   $("ntDirectPeriod").value = snapshots[selected].period;
   const latest = snapshots.at(-1);
-  $("ntDirectGap").textContent = latest.etfAmount === null
+  $("ntDirectGap").textContent = "早期2010—2012年部分季度股东榜明显缺页，曲线在这些报告期断开；缺口不代表减仓。 " + (latest.etfAmount === null
     ? latest.date + "：核查的" + latest.etfs.length + "只ETF均缺少具名前十名持有人表，本期ETF及合计金额未披露。"
-    : "ETF为固定样本中的已披露金额，不代表全市场ETF持仓。";
+    : "ETF为固定样本中的已披露金额，不代表全市场ETF持仓。");
   const chart = echarts.init($("nationalTeamDirectChart"), null, { renderer: "canvas" });
 
   function renderControls() {
@@ -358,7 +360,7 @@ function renderDirectHoldings(data) {
               (value === null ? "未披露" : fmt(value, mode === "ratio" ? ratioDigits(value) : 2) + " " + unit()) +
               (mode === "ratio" && value !== null ? "<br>　" + fmt(row[def.key], 2) + " ÷ " + fmt(base.amount, 2) + " 亿元" +
                 (base.scope === "all_a_shares" ? "（全A股 · " + dateLabel(base.date) + "）" : "（已识别持有基金）") : "");
-          }).join("<br>") + "<br>A股：" + (row.stockStatus === "not_backfilled" ? "该期尚未回溯" : row.companyCount + "家公司 / " + row.holderCount + "条持仓") +
+          }).join("<br>") + "<br>A股：" + (row.stockAmount === null ? stockMissing(row) : row.companyCount + "家公司 / " + row.holderCount + "条持仓") +
             "<br>ETF：具名表 " + row.disclosedFunds + "/" + row.etfs.length + " 只，已识别 " + row.identifiedFunds + " 只" +
             "<br>社保：" + (row.socialAmount === null ? "该期尚未核实" : row.socialCompanyCount + "家公司 / " + row.socialHolderCount + "条持仓");
         } },
@@ -416,9 +418,9 @@ function renderDirectHoldings(data) {
     });
     $("ntDirectTable").innerHTML = '<table><thead><tr>' + headings.map(h => '<th scope="col">' + h + '</th>').join("") +
       '</tr></thead><tbody>' + (cells.join("") || '<tr><td colspan="' + headings.length + '">' +
-        (view === "social" && snapshot.socialAmount === null ? "该期社保持仓尚未核实，不能视为零持仓" : view === "stocks" && snapshot.stockStatus === "not_backfilled" ? "该期直接A股持仓尚未回溯，不能视为零持仓" : "没有匹配的持仓记录") + '</td></tr>') + '</tbody></table>';
+        (view === "social" && snapshot.socialAmount === null ? "该期社保持仓披露覆盖不足或尚未核实，不能视为零持仓" : view === "stocks" && snapshot.stockAmount === null ? stockMissing(snapshot) : "没有匹配的持仓记录") + '</td></tr>') + '</tbody></table>';
     $("ntDirectTableCount").textContent = snapshot.date + " · " + (view === "stocks"
-      ? (snapshot.stockStatus === "not_backfilled" ? "直接A股尚未回溯" : snapshot.companyCount + "家公司，" + snapshot.holderCount + "条已识别账户持仓")
+      ? (snapshot.stockAmount === null ? stockMissing(snapshot) : snapshot.companyCount + "家公司，" + snapshot.holderCount + "条已识别账户持仓")
       : view === "social" ? (snapshot.socialAmount === null ? "社保持仓尚未核实" : snapshot.socialCompanyCount + "家公司，" + snapshot.socialHolderCount + "条社保组合持仓")
       : snapshot.etfs.length + "只当期已成立样本，具名表披露" + snapshot.disclosedFunds + "只，已识别持仓" + snapshot.identifiedFunds + "只") +
       (query ? " · 筛选后" + rows.length + "条" : "") +
@@ -428,12 +430,12 @@ function renderDirectHoldings(data) {
   function renderSnapshot() {
     const row = snapshots[selected];
     const cards = [
-      { key: "stockAmount", label: "汇金／证金 · 直接A股", meta: row.stockStatus === "not_backfilled" ? "该期尚未回溯，不能视为零持仓" : row.companyCount + "家公司 · 前十大股东可识别持仓" },
+      { key: "stockAmount", label: "汇金／证金 · 直接A股", meta: row.stockAmount === null ? stockMissing(row) : row.companyCount + "家公司 · 前十大股东可识别持仓" },
       { key: "etfAmount", label: "汇金／证金 · ETF样本", meta: row.etfAmount === null
         ? "具名表 " + row.disclosedFunds + "/" + row.etfs.length + "只，金额无法核实"
         : row.etfs.length + "只当期已成立样本 · " + row.identifiedFunds + "只发现具名账户" },
       { key: "combinedAmount", label: "汇金／证金合计 · 不含社保", meta: row.combinedAmount === null
-        ? (row.stockAmount === null ? "直接A股尚未回溯，暂不能合计" : "ETF金额缺失，未计算两类持仓合计") : "同一报告期A股＋ETF · 非全部资产" },
+        ? (row.stockAmount === null ? "直接A股数据缺口，暂不能合计" : "ETF金额缺失，未计算两类持仓合计") : "同一报告期A股＋ETF · 非全部资产" },
       { key: "socialAmount", label: "社保投资组合 · 直接A股", meta: row.socialAmount === null ? "该期尚未核实" : row.socialCompanyCount + "家公司 · " + row.socialHolderCount + "条持仓" }
     ];
     $("ntDirectCards").innerHTML = cards.map(card => {
@@ -451,7 +453,7 @@ function renderDirectHoldings(data) {
     }).join("");
     $("ntDirectCoverage").innerHTML = '<table><thead><tr><th>报告期末</th><th>汇金／证金A股</th><th>ETF具名表 / 样本</th><th>已识别ETF持仓</th><th>社保A股覆盖</th></tr></thead><tbody>' +
       [...snapshots].reverse().map(s => '<tr aria-current="' + (s.period === row.period) + '"><td>' + s.date + '</td><td>' +
-        (s.stockStatus === "not_backfilled" ? "尚未回溯" : s.companyCount + '家公司 / ' + s.holderCount + '条持仓') + '</td><td>' + s.disclosedFunds + ' / ' + s.etfs.length +
+        (s.stockAmount === null ? stockMissing(s) : s.companyCount + '家公司 / ' + s.holderCount + '条持仓') + '</td><td>' + s.disclosedFunds + ' / ' + s.etfs.length +
         '只</td><td>' + (s.etfAmount === null ? "未披露" : s.identifiedFunds + "只") + '</td><td>' +
         (s.socialAmount === null ? "尚未核实" : s.socialCompanyCount + "家公司 / " + s.socialHolderCount + "条") + '</td></tr>').join("") + '</tbody></table>';
     renderTable();

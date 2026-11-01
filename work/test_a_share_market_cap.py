@@ -36,15 +36,15 @@ class MarketCapTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "board sum"):
             build_period("20260630", "20260630", [*sh[:-1], {**sh[-1], "total_mv": 130}], sz, bj)
 
-    def test_committed_history_has_all_45_quarters_and_common_market_totals(self):
+    def test_committed_history_has_early_and_later_market_totals(self):
         data = read(ROOT / "work" / "a_share_market_cap.json")
         holdings = read(ROOT / "work" / "holding_denominators.json")
         self.assertEqual(set(data["periods"]), set(holdings["stocks"]))
-        self.assertEqual(len(data["periods"]), 45)
+        self.assertEqual(len(data["periods"]), 58)
         for row in data["periods"].values():
             self.assertAlmostEqual(row["amount"], sum(r["amount"] for r in row["exchanges"].values()))
             self.assertEqual(row["count"], sum(r["count"] for r in row["exchanges"].values()))
-            self.assertGreater(row["amount"], 300000)
+            self.assertGreater(row["amount"], 100000)
             self.assertLessEqual(row["date"], row["period"])
 
 

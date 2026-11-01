@@ -24,10 +24,10 @@ test('later-listed funds join only when applicable and listing proceeds are not 
   assert.equal(summarizeFlows(rows, []).knownTotal, null);
 });
 
-test('full history retains actual 2015 starts, nine funds and null daily gaps', () => {
+test('full history retains actual 2010 starts, nine funds and null daily gaps', () => {
   validateFlowHistory(data);
-  assert.equal(data.meta.start, '2015-01-05');
-  assert(data.series.length >= 2867);
+  assert.equal(data.meta.start, '2010-01-04');
+  assert(data.series.length >= 4079);
   assert.equal(data.meta.window, data.series.length);
   const result = summarizeFlows(data.series, data.etfs);
   assert.equal(result.completeDays, data.meta.completeDays);
