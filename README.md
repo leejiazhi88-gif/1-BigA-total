@@ -3,6 +3,10 @@
 - 线上页面：https://leejiazhi88-gif.github.io/1-BigA-total/
 - GitHub仓库：https://github.com/leejiazhi88-gif/1-BigA-total
 
+**唯一正式版本：**[国家队观察在线页面](https://leejiazhi88-gif.github.io/1-BigA-total/#national-team-etf)。GitHub Pages 从本仓库 `main` 分支根目录的 `index.html` 发布；以后无论在哪台电脑继续维护，都以线上 `main` 和这个固定 URL 为准。修改后提交源码及重新生成的 `index.html` 到 `main`，等待 Pages 发布；不要以某台电脑的本地 HTML 作为正式版本。
+
+线上国家队观察保留直接持仓、社保、ETF申赎与单基金长期暴露；不展示“同指数ETF规模前十 · 底层股票暴露”、“季度走势 · 两类ETF各规模前十”和“聚类散点图”，后续也不再维护这三张图。
+
 这个仓库用于生成 A 股大顶研究的本地 HTML 仪表盘，目前包含：
 
 - 总览：依次展示指数价格、沪深A股交易规模（交易量与交易额）、PE(TTM)、过去12个月合计利润
