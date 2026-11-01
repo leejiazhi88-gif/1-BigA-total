@@ -1,5 +1,13 @@
 # 1-BigA-total 换机与部署说明
 
+## 唯一正式线上版本
+
+- 页面：https://leejiazhi88-gif.github.io/1-BigA-total/#national-team-etf
+- 源码：https://github.com/leejiazhi88-gif/1-BigA-total （`main` 分支）
+- GitHub Pages 从 `main` 分支根目录发布。换电脑后先读取远端 `main`，以线上页面为基准修改、提交并确认 Pages 完成发布；本地生成文件仅作临时构建，不作为长期维护版本。
+- 国家队观察不维护“同指数ETF规模前十 · 底层股票暴露”“季度走势 · 两类ETF各规模前十”“聚类散点图”。不要把仅存在于旧电脑本地的这三张图重新发布到线上。
+
+
 这个文档记录本项目在不同电脑之间继续迭代、同步代码、查看线上页面时需要的信息。
 
 ## 2026-10-27 ETF每日净申购回溯到2015年
