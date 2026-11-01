@@ -464,11 +464,6 @@
           <button class="metric-tab" data-metric="turnover">换手率</button>
           <button class="metric-tab" data-metric="marginBalance">融资余额</button>
           <button class="metric-tab" data-metric="marginFloatRatio">融资余额/流通市值</button>
-          <button class="metric-tab" data-metric="limitUpCount">涨停数量</button>
-          <button class="metric-tab" disabled title="股票开户周度数据已停止更新">新增开户数</button>
-          <button class="metric-tab" disabled title="待接公募基金发行规模数据源">新基金发行规模</button>
-          <button class="metric-tab" disabled title="需要全市场个股历史行情截面计算">创新高股票占比</button>
-          <button class="metric-tab" disabled title="需要全市场个股历史行情截面计算">年线以上股票比例</button>
         </div>
         <div class="metric-note">
           <span id="retailMetricNote">成交额快速放大代表交易热度上升，需结合指数涨幅判断是否出现巨量滞涨。</span>
@@ -480,7 +475,7 @@
     </div>
 
     <div class="valuation-foot single-note">
-      <div class="note"><strong>连续数据口径：</strong>沪深股票市场含A/B股，不含北交所、基金和债券；成交额单位亿元。两市完整成交额与换手率从2005年起；换手率按沪市主板A股、B股、科创板和深市的流通市值加权。2019年前沪市金额及流通市值由A/B股分项加总。融资为沪深交易所融资余额合计，非融资融券余额。每周取各指标最后可得交易日的单日值，保留实际日期，不是周累计；缺失不补零。融资从2010年3月业务启动后统计，非ST涨停家数的数据源从2020年开始。</div>
+      <div class="note"><strong>连续数据口径：</strong>沪深股票市场含A/B股，不含北交所、基金和债券；成交额单位亿元。两市完整成交额与换手率从2005年起；换手率按沪市主板A股、B股、科创板和深市的流通市值加权。2019年前沪市金额及流通市值由A/B股分项加总。融资为沪深交易所融资余额合计，非融资融券余额。每周取各指标最后可得交易日的单日值，保留实际日期，不是周累计；缺失不补零。融资从2010年3月业务启动后统计。</div>
     </div>
   </section>
 
@@ -1136,11 +1131,6 @@ window.addEventListener("resize", () => chart.resize());
         title: "融资余额/流通市值", unit: "%", digits: 2,
         subtitle: "融资余额占沪深市场流通市值比例",
         note: "融资余额除以同期沪深股票流通市值，反映杠杆拥挤度；2010年3月以前不适用。"
-      },
-      limitUpCount: {
-        title: "涨停数量", unit: "家", digits: 0,
-        subtitle: "当日非ST股票涨停数量，数据自2020年起",
-        note: "涨停家数反映短线风险偏好，但极高值也可能意味着情绪进入亢奋区。"
       }
     };
     const coverage = Object.fromEntries(Object.keys(metrics).map(key => {
@@ -1149,7 +1139,7 @@ window.addEventListener("resize", () => chart.resize());
     }));
     const startYear = key => coverage[key].start?.slice(0, 4) || "暂无";
     document.getElementById("retailCoverageStatus").textContent = "成交/换手 " + startYear("amount") + "年起 · 融资 " +
-      startYear("marginBalance") + "年起 · 涨停 " + startYear("limitUpCount") + "年起";
+      startYear("marginBalance") + "年起";
 
     let activeMetric = "amount";
     let activeYears = 0;
