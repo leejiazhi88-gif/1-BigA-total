@@ -3,7 +3,6 @@ const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
-const DATA_FILE = path.join(ROOT, "work", "national_team_etf_data.json");
 const FLOW_FILE = path.join(ROOT, "work", "etf_flow_data.json");
 const { flowWindow, summarizeFlows, validateFlowHistory } = require("./etf_flow_history");
 const directHoldings = require("./national_team_direct_holdings").directHoldingsModule();
@@ -23,7 +22,6 @@ const css = `
   <style id="national-team-etf-style">
     ${directHoldings.css.trim()}
     ${etfHistory.css.trim()}
-    #nationalTeamEtfTrendChart { height: 320px; width: 100%; min-height: 320px; }
     #nationalTeamEtfFlowChart { height: 540px; width: 100%; }
     .nt-block { padding: 20px 0; border-top: 1px solid var(--line); min-width: 0; scroll-margin-top: 72px; }
     .nt-flow-controls { display: flex; gap: 12px; flex-wrap: wrap; justify-content: space-between; align-items: center; }
@@ -71,7 +69,7 @@ const moduleHtml = `
     </div>
     ${directHoldings.html.trim()}
     ${etfHistory.html.trim()}
-    <div class="nt-secondary-label">辅助观察 · ETF申赎与底层股票暴露</div>
+    <div class="nt-secondary-label">辅助观察 · ETF申赎</div>
     <div class="nt-block" id="national-team-etf-flow">
       <div class="nt-flow-controls">
         <div><div class="panel-title">重点宽基ETF · 每日净申购估算</div><div class="panel-subtitle" id="ntFlowPeriod"></div></div>
@@ -94,27 +92,12 @@ const moduleHtml = `
       <p class="nt-method"><strong>历史覆盖：</strong>从2015年首个交易日开始，按当时已上市的样本汇总；南方中证1000从2016年11月、华夏科创50从2020年11月加入，上市募集规模不作为当日申购。缺失不填零、不跨缺失交易日计算；缺失日总量及累计曲线断开，后续累计仅加总已知部分，不代表完整区间净申购。明细＊表示存在缺失，覆盖数量及可得起点随所选区间更新。</p>
       <p class="nt-method"><strong>归属限制：</strong>包含所有投资者及实物申赎，不能等同于现金流入或国家队买入。范围为下表9只宽基ETF，不代表全部宽基基金。<a href="https://github.com/leejiazhi88-gif/1-BigA-total/blob/main/outputs/etf-flow-history-audit.md" target="_blank" rel="noopener noreferrer">历史数据与折算核查</a></p>
     </div>
-    <div class="nt-block">
-        <div class="panel-head">
-          <div>
-            <div class="panel-title">长期披露样本 · 底层股票暴露</div>
-            <div class="panel-subtitle">上证50ETF与沪深300ETF，半年报/年报披露快照；单位%，不是国家队持仓总规模</div>
-          </div>
-        </div>
-        <div id="nationalTeamEtfTrendChart"></div>
-        <p class="nt-method">基于各期ETF披露股票权重与对应股票的前十大流通股东。已扩展至全部披露A股，不再只取五只股票；不把缺失值视为零，未披露的股东持仓不计入。覆盖不完整时为可识别部分的贡献，不能把比例变化解释为增减持金额。历史点标记报告期末，不表示当时已公开；当前仅使用本次截止日前的公告。</p>
-    </div>
-    <div class="valuation-foot nt-etf-note-grid">
-      <div class="note"><strong>计算口径：</strong>ETF底层国家队暴露＝Σ(披露股票权重×该股国家队流通股持股比例)。权重保留原披露比例，缺少权重时才在披露样本内按市值归一化；股东信息缺失不当作零持仓。名单包括中央汇金、汇金资产、中国证券金融及明确证金账户。</div>
-      <div class="note"><strong>限制说明：</strong>不是国家队直接持有ETF的份额比例，也不是持仓总市值。包含国家队长期战略持股，不能都解释为救市买入。基金样本及股东覆盖随报告变化，低于前十大流通股东门槛的持仓无法识别。</div>
-    </div>
   </section>
 `;
 
 const script = `
   <script id="national-team-etf-script">
   (() => {
-    const ntEtfData = __NATIONAL_TEAM_ETF_DATA__;
     const flowData = __ETF_FLOW_DATA__;
     const flowWindow = ${flowWindow.toString()};
     const summarizeFlows = ${summarizeFlows.toString()};
@@ -124,11 +107,7 @@ const script = `
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
-    document.getElementById("nationalTeamEtfStatus").textContent =
-      "金额核验 ${directHoldings.checkedAt} / 底层暴露 " + ntEtfData.meta.period.slice(0, 4) + "Q" +
-      Math.ceil(Number(ntEtfData.meta.period.slice(4, 6)) / 3);
-
-    const trendChart = echarts.init(document.getElementById("nationalTeamEtfTrendChart"), null, { renderer: "canvas" });
+    document.getElementById("nationalTeamEtfStatus").textContent = "金额核验 ${directHoldings.checkedAt}";
     const flowChart = echarts.init(document.getElementById("nationalTeamEtfFlowChart"), null, { renderer: "canvas" });
     const groups = [...new Set(flowData.etfs.map(row => row.group))];
     const selectedGroups = new Set(groups);
@@ -237,77 +216,12 @@ const script = `
       renderFlow();
     });
     renderFlow();
-    const historySeries = ntEtfData.history || [];
-    const trendNames = {
-      "510050.SH": "上证50ETF",
-      "510300.SH": "沪深300ETF",
-    };
-    const trendSeries = Object.keys(trendNames).map(code => ({
-      name: trendNames[code],
-      type: "line",
-      data: historySeries.map(row => [row.date, row[code] ?? null]),
-      connectNulls: false,
-      showSymbol: true,
-      smooth: false,
-      lineStyle: { width: 1.8 },
-      symbolSize: 7
-    }));
-    trendSeries.push({
-      name: "平均暴露",
-      type: "line",
-      data: historySeries.map(row => [row.date, row.averageExposure]),
-      showSymbol: true,
-      symbolSize: 7,
-      lineStyle: { width: 3, color: "#f6c85f" },
-      itemStyle: { color: "#f6c85f" },
-      connectNulls: false
-    });
-    trendChart.setOption({
-      animation: false,
-      color: ["#36c2ff", "#ff5d73", "#f6c85f"],
-      grid: { left: 58, right: 22, top: 58, bottom: 44 },
-      legend: {
-        top: 10,
-        textStyle: { color: "#8fa5bf" }
-      },
-      tooltip: {
-        trigger: "axis",
-        confine: true,
-        backgroundColor: "rgba(7,17,31,.96)",
-        borderColor: "#36506f",
-        textStyle: { color: "#edf4ff" },
-        formatter: params => {
-          const row = historySeries[params[0].dataIndex];
-          return "报告期末 " + row.date + "<br>" + params.map(item => {
-            const code = Object.keys(trendNames).find(key => trendNames[key] === item.seriesName);
-            return item.marker + item.seriesName + "：" + fmt(item.value[1]) + "%" +
-              (code ? "（覆盖权重 " + fmt(row.coverage[code], 1) + "%）" : "");
-          }).join("<br>");
-        }
-      },
-      xAxis: {
-        type: "time",
-        boundaryGap: false,
-        axisLine: { lineStyle: { color: "#344760" } },
-        axisLabel: { color: "#7890aa", hideOverlap: true }
-      },
-      yAxis: {
-        type: "value",
-        scale: true,
-        axisLabel: { color: "#7890aa", formatter: "{value}%" },
-        splitLine: { lineStyle: { color: "#17283d" } }
-      },
-      series: trendSeries
-    }, true);
-    window.addEventListener("resize", () => trendChart.resize());
     window.addEventListener("resize", () => flowChart.resize());
   })();
   </script>
 `;
 
-if (!fs.existsSync(DATA_FILE)) throw new Error("Missing national_team_etf_data.json.");
 if (!fs.existsSync(FLOW_FILE)) throw new Error("Missing etf_flow_data.json.");
-const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
 const flow = JSON.parse(fs.readFileSync(FLOW_FILE, "utf8"));
 validateFlowHistory(flow);
 let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
@@ -321,7 +235,7 @@ function insertBeforeLast(source, marker, content) {
   return source.slice(0, index) + content + source.slice(index);
 }
 const { observations, ...flowDisplay } = flow;
-const ntEtfScript = script.replace("__NATIONAL_TEAM_ETF_DATA__", JSON.stringify(data)).replace("__ETF_FLOW_DATA__", JSON.stringify(flowDisplay));
+const ntEtfScript = script.replace("__ETF_FLOW_DATA__", JSON.stringify(flowDisplay));
 html = insertBeforeLast(html, "</head>", css + "\n");
 html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
 html = insertBeforeLast(html, "</body>", directHoldings.script + "\n" + etfHistory.script + "\n" + ntEtfScript + "\n");
