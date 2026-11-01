@@ -7,6 +7,18 @@
 - GitHub Pages 从 `main` 分支根目录发布。换电脑后先读取远端 `main`，以线上页面为基准修改、提交并确认 Pages 完成发布；本地生成文件仅作临时构建，不作为长期维护版本。
 - 国家队观察不维护“同指数ETF规模前十 · 底层股票暴露”“季度走势 · 两类ETF各规模前十”“聚类散点图”。不要把仅存在于旧电脑本地的这三张图重新发布到线上。
 
+## 散户月度入场趋势（2026-11-01）
+
+“月度入场趋势”的上交所A股新开户及已披露新基金发行份额已从6号项目移入本仓库。此后只更新1号项目的 `work/fetch_retail_monthly_trends.py`、`work/retail_monthly_trends.json` 和 `work/add_retail_sentiment_module.js`；6号项目不再作为该模块的数据源。已提交JSON可直接随 `node work/build_market_dashboard.js --skip-refresh` 构建。刷新月度数据需Tushare凭据与 `pymupdf`：
+
+```powershell
+python -m pip install pymupdf
+python work/fetch_retail_monthly_trends.py
+node work/build_market_dashboard.js --skip-refresh
+```
+
+普通构建（不带 `--skip-refresh`）也会尝试刷新月度数据，失败时保留已提交的缓存。开户图为上交所A股新开户，非两市去重投资者；基金图为已披露发行份额（亿份），不等于募集金额。基金披露覆盖不足90%的柱子淡色显示，三月均线仅使用连续三个覆盖达标月份。当前数据开户至2026-09、基金至2026-10；未来以实际最新披露为准。
+
 
 这个文档记录本项目在不同电脑之间继续迭代、同步代码、查看线上页面时需要的信息。
 

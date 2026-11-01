@@ -4,6 +4,7 @@ const path = require("path");
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const DATA_FILE = path.join(ROOT, "work", "retail_sentiment_data.json");
+const MONTHLY_DATA_FILE = path.join(ROOT, "work", "retail_monthly_trends.json");
 
 function stripExisting(html) {
   return html
@@ -20,6 +21,10 @@ const css = `
       gap: 15px; align-items: stretch;
     }
     #retailSentimentChart { height: 500px; width: 100%; }
+    .retail-monthly-heading { margin: 28px 0 12px; font-size: 20px; }
+    .retail-monthly-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .retail-monthly-chart { height: 330px; width: 100%; }
+    .retail-monthly-grid .metric-note { padding: 0 16px 14px; }
     #retail-sentiment .panel-head { flex-wrap: wrap; gap: 12px; }
     #retail-sentiment .module-status { white-space: normal; overflow-wrap: anywhere; }
     #retailMetricSubtitle { line-height: 1.7; }
@@ -36,6 +41,7 @@ const css = `
     @media (max-width: 980px) {
       .retail-grid { grid-template-columns: 1fr; }
       #retailSentimentChart { height: 450px; }
+      .retail-monthly-grid { grid-template-columns: 1fr; }
     }
   </style>
 `;
@@ -89,6 +95,20 @@ const moduleHtml = `
     <div class="valuation-foot single-note">
       <div class="note"><strong>连续数据口径：</strong>三条线分别为沪深两市合计、沪市、深市，不是上证指数和深证成指成分股口径。沪深股票市场含A/B股，不含北交所、基金和债券；成交额单位亿元。两市完整成交额与换手率从2005年起；换手率按各市场股票板块流通市值加权，两市合计不是沪深换手率的简单平均。2019年前沪市金额及流通市值由A/B股分项加总。融资按沪深交易所余额分别统计，两市合计为两者之和；融资占比各自除以对应市场流通市值。每周取各指标最后可得交易日的单日值，不是周累计；缺失不补零。融资从2010年3月业务启动后统计。</div>
     </div>
+    <h3 class="retail-monthly-heading">月度入场趋势</h3>
+    <div class="retail-monthly-grid">
+      <article class="valuation-panel">
+        <div class="panel-head"><div><div class="panel-title">上交所 A 股新开户</div><div class="panel-subtitle">月度 · 万户</div></div></div>
+        <div id="retailAccountsChart" class="retail-monthly-chart"></div>
+        <div class="metric-note"><span>上交所开户口径，非沪深两市新增投资者人数。</span><span class="metric-reading" id="retailAccountsCoverage"></span></div>
+      </article>
+      <article class="valuation-panel">
+        <div class="panel-head"><div><div class="panel-title">已披露新基金发行份额</div><div class="panel-subtitle">月度 · 亿份</div></div></div>
+        <div id="retailFundsChart" class="retail-monthly-chart"></div>
+        <div class="metric-note"><span>淡色月份披露不足 90%；均线仅使用连续三个覆盖达标月份。</span><span class="metric-reading" id="retailFundsCoverage"></span></div>
+      </article>
+    </div>
+    <div class="valuation-foot single-note"><div class="note"><strong>来源：</strong><a href="https://www.sse.com.cn/aboutus/publication/yearly/" target="_blank" rel="noopener">上交所统计年鉴</a>（2007–2020）与<a href="https://star.sse.com.cn/aboutus/publication/monthly/investor/" target="_blank" rel="noopener">统计月报</a>（2021 起）；<a href="https://tushare.pro/document/1?doc_id=19" target="_blank" rel="noopener">Tushare 公募基金列表</a>。基金数据按成立月份和基金代码汇总发行份额，含股票、混合、债券等类型，不等同于募集金额；未披露份额不估算。</div></div>
   </section>
 `;
 
@@ -96,6 +116,7 @@ const script = `
   <script id="retail-sentiment-script">
   (() => {
     const retailData = __RETAIL_DATA__;
+    const monthlyData = __MONTHLY_DATA__;
     const fmt = (value, digits = 1) => Number.isFinite(value)
       ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits })
       : "--";
@@ -231,15 +252,76 @@ const script = `
       });
     });
 
-    window.addEventListener("resize", () => chart.resize());
+    function movingAverage(values, valid = () => true) {
+      return values.map((_, index) => index >= 2 && [index - 2, index - 1, index].every(valid)
+        ? Number(((values[index - 2] + values[index - 1] + values[index]) / 3).toFixed(2))
+        : null);
+    }
+
+    function monthlyOption(rows, field, unit, color, fund = false) {
+      const values = rows.map(row => row[field]);
+      const average = movingAverage(values, index => !fund || rows[index].coverage >= 90);
+      return {
+        animation: false,
+        grid: { left: 64, right: 20, top: 48, bottom: 58 },
+        legend: { top: 10, right: 18, textStyle: { color: "#8fa5bf", fontSize: 11 },
+          data: [fund ? "已披露份额" : "新开户", "3月均线"] },
+        tooltip: { trigger: "axis", backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
+          textStyle: { color: "#edf4ff" }, formatter(params) {
+            const row = rows[params[0]?.dataIndex];
+            if (!row) return "";
+            const lines = params.filter(item => item.value != null).map(item =>
+              item.marker + item.seriesName + "：<b>" + fmt(Number(item.value), 1) + unit + "</b>");
+            if (fund) lines.push("发行份额披露：" + row.reported + "/" + row.funds + "（" + row.coverage + "%）");
+            return "<b>" + row.month + "</b><br>" + lines.join("<br>");
+          } },
+        xAxis: { type: "category", data: rows.map(row => row.month), boundaryGap: true,
+          axisLine: { lineStyle: { color: "#344760" } },
+          axisLabel: { color: "#7890aa", interval: 0, formatter(value, index) {
+            return window.innerWidth <= 620
+              ? (value.endsWith("-01") ? value.slice(0, 4) : "")
+              : (index % 6 === 0 ? value : "");
+          } } },
+        yAxis: { type: "value", min: 0, axisLabel: { color: "#7890aa", formatter: "{value}" + unit },
+          splitLine: { lineStyle: { color: "#17283d" } } },
+        dataZoom: [{ type: "inside", filterMode: "none" },
+          { type: "slider", bottom: 8, height: 18, borderColor: "#263b58",
+            backgroundColor: "#0d1929", fillerColor: "rgba(246,200,95,.18)",
+            handleStyle: { color: "#f6c85f" }, textStyle: { color: "#8fa5bf" } }],
+        series: [
+          { name: fund ? "已披露份额" : "新开户", type: "bar", barMaxWidth: 16,
+            itemStyle: { color },
+            data: rows.map(row => ({ value: row[field],
+              itemStyle: { opacity: fund && row.coverage < 90 ? .3 : .85 } })) },
+          { name: "3月均线", type: "line", data: average, showSymbol: false, connectNulls: false,
+            lineStyle: { color: fund ? "#36c2ff" : "#edf4ff", width: 2 },
+            itemStyle: { color: fund ? "#36c2ff" : "#edf4ff" } }
+        ]
+      };
+    }
+
+    const accountsChart = echarts.init(document.getElementById("retailAccountsChart"), null, { renderer: "canvas" });
+    const fundsChart = echarts.init(document.getElementById("retailFundsChart"), null, { renderer: "canvas" });
+    accountsChart.setOption(monthlyOption(monthlyData.accounts, "accountsWan", "万户", "#f6c85f"));
+    fundsChart.setOption(monthlyOption(monthlyData.funds, "sharesYi", "亿份", "#7ddc82", true));
+    const latestAccounts = monthlyData.accounts.at(-1);
+    const latestFunds = monthlyData.funds.at(-1);
+    document.getElementById("retailAccountsCoverage").textContent = "最新 " + latestAccounts.month;
+    document.getElementById("retailFundsCoverage").textContent =
+      "最新 " + latestFunds.month + " · 披露 " + latestFunds.coverage + "%";
+    window.addEventListener("resize", () => {
+      chart.resize(); accountsChart.resize(); fundsChart.resize();
+    });
     renderChart();
   })();
   </script>
 `;
 
 if (!fs.existsSync(DATA_FILE)) throw new Error("Missing retail_sentiment_data.json.");
+if (!fs.existsSync(MONTHLY_DATA_FILE)) throw new Error("Missing retail_monthly_trends.json.");
 
 const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
+const monthlyData = JSON.parse(fs.readFileSync(MONTHLY_DATA_FILE, "utf8"));
 let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
 html = html.replace(
   '<a href="#valuation">估值</a>',
@@ -253,7 +335,8 @@ function insertBeforeLast(source, marker, content) {
 }
 
 const retailScript = script
-  .replace("__RETAIL_DATA__", JSON.stringify(data));
+  .replace("__RETAIL_DATA__", JSON.stringify(data))
+  .replace("__MONTHLY_DATA__", JSON.stringify(monthlyData));
 html = insertBeforeLast(html, "</head>", css + "\n");
 html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
 html = insertBeforeLast(html, "</body>", retailScript + "\n");
