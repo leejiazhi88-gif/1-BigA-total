@@ -51,7 +51,7 @@ const moduleHtml = `
         <h2>情绪-官方</h2>
         <p>观察发行融资、产业资本、货币信用与监管政策，识别官方对市场温度的调节方向。</p>
       </div>
-      <div class="module-status">IPO/政策利率 2006年至今 / 宏观月度至最新披露</div>
+      <div class="module-status">M2自1991年 / 其他指标按各自披露起点</div>
     </div>
 
     <div class="official-grid">
@@ -64,6 +64,9 @@ const moduleHtml = `
           <div class="range-tabs" id="officialRangeTabs">
             <button class="range-tab" data-years="3">3年</button>
             <button class="range-tab" data-years="5">5年</button>
+            <button class="range-tab" data-years="10">10年</button>
+            <button class="range-tab" data-years="20">20年</button>
+            <button class="range-tab" data-years="30">30年</button>
             <button class="range-tab active" data-years="0">全部</button>
           </div>
         </div>
@@ -110,7 +113,7 @@ const moduleHtml = `
     </div>
 
     <div class="valuation-foot">
-      <div class="note"><strong>连续数据口径总览：</strong>周频指标按自然周汇总并落在该周最后一个可用日期；月度宏观指标落在月末；印花税率按政策生效日做阶梯序列，不做线性插值。</div>
+      <div class="note"><strong>连续数据口径总览：</strong>M2月度增速可追溯至1991年；其他指标各有不同起点。周频指标按自然周汇总并落在该周最后一个可用日期；月度宏观指标落在月末；印花税率按政策生效日做阶梯序列，不做线性插值。早期股东增减持仅统计有均价的披露记录，缺失不作零值处理。</div>
       <div class="note"><strong>国家队持仓规模为什么暂缺：</strong>没有官方统一的连续披露口径。若把中央汇金、证金、社保、外汇局、险资、公募ETF申购或稳定市场工具混在一起，结果会高度依赖人工机构名单和持仓范围，容易画出看似精确但不可复核的曲线，所以当前只保留事件记录，不绘制连续指标。</div>
       <div class="official-methodology" aria-label="官方情绪指标统计口径">
         <div class="official-method"><strong>IPO融资额</strong><span>来源为 Tushare new_share 的 funds 字段，按 IPO 日期或发行日期归入自然周求和，单位亿元；用于观察一级市场供给节奏。</span></div>

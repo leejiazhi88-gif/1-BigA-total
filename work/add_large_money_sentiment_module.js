@@ -37,7 +37,7 @@ const moduleHtml = `
         <h2>情绪-大资金</h2>
         <p>观察机构交易、北向资金和产业资本行为，识别资金集中进入与撤退的阶段。</p>
       </div>
-      <div class="module-status">大宗与增减持 2018年至今 / 北向净流入至2024年8月</div>
+      <div class="module-status">大宗交易自2002年 / 股东增减持自2000年 / 北向净流入至2024年8月</div>
     </div>
 
     <div class="large-money-grid">
@@ -50,6 +50,8 @@ const moduleHtml = `
           <div class="range-tabs" id="largeMoneyRangeTabs">
             <button class="range-tab" data-years="3">3年</button>
             <button class="range-tab" data-years="5">5年</button>
+            <button class="range-tab" data-years="10">10年</button>
+            <button class="range-tab" data-years="20">20年</button>
             <button class="range-tab active" data-years="0">全部</button>
           </div>
         </div>
@@ -95,7 +97,7 @@ const moduleHtml = `
     </div>
 
     <div class="valuation-foot">
-      <div class="note"><strong>连续数据口径：</strong>大宗交易仅统计沪深A股，按周汇总，排除债券、基金、B股和北交所；金额由万元换算为亿元，并与成交价×成交量核对。历史包含当时上市、后来退市的股票。机构净买入＝“机构专用”买入额－卖出额，双方均为机构的交易净额为零；不按金额大小删去真实交易。产业资本净增减持按公告股数汇总，正值为净增持、负值为净减持。</div>
+      <div class="note"><strong>连续数据口径：</strong>大宗交易仅统计沪深A股，按周汇总，排除债券、基金、B股和北交所；金额由万元换算为亿元，并与成交价×成交量核对。历史包含当时上市、后来退市的股票；早年披露记录稀疏，曲线仅代表可得公告，不代表全市场没有其他交易。机构净买入＝“机构专用”买入额－卖出额，双方均为机构的交易净额为零；不按金额大小删去真实交易。产业资本净增减持按公告股数汇总，正值为净增持、负值为净减持。</div>
       <div class="note"><strong>北向口径提示：</strong>北向净流入序列保留至2024年8月16日。此后披露机制发生变化，页面不把新口径成交数据与旧口径净流入强行拼接。</div>
     </div>
   </section>

@@ -100,7 +100,7 @@ def main():
 
     macro_start = f"{START_YEAR}01"
     macro_end = END_DATE[:6]
-    for row in call_api(token, "cn_m", {"start_m": macro_start, "end_m": macro_end}, "month,m2_yoy"):
+    for row in call_api(token, "cn_m", {"start_m": "199001", "end_m": macro_end}, "month,m2_yoy"):
         month = row.get("month")
         if month and row.get("m2_yoy") is not None:
             series_by_date[month_date(month)]["m2Yoy"] = float(row["m2_yoy"])
@@ -137,6 +137,13 @@ def main():
     for row in series:
         merged.setdefault(row["date"], {}).update(row)
     series = [merged[date] for date in sorted(merged) if date <= iso_date(END_DATE)]
+    if OUTPUT.exists():
+        previous = json.loads(OUTPUT.read_text(encoding="utf-8"))
+        older = [row for row in previous["series"] if row["date"] < "2018-01-01" and "netReduceAmount" in row]
+        by_date = {row["date"]: row for row in series}
+        for row in older:
+            by_date.setdefault(row["date"], {"date": row["date"]})["netReduceAmount"] = row["netReduceAmount"]
+        series = [by_date[date] for date in sorted(by_date)]
     result = {
         "meta": {
             "updated": datetime.now().strftime("%Y-%m-%d"),

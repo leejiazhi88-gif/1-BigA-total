@@ -262,6 +262,12 @@ def main(blocks_only=False):
             }
         )
 
+    if OUTPUT.exists():
+        previous = json.loads(OUTPUT.read_text(encoding="utf-8"))
+        earlier = [row for row in previous["series"] if row["date"] < f"{START_YEAR}-01-01"]
+        series = earlier + series
+    else:
+        previous = {}
     result = {
         "meta": {
             "updated": datetime.now().strftime("%Y-%m-%d"),
@@ -269,6 +275,7 @@ def main(blocks_only=False):
             "end": series[-1]["date"],
             "northEnd": "2024-08-16",
             "blockValidation": block_metadata(block_audit),
+            "historicalBlockValidation": previous.get("meta", {}).get("historicalBlockValidation"),
             "sources": {
                 "north": "Tushare moneyflow_hsgt",
                 "block": "Tushare block_trade",

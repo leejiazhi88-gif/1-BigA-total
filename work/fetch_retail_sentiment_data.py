@@ -11,7 +11,7 @@ from tushare_client import END_DATE, call_api_pages, get_token
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "work" / "retail_sentiment_data.json"
 CACHE = ROOT / ".tools" / "retail-history"
-START_YEAR = 2006
+START_YEAR = 2005
 END_YEAR = int(END_DATE[:4])
 FIELDS = ("amount", "turnover", "marginBalance", "marginFloatRatio", "marginBuyRatio", "limitUpCount")
 

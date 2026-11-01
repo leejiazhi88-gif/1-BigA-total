@@ -150,7 +150,7 @@ const moduleHtml = `
         <h2>估值</h2>
         <p>连续数据看估值位置，季度事件看当时市场为何愿意给出这种价格。</p>
       </div>
-      <div class="module-status">PE 20年 / PB与股债收益差 10年</div>
+      <div class="module-status">PE/PB 自2004年 / 股债收益差按国债数据可用日</div>
     </div>
 
     <div class="valuation-grid">
@@ -164,6 +164,7 @@ const moduleHtml = `
             <button class="range-tab" data-years="3">3年</button>
             <button class="range-tab" data-years="5">5年</button>
             <button class="range-tab" data-years="10">10年</button>
+            <button class="range-tab" data-years="20">20年</button>
             <button class="range-tab active" data-years="0">全部</button>
           </div>
         </div>
@@ -207,7 +208,7 @@ const moduleHtml = `
     </div>
 
     <div class="valuation-foot">
-      <div class="note"><strong>连续数据口径：</strong>PE(TTM)为指数动态市盈率；PE与PB分位均按当前选择的3年、5年、10年或全部可用样本动态重算。PB来自指数每日指标，股债收益差为100/PE减10年期国债收益率，两者共同可得区间为2016年6月以来。</div>
+      <div class="note"><strong>连续数据口径：</strong>PE(TTM)与PB来自指数每日指标，可追溯至2004年；PE与PB分位按当前选择的3年、5年、10年或全部可用样本动态重算。股债收益差为100/PE减10年期国债收益率，仅显示同日国债数据可得的观测。</div>
       <div class="note"><strong>事件库口径：</strong>对应飞书“A股指数”表的估值说明，仅收录盈利预警、业绩不及预期、重大减持、IPO定价过热、热门公司估值破纪录五类。季度估值数据单独展示，不计入事件条数。</div>
     </div>
   </section>
@@ -225,7 +226,10 @@ const js = `
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
 
-    const valuationData = { sh: DATA.sh, sz: DATA.sz };
+    const valuationData = Object.fromEntries(["sh", "sz"].map(market => [market, [
+      ...valuationExtra[market].filter(row => row.date < DATA[market][0].date && Number.isFinite(row.pe)),
+      ...DATA[market]
+    ]]));
     const curatedEvents = {
       "2007-Q3": [
         { type: "估值升温", title: "指数估值进入历史极高区间", desc: "股价上涨明显快于盈利点数增长，估值扩张成为行情主要推动力。", meta: "观察项：PE分位、IPO热度" }

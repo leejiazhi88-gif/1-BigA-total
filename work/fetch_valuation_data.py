@@ -12,7 +12,7 @@ from tushare_client import END_DATE, call_api, get_token
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "work" / "valuation_data.json"
-START_YEAR = 2006
+START_YEAR = 2004
 END_YEAR = int(END_DATE[:4])
 
 
@@ -106,6 +106,7 @@ def build_index_series(rows, bond_dates, bond_by_date):
         result.append(
             {
                 "date": f"{date[:4]}-{date[4:6]}-{date[6:]}",
+                "pe": round(pe, 4),
                 "pb": round(pb, 4),
                 "pbPercentile": round(percentile(pb_values, pb), 4),
                 "bond10y": round(bond_yield, 4) if bond_yield is not None else None,
