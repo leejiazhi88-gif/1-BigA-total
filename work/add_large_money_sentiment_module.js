@@ -28,7 +28,7 @@ const css = `
     #large-money-sentiment .panel-head { flex-wrap: wrap; gap: 12px; }
     #large-money-sentiment .module-status { white-space: normal; overflow-wrap: anywhere; }
     #largeMoneyMetricSubtitle { line-height: 1.7; }
-    #largeMoneyHoldingModes[hidden], #largeMoneyHoldingCoverage[hidden] { display: none; }
+    #largeMoneyHoldingModes[hidden], #largeMoneyHoldingCoverage[hidden], #largeMoneySmoothing[hidden] { display: none; }
     #largeMoneyHoldingCoverage { padding: 0 16px 12px; color: #8fa5bf; font-size: 12px; line-height: 1.7; }
     #largeMoneySeriesControls { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 11px 16px 0; }
     #largeMoneySeriesControls button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0;
@@ -86,6 +86,11 @@ const moduleHtml = `
           <button class="metric-tab" data-metric="fundPosition">主动权益基金仓位</button>
           <button class="metric-tab" data-metric="institutionConcentration">机构持仓集中度</button>
           <button class="metric-tab" data-metric="etfShares">ETF份额变化</button>
+        </div>
+        <div class="metric-tabs" id="largeMoneySmoothing" role="group" aria-label="移动平均采样点数">
+          <button class="metric-tab active" data-window="1" aria-pressed="true">原数据</button>
+          <button class="metric-tab" data-window="7" aria-pressed="false">7点均线</button>
+          <button class="metric-tab" data-window="30" aria-pressed="false">30点均线</button>
         </div>
         <div class="metric-tabs" id="largeMoneyHoldingModes" role="group" aria-label="北向持仓统计口径" hidden>
           <button class="metric-tab active" data-mode="value" aria-pressed="true">持仓市值</button>
@@ -218,10 +223,22 @@ const script = `
       institutionConcentration: "半年报／年报快照：每年6月30日、12月31日报告期末持仓集中度；横轴为报告期末，不是公告日，不做周采样或半年度平均，期间连线不代表每日变化。",
       etfShares: "周末存量：以每周最后一个交易日为观察点，各ETF取截至该日最近15天内的可得份额后汇总；横轴是观察日，各基金原始份额日期可能不同。不是整周份额相加、周平均或净申购量。"
     };
+    let smoothingWindow = 1;
+    function smoothedRows(rows, field) {
+      if (smoothingWindow === 1) return rows;
+      return rows.map((row, index) => {
+        const window = rows.slice(Math.max(0, index - smoothingWindow + 1), index + 1);
+        const valid = window.length === smoothingWindow && window.every(item => Number.isFinite(item[field]));
+        return { ...row, [field]: valid ? window.reduce((sum, item) => sum + item[field], 0) / smoothingWindow : null };
+      });
+    }
     function renderChart(preserveZoom = false) {
       const holdingView = activeMetric === "northHoldings";
       const fundView = activeMetric === "fundPosition" || activeMetric === "institutionConcentration";
       const etfView = activeMetric === "etfShares";
+      const smoothable = !holdingView && !fundView && !etfView;
+      const smoothingLabel = smoothingWindow === 1 ? "原数据" : smoothingWindow + "点均线";
+      document.getElementById("largeMoneySmoothing").hidden = !smoothable;
       const cfg = { ...metrics[activeMetric], ...(holdingView && holdingMode === "ratio"
         ? { unit: "%", digits: 3, subtitle: "北向持仓市值占对应市场全部A股总市值的季度末比例" } : {}) };
       const previousZoom = preserveZoom ? chart.getOption().dataZoom?.[0] : null;
@@ -231,7 +248,7 @@ const script = `
         data: holdingView ? activeRows(northHoldings.series).map(row => [row.date, row[market.key][holdingMode]])
           : fundView ? activeRows(fundReports.series).map(row => [row.date, row[market.key][cfg.field]])
           : etfView ? activeRows(etfShares.series).map(row => [row.date, row[market.key]])
-          : activeRows(market.rows).map(row => [row[dateField] || row.date, row[activeMetric]]),
+          : activeRows(smoothedRows(market.rows, activeMetric)).map(row => [row[dateField] || row.date, row[activeMetric]]),
         showSymbol: holdingView || fundView, symbolSize: 6, connectNulls: false, sampling: holdingView || fundView || etfView ? undefined : "lttb",
         lineStyle: { width: 2.2, color: market.color }, itemStyle: { color: market.color }
       }));
@@ -241,14 +258,16 @@ const script = `
         const point = item.data.filter(point => Number.isFinite(point[1])).at(-1);
         return item.name + " " + (point ? fmt(point[1], cfg.digits) + cfg.unit + "（" + point[0] + "）" : "暂无数据");
       });
-      document.getElementById("largeMoneyMetricSubtitle").textContent = "两市合计 / 沪市 / 深市 · " + cfg.subtitle;
+      document.getElementById("largeMoneyMetricSubtitle").textContent = "两市合计 / 沪市 / 深市 · " + cfg.subtitle + (smoothable ? " · " + smoothingLabel : "");
       document.getElementById("largeMoneyMetricNote").textContent = cfg.note;
       document.getElementById("largeMoneyMetricExplanation").textContent = "采样口径：" + samplingNotes[activeMetric] + cfg.explanation +
         (holdingView
           ? " 比例＝北向持仓市值÷同期对应市场全部A股总市值（含限售股），不是北向持仓内部配置比例；两市比例用合计分子÷合计分母，不相加沪深百分比。深股通2016年12月5日开通，之前深市留空；开通前两市持仓仅含沪股通，比例分母仍为沪深A股总市值。"
           : fundView || etfView ? ""
           : " 按股票所属交易所拆分为沪市、深市，仅含沪深A股；两市合计为两者之和。完整抓取周内无该市场记录时，记为已披露汇总零值，不代表实际没有交易；整周无记录留空。");
-      document.getElementById("largeMoneyLatestReading").textContent = latest.join(" / ");
+      if (smoothable) document.getElementById("largeMoneyMetricExplanation").textContent +=
+        " 当前展示：" + smoothingLabel + "。7点／30点均线为当前及此前6／29个周采样点的算术平均，不是7／30天，也不是累计值。窗口不足或含缺失值时留空，不跳过缺失、不补零；先用完整历史计算，再截取所选时间范围。沪深及两市分别计算，最新读数与悬浮值均为当前模式的值。";
+      document.getElementById("largeMoneyLatestReading").textContent = (smoothable ? smoothingLabel + " · " : "") + latest.join(" / ");
       document.getElementById("largeMoneyHoldingModes").hidden = !holdingView;
       const coverage = document.getElementById("largeMoneyHoldingCoverage");
       coverage.hidden = !(holdingView || fundView || etfView);
@@ -295,7 +314,7 @@ const script = `
             const date = params[0]?.value?.[0];
             const report = fundView ? fundReports.series.find(row => row.date === date) : null;
             const sample = report ? "<br>有效样本：" + report.funds + "只 · 覆盖率 " + fmt(report.coverage, 1) + "%" : "";
-            return "<b>" + escapeHtml(params[0]?.axisValueLabel || "") + "</b><br>" +
+            return "<b>" + escapeHtml(params[0]?.axisValueLabel || "") + (smoothable ? " · " + smoothingLabel : "") + "</b><br>" +
               params.map(item => item.marker + item.seriesName + "：<b>" + fmt(item.value[1], cfg.digits) + cfg.unit + "</b>").join("<br>") + sample;
           }
         },
@@ -339,6 +358,17 @@ const script = `
         document.querySelectorAll("#largeMoneyMetricTabs [data-metric]").forEach(item => item.classList.remove("active"));
         button.classList.add("active");
         renderChart();
+      });
+    });
+    document.querySelectorAll("#largeMoneySmoothing [data-window]").forEach(button => {
+      button.addEventListener("click", () => {
+        smoothingWindow = Number(button.dataset.window);
+        document.querySelectorAll("#largeMoneySmoothing [data-window]").forEach(item => {
+          const selected = Number(item.dataset.window) === smoothingWindow;
+          item.classList.toggle("active", selected);
+          item.setAttribute("aria-pressed", String(selected));
+        });
+        renderChart(true);
       });
     });
     document.querySelectorAll("#largeMoneyHoldingModes [data-mode]").forEach(button => {

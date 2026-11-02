@@ -18,6 +18,7 @@ const metrics = ['blockAmount', 'institutionBlockNet', 'holderNetShares', 'north
 for (const metric of metrics) assert.ok(html.includes('data-metric="' + metric.dataset.metric + '"'));
 assert.ok(!html.match(/<button[^>]+disabled[^>]*>\s*(主动权益基金仓位|机构持仓集中度|ETF份额变化)/));
 const modes = ['value', 'ratio'].map(mode => button({ mode }));
+const smoothing = [1, 7, 30].map(window => button({ window: String(window) }));
 const ranges = [3, 5, 10, 20, 0].map(years => button({ years: String(years) }));
 let option;
 const chart = {
@@ -28,7 +29,7 @@ const chart = {
 vm.runInNewContext(script, { document: {
   getElementById: element,
   querySelectorAll(selector) {
-    return selector.includes('MetricTabs') ? metrics : selector.includes('HoldingModes') ? modes : selector.includes('SeriesControls') ? markets : ranges;
+    return selector.includes('MetricTabs') ? metrics : selector.includes('Smoothing') ? smoothing : selector.includes('HoldingModes') ? modes : selector.includes('SeriesControls') ? markets : ranges;
   }
 }, echarts: { init: () => chart }, window: { addEventListener() {} } });
 assert.equal(option.series.length, 3);
@@ -75,4 +76,33 @@ assert.equal(element('largeMoneyHoldingModes').hidden, true);
 ranges[0].click();
 assert.equal(option.series.length, 2);
 assert.ok(option.series.every(s => s.data.every(p => p[0] >= '2023-10-23')));
-console.log('PASS: all seven tabs, coverage, units, shared selection, last-series guard, zoom and date range');
+ranges.at(-1).click();
+for (const metric of metrics.slice(0, 3)) {
+  metric.click();
+  smoothing[0].click();
+  const raw = Array.from(option.series[0].data, p => [...p]);
+  for (const [i, size] of [[1, 7], [2, 30]]) {
+    option.dataZoom[0].start = 20;
+    smoothing[i].click();
+    assert.equal(option.dataZoom[0].start, 20);
+    option.series[0].data.forEach((point, index) => {
+      const window = raw.slice(Math.max(0, index-size+1), index+1);
+      const expected = window.length === size && window.every(p => Number.isFinite(p[1]))
+        ? window.reduce((sum,p) => sum+p[1],0)/size : null;
+      assert.equal(point[1], expected);
+    });
+    const full = Array.from(option.series[0].data, p => [...p]);
+    ranges[0].click();
+    assert.deepEqual(Array.from(option.series[0].data, p => [...p]), full.filter(p => p[0] >= '2023-10-23'));
+    ranges.at(-1).click();
+  }
+  smoothing[0].click();
+  assert.deepEqual(Array.from(option.series[0].data, p => [...p]), raw);
+}
+smoothing[1].click();
+metrics[3].click();
+assert.equal(element('largeMoneySmoothing').hidden, true);
+metrics[0].click();
+assert.equal(element('largeMoneySmoothing').hidden, false);
+assert.ok(element('largeMoneyMetricSubtitle').textContent.includes('7点均线'));
+console.log('PASS: tabs, market controls, raw/7/30 averages, missing windows, range independence and zoom');
