@@ -52,7 +52,7 @@ function htmlTemplate(data, echartsSource) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>A股20年：股价、合计利润与市盈率</title>
+  <title>A-Total</title>
   <style>
     :root {
       --bg: #07111f;
