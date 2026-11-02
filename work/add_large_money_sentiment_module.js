@@ -209,6 +209,15 @@ const script = `
       cutoff.setUTCFullYear(cutoff.getUTCFullYear() - activeYears);
       return rows.filter(row => new Date(row.date + "T00:00:00Z") >= cutoff);
     }
+    const samplingNotes = {
+      blockAmount: "周累计：按成交日期将周一至周日全部已披露成交额相加，不是周五单日值或日均值；横轴为该周最后一笔已披露大宗交易日期。",
+      institutionBlockNet: "周累计：按成交日期累计周一至周日机构专用席位买入额减卖出额，不是采样日单日净额；横轴为该周最后一笔已披露大宗交易日期。",
+      holderNetShares: "周累计：按公告日期累计周一至周日披露的增加股数减减少股数，不是周五单日值；横轴为该周最后一条股东变动公告日期，公告所述交易可能发生在更早日期或跨多个交易日。",
+      northHoldings: "季度快照：每年3、6、9、12月末最后一个交易日的持仓估值或占比；横轴为该交易日，不是公告发布日期，不进行周采样，也不累计或平均整个季度。",
+      fundPosition: "半年报／年报快照：每年6月30日、12月31日报告期末仓位；横轴为报告期末，不是报告公布日，不是周末值或半年度平均。披露后才可取得，期间连线不代表每日仓位。",
+      institutionConcentration: "半年报／年报快照：每年6月30日、12月31日报告期末持仓集中度；横轴为报告期末，不是公告日，不做周采样或半年度平均，期间连线不代表每日变化。",
+      etfShares: "周末存量：以每周最后一个交易日为观察点，各ETF取截至该日最近15天内的可得份额后汇总；横轴是观察日，各基金原始份额日期可能不同。不是整周份额相加、周平均或净申购量。"
+    };
     function renderChart(preserveZoom = false) {
       const holdingView = activeMetric === "northHoldings";
       const fundView = activeMetric === "fundPosition" || activeMetric === "institutionConcentration";
@@ -234,7 +243,7 @@ const script = `
       });
       document.getElementById("largeMoneyMetricSubtitle").textContent = "两市合计 / 沪市 / 深市 · " + cfg.subtitle;
       document.getElementById("largeMoneyMetricNote").textContent = cfg.note;
-      document.getElementById("largeMoneyMetricExplanation").textContent = cfg.explanation +
+      document.getElementById("largeMoneyMetricExplanation").textContent = "采样口径：" + samplingNotes[activeMetric] + cfg.explanation +
         (holdingView
           ? " 比例＝北向持仓市值÷同期对应市场全部A股总市值（含限售股），不是北向持仓内部配置比例；两市比例用合计分子÷合计分母，不相加沪深百分比。深股通2016年12月5日开通，之前深市留空；开通前两市持仓仅含沪股通，比例分母仍为沪深A股总市值。"
           : fundView || etfView ? ""

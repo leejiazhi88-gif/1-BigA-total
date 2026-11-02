@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
-const OUTPUT = path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
+const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const DATA_FILE = path.join(ROOT, "work", "retail_sentiment_data.json");
 const MONTHLY_DATA_FILE = path.join(ROOT, "work", "retail_monthly_trends.json");
 
@@ -187,7 +187,7 @@ const script = `
       document.getElementById("retailMetricSubtitle").textContent = cfg.subtitle + " · 周频 · 可用历史 " +
         (span.start ? span.start + " 至 " + span.end : "暂无");
       document.getElementById("retailMetricNote").textContent = cfg.note;
-      document.getElementById("retailMetricExplanation").textContent = cfg.explanation;
+      document.getElementById("retailMetricExplanation").textContent = "采样口径：按自然周（周一至周日），每个指标分别取周内最后一次有效观测，横轴为该观测的实际日期；通常接近周五，但节假日或缺报时可能提前，不固定取周五，不取周平均，不跨周补值。" + cfg.explanation;
       document.getElementById("retailLatestReading").textContent = latest.join(" / ") || "暂无数据";
       chart.setOption({
         animation: false,
@@ -327,7 +327,8 @@ if (!fs.existsSync(MONTHLY_DATA_FILE)) throw new Error("Missing retail_monthly_t
 
 const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
 const monthlyData = JSON.parse(fs.readFileSync(MONTHLY_DATA_FILE, "utf8"));
-let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
+const originalHtml = fs.readFileSync(OUTPUT, "utf8");
+let html = stripExisting(originalHtml);
 html = html.replace(
   '<a href="#valuation">估值</a>',
   '<a href="#valuation">估值</a><a href="#retail-sentiment">情绪-散户</a>'
@@ -345,5 +346,10 @@ const retailScript = script
 html = insertBeforeLast(html, "</head>", css + "\n");
 html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
 html = insertBeforeLast(html, "</body>", retailScript + "\n");
+if (process.argv.includes("--online-only")) {
+  html = originalHtml
+    .replace(/<section class="module-shell" id="retail-sentiment">[\s\S]*?<\/section>/, () => moduleHtml.trim())
+    .replace(/<script id="retail-sentiment-script">[\s\S]*?<\/script>/, () => retailScript.trim());
+}
 fs.writeFileSync(OUTPUT, html, "utf8");
 console.log(JSON.stringify({ output: OUTPUT, bytes: fs.statSync(OUTPUT).size }, null, 2));

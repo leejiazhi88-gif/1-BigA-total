@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
-const OUTPUT = path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
+const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const VALUATION_DATA_FILE = path.join(ROOT, "work", "valuation_data.json");
 const START_MARKER = "<!-- VALUATION_MODULE_START -->";
 const END_MARKER = "<!-- VALUATION_MODULE_END -->";
@@ -139,7 +139,7 @@ const moduleHtml = `
     </div>
 
     <div class="valuation-foot single-note">
-      <div class="note"><strong>连续数据口径：</strong>PE(TTM)与PB来自指数每日指标，可追溯至2004年；PE与PB分位按当前选择的3年、5年、10年或全部可用样本动态重算。股债收益差为100/PE减10年期国债收益率，仅显示同日国债数据可得的观测。</div>
+      <div class="note"><strong>当前指标采样口径：</strong><span id="valuationSamplingExplanation"></span></div>
     </div>
   </section>
 ${END_MARKER}
@@ -218,6 +218,12 @@ const js = `
 
     function renderValuationChart() {
       const cfg = metricConfig[activeMetric];
+      document.getElementById("valuationSamplingExplanation").textContent = ({
+        pe: "周频时点值：每个自然周取最后可得的有效PE，横轴为原始观测日期，不是整周PE平均，也不固定为周五。PE中的TTM表示过去12个月盈利，与图表每周采样是不同概念。",
+        pePercentile: "周频样本分位：先取每周最后可得PE，再计算其在当前所选时间范围全部有效周频样本中的位置；横轴沿用PE观测日。不使用全部日线计算，也不是每个时点仅对其之前历史计算的滚动分位。",
+        pbPercentile: "周频样本分位：取每周最后可得的有效PB，在当前所选时间范围全部有效周频样本中重算分位；横轴为原始观测日。不是周均PB，也不是日线样本分位或仅使用当时之前历史的滚动分位。",
+        equityBondSpread: "周频时点值：取每周最后有效指数观测日的100/PE，减去同日10年期国债收益率；横轴为该观测日。不是周平均或累计；同日债券数据缺失时留空，不用旧利率代替。"
+      })[activeMetric];
       const shPoints = valuationPoints("sh", activeMetric);
       const szPoints = valuationPoints("sz", activeMetric);
       const shLatest = shPoints[shPoints.length - 1]?.[1];
@@ -322,7 +328,8 @@ if (!fs.existsSync(VALUATION_DATA_FILE)) {
 const valuationExtra = JSON.parse(fs.readFileSync(VALUATION_DATA_FILE, "utf8"));
 const valuationJs = js
   .replace("__VALUATION_EXTRA__", JSON.stringify(valuationExtra));
-let html = stripExistingModule(fs.readFileSync(OUTPUT, "utf8"));
+const originalHtml = fs.readFileSync(OUTPUT, "utf8");
+let html = stripExistingModule(originalHtml);
 
 function insertBeforeLast(source, marker, content) {
   const index = source.lastIndexOf(marker);
@@ -334,6 +341,11 @@ html = insertBeforeLast(html, "</head>", css + "\n");
 html = html.replace('<main class="wrap">', '<main class="wrap" id="overview">' + nav);
 html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
 html = insertBeforeLast(html, "</body>", valuationJs + "\n");
+if (process.argv.includes("--online-only")) {
+  html = originalHtml
+    .replace(/<section class="module-shell" id="valuation">[\s\S]*?<\/section>/, () => moduleHtml.trim())
+    .replace(/<script id="valuation-module-script">[\s\S]*?<\/script>/, () => valuationJs.trim());
+}
 fs.writeFileSync(OUTPUT, html, "utf8");
 
 console.log(JSON.stringify({ output: OUTPUT, bytes: fs.statSync(OUTPUT).size }, null, 2));
