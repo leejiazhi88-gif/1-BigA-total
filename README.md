@@ -12,7 +12,7 @@
 - 总览：依次展示指数价格、沪深A股交易规模（交易量与交易额）、PE(TTM)、过去12个月合计利润
 - 估值模块：PE(TTM)、PE历史分位、PB可得历史分位、股债收益差
 - 情绪-散户模块：两市合计、沪市、深市的成交额与换手率从2005年起，融资指标从2010年业务启动；下方展示月度新开户和已披露新基金发行份额
-- 情绪-大资金模块：沪深A股大宗交易、机构席位大宗净买入、产业资本增减持、北向资金历史口径
+- 情绪-大资金模块：沪深A股大宗交易、机构席位大宗净买入、产业资本增减持、北向资金历史口径；两市合计、沪市、深市外层选择对四个可用指标统一生效
 - 情绪-官方模块：IPO融资、产业资本净减持、印花税率、政策利率、社融/M2
 - 国家队持仓：汇金／证金直接A股与ETF、社保投资组合独立曲线，支持金额／持仓比例切换、报告期走势、账户构成及逐条持仓来源；下方保留9只ETF每日净申购
 
@@ -20,6 +20,25 @@
 国家队 ETF 暴露聚类的候选基金池、统计公式与数据限制见 [NATIONAL_TEAM_ETF_CLUSTER.md](NATIONAL_TEAM_ETF_CLUSTER.md)。
 
 ## 运行
+
+### 大资金市场拆分
+
+`work/large_money_markets.py` 从2000年开始按月抓取大宗交易、按年分页抓取股东增减持及北向资金，使用 `.tools/large-money-markets/` 缓存并复用既有大宗交易核验缓存。普通 `fetch_large_money_sentiment_data.py` 刷新已使用同一流程，避免后续更新丢失沪深拆分；`--blocks-only` 只替换大宗交易指标，保留其他指标。数据输出为 `large_money_sentiment_data.json` 的 `series`（两市合计）和 `markets.sh/sz`。
+
+大宗交易保留逐笔价量金额核验及原有公告修正。产业资本增减持统一限定沪深A股，剔除旧合计可能混入的其他市场记录；按公告日去重并分交易所汇总，单位亿股。北向资金以 `hgt` / `sgt`（百万元÷100）分别代表沪股通/深股通，取同周最后可得交易日，合计按同日两者相加；深股通开通前留空，旧口径仍止于2024-08-16。各市场数据共用日期，完整抓取周内某市场无已披露记录时汇总为零，整周无数据留空，不把它解释为实际零交易。
+
+原始北向2024-07-08记录的分项与合计矛盾，保留于 `meta.marketSplit.northValidationIssues`，该日三项均按缺失处理，不猜测符号修正；此周最终观测为7月12日，因此不影响该周图上值。后续若矛盾恰逢周末观测，三条线均留空。
+
+仅刷新大资金并发布到线上入口（不会更新独立本地HTML副本）：
+
+```bash
+python3 work/fetch_large_money_sentiment_data.py
+node work/add_large_money_sentiment_module.js --online-only
+python3 -m unittest discover -s work -p 'test_large_money_markets.py'
+node work/test_large_money_ui.cjs
+```
+
+如只补拆分、不推进数据截止日，在Python命令前设置 `MARKET_END_DATE=YYYYMMDD` 为现有截止日。市场勾选跨指标保留，市场切换保留缩放，纵轴仅使用可见市场及时间区间的数据。
 
 生成页面：
 

@@ -7,6 +7,10 @@
 - GitHub Pages 从 `main` 分支根目录发布。换电脑后先读取远端 `main`，以线上页面为基准修改、提交并确认 Pages 完成发布；本地生成文件仅作临时构建，不作为长期维护版本。
 - 国家队观察不维护“同指数ETF规模前十 · 底层股票暴露”“季度走势 · 两类ETF各规模前十”“聚类散点图”。不要把仅存在于旧电脑本地的这三张图重新发布到线上。
 
+## 大资金市场选择（2026-11-02）
+
+“情绪-大资金”的两市合计、沪市、深市选择位于指标页签外层，统一作用于大宗交易额、机构大宗净买入、产业资本净增减持及北向资金；切换指标不重置市场选择，切换市场保留缩放并重算纵轴。颜色与散户模块一致。数据由 `work/large_money_markets.py` 按原始交易记录拆分，取数与验证方法见README。本次拆分截止沿用2026-10-23，并非全站数据刷新。直接运行 `node work/add_large_money_sentiment_module.js --online-only` 更新Pages入口 `index.html`，不维护 `outputs/a_share_20y_dashboard.html` 本地副本。
+
 ## 散户月度入场趋势（2026-11-01）
 
 “月度入场趋势”的上交所A股新开户及已披露新基金发行份额已从6号项目移入本仓库。此后只更新1号项目的 `work/fetch_retail_monthly_trends.py`、`work/retail_monthly_trends.json` 和 `work/add_retail_sentiment_module.js`；6号项目不再作为该模块的数据源。已提交JSON可直接随 `node work/build_market_dashboard.js --skip-refresh` 构建。刷新月度数据需Tushare凭据与 `pymupdf`：
@@ -271,6 +275,8 @@ node work/build_market_dashboard.js --skip-refresh
 
 后续每完成一步，请在最后给出：
 
-- 最新本地文件路径
+- GitHub仓库地址：https://github.com/leejiazhi88-gif/1-BigA-total
 - 可验收的线上 URL
-- 当前 git 状态或需要人工确认的点
+- 当前提交、是否已推送、线上是否已验证更新
+
+不再将本地HTML作为交付物或独立维护版本。

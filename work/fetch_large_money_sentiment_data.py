@@ -173,6 +173,11 @@ def replace_block_series(data, weeks):
 
 
 def main(blocks_only=False):
+    from large_money_markets import main as refresh_markets
+    return refresh_markets(blocks_only=blocks_only)
+
+
+def legacy_main(blocks_only=False):
     token = get_token()
     block_weeks, block_audit = fetch_block_weeks(token)
     if blocks_only:

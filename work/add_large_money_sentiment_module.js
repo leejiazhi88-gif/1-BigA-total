@@ -2,12 +2,14 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
-const OUTPUT = path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
+const OUTPUT = process.argv.includes("--online-only")
+  ? path.join(ROOT, "index.html")
+  : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const DATA_FILE = path.join(ROOT, "work", "large_money_sentiment_data.json");
 
 function stripExisting(html) {
   return html
-    .replace(/\s*<section class="module-shell" id="large-money-sentiment">[\s\S]*?<\/section>/g, "")
+    .replace(/\s*<section class="module-shell" id="large-money-sentiment">[\s\S]*?<\/section>/g, "<!-- LARGE_MONEY_MODULE -->")
     .replace(/\s*<style id="large-money-sentiment-style">[\s\S]*?<\/style>/g, "")
     .replace(/\s*<script id="large-money-sentiment-script">[\s\S]*?<\/script>/g, "")
     .replace(/\s*<a href="#large-money-sentiment"[^>]*>情绪-大资金<\/a>/g, "");
@@ -21,6 +23,18 @@ const css = `
     }
     #largeMoneyChart { height: 500px; width: 100%; }
     #large-money-sentiment .panel-head { flex-wrap: wrap; gap: 12px; }
+    #large-money-sentiment .module-status { white-space: normal; overflow-wrap: anywhere; }
+    #largeMoneyMetricSubtitle { line-height: 1.7; }
+    #largeMoneySeriesControls { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 11px 16px 0; }
+    #largeMoneySeriesControls button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0;
+      border: 0; background: transparent; color: #8fa5bf; font-size: 12px; cursor: pointer; }
+    #largeMoneySeriesControls button:hover { color: #edf4ff; background: transparent; }
+    #largeMoneySeriesControls button[aria-pressed="false"] { opacity: .4; }
+    .large-money-series-mark { position: relative; width: 22px; height: 12px; flex: none; }
+    .large-money-series-mark::before { content: ""; position: absolute; left: 0; right: 0; top: 5px;
+      border-top: 2px solid var(--series-color); }
+    .large-money-series-mark::after { content: ""; position: absolute; left: 8px; top: 1px;
+      width: 8px; height: 8px; border: 2px solid #edf4ff; border-radius: 50%; background: var(--series-color); }
     @media (max-width: 980px) {
       .large-money-grid { grid-template-columns: 1fr; }
       #largeMoneyChart { height: 450px; }
@@ -53,6 +67,11 @@ const moduleHtml = `
             <button class="range-tab" data-years="20">20年</button>
             <button class="range-tab active" data-years="0">全部</button>
           </div>
+        </div>
+        <div id="largeMoneySeriesControls" role="group" aria-label="大资金市场曲线">
+          <button type="button" data-series="all" aria-pressed="true" style="--series-color:#f6c85f"><span class="large-money-series-mark"></span>两市合计</button>
+          <button type="button" data-series="sh" aria-pressed="true" style="--series-color:#36c2ff"><span class="large-money-series-mark"></span>沪市</button>
+          <button type="button" data-series="sz" aria-pressed="true" style="--series-color:#ff5d73"><span class="large-money-series-mark"></span>深市</button>
         </div>
         <div class="metric-tabs" id="largeMoneyMetricTabs">
           <button class="metric-tab active" data-metric="blockAmount">大宗交易额</button>
@@ -117,6 +136,12 @@ const script = `
     let activeMetric = "blockAmount";
     let activeYears = 0;
     let chartPoints = [];
+    const markets = [
+      { key: "all", name: "两市合计", rows: largeMoneyData.series, color: "#f6c85f" },
+      { key: "sh", name: "沪市", rows: largeMoneyData.markets.sh, color: "#36c2ff" },
+      { key: "sz", name: "深市", rows: largeMoneyData.markets.sz, color: "#ff5d73" }
+    ];
+    const selectedSeries = new Set(markets.map(market => market.key));
     const chart = echarts.init(document.getElementById("largeMoneyChart"), null, { renderer: "canvas" });
 
     function axisBounds(points) {
@@ -130,7 +155,8 @@ const script = `
     function rescaleVisible() {
       if (!chartPoints.length) return;
       const zoom = chart.getOption().dataZoom[0];
-      const first = Date.parse(chartPoints[0][0]), last = Date.parse(chartPoints[chartPoints.length - 1][0]);
+      const dates = chartPoints.map(point => Date.parse(point[0]));
+      const first = Math.min(...dates), last = Math.max(...dates);
       const timestamp = value => typeof value === "number" ? value : Date.parse(value);
       const startValue = timestamp(zoom.startValue), endValue = timestamp(zoom.endValue);
       const start = Number.isFinite(startValue) ? startValue : first + (last - first) * zoom.start / 100;
@@ -140,26 +166,37 @@ const script = `
     }
     chart.on("datazoom", rescaleVisible);
 
-    function activeRows() {
-      const rows = largeMoneyData.series.filter(row => Number.isFinite(row[activeMetric]));
+    function activeRows(source) {
+      const rows = source;
       if (!activeYears || !rows.length) return rows;
       const end = new Date(largeMoneyData.series[largeMoneyData.series.length - 1].date + "T00:00:00Z");
       const cutoff = new Date(end);
       cutoff.setUTCFullYear(cutoff.getUTCFullYear() - activeYears);
       return rows.filter(row => new Date(row.date + "T00:00:00Z") >= cutoff);
     }
-    function renderChart() {
+    function renderChart(preserveZoom = false) {
       const cfg = metrics[activeMetric];
-      const rows = activeRows();
+      const previousZoom = preserveZoom ? chart.getOption().dataZoom?.[0] : null;
       const dateField = activeMetric === "northMoney" ? "northDate" : activeMetric === "holderNetShares" ? "holderDate" : "blockDate";
-      const points = rows.map(row => [row[dateField] || row.date, row[activeMetric]]);
+      const series = markets.filter(market => selectedSeries.has(market.key)).map(market => ({
+        name: market.name, type: "line",
+        data: activeRows(market.rows).map(row => [row[dateField] || row.date, row[activeMetric]]),
+        showSymbol: false, connectNulls: false, sampling: "lttb",
+        lineStyle: { width: 2.2, color: market.color }, itemStyle: { color: market.color }
+      }));
+      const points = series.flatMap(item => item.data);
       chartPoints = points;
-      const latest = points[points.length - 1]?.[1];
-      document.getElementById("largeMoneyMetricSubtitle").textContent = cfg.subtitle;
+      const latest = series.map(item => {
+        const point = item.data.filter(point => Number.isFinite(point[1])).at(-1);
+        return item.name + " " + (point ? fmt(point[1], cfg.digits) + cfg.unit + "（" + point[0] + "）" : "暂无数据");
+      });
+      document.getElementById("largeMoneyMetricSubtitle").textContent = "两市合计 / 沪市 / 深市 · " + cfg.subtitle;
       document.getElementById("largeMoneyMetricNote").textContent = cfg.note;
-      document.getElementById("largeMoneyMetricExplanation").textContent = cfg.explanation;
-      document.getElementById("largeMoneyLatestReading").textContent =
-        (points[points.length - 1]?.[0] || "暂无") + "：" + fmt(latest, cfg.digits) + cfg.unit;
+      document.getElementById("largeMoneyMetricExplanation").textContent = cfg.explanation +
+        (activeMetric === "northMoney"
+          ? " 沪市对应沪股通（hgt），深市对应深股通（sgt），原始百万元除以100换算为亿元；同日加总为两市合计。深股通2016年12月5日开通，此前不绘制深市曲线；沪股通自2014年11月17日起。"
+          : " 按股票所属交易所拆分为沪市、深市，仅含沪深A股；两市合计为两者之和。完整抓取周内无该市场记录时，记为已披露汇总零值，不代表实际没有交易；整周无记录留空。");
+      document.getElementById("largeMoneyLatestReading").textContent = latest.join(" / ");
       chart.setOption({
         animation: false, backgroundColor: "transparent",
         grid: { left: 12, right: 24, top: 42, bottom: 64, containLabel: true },
@@ -168,9 +205,8 @@ const script = `
           confine: true, backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
           textStyle: { color: "#edf4ff" },
           formatter(params) {
-            const item = params[0];
-            return "<b>" + (item?.axisValueLabel || "") + "</b><br>" +
-              item.marker + cfg.title + "：<b>" + fmt(Number(item.value[1]), cfg.digits) + cfg.unit + "</b>";
+            return "<b>" + escapeHtml(params[0]?.axisValueLabel || "") + "</b><br>" +
+              params.map(item => item.marker + item.seriesName + "：<b>" + fmt(item.value[1], cfg.digits) + cfg.unit + "</b>").join("<br>");
           }
         },
         xAxis: {
@@ -184,19 +220,29 @@ const script = `
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [
-          { type: "inside", filterMode: "none", start: 0, end: 100 },
-          { type: "slider", filterMode: "none", bottom: 12, height: 22, start: 0, end: 100,
+          { type: "inside", filterMode: "none", start: previousZoom?.start ?? 0, end: previousZoom?.end ?? 100 },
+          { type: "slider", filterMode: "none", bottom: 12, height: 22, start: previousZoom?.start ?? 0, end: previousZoom?.end ?? 100,
             borderColor: "#263b58", backgroundColor: "#0d1929",
             fillerColor: "rgba(54,194,255,.17)", handleStyle: { color: "#36c2ff" },
             textStyle: { color: "#8fa5bf" } }
         ],
-        series: [{
-          name: cfg.title, type: "line", data: points, showSymbol: false,
-          sampling: "lttb", lineStyle: { width: 2.2, color: "#36c2ff" },
-          areaStyle: { color: "rgba(54,194,255,.08)" }, itemStyle: { color: "#36c2ff" }
-        }]
+        series
       }, true);
+      rescaleVisible();
     }
+    document.querySelectorAll("#largeMoneySeriesControls [data-series]").forEach(button => {
+      button.addEventListener("click", () => {
+        const key = button.dataset.series;
+        if (selectedSeries.has(key)) {
+          if (selectedSeries.size === 1) return;
+          selectedSeries.delete(key);
+        } else {
+          selectedSeries.add(key);
+        }
+        button.setAttribute("aria-pressed", String(selectedSeries.has(key)));
+        renderChart(true);
+      });
+    });
     document.querySelectorAll("#largeMoneyMetricTabs [data-metric]").forEach(button => {
       button.addEventListener("click", () => {
         activeMetric = button.dataset.metric;
@@ -222,6 +268,7 @@ const script = `
 
 if (!fs.existsSync(DATA_FILE)) throw new Error("Missing large_money_sentiment_data.json.");
 const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
+if (!data.markets?.sh?.length || !data.markets?.sz?.length) throw new Error("Missing institutional SH/SZ series; run large_money_markets.py.");
 let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
 html = html.replace(
   '<a href="#retail-sentiment">情绪-散户</a>',
@@ -235,7 +282,9 @@ function insertBeforeLast(source, marker, content) {
 const largeMoneyScript = script
   .replace("__LARGE_MONEY_DATA__", JSON.stringify(data));
 html = insertBeforeLast(html, "</head>", css + "\n");
-html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
+html = html.includes("<!-- LARGE_MONEY_MODULE -->")
+  ? html.replace("<!-- LARGE_MONEY_MODULE -->", moduleHtml)
+  : insertBeforeLast(html, "</main>", moduleHtml + "\n");
 html = insertBeforeLast(html, "</body>", largeMoneyScript + "\n");
 fs.writeFileSync(OUTPUT, html, "utf8");
 console.log(JSON.stringify({ output: OUTPUT, bytes: fs.statSync(OUTPUT).size }, null, 2));
