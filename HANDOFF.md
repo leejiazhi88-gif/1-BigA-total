@@ -11,6 +11,12 @@
 
 ## 大资金市场选择（2026-11-02）
 
+北向资金净流入页签已替换为“北向持仓分布”，参考6号项目的季度持股数乘未复权价格及总市值比例逻辑；本项目沿用沪深市场分组，不修改6号项目。金额为亿元，比例分母为同期对应市场全部A股总市值（含限售股），不是所持股票市值或自由流通市值。持仓变化不等于净流入。
+
+数据文件为 `work/northbound_holdings.json`；刷新运行 `python3 work/fetch_northbound_holdings.py`，再运行 `node work/add_large_money_sentiment_module.js --online-only`。完整构建的刷新流程也已接入，失败保留原缓存。可用 `MARKET_END_DATE=YYYYMMDD` 固定数据截止日；本次沿用20261023，不是全站刷新。验证运行 `python3 -m unittest discover -s work -p 'test_northbound_holdings.py'` 及 `node work/test_large_money_ui.cjs`。
+
+从2014Q4查询，首次可得为2016Q2。深股通开通前深市留空；两市比例分母仍含沪深全部A股。价格缺失采用此前730天内最后收盘价，并在 `carriedPrices` 保存日期，属于历史价格估值。仍缺价、未返回记录或同代码持股数冲突的市场整期留空；开通后两市只有沪深都完整才展示，不把缺失计零或跨缺口连线。2026Q2、Q3深市原始记录存在同代码不同持股数冲突，因此最新沪市为2026Q3，深市及两市完整快照为2026Q1。冲突记录保存在JSON，20260630的300132.SZ独立查询甚至返回“青松股份”和“中航成飛”两个名称，不能任取或相加。界面展示各市场覆盖期数、最后有效日期及冲突季度。
+
 “情绪-大资金”的两市合计、沪市、深市选择位于指标页签外层，统一作用于大宗交易额、机构大宗净买入、产业资本净增减持及北向资金；切换指标不重置市场选择，切换市场保留缩放并重算纵轴。颜色与散户模块一致。数据由 `work/large_money_markets.py` 按原始交易记录拆分，取数与验证方法见README。本次拆分截止沿用2026-10-23，并非全站数据刷新。直接运行 `node work/add_large_money_sentiment_module.js --online-only` 更新Pages入口 `index.html`，不维护 `outputs/a_share_20y_dashboard.html` 本地副本。
 
 ## 散户月度入场趋势（2026-11-01）

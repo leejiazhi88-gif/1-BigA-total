@@ -6,6 +6,7 @@ const OUTPUT = process.argv.includes("--online-only")
   ? path.join(ROOT, "index.html")
   : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const DATA_FILE = path.join(ROOT, "work", "large_money_sentiment_data.json");
+const HOLDINGS_FILE = path.join(ROOT, "work", "northbound_holdings.json");
 
 function stripExisting(html) {
   return html
@@ -25,6 +26,8 @@ const css = `
     #large-money-sentiment .panel-head { flex-wrap: wrap; gap: 12px; }
     #large-money-sentiment .module-status { white-space: normal; overflow-wrap: anywhere; }
     #largeMoneyMetricSubtitle { line-height: 1.7; }
+    #largeMoneyHoldingModes[hidden], #largeMoneyHoldingCoverage[hidden] { display: none; }
+    #largeMoneyHoldingCoverage { padding: 0 16px 12px; color: #8fa5bf; font-size: 12px; line-height: 1.7; }
     #largeMoneySeriesControls { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 11px 16px 0; }
     #largeMoneySeriesControls button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0;
       border: 0; background: transparent; color: #8fa5bf; font-size: 12px; cursor: pointer; }
@@ -50,7 +53,7 @@ const moduleHtml = `
         <h2>情绪-大资金</h2>
         <p>观察机构交易、北向资金和产业资本行为，识别资金集中进入与撤退的阶段。</p>
       </div>
-      <div class="module-status">大宗交易自2002年 / 股东增减持自2000年 / 北向净流入至2024年8月</div>
+      <div class="module-status" id="largeMoneyDataStatus">大宗交易自2002年 / 股东增减持自2000年 / 北向持仓按季度</div>
     </div>
 
     <div class="large-money-grid">
@@ -77,16 +80,21 @@ const moduleHtml = `
           <button class="metric-tab active" data-metric="blockAmount">大宗交易额</button>
           <button class="metric-tab" data-metric="institutionBlockNet">机构大宗净买入</button>
           <button class="metric-tab" data-metric="holderNetShares">产业资本净增减持</button>
-          <button class="metric-tab" data-metric="northMoney">北向资金净流入</button>
+          <button class="metric-tab" data-metric="northHoldings">北向持仓分布</button>
           <button class="metric-tab" disabled title="基金持仓按季度披露，待完成统一仓位估算">主动权益基金仓位</button>
           <button class="metric-tab" disabled title="需要公募持仓全市场截面聚合">机构持仓集中度</button>
           <button class="metric-tab" disabled title="ETF全市场历史快照待接入">ETF份额变化</button>
+        </div>
+        <div class="metric-tabs" id="largeMoneyHoldingModes" role="group" aria-label="北向持仓统计口径" hidden>
+          <button class="metric-tab active" data-mode="value" aria-pressed="true">持仓市值</button>
+          <button class="metric-tab" data-mode="ratio" aria-pressed="false">持仓比例</button>
         </div>
         <div class="metric-note">
           <span id="largeMoneyMetricNote">大宗交易放量代表大额筹码交换活跃，需要结合机构席位净方向判断。</span>
           <span class="metric-reading" id="largeMoneyLatestReading"></span>
         </div>
         <div id="largeMoneyChart"></div>
+        <div id="largeMoneyHoldingCoverage" aria-live="polite" hidden></div>
       </article>
 
     </div>
@@ -101,6 +109,7 @@ const script = `
   <script id="large-money-sentiment-script">
   (() => {
     const largeMoneyData = __LARGE_MONEY_DATA__;
+    const northHoldings = __NORTH_HOLDINGS_DATA__;
     const fmt = (value, digits = 1) => Number.isFinite(value)
       ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits })
       : "--";
@@ -126,15 +135,16 @@ const script = `
         note: "正值为净增持，负值为净减持；该指标按股数汇总，不等同于交易金额。",
         explanation: "产业资本净增减持按重要股东公告中的变动股数汇总：增持记正、减持记负，单位亿股。来源为Tushare stk_holdertrade，按公告日期归入自然周，按公告主体和变动记录去重。它不是成交金额，也不是所有大股东的实时持仓；公告缺失或延后会影响曲线。"
       },
-      northMoney: {
-        title: "北向资金净流入", unit: "亿元", digits: 1,
-        subtitle: "沪深股通日净流入，周末值；序列截至2024年8月16日",
-        note: "披露机制变化后不再与旧口径拼接，因此选择最近3年时曲线会在2024年8月结束。",
-        explanation: "北向资金净流入采用Tushare moneyflow_hsgt的历史north_money字段。图上每周取最后一个可得交易日的单日值，单位亿元，不是整周净流入合计。旧口径仅保留至2024年8月16日；披露机制变化后不与新口径成交数据拼接，之后留空不表示北向资金为零。"
+      northHoldings: {
+        title: "北向持仓分布", unit: "亿元", digits: 1,
+        subtitle: "北向持有沪深A股的季度末市值",
+        note: "季度末持仓快照；市值变化同时受持股数量和股价影响，不等于净流入。",
+        explanation: "Tushare hk_hold持股数（股）×期末未复权收盘价÷1亿，按股票所属交易所汇总（亿元）。期末缺价的股票采用此前730天内最近可得收盘价，属于历史价格估值，并记录价格日期；仍缺价或同代码持股数冲突时，该市场当期留空，不把缺失计零。仅含沪深A股，不含北交所、B/H股及基金。数据源缺少的季度保留断线，未披露不等于清仓。"
       }
     };
     let activeMetric = "blockAmount";
     let activeYears = 0;
+    let holdingMode = "value";
     let chartPoints = [];
     const markets = [
       { key: "all", name: "两市合计", rows: largeMoneyData.series, color: "#f6c85f" },
@@ -142,6 +152,8 @@ const script = `
       { key: "sz", name: "深市", rows: largeMoneyData.markets.sz, color: "#ff5d73" }
     ];
     const selectedSeries = new Set(markets.map(market => market.key));
+    const lastHolding = northHoldings.series.filter(row => Number.isFinite(row.all.value)).at(-1);
+    document.getElementById("largeMoneyDataStatus").textContent = "大宗交易自2002年 / 股东增减持自2000年 / 北向完整持仓至 " + (lastHolding?.date || "暂无");
     const chart = echarts.init(document.getElementById("largeMoneyChart"), null, { renderer: "canvas" });
 
     function axisBounds(points) {
@@ -175,13 +187,16 @@ const script = `
       return rows.filter(row => new Date(row.date + "T00:00:00Z") >= cutoff);
     }
     function renderChart(preserveZoom = false) {
-      const cfg = metrics[activeMetric];
+      const holdingView = activeMetric === "northHoldings";
+      const cfg = { ...metrics[activeMetric], ...(holdingView && holdingMode === "ratio"
+        ? { unit: "%", digits: 3, subtitle: "北向持仓市值占对应市场全部A股总市值的季度末比例" } : {}) };
       const previousZoom = preserveZoom ? chart.getOption().dataZoom?.[0] : null;
-      const dateField = activeMetric === "northMoney" ? "northDate" : activeMetric === "holderNetShares" ? "holderDate" : "blockDate";
+      const dateField = activeMetric === "holderNetShares" ? "holderDate" : "blockDate";
       const series = markets.filter(market => selectedSeries.has(market.key)).map(market => ({
         name: market.name, type: "line",
-        data: activeRows(market.rows).map(row => [row[dateField] || row.date, row[activeMetric]]),
-        showSymbol: false, connectNulls: false, sampling: "lttb",
+        data: holdingView ? activeRows(northHoldings.series).map(row => [row.date, row[market.key][holdingMode]])
+          : activeRows(market.rows).map(row => [row[dateField] || row.date, row[activeMetric]]),
+        showSymbol: holdingView, symbolSize: 6, connectNulls: false, sampling: holdingView ? undefined : "lttb",
         lineStyle: { width: 2.2, color: market.color }, itemStyle: { color: market.color }
       }));
       const points = series.flatMap(item => item.data);
@@ -193,10 +208,22 @@ const script = `
       document.getElementById("largeMoneyMetricSubtitle").textContent = "两市合计 / 沪市 / 深市 · " + cfg.subtitle;
       document.getElementById("largeMoneyMetricNote").textContent = cfg.note;
       document.getElementById("largeMoneyMetricExplanation").textContent = cfg.explanation +
-        (activeMetric === "northMoney"
-          ? " 沪市对应沪股通（hgt），深市对应深股通（sgt），原始百万元除以100换算为亿元；同日加总为两市合计。深股通2016年12月5日开通，此前不绘制深市曲线；沪股通自2014年11月17日起。"
+        (holdingView
+          ? " 比例＝北向持仓市值÷同期对应市场全部A股总市值（含限售股），不是北向持仓内部配置比例；两市比例用合计分子÷合计分母，不相加沪深百分比。深股通2016年12月5日开通，之前深市留空；开通前两市持仓仅含沪股通，比例分母仍为沪深A股总市值。"
           : " 按股票所属交易所拆分为沪市、深市，仅含沪深A股；两市合计为两者之和。完整抓取周内无该市场记录时，记为已披露汇总零值，不代表实际没有交易；整周无记录留空。");
       document.getElementById("largeMoneyLatestReading").textContent = latest.join(" / ");
+      document.getElementById("largeMoneyHoldingModes").hidden = !holdingView;
+      const coverage = document.getElementById("largeMoneyHoldingCoverage");
+      coverage.hidden = !holdingView;
+      if (holdingView) {
+        const rows = activeRows(northHoldings.series);
+        coverage.textContent = "数据核验 " + northHoldings.meta.checkedAt + " · " + markets.filter(m => selectedSeries.has(m.key)).map(m => {
+          const available = rows.filter(row => Number.isFinite(row[m.key].value));
+          const last = available.at(-1);
+          const missing = rows.filter(row => row[m.key].status !== "not_open" && row[m.key].value === null).length;
+          return m.name + "：" + available.length + "期可得 / " + missing + "期缺失" + (last ? "，最新覆盖 " + last[m.key].count + "只股票" : "");
+        }).join("；") + "。持股记录冲突季度：" + (rows.filter(row => ["sh", "sz"].some(m => row[m].status === "conflicting_records")).map(row => row.date).join("、") || "无") + "；冲突市场及两市合计留空。";
+      }
       chart.setOption({
         animation: false, backgroundColor: "transparent",
         grid: { left: 12, right: 24, top: 42, bottom: 64, containLabel: true },
@@ -251,6 +278,16 @@ const script = `
         renderChart();
       });
     });
+    document.querySelectorAll("#largeMoneyHoldingModes [data-mode]").forEach(button => {
+      button.addEventListener("click", () => {
+        holdingMode = button.dataset.mode;
+        document.querySelectorAll("#largeMoneyHoldingModes [data-mode]").forEach(item => {
+          item.classList.toggle("active", item.dataset.mode === holdingMode);
+          item.setAttribute("aria-pressed", String(item.dataset.mode === holdingMode));
+        });
+        renderChart(true);
+      });
+    });
     document.querySelectorAll("#largeMoneyRangeTabs [data-years]").forEach(button => {
       button.addEventListener("click", () => {
         activeYears = Number(button.dataset.years);
@@ -268,6 +305,7 @@ const script = `
 
 if (!fs.existsSync(DATA_FILE)) throw new Error("Missing large_money_sentiment_data.json.");
 const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
+const holdings = JSON.parse(fs.readFileSync(HOLDINGS_FILE, "utf8"));
 if (!data.markets?.sh?.length || !data.markets?.sz?.length) throw new Error("Missing institutional SH/SZ series; run large_money_markets.py.");
 let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
 html = html.replace(
@@ -280,7 +318,8 @@ function insertBeforeLast(source, marker, content) {
   return source.slice(0, index) + content + source.slice(index);
 }
 const largeMoneyScript = script
-  .replace("__LARGE_MONEY_DATA__", JSON.stringify(data));
+  .replace("__LARGE_MONEY_DATA__", JSON.stringify(data))
+  .replace("__NORTH_HOLDINGS_DATA__", JSON.stringify(holdings));
 html = insertBeforeLast(html, "</head>", css + "\n");
 html = html.includes("<!-- LARGE_MONEY_MODULE -->")
   ? html.replace("<!-- LARGE_MONEY_MODULE -->", moduleHtml)

@@ -383,6 +383,12 @@ async function main() {
     throw new Error("Unable to find a usable Python interpreter");
   }
   if (!process.argv.includes("--skip-refresh")) {
+    try {
+      execFileSync(python, [path.join(ROOT, "work", "fetch_northbound_holdings.py")], { stdio: "inherit" });
+    } catch (error) {
+      if (!fs.existsSync(path.join(ROOT, "work", "northbound_holdings.json"))) throw error;
+      console.warn("Northbound holdings refresh failed; retaining its existing dated cache.");
+    }
     for (const name of ["market_overview", "official_sentiment", "retail_sentiment", "retail_monthly_trends", "large_money_sentiment", "national_team_etf", "etf_flow", "valuation"]) {
       try {
         execFileSync(python, [path.join(ROOT, "work", "fetch_" + name + "_data.py")], { stdio: "inherit" });
