@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
-const OUTPUT = path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
+const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const ROOT_INDEX = path.join(ROOT, "index.html");
 const START = "2006-06-05";
 let END;
@@ -398,10 +398,11 @@ async function main() {
       console.warn("Northbound holdings refresh failed; retaining its existing dated cache.");
     }
     for (const name of ["market_overview", "official_sentiment", "retail_sentiment", "retail_monthly_trends", "large_money_sentiment", "national_team_etf", "etf_flow", "valuation"]) {
+      const stem = name === "retail_monthly_trends" ? name : name + "_data";
       try {
-        execFileSync(python, [path.join(ROOT, "work", "fetch_" + name + "_data.py")], { stdio: "inherit" });
+        execFileSync(python, [path.join(ROOT, "work", "fetch_" + stem + ".py")], { stdio: "inherit" });
       } catch (error) {
-        if (!fs.existsSync(path.join(ROOT, "work", name + "_data.json"))) throw error;
+        if (!fs.existsSync(path.join(ROOT, "work", stem + ".json"))) throw error;
         console.warn(name + " refresh failed; retaining its existing dated cache.");
       }
     }
@@ -422,7 +423,7 @@ async function main() {
   require("./add_large_money_sentiment_module");
   require("./add_official_sentiment_module");
   require("./add_national_team_etf_module");
-  fs.copyFileSync(OUTPUT, ROOT_INDEX);
+  if (OUTPUT !== ROOT_INDEX) fs.copyFileSync(OUTPUT, ROOT_INDEX);
   console.log(JSON.stringify({
     output: OUTPUT,
     rootIndex: ROOT_INDEX,

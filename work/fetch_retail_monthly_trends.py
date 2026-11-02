@@ -9,8 +9,6 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-import pymupdf
-
 from tushare_client import call_api, get_token
 
 
@@ -22,6 +20,8 @@ SSE_YEARBOOKS = "https://www.sse.com.cn/aboutus/publication/yearly/"
 
 
 def yearbook_accounts(year, url):
+    import pymupdf
+
     request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     for attempt in range(3):
         try:

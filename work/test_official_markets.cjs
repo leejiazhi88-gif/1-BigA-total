@@ -3,6 +3,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'official_sentiment_data.json')));
+const rangeStart = new Date(data.series.at(-1).date + 'T00:00:00Z');
+rangeStart.setUTCFullYear(rangeStart.getUTCFullYear() - 3);
 for (const metric of ['ipoFunds', 'netReduceAmount']) {
   const rows = data.series.filter(r => Number.isFinite(r[metric]));
   assert.ok(rows.length > 100);
@@ -48,7 +50,7 @@ for (const metric of metrics.slice(2)) {
 }
 metrics[2].click(); ranges[0].click();
 assert.equal(option.series[0].step, 'end');
-assert.equal(option.series[0].data[0][0], '2023-10-23');
+assert.equal(option.series[0].data[0][0], rangeStart.toISOString().slice(0, 10));
 assert.equal(option.series[0].data[0][1], .05);
 metrics[0].click();
 assert.equal(option.series[0].name, '沪市');

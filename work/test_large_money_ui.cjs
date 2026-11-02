@@ -3,6 +3,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
+const sourceData = JSON.parse(fs.readFileSync(path.join(__dirname, 'large_money_sentiment_data.json'), 'utf8'));
+const rangeStart = new Date(sourceData.series.at(-1).date + 'T00:00:00Z');
+rangeStart.setUTCFullYear(rangeStart.getUTCFullYear() - 3);
+const rangeStartDate = rangeStart.toISOString().slice(0, 10);
 const script = html.match(/<script id="large-money-sentiment-script">([\s\S]*?)<\/script>/)[1];
 const elements = new Map();
 const element = id => {
@@ -75,7 +79,7 @@ metrics[0].click();
 assert.equal(element('largeMoneyHoldingModes').hidden, true);
 ranges[0].click();
 assert.equal(option.series.length, 2);
-assert.ok(option.series.every(s => s.data.every(p => p[0] >= '2023-10-23')));
+assert.ok(option.series.every(s => s.data.every(p => p[0] >= rangeStartDate)));
 ranges.at(-1).click();
 for (const metric of metrics.slice(0, 3)) {
   metric.click();
@@ -93,7 +97,7 @@ for (const metric of metrics.slice(0, 3)) {
     });
     const full = Array.from(option.series[0].data, p => [...p]);
     ranges[0].click();
-    assert.deepEqual(Array.from(option.series[0].data, p => [...p]), full.filter(p => p[0] >= '2023-10-23'));
+    assert.deepEqual(Array.from(option.series[0].data, p => [...p]), full.filter(p => p[0] >= rangeStartDate));
     ranges.at(-1).click();
   }
   smoothing[0].click();

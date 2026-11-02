@@ -341,7 +341,7 @@ html = insertBeforeLast(html, "</head>", css + "\n");
 html = html.replace('<main class="wrap">', '<main class="wrap" id="overview">' + nav);
 html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
 html = insertBeforeLast(html, "</body>", valuationJs + "\n");
-if (process.argv.includes("--online-only")) {
+if (process.argv.includes("--online-only") && originalHtml.includes('id="valuation"')) {
   html = originalHtml
     .replace(/<section class="module-shell" id="valuation">[\s\S]*?<\/section>/, () => moduleHtml.trim())
     .replace(/<script id="valuation-module-script">[\s\S]*?<\/script>/, () => valuationJs.trim());

@@ -124,7 +124,8 @@ def load_history(token, offline=False):
         rows_by_date = {}
         for year in range(max(2009, int(fund["list_date"][:4])), int(END_DATE[:4]) + 1):
             start, end = max(FETCH_START, f"{year}0101"), min(END_DATE, f"{year}1231")
-            suffix = str(year) if end == f"{year}1231" else f"{year}-{end}"
+            # Both bounds matter: the old 2014 cache only covered December.
+            suffix = f"{start}-{end}"
             rows = cached_api(token, "etf_share_size", {"ts_code": code, "start_date": start, "end_date": end},
                               FIELDS, f"shares-{code}-{suffix}", refresh=year == int(END_DATE[:4]), offline=offline)
             if year <= 2014:

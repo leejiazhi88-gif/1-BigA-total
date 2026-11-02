@@ -16,6 +16,29 @@ import fetch_etf_flow_data as etf_flow
 
 
 class DataPipelineTests(unittest.TestCase):
+    def test_partial_year_etf_cache_cannot_replace_full_year_history(self):
+        code = "510050.SH"
+        observation = {"ts_code": code, "trade_date": "20140102", "total_share": 100,
+                       "nav": 2, "total_size": 200, "close": 2}
+        def api(token, name, params, fields):
+            if name == "trade_cal":
+                return [{"cal_date": "20140102", "pretrade_date": "20131231"}]
+            if name == "fund_basic":
+                return [{"ts_code": code, "found_date": "20140101", "list_date": "20140102"}]
+            if name == "etf_share_size":
+                self.assertEqual(params["start_date"], "20140101")
+                return [observation]
+            return []
+        with TemporaryDirectory() as directory:
+            cache = Path(directory)
+            (cache / f"shares-{code}-2014.json").write_text("[]")
+            with patch.object(etf_flow, "CACHE", cache), patch.object(etf_flow, "FETCH_START", "20140101"), \
+                 patch.object(etf_flow, "END_DATE", "20141231"), \
+                 patch.object(etf_flow, "ETF_POOL", [{"ts_code": code}]), \
+                 patch.object(etf_flow, "call_api", side_effect=api), patch("builtins.print"):
+                _, raw, _ = etf_flow.load_history("test")
+        self.assertEqual(raw[code]["20140102"], observation)
+
     def test_today_prices_do_not_wait_for_unpublished_valuation(self):
         def fetch(token, api, code, fields):
             if api == "index_dailybasic":

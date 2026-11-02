@@ -346,7 +346,7 @@ const retailScript = script
 html = insertBeforeLast(html, "</head>", css + "\n");
 html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
 html = insertBeforeLast(html, "</body>", retailScript + "\n");
-if (process.argv.includes("--online-only")) {
+if (process.argv.includes("--online-only") && originalHtml.includes('id="retail-sentiment"')) {
   html = originalHtml
     .replace(/<section class="module-shell" id="retail-sentiment">[\s\S]*?<\/section>/, () => moduleHtml.trim())
     .replace(/<script id="retail-sentiment-script">[\s\S]*?<\/script>/, () => retailScript.trim());
