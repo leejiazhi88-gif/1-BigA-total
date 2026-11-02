@@ -160,6 +160,8 @@ def main():
         },
         "series": series,
     }
+    from official_markets import attach_markets
+    result = attach_markets(result, token)
     OUTPUT.write_text(
         json.dumps(result, ensure_ascii=False, separators=(",", ":")),
         encoding="utf-8",

@@ -2,6 +2,8 @@
 
 ## 唯一正式线上版本
 
+“情绪-官方”也采用外层市场选择：IPO融资额、产业资本净减持额按沪深A股分为两市合计、沪市、深市；印花税率、SHIBOR利率代理、社融和M2保留全国单线，市场按钮置灰且不重置之前的选择。税率仍为阶梯线。分市场更新脚本为 `work/official_markets.py`，普通官方数据刷新也调用同一拆分流程。单独补拆分时设置 `MARKET_END_DATE` 为现有截止日，再运行该脚本与 `node work/add_official_sentiment_module.js --online-only`；仅更新Pages入口，不维护本地HTML副本。检查命令为 `node work/test_official_markets.cjs`。
+
 - 页面：https://leejiazhi88-gif.github.io/1-BigA-total/#national-team-etf
 - 源码：https://github.com/leejiazhi88-gif/1-BigA-total （`main` 分支）
 - GitHub Pages 从 `main` 分支根目录发布。换电脑后先读取远端 `main`，以线上页面为基准修改、提交并确认 Pages 完成发布；本地生成文件仅作临时构建，不作为长期维护版本。

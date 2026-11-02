@@ -2,12 +2,12 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
-const OUTPUT = path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
+const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const DATA_FILE = path.join(ROOT, "work", "official_sentiment_data.json");
 
 function stripExisting(html) {
   return html
-    .replace(/\s*<section class="module-shell" id="official-sentiment">[\s\S]*?<\/section>/g, "")
+    .replace(/\s*<section class="module-shell" id="official-sentiment">[\s\S]*?<\/section>/g, "<!-- OFFICIAL_MODULE -->")
     .replace(/\s*<style id="official-sentiment-style">[\s\S]*?<\/style>/g, "")
     .replace(/\s*<script id="official-sentiment-script">[\s\S]*?<\/script>/g, "")
     .replace(/\s*<a href="#official-sentiment"[^>]*>情绪-官方<\/a>/g, "");
@@ -20,6 +20,15 @@ const css = `
       gap: 15px; align-items: stretch;
     }
     #officialSentimentChart { height: 500px; width: 100%; }
+    #official-sentiment .panel-head { flex-wrap: wrap; gap: 12px; }
+    #official-sentiment .module-status { white-space: normal; }
+    #officialSeriesControls { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 11px 16px 0; }
+    #officialSeriesControls button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0;
+      border: 0; background: transparent; color: #8fa5bf; font-size: 12px; cursor: pointer; }
+    #officialSeriesControls button[aria-pressed="false"], #officialSeriesControls button:disabled { opacity: .4; }
+    #officialSeriesControls button:disabled { cursor: default; }
+    #officialMarketScope { color: #8fa5bf; font-size: 12px; padding: 8px 16px 0; }
+    .official-series-mark { width: 20px; border-top: 2px solid var(--series-color); }
     .official-methodology {
       display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px; margin-top: 10px;
@@ -69,6 +78,12 @@ const moduleHtml = `
             <button class="range-tab active" data-years="0">全部</button>
           </div>
         </div>
+        <div id="officialSeriesControls" role="group" aria-label="官方市场曲线">
+          <button type="button" data-series="all" aria-pressed="true" style="--series-color:#f6c85f"><span class="official-series-mark"></span>两市合计</button>
+          <button type="button" data-series="sh" aria-pressed="true" style="--series-color:#36c2ff"><span class="official-series-mark"></span>沪市</button>
+          <button type="button" data-series="sz" aria-pressed="true" style="--series-color:#ff5d73"><span class="official-series-mark"></span>深市</button>
+        </div>
+        <div id="officialMarketScope" aria-live="polite"></div>
         <div class="metric-tabs" id="officialMetricTabs">
           <button class="metric-tab active" data-metric="ipoFunds">IPO融资额</button>
           <button class="metric-tab" data-metric="netReduceAmount">产业资本净减持额</button>
@@ -142,36 +157,84 @@ const script = `
     };
     let activeMetric = "ipoFunds";
     let activeYears = 0;
+    const markets = [
+      { key: "all", name: "两市合计", rows: officialData.series, color: "#f6c85f" },
+      { key: "sh", name: "沪市", rows: officialData.markets.sh, color: "#36c2ff" },
+      { key: "sz", name: "深市", rows: officialData.markets.sz, color: "#ff5d73" }
+    ];
+    const selectedMarkets = new Set(["all", "sh", "sz"]);
+    const isSplit = () => ["ipoFunds", "netReduceAmount"].includes(activeMetric);
+    let chartPoints = [];
     const chart = echarts.init(document.getElementById("officialSentimentChart"), null, { renderer: "canvas" });
-    function activeRows() {
-      const rows = officialData.series.filter(row => Number.isFinite(row[activeMetric]));
+    function axisBounds(points) {
+      const values = points.map(p => p[1]).filter(Number.isFinite);
+      if (!values.length) return { min: 0, max: 1 };
+      const low = Math.min(...values), high = Math.max(...values);
+      const pad = Math.max((high - low) * .12, .01);
+      return { min: low >= 0 ? Math.max(0, low - pad) : low - pad, max: high + pad };
+    }
+    function rescaleVisible() {
+      const zoom = chart.getOption().dataZoom[0];
+      const dates = chartPoints.map(p => Date.parse(p[0]));
+      if (!dates.length) return;
+      const first = Math.min(...dates), last = Math.max(...dates);
+      const timestamp = value => typeof value === "number" ? value : Date.parse(value);
+      const start = Number.isFinite(timestamp(zoom.startValue)) ? timestamp(zoom.startValue) : first + (last - first) * zoom.start / 100;
+      const end = Number.isFinite(timestamp(zoom.endValue)) ? timestamp(zoom.endValue) : first + (last - first) * zoom.end / 100;
+      const visible = chartPoints.filter(p => Date.parse(p[0]) >= start && Date.parse(p[0]) <= end);
+      if (activeMetric === "stampTaxRate") {
+        const preceding = chartPoints.filter(p => Date.parse(p[0]) < start).at(-1);
+        if (preceding) visible.push(preceding);
+      }
+      chart.setOption({ yAxis: axisBounds(visible) });
+    }
+    chart.on("datazoom", rescaleVisible);
+    function activeRows(source) {
+      const rows = source.filter(row => Number.isFinite(row[activeMetric]));
       if (!activeYears || !rows.length) return rows;
-      const end = new Date(rows[rows.length - 1].date + "T00:00:00Z");
+      const end = new Date(officialData.meta.end + "T00:00:00Z");
       const cutoff = new Date(end);
       cutoff.setUTCFullYear(cutoff.getUTCFullYear() - activeYears);
-      return rows.filter(row => new Date(row.date + "T00:00:00Z") >= cutoff);
+      const visible = rows.filter(row => new Date(row.date + "T00:00:00Z") >= cutoff);
+      if (activeMetric === "stampTaxRate") {
+        const preceding = rows.filter(row => new Date(row.date + "T00:00:00Z") < cutoff).at(-1);
+        if (preceding) visible.unshift({ ...preceding, date: cutoff.toISOString().slice(0, 10) });
+      }
+      return visible;
     }
-    function renderChart() {
+    function renderChart(preserveZoom = false) {
       const cfg = metrics[activeMetric];
-      const rows = activeRows();
-      const points = rows.map(row => [row.date, row[activeMetric]]);
-      const latest = points[points.length - 1]?.[1];
+      const previousZoom = preserveZoom ? chart.getOption().dataZoom?.[0] : null;
+      const split = isSplit();
+      const visibleMarkets = split ? markets.filter(m => selectedMarkets.has(m.key)) : [{name: "全国", rows: officialData.series, color: "#f6c85f"}];
+      const series = visibleMarkets.map(market => ({
+        name: market.name, type: "line", data: activeRows(market.rows).map(row => [row.date, row[activeMetric]]),
+        showSymbol: false, connectNulls: false, step: activeMetric === "stampTaxRate" ? "end" : false,
+        sampling: activeMetric === "stampTaxRate" ? undefined : "lttb",
+        lineStyle: { width: 2.2, color: market.color }, itemStyle: { color: market.color }
+      }));
+      chartPoints = series.flatMap(s => s.data);
+      document.querySelectorAll("#officialSeriesControls [data-series]").forEach(button => { button.disabled = !split; });
+      document.getElementById("officialMarketScope").textContent = split ? "沪深A股 · 不含北交所" : "全国统一口径，不按沪深拆分";
       document.getElementById("officialMetricSubtitle").textContent = cfg.subtitle;
       document.getElementById("officialMetricNote").textContent = cfg.note;
-      document.getElementById("officialMetricExplanation").textContent = cfg.explanation;
-      document.getElementById("officialLatestReading").textContent =
-        (points[points.length - 1]?.[0] || "暂无") + "：" + fmt(latest, cfg.digits) + cfg.unit;
+      document.getElementById("officialMetricExplanation").textContent = cfg.explanation + (split
+        ? " 按股票所属交易所分为沪市、深市，两市合计为两者之和，仅含沪深A股。已披露样本按周汇总；周内某市场无可计入记录时记为样本汇总零值，不代表实际零融资或零减持。"
+        : " 此指标为全国口径，没有沪深市场拆分值。");
+      document.getElementById("officialLatestReading").textContent = series.map(s => {
+        const point = s.data.at(-1);
+        return s.name + " " + (point ? fmt(point[1], cfg.digits) + cfg.unit + "（" + point[0] + "）" : "暂无数据");
+      }).join(" / ");
       chart.setOption({
         animation: false, backgroundColor: "transparent",
-        grid: { left: 72, right: 28, top: 42, bottom: 64 },
+        grid: { left: 12, right: 24, top: 42, bottom: 64, containLabel: true },
         tooltip: {
-          trigger: "axis", axisPointer: { type: "cross" },
+          trigger: "axis", axisPointer: { type: "cross" }, confine: true,
           backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
           textStyle: { color: "#edf4ff" },
           formatter(params) {
-            const item = params[0];
-            return "<b>" + (item?.axisValueLabel || "") + "</b><br>" +
-              item.marker + cfg.title + "：<b>" + fmt(Number(item.value[1]), cfg.digits) + cfg.unit + "</b>";
+            return "<b>" + escapeHtml(params[0]?.axisValueLabel || "") + "</b><br>" +
+              params.map(item => item.marker + item.seriesName + "：<b>" + fmt(item.value[1], cfg.digits) + cfg.unit + "</b>").join("<br>");
           }
         },
         xAxis: {
@@ -179,25 +242,33 @@ const script = `
           axisLabel: { color: "#7890aa", hideOverlap: true }, splitLine: { show: false }
         },
         yAxis: {
-          type: "value", scale: true,
+          type: "value", scale: true, ...axisBounds(chartPoints),
           axisLabel: { color: "#7890aa", formatter: "{value}" + cfg.unit },
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [
-          { type: "inside", filterMode: "none", start: 0, end: 100 },
-          { type: "slider", bottom: 12, height: 22, start: 0, end: 100,
+          { type: "inside", filterMode: "none", start: previousZoom?.start ?? 0, end: previousZoom?.end ?? 100 },
+          { type: "slider", filterMode: "none", bottom: 12, height: 22, start: previousZoom?.start ?? 0, end: previousZoom?.end ?? 100,
             borderColor: "#263b58", backgroundColor: "#0d1929",
             fillerColor: "rgba(255,93,115,.16)", handleStyle: { color: "#ff5d73" },
             textStyle: { color: "#8fa5bf" } }
         ],
-        series: [{
-          name: cfg.title, type: "line", data: points, showSymbol: false,
-          step: activeMetric === "stampTaxRate" ? "end" : false,
-          sampling: "lttb", lineStyle: { width: 2.2, color: "#ff5d73" },
-          areaStyle: { color: "rgba(255,93,115,.08)" }, itemStyle: { color: "#ff5d73" }
-        }]
+        series
       }, true);
+      rescaleVisible();
     }
+    document.querySelectorAll("#officialSeriesControls [data-series]").forEach(button => {
+      button.addEventListener("click", () => {
+        if (!isSplit()) return;
+        const key = button.dataset.series;
+        if (selectedMarkets.has(key)) {
+          if (selectedMarkets.size === 1) return;
+          selectedMarkets.delete(key);
+        } else selectedMarkets.add(key);
+        button.setAttribute("aria-pressed", String(selectedMarkets.has(key)));
+        renderChart(true);
+      });
+    });
     document.querySelectorAll("#officialMetricTabs [data-metric]").forEach(button => {
       button.addEventListener("click", () => {
         activeMetric = button.dataset.metric;
@@ -222,6 +293,7 @@ const script = `
 
 if (!fs.existsSync(DATA_FILE)) throw new Error("Missing official_sentiment_data.json.");
 const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
+if (!data.markets?.sh?.length || !data.markets?.sz?.length) throw new Error("Missing official market splits");
 let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
 html = html.replace(
   '<a href="#large-money-sentiment">情绪-大资金</a>',
@@ -235,7 +307,7 @@ function insertBeforeLast(source, marker, content) {
 const officialScript = script
   .replace("__OFFICIAL_DATA__", JSON.stringify(data));
 html = insertBeforeLast(html, "</head>", css + "\n");
-html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
+html = html.includes("<!-- OFFICIAL_MODULE -->") ? html.replace("<!-- OFFICIAL_MODULE -->", moduleHtml) : insertBeforeLast(html, "</main>", moduleHtml + "\n");
 html = insertBeforeLast(html, "</body>", officialScript + "\n");
 fs.writeFileSync(OUTPUT, html, "utf8");
 console.log(JSON.stringify({ output: OUTPUT, bytes: fs.statSync(OUTPUT).size }, null, 2));
