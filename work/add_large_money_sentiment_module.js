@@ -7,6 +7,8 @@ const OUTPUT = process.argv.includes("--online-only")
   : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const DATA_FILE = path.join(ROOT, "work", "large_money_sentiment_data.json");
 const HOLDINGS_FILE = path.join(ROOT, "work", "northbound_holdings.json");
+const FUND_REPORTS_FILE = path.join(ROOT, "work", "large_money_fund_reports.json");
+const ETF_SHARES_FILE = path.join(ROOT, "work", "large_money_etf_shares.json");
 
 function stripExisting(html) {
   return html
@@ -81,9 +83,9 @@ const moduleHtml = `
           <button class="metric-tab" data-metric="institutionBlockNet">机构大宗净买入</button>
           <button class="metric-tab" data-metric="holderNetShares">产业资本净增减持</button>
           <button class="metric-tab" data-metric="northHoldings">北向持仓分布</button>
-          <button class="metric-tab" disabled title="基金持仓按季度披露，待完成统一仓位估算">主动权益基金仓位</button>
-          <button class="metric-tab" disabled title="需要公募持仓全市场截面聚合">机构持仓集中度</button>
-          <button class="metric-tab" disabled title="ETF全市场历史快照待接入">ETF份额变化</button>
+          <button class="metric-tab" data-metric="fundPosition">主动权益基金仓位</button>
+          <button class="metric-tab" data-metric="institutionConcentration">机构持仓集中度</button>
+          <button class="metric-tab" data-metric="etfShares">ETF份额变化</button>
         </div>
         <div class="metric-tabs" id="largeMoneyHoldingModes" role="group" aria-label="北向持仓统计口径" hidden>
           <button class="metric-tab active" data-mode="value" aria-pressed="true">持仓市值</button>
@@ -110,6 +112,8 @@ const script = `
   (() => {
     const largeMoneyData = __LARGE_MONEY_DATA__;
     const northHoldings = __NORTH_HOLDINGS_DATA__;
+    const fundReports = __FUND_REPORTS_DATA__;
+    const etfShares = __ETF_SHARES_DATA__;
     const fmt = (value, digits = 1) => Number.isFinite(value)
       ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits })
       : "--";
@@ -135,6 +139,24 @@ const script = `
         note: "正值为净增持，负值为净减持；该指标按股数汇总，不等同于交易金额。",
         explanation: "产业资本净增减持按重要股东公告中的变动股数汇总：增持记正、减持记负，单位亿股。来源为Tushare stk_holdertrade，按公告日期归入自然周，按公告主体和变动记录去重。它不是成交金额，也不是所有大股东的实时持仓；公告缺失或延后会影响曲线。"
       },
+      fundPosition: {
+        title: "主动权益基金仓位", unit: "%", digits: 2, field: "position",
+        subtitle: "主动股票／混合基金样本投向沪深A股的净资产比例 · 半年报／年报",
+        note: "两市合计为沪深A股仓位；沪市、深市分别为同一基金样本投向该市场的仓位。",
+        explanation: "来源：Tushare基金列表、基金净资产与半年报／年报持仓。筛选主动股票型、混合型基金，排除指数、增强指数、ETF、联接、FOF及QDII。按基金和股票取最新公告，股票市值占比合计在90%—110%且持仓市值不超过净资产120%的样本才纳入；完全相同的组合只保留净资产最大的一个代表。仓位＝样本在对应市场的A股持仓市值÷同一批样本基金净资产。两市不含港股、北交所等，因此不等于全部股票仓位。覆盖率不足40%的报告期留空；基金分类采用当前资料，样本会变化，不是全体基金的精确统计。"
+      },
+      institutionConcentration: {
+        title: "机构持仓集中度", unit: "%", digits: 2, field: "concentration",
+        subtitle: "主动基金样本前十大股票持仓集中度 · 半年报／年报",
+        note: "仅代表主动公募基金样本；两市与沪深分别排名，三条比例不能相加。",
+        explanation: "与主动权益基金仓位使用相同的半年报／年报有效样本、去重和覆盖率门槛。先把各基金持有同一股票的市值相加，再按对应股票范围排序：集中度＝该范围排名前10只股票的合计持仓市值÷该范围全部股票的合计持仓市值。两市前10、沪市前10、深市前10分别计算；不是单只基金前十大权重的平均值，也不代表保险、社保、外资等所有机构。样本变化和股价波动均可能影响曲线。"
+      },
+      etfShares: {
+        title: "ETF份额变化", unit: "亿份", digits: 2,
+        subtitle: "沪深上市股票型ETF周末份额存量（含跨境股票ETF）",
+        note: "按ETF上市交易所分沪深，不按底层股票归属；展示份额存量，不是净申购金额。",
+        explanation: "来源：Tushare ETF列表、基金分类、基金份额及交易日历。筛选沪深上市股票型ETF（含跨境股票ETF，不含债券、货币、商品ETF），包含可确认上市和退市日期的退市基金。取每周最后交易日之前最近15天内披露份额，万份÷10000换算亿份。每个交易所覆盖至少90%的当期上市基金才展示已获取份额合计，不对缺失基金放大估算；两市合计要求已有上市样本的市场均达标，尚无上市样本的市场留空。份额受申赎、拆分、合并和新基金上市影响，各ETF每份净值不同，不能直接等同于资金流入或市场规模。"
+      },
       northHoldings: {
         title: "北向持仓分布", unit: "亿元", digits: 1,
         subtitle: "北向持有沪深A股的季度末市值",
@@ -153,7 +175,8 @@ const script = `
     ];
     const selectedSeries = new Set(markets.map(market => market.key));
     const lastHolding = northHoldings.series.filter(row => Number.isFinite(row.all.value)).at(-1);
-    document.getElementById("largeMoneyDataStatus").textContent = "大宗交易自2002年 / 股东增减持自2000年 / 北向完整持仓至 " + (lastHolding?.date || "暂无");
+    const baseStatus = "大宗交易自2002年 / 股东增减持自2000年 / 北向完整持仓至 " + (lastHolding?.date || "暂无");
+    document.getElementById("largeMoneyDataStatus").textContent = baseStatus;
     const chart = echarts.init(document.getElementById("largeMoneyChart"), null, { renderer: "canvas" });
 
     function axisBounds(points) {
@@ -188,6 +211,8 @@ const script = `
     }
     function renderChart(preserveZoom = false) {
       const holdingView = activeMetric === "northHoldings";
+      const fundView = activeMetric === "fundPosition" || activeMetric === "institutionConcentration";
+      const etfView = activeMetric === "etfShares";
       const cfg = { ...metrics[activeMetric], ...(holdingView && holdingMode === "ratio"
         ? { unit: "%", digits: 3, subtitle: "北向持仓市值占对应市场全部A股总市值的季度末比例" } : {}) };
       const previousZoom = preserveZoom ? chart.getOption().dataZoom?.[0] : null;
@@ -195,8 +220,10 @@ const script = `
       const series = markets.filter(market => selectedSeries.has(market.key)).map(market => ({
         name: market.name, type: "line",
         data: holdingView ? activeRows(northHoldings.series).map(row => [row.date, row[market.key][holdingMode]])
+          : fundView ? activeRows(fundReports.series).map(row => [row.date, row[market.key][cfg.field]])
+          : etfView ? activeRows(etfShares.series).map(row => [row.date, row[market.key]])
           : activeRows(market.rows).map(row => [row[dateField] || row.date, row[activeMetric]]),
-        showSymbol: holdingView, symbolSize: 6, connectNulls: false, sampling: holdingView ? undefined : "lttb",
+        showSymbol: holdingView || fundView, symbolSize: 6, connectNulls: false, sampling: holdingView || fundView || etfView ? undefined : "lttb",
         lineStyle: { width: 2.2, color: market.color }, itemStyle: { color: market.color }
       }));
       const points = series.flatMap(item => item.data);
@@ -210,11 +237,35 @@ const script = `
       document.getElementById("largeMoneyMetricExplanation").textContent = cfg.explanation +
         (holdingView
           ? " 比例＝北向持仓市值÷同期对应市场全部A股总市值（含限售股），不是北向持仓内部配置比例；两市比例用合计分子÷合计分母，不相加沪深百分比。深股通2016年12月5日开通，之前深市留空；开通前两市持仓仅含沪股通，比例分母仍为沪深A股总市值。"
+          : fundView || etfView ? ""
           : " 按股票所属交易所拆分为沪市、深市，仅含沪深A股；两市合计为两者之和。完整抓取周内无该市场记录时，记为已披露汇总零值，不代表实际没有交易；整周无记录留空。");
       document.getElementById("largeMoneyLatestReading").textContent = latest.join(" / ");
       document.getElementById("largeMoneyHoldingModes").hidden = !holdingView;
       const coverage = document.getElementById("largeMoneyHoldingCoverage");
-      coverage.hidden = !holdingView;
+      coverage.hidden = !(holdingView || fundView || etfView);
+      document.getElementById("largeMoneyDataStatus").textContent = baseStatus;
+      if (fundView) {
+        const rows = activeRows(fundReports.series);
+        const valid = rows.filter(row => Number.isFinite(row.all[cfg.field]));
+        const last = valid.at(-1);
+        document.getElementById("largeMoneyDataStatus").textContent = "主动基金半年报／年报 · 最新有效报告 " + (last?.date || "当前区间暂无");
+        coverage.textContent = "数据核验 " + fundReports.meta.checkedAt + " · 可用 " + valid.length + "/" + rows.length + " 期" +
+          (last ? " · 最新有效报告 " + last.date + "：" + last.funds + "只样本 / " + (last.navFunds - last.duplicatesExcluded.length) + "只去重后可得净资产基金（原始 " + last.navFunds + "只），覆盖率 " + fmt(last.coverage, 1) + "%" : " · 当前区间暂无达标样本") +
+          "。半年度披露不插值为季度或日度数据。";
+      }
+      if (etfView) {
+        const rows = activeRows(etfShares.series);
+        document.getElementById("largeMoneyDataStatus").textContent = "股票ETF周度份额 · 两市最新有效数据 " + (rows.filter(row => Number.isFinite(row.all)).at(-1)?.date || "当前区间暂无");
+        coverage.textContent = "数据核验 " + etfShares.meta.checkedAt + " · 股票ETF池 " + etfShares.meta.fundCount + "只（含已退市） · 当前区间两市可用 " + rows.filter(row => Number.isFinite(row.all)).length + "/" + rows.length + "周 · " +
+          markets.filter(m => selectedSeries.has(m.key)).map(m => {
+            const last = rows.filter(row => Number.isFinite(row[m.key])).at(-1);
+            if (!last) return m.name + "：暂无达标样本";
+            const keys = m.key === "all" ? ["sh", "sz"] : [m.key];
+            const n = keys.reduce((s, key) => s + last.reported[key], 0);
+            const d = keys.reduce((s, key) => s + last.eligible[key], 0);
+            return m.name + " " + last.date + "：" + n + "/" + d + "只，覆盖 " + fmt(n / d * 100, 1) + "%";
+          }).join("；") + "。另有 " + ((etfShares.meta.excludedMissingListingDates?.length || 0) + (etfShares.meta.excludedNonExchangeCodes?.length || 0)) + "只因代码或上市／退市日期无法核验，未纳入样本池。";
+      }
       if (holdingView) {
         const rows = activeRows(northHoldings.series);
         coverage.textContent = "数据核验 " + northHoldings.meta.checkedAt + " · " + markets.filter(m => selectedSeries.has(m.key)).map(m => {
@@ -232,8 +283,11 @@ const script = `
           confine: true, backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
           textStyle: { color: "#edf4ff" },
           formatter(params) {
+            const date = params[0]?.value?.[0];
+            const report = fundView ? fundReports.series.find(row => row.date === date) : null;
+            const sample = report ? "<br>有效样本：" + report.funds + "只 · 覆盖率 " + fmt(report.coverage, 1) + "%" : "";
             return "<b>" + escapeHtml(params[0]?.axisValueLabel || "") + "</b><br>" +
-              params.map(item => item.marker + item.seriesName + "：<b>" + fmt(item.value[1], cfg.digits) + cfg.unit + "</b>").join("<br>");
+              params.map(item => item.marker + item.seriesName + "：<b>" + fmt(item.value[1], cfg.digits) + cfg.unit + "</b>").join("<br>") + sample;
           }
         },
         xAxis: {
@@ -306,6 +360,8 @@ const script = `
 if (!fs.existsSync(DATA_FILE)) throw new Error("Missing large_money_sentiment_data.json.");
 const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
 const holdings = JSON.parse(fs.readFileSync(HOLDINGS_FILE, "utf8"));
+const reports = JSON.parse(fs.readFileSync(FUND_REPORTS_FILE, "utf8"));
+const shares = JSON.parse(fs.readFileSync(ETF_SHARES_FILE, "utf8"));
 if (!data.markets?.sh?.length || !data.markets?.sz?.length) throw new Error("Missing institutional SH/SZ series; run large_money_markets.py.");
 let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
 html = html.replace(
@@ -319,7 +375,9 @@ function insertBeforeLast(source, marker, content) {
 }
 const largeMoneyScript = script
   .replace("__LARGE_MONEY_DATA__", JSON.stringify(data))
-  .replace("__NORTH_HOLDINGS_DATA__", JSON.stringify(holdings));
+  .replace("__NORTH_HOLDINGS_DATA__", JSON.stringify(holdings))
+  .replace("__FUND_REPORTS_DATA__", JSON.stringify(reports))
+  .replace("__ETF_SHARES_DATA__", JSON.stringify(shares));
 html = insertBeforeLast(html, "</head>", css + "\n");
 html = html.includes("<!-- LARGE_MONEY_MODULE -->")
   ? html.replace("<!-- LARGE_MONEY_MODULE -->", moduleHtml)

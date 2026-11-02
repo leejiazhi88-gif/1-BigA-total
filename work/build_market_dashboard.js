@@ -383,6 +383,14 @@ async function main() {
     throw new Error("Unable to find a usable Python interpreter");
   }
   if (!process.argv.includes("--skip-refresh")) {
+    for (const [kind, cache] of [["reports", "large_money_fund_reports"], ["etfs", "large_money_etf_shares"]]) {
+      try {
+        execFileSync(python, [path.join(ROOT, "work", "fetch_large_money_fund_metrics.py"), "--only", kind], { stdio: "inherit" });
+      } catch (error) {
+        if (!fs.existsSync(path.join(ROOT, "work", cache + ".json"))) throw error;
+        console.warn(cache + " refresh failed; retaining its existing dated cache.");
+      }
+    }
     try {
       execFileSync(python, [path.join(ROOT, "work", "fetch_northbound_holdings.py")], { stdio: "inherit" });
     } catch (error) {

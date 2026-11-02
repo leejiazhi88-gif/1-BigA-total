@@ -14,7 +14,9 @@ const button = dataset => ({ dataset, attrs: {}, classList: { add() {}, remove()
   setAttribute(key, value) { this.attrs[key] = value; } });
 const markets = ['all', 'sh', 'sz'].map(series => button({ series }));
 assert.ok(!html.includes('data-metric="northMoney"'));
-const metrics = ['blockAmount', 'institutionBlockNet', 'holderNetShares', 'northHoldings'].map(metric => button({ metric }));
+const metrics = ['blockAmount', 'institutionBlockNet', 'holderNetShares', 'northHoldings', 'fundPosition', 'institutionConcentration', 'etfShares'].map(metric => button({ metric }));
+for (const metric of metrics) assert.ok(html.includes('data-metric="' + metric.dataset.metric + '"'));
+assert.ok(!html.match(/<button[^>]+disabled[^>]*>\s*(主动权益基金仓位|机构持仓集中度|ETF份额变化)/));
 const modes = ['value', 'ratio'].map(mode => button({ mode }));
 const ranges = [3, 5, 10, 20, 0].map(years => button({ years: String(years) }));
 let option;
@@ -45,6 +47,15 @@ for (const metric of metrics) {
   assert.ok(Number.isFinite(option.yAxis.min) && Number.isFinite(option.yAxis.max));
   assert.ok(!element('largeMoneyLatestReading').textContent.includes('深市'));
 }
+for (const metric of metrics.slice(4)) {
+  metric.click();
+  assert.equal(element('largeMoneyHoldingModes').hidden, true);
+  assert.equal(element('largeMoneyHoldingCoverage').hidden, false);
+  assert.equal(option.yAxis.name, metric.dataset.metric === 'etfShares' ? '亿份' : '%');
+  assert.equal(option.series[0].connectNulls, false);
+  assert.ok(element('largeMoneyHoldingCoverage').textContent.includes('覆盖'));
+}
+metrics[3].click();
 assert.equal(element('largeMoneyHoldingModes').hidden, false);
 assert.equal(option.yAxis.name, '亿元');
 const amount = option.series[0].data.find(p => Number.isFinite(p[1]))[1];
@@ -64,4 +75,4 @@ assert.equal(element('largeMoneyHoldingModes').hidden, true);
 ranges[0].click();
 assert.equal(option.series.length, 2);
 assert.ok(option.series.every(s => s.data.every(p => p[0] >= '2023-10-23')));
-console.log('PASS: all four tabs, shared selection, last-series guard, zoom preservation and date range');
+console.log('PASS: all seven tabs, coverage, units, shared selection, last-series guard, zoom and date range');
