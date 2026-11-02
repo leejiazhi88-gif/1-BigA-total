@@ -303,6 +303,16 @@ node work/build_market_dashboard.js --skip-refresh
 
 ## Codex 协作约定
 
+### 2026-11-02 股东变动异常修正
+
+产业资本净增减持曾把股东改制、更名后的旧账户退出记作卖出。现以 `work/holder_trade_adjustments.json` 保存44条逐项核验的原记录、公告正文和PDF来源；精确匹配后排除，不按数值阈值、缺少成交价或公司名称批量过滤。
+
+2017-12-18至24日所在周（数据点2017-12-23）从 -2008.4125 亿股修正为 -68.3728 亿股。沪市与深市同步修正，其他指标和日期未变。仍未全面核验所有划转、重组记录，剩余大幅变动不等于已经确认的二级市场抛售。
+
+常规刷新 `fetch_large_money_sentiment_data.py` 已自动使用纠正清单。仅重算已有缓存可执行 `python3 work/large_money_markets.py --holders-from-cache`，随后 `node work/add_large_money_sentiment_module.js --online-only`。只更新线上发布文件 `index.html`，不维护旧本地HTML。
+
+验证：`python3 -m unittest discover -s work -p 'test_large_money_markets.py'`、`node work/test_large_money_ui.cjs`。新增核验包括精确排除、重复记录、大额未核实卖出保留、市场合计一致性。
+
 后续每完成一步，请在最后给出：
 
 - GitHub仓库地址：https://github.com/leejiazhi88-gif/1-BigA-total

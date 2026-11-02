@@ -135,9 +135,9 @@ const script = `
       },
       holderNetShares: {
         title: "产业资本净增减持", unit: "亿股", digits: 2,
-        subtitle: "重要股东公告口径的周净增减持股数",
+        subtitle: "重要股东公告周净变动 · 已剔除核实的改制更名记录",
         note: "正值为净增持，负值为净减持；该指标按股数汇总，不等同于交易金额。",
-        explanation: "产业资本净增减持按重要股东公告中的变动股数汇总：增持记正、减持记负，单位亿股。来源为Tushare stk_holdertrade，按公告日期归入自然周，按公告主体和变动记录去重。它不是成交金额，也不是所有大股东的实时持仓；公告缺失或延后会影响曲线。"
+        explanation: "按重要股东公告中的变动股数汇总：增加记正、减少记负，单位亿股。来源为Tushare stk_holdertrade，按公告日期归入自然周并去重。已依据公司公告逐条剔除44条改制、更名造成的非交易变更，包括2017年中石油集团更名；不按数值大小截断、不平滑。其他未核实的划转、重组等仍可能包含在内，因此曲线不是纯二级市场买卖量，也不是成交金额或实时完整持仓。纠正清单及公告依据见仓库 work/holder_trade_adjustments.json。"
       },
       fundPosition: {
         title: "主动权益基金仓位", unit: "%", digits: 2, field: "position",

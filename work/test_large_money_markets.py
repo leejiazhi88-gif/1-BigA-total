@@ -1,9 +1,39 @@
 import unittest
+import json
+from pathlib import Path
+
+from holder_trade_corrections import correction_index
 
 from large_money_markets import build_series, holder_weeks, north_weeks
 
 
 class MarketSplitTests(unittest.TestCase):
+    def test_verified_rename_is_excluded_but_large_unverified_sales_remain(self):
+        events = correction_index()
+        event = next(e for e in events.values() if e["match"]["ts_code"] == "601857.SH")
+        rename = event["match"]
+        # Missing price and extreme size alone must never trigger exclusion.
+        sale = {**rename, "holder_name": "Other holder"}
+        audit = []
+        weeks, excluded = holder_weeks([rename, rename, sale], audit=audit)
+        self.assertEqual(len(audit), 1)
+        self.assertEqual(excluded, 0)
+        self.assertAlmostEqual(weeks["2017-W51"]["sh"], -sale["change_vol"] / 1e8)
+        weeks, _ = holder_weeks([rename])
+        self.assertEqual(weeks["2017-W51"]["sh"], 0)
+        changed = {**rename, "change_vol": rename["change_vol"] - 1}
+        weeks, _ = holder_weeks([changed])
+        self.assertLess(weeks["2017-W51"]["sh"], -1500)
+
+    def test_corrected_published_values_reconcile(self):
+        path = Path(__file__).with_name("large_money_sentiment_data.json")
+        current = json.loads(path.read_text())
+        value = next(r["holderNetShares"] for r in current["series"] if r["date"] == "2017-12-23")
+        self.assertEqual(value, -68.3728)
+        for total, sh, sz in zip(current["series"], current["markets"]["sh"], current["markets"]["sz"]):
+            if total["holderNetShares"] is not None:
+                self.assertAlmostEqual(total["holderNetShares"], sh["holderNetShares"] + sz["holderNetShares"], delta=.00011)
+
     def test_holder_scope_deduplication_and_signed_totals(self):
         sh = dict(ts_code="600000.SH", ann_date="20200918", holder_name="A", in_de="IN", change_vol=2e8, change_ratio=1)
         sz = {**sh, "ts_code": "000001.SZ", "in_de": "DE", "change_vol": 3e8}

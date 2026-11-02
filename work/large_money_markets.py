@@ -6,6 +6,7 @@ import json
 import math
 from collections import defaultdict
 from datetime import datetime
+from holder_trade_corrections import correction_index, identity as correction_identity
 
 from tushare_client import END_DATE, call_api_pages, get_token
 from fetch_large_money_sentiment_data import (
@@ -34,7 +35,8 @@ def fetch_cached(token, api, params, fields, size=3000):
     return rows
 
 
-def holder_weeks(rows):
+def holder_weeks(rows, corrections=None, audit=None):
+    corrections = correction_index() if corrections is None else corrections
     result = defaultdict(lambda: {"dates": [], "sh": 0.0, "sz": 0.0})
     seen = set()
     excluded = 0
@@ -51,6 +53,11 @@ def holder_weeks(rows):
             raise ValueError("Invalid holder change record")
         item = result[week_key(row["ann_date"])]
         item["dates"].append(row["ann_date"])
+        correction = corrections.get(correction_identity(row))
+        if correction:
+            if audit is not None:
+                audit.append(correction)
+            continue
         item[row["ts_code"][-2:].lower()] += value / 1e8 * (1 if row["in_de"] == "IN" else -1)
     return result, excluded
 
@@ -95,7 +102,8 @@ def build_series(blocks, stocks, holders, north):
         raise ValueError(f"Invalid block records: {len(audit['validationErrors'])}")
     by_market = {market: aggregate_blocks([r for r in blocks if r["ts_code"].endswith('.' + market.upper())], stocks)[0]
                  for market in ("sh", "sz")}
-    holders, excluded = holder_weeks(holders)
+    holder_corrections = []
+    holders, excluded = holder_weeks(holders, audit=holder_corrections)
     north_issues = []
     north = north_weeks(north, north_issues)
     output = {market: [] for market in ("all", "sh", "sz")}
@@ -115,7 +123,37 @@ def build_series(blocks, stocks, holders, north):
                    "northMoney": round(n[market], 2) if n and n[market] is not None else None}
             output[market].append(row)
     return output, {"blockRows": audit["includedRows"], "excludedBlockRows": audit["excludedNonShSzAShareRows"],
-                    "excludedHolderRows": excluded, "adjustments": len(adjustments), "northValidationIssues": north_issues}
+                    "excludedHolderRows": excluded, "holderNonTradingCorrections": len(holder_corrections),
+                    "adjustments": len(adjustments), "northValidationIssues": north_issues}
+
+
+def refresh_holders_from_cache():
+    """Recompute only holder values at the existing cutoff; preserve all other data."""
+    previous = json.loads(OUTPUT.read_text())
+    end = previous["meta"]["end"].replace("-", "")
+    rows = []
+    for year in range(2000, int(end[:4]) + 1):
+        year_end = min(f"{year}1231", end)
+        paths = list(CACHE.glob(f"stk_holdertrade-{year}0101-{year_end}-*.json"))
+        if len(paths) != 1:
+            raise ValueError(f"Expected one complete holder cache for {year}: {paths}")
+        rows.extend(json.loads(paths[0].read_text())["rows"])
+    audit = []
+    weeks, _ = holder_weeks(rows, audit=audit)
+    changes = []
+    for market, series in {"all": previous["series"], **previous["markets"]}.items():
+        for row in series:
+            holder = weeks.get(week_key(row["date"].replace("-", "")))
+            value = round(holder["sh"] + holder["sz"] if market == "all" else holder[market], 4) if holder else None
+            if row.get("holderNetShares") != value:
+                changes.append({"market": market, "date": row["date"], "before": row.get("holderNetShares"), "after": value})
+                row["holderNetShares"] = value
+    previous["meta"].setdefault("marketSplit", {})["holderNonTradingCorrections"] = len(audit)
+    previous["meta"]["holderCorrections"] = {"reviewedOn": "2026-11-02", "excludedRecords": len(audit),
+        "source": "work/holder_trade_adjustments.json",
+        "changes": changes or previous["meta"].get("holderCorrections", {}).get("changes", [])}
+    OUTPUT.write_text(json.dumps(previous, ensure_ascii=False, separators=(",", ":")))
+    print(json.dumps({"excludedRecords": len(audit), "changes": changes}, ensure_ascii=False))
 
 
 def main(blocks_only=False):
@@ -154,6 +192,7 @@ def main(blocks_only=False):
                 row["date"] = max(row["date"], new.get("date", row["date"]))
             series[market] = sorted(existing.values(), key=lambda row: row["date"])
         audit["excludedHolderRows"] = previous.get("meta", {}).get("marketSplit", {}).get("excludedHolderRows")
+        audit["holderNonTradingCorrections"] = previous.get("meta", {}).get("marketSplit", {}).get("holderNonTradingCorrections", 0)
         audit["northValidationIssues"] = previous.get("meta", {}).get("marketSplit", {}).get("northValidationIssues", [])
     previous["series"] = series.pop("all")
     previous["markets"] = series
@@ -170,4 +209,10 @@ def main(blocks_only=False):
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--holders-from-cache", action="store_true")
+    if parser.parse_args().holders_from_cache:
+        refresh_holders_from_cache()
+    else:
+        main()
