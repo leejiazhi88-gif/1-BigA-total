@@ -360,7 +360,11 @@
     #officialSeriesControls button[aria-pressed="false"], #officialSeriesControls button:disabled { opacity: .4; }
     #officialSeriesControls button:disabled { cursor: default; }
     #officialMarketScope { color: #8fa5bf; font-size: 12px; padding: 8px 16px 0; }
-    .official-series-mark { width: 20px; border-top: 2px solid var(--series-color); }
+    .official-series-mark { position: relative; width: 22px; height: 12px; flex: none; }
+    .official-series-mark::before { content: ""; position: absolute; left: 0; right: 0; top: 5px;
+      border-top: 2px solid var(--series-color); }
+    .official-series-mark::after { content: ""; position: absolute; left: 8px; top: 1px;
+      width: 8px; height: 8px; border: 2px solid #edf4ff; border-radius: 50%; background: var(--series-color); }
     .official-methodology {
       display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px; margin-top: 10px;
@@ -637,6 +641,7 @@
       <div class="note" aria-live="polite"><strong>当前指标说明：</strong><span id="officialMetricExplanation">A股IPO募集资金反映一级市场新股融资供给，按自然周汇总。</span></div>
     </div>
   </section>
+
 
 
 
