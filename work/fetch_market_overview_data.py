@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from tushare_client import END_DATE, call_api, get_token
+from refresh_cache import fetch_range
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,7 +17,7 @@ def fetch_by_year(token, api_name, ts_code, fields):
     for year in range(START_YEAR, end_year + 1):
         end_date = END_DATE if year == end_year else f"{year}1231"
         rows.extend(
-            call_api(
+            fetch_range(
                 token,
                 api_name,
                 {
@@ -25,6 +26,7 @@ def fetch_by_year(token, api_name, ts_code, fields):
                     "end_date": end_date,
                 },
                 fields,
+                call_api,
             )
         )
     unique = {row["trade_date"]: row for row in rows}

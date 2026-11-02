@@ -1,4 +1,5 @@
 import unittest
+import json
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
@@ -45,6 +46,47 @@ class ReportsTest(unittest.TestCase):
 
 
 class EtfTest(unittest.TestCase):
+    def test_bulk_omission_triggers_only_missing_fund_lookup(self):
+        funds = {code: dict(ts_code=code, list_date="20200101") for code in ("510300.SH", "159919.SZ")}
+        previous = {"meta": {"end": "20261102"}, "series": [{"date": "2026-11-02", "all": 10}]}
+        fallback = []
+        def api(token, name, params, fields, size):
+            if name == "trade_cal":
+                return [{"cal_date": "20261102", "is_open": 1}]
+            if "ts_code" in params:
+                fallback.append(params["ts_code"])
+                return [dict(ts_code=params["ts_code"], trade_date="20261102", fd_share=50000)]
+            return [dict(ts_code="510300.SH", trade_date="20261102", fd_share=50000)] if params["trade_date"] == "20261102" else []
+        with tempfile.TemporaryDirectory() as directory, patch.object(metrics, "END_DATE", "20261102"), \
+                patch.object(metrics, "ETF", Path(directory) / "data.json"), \
+                patch.object(metrics, "call_api_pages", side_effect=api), patch("builtins.print"):
+            metrics.update_etfs_by_day("test", funds, previous, [], [])
+            self.assertEqual(json.loads(metrics.ETF.read_text())["series"][-1]["all"], 10)
+        self.assertEqual(fallback, ["159919.SZ"])
+
+    def test_bulk_daily_refresh_preserves_old_weeks_and_rejects_coverage_loss(self):
+        funds = {code: dict(ts_code=code, list_date="20200101") for code in ("510300.SH", "159919.SZ")}
+        previous = {"meta": {"end": "20261102"}, "series": [
+            {"date": "2026-09-25", "all": 123}, {"date": "2026-11-02", "all": 10}]}
+        def api(token, name, params, fields, size):
+            if name == "trade_cal":
+                return [{"cal_date": "20261102", "is_open": 1}]
+            if params["trade_date"] != "20261101":
+                return []
+            return [dict(ts_code=c, trade_date="20261101", fd_share=50000) for c in funds]
+        with tempfile.TemporaryDirectory() as directory, patch.object(metrics, "END_DATE", "20261102"), \
+                patch.object(metrics, "ETF", Path(directory) / "data.json"), \
+                patch.object(metrics, "call_api_pages", side_effect=api), patch("builtins.print"):
+            metrics.update_etfs_by_day("test", funds, previous, [], [])
+            result = json.loads(metrics.ETF.read_text())
+            self.assertEqual(result["series"][0], {"date": "2026-09-25", "all": 123})
+            self.assertEqual(result["series"][-1]["all"], 10)
+            before = metrics.ETF.read_bytes()
+            with patch.object(metrics, "call_api_pages", side_effect=lambda *a: api(*a) if a[1] == "trade_cal" else []):
+                with self.assertRaises(ValueError):
+                    metrics.update_etfs_by_day("test", funds, result, [], [])
+            self.assertEqual(metrics.ETF.read_bytes(), before)
+
     def history(self, code, date="20261023", listed="20200101", delisted=None):
         return (dict(ts_code=code, list_date=listed, delist_date=delisted), [date], {date: 5})
 

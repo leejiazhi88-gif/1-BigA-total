@@ -5,7 +5,20 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 
-from tushare_client import END_DATE, call_api, call_api_pages, get_token
+from tushare_client import END_DATE, call_api as source_api, call_api_pages as source_pages, get_token
+from refresh_cache import fetch_range
+
+
+def call_api(token, api, params, fields):
+    if "start_date" not in params:
+        return source_api(token, api, params, fields)
+    return fetch_range(token, api, params, fields, source_api,
+                       "date" if api == "shibor" else "ipo_date")
+
+
+def call_api_pages(token, api, params, fields, page_size):
+    return fetch_range(token, api, params, fields,
+                       lambda t, a, p, f: source_pages(t, a, p, f, page_size), "ann_date")
 
 
 ROOT = Path(__file__).resolve().parents[1]

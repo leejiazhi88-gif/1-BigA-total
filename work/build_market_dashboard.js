@@ -383,29 +383,8 @@ async function main() {
     throw new Error("Unable to find a usable Python interpreter");
   }
   if (!process.argv.includes("--skip-refresh")) {
-    for (const [kind, cache] of [["reports", "large_money_fund_reports"], ["etfs", "large_money_etf_shares"]]) {
-      try {
-        execFileSync(python, [path.join(ROOT, "work", "fetch_large_money_fund_metrics.py"), "--only", kind], { stdio: "inherit" });
-      } catch (error) {
-        if (!fs.existsSync(path.join(ROOT, "work", cache + ".json"))) throw error;
-        console.warn(cache + " refresh failed; retaining its existing dated cache.");
-      }
-    }
-    try {
-      execFileSync(python, [path.join(ROOT, "work", "fetch_northbound_holdings.py")], { stdio: "inherit" });
-    } catch (error) {
-      if (!fs.existsSync(path.join(ROOT, "work", "northbound_holdings.json"))) throw error;
-      console.warn("Northbound holdings refresh failed; retaining its existing dated cache.");
-    }
-    for (const name of ["market_overview", "official_sentiment", "retail_sentiment", "retail_monthly_trends", "large_money_sentiment", "national_team_etf", "etf_flow", "valuation"]) {
-      const stem = name === "retail_monthly_trends" ? name : name + "_data";
-      try {
-        execFileSync(python, [path.join(ROOT, "work", "fetch_" + stem + ".py")], { stdio: "inherit" });
-      } catch (error) {
-        if (!fs.existsSync(path.join(ROOT, "work", stem + ".json"))) throw error;
-        console.warn(name + " refresh failed; retaining its existing dated cache.");
-      }
-    }
+    const flags = ["--full-refresh", "--reports"].filter(flag => process.argv.includes(flag));
+    execFileSync(python, [path.join(ROOT, "work", "refresh_dashboard.py"), ...flags], { stdio: "inherit" });
   }
   const overview = readMarketOverview();
   END = overview.meta.end;

@@ -3,10 +3,12 @@ import calendar
 import hashlib
 import json
 import math
+import os
 from datetime import datetime, timedelta
 from pathlib import Path
 
 from tushare_client import END_DATE, call_api_pages, get_token
+from refresh_cache import full_refresh
 from fetch_large_money_sentiment_data import sh_sz_a_share
 from fetch_a_share_market_cap import indexed, board
 
@@ -18,9 +20,12 @@ CACHE = ROOT / ".tools/northbound-holdings"
 def cached(token, api, params, fields):
     key = hashlib.sha256(json.dumps([api, params, fields], sort_keys=True).encode()).hexdigest()[:20]
     target = CACHE / f"{api}-{key}.json"
-    if target.exists():
+    if target.exists() and not full_refresh():
         result = json.loads(target.read_text())
-        if result["rows"] or result["fetchedAt"][:10] == datetime.now().strftime("%Y-%m-%d"):
+        recent = (datetime.strptime(END_DATE, "%Y%m%d") - timedelta(days=370)).strftime("%Y%m%d")
+        source_date = params.get("trade_date") or params.get("end_date", "")
+        same_day = result["fetchedAt"][:10] == datetime.now().strftime("%Y-%m-%d")
+        if same_day and os.environ.get("MARKET_REPORT_REFRESH") != "1" or result["rows"] and source_date < recent:
             return result["rows"]
     rows = call_api_pages(token, api, params, fields, 2000)
     CACHE.mkdir(parents=True, exist_ok=True)

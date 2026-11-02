@@ -8,6 +8,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 from tushare_client import END_DATE, call_api, get_token
+from refresh_cache import fetch_range
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -71,7 +72,7 @@ def fetch_by_year(token, api_name, base_params, fields):
             "start_date": f"{year}0101",
             "end_date": END_DATE if year == END_YEAR else f"{year}1231",
         }
-        rows.extend(call_api(token, api_name, params, fields))
+        rows.extend(fetch_range(token, api_name, params, fields, call_api))
     unique = {row["trade_date"]: row for row in rows}
     return [unique[date] for date in sorted(unique)]
 

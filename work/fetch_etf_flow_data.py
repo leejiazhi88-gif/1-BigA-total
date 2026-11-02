@@ -6,6 +6,7 @@ from datetime import datetime
 from pathlib import Path
 
 from tushare_client import END_DATE, call_api, get_token
+from refresh_cache import full_refresh
 
 
 OUTPUT = Path(__file__).resolve().parent / "etf_flow_data.json"
@@ -96,7 +97,7 @@ def build_series(calendar_rows, raw_by_code, pool=ETF_POOL, window=None):
 
 def cached_api(token, api, params, fields, filename, refresh=False, offline=False):
     target = CACHE / (filename + ".json")
-    if target.exists() and (offline or not refresh):
+    if target.exists() and (offline or not refresh and not full_refresh()):
         return json.loads(target.read_text(encoding="utf-8"))
     if offline:
         raise RuntimeError("Missing ETF history cache: " + filename)

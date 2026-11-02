@@ -1,4 +1,5 @@
 import json
+import atexit
 import os
 import re
 import ssl
@@ -12,6 +13,16 @@ from zoneinfo import ZoneInfo
 
 END_DATE = os.environ.get("MARKET_END_DATE") or datetime.now(ZoneInfo("Asia/Shanghai")).strftime("%Y%m%d")
 datetime.strptime(END_DATE, "%Y%m%d")
+API_REQUESTS = 0
+
+
+def save_request_stats():
+    path = os.environ.get("MARKET_API_STATS")
+    if path:
+        Path(path).write_text(json.dumps({"requests": API_REQUESTS}))
+
+
+atexit.register(save_request_stats)
 
 
 def get_token():
@@ -27,11 +38,13 @@ def get_token():
 
 
 def call_api(token, api_name, params, fields):
+    global API_REQUESTS
     payload = json.dumps({"api_name": api_name, "token": token, "params": params, "fields": fields}).encode("utf-8")
     request = urllib.request.Request("https://api.tushare.pro", data=payload,
                                      headers={"Content-Type": "application/json"}, method="POST")
     for attempt in range(3):
         try:
+            API_REQUESTS += 1
             with urllib.request.urlopen(request, timeout=60, context=ssl._create_unverified_context()) as response:
                 result = json.loads(response.read().decode("utf-8"))
             break

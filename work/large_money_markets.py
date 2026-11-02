@@ -1,7 +1,6 @@
 """Rebuild comparable SH/SZ institutional series from cached source records."""
 
 import calendar
-import hashlib
 import json
 import math
 from collections import defaultdict
@@ -9,6 +8,7 @@ from datetime import datetime
 from holder_trade_corrections import correction_index, identity as correction_identity
 
 from tushare_client import END_DATE, call_api_pages, get_token
+from refresh_cache import fetch_range, range_path
 from fetch_large_money_sentiment_data import (
     ROOT, OUTPUT, ADJUSTMENTS, aggregate_blocks, apply_adjustments,
     sh_sz_a_share, stock_universe, week_key,
@@ -19,20 +19,13 @@ FIELDS = "ts_code,trade_date,price,vol,amount,buyer,seller"
 
 
 def fetch_cached(token, api, params, fields, size=3000):
-    key = hashlib.sha256(json.dumps([api, params, fields], sort_keys=True).encode()).hexdigest()[:20]
-    target = CACHE / f"{api}-{params['start_date']}-{params['end_date']}-{key}.json"
-    if target.exists() and params["end_date"] < datetime.now().strftime("%Y%m%d"):
-        return json.loads(target.read_text())["rows"]
+    seeds = list(CACHE.glob(f"{api}-{params['start_date']}-*.json"))
     if api == "block_trade":
-        old_key = hashlib.sha256(json.dumps([params, fields], sort_keys=True).encode()).hexdigest()[:16]
-        old = ROOT / ".tools" / "large-money-blocks" / f"{params['start_date']}-{params['end_date']}-{old_key}.json"
-        if old.exists():
-            return json.loads(old.read_text())["rows"]
-    rows = call_api_pages(token, api, params, fields, size)
-    CACHE.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps({"api": api, "params": params, "fields": fields,
-                                 "fetchedAt": datetime.now().isoformat(), "rows": rows}, ensure_ascii=False))
-    return rows
+        seeds.extend((ROOT / ".tools" / "large-money-blocks").glob(f"{params['start_date']}-*.json"))
+    return fetch_range(token, api, params, fields,
+                       lambda t, a, p, f: call_api_pages(t, a, p, f, size),
+                       "ann_date" if api == "stk_holdertrade" else "ipo_date" if api == "new_share" else "trade_date",
+                       seeds)
 
 
 def holder_weeks(rows, corrections=None, audit=None):
@@ -134,6 +127,13 @@ def refresh_holders_from_cache():
     rows = []
     for year in range(2000, int(end[:4]) + 1):
         year_end = min(f"{year}1231", end)
+        raw = range_path("stk_holdertrade", {"start_date": f"{year}0101", "end_date": year_end},
+                         "ts_code,ann_date,holder_name,in_de,change_vol,change_ratio,avg_price")
+        if raw.exists():
+            value = json.loads(raw.read_text())
+            if value["end"] >= year_end:
+                rows.extend(r for r in value["rows"] if r["ann_date"] <= year_end)
+                continue
         paths = list(CACHE.glob(f"stk_holdertrade-{year}0101-{year_end}-*.json"))
         if len(paths) != 1:
             raise ValueError(f"Expected one complete holder cache for {year}: {paths}")

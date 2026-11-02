@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import math
+import os
 import re
 import tempfile
 import time
@@ -10,11 +11,12 @@ import urllib.error
 from bisect import bisect_right
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from threading import Lock, Semaphore
 
 from tushare_client import END_DATE, call_api, call_api_pages, get_token
+from refresh_cache import full_refresh, write_json
 from fetch_large_money_sentiment_data import sh_sz_a_share
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,7 +34,7 @@ def portfolio_pages(token, params, fields, size, key):
     def page(offset):
         global NEXT_REQUEST
         target = CACHE / f"page-{key}-{size}-{offset}.json"
-        if target.exists():
+        if target.exists() and not full_refresh() and os.environ.get("MARKET_REPORT_REFRESH") != "1":
             return json.loads(target.read_text())
         with IN_FLIGHT:
             with RATE_LOCK:
@@ -74,7 +76,7 @@ def portfolio_pages(token, params, fields, size, key):
 def request(token, api, params, fields, size=8000):
     key = hashlib.sha256(json.dumps([api, params, fields], sort_keys=True).encode()).hexdigest()[:24]
     target = CACHE / f"{api}-{key}.json"
-    if target.exists():
+    if target.exists() and not full_refresh() and os.environ.get("MARKET_REPORT_REFRESH") != "1":
         try:
             return json.loads(target.read_text())
         except json.JSONDecodeError:
@@ -251,6 +253,10 @@ def fetch_etfs(token, basic):
             funds[code] = fund
     if not funds:
         raise RuntimeError("No listed equity ETFs identified")
+    if ETF.exists() and not full_refresh():
+        previous = json.loads(ETF.read_text())
+        update_etfs_by_day(token, funds, previous, excluded, excluded_codes)
+        return
     def history(fund):
         rows = request(token, "fund_share", {"ts_code": fund["ts_code"], "start_date": "20050101", "end_date": END_DATE},
                        "ts_code,trade_date,fd_share", 2000)
@@ -289,6 +295,90 @@ def fetch_etfs(token, basic):
         "limitation": "Unadjusted share stock, not net subscriptions or money flow; affected by splits and sample changes"},
         "funds": list(funds.values()), "series": series}, ensure_ascii=False, separators=(",", ":")))
     print("ETF complete", len(series), "weeks", flush=True)
+
+
+def update_etfs_by_day(token, funds, previous, excluded, excluded_codes):
+    anchor = min(previous["meta"]["end"], END_DATE)
+    start = datetime.strptime(anchor, "%Y%m%d") - timedelta(days=28)
+    start -= timedelta(days=start.weekday())
+    # Each point accepts shares at most 15 calendar days old.
+    fetch_start = (start - timedelta(days=15)).strftime("%Y%m%d")
+    days = call_api_pages(token, "trade_cal", {"exchange": "SSE", "start_date": fetch_start,
+        "end_date": END_DATE, "is_open": "1"}, "cal_date,is_open", 8000)
+    values = {code: {} for code in funds}
+    # Some share disclosures carry weekend/holiday dates, unlike price bars.
+    first = datetime.strptime(fetch_start, "%Y%m%d")
+    last = datetime.strptime(END_DATE, "%Y%m%d")
+    observation_days = [(first + timedelta(days=i)).strftime("%Y%m%d") for i in range((last - first).days + 1)]
+    for day in observation_days:
+        rows = call_api_pages(token, "fund_share", {"trade_date": day},
+                              "ts_code,trade_date,fd_share", 8000)
+        for row in rows:
+            code = row["ts_code"]
+            if row["trade_date"] != day:
+                raise ValueError("Unexpected bulk ETF share date")
+            if code not in funds or not number(row.get("fd_share")) or float(row["fd_share"]) < 0:
+                continue
+            amount = float(row["fd_share"]) / 10000
+            if day in values[code] and values[code][day] != amount:
+                raise ValueError("Conflicting bulk ETF shares")
+            values[code][day] = amount
+    weeks = {}
+    for row in days:
+        date = row["cal_date"]
+        if date < start.strftime("%Y%m%d"):
+            continue
+        key = datetime.strptime(date, "%Y%m%d").isocalendar()[:2]
+        weeks[key] = max(weeks.get(key, ""), date)
+    # The bulk endpoint can omit individual funds that the code query returns.
+    # Reconcile only those missing a valid observation at a required snapshot.
+    fallback_count = 0
+    for code, fund in funds.items():
+        dates = sorted(values[code])
+        needs_fallback = False
+        for date in weeks.values():
+            if fund["list_date"] > date or fund.get("delist_date") and fund["delist_date"] <= date:
+                continue
+            i = bisect_right(dates, date) - 1
+            if i < 0 or (datetime.strptime(date, "%Y%m%d") - datetime.strptime(dates[i], "%Y%m%d")).days > 15:
+                needs_fallback = True
+                break
+        if not needs_fallback:
+            continue
+        fallback_count += 1
+        if fallback_count > max(10, len(funds) // 50):
+            raise ValueError("Bulk ETF source is incomplete; refusing an unbounded per-fund refresh")
+        rows = call_api_pages(token, "fund_share", {"ts_code": code, "start_date": fetch_start, "end_date": END_DATE},
+                              "ts_code,trade_date,fd_share", 8000)
+        for row in rows:
+            date = row["trade_date"]
+            if row["ts_code"] != code or not fetch_start <= date <= END_DATE:
+                raise ValueError("Unexpected fallback ETF observation")
+            if not number(row.get("fd_share")) or float(row["fd_share"]) < 0:
+                continue
+            amount = float(row["fd_share"]) / 10000
+            if date in values[code] and values[code][date] != amount:
+                raise ValueError("Bulk and individual ETF observations disagree")
+            values[code][date] = amount
+    histories = [(fund, sorted(values[code]), values[code]) for code, fund in funds.items()]
+    fresh = [etf_point(date, histories) for date in sorted(weeks.values())]
+    old_points = {row["date"]: row for row in previous["series"]}
+    if not fresh or not any(row["all"] is not None for row in fresh):
+        raise ValueError("No complete bulk ETF snapshots; retaining previous output")
+    for row in fresh:
+        if old_points.get(row["date"], {}).get("all") is not None and row["all"] is None:
+            raise ValueError("Bulk ETF coverage regressed; retaining previous output")
+        old = old_points.get(row["date"], {})
+        if old.get("eligible") == row["eligible"] and any(row["reported"][m] < old["reported"][m] for m in ("sh", "sz")):
+            raise ValueError("Bulk ETF reported sample shrank; retaining previous output")
+    previous["series"] = [r for r in previous["series"] if r["date"] < start.strftime("%Y-%m-%d")] + fresh
+    previous["funds"] = list(funds.values())
+    previous["meta"].update(checkedAt=TODAY, end=END_DATE, excludedMissingListingDates=excluded,
+        excludedNonExchangeCodes=excluded_codes, fundCount=len(funds),
+        refreshMethod="Bulk daily fund_share; 28-day overlap plus 15-day observation window")
+    write_json(ETF, previous)
+    print("ETF incremental complete", len(fresh), "weeks;", len(observation_days),
+          "calendar-day batches;", fallback_count, "individual reconciliations", flush=True)
 
 
 def main():

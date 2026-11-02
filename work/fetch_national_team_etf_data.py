@@ -6,6 +6,7 @@ from datetime import datetime
 from pathlib import Path
 
 from tushare_client import END_DATE, call_api, get_token
+from refresh_cache import full_refresh
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -213,7 +214,12 @@ def main():
         etfs.append({**etf, "holdings": holdings, "rawRows": len(holdings)})
 
     history = []
+    previous = json.loads(OUTPUT.read_text()) if OUTPUT.exists() and not full_refresh() else {}
+    old_history = {row["date"].replace("-", ""): row for row in previous.get("history", [])}
     for period in HISTORY_PERIODS:
+        if period in old_history and period not in HISTORY_PERIODS[-2:]:
+            history.append(old_history[period])
+            continue
         period_exposure, period_details = holder_snapshot(token, period)
         if period == PERIOD:
             snapshots = {row["ts_code"]: row["holdings"] for row in etfs if row["ts_code"] in HISTORY_ETFS}

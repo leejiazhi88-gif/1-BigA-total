@@ -1,4 +1,3 @@
-import hashlib
 import json
 import math
 from collections import defaultdict
@@ -6,6 +5,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 from tushare_client import END_DATE, call_api_pages, get_token
+from refresh_cache import fetch_range
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,15 +17,9 @@ FIELDS = ("amount", "turnover", "marginBalance", "marginFloatRatio", "marginBuyR
 
 
 def cached_rows(token, api_name, params, fields, page_size, reusable):
-    key = hashlib.sha256(json.dumps([api_name, params, fields], sort_keys=True).encode()).hexdigest()
-    target = CACHE / f"{api_name}-{key}.json"
-    if reusable and target.exists():
-        return json.loads(target.read_text())["rows"]
-    rows = call_api_pages(token, api_name, params, fields, page_size)
-    CACHE.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps({"api": api_name, "params": params, "fields": fields,
-                                 "fetchedAt": datetime.now().isoformat(), "rows": rows}), encoding="utf-8")
-    return rows
+    return fetch_range(token, api_name, params, fields,
+                       lambda t, a, p, f: call_api_pages(t, a, p, f, page_size),
+                       seeds=CACHE.glob(f"{api_name}-*.json"))
 
 
 def yearly(token, api_name, base_params, fields, start_year=START_YEAR):
