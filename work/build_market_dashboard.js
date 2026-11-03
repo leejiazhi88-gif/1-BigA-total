@@ -158,6 +158,7 @@ function htmlTemplate(data, echartsSource) {
         <button data-years="5">5年</button>
         <button data-years="10">10年</button>
         <button class="active" data-years="20">20年</button>
+        <button data-years="0">全部</button>
       </div>
       <div class="legend">
         <label class="market-toggle" data-market="sh"><input type="checkbox" checked data-market="sh"><i class="dot" style="background:var(--sh)"></i>上证</label>
@@ -358,8 +359,8 @@ document.querySelectorAll(".ranges [data-years]").forEach(btn => btn.addEventLis
   activeYears = years;
   const end = new Date("${END}T00:00:00Z");
   const start = new Date(end);
-  start.setUTCFullYear(start.getUTCFullYear() - years);
-  chart.dispatchAction({ type: "dataZoom", startValue: start.toISOString().slice(0,10), endValue: "${END}" });
+  if (years) start.setUTCFullYear(start.getUTCFullYear() - years);
+  chart.dispatchAction({ type: "dataZoom", startValue: years ? start.toISOString().slice(0,10) : "${START}", endValue: "${END}" });
   renderOverview();
 }));
 window.addEventListener("resize", () => chart.resize());
