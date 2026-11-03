@@ -101,14 +101,17 @@ const moduleHtml = `
         <div class="metric-note metric-reading-row">
           <span class="metric-reading" id="officialLatestReading"></span>
         </div>
-        <div class="metric-guide" id="officialMetricGuide" aria-live="polite"></div>
         <div id="officialSentimentChart"></div>
       </article>
 
     </div>
 
     <div class="valuation-foot single-note">
-      <details class="metric-method"><summary>统计口径与数据来源</summary><div id="officialMetricExplanation"></div></details>
+      <details class="metric-method">
+        <summary>指标含义、统计口径与数据来源</summary>
+        <div class="metric-guide" id="officialMetricGuide" aria-live="polite"></div>
+        <div id="officialMetricExplanation"></div>
+      </details>
     </div>
   </section>
 `;

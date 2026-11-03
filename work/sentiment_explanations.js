@@ -88,7 +88,7 @@ const guides = {
 
 function guideCss(scope) {
   return `
-    #${scope} .metric-guide { padding: 0 20px 12px; color: #c6d3e3; font-size: 14px; line-height: 1.8; }
+    #${scope} .metric-guide { padding: 0 0 12px; color: #c6d3e3; font-size: 14px; line-height: 1.8; }
     #${scope} .metric-guide ol { margin: 0; padding-left: 1.5em; }
     #${scope} .metric-guide li { padding-left: 4px; margin: 7px 0; overflow-wrap: anywhere; }
     #${scope} .metric-guide li::marker { color: #f6c85f; font-weight: 600; }
@@ -100,7 +100,6 @@ function guideCss(scope) {
     #${scope} .metric-method ol { margin: 0; padding-left: 1.5em; }
     #${scope} .metric-method li { margin-bottom: 12px; overflow-wrap: anywhere; }
     #${scope} .metric-method p { margin: 4px 0; }
-    #${scope} .monthly-guide { margin-top: 20px; padding: 0; }
   `.trim();
 }
 
@@ -112,7 +111,7 @@ function explanationScript(keys) {
       const labels = ["是什么", "怎么看", "注意什么"];
       document.getElementById(prefix + "MetricGuide").innerHTML = "<ol>" + metricGuides[metric].map((text, i) =>
         "<li><strong>" + labels[i] + "：</strong>" + escapeHtml(text) + "</li>").join("") + "</ol>";
-      document.getElementById(prefix + "MetricExplanation").innerHTML = "<ol>" + details.map(([label, text]) =>
+      document.getElementById(prefix + "MetricExplanation").innerHTML = '<ol start="4">' + details.map(([label, text]) =>
         "<li><strong>" + escapeHtml(label) + "</strong>" + text.split("。").filter(Boolean).map(sentence =>
           "<p>" + escapeHtml(sentence) + "。</p>").join("") + "</li>").join("") + "</ol>";
     }

@@ -88,14 +88,17 @@ const moduleHtml = `
         <div class="metric-note metric-reading-row">
           <span class="metric-reading" id="retailLatestReading"></span>
         </div>
-        <div class="metric-guide" id="retailMetricGuide" aria-live="polite"></div>
         <div id="retailSentimentChart"></div>
       </article>
 
     </div>
 
     <div class="valuation-foot single-note">
-      <details class="metric-method"><summary>统计口径与数据来源</summary><div id="retailMetricExplanation"></div></details>
+      <details class="metric-method">
+        <summary>指标含义、统计口径与数据来源</summary>
+        <div class="metric-guide" id="retailMetricGuide" aria-live="polite"></div>
+        <div id="retailMetricExplanation"></div>
+      </details>
     </div>
     <h3 class="retail-monthly-heading">月度入场趋势</h3>
     <div class="retail-monthly-grid">
@@ -110,12 +113,14 @@ const moduleHtml = `
         <div class="metric-note"><span>淡色月份披露不足 90%；均线仅使用连续三个覆盖达标月份。</span><span class="metric-reading" id="retailFundsCoverage"></span></div>
       </article>
     </div>
-    <div class="metric-guide monthly-guide"><ol>
+    <div class="valuation-foot single-note"><details class="metric-method">
+      <summary>月度指标含义、统计口径与数据来源</summary>
+      <div class="metric-guide"><ol>
       <li><strong>新开户是什么：</strong>当月在上交所新开立的A股账户数量。增加通常表示开户意愿增强，但一个人可能有多个账户，开户后也未必马上入金交易。</li>
       <li><strong>新基金发行份额是什么：</strong>当月成立基金已披露的初始份额，单位亿份。包含股票、混合、债券等基金，不能全部当作准备买股票的钱。</li>
       <li><strong>怎么看：</strong>两张图分别观察开户和买新基金的活跃程度。优先比较连续几个月及上年同月；淡色基金柱表示披露不全，不能直接认定为发行骤降。</li>
     </ol></div>
-    <div class="valuation-foot single-note"><details class="metric-method"><summary>月度数据口径与来源</summary><ol>
+    <ol start="4">
       <li><strong>开户统计</strong><p>每个点对应一个统计月份，单位万户，仅为上交所A股新开户，不是全国去重后的新增投资者。</p><p>来源：<a href="https://www.sse.com.cn/aboutus/publication/yearly/" target="_blank" rel="noopener">上交所统计年鉴</a>（2007–2020）与<a href="https://star.sse.com.cn/aboutus/publication/monthly/investor/" target="_blank" rel="noopener">统计月报</a>（2021起）。</p></li>
       <li><strong>基金统计</strong><p>按基金成立月份和基金代码合计已披露发行份额，未披露份额不估算；份额不是募集金额。来源：<a href="https://tushare.pro/document/1?doc_id=19" target="_blank" rel="noopener">Tushare公募基金列表</a>。</p></li>
       <li><strong>三月均线与缺失</strong><p>三月均线取当月与前两个月的平均值，帮助观察趋势。基金发行的均线仅使用连续三个披露覆盖率达到90%的月份。横轴为统计月份，不是公告日期，未公布的月份不补值。</p></li>

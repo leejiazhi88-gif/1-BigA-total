@@ -101,7 +101,6 @@ const moduleHtml = `
         <div class="metric-note metric-reading-row">
           <span class="metric-reading" id="largeMoneyLatestReading"></span>
         </div>
-        <div class="metric-guide" id="largeMoneyMetricGuide" aria-live="polite"></div>
         <div id="largeMoneyChart"></div>
         <div id="largeMoneyHoldingCoverage" aria-live="polite" hidden></div>
       </article>
@@ -109,7 +108,11 @@ const moduleHtml = `
     </div>
 
     <div class="valuation-foot single-note">
-      <details class="metric-method"><summary>统计口径与数据来源</summary><div id="largeMoneyMetricExplanation"></div></details>
+      <details class="metric-method">
+        <summary>指标含义、统计口径与数据来源</summary>
+        <div class="metric-guide" id="largeMoneyMetricGuide" aria-live="polite"></div>
+        <div id="largeMoneyMetricExplanation"></div>
+      </details>
     </div>
   </section>
 `;
