@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { guideCss, explanationScript } = require("./sentiment_explanations");
 
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = process.argv.includes("--online-only")
@@ -20,6 +21,7 @@ function stripExisting(html) {
 
 const css = `
   <style id="large-money-sentiment-style">
+    ${guideCss("large-money-sentiment")}
     .large-money-grid {
       display: grid; grid-template-columns: minmax(0, 1fr);
       gap: 15px; align-items: stretch;
@@ -96,10 +98,10 @@ const moduleHtml = `
           <button class="metric-tab active" data-mode="value" aria-pressed="true">持仓市值</button>
           <button class="metric-tab" data-mode="ratio" aria-pressed="false">持仓比例</button>
         </div>
-        <div class="metric-note">
-          <span id="largeMoneyMetricNote">大宗交易放量代表大额筹码交换活跃，需要结合机构席位净方向判断。</span>
+        <div class="metric-note metric-reading-row">
           <span class="metric-reading" id="largeMoneyLatestReading"></span>
         </div>
+        <div class="metric-guide" id="largeMoneyMetricGuide" aria-live="polite"></div>
         <div id="largeMoneyChart"></div>
         <div id="largeMoneyHoldingCoverage" aria-live="polite" hidden></div>
       </article>
@@ -107,7 +109,7 @@ const moduleHtml = `
     </div>
 
     <div class="valuation-foot single-note">
-      <div class="note" aria-live="polite"><strong>当前指标说明：</strong><span id="largeMoneyMetricExplanation">沪深A股大宗交易的已披露成交金额，按自然周汇总。</span></div>
+      <details class="metric-method"><summary>统计口径与数据来源</summary><div id="largeMoneyMetricExplanation"></div></details>
     </div>
   </section>
 `;
@@ -125,47 +127,41 @@ const script = `
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
+    ${explanationScript(["blockAmount", "institutionBlockNet", "holderNetShares", "northHoldings", "fundPosition", "institutionConcentration", "etfShares"])}
     const metrics = {
       blockAmount: {
         title: "大宗交易额", unit: "亿元", digits: 1,
         subtitle: "沪深A股大宗交易周成交额",
-        note: "大宗交易放量代表大额筹码交换活跃，需要结合机构席位净方向判断。",
         explanation: "大宗交易额反映已披露的大额股票交易活跃度，不直接代表机构净买入。来源为Tushare大宗交易记录，仅统计沪深A股，排除B股、北交所、债券和基金；按自然周汇总，金额由万元换算为亿元，并与成交价×成交量核对。历史包含后来退市的股票；早年记录较稀疏，未披露不等于没有交易。"
       },
       institutionBlockNet: {
         title: "机构大宗净买入", unit: "亿元", digits: 1,
         subtitle: "沪深A股机构专用席位大宗交易周净买入额",
-        note: "正值表示机构席位净买入，负值表示净卖出；极端负值可辅助识别机构撤退。",
         explanation: "机构大宗净买入＝买方为“机构专用”的成交金额－卖方为“机构专用”的成交金额；买卖双方都是机构专用时净额为零。来源为Tushare沪深A股大宗交易席位记录，按自然周汇总，单位亿元。它只覆盖披露的机构专用席位，不代表机构通过普通交易账户的全部买卖。"
       },
       holderNetShares: {
         title: "产业资本净增减持", unit: "亿股", digits: 2,
         subtitle: "重要股东公告周净变动 · 已剔除核实的改制更名记录",
-        note: "正值为净增持，负值为净减持；该指标按股数汇总，不等同于交易金额。",
-        explanation: "按重要股东公告中的变动股数汇总：增加记正、减少记负，单位亿股。来源为Tushare stk_holdertrade，按公告日期归入自然周并去重。已依据公司公告逐条剔除44条改制、更名造成的非交易变更，包括2017年中石油集团更名；不按数值大小截断、不平滑。其他未核实的划转、重组等仍可能包含在内，因此曲线不是纯二级市场买卖量，也不是成交金额或实时完整持仓。纠正清单及公告依据见仓库 work/holder_trade_adjustments.json。"
+        explanation: "按重要股东公告中的变动股数汇总：增加记正、减少记负，单位亿股。来源为Tushare stk_holdertrade，按公告日期归入自然周并去重。已依据公司公告逐条剔除44条改制、更名造成的非交易变更，包括2017年中石油集团更名；原始数据不按数值大小截断，均线仅用于展示。其他未核实的划转、重组等仍可能包含在内，因此曲线不是纯二级市场买卖量，也不是成交金额或实时完整持仓。纠正清单及公告依据见仓库 work/holder_trade_adjustments.json。"
       },
       fundPosition: {
         title: "主动权益基金仓位", unit: "%", digits: 2, field: "position",
         subtitle: "主动股票／混合基金样本投向沪深A股的净资产比例 · 半年报／年报",
-        note: "两市合计为沪深A股仓位；沪市、深市分别为同一基金样本投向该市场的仓位。",
         explanation: "来源：Tushare基金列表、基金净资产与半年报／年报持仓。筛选主动股票型、混合型基金，排除指数、增强指数、ETF、联接、FOF及QDII。按基金和股票取最新公告，股票市值占比合计在90%—110%且持仓市值不超过净资产120%的样本才纳入；完全相同的组合只保留净资产最大的一个代表。仓位＝样本在对应市场的A股持仓市值÷同一批样本基金净资产。两市不含港股、北交所等，因此不等于全部股票仓位。覆盖率不足40%的报告期留空；基金分类采用当前资料，样本会变化，不是全体基金的精确统计。"
       },
       institutionConcentration: {
         title: "机构持仓集中度", unit: "%", digits: 2, field: "concentration",
         subtitle: "主动基金样本前十大股票持仓集中度 · 半年报／年报",
-        note: "仅代表主动公募基金样本；两市与沪深分别排名，三条比例不能相加。",
         explanation: "与主动权益基金仓位使用相同的半年报／年报有效样本、去重和覆盖率门槛。先把各基金持有同一股票的市值相加，再按对应股票范围排序：集中度＝该范围排名前10只股票的合计持仓市值÷该范围全部股票的合计持仓市值。两市前10、沪市前10、深市前10分别计算；不是单只基金前十大权重的平均值，也不代表保险、社保、外资等所有机构。样本变化和股价波动均可能影响曲线。"
       },
       etfShares: {
         title: "ETF份额变化", unit: "亿份", digits: 2,
         subtitle: "沪深上市股票型ETF周末份额存量（含跨境股票ETF）",
-        note: "按ETF上市交易所分沪深，不按底层股票归属；展示份额存量，不是净申购金额。",
         explanation: "来源：Tushare ETF列表、基金分类、基金份额及交易日历。筛选沪深上市股票型ETF（含跨境股票ETF，不含债券、货币、商品ETF），包含可确认上市和退市日期的退市基金。取每周最后交易日之前最近15天内披露份额，万份÷10000换算亿份。每个交易所覆盖至少90%的当期上市基金才展示已获取份额合计，不对缺失基金放大估算；两市合计要求已有上市样本的市场均达标，尚无上市样本的市场留空。份额受申赎、拆分、合并和新基金上市影响，各ETF每份净值不同，不能直接等同于资金流入或市场规模。"
       },
       northHoldings: {
         title: "北向持仓分布", unit: "亿元", digits: 1,
         subtitle: "北向持有沪深A股的季度末市值",
-        note: "季度末持仓快照；市值变化同时受持股数量和股价影响，不等于净流入。",
         explanation: "Tushare hk_hold持股数（股）×期末未复权收盘价÷1亿，按股票所属交易所汇总（亿元）。期末缺价的股票采用此前730天内最近可得收盘价，属于历史价格估值，并记录价格日期；仍缺价或同代码持股数冲突时，该市场当期留空，不把缺失计零。仅含沪深A股，不含北交所、B/H股及基金。数据源缺少的季度保留断线，未披露不等于清仓。"
       }
     };
@@ -259,14 +255,12 @@ const script = `
         return item.name + " " + (point ? fmt(point[1], cfg.digits) + cfg.unit + "（" + point[0] + "）" : "暂无数据");
       });
       document.getElementById("largeMoneyMetricSubtitle").textContent = "两市合计 / 沪市 / 深市 · " + cfg.subtitle + (smoothable ? " · " + smoothingLabel : "");
-      document.getElementById("largeMoneyMetricNote").textContent = cfg.note;
-      document.getElementById("largeMoneyMetricExplanation").textContent = "采样口径：" + samplingNotes[activeMetric] + cfg.explanation +
-        (holdingView
+      const details = [["时间与采样", samplingNotes[activeMetric]], ["计算与来源", cfg.explanation]];
+      if (holdingView || smoothable) details.push(["市场范围与缺失", holdingView
           ? " 比例＝北向持仓市值÷同期对应市场全部A股总市值（含限售股），不是北向持仓内部配置比例；两市比例用合计分子÷合计分母，不相加沪深百分比。深股通2016年12月5日开通，之前深市留空；开通前两市持仓仅含沪股通，比例分母仍为沪深A股总市值。"
-          : fundView || etfView ? ""
-          : " 按股票所属交易所拆分为沪市、深市，仅含沪深A股；两市合计为两者之和。完整抓取周内无该市场记录时，记为已披露汇总零值，不代表实际没有交易；整周无记录留空。");
-      if (smoothable) document.getElementById("largeMoneyMetricExplanation").textContent +=
-        " 当前展示：" + smoothingLabel + "。7点／30点均线为当前及此前6／29个周采样点的算术平均，不是7／30天，也不是累计值。窗口不足或含缺失值时留空，不跳过缺失、不补零；先用完整历史计算，再截取所选时间范围。沪深及两市分别计算，最新读数与悬浮值均为当前模式的值。";
+          : "按股票所属交易所拆分为沪市、深市，仅含沪深A股；两市合计为两者之和。完整抓取周内无该市场记录时，记为已披露汇总零值，不代表实际没有交易；整周无记录留空"]);
+      if (smoothable) details.push(["当前平滑方式", smoothingLabel + "。7点／30点均线为当前及此前6／29个周采样点的算术平均，不是7／30天，也不是累计值。窗口不足或含缺失值时留空，不跳过缺失、不补零；先用完整历史计算，再截取所选时间范围。沪深及两市分别计算，最新读数与悬浮值均为当前模式的值"]);
+      renderExplanation("largeMoney", activeMetric, details);
       document.getElementById("largeMoneyLatestReading").textContent = (smoothable ? smoothingLabel + " · " : "") + latest.join(" / ");
       document.getElementById("largeMoneyHoldingModes").hidden = !holdingView;
       const coverage = document.getElementById("largeMoneyHoldingCoverage");

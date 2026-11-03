@@ -162,6 +162,19 @@
 
 
   <style id="retail-sentiment-style">
+    #retail-sentiment .metric-guide { padding: 0 20px 12px; color: #c6d3e3; font-size: 14px; line-height: 1.8; }
+    #retail-sentiment .metric-guide ol { margin: 0; padding-left: 1.5em; }
+    #retail-sentiment .metric-guide li { padding-left: 4px; margin: 7px 0; overflow-wrap: anywhere; }
+    #retail-sentiment .metric-guide li::marker { color: #f6c85f; font-weight: 600; }
+    #retail-sentiment .metric-guide strong, #retail-sentiment .metric-method strong { color: #edf4ff; }
+    #retail-sentiment .metric-reading-row { justify-content: flex-end; }
+    #retail-sentiment .metric-method { width: 100%; color: #a7b9cf; font-size: 13px; line-height: 1.8; }
+    #retail-sentiment .metric-method summary { cursor: pointer; padding: 10px 0; color: #c6d3e3; }
+    #retail-sentiment .metric-method summary:focus-visible { outline: 2px solid #f6c85f; outline-offset: 3px; }
+    #retail-sentiment .metric-method ol { margin: 0; padding-left: 1.5em; }
+    #retail-sentiment .metric-method li { margin-bottom: 12px; overflow-wrap: anywhere; }
+    #retail-sentiment .metric-method p { margin: 4px 0; }
+    #retail-sentiment .monthly-guide { margin-top: 20px; padding: 0; }
     .retail-grid {
       display: grid; grid-template-columns: minmax(0, 1fr);
       gap: 15px; align-items: stretch;
@@ -193,6 +206,19 @@
 
 
   <style id="large-money-sentiment-style">
+    #large-money-sentiment .metric-guide { padding: 0 20px 12px; color: #c6d3e3; font-size: 14px; line-height: 1.8; }
+    #large-money-sentiment .metric-guide ol { margin: 0; padding-left: 1.5em; }
+    #large-money-sentiment .metric-guide li { padding-left: 4px; margin: 7px 0; overflow-wrap: anywhere; }
+    #large-money-sentiment .metric-guide li::marker { color: #f6c85f; font-weight: 600; }
+    #large-money-sentiment .metric-guide strong, #large-money-sentiment .metric-method strong { color: #edf4ff; }
+    #large-money-sentiment .metric-reading-row { justify-content: flex-end; }
+    #large-money-sentiment .metric-method { width: 100%; color: #a7b9cf; font-size: 13px; line-height: 1.8; }
+    #large-money-sentiment .metric-method summary { cursor: pointer; padding: 10px 0; color: #c6d3e3; }
+    #large-money-sentiment .metric-method summary:focus-visible { outline: 2px solid #f6c85f; outline-offset: 3px; }
+    #large-money-sentiment .metric-method ol { margin: 0; padding-left: 1.5em; }
+    #large-money-sentiment .metric-method li { margin-bottom: 12px; overflow-wrap: anywhere; }
+    #large-money-sentiment .metric-method p { margin: 4px 0; }
+    #large-money-sentiment .monthly-guide { margin-top: 20px; padding: 0; }
     .large-money-grid {
       display: grid; grid-template-columns: minmax(0, 1fr);
       gap: 15px; align-items: stretch;
@@ -221,6 +247,19 @@
 
 
   <style id="official-sentiment-style">
+    #official-sentiment .metric-guide { padding: 0 20px 12px; color: #c6d3e3; font-size: 14px; line-height: 1.8; }
+    #official-sentiment .metric-guide ol { margin: 0; padding-left: 1.5em; }
+    #official-sentiment .metric-guide li { padding-left: 4px; margin: 7px 0; overflow-wrap: anywhere; }
+    #official-sentiment .metric-guide li::marker { color: #f6c85f; font-weight: 600; }
+    #official-sentiment .metric-guide strong, #official-sentiment .metric-method strong { color: #edf4ff; }
+    #official-sentiment .metric-reading-row { justify-content: flex-end; }
+    #official-sentiment .metric-method { width: 100%; color: #a7b9cf; font-size: 13px; line-height: 1.8; }
+    #official-sentiment .metric-method summary { cursor: pointer; padding: 10px 0; color: #c6d3e3; }
+    #official-sentiment .metric-method summary:focus-visible { outline: 2px solid #f6c85f; outline-offset: 3px; }
+    #official-sentiment .metric-method ol { margin: 0; padding-left: 1.5em; }
+    #official-sentiment .metric-method li { margin-bottom: 12px; overflow-wrap: anywhere; }
+    #official-sentiment .metric-method p { margin: 4px 0; }
+    #official-sentiment .monthly-guide { margin-top: 20px; padding: 0; }
     .official-grid {
       display: grid; grid-template-columns: minmax(0, 1fr);
       gap: 15px; align-items: stretch;
@@ -511,17 +550,17 @@
           <button class="metric-tab" data-metric="marginBalance">融资余额</button>
           <button class="metric-tab" data-metric="marginFloatRatio">融资余额/流通市值</button>
         </div>
-        <div class="metric-note">
-          <span id="retailMetricNote">成交额快速放大代表交易热度上升，需结合指数涨幅判断是否出现巨量滞涨。</span>
+        <div class="metric-note metric-reading-row">
           <span class="metric-reading" id="retailLatestReading"></span>
         </div>
+        <div class="metric-guide" id="retailMetricGuide" aria-live="polite"></div>
         <div id="retailSentimentChart"></div>
       </article>
 
     </div>
 
     <div class="valuation-foot single-note">
-      <div class="note" aria-live="polite"><strong>当前指标说明：</strong><span id="retailMetricExplanation">沪深股票成交额反映交易活跃度；三条线分别为两市合计、沪市和深市。</span></div>
+      <details class="metric-method"><summary>统计口径与数据来源</summary><div id="retailMetricExplanation"></div></details>
     </div>
     <h3 class="retail-monthly-heading">月度入场趋势</h3>
     <div class="retail-monthly-grid">
@@ -536,7 +575,16 @@
         <div class="metric-note"><span>淡色月份披露不足 90%；均线仅使用连续三个覆盖达标月份。</span><span class="metric-reading" id="retailFundsCoverage"></span></div>
       </article>
     </div>
-    <div class="valuation-foot single-note"><div class="note"><strong>来源：</strong><a href="https://www.sse.com.cn/aboutus/publication/yearly/" target="_blank" rel="noopener">上交所统计年鉴</a>（2007–2020）与<a href="https://star.sse.com.cn/aboutus/publication/monthly/investor/" target="_blank" rel="noopener">统计月报</a>（2021 起）；<a href="https://tushare.pro/document/1?doc_id=19" target="_blank" rel="noopener">Tushare 公募基金列表</a>。基金数据按成立月份和基金代码汇总发行份额，含股票、混合、债券等类型，不等同于募集金额；未披露份额不估算。</div></div>
+    <div class="metric-guide monthly-guide"><ol>
+      <li><strong>新开户是什么：</strong>当月在上交所新开立的A股账户数量。增加通常表示开户意愿增强，但一个人可能有多个账户，开户后也未必马上入金交易。</li>
+      <li><strong>新基金发行份额是什么：</strong>当月成立基金已披露的初始份额，单位亿份。包含股票、混合、债券等基金，不能全部当作准备买股票的钱。</li>
+      <li><strong>怎么看：</strong>两张图分别观察开户和买新基金的活跃程度。优先比较连续几个月及上年同月；淡色基金柱表示披露不全，不能直接认定为发行骤降。</li>
+    </ol></div>
+    <div class="valuation-foot single-note"><details class="metric-method"><summary>月度数据口径与来源</summary><ol>
+      <li><strong>开户统计</strong><p>每个点对应一个统计月份，单位万户，仅为上交所A股新开户，不是全国去重后的新增投资者。</p><p>来源：<a href="https://www.sse.com.cn/aboutus/publication/yearly/" target="_blank" rel="noopener">上交所统计年鉴</a>（2007–2020）与<a href="https://star.sse.com.cn/aboutus/publication/monthly/investor/" target="_blank" rel="noopener">统计月报</a>（2021起）。</p></li>
+      <li><strong>基金统计</strong><p>按基金成立月份和基金代码合计已披露发行份额，未披露份额不估算；份额不是募集金额。来源：<a href="https://tushare.pro/document/1?doc_id=19" target="_blank" rel="noopener">Tushare公募基金列表</a>。</p></li>
+      <li><strong>三月均线与缺失</strong><p>三月均线取当月与前两个月的平均值，帮助观察趋势。基金发行的均线仅使用连续三个披露覆盖率达到90%的月份。横轴为统计月份，不是公告日期，未公布的月份不补值。</p></li>
+    </ol></details></div>
   </section>
 
 
@@ -588,10 +636,10 @@
           <button class="metric-tab active" data-mode="value" aria-pressed="true">持仓市值</button>
           <button class="metric-tab" data-mode="ratio" aria-pressed="false">持仓比例</button>
         </div>
-        <div class="metric-note">
-          <span id="largeMoneyMetricNote">大宗交易放量代表大额筹码交换活跃，需要结合机构席位净方向判断。</span>
+        <div class="metric-note metric-reading-row">
           <span class="metric-reading" id="largeMoneyLatestReading"></span>
         </div>
+        <div class="metric-guide" id="largeMoneyMetricGuide" aria-live="polite"></div>
         <div id="largeMoneyChart"></div>
         <div id="largeMoneyHoldingCoverage" aria-live="polite" hidden></div>
       </article>
@@ -599,7 +647,7 @@
     </div>
 
     <div class="valuation-foot single-note">
-      <div class="note" aria-live="polite"><strong>当前指标说明：</strong><span id="largeMoneyMetricExplanation">沪深A股大宗交易的已披露成交金额，按自然周汇总。</span></div>
+      <details class="metric-method"><summary>统计口径与数据来源</summary><div id="largeMoneyMetricExplanation"></div></details>
     </div>
   </section>
 
@@ -644,17 +692,17 @@
           <button class="metric-tab" data-metric="socialFinancing">社融增量</button>
           <button class="metric-tab" data-metric="m2Yoy">M2增速</button>
         </div>
-        <div class="metric-note">
-          <span id="officialMetricNote">IPO融资额反映一级市场供给节奏，过快扩容可能压制二级市场风险偏好。</span>
+        <div class="metric-note metric-reading-row">
           <span class="metric-reading" id="officialLatestReading"></span>
         </div>
+        <div class="metric-guide" id="officialMetricGuide" aria-live="polite"></div>
         <div id="officialSentimentChart"></div>
       </article>
 
     </div>
 
     <div class="valuation-foot single-note">
-      <div class="note" aria-live="polite"><strong>当前指标说明：</strong><span id="officialMetricExplanation">A股IPO募集资金反映一级市场新股融资供给，按自然周汇总。</span></div>
+      <details class="metric-method"><summary>统计口径与数据来源</summary><div id="officialMetricExplanation"></div></details>
     </div>
   </section>
 
@@ -1184,30 +1232,35 @@ window.addEventListener("resize", () => chart.resize());
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
+    const metricGuides = {"amount":["成交额就是一天内买卖股票成交了多少钱。例如一笔成交100万元，成交额计100万元，买卖双方不重复计算。","金额放大通常表示交易更活跃；上涨时放量、下跌时放量，含义不同，要结合股价方向判断。","这里统计沪深市场全部投资者的成交，不能单独归因于散户；成交额也不是进入股市的新增资金。"],"turnover":["换手率衡量可流通股票交易得有多频繁。单只股票通常用成交股数除以流通股数；本图汇总交易所公布的板块换手率。","数值越高，交易越频繁。例如单股换手率5%，表示当天成交股数相当于流通股数的5%，不代表5%的股东离场。","高换手可能来自追涨，也可能来自集中卖出，不能单独判断涨跌。本图包含各类投资者，不只散户。"],"marginBalance":["融资是投资者向证券公司借钱买股票；融资余额是这些借款中还没有偿还的金额。","余额上升表示未偿还的融资借款增加，下降表示减少，可用来观察借钱买股的规模变化。","这是借款存量，不是当天买入额；只覆盖交易所披露的融资业务，不包括所有场外借款，也不是散户专属数据。"],"marginFloatRatio":["把融资余额除以流通市值，看借钱买股的规模相对可流通股票有多大。流通市值就是可流通股数乘以股价。","例如比例为2%，表示每100元流通市值对应约2元尚未偿还的融资借款。比例越高，融资规模相对市场越大。","比例上升也可能只是股价下跌、分母变小，不一定是新增借款；它不是全部投资者的负债率。"]};
+    function renderExplanation(prefix, metric, details) {
+      const labels = ["是什么", "怎么看", "注意什么"];
+      document.getElementById(prefix + "MetricGuide").innerHTML = "<ol>" + metricGuides[metric].map((text, i) =>
+        "<li><strong>" + labels[i] + "：</strong>" + escapeHtml(text) + "</li>").join("") + "</ol>";
+      document.getElementById(prefix + "MetricExplanation").innerHTML = "<ol>" + details.map(([label, text]) =>
+        "<li><strong>" + escapeHtml(label) + "</strong>" + text.split("。").filter(Boolean).map(sentence =>
+          "<p>" + escapeHtml(sentence) + "。</p>").join("") + "</li>").join("") + "</ol>";
+    }
 
     const metrics = {
       amount: {
         title: "两市成交额", unit: "亿元", digits: 0,
         subtitle: "两市合计、沪市与深市股票成交额",
-        note: "成交额快速放大代表交易热度上升，需结合指数涨幅判断是否出现巨量滞涨。",
         explanation: "沪深股票成交额反映交易活跃度。来源为Tushare交易所市场统计；两市合计为沪市与深市股票成交额之和，含A/B股，不含北交所、基金和债券；不是上证指数、深证成指的成分股口径。2019年前沪市由A/B股分项加总。单位亿元，每周取最后可得交易日的单日值，不是周成交额总和；缺失不补零。"
       },
       turnover: {
         title: "市场换手率", unit: "%", digits: 2,
         subtitle: "两市合计、沪市与深市换手率，按流通市值加权",
-        note: "换手率越高，筹码交换越快；高位持续高换手通常意味着分歧显著扩大。",
         explanation: "换手率衡量股票筹码交换速度。来源为Tushare交易所各股票板块换手率及流通市值；两市合计按各板块流通市值加权，不是沪、深换手率的简单平均。范围含沪深A/B股，不含北交所、基金和债券。单位%，每周取最后可得交易日的单日值；缺失不补零。"
       },
       marginBalance: {
         title: "融资余额", unit: "亿元", digits: 0,
         subtitle: "两市合计、沪市与深市融资余额",
-        note: "融资余额持续抬升表示杠杆资金扩张；融资融券业务于2010年3月启动，更早年份不适用。",
         explanation: "融资余额是投资者尚未偿还的融资买入资金余额，用来观察杠杆存量，不是当日融资买入额。来源为Tushare沪深交易所融资余额；两市合计为沪市与深市之和。单位亿元，每周取最后可得交易日的余额，不是周累计。融资融券业务于2010年3月启动，更早年份不适用；缺失不补零。"
       },
       marginFloatRatio: {
         title: "融资余额/流通市值", unit: "%", digits: 2,
         subtitle: "融资余额占对应市场流通市值比例",
-        note: "融资余额除以同期沪深股票流通市值，反映杠杆拥挤度；2010年3月以前不适用。",
         explanation: "融资余额/流通市值用于观察杠杆资金相对市场规模的拥挤程度。沪市、深市各以本市场融资余额除以本市场股票流通市值；两市合计以两市融资余额之和除以两市流通市值之和，不是两个比例的平均。来源为Tushare交易所融资及市场统计，单位%；每周取最后可得交易日的值，2010年3月以前不适用，缺失不补零。"
       }
     };
@@ -1247,8 +1300,10 @@ window.addEventListener("resize", () => chart.resize());
       const span = coverage[activeMetric];
       document.getElementById("retailMetricSubtitle").textContent = cfg.subtitle + " · 周频 · 可用历史 " +
         (span.start ? span.start + " 至 " + span.end : "暂无");
-      document.getElementById("retailMetricNote").textContent = cfg.note;
-      document.getElementById("retailMetricExplanation").textContent = "采样口径：按自然周（周一至周日），每个指标分别取周内最后一次有效观测，横轴为该观测的实际日期；通常接近周五，但节假日或缺报时可能提前，不固定取周五，不取周平均，不跨周补值。" + cfg.explanation;
+      renderExplanation("retail", activeMetric, [
+        ["时间与采样", "按自然周（周一至周日），每个指标取周内最后一次有效观测，横轴为实际观测日期。通常接近周五，节假日或缺报时可能提前，不取周平均、不跨周补值"],
+        ["计算范围与来源", cfg.explanation]
+      ]);
       document.getElementById("retailLatestReading").textContent = latest.join(" / ") || "暂无数据";
       chart.setOption({
         animation: false,
@@ -1395,47 +1450,49 @@ window.addEventListener("resize", () => chart.resize());
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
+    const metricGuides = {"blockAmount":["大宗交易是通过交易所专门机制完成的大额股票买卖；大宗交易额就是这些交易成交了多少钱。","金额越大，说明大额股票转手越活跃。可能是大股东减持、机构接盘，也可能是其他持有人之间交易。","每笔交易都有买方和卖方，放量本身不表示机构看多或资金净流入；需要结合成交双方和价格判断。"],"institutionBlockNet":["只看大宗交易中标为“机构专用”的席位：买入金额减去卖出金额。“席位”是交易记录中标识交易参与方的账户通道。","正数表示这类机构席位买得更多，负数表示卖得更多。买入10亿元、卖出6亿元，净买入就是4亿元。","它只覆盖大宗交易中的机构专用席位，不是全体机构的净买入；长期偏正也可能与机构承接股东减持有关。"],"holderNetShares":["“产业资本”通常指控股股东、实控人、创始人及关联企业等与公司经营相关的股东；本图实际统计范围更宽，是已披露的股东增减持。","增加的股数减去减少的股数，单位亿股。正数表示净增持，负数表示净减持；例如增持3亿股、减持5亿股，结果为－2亿股。","这里没有逐条限定股东身份，也可能含未核实的划转或重组。它不是纯粹的产业资本买卖金额，不能据此直接判断股东集体看多或看空。"],"northHoldings":["北向资金是通过香港的沪股通、深股通投资内地A股的资金。本图看的是它持有股票的市值，不是当天买进了多少钱。","金额＝持股数×期末股价。比例＝持仓市值÷对应市场全部A股总市值（含限售股）；比例便于比较持仓相对市场的大小。","股价上涨也会让持仓市值增加，比例上升也可能来自所持股票涨得更快，都不等于净加仓。北向资金不代表全部外资。"],"fundPosition":["主动权益基金主要由基金经理主动选股。本图的“仓位”是主动股票型、混合型基金样本投在沪深A股上的市值，占这些基金净资产的比例。","例如仓位80%，表示样本基金每100元净资产中，约80元配置在沪深A股。沪市和深市仓位相加得到两市仓位。","仓位上升可能来自买股，也可能来自股价上涨或基金样本变化。未计入的部分还可能包含港股等资产，不能全当作现金。"],"institutionConcentration":["这里的机构指主动公募基金样本。先合并这些基金的持股，再看持仓市值最高的10只股票，占全部样本股票持仓的比例。","比例越高，资金越集中在少数股票上；越低则更分散。例如30%，表示前10只股票占该范围持仓市值的三成。","它不是所有机构的集中度，也不是每只基金前十大持仓的平均值。沪市、深市、两市各自选前10名，比例不能相加。"],"etfShares":["ETF是可以在交易所买卖的基金；份额就是基金发行在外的单位数量。本图显示股票型ETF的份额总量，单位亿份。","在基金名单和份额折算不变时，总份额增加通常表示净申购，减少通常表示净赎回；在交易所买卖已有份额不会直接改变总份额。","图上是份额存量，不是净申购金额。不同ETF每份净值不同，新基金上市、份额拆分也会影响曲线；沪深按基金上市地划分。"]};
+    function renderExplanation(prefix, metric, details) {
+      const labels = ["是什么", "怎么看", "注意什么"];
+      document.getElementById(prefix + "MetricGuide").innerHTML = "<ol>" + metricGuides[metric].map((text, i) =>
+        "<li><strong>" + labels[i] + "：</strong>" + escapeHtml(text) + "</li>").join("") + "</ol>";
+      document.getElementById(prefix + "MetricExplanation").innerHTML = "<ol>" + details.map(([label, text]) =>
+        "<li><strong>" + escapeHtml(label) + "</strong>" + text.split("。").filter(Boolean).map(sentence =>
+          "<p>" + escapeHtml(sentence) + "。</p>").join("") + "</li>").join("") + "</ol>";
+    }
     const metrics = {
       blockAmount: {
         title: "大宗交易额", unit: "亿元", digits: 1,
         subtitle: "沪深A股大宗交易周成交额",
-        note: "大宗交易放量代表大额筹码交换活跃，需要结合机构席位净方向判断。",
         explanation: "大宗交易额反映已披露的大额股票交易活跃度，不直接代表机构净买入。来源为Tushare大宗交易记录，仅统计沪深A股，排除B股、北交所、债券和基金；按自然周汇总，金额由万元换算为亿元，并与成交价×成交量核对。历史包含后来退市的股票；早年记录较稀疏，未披露不等于没有交易。"
       },
       institutionBlockNet: {
         title: "机构大宗净买入", unit: "亿元", digits: 1,
         subtitle: "沪深A股机构专用席位大宗交易周净买入额",
-        note: "正值表示机构席位净买入，负值表示净卖出；极端负值可辅助识别机构撤退。",
         explanation: "机构大宗净买入＝买方为“机构专用”的成交金额－卖方为“机构专用”的成交金额；买卖双方都是机构专用时净额为零。来源为Tushare沪深A股大宗交易席位记录，按自然周汇总，单位亿元。它只覆盖披露的机构专用席位，不代表机构通过普通交易账户的全部买卖。"
       },
       holderNetShares: {
         title: "产业资本净增减持", unit: "亿股", digits: 2,
         subtitle: "重要股东公告周净变动 · 已剔除核实的改制更名记录",
-        note: "正值为净增持，负值为净减持；该指标按股数汇总，不等同于交易金额。",
-        explanation: "按重要股东公告中的变动股数汇总：增加记正、减少记负，单位亿股。来源为Tushare stk_holdertrade，按公告日期归入自然周并去重。已依据公司公告逐条剔除44条改制、更名造成的非交易变更，包括2017年中石油集团更名；不按数值大小截断、不平滑。其他未核实的划转、重组等仍可能包含在内，因此曲线不是纯二级市场买卖量，也不是成交金额或实时完整持仓。纠正清单及公告依据见仓库 work/holder_trade_adjustments.json。"
+        explanation: "按重要股东公告中的变动股数汇总：增加记正、减少记负，单位亿股。来源为Tushare stk_holdertrade，按公告日期归入自然周并去重。已依据公司公告逐条剔除44条改制、更名造成的非交易变更，包括2017年中石油集团更名；原始数据不按数值大小截断，均线仅用于展示。其他未核实的划转、重组等仍可能包含在内，因此曲线不是纯二级市场买卖量，也不是成交金额或实时完整持仓。纠正清单及公告依据见仓库 work/holder_trade_adjustments.json。"
       },
       fundPosition: {
         title: "主动权益基金仓位", unit: "%", digits: 2, field: "position",
         subtitle: "主动股票／混合基金样本投向沪深A股的净资产比例 · 半年报／年报",
-        note: "两市合计为沪深A股仓位；沪市、深市分别为同一基金样本投向该市场的仓位。",
         explanation: "来源：Tushare基金列表、基金净资产与半年报／年报持仓。筛选主动股票型、混合型基金，排除指数、增强指数、ETF、联接、FOF及QDII。按基金和股票取最新公告，股票市值占比合计在90%—110%且持仓市值不超过净资产120%的样本才纳入；完全相同的组合只保留净资产最大的一个代表。仓位＝样本在对应市场的A股持仓市值÷同一批样本基金净资产。两市不含港股、北交所等，因此不等于全部股票仓位。覆盖率不足40%的报告期留空；基金分类采用当前资料，样本会变化，不是全体基金的精确统计。"
       },
       institutionConcentration: {
         title: "机构持仓集中度", unit: "%", digits: 2, field: "concentration",
         subtitle: "主动基金样本前十大股票持仓集中度 · 半年报／年报",
-        note: "仅代表主动公募基金样本；两市与沪深分别排名，三条比例不能相加。",
         explanation: "与主动权益基金仓位使用相同的半年报／年报有效样本、去重和覆盖率门槛。先把各基金持有同一股票的市值相加，再按对应股票范围排序：集中度＝该范围排名前10只股票的合计持仓市值÷该范围全部股票的合计持仓市值。两市前10、沪市前10、深市前10分别计算；不是单只基金前十大权重的平均值，也不代表保险、社保、外资等所有机构。样本变化和股价波动均可能影响曲线。"
       },
       etfShares: {
         title: "ETF份额变化", unit: "亿份", digits: 2,
         subtitle: "沪深上市股票型ETF周末份额存量（含跨境股票ETF）",
-        note: "按ETF上市交易所分沪深，不按底层股票归属；展示份额存量，不是净申购金额。",
         explanation: "来源：Tushare ETF列表、基金分类、基金份额及交易日历。筛选沪深上市股票型ETF（含跨境股票ETF，不含债券、货币、商品ETF），包含可确认上市和退市日期的退市基金。取每周最后交易日之前最近15天内披露份额，万份÷10000换算亿份。每个交易所覆盖至少90%的当期上市基金才展示已获取份额合计，不对缺失基金放大估算；两市合计要求已有上市样本的市场均达标，尚无上市样本的市场留空。份额受申赎、拆分、合并和新基金上市影响，各ETF每份净值不同，不能直接等同于资金流入或市场规模。"
       },
       northHoldings: {
         title: "北向持仓分布", unit: "亿元", digits: 1,
         subtitle: "北向持有沪深A股的季度末市值",
-        note: "季度末持仓快照；市值变化同时受持股数量和股价影响，不等于净流入。",
         explanation: "Tushare hk_hold持股数（股）×期末未复权收盘价÷1亿，按股票所属交易所汇总（亿元）。期末缺价的股票采用此前730天内最近可得收盘价，属于历史价格估值，并记录价格日期；仍缺价或同代码持股数冲突时，该市场当期留空，不把缺失计零。仅含沪深A股，不含北交所、B/H股及基金。数据源缺少的季度保留断线，未披露不等于清仓。"
       }
     };
@@ -1529,14 +1586,12 @@ window.addEventListener("resize", () => chart.resize());
         return item.name + " " + (point ? fmt(point[1], cfg.digits) + cfg.unit + "（" + point[0] + "）" : "暂无数据");
       });
       document.getElementById("largeMoneyMetricSubtitle").textContent = "两市合计 / 沪市 / 深市 · " + cfg.subtitle + (smoothable ? " · " + smoothingLabel : "");
-      document.getElementById("largeMoneyMetricNote").textContent = cfg.note;
-      document.getElementById("largeMoneyMetricExplanation").textContent = "采样口径：" + samplingNotes[activeMetric] + cfg.explanation +
-        (holdingView
+      const details = [["时间与采样", samplingNotes[activeMetric]], ["计算与来源", cfg.explanation]];
+      if (holdingView || smoothable) details.push(["市场范围与缺失", holdingView
           ? " 比例＝北向持仓市值÷同期对应市场全部A股总市值（含限售股），不是北向持仓内部配置比例；两市比例用合计分子÷合计分母，不相加沪深百分比。深股通2016年12月5日开通，之前深市留空；开通前两市持仓仅含沪股通，比例分母仍为沪深A股总市值。"
-          : fundView || etfView ? ""
-          : " 按股票所属交易所拆分为沪市、深市，仅含沪深A股；两市合计为两者之和。完整抓取周内无该市场记录时，记为已披露汇总零值，不代表实际没有交易；整周无记录留空。");
-      if (smoothable) document.getElementById("largeMoneyMetricExplanation").textContent +=
-        " 当前展示：" + smoothingLabel + "。7点／30点均线为当前及此前6／29个周采样点的算术平均，不是7／30天，也不是累计值。窗口不足或含缺失值时留空，不跳过缺失、不补零；先用完整历史计算，再截取所选时间范围。沪深及两市分别计算，最新读数与悬浮值均为当前模式的值。";
+          : "按股票所属交易所拆分为沪市、深市，仅含沪深A股；两市合计为两者之和。完整抓取周内无该市场记录时，记为已披露汇总零值，不代表实际没有交易；整周无记录留空"]);
+      if (smoothable) details.push(["当前平滑方式", smoothingLabel + "。7点／30点均线为当前及此前6／29个周采样点的算术平均，不是7／30天，也不是累计值。窗口不足或含缺失值时留空，不跳过缺失、不补零；先用完整历史计算，再截取所选时间范围。沪深及两市分别计算，最新读数与悬浮值均为当前模式的值"]);
+      renderExplanation("largeMoney", activeMetric, details);
       document.getElementById("largeMoneyLatestReading").textContent = (smoothable ? smoothingLabel + " · " : "") + latest.join(" / ");
       document.getElementById("largeMoneyHoldingModes").hidden = !holdingView;
       const coverage = document.getElementById("largeMoneyHoldingCoverage");
@@ -1675,41 +1730,44 @@ window.addEventListener("resize", () => chart.resize());
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
+    const metricGuides = {"ipoFunds":["IPO是公司首次公开发行股票；IPO融资额就是公司通过发行新股募集了多少钱。","金额越大，表示新股发行募集的资金越多，可观察新股供给节奏；它和上市后股票反复买卖的成交额不同。","融资增加不必然导致股市下跌，还取决于市场承接能力。本图只统计沪深A股IPO，不包含上市公司后续再融资。"],"netReduceAmount":["“产业资本”通常指控股股东、实控人等与公司经营相关的股东；本图用已披露的股东增减持公告估算金额，未逐条限定这类身份。","减持金额减去增持金额，正数表示净卖出，负数表示净买入。它与大资金模块的“净增减持”符号相反，且这里的单位是亿元。","只有披露成交均价的记录才能估算，缺少价格的公告不计入。它不是全部股东的真实净卖出，所属章节也不意味着这些股东代表官方。"],"stampTaxRate":["证券交易印花税是股票交易时按成交金额征收的一项税。当前卖方税率为0.05%，卖出1万元股票，对应印花税5元。","税率下降会降低交易成本。政策生效时税率一次跳到新水平，在下一次调整前不变，所以曲线呈阶梯状。","图上是税率，不是实际缴税总额，也不包含佣金等其他费用。历史上征收方向曾改变，同一税率不一定意味着买卖合计税负相同。"],"policyRate":["SHIBOR是上海银行间同业拆放利率，可理解为银行之间借钱的参考报价。本图采用1年期报价观察资金价格。","上升表示这类资金报价变贵，下降表示变便宜；可辅助观察融资环境，但不能直接代表企业或个人实际贷款利率。","页签名中的“代理”表示观察利率环境的替代指标。SHIBOR不是央行直接设定的政策利率，下降不能直接说成央行降息。"],"socialFinancing":["社融是社会融资规模，衡量实体经济从金融体系获得的资金，包含贷款、债券、股票融资等。本图看当月新增了多少。","增量较大表示当月融资较多。春节、季末等季节因素影响明显，适合结合上年同月和连续几个月的变化一起看。","它不是流入股市的钱，也不是社融总余额或同比增速。融资增多不一定意味着资金马上用于投资和消费。"],"m2Yoy":["M2是广义货币，包括流通中的现金和纳入统计的各类存款。M2增速是这笔货币总量相对上年同月增长了多少。","例如同比增长8%，表示本月M2余额比去年同月多8%；增速提高表示货币总量增长更快。","M2不是股市资金，也不是当月新印的钱。增速回落但仍为正时，总量仍在增长，只是增长变慢。"]};
+    function renderExplanation(prefix, metric, details) {
+      const labels = ["是什么", "怎么看", "注意什么"];
+      document.getElementById(prefix + "MetricGuide").innerHTML = "<ol>" + metricGuides[metric].map((text, i) =>
+        "<li><strong>" + labels[i] + "：</strong>" + escapeHtml(text) + "</li>").join("") + "</ol>";
+      document.getElementById(prefix + "MetricExplanation").innerHTML = "<ol>" + details.map(([label, text]) =>
+        "<li><strong>" + escapeHtml(label) + "</strong>" + text.split("。").filter(Boolean).map(sentence =>
+          "<p>" + escapeHtml(sentence) + "。</p>").join("") + "</li>").join("") + "</ol>";
+    }
     const metrics = {
       ipoFunds: {
         title: "IPO融资额", unit: "亿元", digits: 1,
         subtitle: "A股IPO募集资金，按周汇总",
-        note: "IPO融资额反映一级市场供给节奏，过快扩容可能压制二级市场风险偏好.",
         explanation: "IPO融资额是新股发行募集资金，反映一级市场资金供给节奏，不是二级市场成交额。来源为Tushare new_share的funds字段，按IPO日期或发行日期归入自然周求和，单位亿元；未披露的发行不估算。"
       },
       netReduceAmount: {
         title: "产业资本净减持额", unit: "亿元", digits: 1,
         subtitle: "重要股东增减持公告金额，按周汇总",
-        note: "正值为净减持，负值为净增持；仅统计公告披露均价的记录.",
         explanation: "产业资本净减持额按重要股东增减持公告估算：变动股数×披露均价，减持记正、增持记负，再按自然周汇总，单位亿元。来源为Tushare stk_holdertrade；没有均价的记录不计入，缺失不补零。它是公告样本，不等于全部产业资本净卖出。"
       },
       stampTaxRate: {
         title: "印花税率", unit: "%", digits: 2,
         subtitle: "证券交易印花税政策阶梯序列",
-        note: "印花税调整直接改变交易摩擦成本，常用于传递活跃或抑制交易的政策信号.",
         explanation: "印花税率反映证券交易印花税政策规定的税率，单位%。来源为人工核对并维护的政策生效日与税率；图上采用阶梯线，表示下次调整前税率保持不变，不做线性插值。它是政策参数，不是实际征收税额。"
       },
       policyRate: {
         title: "政策利率代理", unit: "%", digits: 2,
         subtitle: "1年期SHIBOR，每周最后可得报价",
-        note: "用1年期SHIBOR代理资金利率环境，下降通常对应流动性边际改善.",
         explanation: "此页签使用1年期SHIBOR观察银行间资金价格，来源为Tushare shibor的1y字段，取每周最后一个可用值，单位%。它只是利率环境代理，并非央行直接设定的政策利率；图上升降不能单独解释为央行加息或降息。"
       },
       socialFinancing: {
         title: "社融增量", unit: "亿元", digits: 0,
         subtitle: "社会融资规模月度增量",
-        note: "社融增量反映实体信用扩张力度，权益市场常关注其趋势拐点.",
         explanation: "社融增量是当月新增社会融资规模，观察实体部门融资扩张速度；来源为Tushare sf_month的inc_month字段。按月展示并落在月末，单位亿元；它是增量，不是社融存量或同比增速，不与周频指标混作同一口径。"
       },
       m2Yoy: {
         title: "M2增速", unit: "%", digits: 1,
         subtitle: "M2同比增速，月度数据",
-        note: "M2同比用于观察广义流动性环境，需结合社融和政策利率判断.",
         explanation: "M2增速是广义货币供应量的同比增速，反映货币总量变化。来源为Tushare cn_m的m2_yoy字段，按月展示并落在月末，单位%；不是当月新增货币量。可结合社融与利率观察流动性，但不能单独推断股市涨跌。"
       }
     };
@@ -1775,17 +1833,17 @@ window.addEventListener("resize", () => chart.resize());
       document.querySelectorAll("#officialSeriesControls [data-series]").forEach(button => { button.disabled = !split; });
       document.getElementById("officialMarketScope").textContent = split ? "沪深A股 · 不含北交所" : "全国统一口径，不按沪深拆分";
       document.getElementById("officialMetricSubtitle").textContent = cfg.subtitle;
-      document.getElementById("officialMetricNote").textContent = cfg.note;
-      document.getElementById("officialMetricExplanation").textContent = "采样口径：" + ({
+      const sampling = ({
         ipoFunds: "周累计：按IPO日期（缺失时用发行日期）将周一至周日的募集额相加；横轴为该周最后一条可计入发行记录的日期，不是当天融资额或周平均。",
         netReduceAmount: "周累计：按公告日期累计周一至周日披露的净减持金额；横轴为该周最后一条可计入公告的日期，不是当天交易金额，公告覆盖的交易可能跨日。",
         stampTaxRate: "政策事件序列：按政策生效日跳变，并延续至下一次调整；不是周采样、周平均或周累计，区间端点仅用于延续有效税率。",
         policyRate: "周末报价：每个自然周取最后一个可得的1年期SHIBOR报价，不取周平均或累计。当前横轴沿用该周数据汇总日期，可能包含更晚的公告日期，不应将横轴日期理解为精确报价日。",
         socialFinancing: "月度累计：一个点表示整个月新增社融，不是月末当天发生额；横轴标记统计月份的月末，不是实际发布日期，不另做周采样。",
         m2Yoy: "月度时点：一个点表示该月M2余额相对上年同月的增速，不是当月累计或周平均；横轴标记统计月份月末，不是实际发布日期。"
-      })[activeMetric] + cfg.explanation + (split
+      })[activeMetric];
+      renderExplanation("official", activeMetric, [["时间与采样", sampling], ["计算与来源", cfg.explanation], ["市场范围", split
         ? " 按股票所属交易所分为沪市、深市，两市合计为两者之和，仅含沪深A股。已披露样本按周汇总；周内某市场无可计入记录时记为样本汇总零值，不代表实际零融资或零减持。"
-        : " 此指标为全国口径，没有沪深市场拆分值。");
+        : "此指标为全国口径，没有沪深市场拆分值"]]);
       document.getElementById("officialLatestReading").textContent = series.map(s => {
         const point = s.data.at(-1);
         return s.name + " " + (point ? fmt(point[1], cfg.digits) + cfg.unit + "（" + point[0] + "）" : "暂无数据");

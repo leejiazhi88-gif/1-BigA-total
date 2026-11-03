@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { guideCss, explanationScript } = require("./sentiment_explanations");
 
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
@@ -16,6 +17,7 @@ function stripExisting(html) {
 
 const css = `
   <style id="retail-sentiment-style">
+    ${guideCss("retail-sentiment")}
     .retail-grid {
       display: grid; grid-template-columns: minmax(0, 1fr);
       gap: 15px; align-items: stretch;
@@ -83,17 +85,17 @@ const moduleHtml = `
           <button class="metric-tab" data-metric="marginBalance">融资余额</button>
           <button class="metric-tab" data-metric="marginFloatRatio">融资余额/流通市值</button>
         </div>
-        <div class="metric-note">
-          <span id="retailMetricNote">成交额快速放大代表交易热度上升，需结合指数涨幅判断是否出现巨量滞涨。</span>
+        <div class="metric-note metric-reading-row">
           <span class="metric-reading" id="retailLatestReading"></span>
         </div>
+        <div class="metric-guide" id="retailMetricGuide" aria-live="polite"></div>
         <div id="retailSentimentChart"></div>
       </article>
 
     </div>
 
     <div class="valuation-foot single-note">
-      <div class="note" aria-live="polite"><strong>当前指标说明：</strong><span id="retailMetricExplanation">沪深股票成交额反映交易活跃度；三条线分别为两市合计、沪市和深市。</span></div>
+      <details class="metric-method"><summary>统计口径与数据来源</summary><div id="retailMetricExplanation"></div></details>
     </div>
     <h3 class="retail-monthly-heading">月度入场趋势</h3>
     <div class="retail-monthly-grid">
@@ -108,7 +110,16 @@ const moduleHtml = `
         <div class="metric-note"><span>淡色月份披露不足 90%；均线仅使用连续三个覆盖达标月份。</span><span class="metric-reading" id="retailFundsCoverage"></span></div>
       </article>
     </div>
-    <div class="valuation-foot single-note"><div class="note"><strong>来源：</strong><a href="https://www.sse.com.cn/aboutus/publication/yearly/" target="_blank" rel="noopener">上交所统计年鉴</a>（2007–2020）与<a href="https://star.sse.com.cn/aboutus/publication/monthly/investor/" target="_blank" rel="noopener">统计月报</a>（2021 起）；<a href="https://tushare.pro/document/1?doc_id=19" target="_blank" rel="noopener">Tushare 公募基金列表</a>。基金数据按成立月份和基金代码汇总发行份额，含股票、混合、债券等类型，不等同于募集金额；未披露份额不估算。</div></div>
+    <div class="metric-guide monthly-guide"><ol>
+      <li><strong>新开户是什么：</strong>当月在上交所新开立的A股账户数量。增加通常表示开户意愿增强，但一个人可能有多个账户，开户后也未必马上入金交易。</li>
+      <li><strong>新基金发行份额是什么：</strong>当月成立基金已披露的初始份额，单位亿份。包含股票、混合、债券等基金，不能全部当作准备买股票的钱。</li>
+      <li><strong>怎么看：</strong>两张图分别观察开户和买新基金的活跃程度。优先比较连续几个月及上年同月；淡色基金柱表示披露不全，不能直接认定为发行骤降。</li>
+    </ol></div>
+    <div class="valuation-foot single-note"><details class="metric-method"><summary>月度数据口径与来源</summary><ol>
+      <li><strong>开户统计</strong><p>每个点对应一个统计月份，单位万户，仅为上交所A股新开户，不是全国去重后的新增投资者。</p><p>来源：<a href="https://www.sse.com.cn/aboutus/publication/yearly/" target="_blank" rel="noopener">上交所统计年鉴</a>（2007–2020）与<a href="https://star.sse.com.cn/aboutus/publication/monthly/investor/" target="_blank" rel="noopener">统计月报</a>（2021起）。</p></li>
+      <li><strong>基金统计</strong><p>按基金成立月份和基金代码合计已披露发行份额，未披露份额不估算；份额不是募集金额。来源：<a href="https://tushare.pro/document/1?doc_id=19" target="_blank" rel="noopener">Tushare公募基金列表</a>。</p></li>
+      <li><strong>三月均线与缺失</strong><p>三月均线取当月与前两个月的平均值，帮助观察趋势。基金发行的均线仅使用连续三个披露覆盖率达到90%的月份。横轴为统计月份，不是公告日期，未公布的月份不补值。</p></li>
+    </ol></details></div>
   </section>
 `;
 
@@ -123,30 +134,27 @@ const script = `
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
+    ${explanationScript(["amount", "turnover", "marginBalance", "marginFloatRatio"])}
 
     const metrics = {
       amount: {
         title: "两市成交额", unit: "亿元", digits: 0,
         subtitle: "两市合计、沪市与深市股票成交额",
-        note: "成交额快速放大代表交易热度上升，需结合指数涨幅判断是否出现巨量滞涨。",
         explanation: "沪深股票成交额反映交易活跃度。来源为Tushare交易所市场统计；两市合计为沪市与深市股票成交额之和，含A/B股，不含北交所、基金和债券；不是上证指数、深证成指的成分股口径。2019年前沪市由A/B股分项加总。单位亿元，每周取最后可得交易日的单日值，不是周成交额总和；缺失不补零。"
       },
       turnover: {
         title: "市场换手率", unit: "%", digits: 2,
         subtitle: "两市合计、沪市与深市换手率，按流通市值加权",
-        note: "换手率越高，筹码交换越快；高位持续高换手通常意味着分歧显著扩大。",
         explanation: "换手率衡量股票筹码交换速度。来源为Tushare交易所各股票板块换手率及流通市值；两市合计按各板块流通市值加权，不是沪、深换手率的简单平均。范围含沪深A/B股，不含北交所、基金和债券。单位%，每周取最后可得交易日的单日值；缺失不补零。"
       },
       marginBalance: {
         title: "融资余额", unit: "亿元", digits: 0,
         subtitle: "两市合计、沪市与深市融资余额",
-        note: "融资余额持续抬升表示杠杆资金扩张；融资融券业务于2010年3月启动，更早年份不适用。",
         explanation: "融资余额是投资者尚未偿还的融资买入资金余额，用来观察杠杆存量，不是当日融资买入额。来源为Tushare沪深交易所融资余额；两市合计为沪市与深市之和。单位亿元，每周取最后可得交易日的余额，不是周累计。融资融券业务于2010年3月启动，更早年份不适用；缺失不补零。"
       },
       marginFloatRatio: {
         title: "融资余额/流通市值", unit: "%", digits: 2,
         subtitle: "融资余额占对应市场流通市值比例",
-        note: "融资余额除以同期沪深股票流通市值，反映杠杆拥挤度；2010年3月以前不适用。",
         explanation: "融资余额/流通市值用于观察杠杆资金相对市场规模的拥挤程度。沪市、深市各以本市场融资余额除以本市场股票流通市值；两市合计以两市融资余额之和除以两市流通市值之和，不是两个比例的平均。来源为Tushare交易所融资及市场统计，单位%；每周取最后可得交易日的值，2010年3月以前不适用，缺失不补零。"
       }
     };
@@ -186,8 +194,10 @@ const script = `
       const span = coverage[activeMetric];
       document.getElementById("retailMetricSubtitle").textContent = cfg.subtitle + " · 周频 · 可用历史 " +
         (span.start ? span.start + " 至 " + span.end : "暂无");
-      document.getElementById("retailMetricNote").textContent = cfg.note;
-      document.getElementById("retailMetricExplanation").textContent = "采样口径：按自然周（周一至周日），每个指标分别取周内最后一次有效观测，横轴为该观测的实际日期；通常接近周五，但节假日或缺报时可能提前，不固定取周五，不取周平均，不跨周补值。" + cfg.explanation;
+      renderExplanation("retail", activeMetric, [
+        ["时间与采样", "按自然周（周一至周日），每个指标取周内最后一次有效观测，横轴为实际观测日期。通常接近周五，节假日或缺报时可能提前，不取周平均、不跨周补值"],
+        ["计算范围与来源", cfg.explanation]
+      ]);
       document.getElementById("retailLatestReading").textContent = latest.join(" / ") || "暂无数据";
       chart.setOption({
         animation: false,
@@ -348,6 +358,7 @@ html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
 html = insertBeforeLast(html, "</body>", retailScript + "\n");
 if (process.argv.includes("--online-only") && originalHtml.includes('id="retail-sentiment"')) {
   html = originalHtml
+    .replace(/<style id="retail-sentiment-style">[\s\S]*?<\/style>/, () => css.trim())
     .replace(/<section class="module-shell" id="retail-sentiment">[\s\S]*?<\/section>/, () => moduleHtml.trim())
     .replace(/<script id="retail-sentiment-script">[\s\S]*?<\/script>/, () => retailScript.trim());
 }

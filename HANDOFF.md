@@ -1,5 +1,11 @@
 # 1-BigA-total 换机与部署说明
 
+## 情绪模块指标说明（2026-11-03）
+
+散户、大资金、官方共17个页签，统一在图表前按“1. 是什么、2. 怎么看、3. 注意什么”解释基本含义、读数及限制；计算公式、采样频率、来源、缺失处理和均线口径放在图下可展开的“统计口径与数据来源”。切换页签同步切换说明，保留市场选择、时间范围及均线交互。散户月度开户和基金发行也增加基础解释及可展开的口径说明。
+
+基础文案与公共样式维护在 `work/sentiment_explanations.js`，各模块生成脚本保留各自的详细统计说明。特别区分成交额与新增资金、北向持仓市值与净流入，以及SHIBOR与央行政策利率；产业资本图解释实际使用的股东公告样本范围。此次仅修改说明与排版，未刷新行情或改变统计结果。重新生成使用 `node work/build_market_dashboard.js --online-only --skip-refresh`，只发布根目录 `index.html`，不维护旧的本地HTML副本。
+
 ## 日常增量刷新（2026-11-02）
 
 默认命令保持 `MARKET_END_DATE=YYYYMMDD node work/build_market_dashboard.js --online-only`。现在由 `work/refresh_dashboard.py` 调度，最多两个模块并行：

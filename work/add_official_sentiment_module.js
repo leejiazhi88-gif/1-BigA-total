@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { guideCss, explanationScript } = require("./sentiment_explanations");
 
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
@@ -15,6 +16,7 @@ function stripExisting(html) {
 
 const css = `
   <style id="official-sentiment-style">
+    ${guideCss("official-sentiment")}
     .official-grid {
       display: grid; grid-template-columns: minmax(0, 1fr);
       gap: 15px; align-items: stretch;
@@ -96,17 +98,17 @@ const moduleHtml = `
           <button class="metric-tab" data-metric="socialFinancing">社融增量</button>
           <button class="metric-tab" data-metric="m2Yoy">M2增速</button>
         </div>
-        <div class="metric-note">
-          <span id="officialMetricNote">IPO融资额反映一级市场供给节奏，过快扩容可能压制二级市场风险偏好。</span>
+        <div class="metric-note metric-reading-row">
           <span class="metric-reading" id="officialLatestReading"></span>
         </div>
+        <div class="metric-guide" id="officialMetricGuide" aria-live="polite"></div>
         <div id="officialSentimentChart"></div>
       </article>
 
     </div>
 
     <div class="valuation-foot single-note">
-      <div class="note" aria-live="polite"><strong>当前指标说明：</strong><span id="officialMetricExplanation">A股IPO募集资金反映一级市场新股融资供给，按自然周汇总。</span></div>
+      <details class="metric-method"><summary>统计口径与数据来源</summary><div id="officialMetricExplanation"></div></details>
     </div>
   </section>
 `;
@@ -121,41 +123,36 @@ const script = `
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
+    ${explanationScript(["ipoFunds", "netReduceAmount", "stampTaxRate", "policyRate", "socialFinancing", "m2Yoy"])}
     const metrics = {
       ipoFunds: {
         title: "IPO融资额", unit: "亿元", digits: 1,
         subtitle: "A股IPO募集资金，按周汇总",
-        note: "IPO融资额反映一级市场供给节奏，过快扩容可能压制二级市场风险偏好.",
         explanation: "IPO融资额是新股发行募集资金，反映一级市场资金供给节奏，不是二级市场成交额。来源为Tushare new_share的funds字段，按IPO日期或发行日期归入自然周求和，单位亿元；未披露的发行不估算。"
       },
       netReduceAmount: {
         title: "产业资本净减持额", unit: "亿元", digits: 1,
         subtitle: "重要股东增减持公告金额，按周汇总",
-        note: "正值为净减持，负值为净增持；仅统计公告披露均价的记录.",
         explanation: "产业资本净减持额按重要股东增减持公告估算：变动股数×披露均价，减持记正、增持记负，再按自然周汇总，单位亿元。来源为Tushare stk_holdertrade；没有均价的记录不计入，缺失不补零。它是公告样本，不等于全部产业资本净卖出。"
       },
       stampTaxRate: {
         title: "印花税率", unit: "%", digits: 2,
         subtitle: "证券交易印花税政策阶梯序列",
-        note: "印花税调整直接改变交易摩擦成本，常用于传递活跃或抑制交易的政策信号.",
         explanation: "印花税率反映证券交易印花税政策规定的税率，单位%。来源为人工核对并维护的政策生效日与税率；图上采用阶梯线，表示下次调整前税率保持不变，不做线性插值。它是政策参数，不是实际征收税额。"
       },
       policyRate: {
         title: "政策利率代理", unit: "%", digits: 2,
         subtitle: "1年期SHIBOR，每周最后可得报价",
-        note: "用1年期SHIBOR代理资金利率环境，下降通常对应流动性边际改善.",
         explanation: "此页签使用1年期SHIBOR观察银行间资金价格，来源为Tushare shibor的1y字段，取每周最后一个可用值，单位%。它只是利率环境代理，并非央行直接设定的政策利率；图上升降不能单独解释为央行加息或降息。"
       },
       socialFinancing: {
         title: "社融增量", unit: "亿元", digits: 0,
         subtitle: "社会融资规模月度增量",
-        note: "社融增量反映实体信用扩张力度，权益市场常关注其趋势拐点.",
         explanation: "社融增量是当月新增社会融资规模，观察实体部门融资扩张速度；来源为Tushare sf_month的inc_month字段。按月展示并落在月末，单位亿元；它是增量，不是社融存量或同比增速，不与周频指标混作同一口径。"
       },
       m2Yoy: {
         title: "M2增速", unit: "%", digits: 1,
         subtitle: "M2同比增速，月度数据",
-        note: "M2同比用于观察广义流动性环境，需结合社融和政策利率判断.",
         explanation: "M2增速是广义货币供应量的同比增速，反映货币总量变化。来源为Tushare cn_m的m2_yoy字段，按月展示并落在月末，单位%；不是当月新增货币量。可结合社融与利率观察流动性，但不能单独推断股市涨跌。"
       }
     };
@@ -221,17 +218,17 @@ const script = `
       document.querySelectorAll("#officialSeriesControls [data-series]").forEach(button => { button.disabled = !split; });
       document.getElementById("officialMarketScope").textContent = split ? "沪深A股 · 不含北交所" : "全国统一口径，不按沪深拆分";
       document.getElementById("officialMetricSubtitle").textContent = cfg.subtitle;
-      document.getElementById("officialMetricNote").textContent = cfg.note;
-      document.getElementById("officialMetricExplanation").textContent = "采样口径：" + ({
+      const sampling = ({
         ipoFunds: "周累计：按IPO日期（缺失时用发行日期）将周一至周日的募集额相加；横轴为该周最后一条可计入发行记录的日期，不是当天融资额或周平均。",
         netReduceAmount: "周累计：按公告日期累计周一至周日披露的净减持金额；横轴为该周最后一条可计入公告的日期，不是当天交易金额，公告覆盖的交易可能跨日。",
         stampTaxRate: "政策事件序列：按政策生效日跳变，并延续至下一次调整；不是周采样、周平均或周累计，区间端点仅用于延续有效税率。",
         policyRate: "周末报价：每个自然周取最后一个可得的1年期SHIBOR报价，不取周平均或累计。当前横轴沿用该周数据汇总日期，可能包含更晚的公告日期，不应将横轴日期理解为精确报价日。",
         socialFinancing: "月度累计：一个点表示整个月新增社融，不是月末当天发生额；横轴标记统计月份的月末，不是实际发布日期，不另做周采样。",
         m2Yoy: "月度时点：一个点表示该月M2余额相对上年同月的增速，不是当月累计或周平均；横轴标记统计月份月末，不是实际发布日期。"
-      })[activeMetric] + cfg.explanation + (split
+      })[activeMetric];
+      renderExplanation("official", activeMetric, [["时间与采样", sampling], ["计算与来源", cfg.explanation], ["市场范围", split
         ? " 按股票所属交易所分为沪市、深市，两市合计为两者之和，仅含沪深A股。已披露样本按周汇总；周内某市场无可计入记录时记为样本汇总零值，不代表实际零融资或零减持。"
-        : " 此指标为全国口径，没有沪深市场拆分值。");
+        : "此指标为全国口径，没有沪深市场拆分值"]]);
       document.getElementById("officialLatestReading").textContent = series.map(s => {
         const point = s.data.at(-1);
         return s.name + " " + (point ? fmt(point[1], cfg.digits) + cfg.unit + "（" + point[0] + "）" : "暂无数据");
