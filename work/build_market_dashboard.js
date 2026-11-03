@@ -76,23 +76,10 @@ function htmlTemplate(data, echartsSource) {
       font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
     }
     .wrap { max-width: 1540px; margin: 0 auto; padding: 28px 30px 34px; }
-    header { display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; }
+    header { display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; margin-bottom: 20px; }
     .eyebrow { color: var(--accent); font-size: 12px; letter-spacing: .18em; font-weight: 700; }
     h1 { margin: 7px 0 6px; font-size: clamp(25px, 3vw, 42px); line-height: 1.1; }
     .subtitle { color: var(--muted); font-size: 14px; }
-    .asof { color: var(--muted); text-align: right; font-size: 13px; line-height: 1.7; }
-    .cards { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin: 24px 0 16px; }
-    .card {
-      background: linear-gradient(145deg, rgba(16,31,50,.98), rgba(10,22,37,.98));
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 15px 16px;
-      min-height: 92px;
-    }
-    .card .label { color: var(--muted); font-size: 12px; margin-bottom: 9px; }
-    .card .value { font-size: 24px; font-weight: 750; letter-spacing: -.02em; }
-    .card .meta { color: var(--muted); font-size: 11px; margin-top: 5px; }
-    .sh { color: var(--sh); } .sz { color: var(--sz); }
     .toolbar {
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
       background: rgba(13,25,41,.86); border: 1px solid var(--line);
@@ -126,14 +113,11 @@ function htmlTemplate(data, echartsSource) {
     .note { border: 1px solid var(--line); background: rgba(13,25,41,.75); border-radius: 12px; padding: 13px 15px; }
     .note strong { color: var(--text); }
     @media (max-width: 1000px) {
-      .cards { grid-template-columns: repeat(3, 1fr); }
       header { align-items: flex-start; flex-direction: column; }
-      .asof { text-align: left; }
       #chart { height: 1080px; }
     }
     @media (max-width: 620px) {
       .wrap { padding: 20px 12px 26px; }
-      .cards { grid-template-columns: repeat(2, 1fr); }
       .toolbar { align-items: flex-start; flex-direction: column; }
       .notes { grid-template-columns: 1fr; }
     }
@@ -147,9 +131,7 @@ function htmlTemplate(data, echartsSource) {
       <h1>A股20年：股价、合计利润与市盈率</h1>
       <div class="subtitle">上证综指 × 深证成指，共享同一时间横轴</div>
     </div>
-    <div class="asof">数据区间：${START} 至 ${END}<br>周频展示，底层数据为交易日数据</div>
   </header>
-  <section class="cards" id="cards"></section>
   <section>
     <div class="toolbar">
       <div class="ranges">
@@ -178,20 +160,6 @@ function htmlTemplate(data, echartsSource) {
 const DATA = ${dataJson};
 const COLORS = { sh: "#ff5d73", sz: "#36c2ff", volume: "#5cdbad", amount: "#f6c85f" };
 const fmt = (n, digits = 2) => Number(n).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits });
-const signed = (n) => (n >= 0 ? "+" : "") + fmt(n, 1) + "%";
-const cards = [
-  ["上证综指", fmt(DATA.stats.sh.close), DATA.stats.sh.date + " · 近1年 " + signed(DATA.stats.sh.yearChange), "sh"],
-  ["上证PE(TTM)", fmt(DATA.stats.sh.pe), DATA.stats.sh.valuationDate + " · 20年分位 " + fmt(DATA.stats.sh.pePercentile, 0) + "%", "sh"],
-  ["上证合计利润", fmt(DATA.stats.sh.profit, 0), "亿元 · " + DATA.stats.sh.valuationDate, "sh"],
-  ["深证成指", fmt(DATA.stats.sz.close), DATA.stats.sz.date + " · 近1年 " + signed(DATA.stats.sz.yearChange), "sz"],
-  ["深证PE(TTM)", fmt(DATA.stats.sz.pe), DATA.stats.sz.valuationDate + " · 20年分位 " + fmt(DATA.stats.sz.pePercentile, 0) + "%", "sz"],
-  ["深证合计利润", fmt(DATA.stats.sz.profit, 0), "亿元 · " + DATA.stats.sz.valuationDate, "sz"],
-];
-document.getElementById("cards").innerHTML = cards.map(([label, value, meta, cls]) =>
-  '<article class="card"><div class="label">' + label + '</div><div class="value ' + cls + '">' + value +
-  '</div><div class="meta">' + meta + '</div></article>'
-).join("");
-
 const chart = echarts.init(document.getElementById("chart"), null, { renderer: "canvas" });
 const visibleMarkets = { sh: true, sz: true };
 let activeYears = 20;
