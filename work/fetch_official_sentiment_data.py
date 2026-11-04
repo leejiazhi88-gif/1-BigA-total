@@ -8,6 +8,7 @@ from pathlib import Path
 from tushare_client import END_DATE, call_api as source_api, call_api_pages as source_pages, get_token
 from refresh_cache import fetch_range
 from lpr_rates import fetch_lpr_history
+from reverse_repo_rates import fetch_reverse_repo_history
 
 
 def call_api(token, api, params, fields):
@@ -102,16 +103,6 @@ def main():
             item["rawDates"].append(date)
             item["netReduceAmount"] = item.get("netReduceAmount", 0.0) + signed_reduce
 
-    for start, end in year_ranges():
-        for row in sorted(call_api(token, "shibor", {"start_date": start, "end_date": end}, "date,1y"), key=lambda row: row["date"]):
-            date = row.get("date")
-            if not date or row.get("1y") is None:
-                continue
-            key = week_key(date)
-            item = series_by_date.setdefault(key, {"rawDates": []})
-            item["rawDates"].append(date)
-            item["policyRate"] = float(row["1y"])
-
     macro_start = f"{START_YEAR}01"
     macro_end = END_DATE[:6]
     for row in call_api(token, "cn_m", {"start_m": "199001", "end_m": macro_end}, "month,m2_yoy"):
@@ -167,7 +158,7 @@ def main():
             "sources": {
                 "ipo": "Tushare new_share funds",
                 "holder": "Tushare stk_holdertrade, avg_price available rows only",
-                "policyRate": "Tushare shibor 1Y",
+                "policyRate": "PBOC 7-day reverse repo; Tushare/ChinaMoney LPR",
                 "m2": "Tushare cn_m",
                 "socialFinancing": "Tushare sf_month",
                 "stampTax": "Manual policy step series",
@@ -175,6 +166,7 @@ def main():
         },
         "series": series,
         "lpr": fetch_lpr_history(token, previous=previous.get("lpr") if previous else None),
+        "reverseRepo": fetch_reverse_repo_history(previous=previous.get("reverseRepo") if previous else None),
     }
     from official_markets import attach_markets
     result = attach_markets(result, token)

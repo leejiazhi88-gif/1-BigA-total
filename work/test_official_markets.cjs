@@ -27,7 +27,7 @@ const button = dataset => ({dataset, attrs: {}, classList: {add() {}, remove() {
   addEventListener(type, handler) {this[type] = handler;},
   setAttribute(key, value) {this.attrs[key] = value;}});
 const markets = ['all', 'sh', 'sz'].map(series => button({series}));
-const rates = ['policyRate', 'lpr1y', 'lpr5y'].map(rate => button({rate}));
+const rates = ['reverseRepo7d', 'lpr1y', 'lpr5y'].map(rate => button({rate}));
 const metrics = ['ipoFunds', 'netReduceAmount', 'stampTaxRate', 'policyRate', 'socialFinancing', 'm2Yoy', 'refinanceFunds'].map(metric => button({metric}));
 const ranges = [3, 5, 10, 20, 30, 0].map(years => button({years: String(years)}));
 let option;
@@ -48,7 +48,7 @@ for (const metric of metrics.slice(2, 6)) {
   metric.click();
   const rateView = metric.dataset.metric === 'policyRate';
   assert.equal(option.series.length, rateView ? 3 : 1);
-  assert.equal(option.series[0].name, rateView ? '1年期SHIBOR' : '全国');
+  assert.equal(option.series[0].name, rateView ? '7天逆回购利率' : '全国');
   assert.equal(element('officialRateControls').hidden, !rateView);
   assert.ok(option.series[0].data.length > 0);
   assert.ok(markets.every(m => m.disabled));
@@ -58,8 +58,11 @@ assert.equal(option.series[0].step, 'end');
 assert.equal(option.series[0].data[0][0], rangeStart.toISOString().slice(0, 10));
 assert.equal(option.series[0].data[0][1], .05);
 metrics[3].click(); ranges.at(-1).click();
-assert.deepEqual(Array.from(option.series, s => s.name), ['1年期SHIBOR', '1年期LPR', '5年期以上LPR']);
-assert.equal(option.series[0].step, false);
+assert.deepEqual(Array.from(option.series, s => s.name), ['7天逆回购利率', '1年期LPR', '5年期以上LPR']);
+assert.equal(option.series[0].step, 'end');
+assert.equal(option.series[0].sampling, undefined);
+assert.deepEqual(Array.from(option.series[0].data, p => [...p]), data.reverseRepo.series.map(r => [r.date, r.reverseRepo7d]));
+assert.ok(element('officialLatestReading').textContent.includes(data.reverseRepo.meta.end));
 for (const [index, key] of [[1, 'lpr1y'], [2, 'lpr5y']]) {
   assert.equal(option.series[index].step, 'end');
   assert.equal(option.series[index].sampling, undefined);
@@ -73,8 +76,8 @@ option.dataZoom[0].start = 60;
 rates[0].click();
 assert.equal(option.dataZoom[0].start, 60);
 assert.equal(option.series.length, 2);
-const shiborHiddenMin = option.yAxis.min;
-assert.ok(shiborHiddenMin > 2);
+const repoHiddenMin = option.yAxis.min;
+assert.ok(repoHiddenMin > 2);
 rates[1].click(); rates[2].click();
 assert.equal(option.series.length, 1, 'at least one rate stays visible');
 assert.equal(option.series[0].name, '5年期以上LPR');

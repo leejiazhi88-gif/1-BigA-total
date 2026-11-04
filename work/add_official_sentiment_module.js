@@ -103,7 +103,7 @@ const moduleHtml = `
           <button class="metric-tab" data-metric="m2Yoy">M2增速</button>
         </div>
         <div id="officialRateControls" role="group" aria-label="选择利率曲线" hidden>
-          <button type="button" data-rate="policyRate" aria-pressed="true" style="--series-color:#f6c85f"><span class="official-series-mark"></span>1年期SHIBOR</button>
+          <button type="button" data-rate="reverseRepo7d" aria-pressed="true" style="--series-color:#f6c85f"><span class="official-series-mark"></span>7天逆回购利率</button>
           <button type="button" data-rate="lpr1y" aria-pressed="true" style="--series-color:#36c2ff"><span class="official-series-mark"></span>1年期LPR</button>
           <button type="button" data-rate="lpr5y" aria-pressed="true" style="--series-color:#ff5d73"><span class="official-series-mark"></span>5年期以上LPR</button>
         </div>
@@ -160,8 +160,8 @@ const script = `
       },
       policyRate: {
         title: "政策利率", unit: "%", digits: 2,
-        subtitle: "1年期SHIBOR与1年期、5年期以上LPR · %",
-        explanation: "1年期SHIBOR来源为Tushare shibor的1y字段。LPR历史来源为Tushare shibor_lpr的1y、5y字段，接口滞后的月份用全国银行间同业拆借中心（中国货币网）官方报价补齐。单位均为年利率百分比。1年期LPR最早可得为2013年10月25日；2019年8月20日前为旧报价机制，改革后按月公布，同时增加5年期以上LPR。早于各自首次披露的日期不补零，曲线截止各自最后一条已取得报价，不把旧报价延长成新数据。SHIBOR和LPR均不是央行直接设定的政策利率，实际贷款利率还受加减点、重定价日等因素影响。"
+        subtitle: "7天逆回购利率、1年期LPR、5年期以上LPR · 年利率%",
+        explanation: "7天逆回购利率取自中国人民银行公开市场业务交易公告，仅提取7天期逆回购的操作利率或中标利率，排除隔夜、14天等其他期限及买断式逆回购；它是央行向银行体系提供短期资金的利率，2024年以来政策利率地位进一步明确。LPR历史来源为Tushare shibor_lpr的1y、5y字段，接口滞后月份用中国货币网官方报价补齐。单位均为年利率百分比，7天指资金期限，并非7天获得的收益率。1年期LPR最早可得为2013年10月25日，2019年8月改革后按月公布并增加5年期以上LPR。各曲线按自身实际披露起止日期展示，早期缺失不补零，末端不伪造新报价。LPR为贷款定价参考，实际贷款利率还受加减点、重定价日等影响。"
       },
       socialFinancing: {
         title: "社融增量", unit: "亿元", digits: 0,
@@ -183,7 +183,7 @@ const script = `
     ];
     const selectedMarkets = new Set(["all", "sh", "sz"]);
     const rates = [
-      { key: "policyRate", name: "1年期SHIBOR", rows: officialData.series, color: "#f6c85f" },
+      { key: "reverseRepo7d", name: "7天逆回购利率", rows: officialData.reverseRepo.series, color: "#f6c85f", step: true },
       { key: "lpr1y", name: "1年期LPR", rows: officialData.lpr.series, color: "#36c2ff", step: true },
       { key: "lpr5y", name: "5年期以上LPR", rows: officialData.lpr.series, color: "#ff5d73", step: true }
     ];
@@ -257,7 +257,7 @@ const script = `
         refinanceFunds: "月累计：一个点是整个自然月已实施增发和配股的发行金额之和，增发按发行日期、配股按缴款截止日期归月，不按股票上市日或公告日归月。横轴标记月末，不是月末当天的金额，也不是月均值。只展示已结束月份，当前未结束月份暂不画入；因此月频末端会早于每日行情的更新日期",
         netReduceAmount: "周累计：按公告日期累计周一至周日披露的净减持金额；横轴为该周最后一条可计入公告的日期，不是当天交易金额，公告覆盖的交易可能跨日。",
         stampTaxRate: "政策事件序列：按政策生效日跳变，并延续至下一次调整；不是周采样、周平均或周累计，区间端点仅用于延续有效税率。",
-        policyRate: "SHIBOR每周取最后一个可得的1年期报价，不取周平均或累计；横轴沿用该周汇总日期，可能含更晚公告，不是精确报价日。LPR保留实际报价日期，不另做周采样、均值或线性插值；按新报价日阶梯跳变。2019年8月前1年期LPR为旧机制的工作日报价，改革后通常每月公布。时间范围起点若落在两次报价之间，沿用该时点前最近报价作为边界，末尾不超出最后已取得报价日期",
+        policyRate: "7天逆回购保留央行实际操作公告日期，LPR保留实际报价日期；三条线均不做周采样、均值或累计，按新利率公布日阶梯跳变。2019年8月前1年期LPR为旧机制的工作日报价，改革后通常每月公布。区间起点若落在两次公布之间，沿用当时最近有效利率；末尾不超出各自最后已取得的7天操作或LPR报价日期。近期只有隔夜操作的公告不作为新的7天利率观测",
         socialFinancing: "月度累计：一个点表示整个月新增社融，不是月末当天发生额；横轴标记统计月份的月末，不是实际发布日期，不另做周采样。",
         m2Yoy: "月度时点：一个点表示该月M2余额相对上年同月的增速，不是当月累计或周平均；横轴标记统计月份月末，不是实际发布日期。"
       })[activeMetric];
@@ -353,6 +353,7 @@ const refinancingData = JSON.parse(fs.readFileSync(REFINANCING_FILE, "utf8"));
 if (!refinancingData.series?.length || !refinancingData.markets?.sh?.length || !refinancingData.markets?.sz?.length) throw new Error("Missing refinancing series");
 if (!data.markets?.sh?.length || !data.markets?.sz?.length) throw new Error("Missing official market splits");
 if (!data.lpr?.series?.some(row => Number.isFinite(row.lpr1y) && Number.isFinite(row.lpr5y))) throw new Error("Missing LPR quotes; refresh official sentiment data first");
+if (!data.reverseRepo?.series?.some(row => Number.isFinite(row.reverseRepo7d))) throw new Error("Missing PBOC seven-day reverse repo rates");
 let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
 html = html.replace(
   '<a href="#large-money-sentiment">情绪-大资金</a>',
