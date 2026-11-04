@@ -24,10 +24,12 @@ const css = `
     #officialSentimentChart { height: 500px; width: 100%; }
     #official-sentiment .panel-head { flex-wrap: wrap; gap: 12px; }
     #official-sentiment .module-status { white-space: normal; }
-    #officialSeriesControls { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 11px 16px 0; }
-    #officialSeriesControls button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0;
+    #officialSeriesControls, #officialRateControls { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 11px 16px 0; }
+    #officialRateControls[hidden] { display: none; }
+    #officialSeriesControls button, #officialRateControls button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0;
       border: 0; background: transparent; color: #8fa5bf; font-size: 12px; cursor: pointer; }
-    #officialSeriesControls button[aria-pressed="false"], #officialSeriesControls button:disabled { opacity: .4; }
+    #officialSeriesControls button[aria-pressed="false"], #officialSeriesControls button:disabled,
+    #officialRateControls button[aria-pressed="false"] { opacity: .4; }
     #officialSeriesControls button:disabled { cursor: default; }
     #officialMarketScope { color: #8fa5bf; font-size: 12px; padding: 8px 16px 0; }
     .official-series-mark { position: relative; width: 22px; height: 12px; flex: none; }
@@ -98,6 +100,11 @@ const moduleHtml = `
           <button class="metric-tab" data-metric="socialFinancing">社融增量</button>
           <button class="metric-tab" data-metric="m2Yoy">M2增速</button>
         </div>
+        <div id="officialRateControls" role="group" aria-label="选择利率曲线" hidden>
+          <button type="button" data-rate="policyRate" aria-pressed="true" style="--series-color:#f6c85f"><span class="official-series-mark"></span>1年期SHIBOR</button>
+          <button type="button" data-rate="lpr1y" aria-pressed="true" style="--series-color:#36c2ff"><span class="official-series-mark"></span>1年期LPR</button>
+          <button type="button" data-rate="lpr5y" aria-pressed="true" style="--series-color:#ff5d73"><span class="official-series-mark"></span>5年期以上LPR</button>
+        </div>
         <div class="metric-note metric-reading-row">
           <span class="metric-reading" id="officialLatestReading"></span>
         </div>
@@ -144,9 +151,9 @@ const script = `
         explanation: "印花税率反映证券交易印花税政策规定的税率，单位%。来源为人工核对并维护的政策生效日与税率；图上采用阶梯线，表示下次调整前税率保持不变，不做线性插值。它是政策参数，不是实际征收税额。"
       },
       policyRate: {
-        title: "政策利率代理", unit: "%", digits: 2,
-        subtitle: "1年期SHIBOR，每周最后可得报价",
-        explanation: "此页签使用1年期SHIBOR观察银行间资金价格，来源为Tushare shibor的1y字段，取每周最后一个可用值，单位%。它只是利率环境代理，并非央行直接设定的政策利率；图上升降不能单独解释为央行加息或降息。"
+        title: "政策利率", unit: "%", digits: 2,
+        subtitle: "1年期SHIBOR与1年期、5年期以上LPR · %",
+        explanation: "1年期SHIBOR来源为Tushare shibor的1y字段。LPR历史来源为Tushare shibor_lpr的1y、5y字段，接口滞后的月份用全国银行间同业拆借中心（中国货币网）官方报价补齐。单位均为年利率百分比。1年期LPR最早可得为2013年10月25日；2019年8月20日前为旧报价机制，改革后按月公布，同时增加5年期以上LPR。早于各自首次披露的日期不补零，曲线截止各自最后一条已取得报价，不把旧报价延长成新数据。SHIBOR和LPR均不是央行直接设定的政策利率，实际贷款利率还受加减点、重定价日等因素影响。"
       },
       socialFinancing: {
         title: "社融增量", unit: "亿元", digits: 0,
@@ -167,8 +174,15 @@ const script = `
       { key: "sz", name: "深市", rows: officialData.markets.sz, color: "#ff5d73" }
     ];
     const selectedMarkets = new Set(["all", "sh", "sz"]);
+    const rates = [
+      { key: "policyRate", name: "1年期SHIBOR", rows: officialData.series, color: "#f6c85f" },
+      { key: "lpr1y", name: "1年期LPR", rows: officialData.lpr.series, color: "#36c2ff", step: true },
+      { key: "lpr5y", name: "5年期以上LPR", rows: officialData.lpr.series, color: "#ff5d73", step: true }
+    ];
+    const selectedRates = new Set(rates.map(rate => rate.key));
     const isSplit = () => ["ipoFunds", "netReduceAmount"].includes(activeMetric);
     let chartPoints = [];
+    let chartSeries = [];
     const chart = echarts.init(document.getElementById("officialSentimentChart"), null, { renderer: "canvas" });
     function axisBounds(points) {
       const values = points.map(p => p[1]).filter(Number.isFinite);
@@ -186,21 +200,21 @@ const script = `
       const start = Number.isFinite(timestamp(zoom.startValue)) ? timestamp(zoom.startValue) : first + (last - first) * zoom.start / 100;
       const end = Number.isFinite(timestamp(zoom.endValue)) ? timestamp(zoom.endValue) : first + (last - first) * zoom.end / 100;
       const visible = chartPoints.filter(p => Date.parse(p[0]) >= start && Date.parse(p[0]) <= end);
-      if (activeMetric === "stampTaxRate") {
-        const preceding = chartPoints.filter(p => Date.parse(p[0]) < start).at(-1);
-        if (preceding) visible.push(preceding);
+      for (const series of chartSeries.filter(s => s.step)) {
+        const preceding = series.data.filter(p => Date.parse(p[0]) < start).at(-1);
+        if (preceding && Date.parse(series.data.at(-1)[0]) >= start) visible.push(preceding);
       }
       chart.setOption({ yAxis: axisBounds(visible) });
     }
     chart.on("datazoom", rescaleVisible);
-    function activeRows(source) {
-      const rows = source.filter(row => Number.isFinite(row[activeMetric]));
+    function activeRows(source, field = activeMetric, step = activeMetric === "stampTaxRate") {
+      const rows = source.filter(row => Number.isFinite(row[field]));
       if (!activeYears || !rows.length) return rows;
       const end = new Date(officialData.meta.end + "T00:00:00Z");
       const cutoff = new Date(end);
       cutoff.setUTCFullYear(cutoff.getUTCFullYear() - activeYears);
       const visible = rows.filter(row => new Date(row.date + "T00:00:00Z") >= cutoff);
-      if (activeMetric === "stampTaxRate") {
+      if (step && rows.at(-1).date >= cutoff.toISOString().slice(0, 10)) {
         const preceding = rows.filter(row => new Date(row.date + "T00:00:00Z") < cutoff).at(-1);
         if (preceding) visible.unshift({ ...preceding, date: cutoff.toISOString().slice(0, 10) });
       }
@@ -210,14 +224,19 @@ const script = `
       const cfg = metrics[activeMetric];
       const previousZoom = preserveZoom ? chart.getOption().dataZoom?.[0] : null;
       const split = isSplit();
-      const visibleMarkets = split ? markets.filter(m => selectedMarkets.has(m.key)) : [{name: "全国", rows: officialData.series, color: "#f6c85f"}];
+      const rateView = activeMetric === "policyRate";
+      const visibleMarkets = rateView ? rates.filter(rate => selectedRates.has(rate.key)) : split
+        ? markets.filter(m => selectedMarkets.has(m.key)) : [{name: "全国", rows: officialData.series, color: "#f6c85f"}];
       const series = visibleMarkets.map(market => ({
-        name: market.name, type: "line", data: activeRows(market.rows).map(row => [row.date, row[activeMetric]]),
-        showSymbol: false, connectNulls: false, step: activeMetric === "stampTaxRate" ? "end" : false,
-        sampling: activeMetric === "stampTaxRate" ? undefined : "lttb",
+        name: market.name, type: "line", data: activeRows(market.rows, rateView ? market.key : activeMetric,
+          market.step || activeMetric === "stampTaxRate").map(row => [row.date, row[rateView ? market.key : activeMetric]]),
+        showSymbol: false, connectNulls: false, step: market.step || activeMetric === "stampTaxRate" ? "end" : false,
+        sampling: market.step || activeMetric === "stampTaxRate" ? undefined : "lttb",
         lineStyle: { width: 2.2, color: market.color }, itemStyle: { color: market.color }
       }));
+      chartSeries = series;
       chartPoints = series.flatMap(s => s.data);
+      document.getElementById("officialRateControls").hidden = !rateView;
       document.querySelectorAll("#officialSeriesControls [data-series]").forEach(button => { button.disabled = !split; });
       document.getElementById("officialMarketScope").textContent = split ? "沪深A股 · 不含北交所" : "全国统一口径，不按沪深拆分";
       document.getElementById("officialMetricSubtitle").textContent = cfg.subtitle;
@@ -225,7 +244,7 @@ const script = `
         ipoFunds: "周累计：按IPO日期（缺失时用发行日期）将周一至周日的募集额相加；横轴为该周最后一条可计入发行记录的日期，不是当天融资额或周平均。",
         netReduceAmount: "周累计：按公告日期累计周一至周日披露的净减持金额；横轴为该周最后一条可计入公告的日期，不是当天交易金额，公告覆盖的交易可能跨日。",
         stampTaxRate: "政策事件序列：按政策生效日跳变，并延续至下一次调整；不是周采样、周平均或周累计，区间端点仅用于延续有效税率。",
-        policyRate: "周末报价：每个自然周取最后一个可得的1年期SHIBOR报价，不取周平均或累计。当前横轴沿用该周数据汇总日期，可能包含更晚的公告日期，不应将横轴日期理解为精确报价日。",
+        policyRate: "SHIBOR每周取最后一个可得的1年期报价，不取周平均或累计；横轴沿用该周汇总日期，可能含更晚公告，不是精确报价日。LPR保留实际报价日期，不另做周采样、均值或线性插值；按新报价日阶梯跳变。2019年8月前1年期LPR为旧机制的工作日报价，改革后通常每月公布。时间范围起点若落在两次报价之间，沿用该时点前最近报价作为边界，末尾不超出最后已取得报价日期",
         socialFinancing: "月度累计：一个点表示整个月新增社融，不是月末当天发生额；横轴标记统计月份的月末，不是实际发布日期，不另做周采样。",
         m2Yoy: "月度时点：一个点表示该月M2余额相对上年同月的增速，不是当月累计或周平均；横轴标记统计月份月末，不是实际发布日期。"
       })[activeMetric];
@@ -280,6 +299,17 @@ const script = `
         renderChart(true);
       });
     });
+    document.querySelectorAll("#officialRateControls [data-rate]").forEach(button => {
+      button.addEventListener("click", () => {
+        const key = button.dataset.rate;
+        if (selectedRates.has(key)) {
+          if (selectedRates.size === 1) return;
+          selectedRates.delete(key);
+        } else selectedRates.add(key);
+        button.setAttribute("aria-pressed", String(selectedRates.has(key)));
+        renderChart(true);
+      });
+    });
     document.querySelectorAll("#officialMetricTabs [data-metric]").forEach(button => {
       button.addEventListener("click", () => {
         activeMetric = button.dataset.metric;
@@ -305,6 +335,7 @@ const script = `
 if (!fs.existsSync(DATA_FILE)) throw new Error("Missing official_sentiment_data.json.");
 const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
 if (!data.markets?.sh?.length || !data.markets?.sz?.length) throw new Error("Missing official market splits");
+if (!data.lpr?.series?.some(row => Number.isFinite(row.lpr1y) && Number.isFinite(row.lpr5y))) throw new Error("Missing LPR quotes; refresh official sentiment data first");
 let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
 html = html.replace(
   '<a href="#large-money-sentiment">情绪-大资金</a>',

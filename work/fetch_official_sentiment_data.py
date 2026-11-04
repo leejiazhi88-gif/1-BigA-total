@@ -7,6 +7,7 @@ from pathlib import Path
 
 from tushare_client import END_DATE, call_api as source_api, call_api_pages as source_pages, get_token
 from refresh_cache import fetch_range
+from lpr_rates import fetch_lpr_history
 
 
 def call_api(token, api, params, fields):
@@ -150,6 +151,7 @@ def main():
     for row in series:
         merged.setdefault(row["date"], {}).update(row)
     series = [merged[date] for date in sorted(merged) if date <= iso_date(END_DATE)]
+    previous = None
     if OUTPUT.exists():
         previous = json.loads(OUTPUT.read_text(encoding="utf-8"))
         older = [row for row in previous["series"] if row["date"] < "2018-01-01" and "netReduceAmount" in row]
@@ -172,6 +174,7 @@ def main():
             },
         },
         "series": series,
+        "lpr": fetch_lpr_history(token, previous=previous.get("lpr") if previous else None),
     }
     from official_markets import attach_markets
     result = attach_markets(result, token)

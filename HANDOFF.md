@@ -1,5 +1,13 @@
 # 1-BigA-total 换机与部署说明
 
+## 政策利率增加LPR（2026-11-04）
+
+官方模块“政策利率”同图显示1年期SHIBOR、1年期LPR、5年期以上LPR。三条曲线可分别勾选，至少保留一条；切换页签保留勾选，纵轴按可见曲线与时间范围调整。LPR使用实际报价日期与阶梯线，不做周采样或平滑；区间起点沿用当时有效报价，曲线末端不超出最后已取得报价。1年期LPR起于2013-10-25，5年期以上起于2019-08-20，更早留空；折叠说明解释2019年报价机制改革及与SHIBOR的区别。
+
+`work/lpr_rates.py` 通过Tushare `shibor_lpr` 分年取数并复用28天重叠缓存；若已到月度报价窗口但接口落后，使用中国货币网官方历史查询补齐。来源、实际日期与两种期限独立存入 `work/official_sentiment_data.json` 的 `lpr` 字段，随后随常规官方模块刷新自动更新。同日矛盾报价、无效数值及历史记录丢失会报错，由刷新调度保留已发布缓存，不将缺报当零。
+
+本次新增1,534个历史报价日，最新为2026-10-20：1年期3.00%、5年期以上3.50%。Tushare仅到8月20日，9月、10月已用官方来源补齐：[中国货币网LPR](https://www.chinamoney.com.cn/chinese/bklpr/)。其他行情、官方指标保持11月3日的既有数据，本次不是全页刷新。后续运行 `MARKET_END_DATE=YYYYMMDD python3 work/fetch_official_sentiment_data.py` 后，用 `node work/build_market_dashboard.js --online-only --skip-refresh` 生成页面；日常完整构建已自动包含这一步。验证：`python3 -m unittest discover -s work -p 'test_lpr_rates.py'`、`node work/test_official_markets.cjs`。
+
 ## 首页精简（2026-11-03）
 
 移除首页顶部的数据区间/周频说明及六张指数、PE、利润读数卡片。标题后直接接时间选择与走势图；生成脚本同步移除卡片渲染，后续刷新不恢复此区域。本次不刷新数据，保留图表、全部时间范围及其他模块。
