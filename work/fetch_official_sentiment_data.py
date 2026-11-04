@@ -9,6 +9,7 @@ from tushare_client import END_DATE, call_api as source_api, call_api_pages as s
 from refresh_cache import fetch_range
 from lpr_rates import fetch_lpr_history
 from reverse_repo_rates import fetch_reverse_repo_history
+from macro_money_data import fetch_macro
 
 
 def call_api(token, api, params, fields):
@@ -167,6 +168,7 @@ def main():
         "series": series,
         "lpr": fetch_lpr_history(token, previous=previous.get("lpr") if previous else None),
         "reverseRepo": fetch_reverse_repo_history(previous=previous.get("reverseRepo") if previous else None),
+        "macro": fetch_macro(token, previous=previous.get("macro") if previous else None),
     }
     from official_markets import attach_markets
     result = attach_markets(result, token)

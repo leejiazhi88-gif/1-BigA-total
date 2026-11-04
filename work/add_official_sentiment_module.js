@@ -27,6 +27,12 @@ const css = `
     #official-sentiment .module-status { white-space: normal; }
     #officialSeriesControls, #officialRateControls { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 11px 16px 0; }
     #officialRateControls[hidden] { display: none; }
+    #officialMacroControls { display: flex; gap: 0; padding: 12px 16px 0; }
+    #officialMacroControls[hidden] { display: none; }
+    #officialMacroControls button { border-radius: 0; font-size: 12px; padding: 6px 12px; }
+    #officialMacroControls button:first-child { border-radius: 6px 0 0 6px; }
+    #officialMacroControls button:last-child { border-radius: 0 6px 6px 0; }
+    #officialMacroControls button[aria-pressed="true"] { color: #07111f; background: var(--accent); border-color: var(--accent); }
     #officialSeriesControls button, #officialRateControls button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0;
       border: 0; background: transparent; color: #8fa5bf; font-size: 12px; cursor: pointer; }
     #officialSeriesControls button[aria-pressed="false"], #officialSeriesControls button:disabled,
@@ -99,13 +105,17 @@ const moduleHtml = `
           <button class="metric-tab" data-metric="netReduceAmount">产业资本净减持额</button>
           <button class="metric-tab" data-metric="stampTaxRate">印花税率</button>
           <button class="metric-tab" data-metric="policyRate">政策利率</button>
-          <button class="metric-tab" data-metric="socialFinancing">社融增量</button>
-          <button class="metric-tab" data-metric="m2Yoy">M2增速</button>
+          <button class="metric-tab" data-metric="socialFinancing">社融</button>
+          <button class="metric-tab" data-metric="m2Yoy">M2</button>
         </div>
         <div id="officialRateControls" role="group" aria-label="选择利率曲线" hidden>
           <button type="button" data-rate="reverseRepo7d" aria-pressed="true" style="--series-color:#f6c85f"><span class="official-series-mark"></span>7天逆回购利率</button>
           <button type="button" data-rate="lpr1y" aria-pressed="true" style="--series-color:#36c2ff"><span class="official-series-mark"></span>1年期LPR</button>
           <button type="button" data-rate="lpr5y" aria-pressed="true" style="--series-color:#ff5d73"><span class="official-series-mark"></span>5年期以上LPR</button>
+        </div>
+        <div id="officialMacroControls" role="group" aria-label="社融与M2统计口径" hidden>
+          <button type="button" data-mode="value" aria-pressed="true">绝对值</button>
+          <button type="button" data-mode="yoy" aria-pressed="false">同比增速</button>
         </div>
         <div class="metric-note metric-reading-row">
           <span class="metric-reading" id="officialLatestReading"></span>
@@ -167,17 +177,18 @@ const script = `
         explanation: "7天逆回购利率取自中国人民银行公开市场业务交易公告，仅提取7天期逆回购的操作利率或中标利率，排除隔夜、14天等其他期限及买断式逆回购；它是央行向银行体系提供短期资金的利率，2024年以来政策利率地位进一步明确。LPR历史来源为Tushare shibor_lpr的1y、5y字段，接口滞后月份用中国货币网官方报价补齐。单位均为年利率百分比，7天指资金期限，并非7天获得的收益率。1年期LPR最早可得为2013年10月25日，2019年8月改革后按月公布并增加5年期以上LPR。各曲线按自身实际披露起止日期展示，早期缺失不补零，末端不伪造新报价。LPR为贷款定价参考，实际贷款利率还受加减点、重定价日等影响。"
       },
       socialFinancing: {
-        title: "社融增量", unit: "亿元", digits: 0,
-        subtitle: "社会融资规模月度增量",
-        explanation: "社融增量是当月新增社会融资规模，观察实体部门融资扩张速度；来源为Tushare sf_month的inc_month字段。按月展示并落在月末，单位亿元；它是增量，不是社融存量或同比增速，不与周频指标混作同一口径。"
+        title: "社融", unit: "万亿元", digits: 2,
+        subtitle: "社会融资规模 · 月末存量",
+        explanation: "来源为Tushare sf_month的stk_endval字段，原单位为万亿元。绝对值为社会融资规模月末存量，不是当月新增社融；同比增速＝（本月存量÷上年同月存量－1）×100%。按精确统计月份匹配基期，不用前12个观测点代替上年同月，也不对缺失月份插值。增速根据接口存量计算，受余额四舍五入、历史修订及统计范围调整影响，可能与央行按可比口径公布的同比存在差异。"
       },
       m2Yoy: {
-        title: "M2增速", unit: "%", digits: 1,
-        subtitle: "M2同比增速，月度数据",
-        explanation: "M2增速是广义货币供应量的同比增速，反映货币总量变化。来源为Tushare cn_m的m2_yoy字段，按月展示并落在月末，单位%；不是当月新增货币量。可结合社融与利率观察流动性，但不能单独推断股市涨跌。"
+        title: "M2", unit: "万亿元", digits: 2,
+        subtitle: "广义货币M2 · 月末余额",
+        explanation: "来源为Tushare cn_m：绝对值取m2字段（亿元）÷10000，转为万亿元；同比取已公布的m2_yoy字段，单位%，不从图上四舍五入后的余额反算。官方同比可能按可比统计口径调整，与简单相除存在差异。余额是月末时点存量，不是当月新增货币，更不是流入股市的金额。"
       }
     };
     let activeMetric = "ipoFunds";
+    let macroMode = "value";
     let activeYears = 0;
     const markets = [
       { key: "all", name: "两市合计", rows: officialData.series, color: "#f6c85f" },
@@ -194,6 +205,7 @@ const script = `
     const isSplit = () => ["ipoFunds", "refinanceFunds", "netReduceAmount"].includes(activeMetric);
     let chartPoints = [];
     let chartSeries = [];
+    let axisPrecision = 1;
     const chart = echarts.init(document.getElementById("officialSentimentChart"), null, { renderer: "canvas" });
     function axisBounds(points) {
       const values = points.map(p => p[1]).filter(Number.isFinite);
@@ -207,8 +219,9 @@ const script = `
       const normalized = (span / 6) / magnitude;
       const multiplier = normalized <= 1 ? 1 : normalized <= 2 ? 2 : normalized <= 5 ? 5 : 10;
       const step = multiplier * magnitude;
+      axisPrecision = Math.min(8, Math.max(0, -Math.floor(Math.log10(step))));
       const clean = value => Number(value.toPrecision(12));
-      return { min: clean(Math.floor(rawMin / step) * step), max: clean(Math.ceil(rawMax / step) * step) };
+      return { min: clean(Math.floor(rawMin / step) * step), max: clean(Math.ceil(rawMax / step) * step), interval: clean(step) };
     }
     function rescaleVisible() {
       const zoom = chart.getOption().dataZoom[0];
@@ -227,7 +240,7 @@ const script = `
     }
     chart.on("datazoom", rescaleVisible);
     function activeRows(source, field = activeMetric, step = activeMetric === "stampTaxRate") {
-      const rows = source.filter(row => activeMetric === "refinanceFunds"
+      const rows = source.filter(row => ["refinanceFunds", "socialFinancing", "m2Yoy"].includes(activeMetric)
         ? Object.prototype.hasOwnProperty.call(row, field) : Number.isFinite(row[field]));
       if (!activeYears || !rows.length) return rows;
       const end = new Date(officialData.meta.end + "T00:00:00Z");
@@ -241,7 +254,16 @@ const script = `
       return visible;
     }
     function renderChart(preserveZoom = false) {
-      const cfg = metrics[activeMetric];
+      const macroView = ["socialFinancing", "m2Yoy"].includes(activeMetric);
+      const cfg = { ...metrics[activeMetric] };
+      if (macroView) {
+        const isGrowth = macroMode === "yoy";
+        cfg.unit = isGrowth ? "%" : "万亿元";
+        cfg.digits = 2;
+        cfg.subtitle = (activeMetric === "socialFinancing" ? "社会融资规模" : "广义货币M2") +
+          (isGrowth ? " · 月末余额同比增速（%）" : " · 月末余额绝对值（万亿元）");
+      }
+      const field = macroView ? macroMode : activeMetric;
       const previousZoom = preserveZoom ? chart.getOption().dataZoom?.[0] : null;
       const split = isSplit();
       const rateView = activeMetric === "policyRate";
@@ -249,17 +271,18 @@ const script = `
       const visibleMarkets = rateView ? rates.filter(rate => selectedRates.has(rate.key)) : split
         ? markets.filter(m => selectedMarkets.has(m.key)).map(m => ({ ...m,
           rows: refinancingView ? (m.key === "all" ? refinancingData.series : refinancingData.markets[m.key]) : m.rows }))
-        : [{name: "全国", rows: officialData.series, color: "#f6c85f"}];
+        : [{name: "全国", rows: macroView ? officialData.macro[activeMetric === "socialFinancing" ? "social" : "m2"].series : officialData.series, color: "#f6c85f"}];
       const series = visibleMarkets.map(market => ({
-        name: market.name, type: "line", data: activeRows(market.rows, rateView ? market.key : activeMetric,
-          market.step || activeMetric === "stampTaxRate").map(row => [row.date, row[rateView ? market.key : activeMetric]]),
+        name: market.name, type: "line", data: activeRows(market.rows, rateView ? market.key : field,
+          market.step || activeMetric === "stampTaxRate").map(row => [row.date, row[rateView ? market.key : field]]),
         showSymbol: false, connectNulls: false, step: market.step || activeMetric === "stampTaxRate" ? "end" : false,
-        sampling: market.step || activeMetric === "stampTaxRate" || refinancingView ? undefined : "lttb",
+        sampling: market.step || activeMetric === "stampTaxRate" || refinancingView || macroView ? undefined : "lttb",
         lineStyle: { width: 2.2, color: market.color }, itemStyle: { color: market.color }
       }));
       chartSeries = series;
       chartPoints = series.flatMap(s => s.data);
       document.getElementById("officialRateControls").hidden = !rateView;
+      document.getElementById("officialMacroControls").hidden = !macroView;
       document.querySelectorAll("#officialSeriesControls [data-series]").forEach(button => { button.disabled = !split; });
       document.getElementById("officialMarketScope").textContent = split ? "沪深A股 · 不含北交所" : "全国统一口径，不按沪深拆分";
       document.getElementById("officialMetricSubtitle").textContent = cfg.subtitle;
@@ -269,8 +292,8 @@ const script = `
         netReduceAmount: "周累计：按公告日期累计周一至周日披露的净减持金额；横轴为该周最后一条可计入公告的日期，不是当天交易金额，公告覆盖的交易可能跨日。",
         stampTaxRate: "政策事件序列：按政策生效日跳变，并延续至下一次调整；不是周采样、周平均或周累计，区间端点仅用于延续有效税率。",
         policyRate: "7天逆回购保留央行实际操作公告日期，LPR保留实际报价日期；三条线均不做周采样、均值或累计，按新利率公布日阶梯跳变。2019年8月前1年期LPR为旧机制的工作日报价，改革后通常每月公布。区间起点若落在两次公布之间，沿用当时最近有效利率；末尾不超出各自最后已取得的7天操作或LPR报价日期。近期只有隔夜操作的公告不作为新的7天利率观测",
-        socialFinancing: "月度累计：一个点表示整个月新增社融，不是月末当天发生额；横轴标记统计月份的月末，不是实际发布日期，不另做周采样。",
-        m2Yoy: "月度时点：一个点表示该月M2余额相对上年同月的增速，不是当月累计或周平均；横轴标记统计月份月末，不是实际发布日期。"
+        socialFinancing: "月度时点：绝对值是月末社融存量，同比是该存量相对上年同月的增速。横轴为统计月份月末，不是公告日；不取周均、不作月内累计。早期部分月份只披露年末余额，缺月或同比缺少基期时留空断线，不把年末值分摊到每个月。",
+        m2Yoy: "月度时点：绝对值是月末M2余额，同比是相对上年同月的增速。横轴为统计月份月末，不是公告日；不作周采样或月内累计，未公布月份不沿用旧值。早期缺月留空断线。"
       })[activeMetric];
       renderExplanation("official", activeMetric, [["时间与采样", sampling], ["计算与来源", cfg.explanation], ["市场范围", split
         ? refinancingView
@@ -278,7 +301,7 @@ const script = `
           : " 按股票所属交易所分为沪市、深市，两市合计为两者之和，仅含沪深A股。已披露样本按周汇总；周内某市场无可计入记录时记为样本汇总零值，不代表实际零融资或零减持。"
         : "此指标为全国口径，没有沪深市场拆分值"]]);
       document.getElementById("officialLatestReading").textContent = series.map(s => {
-        const point = s.data.at(-1);
+        const point = macroView ? s.data.findLast(p => Number.isFinite(p[1])) : s.data.at(-1);
         return s.name + " " + (point ? (Number.isFinite(point[1]) ? fmt(point[1], cfg.digits) + cfg.unit : "披露金额不完整") + "（" + point[0] + "）" : "暂无数据");
       }).join(" / ");
       chart.setOption({
@@ -299,7 +322,7 @@ const script = `
         },
         yAxis: {
           type: "value", scale: true, ...axisBounds(chartPoints),
-          axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, activeMetric === "policyRate" ? 1 : cfg.digits) + cfg.unit },
+          axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, axisPrecision) + cfg.unit },
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [
@@ -344,6 +367,14 @@ const script = `
         renderChart();
       });
     });
+    document.querySelectorAll("#officialMacroControls [data-mode]").forEach(button => {
+      button.addEventListener("click", () => {
+        macroMode = button.dataset.mode;
+        document.querySelectorAll("#officialMacroControls [data-mode]").forEach(item =>
+          item.setAttribute("aria-pressed", String(item.dataset.mode === macroMode)));
+        renderChart(true);
+      });
+    });
     document.querySelectorAll("#officialRangeTabs [data-years]").forEach(button => {
       button.addEventListener("click", () => {
         activeYears = Number(button.dataset.years);
@@ -365,6 +396,9 @@ if (!refinancingData.series?.length || !refinancingData.markets?.sh?.length || !
 if (!data.markets?.sh?.length || !data.markets?.sz?.length) throw new Error("Missing official market splits");
 if (!data.lpr?.series?.some(row => Number.isFinite(row.lpr1y) && Number.isFinite(row.lpr5y))) throw new Error("Missing LPR quotes; refresh official sentiment data first");
 if (!data.reverseRepo?.series?.some(row => Number.isFinite(row.reverseRepo7d))) throw new Error("Missing PBOC seven-day reverse repo rates");
+for (const key of ["social", "m2"]) {
+  if (!data.macro?.[key]?.series?.some(row => Number.isFinite(row.value) && Number.isFinite(row.yoy))) throw new Error("Missing macro balances and growth: " + key);
+}
 let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
 html = html.replace(
   '<a href="#large-money-sentiment">情绪-大资金</a>',
