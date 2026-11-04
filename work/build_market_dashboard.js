@@ -160,6 +160,7 @@ function htmlTemplate(data, echartsSource) {
 const DATA = ${dataJson};
 const COLORS = { sh: "#ff5d73", sz: "#36c2ff", volume: "#5cdbad", amount: "#f6c85f" };
 const fmt = (n, digits = 2) => Number(n).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits });
+const axisFmt = (n, digits = 1) => Number(n).toLocaleString("zh-CN", { minimumFractionDigits: 0, maximumFractionDigits: digits });
 const chart = echarts.init(document.getElementById("chart"), null, { renderer: "canvas" });
 const visibleMarkets = { sh: true, sz: true };
 let activeYears = 20;
@@ -229,18 +230,26 @@ function axisBounds(field, paddingRatio = 0.08) {
   const max = Math.max(...values);
   const span = Math.max(max - min, Math.abs(max) * 0.02, 1);
   const padding = span * paddingRatio;
-  return { min: Math.max(0, min - padding), max: max + padding };
+  const rawMin = Math.max(0, min - padding);
+  const rawMax = max + padding;
+  const rawSpan = Math.max(rawMax - rawMin, 1);
+  const magnitude = 10 ** Math.floor(Math.log10(rawSpan / 6));
+  const normalized = (rawSpan / 6) / magnitude;
+  const multiplier = normalized <= 1 ? 1 : normalized <= 2 ? 2 : normalized <= 5 ? 5 : 10;
+  const step = multiplier * magnitude;
+  const clean = value => Number(value.toPrecision(12));
+  return { min: clean(Math.floor(rawMin / step) * step), max: clean(Math.ceil(rawMax / step) * step) };
 }
 function overviewYAxis() {
   const price = axisBounds("close", 0.10);
   const profit = axisBounds("profit", 0.10);
   const pe = axisBounds("pe", 0.10);
   return [
-    { type: "value", gridIndex: 0, scale: true, ...price, axisLabel: { color: "#7890aa", formatter: value => fmt(value, 0) }, splitLine: { lineStyle: { color: "#17283d" } } },
-    { type: "value", gridIndex: 1, scale: true, ...profit, axisLabel: { color: "#7890aa", formatter: value => fmt(value, 0) }, splitLine: { lineStyle: { color: "#17283d" } } },
-    { type: "value", gridIndex: 2, scale: true, ...pe, axisLabel: { color: "#7890aa", formatter: value => fmt(value, 1) + "x" }, splitLine: { lineStyle: { color: "#17283d" } } },
-    { type: "value", gridIndex: 3, scale: true, ...axisBounds("volume"), name: "亿股", nameTextStyle: { color: COLORS.volume }, axisLabel: { color: COLORS.volume, formatter: value => fmt(value, 0) }, splitLine: { lineStyle: { color: "#17283d" } } },
-    { type: "value", gridIndex: 3, position: "right", scale: true, ...axisBounds("amount"), name: "亿元", nameTextStyle: { color: COLORS.amount }, axisLabel: { color: COLORS.amount, formatter: value => fmt(value, 0) }, splitLine: { show: false } }
+    { type: "value", gridIndex: 0, scale: true, ...price, axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, 0) }, splitLine: { lineStyle: { color: "#17283d" } } },
+    { type: "value", gridIndex: 1, scale: true, ...profit, axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, 0) }, splitLine: { lineStyle: { color: "#17283d" } } },
+    { type: "value", gridIndex: 2, scale: true, ...pe, axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, 1) + "x" }, splitLine: { lineStyle: { color: "#17283d" } } },
+    { type: "value", gridIndex: 3, scale: true, ...axisBounds("volume"), name: "亿股", nameTextStyle: { color: COLORS.volume }, axisLabel: { color: COLORS.volume, formatter: value => axisFmt(value, 0) }, splitLine: { lineStyle: { color: "#17283d" } } },
+    { type: "value", gridIndex: 3, position: "right", scale: true, ...axisBounds("amount"), name: "亿元", nameTextStyle: { color: COLORS.amount }, axisLabel: { color: COLORS.amount, formatter: value => axisFmt(value, 0) }, splitLine: { show: false } }
   ];
 }
 function renderOverview() {

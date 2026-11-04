@@ -287,6 +287,9 @@ function renderDirectHoldings(data) {
   const fmt = (value, digits = 0) => Number.isFinite(value) ? value.toLocaleString("zh-CN", {
     minimumFractionDigits: digits, maximumFractionDigits: digits
   }) : "未披露";
+  const axisFmt = (value, digits = 1) => Number.isFinite(value) ? value.toLocaleString("zh-CN", {
+    minimumFractionDigits: 0, maximumFractionDigits: digits
+  }) : "--";
   const dateLabel = value => value.slice(0, 4) + "-" + value.slice(4, 6) + "-" + value.slice(6);
   const snapshots = data.snapshots;
   let selected = snapshots.findLastIndex(row => row.combinedAmount !== null);
@@ -332,8 +335,9 @@ function renderDirectHoldings(data) {
     const high = values.length ? Math.max(...values) : 1;
     const padding = Math.max((high - low) * 0.15, high * 0.05, mode === "ratio" ? 0.01 : 1);
     const step = mode === "ratio" ? (high > 10 ? 1 : high > 1 ? 0.1 : 0.01) : high > 10000 ? 1000 : high > 1000 ? 100 : 1;
-    const minimum = Math.max(0, Math.floor((low - padding) / step) * step);
-    const maximum = mode === "ratio" ? Math.min(100, Math.ceil((high + padding) / step) * step) : Math.ceil((high + padding) / step) * step;
+    const clean = value => Number(value.toPrecision(12));
+    const minimum = Math.max(0, clean(Math.floor((low - padding) / step) * step));
+    const maximum = mode === "ratio" ? Math.min(100, clean(Math.ceil((high + padding) / step) * step)) : clean(Math.ceil((high + padding) / step) * step);
     return { yAxis: { min: minimum, max: maximum },
       title: values.length ? [] : [{ text: visible.length ? "该区间暂无已核实持仓" : "未选择持仓曲线", left: "center", top: "42%", textStyle: { color: "#8fa5bf", fontSize: 14 } }] };
   }
@@ -368,7 +372,7 @@ function renderDirectHoldings(data) {
         axisTick: { show: false }, axisLine: { lineStyle: { color: "#344760" } },
         axisLabel: { color: "#8fa5bf", fontSize: 12, hideOverlap: true } },
       yAxis: { type: "value", ...axes.yAxis, splitNumber: 4,
-        axisLabel: { color: "#8fa5bf", formatter: value => mode === "ratio" ? fmt(value, value < 1 && value !== 0 ? 2 : 1) + "%" : fmt(value) },
+        axisLabel: { color: "#8fa5bf", formatter: value => mode === "ratio" ? axisFmt(value, value < 1 && value !== 0 ? 2 : 1) + "%" : axisFmt(value, 0) },
         splitLine: { lineStyle: { color: "#233247" } } },
       dataZoom: [{ type: "slider", xAxisIndex: 0, ...zoom, filterMode: "none", height: 22, bottom: 8,
         borderColor: "#344760", fillerColor: "rgba(54,194,255,.12)", textStyle: { color: "#8fa5bf", fontSize: 10 } },

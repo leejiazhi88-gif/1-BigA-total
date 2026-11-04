@@ -104,6 +104,9 @@ const script = `
     const fmt = (value, digits = 2) => Number.isFinite(value) ? Number(value).toLocaleString("zh-CN", {
       minimumFractionDigits: digits, maximumFractionDigits: digits
     }) : "暂无";
+    const axisFmt = (value, digits = 1) => Number.isFinite(value) ? Number(value).toLocaleString("zh-CN", {
+      minimumFractionDigits: 0, maximumFractionDigits: digits
+    }) : "暂无";
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
@@ -148,9 +151,17 @@ const script = `
         const values = points.filter(Number.isFinite);
         const low = Math.min(0, ...values), high = Math.max(0, ...values);
         const padding = Math.max((high - low) * 0.12, 0.1);
-        return { gridIndex, name, type: "value", min: low < 0 ? low - padding : 0, max: high > 0 ? high + padding : 0.1,
+        const rawMin = low < 0 ? low - padding : 0;
+        const rawMax = high > 0 ? high + padding : 0.1;
+        const span = Math.max(rawMax - rawMin, .1);
+        const magnitude = 10 ** Math.floor(Math.log10(span / 6));
+        const normalized = (span / 6) / magnitude;
+        const multiplier = normalized <= 1 ? 1 : normalized <= 2 ? 2 : normalized <= 5 ? 5 : 10;
+        const step = multiplier * magnitude;
+        const clean = value => Number(value.toPrecision(12));
+        return { gridIndex, name, type: "value", min: clean(Math.floor(rawMin / step) * step), max: clean(Math.ceil(rawMax / step) * step),
           nameTextStyle: { color: "#8fa5bf", align: "left" },
-          axisLabel: { color: "#8fa5bf", formatter: value => Math.abs(value) >= 10000 ? fmt(value / 10000, 1) + "万" : fmt(value, Math.abs(value) < 1 && value !== 0 ? 2 : 0) },
+          axisLabel: { color: "#8fa5bf", formatter: value => Math.abs(value) >= 10000 ? axisFmt(value / 10000, 1) + "万" : axisFmt(value, Math.abs(value) < 1 && value !== 0 ? 2 : 0) },
           splitLine: { lineStyle: { color: "#17283d" } } };
       };
       const padded = values => allRows.map((row, index) => index >= first && index <= lastIndex ? values[index - first] : null);

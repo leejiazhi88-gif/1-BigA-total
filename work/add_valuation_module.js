@@ -152,6 +152,9 @@ const js = `
     const fmt = (value, digits = 1) => Number.isFinite(value)
       ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits })
       : "--";
+    const axisFmt = (value, digits = 1) => Number.isFinite(value)
+      ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: 0, maximumFractionDigits: digits })
+      : "--";
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
@@ -270,7 +273,7 @@ const js = `
           type: "value", scale: !cfg.fixedRange,
           min: cfg.fixedRange ? 0 : undefined,
           max: cfg.fixedRange ? 100 : undefined,
-          axisLabel: { color: "#7890aa", formatter: "{value}" + cfg.unit },
+          axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, cfg.fixedRange ? 0 : activeMetric === "pe" ? 1 : 2) + cfg.unit },
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [

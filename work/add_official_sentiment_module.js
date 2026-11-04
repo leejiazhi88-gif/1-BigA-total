@@ -133,6 +133,9 @@ const script = `
     const fmt = (value, digits = 1) => Number.isFinite(value)
       ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits })
       : "--";
+    const axisFmt = (value, digits = 1) => Number.isFinite(value)
+      ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: 0, maximumFractionDigits: digits })
+      : "--";
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
@@ -197,7 +200,15 @@ const script = `
       if (!values.length) return { min: 0, max: 1 };
       const low = Math.min(...values), high = Math.max(...values);
       const pad = Math.max((high - low) * .12, .01);
-      return { min: low >= 0 ? Math.max(0, low - pad) : low - pad, max: high + pad };
+      const rawMin = low >= 0 ? Math.max(0, low - pad) : low - pad;
+      const rawMax = high + pad;
+      const span = Math.max(rawMax - rawMin, .01);
+      const magnitude = 10 ** Math.floor(Math.log10(span / 6));
+      const normalized = (span / 6) / magnitude;
+      const multiplier = normalized <= 1 ? 1 : normalized <= 2 ? 2 : normalized <= 5 ? 5 : 10;
+      const step = multiplier * magnitude;
+      const clean = value => Number(value.toPrecision(12));
+      return { min: clean(Math.floor(rawMin / step) * step), max: clean(Math.ceil(rawMax / step) * step) };
     }
     function rescaleVisible() {
       const zoom = chart.getOption().dataZoom[0];
@@ -288,7 +299,7 @@ const script = `
         },
         yAxis: {
           type: "value", scale: true, ...axisBounds(chartPoints),
-          axisLabel: { color: "#7890aa", formatter: "{value}" + cfg.unit },
+          axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, activeMetric === "policyRate" ? 1 : cfg.digits) + cfg.unit },
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [

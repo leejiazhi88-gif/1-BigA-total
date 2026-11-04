@@ -136,6 +136,9 @@ const script = `
     const fmt = (value, digits = 1) => Number.isFinite(value)
       ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits })
       : "--";
+    const axisFmt = (value, digits = 1) => Number.isFinite(value)
+      ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: 0, maximumFractionDigits: digits })
+      : "--";
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
@@ -228,7 +231,7 @@ const script = `
         yAxis: {
           type: "value", scale: activeMetric !== "amount" && activeMetric !== "marginBalance",
           min: activeMetric === "amount" || activeMetric === "marginBalance" ? 0 : undefined,
-          axisLabel: { color: "#7890aa", formatter: "{value}" + cfg.unit },
+          axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, cfg.digits) + cfg.unit },
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [
@@ -302,7 +305,7 @@ const script = `
               ? (value.endsWith("-01") ? value.slice(0, 4) : "")
               : (index % 6 === 0 ? value : "");
           } } },
-        yAxis: { type: "value", min: 0, axisLabel: { color: "#7890aa", formatter: "{value}" + unit },
+        yAxis: { type: "value", min: 0, axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, 0) + unit },
           splitLine: { lineStyle: { color: "#17283d" } } },
         dataZoom: [{ type: "inside", filterMode: "none" },
           { type: "slider", bottom: 8, height: 18, borderColor: "#263b58",
