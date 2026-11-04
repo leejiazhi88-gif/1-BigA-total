@@ -27,12 +27,6 @@ const css = `
     #official-sentiment .module-status { white-space: normal; }
     #officialSeriesControls, #officialRateControls { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 11px 16px 0; }
     #officialRateControls[hidden] { display: none; }
-    #officialMacroControls { display: flex; gap: 0; padding: 12px 16px 0; }
-    #officialMacroControls[hidden] { display: none; }
-    #officialMacroControls button { border-radius: 0; font-size: 12px; padding: 6px 12px; }
-    #officialMacroControls button:first-child { border-radius: 6px 0 0 6px; }
-    #officialMacroControls button:last-child { border-radius: 0 6px 6px 0; }
-    #officialMacroControls button[aria-pressed="true"] { color: #07111f; background: var(--accent); border-color: var(--accent); }
     #officialSeriesControls button, #officialRateControls button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0;
       border: 0; background: transparent; color: #8fa5bf; font-size: 12px; cursor: pointer; }
     #officialSeriesControls button[aria-pressed="false"], #officialSeriesControls button:disabled,
@@ -113,10 +107,6 @@ const moduleHtml = `
           <button type="button" data-rate="lpr1y" aria-pressed="true" style="--series-color:#36c2ff"><span class="official-series-mark"></span>1年期LPR</button>
           <button type="button" data-rate="lpr5y" aria-pressed="true" style="--series-color:#ff5d73"><span class="official-series-mark"></span>5年期以上LPR</button>
         </div>
-        <div id="officialMacroControls" role="group" aria-label="社融与M2统计口径" hidden>
-          <button type="button" data-mode="value" aria-pressed="true">绝对值</button>
-          <button type="button" data-mode="yoy" aria-pressed="false">同比增速</button>
-        </div>
         <div class="metric-note metric-reading-row">
           <span class="metric-reading" id="officialLatestReading"></span>
         </div>
@@ -188,7 +178,6 @@ const script = `
       }
     };
     let activeMetric = "ipoFunds";
-    let macroMode = "value";
     let activeYears = 0;
     const markets = [
       { key: "all", name: "两市合计", rows: officialData.series, color: "#f6c85f" },
@@ -205,11 +194,12 @@ const script = `
     const isSplit = () => ["ipoFunds", "refinanceFunds", "netReduceAmount"].includes(activeMetric);
     let chartPoints = [];
     let chartSeries = [];
-    let axisPrecision = 1;
+    let axisPrecision = { main: 1, value: 1, yoy: 1 };
+    let macroChart = false;
     const chart = echarts.init(document.getElementById("officialSentimentChart"), null, { renderer: "canvas" });
-    function axisBounds(points) {
+    function axisBounds(points, key = "main") {
       const values = points.map(p => p[1]).filter(Number.isFinite);
-      if (!values.length) return { min: 0, max: 1 };
+      if (!values.length) return { min: 0, max: 1, interval: 1 };
       const low = Math.min(...values), high = Math.max(...values);
       const pad = Math.max((high - low) * .12, .01);
       const rawMin = low >= 0 ? Math.max(0, low - pad) : low - pad;
@@ -219,9 +209,14 @@ const script = `
       const normalized = (span / 6) / magnitude;
       const multiplier = normalized <= 1 ? 1 : normalized <= 2 ? 2 : normalized <= 5 ? 5 : 10;
       const step = multiplier * magnitude;
-      axisPrecision = Math.min(8, Math.max(0, -Math.floor(Math.log10(step))));
+      axisPrecision[key] = Math.min(8, Math.max(0, -Math.floor(Math.log10(step))));
       const clean = value => Number(value.toPrecision(12));
       return { min: clean(Math.floor(rawMin / step) * step), max: clean(Math.ceil(rawMax / step) * step), interval: clean(step) };
+    }
+    function macroAxis(points, key, unit, position) {
+      return { type: "value", scale: true, ...axisBounds(points, key), position,
+        axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, axisPrecision[key]) + unit },
+        splitLine: { lineStyle: { color: "#17283d" } } };
     }
     function rescaleVisible() {
       const zoom = chart.getOption().dataZoom[0];
@@ -236,7 +231,13 @@ const script = `
         const preceding = series.data.filter(p => Date.parse(p[0]) < start).at(-1);
         if (preceding && Date.parse(series.data.at(-1)[0]) >= start) visible.push(preceding);
       }
-      chart.setOption({ yAxis: axisBounds(visible) });
+      if (macroChart) {
+        const valuePoints = chartSeries.filter(s => s.yAxisIndex === 0).flatMap(s => s.data);
+        const yoyPoints = chartSeries.filter(s => s.yAxisIndex === 1).flatMap(s => s.data);
+        chart.setOption({ yAxis: [macroAxis(valuePoints, "value", "万亿元", "left"), macroAxis(yoyPoints, "yoy", "%", "right")] });
+      } else {
+        chart.setOption({ yAxis: axisBounds(visible) });
+      }
     }
     chart.on("datazoom", rescaleVisible);
     function activeRows(source, field = activeMetric, step = activeMetric === "stampTaxRate") {
@@ -256,14 +257,7 @@ const script = `
     function renderChart(preserveZoom = false) {
       const macroView = ["socialFinancing", "m2Yoy"].includes(activeMetric);
       const cfg = { ...metrics[activeMetric] };
-      if (macroView) {
-        const isGrowth = macroMode === "yoy";
-        cfg.unit = isGrowth ? "%" : "万亿元";
-        cfg.digits = 2;
-        cfg.subtitle = (activeMetric === "socialFinancing" ? "社会融资规模" : "广义货币M2") +
-          (isGrowth ? " · 月末余额同比增速（%）" : " · 月末余额绝对值（万亿元）");
-      }
-      const field = macroView ? macroMode : activeMetric;
+      if (macroView) cfg.subtitle = (activeMetric === "socialFinancing" ? "社会融资规模" : "广义货币M2") + " · 月末绝对值与同比增速";
       const previousZoom = preserveZoom ? chart.getOption().dataZoom?.[0] : null;
       const split = isSplit();
       const rateView = activeMetric === "policyRate";
@@ -272,17 +266,28 @@ const script = `
         ? markets.filter(m => selectedMarkets.has(m.key)).map(m => ({ ...m,
           rows: refinancingView ? (m.key === "all" ? refinancingData.series : refinancingData.markets[m.key]) : m.rows }))
         : [{name: "全国", rows: macroView ? officialData.macro[activeMetric === "socialFinancing" ? "social" : "m2"].series : officialData.series, color: "#f6c85f"}];
-      const series = visibleMarkets.map(market => ({
-        name: market.name, type: "line", data: activeRows(market.rows, rateView ? market.key : field,
-          market.step || activeMetric === "stampTaxRate").map(row => [row.date, row[rateView ? market.key : field]]),
+      const series = macroView ? (() => {
+        const market = visibleMarkets[0];
+        const valueRows = activeRows(market.rows, "value").map(row => [row.date, row.value]);
+        const yoyRows = activeRows(market.rows, "yoy").map(row => [row.date, row.yoy]);
+        const label = activeMetric === "socialFinancing" ? "社融" : "M2";
+        return [
+          { name: label + "绝对值", type: "line", yAxisIndex: 0, data: valueRows, showSymbol: false, connectNulls: false,
+            lineStyle: { width: 2.2, color: "#f6c85f" }, itemStyle: { color: "#f6c85f" } },
+          { name: label + "同比增速", type: "line", yAxisIndex: 1, data: yoyRows, showSymbol: false, connectNulls: false,
+            lineStyle: { width: 2.2, color: "#36c2ff" }, itemStyle: { color: "#36c2ff" } }
+        ];
+      })() : visibleMarkets.map(market => ({
+        name: market.name, type: "line", data: activeRows(market.rows, rateView ? market.key : activeMetric,
+          market.step || activeMetric === "stampTaxRate").map(row => [row.date, row[rateView ? market.key : activeMetric]]),
         showSymbol: false, connectNulls: false, step: market.step || activeMetric === "stampTaxRate" ? "end" : false,
-        sampling: market.step || activeMetric === "stampTaxRate" || refinancingView || macroView ? undefined : "lttb",
+        sampling: market.step || activeMetric === "stampTaxRate" || refinancingView ? undefined : "lttb",
         lineStyle: { width: 2.2, color: market.color }, itemStyle: { color: market.color }
       }));
       chartSeries = series;
       chartPoints = series.flatMap(s => s.data);
+      macroChart = macroView;
       document.getElementById("officialRateControls").hidden = !rateView;
-      document.getElementById("officialMacroControls").hidden = !macroView;
       document.querySelectorAll("#officialSeriesControls [data-series]").forEach(button => { button.disabled = !split; });
       document.getElementById("officialMarketScope").textContent = split ? "沪深A股 · 不含北交所" : "全国统一口径，不按沪深拆分";
       document.getElementById("officialMetricSubtitle").textContent = cfg.subtitle;
@@ -302,7 +307,9 @@ const script = `
         : "此指标为全国口径，没有沪深市场拆分值"]]);
       document.getElementById("officialLatestReading").textContent = series.map(s => {
         const point = macroView ? s.data.findLast(p => Number.isFinite(p[1])) : s.data.at(-1);
-        return s.name + " " + (point ? (Number.isFinite(point[1]) ? fmt(point[1], cfg.digits) + cfg.unit : "披露金额不完整") + "（" + point[0] + "）" : "暂无数据");
+        const unit = macroView ? (s.yAxisIndex === 1 ? "%" : "万亿元") : cfg.unit;
+        const digits = macroView ? (s.yAxisIndex === 1 ? 2 : 2) : cfg.digits;
+        return s.name + " " + (point ? (Number.isFinite(point[1]) ? fmt(point[1], digits) + unit : "披露金额不完整") + "（" + point[0] + "）" : "暂无数据");
       }).join(" / ");
       chart.setOption({
         animation: false, backgroundColor: "transparent",
@@ -313,16 +320,21 @@ const script = `
           textStyle: { color: "#edf4ff" },
           formatter(params) {
             return "<b>" + escapeHtml(params[0]?.axisValueLabel || "") + "</b><br>" +
-              params.map(item => item.marker + item.seriesName + "：<b>" + fmt(item.value[1], cfg.digits) + cfg.unit + "</b>").join("<br>");
+              params.map(item => {
+                const unit = macroView ? (item.seriesIndex === 1 ? "%" : "万亿元") : cfg.unit;
+                const digits = macroView ? 2 : cfg.digits;
+                return item.marker + item.seriesName + "：<b>" + fmt(item.value[1], digits) + unit + "</b>";
+              }).join("<br>");
           }
         },
         xAxis: {
           type: "time", axisLine: { lineStyle: { color: "#344760" } },
           axisLabel: { color: "#7890aa", hideOverlap: true }, splitLine: { show: false }
         },
-        yAxis: {
+        legend: macroView ? { top: 10, right: 20, textStyle: { color: "#edf4ff" } } : { show: false },
+        yAxis: macroView ? [macroAxis(series[0].data, "value", "万亿元", "left"), macroAxis(series[1].data, "yoy", "%", "right")] : {
           type: "value", scale: true, ...axisBounds(chartPoints),
-          axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, axisPrecision) + cfg.unit },
+          axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, axisPrecision.main) + cfg.unit },
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [
@@ -365,14 +377,6 @@ const script = `
         document.querySelectorAll("#officialMetricTabs [data-metric]").forEach(item => item.classList.remove("active"));
         button.classList.add("active");
         renderChart();
-      });
-    });
-    document.querySelectorAll("#officialMacroControls [data-mode]").forEach(button => {
-      button.addEventListener("click", () => {
-        macroMode = button.dataset.mode;
-        document.querySelectorAll("#officialMacroControls [data-mode]").forEach(item =>
-          item.setAttribute("aria-pressed", String(item.dataset.mode === macroMode)));
-        renderChart(true);
       });
     });
     document.querySelectorAll("#officialRangeTabs [data-years]").forEach(button => {

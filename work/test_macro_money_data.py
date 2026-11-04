@@ -26,6 +26,12 @@ class MacroMoneyTests(unittest.TestCase):
         self.assertIsNone(d[-1]["yoy"], "do not substitute an adjacent month for missing 2025-02")
         self.assertEqual(d[-1]["date"], "2026-02-28")
 
+    def test_social_balance_history_starts_at_verified_2006_month(self):
+        d = normalize_macro(self.money, [{"month": "200601", "stk_endval": 50},
+                                         {"month": "200612", "stk_endval": 60},
+                                         *self.social], "20261103")["social"]["series"]
+        self.assertEqual(d[0]["date"], "2006-12-31")
+
     def test_negative_growth_and_early_unavailable_balances(self):
         self.social[-1]["stk_endval"] = 90
         self.social.insert(0, {"month": "200601", "stk_endval": None})

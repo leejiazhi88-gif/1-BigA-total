@@ -38,7 +38,7 @@ def normalize_macro(money, financing, end, previous=None):
                        "sources": {"m2": "Tushare cn_m: m2 (亿元) / 10000; m2_yoy (%)",
                                    "social": "Tushare sf_month: stk_endval (万亿元)"},
                        "socialYoy": "(current balance / balance in the same month last year - 1) * 100; missing base stays null"}}
-    for key, source, field, floor in (("m2", m2, "m2", "199112"), ("social", social, "stk_endval", "200601")):
+    for key, source, field, floor in (("m2", m2, "m2", "199112"), ("social", social, "stk_endval", "200612")):
         available = sorted(m for m, row in source.items() if m >= floor and row[field] is not None)
         if not available:
             raise ValueError(f"No {key} balances returned")

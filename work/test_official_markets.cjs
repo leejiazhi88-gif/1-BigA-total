@@ -28,16 +28,15 @@ const button = dataset => ({dataset, attrs: {}, classList: {add() {}, remove() {
   setAttribute(key, value) {this.attrs[key] = value;}});
 const markets = ['all', 'sh', 'sz'].map(series => button({series}));
 const rates = ['reverseRepo7d', 'lpr1y', 'lpr5y'].map(rate => button({rate}));
-const modes = ['value', 'yoy'].map(mode => button({mode}));
 const metrics = ['ipoFunds', 'netReduceAmount', 'stampTaxRate', 'policyRate', 'socialFinancing', 'm2Yoy', 'refinanceFunds'].map(metric => button({metric}));
 const ranges = [3, 5, 10, 20, 30, 0].map(years => button({years: String(years)}));
 let option;
 const handlers = {};
 const chart = {setOption(next, replace) {option = replace ? next : {...option, ...next,
-    yAxis: {...option?.yAxis, ...next.yAxis}};},
+    yAxis: Array.isArray(next.yAxis) ? next.yAxis : {...option?.yAxis, ...next.yAxis}};},
   getOption() {return option || {};}, on(type, fn) {handlers[type] = fn;}, resize() {}};
 vm.runInNewContext(script, {document: {getElementById: element,
-  querySelectorAll(selector) {return selector.includes('MetricTabs') ? metrics : selector.includes('RateControls') ? rates : selector.includes('MacroControls') ? modes : selector.includes('SeriesControls') ? markets : ranges;}
+  querySelectorAll(selector) {return selector.includes('MetricTabs') ? metrics : selector.includes('RateControls') ? rates : selector.includes('SeriesControls') ? markets : ranges;}
 }, echarts: {init: () => chart}, window: {addEventListener() {}}});
 assert.equal(option.series.length, 3);
 option.dataZoom[0].start = 40;
@@ -46,7 +45,7 @@ assert.equal(option.dataZoom[0].start, 40);
 metrics[1].click();
 assert.equal(option.series.length, 1);
 assert.equal(option.series[0].name, '沪市');
-for (const metric of metrics.slice(2, 6)) {
+for (const metric of [metrics[2], metrics[3]]) {
   metric.click();
   const rateView = metric.dataset.metric === 'policyRate';
   assert.equal(option.series.length, rateView ? 3 : 1);
@@ -125,31 +124,30 @@ refinancing.series.forEach((row, i) => {
 });
 assert.equal(option.series[0].connectNulls, false);
 assert.equal(option.series[0].sampling, undefined);
-// Balance/growth share one mode across both macro tabs and preserve the zoom.
+// Balance and growth are shown together on dual y-axes.
 metrics[4].click();
-assert.equal(element('officialMacroControls').hidden, false);
-assert.ok(option.yAxis.axisLabel.formatter(468.17).endsWith('万亿元'));
+assert.equal(option.series.length, 2);
+assert.deepEqual(Array.from(option.series, s => s.name), ['社融绝对值', '社融同比增速']);
 assert.deepEqual(Array.from(option.series[0].data, p => [...p]), data.macro.social.series.map(r => [r.date, r.value]));
-assert.ok(option.series[0].data.some(p => p[1] === null), 'early monthly gaps stay null');
-option.dataZoom[0].start = 50;
-modes[1].click();
-assert.equal(option.dataZoom[0].start, 50);
-assert.ok(!option.yAxis.axisLabel.formatter(7.1131).includes('1131'));
-assert.deepEqual(Array.from(option.series[0].data, p => [...p]), data.macro.social.series.map(r => [r.date, r.yoy]));
+assert.deepEqual(Array.from(option.series[1].data, p => [...p]), data.macro.social.series.map(r => [r.date, r.yoy]));
+assert.equal(option.series[0].yAxisIndex, 0);
+assert.equal(option.series[1].yAxisIndex, 1);
+assert.ok(Array.isArray(option.yAxis) && option.yAxis.length === 2);
+assert.equal(data.macro.social.series[0].date, '2006-12-31');
 metrics[5].click();
-assert.deepEqual(Array.from(option.series[0].data, p => [...p]), data.macro.m2.series.map(r => [r.date, r.yoy]));
-modes[0].click();
+assert.deepEqual(Array.from(option.series, s => s.name), ['M2绝对值', 'M2同比增速']);
 assert.deepEqual(Array.from(option.series[0].data, p => [...p]), data.macro.m2.series.map(r => [r.date, r.value]));
+assert.deepEqual(Array.from(option.series[1].data, p => [...p]), data.macro.m2.series.map(r => [r.date, r.yoy]));
 assert.ok(element('officialLatestReading').textContent.includes('万亿元'));
 assert.ok(element('officialMetricGuide').innerHTML.includes('增长速度'));
 metrics[0].click();
-assert.equal(element('officialMacroControls').hidden, true);
+assert.equal(option.series[0].name, '两市合计');
 const gapData = structuredClone(refinancing);
 gapData.series[20].refinanceFunds = null;
 gapData.markets.sh[20].refinanceFunds = null;
 const gapScript = script.replace(/const refinancingData = .*;/, () => 'const refinancingData = ' + JSON.stringify(gapData) + ';');
 vm.runInNewContext(gapScript, {document: {getElementById: element,
-  querySelectorAll(selector) {return selector.includes('MetricTabs') ? metrics : selector.includes('RateControls') ? rates : selector.includes('MacroControls') ? modes : selector.includes('SeriesControls') ? markets : ranges;}
+  querySelectorAll(selector) {return selector.includes('MetricTabs') ? metrics : selector.includes('RateControls') ? rates : selector.includes('SeriesControls') ? markets : ranges;}
 }, echarts: {init: () => chart}, window: {addEventListener() {}}});
 metrics[6].click();
 assert.equal(option.series[0].data[20][1], null, 'an incomplete month stays as an explicit gap');
