@@ -5,6 +5,7 @@ const { guideCss, explanationScript } = require("./sentiment_explanations");
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const DATA_FILE = path.join(ROOT, "work", "official_sentiment_data.json");
+const REFINANCING_FILE = path.join(ROOT, "work", "refinancing_data.json");
 
 function stripExisting(html) {
   return html
@@ -94,6 +95,7 @@ const moduleHtml = `
         <div id="officialMarketScope" aria-live="polite"></div>
         <div class="metric-tabs" id="officialMetricTabs">
           <button class="metric-tab active" data-metric="ipoFunds">IPO融资额</button>
+          <button class="metric-tab" data-metric="refinanceFunds">再融资额</button>
           <button class="metric-tab" data-metric="netReduceAmount">产业资本净减持额</button>
           <button class="metric-tab" data-metric="stampTaxRate">印花税率</button>
           <button class="metric-tab" data-metric="policyRate">政策利率</button>
@@ -127,18 +129,24 @@ const script = `
   <script id="official-sentiment-script">
   (() => {
     const officialData = __OFFICIAL_DATA__;
+    const refinancingData = __REFINANCING_DATA__;
     const fmt = (value, digits = 1) => Number.isFinite(value)
       ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits })
       : "--";
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
-    ${explanationScript(["ipoFunds", "netReduceAmount", "stampTaxRate", "policyRate", "socialFinancing", "m2Yoy"])}
+    ${explanationScript(["ipoFunds", "refinanceFunds", "netReduceAmount", "stampTaxRate", "policyRate", "socialFinancing", "m2Yoy"])}
     const metrics = {
       ipoFunds: {
         title: "IPO融资额", unit: "亿元", digits: 1,
         subtitle: "A股IPO募集资金，按周汇总",
         explanation: "IPO融资额是新股发行募集资金，反映一级市场资金供给节奏，不是二级市场成交额。来源为Tushare new_share的funds字段，按IPO日期或发行日期归入自然周求和，单位亿元；未披露的发行不估算。"
+      },
+      refinanceFunds: {
+        title: "再融资额", unit: "亿元", digits: 1,
+        subtitle: "沪深A股已实施增发＋配股 · 月度发行金额（含非现金发行）",
+        explanation: "来源为东方财富数据中心已实施增发明细RPT_SEO_DETAIL与配股明细RPT_IPO_ALLOTMENT，参考项目6的发行记录统计口径。优先采用实际发行总金额，缺失时用实际发行股数×发行价格计算，元÷1亿转为亿元；不采用预案募资上限、公告金额或市值估算。用Tushare上市日期排除首次上市前及上市当日发行，按融资事件编号去重。范围仅含沪深A股增发与配股，不含IPO、可转债、北交所及其他债务融资。部分发行以资产认购或换股合并完成，金额不等于现金到账，也不能视为二级市场净流出。2008年起按月汇总。"
       },
       netReduceAmount: {
         title: "产业资本净减持额", unit: "亿元", digits: 1,
@@ -180,7 +188,7 @@ const script = `
       { key: "lpr5y", name: "5年期以上LPR", rows: officialData.lpr.series, color: "#ff5d73", step: true }
     ];
     const selectedRates = new Set(rates.map(rate => rate.key));
-    const isSplit = () => ["ipoFunds", "netReduceAmount"].includes(activeMetric);
+    const isSplit = () => ["ipoFunds", "refinanceFunds", "netReduceAmount"].includes(activeMetric);
     let chartPoints = [];
     let chartSeries = [];
     const chart = echarts.init(document.getElementById("officialSentimentChart"), null, { renderer: "canvas" });
@@ -208,7 +216,8 @@ const script = `
     }
     chart.on("datazoom", rescaleVisible);
     function activeRows(source, field = activeMetric, step = activeMetric === "stampTaxRate") {
-      const rows = source.filter(row => Number.isFinite(row[field]));
+      const rows = source.filter(row => activeMetric === "refinanceFunds"
+        ? Object.prototype.hasOwnProperty.call(row, field) : Number.isFinite(row[field]));
       if (!activeYears || !rows.length) return rows;
       const end = new Date(officialData.meta.end + "T00:00:00Z");
       const cutoff = new Date(end);
@@ -225,13 +234,16 @@ const script = `
       const previousZoom = preserveZoom ? chart.getOption().dataZoom?.[0] : null;
       const split = isSplit();
       const rateView = activeMetric === "policyRate";
+      const refinancingView = activeMetric === "refinanceFunds";
       const visibleMarkets = rateView ? rates.filter(rate => selectedRates.has(rate.key)) : split
-        ? markets.filter(m => selectedMarkets.has(m.key)) : [{name: "全国", rows: officialData.series, color: "#f6c85f"}];
+        ? markets.filter(m => selectedMarkets.has(m.key)).map(m => ({ ...m,
+          rows: refinancingView ? (m.key === "all" ? refinancingData.series : refinancingData.markets[m.key]) : m.rows }))
+        : [{name: "全国", rows: officialData.series, color: "#f6c85f"}];
       const series = visibleMarkets.map(market => ({
         name: market.name, type: "line", data: activeRows(market.rows, rateView ? market.key : activeMetric,
           market.step || activeMetric === "stampTaxRate").map(row => [row.date, row[rateView ? market.key : activeMetric]]),
         showSymbol: false, connectNulls: false, step: market.step || activeMetric === "stampTaxRate" ? "end" : false,
-        sampling: market.step || activeMetric === "stampTaxRate" ? undefined : "lttb",
+        sampling: market.step || activeMetric === "stampTaxRate" || refinancingView ? undefined : "lttb",
         lineStyle: { width: 2.2, color: market.color }, itemStyle: { color: market.color }
       }));
       chartSeries = series;
@@ -242,6 +254,7 @@ const script = `
       document.getElementById("officialMetricSubtitle").textContent = cfg.subtitle;
       const sampling = ({
         ipoFunds: "周累计：按IPO日期（缺失时用发行日期）将周一至周日的募集额相加；横轴为该周最后一条可计入发行记录的日期，不是当天融资额或周平均。",
+        refinanceFunds: "月累计：一个点是整个自然月已实施增发和配股的发行金额之和，增发按发行日期、配股按缴款截止日期归月，不按股票上市日或公告日归月。横轴标记月末，不是月末当天的金额，也不是月均值。只展示已结束月份，当前未结束月份暂不画入；因此月频末端会早于每日行情的更新日期",
         netReduceAmount: "周累计：按公告日期累计周一至周日披露的净减持金额；横轴为该周最后一条可计入公告的日期，不是当天交易金额，公告覆盖的交易可能跨日。",
         stampTaxRate: "政策事件序列：按政策生效日跳变，并延续至下一次调整；不是周采样、周平均或周累计，区间端点仅用于延续有效税率。",
         policyRate: "SHIBOR每周取最后一个可得的1年期报价，不取周平均或累计；横轴沿用该周汇总日期，可能含更晚公告，不是精确报价日。LPR保留实际报价日期，不另做周采样、均值或线性插值；按新报价日阶梯跳变。2019年8月前1年期LPR为旧机制的工作日报价，改革后通常每月公布。时间范围起点若落在两次报价之间，沿用该时点前最近报价作为边界，末尾不超出最后已取得报价日期",
@@ -249,11 +262,13 @@ const script = `
         m2Yoy: "月度时点：一个点表示该月M2余额相对上年同月的增速，不是当月累计或周平均；横轴标记统计月份月末，不是实际发布日期。"
       })[activeMetric];
       renderExplanation("official", activeMetric, [["时间与采样", sampling], ["计算与来源", cfg.explanation], ["市场范围", split
-        ? " 按股票所属交易所分为沪市、深市，两市合计为两者之和，仅含沪深A股。已披露样本按周汇总；周内某市场无可计入记录时记为样本汇总零值，不代表实际零融资或零减持。"
+        ? refinancingView
+          ? "按股票所属交易所拆分沪市、深市，两市合计为两者之和。完整查询后某市场某月没有发行记录时记零，表示本数据源没有记录；若存在记录但发行金额缺失，该市场整月及两市合计留空，曲线不跨缺口连线，不用零代替缺失"
+          : " 按股票所属交易所分为沪市、深市，两市合计为两者之和，仅含沪深A股。已披露样本按周汇总；周内某市场无可计入记录时记为样本汇总零值，不代表实际零融资或零减持。"
         : "此指标为全国口径，没有沪深市场拆分值"]]);
       document.getElementById("officialLatestReading").textContent = series.map(s => {
         const point = s.data.at(-1);
-        return s.name + " " + (point ? fmt(point[1], cfg.digits) + cfg.unit + "（" + point[0] + "）" : "暂无数据");
+        return s.name + " " + (point ? (Number.isFinite(point[1]) ? fmt(point[1], cfg.digits) + cfg.unit : "披露金额不完整") + "（" + point[0] + "）" : "暂无数据");
       }).join(" / ");
       chart.setOption({
         animation: false, backgroundColor: "transparent",
@@ -334,6 +349,8 @@ const script = `
 
 if (!fs.existsSync(DATA_FILE)) throw new Error("Missing official_sentiment_data.json.");
 const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
+const refinancingData = JSON.parse(fs.readFileSync(REFINANCING_FILE, "utf8"));
+if (!refinancingData.series?.length || !refinancingData.markets?.sh?.length || !refinancingData.markets?.sz?.length) throw new Error("Missing refinancing series");
 if (!data.markets?.sh?.length || !data.markets?.sz?.length) throw new Error("Missing official market splits");
 if (!data.lpr?.series?.some(row => Number.isFinite(row.lpr1y) && Number.isFinite(row.lpr5y))) throw new Error("Missing LPR quotes; refresh official sentiment data first");
 let html = stripExisting(fs.readFileSync(OUTPUT, "utf8"));
@@ -347,7 +364,8 @@ function insertBeforeLast(source, marker, content) {
   return source.slice(0, index) + content + source.slice(index);
 }
 const officialScript = script
-  .replace("__OFFICIAL_DATA__", JSON.stringify(data));
+  .replace("__OFFICIAL_DATA__", JSON.stringify(data))
+  .replace("__REFINANCING_DATA__", JSON.stringify(refinancingData));
 html = insertBeforeLast(html, "</head>", css + "\n");
 html = html.includes("<!-- OFFICIAL_MODULE -->") ? html.replace("<!-- OFFICIAL_MODULE -->", moduleHtml) : insertBeforeLast(html, "</main>", moduleHtml + "\n");
 html = insertBeforeLast(html, "</body>", officialScript + "\n");

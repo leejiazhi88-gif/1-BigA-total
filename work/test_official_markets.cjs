@@ -3,6 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'official_sentiment_data.json')));
+const refinancing = JSON.parse(fs.readFileSync(path.join(__dirname, 'refinancing_data.json')));
 const rangeStart = new Date(data.series.at(-1).date + 'T00:00:00Z');
 rangeStart.setUTCFullYear(rangeStart.getUTCFullYear() - 3);
 for (const metric of ['ipoFunds', 'netReduceAmount']) {
@@ -27,7 +28,7 @@ const button = dataset => ({dataset, attrs: {}, classList: {add() {}, remove() {
   setAttribute(key, value) {this.attrs[key] = value;}});
 const markets = ['all', 'sh', 'sz'].map(series => button({series}));
 const rates = ['policyRate', 'lpr1y', 'lpr5y'].map(rate => button({rate}));
-const metrics = ['ipoFunds', 'netReduceAmount', 'stampTaxRate', 'policyRate', 'socialFinancing', 'm2Yoy'].map(metric => button({metric}));
+const metrics = ['ipoFunds', 'netReduceAmount', 'stampTaxRate', 'policyRate', 'socialFinancing', 'm2Yoy', 'refinanceFunds'].map(metric => button({metric}));
 const ranges = [3, 5, 10, 20, 30, 0].map(years => button({years: String(years)}));
 let option;
 const handlers = {};
@@ -43,7 +44,7 @@ assert.equal(option.dataZoom[0].start, 40);
 metrics[1].click();
 assert.equal(option.series.length, 1);
 assert.equal(option.series[0].name, '沪市');
-for (const metric of metrics.slice(2)) {
+for (const metric of metrics.slice(2, 6)) {
   metric.click();
   const rateView = metric.dataset.metric === 'policyRate';
   assert.equal(option.series.length, rateView ? 3 : 1);
@@ -93,4 +94,36 @@ assert.equal(option.series.length, 1);
 assert.equal(element('officialRateControls').hidden, true);
 metrics[3].click();
 assert.equal(option.series.length, 2, 'rate selections persist across tabs');
-console.log('PASS: market sums, tabs, national scope, persistent selections, zoom, tax and LPR steps, dates and visible-rate axes');
+metrics[6].click(); ranges.at(-1).click();
+assert.equal(option.series.length, 1, 'market selection carries into refinancing');
+assert.equal(option.series[0].name, '沪市');
+assert.ok(markets.every(m => !m.disabled));
+assert.equal(element('officialRateControls').hidden, true);
+assert.deepEqual(Array.from(option.series[0].data, p => [...p]), refinancing.markets.sh.map(r => [r.date, r.refinanceFunds]));
+assert.ok(element('officialMetricExplanation').innerHTML.includes('月累计'));
+assert.ok(element('officialMetricGuide').innerHTML.includes('换股合并'));
+assert.ok(element('officialLatestReading').textContent.includes(refinancing.meta.end));
+option.dataZoom[0].start = 55;
+markets[0].click(); markets[2].click();
+assert.equal(option.dataZoom[0].start, 55);
+assert.equal(option.series.length, 3);
+refinancing.series.forEach((row, i) => {
+  const sh = refinancing.markets.sh[i], sz = refinancing.markets.sz[i];
+  assert.equal(sh.date, row.date); assert.equal(sz.date, row.date);
+  if (row.refinanceFunds !== null) assert.ok(Math.abs(row.refinanceFunds-sh.refinanceFunds-sz.refinanceFunds)<.00011);
+});
+assert.equal(option.series[0].connectNulls, false);
+assert.equal(option.series[0].sampling, undefined);
+const gapData = structuredClone(refinancing);
+gapData.series[20].refinanceFunds = null;
+gapData.markets.sh[20].refinanceFunds = null;
+const gapScript = script.replace(/const refinancingData = .*;/, () => 'const refinancingData = ' + JSON.stringify(gapData) + ';');
+vm.runInNewContext(gapScript, {document: {getElementById: element,
+  querySelectorAll(selector) {return selector.includes('MetricTabs') ? metrics : selector.includes('RateControls') ? rates : selector.includes('SeriesControls') ? markets : ranges;}
+}, echarts: {init: () => chart}, window: {addEventListener() {}}});
+metrics[6].click();
+assert.equal(option.series[0].data[20][1], null, 'an incomplete month stays as an explicit gap');
+assert.equal(option.series[1].data[20][1], null);
+assert.equal(option.series[2].data[20][1], refinancing.markets.sz[20].refinanceFunds);
+assert.equal(option.series[0].connectNulls, false);
+console.log('PASS: seven tabs, market sums/selections, monthly refinancing, dates, zoom, LPR and tax steps, visible-rate axes');

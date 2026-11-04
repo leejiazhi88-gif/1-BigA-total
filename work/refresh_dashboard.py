@@ -45,7 +45,8 @@ def main():
     slow = [("fund_reports", "large_money_fund_reports.json", "fetch_large_money_fund_metrics.py", ["--only", "reports"], 7),
             ("northbound", "northbound_holdings.json", "fetch_northbound_holdings.py", [], 7),
             ("national_team", "national_team_etf_data.json", "fetch_national_team_etf_data.py", [], 7),
-            ("monthly", "retail_monthly_trends.json", "fetch_retail_monthly_trends.py", [], 1)]
+            ("monthly", "retail_monthly_trends.json", "fetch_retail_monthly_trends.py", [], 1),
+            ("refinancing", "refinancing_data.json", "fetch_refinancing_data.py", [], 1)]
     for key, cache, script, flags, days in slow:
         if due(ROOT / "work" / cache, state, key, days, END_DATE, args.full_refresh or args.reports):
             if args.full_refresh and key == "fund_reports":
