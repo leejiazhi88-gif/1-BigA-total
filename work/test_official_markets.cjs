@@ -128,16 +128,22 @@ assert.equal(option.series[0].sampling, undefined);
 metrics[4].click();
 assert.equal(option.series.length, 2);
 assert.deepEqual(Array.from(option.series, s => s.name), ['社融绝对值', '社融同比增速']);
-assert.deepEqual(Array.from(option.series[0].data, p => [...p]), data.macro.social.series.map(r => [r.date, r.value]));
-assert.deepEqual(Array.from(option.series[1].data, p => [...p]), data.macro.social.series.map(r => [r.date, r.yoy]));
+assert.deepEqual(Array.from(option.series[0].data, p => [...p]), data.macro.social.series
+  .filter(r => Number.isFinite(r.value)).map(r => [r.date, r.value]));
+assert.deepEqual(Array.from(option.series[1].data, p => [...p]), data.macro.social.series
+  .filter(r => Number.isFinite(r.yoy)).map(r => [r.date, r.yoy]));
 assert.equal(option.series[0].yAxisIndex, 0);
 assert.equal(option.series[1].yAxisIndex, 1);
 assert.ok(Array.isArray(option.yAxis) && option.yAxis.length === 2);
 assert.equal(data.macro.social.series[0].date, '2006-12-31');
+assert.equal(option.series[0].data[0][0], '2006-12-31');
+assert.equal(option.series[0].data[8][0], '2014-12-31');
 metrics[5].click();
 assert.deepEqual(Array.from(option.series, s => s.name), ['M2绝对值', 'M2同比增速']);
-assert.deepEqual(Array.from(option.series[0].data, p => [...p]), data.macro.m2.series.map(r => [r.date, r.value]));
-assert.deepEqual(Array.from(option.series[1].data, p => [...p]), data.macro.m2.series.map(r => [r.date, r.yoy]));
+assert.deepEqual(Array.from(option.series[0].data, p => [...p]), data.macro.m2.series
+  .filter(r => Number.isFinite(r.value)).map(r => [r.date, r.value]));
+assert.deepEqual(Array.from(option.series[1].data, p => [...p]), data.macro.m2.series
+  .filter(r => Number.isFinite(r.yoy)).map(r => [r.date, r.yoy]));
 assert.ok(element('officialLatestReading').textContent.includes('万亿元'));
 assert.ok(element('officialMetricGuide').innerHTML.includes('增长速度'));
 metrics[0].click();

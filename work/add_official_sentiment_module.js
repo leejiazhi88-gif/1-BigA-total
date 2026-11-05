@@ -268,8 +268,10 @@ const script = `
         : [{name: "全国", rows: macroView ? officialData.macro[activeMetric === "socialFinancing" ? "social" : "m2"].series : officialData.series, color: "#f6c85f"}];
       const series = macroView ? (() => {
         const market = visibleMarkets[0];
-        const valueRows = activeRows(market.rows, "value").map(row => [row.date, row.value]);
-        const yoyRows = activeRows(market.rows, "yoy").map(row => [row.date, row.yoy]);
+        // The source has annual observations before monthly publication began.
+        // Drop synthetic empty months so those real early observations remain visible.
+        const valueRows = activeRows(market.rows, "value").filter(row => Number.isFinite(row.value)).map(row => [row.date, row.value]);
+        const yoyRows = activeRows(market.rows, "yoy").filter(row => Number.isFinite(row.yoy)).map(row => [row.date, row.yoy]);
         const label = activeMetric === "socialFinancing" ? "社融" : "M2";
         return [
           { name: label + "绝对值", type: "line", yAxisIndex: 0, data: valueRows, showSymbol: false, connectNulls: false,
