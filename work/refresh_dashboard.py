@@ -58,6 +58,10 @@ def main():
     for name in ("market_overview", "valuation", "retail_sentiment", "large_money_sentiment", "official_sentiment", "etf_flow"):
         jobs.append((name, name + "_data.json", "fetch_" + name + "_data.py", []))
     jobs.append(("etf_shares", "large_money_etf_shares.json", "fetch_large_money_fund_metrics.py", ["--only", "etfs"]))
+    # Start the longest daily jobs early so they do not become a serial tail.
+    priority = {key: index for index, key in enumerate(
+        ("etf_shares", "large_money_sentiment", "official_sentiment", "monthly"))}
+    jobs.sort(key=lambda job: priority.get(job[0], len(priority)))
     LOGS.mkdir(parents=True, exist_ok=True)
     started = time.monotonic()
     env = {**os.environ, "MARKET_END_DATE": END_DATE, "PYTHONUNBUFFERED": "1"}
@@ -88,7 +92,7 @@ def main():
         return key, record
 
     results = {}
-    with ThreadPoolExecutor(max_workers=2) as pool:
+    with ThreadPoolExecutor(max_workers=3) as pool:
         for future in as_completed([pool.submit(run, job) for job in jobs]):
             key, record = future.result()
             results[key] = record

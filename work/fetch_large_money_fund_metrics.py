@@ -310,19 +310,29 @@ def update_etfs_by_day(token, funds, previous, excluded, excluded_codes):
     first = datetime.strptime(fetch_start, "%Y%m%d")
     last = datetime.strptime(END_DATE, "%Y%m%d")
     observation_days = [(first + timedelta(days=i)).strftime("%Y%m%d") for i in range((last - first).days + 1)]
-    for day in observation_days:
-        rows = call_api_pages(token, "fund_share", {"trade_date": day},
+    def daily_shares(day):
+        global NEXT_REQUEST
+        with RATE_LOCK:
+            delay = max(0, NEXT_REQUEST - time.monotonic())
+            NEXT_REQUEST = max(time.monotonic(), NEXT_REQUEST) + .15
+        time.sleep(delay)
+        return call_api_pages(token, "fund_share", {"trade_date": day},
                               "ts_code,trade_date,fd_share", 8000)
-        for row in rows:
-            code = row["ts_code"]
-            if row["trade_date"] != day:
-                raise ValueError("Unexpected bulk ETF share date")
-            if code not in funds or not number(row.get("fd_share")) or float(row["fd_share"]) < 0:
-                continue
-            amount = float(row["fd_share"]) / 10000
-            if day in values[code] and values[code][day] != amount:
-                raise ValueError("Conflicting bulk ETF shares")
-            values[code][day] = amount
+
+    # Keep all calendar dates and pagination, but overlap network waits.
+    # Consume results in date order; only the main thread merges observations.
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        for day, rows in zip(observation_days, pool.map(daily_shares, observation_days)):
+            for row in rows:
+                code = row["ts_code"]
+                if row["trade_date"] != day:
+                    raise ValueError("Unexpected bulk ETF share date")
+                if code not in funds or not number(row.get("fd_share")) or float(row["fd_share"]) < 0:
+                    continue
+                amount = float(row["fd_share"]) / 10000
+                if day in values[code] and values[code][day] != amount:
+                    raise ValueError("Conflicting bulk ETF shares")
+                values[code][day] = amount
     weeks = {}
     for row in days:
         date = row["cal_date"]

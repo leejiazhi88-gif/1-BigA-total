@@ -1,6 +1,7 @@
 import unittest
 import json
 import tempfile
+from threading import Barrier, Lock
 from pathlib import Path
 from unittest.mock import patch
 import fetch_large_money_fund_metrics as metrics
@@ -46,6 +47,45 @@ class ReportsTest(unittest.TestCase):
 
 
 class EtfTest(unittest.TestCase):
+    def setUp(self):
+        sleeper = patch.object(metrics.time, "sleep")
+        sleeper.start()
+        self.addCleanup(sleeper.stop)
+        timer = patch.object(metrics, "NEXT_REQUEST", 0)
+        timer.start()
+        self.addCleanup(timer.stop)
+
+    def test_parallel_days_keep_weekend_observations_and_failure_keeps_file(self):
+        funds = {"510300.SH": dict(ts_code="510300.SH", list_date="20200101")}
+        previous = {"meta": {"end": "20261102"}, "series": []}
+        barrier, lock, requested = Barrier(3), Lock(), []
+        def api(token, name, params, fields, size):
+            if name == "trade_cal":
+                return [{"cal_date": "20261102", "is_open": 1}]
+            with lock:
+                requested.append(params["trade_date"])
+                index = len(requested)
+            if index <= 3:
+                barrier.wait(timeout=3)
+            return [dict(ts_code="510300.SH", trade_date="20261101", fd_share=50000)] \
+                if params["trade_date"] == "20261101" else []
+        with tempfile.TemporaryDirectory() as directory, patch.object(metrics, "END_DATE", "20261102"), \
+                patch.object(metrics, "ETF", Path(directory) / "data.json"), \
+                patch.object(metrics, "call_api_pages", side_effect=api), patch("builtins.print"):
+            metrics.update_etfs_by_day("test", funds, previous, [], [])
+            self.assertEqual(json.loads(metrics.ETF.read_text())["series"][-1]["all"], 5)
+            self.assertEqual(len(requested), len(set(requested)))
+            self.assertIn("20261101", requested)
+            before = metrics.ETF.read_bytes()
+            def failing_day(token, name, params, fields, size):
+                if name == "trade_cal":
+                    return [{"cal_date": "20261102", "is_open": 1}]
+                raise RuntimeError("network failure")
+            with patch.object(metrics, "call_api_pages", side_effect=failing_day):
+                with self.assertRaisesRegex(RuntimeError, "network failure"):
+                    metrics.update_etfs_by_day("test", funds, previous, [], [])
+            self.assertEqual(metrics.ETF.read_bytes(), before)
+
     def test_bulk_omission_triggers_only_missing_fund_lookup(self):
         funds = {code: dict(ts_code=code, list_date="20200101") for code in ("510300.SH", "159919.SZ")}
         previous = {"meta": {"end": "20261102"}, "series": [{"date": "2026-11-02", "all": 10}]}
