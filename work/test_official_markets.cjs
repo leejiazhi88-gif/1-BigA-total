@@ -128,16 +128,25 @@ assert.equal(option.series[0].sampling, undefined);
 metrics[4].click();
 assert.equal(option.series.length, 2);
 assert.deepEqual(Array.from(option.series, s => s.name), ['社融绝对值', '社融同比增速']);
-assert.deepEqual(Array.from(option.series[0].data, p => [...p]), data.macro.social.series
+assert.deepEqual(Array.from(option.series[0].data, p => [...p]).filter(p => p[1] !== null), data.macro.social.series
   .filter(r => Number.isFinite(r.value)).map(r => [r.date, r.value]));
 assert.deepEqual(Array.from(option.series[1].data, p => [...p]), data.macro.social.series
-  .filter(r => Number.isFinite(r.yoy)).map(r => [r.date, r.yoy]));
+  .filter(r => Number.isFinite(r.yoy) || r.yoyStatus === 'incompatible_balance_scopes').map(r => [r.date, r.yoy]));
 assert.equal(option.series[0].yAxisIndex, 0);
 assert.equal(option.series[1].yAxisIndex, 1);
 assert.ok(Array.isArray(option.yAxis) && option.yAxis.length === 2);
 assert.equal(data.macro.social.series[0].date, '2006-12-31');
 assert.equal(option.series[0].data[0][0], '2006-12-31');
 assert.equal(option.series[0].data[8][0], '2014-12-31');
+assert.ok(option.series[0].data.some(p => p[0] === '2017-01-01' && p[1] === null), 'balance line breaks across incompatible scopes');
+assert.equal(option.series[0].markLine.data[0].xAxis, '2017-01-01');
+for (const point of option.series[1].data.filter(p => p[0].startsWith('2017-'))) {
+  assert.equal(point[1], point[0] === '2017-12-31' ? 12 : null, 'no spurious growth peak or bridging over unverified months');
+}
+assert.ok(option.tooltip.formatter([{seriesIndex: 1, seriesName: '社融同比增速', marker: '',
+  axisValueLabel: '2017-12-31', value: ['2017-12-31', 12]}]).includes('官方可比同比'));
+assert.ok(option.tooltip.formatter([{seriesIndex: 1, seriesName: '社融同比增速', marker: '',
+  axisValueLabel: '2017-01-31', value: ['2017-01-31', null]}]).includes('口径不同'));
 metrics[5].click();
 assert.deepEqual(Array.from(option.series, s => s.name), ['M2绝对值', 'M2同比增速']);
 assert.deepEqual(Array.from(option.series[0].data, p => [...p]), data.macro.m2.series

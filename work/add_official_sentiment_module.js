@@ -169,7 +169,7 @@ const script = `
       socialFinancing: {
         title: "社融", unit: "万亿元", digits: 2,
         subtitle: "社会融资规模 · 月末存量",
-        explanation: "来源为Tushare sf_month的stk_endval字段，原单位为万亿元。绝对值为社会融资规模月末存量，不是当月新增社融；同比增速＝（本月存量÷上年同月存量－1）×100%。按精确统计月份匹配基期，不用前12个观测点代替上年同月，也不对缺失月份插值。增速根据接口存量计算，受余额四舍五入、历史修订及统计范围调整影响，可能与央行按可比口径公布的同比存在差异。"
+        explanation: "余额来源为Tushare sf_month的stk_endval字段，单位万亿元，不是当月新增社融。2017年前后历史余额统计范围不同，余额线在断点处断开，不能将该跳升理解为新增融资。2017年1—11月不再用跨口径余额反算同比，未核实的官方增速暂留空；2017年末采用央行当时公布的可比同比12%（中国证券网2018-01-12转引央行报告，https://news.cnstock.com/news,bwkx-201801-4175336.htm）。官方当时报出的余额174.64万亿元与当前缓存回溯余额205.91万亿元属于不同口径，不把两者混接。其他年份同比仍按本月余额÷上年同月余额减1计算，是余额反算值，不是官方可比口径同比；受舍入、历史修订及统计范围调整影响。按实际年月匹配基期，不插值，不用前12条观测代替上年同月。"
       },
       m2Yoy: {
         title: "M2", unit: "万亿元", digits: 2,
@@ -271,10 +271,22 @@ const script = `
         // The source has annual observations before monthly publication began.
         // Drop synthetic empty months so those real early observations remain visible.
         const valueRows = activeRows(market.rows, "value").filter(row => Number.isFinite(row.value)).map(row => [row.date, row.value]);
-        const yoyRows = activeRows(market.rows, "yoy").filter(row => Number.isFinite(row.yoy)).map(row => [row.date, row.yoy]);
+        const yoyRows = activeRows(market.rows, "yoy")
+          .filter(row => Number.isFinite(row.yoy) || row.yoyStatus === "incompatible_balance_scopes")
+          .map(row => [row.date, row.yoy]);
+        const breaks = activeMetric === "socialFinancing" ? (officialData.macro.social.meta.balanceBreaks || []) : [];
+        for (const point of breaks) {
+          if (valueRows.length && point.date > valueRows[0][0] && point.date <= valueRows.at(-1)[0]) {
+            valueRows.push([point.date, null]);
+          }
+        }
+        valueRows.sort((a, b) => a[0].localeCompare(b[0]));
         const label = activeMetric === "socialFinancing" ? "社融" : "M2";
         return [
           { name: label + "绝对值", type: "line", yAxisIndex: 0, data: valueRows, showSymbol: false, connectNulls: false,
+            markLine: breaks.length ? { silent: true, symbol: ["none", "none"],
+              label: { formatter: "历史统计口径变化", position: "insideEndTop", color: "#aebdd0" },
+              lineStyle: { color: "#aebdd0", type: "dashed" }, data: breaks.map(point => ({ xAxis: point.date })) } : undefined,
             lineStyle: { width: 2.2, color: "#f6c85f" }, itemStyle: { color: "#f6c85f" } },
           { name: label + "同比增速", type: "line", yAxisIndex: 1, data: yoyRows, showSymbol: false, connectNulls: false,
             lineStyle: { width: 2.2, color: "#36c2ff" }, itemStyle: { color: "#36c2ff" } }
@@ -325,7 +337,13 @@ const script = `
               params.map(item => {
                 const unit = macroView ? (item.seriesIndex === 1 ? "%" : "万亿元") : cfg.unit;
                 const digits = macroView ? 2 : cfg.digits;
-                return item.marker + item.seriesName + "：<b>" + fmt(item.value[1], digits) + unit + "</b>";
+                const socialRow = activeMetric === "socialFinancing"
+                  ? officialData.macro.social.series.find(row => row.date === item.value[0]) : null;
+                const basis = socialRow && item.seriesIndex === 1 ? (socialRow.yoyStatus === "official_comparable"
+                  ? "（官方可比同比）" : socialRow.yoyStatus === "incompatible_balance_scopes"
+                    ? "（口径不同，未计算）" : "（余额反算）") : "";
+                return item.marker + item.seriesName + "：<b>" + (Number.isFinite(item.value[1])
+                  ? fmt(item.value[1], digits) + unit : "暂无可比数据") + "</b>" + basis;
               }).join("<br>");
           }
         },

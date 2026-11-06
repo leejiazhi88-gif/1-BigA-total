@@ -1,11 +1,37 @@
 """Comparable monthly balances and year-on-year growth for TSF and M2."""
 import calendar
+import argparse
 import json
 import math
 from datetime import datetime
 from pathlib import Path
 
 from tushare_client import END_DATE, call_api, get_token
+
+
+SOCIAL_2017_SOURCE = "https://news.cnstock.com/news,bwkx-201801-4175336.htm"
+
+
+def social_comparability(row):
+    if row["date"].startswith("2017-"):
+        row["yoy"] = None
+        row["yoyStatus"] = "incompatible_balance_scopes"
+        if row["date"] == "2017-12-31" and row.get("value") is not None:
+            row.update(yoy=12.0, yoyStatus="official_comparable", yoySource=SOCIAL_2017_SOURCE)
+    return row
+
+
+def repair_social_comparability(macro):
+    for row in macro["social"]["series"]:
+        social_comparability(row)
+    macro["social"]["meta"]["balanceBreaks"] = [
+        {"date": "2017-01-01", "label": "历史统计口径变化", "source": SOCIAL_2017_SOURCE}
+    ]
+    macro["meta"]["socialYoy"] = (
+        "2017: no growth from incompatible balances; verified official comparable December growth 12%; "
+        "other periods: exact same-month balance ratio, not official comparable growth"
+    )
+    return macro
 
 
 def number(value, label, positive=False):
@@ -57,16 +83,22 @@ def normalize_macro(money, financing, end, previous=None):
                 yoy = None
             series.append({"date": f"{year:04d}-{mon:02d}-{calendar.monthrange(year, mon)[1]:02d}",
                            "value": value, "yoy": round(yoy, 4) if yoy is not None else None})
+            if key == "social":
+                social_comparability(series[-1])
             month = f"{year + (mon == 12):04d}{mon % 12 + 1:02d}"
         if series[-1]["date"].replace("-", "") > end:
             raise ValueError(f"Unexpected unfinished monthly balance: {key}")
         old = {r["date"]: r for r in (previous or {}).get(key, {}).get("series", []) if r["date"].replace("-", "") <= end}
         current = {r["date"]: r for r in series}
         for date, row in old.items():
-            if any(row.get(f) is not None and current.get(date, {}).get(f) is None for f in ("value", "yoy")):
-                raise ValueError(f"Macro refresh lost published observation: {key} {date}")
+            for field in ("value", "yoy"):
+                correcting_invalid_growth = (key == "social" and field == "yoy"
+                    and current.get(date, {}).get("yoyStatus") == "incompatible_balance_scopes"
+                    and not row.get("yoySource"))
+                if row.get(field) is not None and current.get(date, {}).get(field) is None and not correcting_invalid_growth:
+                    raise ValueError(f"Macro refresh lost published observation: {key} {date}")
         result[key] = {"meta": {"start": series[0]["date"], "end": series[-1]["date"]}, "series": series}
-    return result
+    return repair_social_comparability(result)
 
 
 def fetch_macro(token, end=END_DATE, previous=None):
@@ -76,9 +108,14 @@ def fetch_macro(token, end=END_DATE, previous=None):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--repair-comparability", action="store_true",
+                        help="Repair known scope discontinuities in the existing cache without API calls")
+    args = parser.parse_args()
     path = Path(__file__).resolve().parent / "official_sentiment_data.json"
     data = json.loads(path.read_text(encoding="utf-8"))
-    data["macro"] = fetch_macro(get_token(), previous=data.get("macro"))
+    data["macro"] = (repair_social_comparability(data["macro"]) if args.repair_comparability
+                     else fetch_macro(get_token(), previous=data.get("macro")))
     path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(json.dumps({key: {"meta": data["macro"][key]["meta"], "last": data["macro"][key]["series"][-1]}
                       for key in ("social", "m2")}, ensure_ascii=False))

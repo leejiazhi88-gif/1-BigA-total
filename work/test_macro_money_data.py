@@ -52,6 +52,33 @@ class MacroMoneyTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             normalize_macro(self.money, self.social, "20261103", old)
 
+    def test_2017_scope_change_does_not_become_growth(self):
+        social = [{"month": "201601", "stk_endval": 141.57},
+                  {"month": "201612", "stk_endval": 155.99},
+                  {"month": "201701", "stk_endval": 184.14},
+                  {"month": "201712", "stk_endval": 205.91},
+                  {"month": "201801", "stk_endval": 208.88}]
+        d = normalize_macro(self.money, social, "20261103")
+        rows = {r["date"]: r for r in d["social"]["series"]}
+        self.assertEqual(rows["2017-01-31"]["value"], 184.14)
+        self.assertIsNone(rows["2017-01-31"]["yoy"])
+        self.assertEqual(rows["2017-12-31"]["yoy"], 12)
+        self.assertEqual(rows["2017-12-31"]["yoyStatus"], "official_comparable")
+        self.assertTrue(rows["2017-12-31"]["yoySource"].startswith("https://"))
+        self.assertEqual(rows["2018-01-31"]["yoy"], 13.4354)
+        self.assertEqual(d["social"]["meta"]["balanceBreaks"][0]["date"], "2017-01-01")
+
+    def test_invalid_cached_growth_can_be_repaired_without_erasing_balances(self):
+        social = [{"month": "201601", "stk_endval": 141.57},
+                  {"month": "201701", "stk_endval": 184.14}]
+        old = normalize_macro(self.money, social, "20261103")
+        old["social"]["series"][-1].update(yoy=30.0699)
+        new = normalize_macro(self.money, social, "20261103", old)
+        self.assertIsNone(new["social"]["series"][-1]["yoy"])
+        old["social"]["series"][-1]["yoySource"] = "verified-official-source"
+        with self.assertRaises(ValueError):
+            normalize_macro(self.money, social, "20261103", old)
+
 
 if __name__ == "__main__":
     unittest.main()
