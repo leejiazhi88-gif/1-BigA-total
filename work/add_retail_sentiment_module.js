@@ -235,7 +235,6 @@ const script = `
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [
-          { type: "inside", filterMode: "none", start: 0, end: 100 },
           { type: "slider", bottom: 12, height: 22, start: 0, end: 100,
             borderColor: "#263b58", backgroundColor: "#0d1929",
             fillerColor: "rgba(246,200,95,.18)", handleStyle: { color: "#f6c85f" },
@@ -307,8 +306,7 @@ const script = `
           } } },
         yAxis: { type: "value", min: 0, axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, 0) + unit },
           splitLine: { lineStyle: { color: "#17283d" } } },
-        dataZoom: [{ type: "inside", filterMode: "none" },
-          { type: "slider", bottom: 8, height: 18, borderColor: "#263b58",
+        dataZoom: [{ type: "slider", bottom: 8, height: 18, borderColor: "#263b58",
             backgroundColor: "#0d1929", fillerColor: "rgba(246,200,95,.18)",
             handleStyle: { color: "#f6c85f" }, textStyle: { color: "#8fa5bf" } }],
         series: [

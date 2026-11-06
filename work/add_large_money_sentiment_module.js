@@ -337,7 +337,6 @@ const script = `
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [
-          { type: "inside", filterMode: "none", start: previousZoom?.start ?? 0, end: previousZoom?.end ?? 100 },
           { type: "slider", filterMode: "none", bottom: 12, height: 22, start: previousZoom?.start ?? 0, end: previousZoom?.end ?? 100,
             borderColor: "#263b58", backgroundColor: "#0d1929",
             fillerColor: "rgba(54,194,255,.17)", handleStyle: { color: "#36c2ff" },

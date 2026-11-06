@@ -187,7 +187,6 @@ const script = `
         dataZoom: [
           { type: "slider", xAxisIndex: [0, 1], ...flowZoom, filterMode: "none", height: 22, bottom: 10,
             showDataShadow: false, borderColor: "#344760", fillerColor: "rgba(54,194,255,.12)", textStyle: { color: "#8fa5bf" } },
-          { type: "inside", xAxisIndex: [0, 1], ...flowZoom, filterMode: "none" }
         ],
         series: funds.length ? [
           { name: cumulativeName, type: "line", xAxisIndex: 0, yAxisIndex: 0, data: padded(cumulative),

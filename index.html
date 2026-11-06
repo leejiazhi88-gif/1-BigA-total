@@ -999,7 +999,6 @@ chart.setOption({
     ...overviewYAxis()
   ],
   dataZoom: [
-    { type: "inside", xAxisIndex: [0,1,2,3], filterMode: "none", start: 0, end: 100 },
     { type: "slider", xAxisIndex: [0,1,2,3], bottom: 10, height: 24, borderColor: "#263b58",
       backgroundColor: "#0d1929", fillerColor: "rgba(246,200,95,.18)", handleStyle: { color: "#f6c85f" },
       textStyle: { color: "#8fa5bf" }, start: 0, end: 100 }
@@ -1171,7 +1170,6 @@ window.addEventListener("resize", () => chart.resize());
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [
-          { type: "inside", filterMode: "none", start: 0, end: 100 },
           { type: "slider", bottom: 12, height: 22, start: 0, end: 100, borderColor: "#263b58",
             backgroundColor: "#0d1929", fillerColor: "rgba(246,200,95,.18)",
             handleStyle: { color: "#f6c85f" }, textStyle: { color: "#8fa5bf" } }
@@ -1333,7 +1331,6 @@ window.addEventListener("resize", () => chart.resize());
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [
-          { type: "inside", filterMode: "none", start: 0, end: 100 },
           { type: "slider", bottom: 12, height: 22, start: 0, end: 100,
             borderColor: "#263b58", backgroundColor: "#0d1929",
             fillerColor: "rgba(246,200,95,.18)", handleStyle: { color: "#f6c85f" },
@@ -1405,8 +1402,7 @@ window.addEventListener("resize", () => chart.resize());
           } } },
         yAxis: { type: "value", min: 0, axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, 0) + unit },
           splitLine: { lineStyle: { color: "#17283d" } } },
-        dataZoom: [{ type: "inside", filterMode: "none" },
-          { type: "slider", bottom: 8, height: 18, borderColor: "#263b58",
+        dataZoom: [{ type: "slider", bottom: 8, height: 18, borderColor: "#263b58",
             backgroundColor: "#0d1929", fillerColor: "rgba(246,200,95,.18)",
             handleStyle: { color: "#f6c85f" }, textStyle: { color: "#8fa5bf" } }],
         series: [
@@ -1665,7 +1661,6 @@ window.addEventListener("resize", () => chart.resize());
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [
-          { type: "inside", filterMode: "none", start: previousZoom?.start ?? 0, end: previousZoom?.end ?? 100 },
           { type: "slider", filterMode: "none", bottom: 12, height: 22, start: previousZoom?.start ?? 0, end: previousZoom?.end ?? 100,
             borderColor: "#263b58", backgroundColor: "#0d1929",
             fillerColor: "rgba(54,194,255,.17)", handleStyle: { color: "#36c2ff" },
@@ -1972,7 +1967,6 @@ window.addEventListener("resize", () => chart.resize());
           splitLine: { lineStyle: { color: "#17283d" } }
         },
         dataZoom: [
-          { type: "inside", filterMode: "none", start: previousZoom?.start ?? 0, end: previousZoom?.end ?? 100 },
           { type: "slider", filterMode: "none", bottom: 12, height: 22, start: previousZoom?.start ?? 0, end: previousZoom?.end ?? 100,
             borderColor: "#263b58", backgroundColor: "#0d1929",
             fillerColor: "rgba(255,93,115,.16)", handleStyle: { color: "#ff5d73" },
@@ -2123,8 +2117,7 @@ window.addEventListener("resize", () => chart.resize());
         axisLabel: { color: "#8fa5bf", formatter: value => mode === "ratio" ? axisFmt(value, value < 1 && value !== 0 ? 2 : 1) + "%" : axisFmt(value, 0) },
         splitLine: { lineStyle: { color: "#233247" } } },
       dataZoom: [{ type: "slider", xAxisIndex: 0, ...zoom, filterMode: "none", height: 22, bottom: 8,
-        borderColor: "#344760", fillerColor: "rgba(54,194,255,.12)", textStyle: { color: "#8fa5bf", fontSize: 10 } },
-        { type: "inside", xAxisIndex: 0, filterMode: "none" }],
+        borderColor: "#344760", fillerColor: "rgba(54,194,255,.12)", textStyle: { color: "#8fa5bf", fontSize: 10 } }],
       series: visible.map(def => ({ name: def.name, type: "line", connectNulls: false, smooth: false,
         data: snapshots.filter(row => def.key !== "etfAmount" || row.etfReportKind !== "quarterly").map(row => [row.date, valueOf(row, def.key)]), symbol: "circle", symbolSize: 8, showSymbol: true,
         lineStyle: { color: def.color, type: "dashed", width: 2 }, itemStyle: { color: def.color },
@@ -2482,7 +2475,6 @@ window.addEventListener("resize", () => chart.resize());
         dataZoom: [
           { type: "slider", xAxisIndex: [0, 1], ...flowZoom, filterMode: "none", height: 22, bottom: 10,
             showDataShadow: false, borderColor: "#344760", fillerColor: "rgba(54,194,255,.12)", textStyle: { color: "#8fa5bf" } },
-          { type: "inside", xAxisIndex: [0, 1], ...flowZoom, filterMode: "none" }
         ],
         series: funds.length ? [
           { name: cumulativeName, type: "line", xAxisIndex: 0, yAxisIndex: 0, data: padded(cumulative),
