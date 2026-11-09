@@ -97,6 +97,7 @@ async function checkChart(page, config) {
           if (config.prefix === 'retail') {
             const metric = await tabs.nth(index).getAttribute('data-metric');
             const average = ['amount', 'volume', 'turnover'].includes(metric);
+            assert.equal(await page.locator('#retailSmoothing').isVisible(), average);
             const date = await page.locator('#retailLatestReading .module-chart-date').textContent();
             assert.equal(date.includes('周内日均'), average);
             if (average) {
@@ -105,6 +106,15 @@ async function checkChart(page, config) {
                 return option.tooltip[0].formatter([{seriesName: option.series[0].name, marker: '', value: option.series[0].data.at(-1), axisValueLabel: '最新周'}]);
               });
               assert.ok(tooltip.includes('周内日均') && tooltip.includes('有效区间：') && tooltip.includes('个交易日'));
+              for (const size of [7, 30, 1]) {
+                await page.locator(`#retailSmoothing [data-window="${size}"]`).click();
+                await checkChart(page, config);
+                assert.equal(await page.locator(`#retailSmoothing [data-window="${size}"]`).getAttribute('aria-pressed'), 'true');
+                assert.ok((await page.locator('#retailLatestReading').textContent()).includes(size === 1 ? '原数据' : size + '点均线'));
+                if (metric === 'volume' && size === 30 && (width === 390 || width === 1440)) {
+                  await page.locator('#retail-sentiment .retail-grid .valuation-panel').screenshot({ path: path.join(artifacts, `retail-volume-30-${width}.png`) });
+                }
+              }
             }
             if (metric === 'volume' && (width === 390 || width === 1440)) {
               await page.locator('#retail-sentiment .retail-grid .valuation-panel').screenshot({ path: path.join(artifacts, `retail-volume-${width}.png`) });

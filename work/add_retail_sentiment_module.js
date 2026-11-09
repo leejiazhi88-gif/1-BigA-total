@@ -31,6 +31,7 @@ const css = `
     #retail-sentiment .panel-head { flex-wrap: wrap; gap: 12px; }
     #retail-sentiment .module-status { white-space: normal; overflow-wrap: anywhere; }
     #retailMetricSubtitle { line-height: 1.7; }
+    #retailSmoothing[hidden] { display: none; }
     #retailSeriesControls { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 11px 16px 0; }
     #retailSeriesControls button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0;
       border: 0; background: transparent; color: #8fa5bf; font-size: 12px; cursor: pointer; }
@@ -86,6 +87,11 @@ const moduleHtml = `
           <button class="metric-tab" data-metric="turnover">换手率</button>
           <button class="metric-tab" data-metric="marginBalance">融资余额</button>
           <button class="metric-tab" data-metric="marginFloatRatio">融资余额/流通市值</button>
+        </div>
+        <div class="metric-tabs" id="retailSmoothing" role="group" aria-label="移动平均采样点数">
+          <button class="metric-tab active" data-window="1" aria-pressed="true">原数据</button>
+          <button class="metric-tab" data-window="7" aria-pressed="false">7点均线</button>
+          <button class="metric-tab" data-window="30" aria-pressed="false">30点均线</button>
         </div>
         ${chartShell("retailSentimentChart", "retailLatestReading")}
       </article>
@@ -187,39 +193,58 @@ const script = `
       { key: "sz", name: "深市", rows: retailData.markets.sz, color: "#ff5d73" }
     ];
     const selectedSeries = new Set(markets.map(market => market.key));
+    let smoothingWindow = 1;
+    function metricRows(source, field, weeklyAverage) {
+      // Other indicators can add a second date to the same week; exclude those empty slots.
+      const rows = source.filter(row => Number.isFinite(row[field]) || (weeklyAverage && row.weeklySamples?.[field]));
+      if (!weeklyAverage || smoothingWindow === 1) return rows;
+      return rows.map((row, index) => {
+        const window = rows.slice(Math.max(0, index - smoothingWindow + 1), index + 1);
+        const valid = window.length === smoothingWindow && window.every(item => Number.isFinite(item[field]));
+        return { ...row, [field]: valid ? window.reduce((sum, item) => sum + item[field], 0) / smoothingWindow : null };
+      });
+    }
     const chart = echarts.init(document.getElementById("retailSentimentChart"), null, { renderer: "canvas" });
 
-    function renderChart() {
+    function renderChart(preserveZoom = false) {
       const cfg = metrics[activeMetric];
       const weeklyAverage = ["amount", "volume", "turnover"].includes(activeMetric);
+      const smoothingLabel = smoothingWindow === 1 ? "原数据" : smoothingWindow + "点均线";
+      const previousZoom = preserveZoom ? chart.getOption().dataZoom?.[0] : null;
+      document.getElementById("retailSmoothing").hidden = !weeklyAverage;
       const end = new Date(retailData.series[retailData.series.length - 1].date + "T00:00:00Z");
       const cutoff = new Date(end);
       if (activeYears) cutoff.setUTCFullYear(cutoff.getUTCFullYear() - activeYears);
       const minDate = activeYears ? cutoff.toISOString().slice(0, 10) : "";
-      const series = markets.filter(market => selectedSeries.has(market.key)).map(market => ({
+      const visibleMarkets = markets.filter(market => selectedSeries.has(market.key)).map(market => ({
+        ...market, rows: metricRows(market.rows, activeMetric, weeklyAverage)
+      }));
+      const series = visibleMarkets.map(market => ({
         name: market.name, type: "line",
-        data: market.rows.filter(row => row.date >= minDate && Number.isFinite(row[activeMetric]))
+        data: market.rows.filter(row => row.date >= minDate)
           .map(row => [row.date, row[activeMetric]]),
         showSymbol: false, sampling: "lttb", connectNulls: false,
         lineStyle: { width: 2.2, color: market.color }, itemStyle: { color: market.color }
       }));
       const latest = series.map(item => {
-        const market = markets.find(market => market.name === item.name);
-        const point = market.rows.findLast(row => Number.isFinite(row[activeMetric]));
+        const market = visibleMarkets.find(market => market.name === item.name);
+        const point = market.rows.at(-1);
         const days = point?.weeklySamples?.[activeMetric]?.days;
         return { name: item.name, color: item.itemStyle.color, value: point?.[activeMetric], date: point?.date, unit: cfg.unit, digits: cfg.digits,
-          status: weeklyAverage && days ? days + "个有效交易日" : "" };
+          status: weeklyAverage && !Number.isFinite(point?.[activeMetric]) ? "窗口不足或数据缺失"
+            : weeklyAverage && days ? (smoothingWindow > 1 ? "最近周" : "") + days + "个有效交易日" : "" };
       });
       const span = coverage[activeMetric];
-      document.getElementById("retailMetricSubtitle").textContent = cfg.subtitle + (weeklyAverage ? " · 周内日均" : " · 周末时点") + " · 可用历史 " +
+      document.getElementById("retailMetricSubtitle").textContent = cfg.subtitle + (weeklyAverage ? " · 周内日均 · " + smoothingLabel : " · 周末时点") + " · 可用历史 " +
         (span.start ? span.start + " 至 " + span.end : "暂无");
       renderExplanation("retail", activeMetric, [
         ["时间与采样", weeklyAverage
           ? "按自然周（周一至周日），将周内全部有效交易日的该项数值相加，再除以有效天数；每个交易日权重相同，合法的零值计入，周末、节假日及缺报日不按零计。横轴标在该指标周内最后一个有效观测日，不代表只使用那一天；悬浮提示标明有效起止日与天数。未结束的周只平均截至数据截止日已取得的观测。不跨周填补缺失，三个市场分别使用各自有效日，若缺报日不同，日均合计未必等于两个市场日均值之和"
           : "按自然周（周一至周日），每个指标取周内最后一次有效观测，横轴为实际观测日期。通常接近周五，节假日或缺报时可能提前，不取周平均、不跨周补值"],
-        ["计算范围与来源", cfg.explanation]
+        ["计算范围与来源", cfg.explanation],
+        ...(weeklyAverage ? [["当前平滑方式", smoothingLabel + "。原数据为周内有效交易日的日均值；7点／30点均线取当前及此前6／29个原始周采样点的算术平均，不是7／30天，也不是累计值。先用完整历史计算，再截取所选时间范围；三个市场分别计算。窗口不足或含明确缺失值时留空，不补零；没有观测的周不新增采样点，因此7／30点未必等于连续7／30个自然周。最新读数和悬浮值随当前模式更新，提示的有效交易日区间及天数仅指当前点对应原始周"]] : [])
       ]);
-      renderChartLatest("retailLatestReading", cfg.title, latest, weeklyAverage ? "周内日均" : "");
+      renderChartLatest("retailLatestReading", cfg.title, latest, weeklyAverage ? "周内日均 · " + smoothingLabel : "");
       chart.setOption({
         animation: false,
         backgroundColor: "transparent",
@@ -230,12 +255,12 @@ const script = `
           confine: true, backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
           textStyle: { color: "#edf4ff" },
           formatter(params) {
-            return "<b>" + (params[0]?.axisValueLabel || "") + (weeklyAverage ? " · 周内日均" : "") + "</b><br>" +
+            return "<b>" + (params[0]?.axisValueLabel || "") + (weeklyAverage ? " · 周内日均 · " + smoothingLabel : "") + "</b><br>" +
               params.map(item => {
                 const market = markets.find(market => market.name === item.seriesName);
                 const sample = market?.rows.find(row => row.date === item.value[0])?.weeklySamples?.[activeMetric];
                 return item.marker + item.seriesName + "：<b>" + fmt(item.value[1], cfg.digits) + cfg.unit + "</b>" +
-                  (weeklyAverage && sample ? "<br>有效区间：" + sample.start + " 至 " + sample.end + "（" + sample.days + "个交易日）" : "");
+                  (weeklyAverage && sample ? "<br>" + (smoothingWindow > 1 ? "当前点原数据" : "") + "有效区间：" + sample.start + " 至 " + sample.end + "（" + sample.days + "个交易日）" : "");
               }).join("<br>");
           }
         },
@@ -253,6 +278,7 @@ const script = `
         },
         dataZoom: [
           { type: "slider", bottom: 12, height: 22, start: 0, end: 100,
+            ...(previousZoom ? { start: previousZoom.start, end: previousZoom.end } : {}),
             borderColor: "#263b58", backgroundColor: "#0d1929",
             fillerColor: "rgba(246,200,95,.18)", handleStyle: { color: "#f6c85f" },
             textStyle: { color: "#8fa5bf" } }
@@ -269,6 +295,17 @@ const script = `
         renderChart();
       });
     });
+    document.querySelectorAll("#retailSmoothing [data-window]").forEach(button => {
+      button.addEventListener("click", () => {
+        smoothingWindow = Number(button.dataset.window);
+        document.querySelectorAll("#retailSmoothing [data-window]").forEach(item => {
+          const selected = Number(item.dataset.window) === smoothingWindow;
+          item.classList.toggle("active", selected);
+          item.setAttribute("aria-pressed", String(selected));
+        });
+        renderChart(true);
+      });
+    });
     document.querySelectorAll("#retailSeriesControls [data-series]").forEach(button => {
       button.addEventListener("click", () => {
         const key = button.dataset.series;
@@ -279,7 +316,7 @@ const script = `
           selectedSeries.add(key);
         }
         button.setAttribute("aria-pressed", String(selectedSeries.has(key)));
-        renderChart();
+        renderChart(true);
       });
     });
     document.querySelectorAll("#retailRangeTabs [data-years]").forEach(button => {
