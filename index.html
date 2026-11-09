@@ -51,6 +51,23 @@
     .market-toggle input { accent-color: var(--accent); margin: 0; }
     .market-toggle.off { opacity: .45; }
     .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+    .overview-chart-shell { position: relative; }
+    .price-latest {
+      position: absolute; z-index: 1; top: 14px; left: 20px; right: 68px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      pointer-events: none;
+    }
+    .price-latest-heading { flex-shrink: 0; }
+    .price-latest-heading h2 { margin: 0 0 6px; font-size: 13px; font-weight: 700; }
+    .price-latest-date { color: var(--muted); font-size: 11px; }
+    .price-latest-values { display: flex; gap: 24px; }
+    .price-latest-item { min-width: 132px; color: var(--sh); }
+    .price-latest-item[data-market="sz"] { color: var(--sz); }
+    .price-latest-item[hidden] { display: none; }
+    .price-latest-name { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+    .price-latest-name::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .price-latest-value { margin-top: 3px; font-size: 24px; font-weight: 650; line-height: 1.2; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .price-latest-value small { margin-left: 4px; font-size: 12px; font-weight: 400; color: var(--muted); }
     #chart {
       height: 1080px;
       min-height: 1080px;
@@ -71,6 +88,12 @@
       .wrap { padding: 20px 12px 26px; }
       .toolbar { align-items: flex-start; flex-direction: column; }
       .notes { grid-template-columns: 1fr; }
+      .price-latest { right: 20px; flex-direction: column; align-items: stretch; gap: 10px; }
+      .price-latest-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+      .price-latest-heading h2 { margin: 0; }
+      .price-latest-values { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .price-latest-item { min-width: 0; }
+      .price-latest-value { font-size: 20px; }
     }
   </style>
 
@@ -441,7 +464,25 @@
         <label class="market-toggle" data-market="sz"><input type="checkbox" checked data-market="sz"><i class="dot" style="background:var(--sz)"></i>深证</label>
       </div>
     </div>
-    <div id="chart"></div>
+    <div class="overview-chart-shell">
+      <div class="price-latest" aria-live="polite">
+        <div class="price-latest-heading">
+          <h2>指数价格</h2>
+          <div class="price-latest-date" id="priceLatestDate"></div>
+        </div>
+        <div class="price-latest-values">
+          <div class="price-latest-item" data-market="sh" id="priceLatestSh">
+            <div class="price-latest-name">上证综指</div>
+            <div class="price-latest-value"><span id="priceLatestShValue"></span><small>点</small></div>
+          </div>
+          <div class="price-latest-item" data-market="sz" id="priceLatestSz">
+            <div class="price-latest-name">深证成指</div>
+            <div class="price-latest-value"><span id="priceLatestSzValue"></span><small>点</small></div>
+          </div>
+        </div>
+      </div>
+      <div id="chart"></div>
+    </div>
     <div class="note" id="trading-scale"><strong>交易规模口径：</strong>沪深A股合计（上证A指 000002.SH + 深证A指 399107.SZ），不含B股、北交所、基金和债券。成交量按手×100÷1亿换算为亿股；成交额按千元×1000÷1亿换算为亿元。每周展示最后交易日的单日值，不是整周累计。两条曲线采用独立纵轴，上方市场勾选不改变两市合计口径。最新 2026-11-06：成交量 1045.99 亿股，成交额 16573.55 亿元。</div>
   </section>
   <section class="notes">
@@ -950,6 +991,27 @@ function overviewYAxis() {
 }
 function renderOverview() {
   chart.setOption({ series: visibleSeries(), yAxis: overviewYAxis() }, { replaceMerge: ["series", "yAxis"] });
+  renderLatestPrices();
+}
+function renderLatestPrices() {
+  const dates = [];
+  for (const [market, suffix] of [["sh", "Sh"], ["sz", "Sz"]]) {
+    const latest = DATA.prices[market].at(-1);
+    document.getElementById("priceLatest" + suffix).hidden = !visibleMarkets[market];
+    document.getElementById("priceLatest" + suffix + "Value").textContent = fmt(latest.close);
+    if (visibleMarkets[market]) dates.push(latest.date);
+  }
+  const date = document.getElementById("priceLatestDate");
+  date.textContent = "最新收盘 · " + [...new Set(dates)].join(" / ");
+}
+function overviewGrids() {
+  const priceTop = chart.getWidth() <= 620 ? 112 : 82;
+  return [
+    { left: 72, right: 68, top: priceTop, height: Math.round(chart.getHeight() * 0.26) - priceTop },
+    { left: 72, right: 68, top: "76%", height: "17%" },
+    { left: 72, right: 68, top: "55%", height: "15%" },
+    { left: 72, right: 68, top: "33%", height: "15%" }
+  ];
 }
 const commonAxis = {
   type: "time", min: "2006-06-05", max: "2026-11-06", axisLine: { lineStyle: { color: "#344760" } },
@@ -959,14 +1021,8 @@ const commonAxis = {
 chart.setOption({
   animation: false,
   backgroundColor: "transparent",
-  grid: [
-    { left: 72, right: 68, top: 42, height: "22%" },
-    { left: 72, right: 68, top: "76%", height: "17%" },
-    { left: 72, right: 68, top: "55%", height: "15%" },
-    { left: 72, right: 68, top: "33%", height: "15%" }
-  ],
+  grid: overviewGrids(),
   title: [
-    { text: "指数价格", left: 20, top: 12, textStyle: { color: "#edf4ff", fontSize: 13 } },
     { text: "交易规模 · 沪深A股合计", left: 20, top: "28%", textStyle: { color: "#edf4ff", fontSize: 13 } },
     { text: "市盈率 PE(TTM)", left: 20, top: "52%", textStyle: { color: "#edf4ff", fontSize: 13 } },
     { text: "过去12个月合计利润（亿元）", left: 20, top: "73%", textStyle: { color: "#edf4ff", fontSize: 13 } }
@@ -1004,6 +1060,7 @@ chart.setOption({
   ],
   series: visibleSeries()
 });
+renderLatestPrices();
 chart.on("datazoom", () => {
   const zoom = chart.getOption().dataZoom[0];
   const start = Date.parse("2006-06-05"), end = Date.parse("2026-11-06");
@@ -1035,7 +1092,10 @@ document.querySelectorAll(".ranges [data-years]").forEach(btn => btn.addEventLis
   chart.dispatchAction({ type: "dataZoom", startValue: years ? start.toISOString().slice(0,10) : "2006-06-05", endValue: "2026-11-06" });
   renderOverview();
 }));
-window.addEventListener("resize", () => chart.resize());
+window.addEventListener("resize", () => {
+  chart.resize();
+  chart.setOption({ grid: overviewGrids() });
+});
 </script>
 
   <script id="valuation-module-script">
