@@ -97,6 +97,20 @@ async function checkChart(page, config) {
           if ((width === 1440 || width === 390) && index === 0) {
             await page.locator(`#${config.reading}`).locator('..').screenshot({ path: path.join(artifacts, `${config.prefix}-${width}.png`) });
           }
+          if (config.prefix === 'official') {
+            const smoothable = index < 3;
+            assert.equal(await page.locator('#officialSmoothing').isVisible(), smoothable);
+            if (smoothable) for (const size of [7, 30, 1]) {
+              await page.locator(`#officialSmoothing [data-window="${size}"]`).click();
+              await checkChart(page, config);
+              const selected = page.locator(`#officialSmoothing [data-window="${size}"]`);
+              assert.equal(await selected.getAttribute('aria-pressed'), 'true');
+              assert.ok((await page.locator('#officialLatestReading').textContent()).includes(size === 1 ? '原数据' : size + '点均线'));
+              if ((width === 390 || width === 1440) && index === 1 && size === 30) {
+                await page.locator('#official-sentiment .valuation-panel').screenshot({ path: path.join(artifacts, `official-refinancing-30-${width}.png`) });
+              }
+            }
+          }
         }
       }
       for (const [chart, reading] of [['retailAccountsChart', 'retailAccountsLatest'], ['retailFundsChart', 'retailFundsLatest']]) {

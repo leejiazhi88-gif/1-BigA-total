@@ -25,11 +25,12 @@ const element = id => {
     set innerHTML(value) { this.markup = value; this.textContent = value.replace(/<[^>]*>/g, ' '); }});
   return elements.get(id);
 };
-const button = dataset => ({dataset, attrs: {}, classList: {add() {}, remove() {}},
+const button = dataset => ({dataset, attrs: {}, classList: {add() {}, remove() {}, toggle() {}},
   addEventListener(type, handler) {this[type] = handler;},
   setAttribute(key, value) {this.attrs[key] = value;}});
 const markets = ['all', 'sh', 'sz'].map(series => button({series}));
 const rates = ['reverseRepo7d', 'lpr1y', 'lpr5y'].map(rate => button({rate}));
+const smoothing = [1, 7, 30].map(window => button({window: String(window)}));
 const metrics = ['ipoFunds', 'netReduceAmount', 'stampTaxRate', 'policyRate', 'socialFinancing', 'm2Yoy', 'refinanceFunds'].map(metric => button({metric}));
 const ranges = [3, 5, 10, 20, 30, 0].map(years => button({years: String(years)}));
 let option;
@@ -38,7 +39,7 @@ const chart = {setOption(next, replace) {option = replace ? next : {...option, .
     yAxis: Array.isArray(next.yAxis) ? next.yAxis : {...option?.yAxis, ...next.yAxis}};},
   getOption() {return option || {};}, on(type, fn) {handlers[type] = fn;}, resize() {}};
 vm.runInNewContext(script, {document: {getElementById: element,
-  querySelectorAll(selector) {return selector.includes('MetricTabs') ? metrics : selector.includes('RateControls') ? rates : selector.includes('SeriesControls') ? markets : ranges;}
+  querySelectorAll(selector) {return selector.includes('MetricTabs') ? metrics : selector.includes('Smoothing') ? smoothing : selector.includes('RateControls') ? rates : selector.includes('SeriesControls') ? markets : ranges;}
 }, echarts: {init: () => chart}, window: {addEventListener() {}}});
 assert.equal(option.series.length, 3);
 option.dataZoom[0].start = 40;
@@ -164,11 +165,44 @@ gapData.series[20].refinanceFunds = null;
 gapData.markets.sh[20].refinanceFunds = null;
 const gapScript = script.replace(/const refinancingData = .*;/, () => 'const refinancingData = ' + JSON.stringify(gapData) + ';');
 vm.runInNewContext(gapScript, {document: {getElementById: element,
-  querySelectorAll(selector) {return selector.includes('MetricTabs') ? metrics : selector.includes('RateControls') ? rates : selector.includes('SeriesControls') ? markets : ranges;}
+  querySelectorAll(selector) {return selector.includes('MetricTabs') ? metrics : selector.includes('Smoothing') ? smoothing : selector.includes('RateControls') ? rates : selector.includes('SeriesControls') ? markets : ranges;}
 }, echarts: {init: () => chart}, window: {addEventListener() {}}});
 metrics[6].click();
 assert.equal(option.series[0].data[20][1], null, 'an incomplete month stays as an explicit gap');
 assert.equal(option.series[1].data[20][1], null);
 assert.equal(option.series[2].data[20][1], refinancing.markets.sz[20].refinanceFunds);
 assert.equal(option.series[0].connectNulls, false);
-console.log('PASS: seven tabs, market sums/selections, monthly refinancing, dates, zoom, LPR and tax steps, visible-rate axes');
+for (const metric of [metrics[0], metrics[6], metrics[1]]) {
+  metric.click(); ranges.at(-1).click(); smoothing[0].click();
+  assert.equal(element('officialSmoothing').hidden, false);
+  const raw = option.series.map(series => Array.from(series.data, point => [...point]));
+  for (const [index, size] of [[1, 7], [2, 30]]) {
+    option.dataZoom[0].start = 40;
+    smoothing[index].click();
+    assert.equal(option.dataZoom[0].start, 40);
+    option.series.forEach((series, market) => series.data.forEach((point, i) => {
+      const window = raw[market].slice(Math.max(0, i - size + 1), i + 1);
+      const expected = window.length === size && window.every(point => Number.isFinite(point[1]))
+        ? window.reduce((sum, point) => sum + point[1], 0) / size : null;
+      assert.equal(point[0], raw[market][i][0]);
+      assert.equal(point[1], expected);
+    }));
+    assert.ok(element('officialLatestReading').textContent.includes(size + '点均线'));
+    assert.ok(element('officialMetricExplanation').innerHTML.includes('先用完整历史'));
+    const full = option.series.map(series => Array.from(series.data, point => [...point]));
+    ranges[0].click();
+    option.series.forEach((series, market) => assert.deepEqual(Array.from(series.data, point => [...point]),
+      full[market].filter(point => point[0] >= rangeStart.toISOString().slice(0, 10))));
+    ranges.at(-1).click();
+  }
+  smoothing[0].click();
+  assert.deepEqual(option.series.map(series => Array.from(series.data, point => [...point])), raw);
+}
+smoothing[1].click(); metrics[2].click();
+assert.equal(element('officialSmoothing').hidden, true);
+assert.ok(!element('officialLatestReading').textContent.includes('7点均线'));
+assert.equal(option.series[0].step, 'end');
+metrics[6].click();
+assert.ok(element('officialLatestReading').textContent.includes('7点均线'));
+assert.ok(element('officialMetricExplanation').innerHTML.includes('7个月／30个月'));
+console.log('PASS: seven tabs, raw/7/30 averages across three markets, missing-window propagation, range/zoom preservation, monthly refinancing, LPR/tax steps and macro axes');

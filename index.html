@@ -292,7 +292,7 @@
     #official-sentiment .panel-head { flex-wrap: wrap; gap: 12px; }
     #official-sentiment .module-status { white-space: normal; }
     #officialSeriesControls, #officialRateControls { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 11px 16px 0; }
-    #officialRateControls[hidden] { display: none; }
+    #officialRateControls[hidden], #officialSmoothing[hidden] { display: none; }
     #officialSeriesControls button, #officialRateControls button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0;
       border: 0; background: transparent; color: #8fa5bf; font-size: 12px; cursor: pointer; }
     #officialSeriesControls button[aria-pressed="false"], #officialSeriesControls button:disabled,
@@ -799,6 +799,11 @@
           <button class="metric-tab" data-metric="policyRate">政策利率</button>
           <button class="metric-tab" data-metric="socialFinancing">社融</button>
           <button class="metric-tab" data-metric="m2Yoy">M2</button>
+        </div>
+        <div class="metric-tabs" id="officialSmoothing" role="group" aria-label="移动平均采样点数">
+          <button class="metric-tab active" data-window="1" aria-pressed="true">原数据</button>
+          <button class="metric-tab" data-window="7" aria-pressed="false">7点均线</button>
+          <button class="metric-tab" data-window="30" aria-pressed="false">30点均线</button>
         </div>
         <div id="officialRateControls" role="group" aria-label="选择利率曲线" hidden>
           <button type="button" data-rate="reverseRepo7d" aria-pressed="true" style="--series-color:#f6c85f"><span class="official-series-mark"></span>7天逆回购利率</button>
@@ -2153,6 +2158,16 @@ window.addEventListener("resize", () => {
     ];
     const selectedRates = new Set(rates.map(rate => rate.key));
     const isSplit = () => ["ipoFunds", "refinanceFunds", "netReduceAmount"].includes(activeMetric);
+    let smoothingWindow = 1;
+    function smoothedRows(source, field) {
+      const rows = source.filter(row => Object.prototype.hasOwnProperty.call(row, field));
+      if (smoothingWindow === 1) return rows;
+      return rows.map((row, index) => {
+        const window = rows.slice(Math.max(0, index - smoothingWindow + 1), index + 1);
+        const valid = window.length === smoothingWindow && window.every(item => Number.isFinite(item[field]));
+        return { ...row, [field]: valid ? window.reduce((sum, item) => sum + item[field], 0) / smoothingWindow : null };
+      });
+    }
     let chartPoints = [];
     let chartSeries = [];
     let axisPrecision = { main: 1, value: 1, yoy: 1 };
@@ -2203,7 +2218,7 @@ window.addEventListener("resize", () => {
     }
     chart.on("datazoom", rescaleVisible);
     function activeRows(source, field = activeMetric, step = activeMetric === "stampTaxRate") {
-      const rows = source.filter(row => ["refinanceFunds", "socialFinancing", "m2Yoy"].includes(activeMetric)
+      const rows = source.filter(row => (isSplit() && smoothingWindow > 1) || ["refinanceFunds", "socialFinancing", "m2Yoy"].includes(activeMetric)
         ? Object.prototype.hasOwnProperty.call(row, field) : Number.isFinite(row[field]));
       if (!activeYears || !rows.length) return rows;
       const end = new Date(officialData.meta.end + "T00:00:00Z");
@@ -2222,6 +2237,8 @@ window.addEventListener("resize", () => {
       if (macroView) cfg.subtitle = (activeMetric === "socialFinancing" ? "社会融资规模" : "广义货币M2") + " · 月末绝对值与同比增速";
       const previousZoom = preserveZoom ? chart.getOption().dataZoom?.[0] : null;
       const split = isSplit();
+      const smoothingLabel = smoothingWindow === 1 ? "原数据" : smoothingWindow + "点均线";
+      document.getElementById("officialSmoothing").hidden = !split;
       const rateView = activeMetric === "policyRate";
       const refinancingView = activeMetric === "refinanceFunds";
       const visibleMarkets = rateView ? rates.filter(rate => selectedRates.has(rate.key)) : split
@@ -2254,7 +2271,7 @@ window.addEventListener("resize", () => {
             lineStyle: { width: 2.2, color: "#36c2ff" }, itemStyle: { color: "#36c2ff" } }
         ];
       })() : visibleMarkets.map(market => ({
-        name: market.name, type: "line", data: activeRows(market.rows, rateView ? market.key : activeMetric,
+        name: market.name, type: "line", data: activeRows(split ? smoothedRows(market.rows, activeMetric) : market.rows, rateView ? market.key : activeMetric,
           market.step || activeMetric === "stampTaxRate").map(row => [row.date, row[rateView ? market.key : activeMetric]]),
         showSymbol: false, connectNulls: false, step: market.step || activeMetric === "stampTaxRate" ? "end" : false,
         sampling: market.step || activeMetric === "stampTaxRate" || refinancingView ? undefined : "lttb",
@@ -2266,7 +2283,7 @@ window.addEventListener("resize", () => {
       document.getElementById("officialRateControls").hidden = !rateView;
       document.querySelectorAll("#officialSeriesControls [data-series]").forEach(button => { button.disabled = !split; });
       document.getElementById("officialMarketScope").textContent = split ? "沪深A股 · 不含北交所" : "全国统一口径，不按沪深拆分";
-      document.getElementById("officialMetricSubtitle").textContent = cfg.subtitle;
+      document.getElementById("officialMetricSubtitle").textContent = cfg.subtitle + (split ? " · " + smoothingLabel : "");
       const sampling = ({
         ipoFunds: "周累计：按IPO日期（缺失时用发行日期）将周一至周日的募集额相加；横轴为该周最后一条可计入发行记录的日期，不是当天融资额或周平均。",
         refinanceFunds: "月累计：一个点是整个自然月已实施增发和配股的发行金额之和，增发按发行日期、配股按缴款截止日期归月，不按股票上市日或公告日归月。横轴标记月末，不是月末当天的金额，也不是月均值。只展示已结束月份，当前未结束月份暂不画入；因此月频末端会早于每日行情的更新日期",
@@ -2276,19 +2293,23 @@ window.addEventListener("resize", () => {
         socialFinancing: "绝对值是期末社融存量，同比是该存量相对上年同期的增速。当前数据中，2006—2014年为年末点，2015年为季末点，2016年起为月末点。横轴为统计期末，不是公告日；不取周均、不作月内累计。只连接实际取得的观测点以展示走势；点间连线不代表已取得中间月份的数据，不把年末值分摊到每个月，同比缺少上年同月基期时不生成观测点。",
         m2Yoy: "月度时点：绝对值是月末M2余额，同比是相对上年同月的增速。横轴为统计月份月末，不是公告日；不作周采样或月内累计，未公布月份不沿用旧值。早期按实际取得的观测点连接，连线不代表中间月份有数据。"
       })[activeMetric];
-      renderExplanation("official", activeMetric, [["时间与采样", sampling], ["计算与来源", cfg.explanation], ["市场范围", split
+      const details = [["时间与采样", sampling], ["计算与来源", cfg.explanation], ["市场范围", split
         ? refinancingView
           ? "按股票所属交易所拆分沪市、深市，两市合计为两者之和。完整查询后某市场某月没有发行记录时记零，表示本数据源没有记录；若存在记录但发行金额缺失，该市场整月及两市合计留空，曲线不跨缺口连线，不用零代替缺失"
           : " 按股票所属交易所分为沪市、深市，两市合计为两者之和，仅含沪深A股。已披露样本按周汇总；周内某市场无可计入记录时记为样本汇总零值，不代表实际零融资或零减持。"
-        : "此指标为全国口径，没有沪深市场拆分值"]]);
+        : "此指标为全国口径，没有沪深市场拆分值"]];
+      if (split) details.push(["当前平滑方式", smoothingLabel + "。7点／30点均线取当前点及此前6／29个已展示原始采样点的算术平均，不是累计值，也不是7／30天。" +
+        (refinancingView ? "再融资为月度数据，即7个月／30个月采样点。" : "此项为周度汇总；无已披露记录而未生成观测点的周不补零，因此7／30个点可能跨越更长的日历时间。") +
+        "各市场分别计算，先用完整历史计算，再截取时间范围。窗口不足或含缺失金额时留空，不跳过缺失、不补零；图内最新读数与悬浮值均为当前模式的值"]);
+      renderExplanation("official", activeMetric, details);
       const latest = series.map(s => {
         const point = macroView ? s.data.findLast(p => Number.isFinite(p[1])) : s.data.at(-1);
         const unit = macroView ? (s.yAxisIndex === 1 ? "%" : "万亿元") : cfg.unit;
         const digits = macroView ? (s.yAxisIndex === 1 ? 2 : 2) : cfg.digits;
         return { name: s.name, color: s.itemStyle.color, value: point?.[1], date: point?.[0], unit, digits,
-          status: point ? (Number.isFinite(point[1]) ? "" : "披露金额不完整") : "暂无数据" };
+          status: point ? (Number.isFinite(point[1]) ? "" : split && smoothingWindow > 1 ? "窗口不足或数据缺失" : "披露金额不完整") : "暂无数据" };
       });
-      renderChartLatest("officialLatestReading", cfg.title, latest);
+      renderChartLatest("officialLatestReading", cfg.title, latest, split ? smoothingLabel : "");
       const readingTop = chartLatestTop("officialLatestReading");
       chart.setOption({
         animation: false, backgroundColor: "transparent",
@@ -2298,7 +2319,7 @@ window.addEventListener("resize", () => {
           backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
           textStyle: { color: "#edf4ff" },
           formatter(params) {
-            return "<b>" + escapeHtml(params[0]?.axisValueLabel || "") + "</b><br>" +
+            return "<b>" + escapeHtml(params[0]?.axisValueLabel || "") + (split ? " · " + smoothingLabel : "") + "</b><br>" +
               params.map(item => {
                 const unit = macroView ? (item.seriesIndex === 1 ? "%" : "万亿元") : cfg.unit;
                 const digits = macroView ? 2 : cfg.digits;
@@ -2361,6 +2382,17 @@ window.addEventListener("resize", () => {
         document.querySelectorAll("#officialMetricTabs [data-metric]").forEach(item => item.classList.remove("active"));
         button.classList.add("active");
         renderChart();
+      });
+    });
+    document.querySelectorAll("#officialSmoothing [data-window]").forEach(button => {
+      button.addEventListener("click", () => {
+        smoothingWindow = Number(button.dataset.window);
+        document.querySelectorAll("#officialSmoothing [data-window]").forEach(item => {
+          const selected = Number(item.dataset.window) === smoothingWindow;
+          item.classList.toggle("active", selected);
+          item.setAttribute("aria-pressed", String(selected));
+        });
+        renderChart(true);
       });
     });
     document.querySelectorAll("#officialRangeTabs [data-years]").forEach(button => {
