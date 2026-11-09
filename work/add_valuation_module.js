@@ -316,15 +316,52 @@ const js = `
     });
 
     const navLinks = document.querySelectorAll(".page-nav a");
+    const pageNav = document.querySelector(".page-nav");
+    const navSections = Array.from(navLinks, link => ({ link, section: document.getElementById(link.hash.slice(1)) }))
+      .filter(item => item.section);
+    let navFrame = 0;
+    function activateNav(link) {
+      navLinks.forEach(item => {
+        item.classList.toggle("active", item === link);
+        if (item === link) item.setAttribute("aria-current", "location");
+        else item.removeAttribute("aria-current");
+      });
+      const bounds = pageNav.getBoundingClientRect();
+      const activeBounds = link.getBoundingClientRect();
+      if (activeBounds.left < bounds.left + 6 || activeBounds.right > bounds.right - 6) {
+        pageNav.scrollTo({ left: link.offsetLeft - (pageNav.clientWidth - link.offsetWidth) / 2, behavior: "instant" });
+      }
+    }
+    function updateNavFromScroll() {
+      let current = navSections[0];
+      const activationLine = pageNav.getBoundingClientRect().bottom + 32;
+      for (const item of navSections) {
+        if (item.section.getBoundingClientRect().top <= activationLine) current = item;
+      }
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) current = navSections.at(-1);
+      if (current) activateNav(current.link);
+    }
+    function scheduleNavUpdate() {
+      if (navFrame) return;
+      navFrame = requestAnimationFrame(() => {
+        navFrame = 0;
+        updateNavFromScroll();
+      });
+    }
     navLinks.forEach(link => link.addEventListener("click", () => {
-      navLinks.forEach(item => item.classList.remove("active"));
-      link.classList.add("active");
+      activateNav(link);
+      scheduleNavUpdate();
     }));
+    window.addEventListener("scroll", scheduleNavUpdate, { passive: true });
+    window.addEventListener("hashchange", scheduleNavUpdate);
+    window.addEventListener("load", scheduleNavUpdate);
     window.addEventListener("resize", () => {
       valuationChart.resize();
       layoutChartLatest(valuationChart, "valuationLatestReading");
+      scheduleNavUpdate();
     });
     renderValuationChart();
+    updateNavFromScroll();
   })();
   </script>
 `;
