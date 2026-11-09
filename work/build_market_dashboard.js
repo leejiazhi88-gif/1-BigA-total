@@ -115,7 +115,7 @@ function htmlTemplate(data, echartsSource) {
     .price-latest-item[hidden] { display: none; }
     .price-latest-name { display: flex; align-items: center; gap: 6px; font-size: 12px; }
     .price-latest-name::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-    .price-latest-value { margin-top: 3px; font-size: 24px; font-weight: 650; line-height: 1.2; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .price-latest-value { margin-top: 3px; font-size: 13px; font-weight: 650; line-height: 1.2; font-variant-numeric: tabular-nums; white-space: nowrap; }
     .price-latest-value small { margin-left: 4px; font-size: 12px; font-weight: 400; color: var(--muted); }
     #chart {
       height: 1080px;
@@ -142,7 +142,6 @@ function htmlTemplate(data, echartsSource) {
       .price-latest-heading h2 { margin: 0; }
       .price-latest-values { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
       .price-latest-item { min-width: 0; }
-      .price-latest-value { font-size: 20px; }
     }
   </style>
 </head>
