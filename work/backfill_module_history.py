@@ -6,7 +6,7 @@ from datetime import datetime
 from pathlib import Path
 
 from fetch_large_money_sentiment_data import aggregate_blocks, stock_universe, week_key
-from fetch_retail_sentiment_data import build_daily_series, last_by_week
+from fetch_retail_sentiment_data import build_daily_series, sample_by_week
 from fetch_valuation_data import build_index_series
 from tushare_client import call_api, call_api_pages, get_token
 
@@ -59,7 +59,7 @@ def extend_retail(token):
         market.extend(years(token, "daily_info", {"ts_code": code}, "trade_date,ts_code,float_mv,amount,tr", 2000, 2005, True))
     earlier, _ = build_daily_series(market, [], {})
     existing = {row["date"]: row for row in data["series"] if row["date"] >= "2005-01-01"}
-    for row in last_by_week(earlier):
+    for row in sample_by_week(earlier):
         if row["date"] >= "2005-01-01" and any(row.get(field) is not None for field in ("amount", "turnover")):
             existing.setdefault(row["date"], row)
     data["series"] = [existing[date] for date in sorted(existing)]

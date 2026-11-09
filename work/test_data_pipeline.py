@@ -202,6 +202,7 @@ class DataPipelineTests(unittest.TestCase):
         with TemporaryDirectory() as directory:
             output = Path(directory) / "retail.json"
             with patch.object(retail, "get_token", return_value="test"), patch.object(retail, "yearly", side_effect=yearly), \
+                 patch.object(retail, "volume_data", return_value=([], [])), \
                  patch.object(retail, "monthly_limit_counts", return_value={}), patch.object(retail, "OUTPUT", output), patch("builtins.print"):
                 retail.main()
             series = json.loads(output.read_text())["series"]

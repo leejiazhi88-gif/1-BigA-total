@@ -82,6 +82,7 @@ const moduleHtml = `
         </div>
         <div class="metric-tabs" id="retailMetricTabs">
           <button class="metric-tab active" data-metric="amount">两市成交额</button>
+          <button class="metric-tab" data-metric="volume">两市成交量</button>
           <button class="metric-tab" data-metric="turnover">换手率</button>
           <button class="metric-tab" data-metric="marginBalance">融资余额</button>
           <button class="metric-tab" data-metric="marginFloatRatio">融资余额/流通市值</button>
@@ -141,18 +142,23 @@ const script = `
     const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[char]);
-    ${explanationScript(["amount", "turnover", "marginBalance", "marginFloatRatio"])}
+    ${explanationScript(["amount", "volume", "turnover", "marginBalance", "marginFloatRatio"])}
 
     const metrics = {
       amount: {
         title: "两市成交额", unit: "亿元", digits: 0,
         subtitle: "两市合计、沪市与深市股票成交额",
-        explanation: "沪深股票成交额反映交易活跃度。来源为Tushare交易所市场统计；两市合计为沪市与深市股票成交额之和，含A/B股，不含北交所、基金和债券；不是上证指数、深证成指的成分股口径。2019年前沪市由A/B股分项加总。单位亿元，每周取最后可得交易日的单日值，不是周成交额总和；缺失不补零。"
+        explanation: "沪深股票成交额反映交易活跃度。来源为Tushare交易所市场统计；先计算每日两市合计，再对该周有效交易日求算术平均，沪市、深市分别计算自己的日均值。含A/B股，不含北交所、基金和债券；不是指数成分股口径。2019年前沪市由A/B股分项加总。单位亿元，不是周成交额总和，也不是最后一天的成交额；缺失不补零。"
+      },
+      volume: {
+        title: "两市成交量", unit: "亿股", digits: 2,
+        subtitle: "两市合计、沪市与深市股票成交量",
+        explanation: "成交量表示实际成交的股票数量，买卖双方不重复计算。统计沪深股票（含A/B股），不含北交所、基金和债券，与本模块成交额范围一致。单位亿股，每周对有效交易日的成交股数求算术平均，不是整周累计。沪市采用Tushare daily_info的股票市场合计，早期用沪A与沪B加总；深市优先采用sz_daily_info的股票合计（股除以1亿），缺报时使用daily_info的深市合计或互不重叠板块加总。2021年4月6日起中小板并入主板，不再重复加中小板；创业板自2009年10月30日起单列。板块缺失不视为零，早期不能完整取得的深市及两市合计留空。"
       },
       turnover: {
         title: "市场换手率", unit: "%", digits: 2,
         subtitle: "两市合计、沪市与深市换手率，按流通市值加权",
-        explanation: "换手率衡量股票筹码交换速度。来源为Tushare交易所各股票板块换手率及流通市值；两市合计按各板块流通市值加权，不是沪、深换手率的简单平均。范围含沪深A/B股，不含北交所、基金和债券。单位%，每周取最后可得交易日的单日值；缺失不补零。"
+        explanation: "换手率衡量股票筹码交换速度。先用每日各股票板块的流通市值对当日换手率加权，再对该周有效日的每日结果求算术平均；两市换手率不是沪、深比例的简单平均，也不是把一周换手率相加。范围含沪深A/B股，不含北交所、基金和债券。来源为Tushare交易所板块换手率及流通市值，单位%；缺失不补零。"
       },
       marginBalance: {
         title: "融资余额", unit: "亿元", digits: 0,
@@ -170,7 +176,7 @@ const script = `
       return [key, { start: rows[0]?.date, end: rows[rows.length - 1]?.date }];
     }));
     const startYear = key => coverage[key].start?.slice(0, 4) || "暂无";
-    document.getElementById("retailCoverageStatus").textContent = "成交/换手 " + startYear("amount") + "年起 · 融资 " +
+    document.getElementById("retailCoverageStatus").textContent = "成交额/换手 " + startYear("amount") + "年起 · 成交量 " + startYear("volume") + "年起 · 融资 " +
       startYear("marginBalance") + "年起";
 
     let activeMetric = "amount";
@@ -185,6 +191,7 @@ const script = `
 
     function renderChart() {
       const cfg = metrics[activeMetric];
+      const weeklyAverage = ["amount", "volume", "turnover"].includes(activeMetric);
       const end = new Date(retailData.series[retailData.series.length - 1].date + "T00:00:00Z");
       const cutoff = new Date(end);
       if (activeYears) cutoff.setUTCFullYear(cutoff.getUTCFullYear() - activeYears);
@@ -199,16 +206,20 @@ const script = `
       const latest = series.map(item => {
         const market = markets.find(market => market.name === item.name);
         const point = market.rows.findLast(row => Number.isFinite(row[activeMetric]));
-        return { name: item.name, color: item.itemStyle.color, value: point?.[activeMetric], date: point?.date, unit: cfg.unit, digits: cfg.digits };
+        const days = point?.weeklySamples?.[activeMetric]?.days;
+        return { name: item.name, color: item.itemStyle.color, value: point?.[activeMetric], date: point?.date, unit: cfg.unit, digits: cfg.digits,
+          status: weeklyAverage && days ? days + "个有效交易日" : "" };
       });
       const span = coverage[activeMetric];
-      document.getElementById("retailMetricSubtitle").textContent = cfg.subtitle + " · 周频 · 可用历史 " +
+      document.getElementById("retailMetricSubtitle").textContent = cfg.subtitle + (weeklyAverage ? " · 周内日均" : " · 周末时点") + " · 可用历史 " +
         (span.start ? span.start + " 至 " + span.end : "暂无");
       renderExplanation("retail", activeMetric, [
-        ["时间与采样", "按自然周（周一至周日），每个指标取周内最后一次有效观测，横轴为实际观测日期。通常接近周五，节假日或缺报时可能提前，不取周平均、不跨周补值"],
+        ["时间与采样", weeklyAverage
+          ? "按自然周（周一至周日），将周内全部有效交易日的该项数值相加，再除以有效天数；每个交易日权重相同，合法的零值计入，周末、节假日及缺报日不按零计。横轴标在该指标周内最后一个有效观测日，不代表只使用那一天；悬浮提示标明有效起止日与天数。未结束的周只平均截至数据截止日已取得的观测。不跨周填补缺失，三个市场分别使用各自有效日，若缺报日不同，日均合计未必等于两个市场日均值之和"
+          : "按自然周（周一至周日），每个指标取周内最后一次有效观测，横轴为实际观测日期。通常接近周五，节假日或缺报时可能提前，不取周平均、不跨周补值"],
         ["计算范围与来源", cfg.explanation]
       ]);
-      renderChartLatest("retailLatestReading", cfg.title, latest);
+      renderChartLatest("retailLatestReading", cfg.title, latest, weeklyAverage ? "周内日均" : "");
       chart.setOption({
         animation: false,
         backgroundColor: "transparent",
@@ -219,9 +230,13 @@ const script = `
           confine: true, backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
           textStyle: { color: "#edf4ff" },
           formatter(params) {
-            return "<b>" + (params[0]?.axisValueLabel || "") + "</b><br>" +
-              params.map(item => item.marker + item.seriesName + "：<b>" +
-                fmt(Number(item.value[1]), cfg.digits) + cfg.unit + "</b>").join("<br>");
+            return "<b>" + (params[0]?.axisValueLabel || "") + (weeklyAverage ? " · 周内日均" : "") + "</b><br>" +
+              params.map(item => {
+                const market = markets.find(market => market.name === item.seriesName);
+                const sample = market?.rows.find(row => row.date === item.value[0])?.weeklySamples?.[activeMetric];
+                return item.marker + item.seriesName + "：<b>" + fmt(item.value[1], cfg.digits) + cfg.unit + "</b>" +
+                  (weeklyAverage && sample ? "<br>有效区间：" + sample.start + " 至 " + sample.end + "（" + sample.days + "个交易日）" : "");
+              }).join("<br>");
           }
         },
         xAxis: {
@@ -231,8 +246,8 @@ const script = `
           axisLabel: { color: "#7890aa", hideOverlap: true }, splitLine: { show: false }
         },
         yAxis: {
-          type: "value", scale: activeMetric !== "amount" && activeMetric !== "marginBalance",
-          min: activeMetric === "amount" || activeMetric === "marginBalance" ? 0 : undefined,
+          type: "value", scale: !["amount", "volume", "marginBalance"].includes(activeMetric),
+          min: ["amount", "volume", "marginBalance"].includes(activeMetric) ? 0 : undefined,
           axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, cfg.digits) + cfg.unit },
           splitLine: { lineStyle: { color: "#17283d" } }
         },

@@ -94,6 +94,22 @@ async function checkChart(page, config) {
           await tabs.nth(index).click();
           await checkChart(page, config);
           cases++;
+          if (config.prefix === 'retail') {
+            const metric = await tabs.nth(index).getAttribute('data-metric');
+            const average = ['amount', 'volume', 'turnover'].includes(metric);
+            const date = await page.locator('#retailLatestReading .module-chart-date').textContent();
+            assert.equal(date.includes('周内日均'), average);
+            if (average) {
+              const tooltip = await page.evaluate(() => {
+                const option = echarts.getInstanceByDom(document.getElementById('retailSentimentChart')).getOption();
+                return option.tooltip[0].formatter([{seriesName: option.series[0].name, marker: '', value: option.series[0].data.at(-1), axisValueLabel: '最新周'}]);
+              });
+              assert.ok(tooltip.includes('周内日均') && tooltip.includes('有效区间：') && tooltip.includes('个交易日'));
+            }
+            if (metric === 'volume' && (width === 390 || width === 1440)) {
+              await page.locator('#retail-sentiment .retail-grid .valuation-panel').screenshot({ path: path.join(artifacts, `retail-volume-${width}.png`) });
+            }
+          }
           if ((width === 1440 || width === 390) && index === 0) {
             await page.locator(`#${config.reading}`).locator('..').screenshot({ path: path.join(artifacts, `${config.prefix}-${width}.png`) });
           }
