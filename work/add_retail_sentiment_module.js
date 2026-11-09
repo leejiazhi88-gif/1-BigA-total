@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { guideCss, explanationScript } = require("./sentiment_explanations");
+const { chartShell, latestScript } = require("./chart_latest_readings");
 
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
@@ -85,10 +86,7 @@ const moduleHtml = `
           <button class="metric-tab" data-metric="marginBalance">融资余额</button>
           <button class="metric-tab" data-metric="marginFloatRatio">融资余额/流通市值</button>
         </div>
-        <div class="metric-note metric-reading-row">
-          <span class="metric-reading" id="retailLatestReading"></span>
-        </div>
-        <div id="retailSentimentChart"></div>
+        ${chartShell("retailSentimentChart", "retailLatestReading")}
       </article>
 
     </div>
@@ -104,12 +102,12 @@ const moduleHtml = `
     <div class="retail-monthly-grid">
       <article class="valuation-panel">
         <div class="panel-head"><div><div class="panel-title">上交所 A 股新开户</div><div class="panel-subtitle">月度 · 万户</div></div></div>
-        <div id="retailAccountsChart" class="retail-monthly-chart"></div>
+        ${chartShell("retailAccountsChart", "retailAccountsLatest", "retail-monthly-chart")}
         <div class="metric-note"><span>上交所开户口径，非沪深两市新增投资者人数。</span><span class="metric-reading" id="retailAccountsCoverage"></span></div>
       </article>
       <article class="valuation-panel">
         <div class="panel-head"><div><div class="panel-title">已披露新基金发行份额</div><div class="panel-subtitle">月度 · 亿份</div></div></div>
-        <div id="retailFundsChart" class="retail-monthly-chart"></div>
+        ${chartShell("retailFundsChart", "retailFundsLatest", "retail-monthly-chart")}
         <div class="metric-note"><span>淡色月份披露不足 90%；均线仅使用连续三个覆盖达标月份。</span><span class="metric-reading" id="retailFundsCoverage"></span></div>
       </article>
     </div>
@@ -131,6 +129,7 @@ const moduleHtml = `
 const script = `
   <script id="retail-sentiment-script">
   (() => {
+    ${latestScript}
     const retailData = __RETAIL_DATA__;
     const monthlyData = __MONTHLY_DATA__;
     const fmt = (value, digits = 1) => Number.isFinite(value)
@@ -197,8 +196,11 @@ const script = `
         showSymbol: false, sampling: "lttb", connectNulls: false,
         lineStyle: { width: 2.2, color: market.color }, itemStyle: { color: market.color }
       }));
-      const latest = series.map(item => ({ name: item.name, point: item.data[item.data.length - 1] }))
-        .filter(item => item.point).map(item => item.name + " " + fmt(item.point[1], cfg.digits) + cfg.unit);
+      const latest = series.map(item => {
+        const market = markets.find(market => market.name === item.name);
+        const point = market.rows.findLast(row => Number.isFinite(row[activeMetric]));
+        return { name: item.name, color: item.itemStyle.color, value: point?.[activeMetric], date: point?.date, unit: cfg.unit, digits: cfg.digits };
+      });
       const span = coverage[activeMetric];
       document.getElementById("retailMetricSubtitle").textContent = cfg.subtitle + " · 周频 · 可用历史 " +
         (span.start ? span.start + " 至 " + span.end : "暂无");
@@ -206,11 +208,11 @@ const script = `
         ["时间与采样", "按自然周（周一至周日），每个指标取周内最后一次有效观测，横轴为实际观测日期。通常接近周五，节假日或缺报时可能提前，不取周平均、不跨周补值"],
         ["计算范围与来源", cfg.explanation]
       ]);
-      document.getElementById("retailLatestReading").textContent = latest.join(" / ") || "暂无数据";
+      renderChartLatest("retailLatestReading", cfg.title, latest);
       chart.setOption({
         animation: false,
         backgroundColor: "transparent",
-        grid: { left: 72, right: 28, top: 42, bottom: 64 },
+        grid: { left: 72, right: 28, top: chartLatestTop("retailLatestReading"), bottom: 64 },
         legend: { show: false },
         tooltip: {
           trigger: "axis", axisPointer: { type: "cross" },
@@ -283,10 +285,19 @@ const script = `
     function monthlyOption(rows, field, unit, color, fund = false) {
       const values = rows.map(row => row[field]);
       const average = movingAverage(values, index => !fund || rows[index].coverage >= 90);
+      const readingId = fund ? "retailFundsLatest" : "retailAccountsLatest";
+      const latest = rows.at(-1);
+      renderChartLatest(readingId, fund ? "新基金发行份额" : "上交所A股新开户", [
+        { name: fund ? "已披露份额" : "新开户", value: latest?.[field], date: latest?.month, unit, color, digits: 1,
+          status: fund && latest?.coverage < 90 ? "披露覆盖 " + fmt(latest.coverage, 1) + "%" : "" },
+        { name: "3月均线", value: average.at(-1), date: latest?.month, unit, color: fund ? "#36c2ff" : "#edf4ff", digits: 1,
+          status: Number.isFinite(average.at(-1)) ? "" : "连续三月覆盖不足" }
+      ]);
+      const top = chartLatestTop(readingId);
       return {
         animation: false,
-        grid: { left: 64, right: 20, top: 48, bottom: 58 },
-        legend: { top: 10, right: 18, textStyle: { color: "#8fa5bf", fontSize: 11 },
+        grid: { left: 64, right: 20, top: top + 30, bottom: 58 },
+        legend: { top: top - 2, right: 18, textStyle: { color: "#8fa5bf", fontSize: 11 },
           data: [fund ? "已披露份额" : "新开户", "3月均线"] },
         tooltip: { trigger: "axis", backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
           textStyle: { color: "#edf4ff" }, formatter(params) {
@@ -299,11 +310,7 @@ const script = `
           } },
         xAxis: { type: "category", data: rows.map(row => row.month), boundaryGap: true,
           axisLine: { lineStyle: { color: "#344760" } },
-          axisLabel: { color: "#7890aa", interval: 0, formatter(value, index) {
-            return window.innerWidth <= 620
-              ? (value.endsWith("-01") ? value.slice(0, 4) : "")
-              : (index % 6 === 0 ? value : "");
-          } } },
+          axisLabel: { color: "#7890aa", hideOverlap: true } },
         yAxis: { type: "value", min: 0, axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, 0) + unit },
           splitLine: { lineStyle: { color: "#17283d" } } },
         dataZoom: [{ type: "slider", bottom: 8, height: 18, borderColor: "#263b58",
@@ -325,6 +332,8 @@ const script = `
     const fundsChart = echarts.init(document.getElementById("retailFundsChart"), null, { renderer: "canvas" });
     accountsChart.setOption(monthlyOption(monthlyData.accounts, "accountsWan", "万户", "#f6c85f"));
     fundsChart.setOption(monthlyOption(monthlyData.funds, "sharesYi", "亿份", "#7ddc82", true));
+    bindLatestLegend(accountsChart, "retailAccountsLatest");
+    bindLatestLegend(fundsChart, "retailFundsLatest");
     const latestAccounts = monthlyData.accounts.at(-1);
     const latestFunds = monthlyData.funds.at(-1);
     document.getElementById("retailAccountsCoverage").textContent = "最新 " + latestAccounts.month;
@@ -332,6 +341,9 @@ const script = `
       "最新 " + latestFunds.month + " · 披露 " + latestFunds.coverage + "%";
     window.addEventListener("resize", () => {
       chart.resize(); accountsChart.resize(); fundsChart.resize();
+      layoutChartLatest(chart, "retailLatestReading");
+      layoutChartLatest(accountsChart, "retailAccountsLatest", true);
+      layoutChartLatest(fundsChart, "retailFundsLatest", true);
     });
     renderChart();
   })();

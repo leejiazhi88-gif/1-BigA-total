@@ -20,7 +20,9 @@ const html = fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8');
 const script = html.match(/<script id="official-sentiment-script">([\s\S]*?)<\/script>/)[1];
 const elements = new Map();
 const element = id => {
-  if (!elements.has(id)) elements.set(id, {textContent: ''});
+  if (!elements.has(id)) elements.set(id, {textContent: '',
+    get innerHTML() { return this.markup || ''; },
+    set innerHTML(value) { this.markup = value; this.textContent = value.replace(/<[^>]*>/g, ' '); }});
   return elements.get(id);
 };
 const button = dataset => ({dataset, attrs: {}, classList: {add() {}, remove() {}},

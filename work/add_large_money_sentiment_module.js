@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { guideCss, explanationScript } = require("./sentiment_explanations");
+const { chartShell, latestScript } = require("./chart_latest_readings");
 
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = process.argv.includes("--online-only")
@@ -98,10 +99,7 @@ const moduleHtml = `
           <button class="metric-tab active" data-mode="value" aria-pressed="true">持仓市值</button>
           <button class="metric-tab" data-mode="ratio" aria-pressed="false">持仓比例</button>
         </div>
-        <div class="metric-note metric-reading-row">
-          <span class="metric-reading" id="largeMoneyLatestReading"></span>
-        </div>
-        <div id="largeMoneyChart"></div>
+        ${chartShell("largeMoneyChart", "largeMoneyLatestReading")}
         <div id="largeMoneyHoldingCoverage" aria-live="polite" hidden></div>
       </article>
 
@@ -120,6 +118,7 @@ const moduleHtml = `
 const script = `
   <script id="large-money-sentiment-script">
   (() => {
+    ${latestScript}
     const largeMoneyData = __LARGE_MONEY_DATA__;
     const northHoldings = __NORTH_HOLDINGS_DATA__;
     const fundReports = __FUND_REPORTS_DATA__;
@@ -264,9 +263,14 @@ const script = `
       }));
       const points = series.flatMap(item => item.data);
       chartPoints = points;
-      const latest = series.map(item => {
-        const point = item.data.filter(point => Number.isFinite(point[1])).at(-1);
-        return item.name + " " + (point ? fmt(point[1], cfg.digits) + cfg.unit + "（" + point[0] + "）" : "暂无数据");
+      const latest = markets.filter(market => selectedSeries.has(market.key)).map(market => {
+        const full = holdingView ? northHoldings.series.map(row => [row.date, row[market.key][holdingMode]])
+          : fundView ? fundReports.series.map(row => [row.date, row[market.key][cfg.field]])
+          : etfView ? etfShares.series.map(row => [row.date, row[market.key]])
+          : smoothedRows(market.rows, activeMetric).map(row => [row[dateField] || row.date, row[activeMetric]]);
+        const point = full.findLast(point => Number.isFinite(point[1]));
+        return { name: market.name, color: market.color, value: point?.[1], date: point?.[0], unit: cfg.unit, digits: cfg.digits,
+          status: point && full.at(-1)?.[0] > point[0] ? "最近一期缺失" : point ? "" : "暂无数据" };
       });
       document.getElementById("largeMoneyMetricSubtitle").textContent = "两市合计 / 沪市 / 深市 · " + cfg.subtitle + (smoothable ? " · " + smoothingLabel : "");
       const details = [["时间与采样", samplingNotes[activeMetric]], ["计算与来源", cfg.explanation]];
@@ -275,7 +279,7 @@ const script = `
           : "按股票所属交易所拆分为沪市、深市，仅含沪深A股；两市合计为两者之和。完整抓取周内无该市场记录时，记为已披露汇总零值，不代表实际没有交易；整周无记录留空"]);
       if (smoothable) details.push(["当前平滑方式", smoothingLabel + "。7点／30点均线为当前及此前6／29个周采样点的算术平均，不是7／30天，也不是累计值。窗口不足或含缺失值时留空，不跳过缺失、不补零；先用完整历史计算，再截取所选时间范围。沪深及两市分别计算，最新读数与悬浮值均为当前模式的值"]);
       renderExplanation("largeMoney", activeMetric, details);
-      document.getElementById("largeMoneyLatestReading").textContent = (smoothable ? smoothingLabel + " · " : "") + latest.join(" / ");
+      renderChartLatest("largeMoneyLatestReading", cfg.title, latest, smoothable ? smoothingLabel : "");
       document.getElementById("largeMoneyHoldingModes").hidden = !holdingView;
       const coverage = document.getElementById("largeMoneyHoldingCoverage");
       coverage.hidden = !(holdingView || fundView || etfView);
@@ -313,7 +317,7 @@ const script = `
       }
       chart.setOption({
         animation: false, backgroundColor: "transparent",
-        grid: { left: 12, right: 24, top: 42, bottom: 64, containLabel: true },
+        grid: { left: 12, right: 24, top: chartLatestTop("largeMoneyLatestReading"), bottom: 64, containLabel: true },
         tooltip: {
           trigger: "axis", axisPointer: { type: "cross" },
           confine: true, backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
@@ -397,7 +401,10 @@ const script = `
       });
     });
 
-    window.addEventListener("resize", () => chart.resize());
+    window.addEventListener("resize", () => {
+      chart.resize();
+      layoutChartLatest(chart, "largeMoneyLatestReading");
+    });
     renderChart();
   })();
   </script>

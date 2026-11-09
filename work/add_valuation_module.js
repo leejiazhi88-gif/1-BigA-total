@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { latestCss, chartShell, latestScript } = require("./chart_latest_readings");
 
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
@@ -19,6 +20,7 @@ function stripExistingModule(html) {
 
 const css = `
   <style id="valuation-module-style">
+    ${latestCss}
     .page-nav {
       position: sticky; top: 0; z-index: 20; display: flex; gap: 8px;
       width: fit-content; max-width: 100%; overflow-x: auto; margin: 0 0 20px; padding: 6px;
@@ -131,9 +133,8 @@ const moduleHtml = `
         </div>
         <div class="metric-note">
           <span id="valuationMetricNote">PE越高，市场对未来盈利增长的要求越高。</span>
-          <span class="metric-reading" id="valuationLatestReading"></span>
         </div>
-        <div id="valuationChart"></div>
+        ${chartShell("valuationChart", "valuationLatestReading")}
       </article>
 
     </div>
@@ -148,6 +149,7 @@ ${END_MARKER}
 const js = `
   <script id="valuation-module-script">
   (() => {
+    ${latestScript}
     const valuationExtra = __VALUATION_EXTRA__;
     const fmt = (value, digits = 1) => Number.isFinite(value)
       ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits })
@@ -229,8 +231,6 @@ const js = `
       })[activeMetric];
       const shPoints = valuationPoints("sh", activeMetric);
       const szPoints = valuationPoints("sz", activeMetric);
-      const shLatest = shPoints[shPoints.length - 1]?.[1];
-      const szLatest = szPoints[szPoints.length - 1]?.[1];
       const latestDate = shPoints[shPoints.length - 1]?.[0] || "暂无";
       const rangeLabel = activeYears ? activeYears + "年" : "全部可用";
       document.getElementById("valuationMetricSubtitle").textContent =
@@ -239,8 +239,10 @@ const js = `
         (activeMetric === "equityBondSpread" && valuationExtra.meta.bondStatus !== "refreshed"
           ? " 部分日期的国债收益率缺失，收益差仅显示同日数据齐全的观测，最新为 " + latestDate + "。PE与PB独立更新。" : "") +
         (activeMetric === "equityBondSpread" ? " 10年期国债收益率取中债到期收益率曲线；接口不可用时由中债官方公开数据补充。" : "");
-      document.getElementById("valuationLatestReading").textContent =
-        latestDate + "：上证 " + fmt(shLatest, 2) + cfg.unit + " / 深证 " + fmt(szLatest, 2) + cfg.unit;
+      renderChartLatest("valuationLatestReading", cfg.title, [
+        { name: "上证", color: COLORS.sh, value: shPoints.at(-1)?.[1], date: shPoints.at(-1)?.[0], unit: cfg.unit, digits: 2 },
+        { name: "深证", color: COLORS.sz, value: szPoints.at(-1)?.[1], date: szPoints.at(-1)?.[0], unit: cfg.unit, digits: 2 }
+      ], cfg.fixedRange ? rangeLabel + "样本" : "");
 
       const riskArea = cfg.fixedRange ? {
         silent: true,
@@ -253,7 +255,7 @@ const js = `
       valuationChart.setOption({
         animation: false,
         backgroundColor: "transparent",
-        grid: { left: 66, right: 28, top: 42, bottom: 64 },
+        grid: { left: 66, right: 28, top: chartLatestTop("valuationLatestReading"), bottom: 64 },
         tooltip: {
           trigger: "axis", axisPointer: { type: "cross" },
           backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
@@ -318,7 +320,10 @@ const js = `
       navLinks.forEach(item => item.classList.remove("active"));
       link.classList.add("active");
     }));
-    window.addEventListener("resize", () => valuationChart.resize());
+    window.addEventListener("resize", () => {
+      valuationChart.resize();
+      layoutChartLatest(valuationChart, "valuationLatestReading");
+    });
     renderValuationChart();
   })();
   </script>
@@ -345,6 +350,7 @@ html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
 html = insertBeforeLast(html, "</body>", valuationJs + "\n");
 if (process.argv.includes("--online-only") && originalHtml.includes('id="valuation"')) {
   html = originalHtml
+    .replace(/<style id="valuation-module-style">[\s\S]*?<\/style>/, () => css.trim())
     .replace(/<section class="module-shell" id="valuation">[\s\S]*?<\/section>/, () => moduleHtml.trim())
     .replace(/<script id="valuation-module-script">[\s\S]*?<\/script>/, () => valuationJs.trim());
 }

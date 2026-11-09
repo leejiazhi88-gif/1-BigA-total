@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { guideCss, explanationScript } = require("./sentiment_explanations");
+const { chartShell, latestScript } = require("./chart_latest_readings");
 
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
@@ -107,10 +108,7 @@ const moduleHtml = `
           <button type="button" data-rate="lpr1y" aria-pressed="true" style="--series-color:#36c2ff"><span class="official-series-mark"></span>1年期LPR</button>
           <button type="button" data-rate="lpr5y" aria-pressed="true" style="--series-color:#ff5d73"><span class="official-series-mark"></span>5年期以上LPR</button>
         </div>
-        <div class="metric-note metric-reading-row">
-          <span class="metric-reading" id="officialLatestReading"></span>
-        </div>
-        <div id="officialSentimentChart"></div>
+        ${chartShell("officialSentimentChart", "officialLatestReading")}
       </article>
 
     </div>
@@ -128,6 +126,7 @@ const moduleHtml = `
 const script = `
   <script id="official-sentiment-script">
   (() => {
+    ${latestScript}
     const officialData = __OFFICIAL_DATA__;
     const refinancingData = __REFINANCING_DATA__;
     const fmt = (value, digits = 1) => Number.isFinite(value)
@@ -197,6 +196,7 @@ const script = `
     let axisPrecision = { main: 1, value: 1, yoy: 1 };
     let macroChart = false;
     const chart = echarts.init(document.getElementById("officialSentimentChart"), null, { renderer: "canvas" });
+    bindLatestLegend(chart, "officialLatestReading");
     function axisBounds(points, key = "main") {
       const values = points.map(p => p[1]).filter(Number.isFinite);
       if (!values.length) return { min: 0, max: 1, interval: 1 };
@@ -319,15 +319,18 @@ const script = `
           ? "按股票所属交易所拆分沪市、深市，两市合计为两者之和。完整查询后某市场某月没有发行记录时记零，表示本数据源没有记录；若存在记录但发行金额缺失，该市场整月及两市合计留空，曲线不跨缺口连线，不用零代替缺失"
           : " 按股票所属交易所分为沪市、深市，两市合计为两者之和，仅含沪深A股。已披露样本按周汇总；周内某市场无可计入记录时记为样本汇总零值，不代表实际零融资或零减持。"
         : "此指标为全国口径，没有沪深市场拆分值"]]);
-      document.getElementById("officialLatestReading").textContent = series.map(s => {
+      const latest = series.map(s => {
         const point = macroView ? s.data.findLast(p => Number.isFinite(p[1])) : s.data.at(-1);
         const unit = macroView ? (s.yAxisIndex === 1 ? "%" : "万亿元") : cfg.unit;
         const digits = macroView ? (s.yAxisIndex === 1 ? 2 : 2) : cfg.digits;
-        return s.name + " " + (point ? (Number.isFinite(point[1]) ? fmt(point[1], digits) + unit : "披露金额不完整") + "（" + point[0] + "）" : "暂无数据");
-      }).join(" / ");
+        return { name: s.name, color: s.itemStyle.color, value: point?.[1], date: point?.[0], unit, digits,
+          status: point ? (Number.isFinite(point[1]) ? "" : "披露金额不完整") : "暂无数据" };
+      });
+      renderChartLatest("officialLatestReading", cfg.title, latest);
+      const readingTop = chartLatestTop("officialLatestReading");
       chart.setOption({
         animation: false, backgroundColor: "transparent",
-        grid: { left: 12, right: 24, top: 42, bottom: 64, containLabel: true },
+        grid: { left: 12, right: 24, top: readingTop + (macroView ? 30 : 0), bottom: 64, containLabel: true },
         tooltip: {
           trigger: "axis", axisPointer: { type: "cross" }, confine: true,
           backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
@@ -351,7 +354,7 @@ const script = `
           type: "time", axisLine: { lineStyle: { color: "#344760" } },
           axisLabel: { color: "#7890aa", hideOverlap: true }, splitLine: { show: false }
         },
-        legend: macroView ? { top: 10, right: 20, textStyle: { color: "#edf4ff" } } : { show: false },
+        legend: macroView ? { top: readingTop - 2, right: 20, textStyle: { color: "#edf4ff" } } : { show: false },
         yAxis: macroView ? [macroAxis(series[0].data, "value", "万亿元", "left"), macroAxis(series[1].data, "yoy", "%", "right")] : {
           type: "value", scale: true, ...axisBounds(chartPoints),
           axisLabel: { color: "#7890aa", formatter: value => axisFmt(value, axisPrecision.main) + cfg.unit },
@@ -406,7 +409,10 @@ const script = `
         renderChart();
       });
     });
-    window.addEventListener("resize", () => chart.resize());
+    window.addEventListener("resize", () => {
+      chart.resize();
+      layoutChartLatest(chart, "officialLatestReading", macroChart);
+    });
     renderChart();
   })();
   </script>
