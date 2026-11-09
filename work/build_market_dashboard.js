@@ -47,6 +47,24 @@ function stats(rows, prices) {
 
 function htmlTemplate(data, echartsSource) {
   const dataJson = JSON.stringify(data);
+  function latestPanel(prefix, title, items, top = "14px") {
+    return `<div class="price-latest" style="top:${top}" aria-live="polite">
+      <div class="price-latest-heading">
+        <h2>${title}</h2>
+        <div class="price-latest-date" id="${prefix}Date"></div>
+      </div>
+      <div class="price-latest-values">${items.map(item => `
+        <div class="price-latest-item" id="${prefix}${item.suffix}" style="color:${item.color}">
+          <div class="price-latest-name">${item.name}</div>
+          <div class="price-latest-value"><span id="${prefix}${item.suffix}Value"></span><small>${item.unit}</small></div>
+        </div>`).join("")}
+      </div>
+    </div>`;
+  }
+  const marketItems = unit => [
+    { suffix: "Sh", name: "上证", color: "var(--sh)", unit },
+    { suffix: "Sz", name: "深证", color: "var(--sz)", unit }
+  ];
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -111,7 +129,6 @@ function htmlTemplate(data, echartsSource) {
     .price-latest-date { color: var(--muted); font-size: 11px; }
     .price-latest-values { display: flex; gap: 20px; }
     .price-latest-item { min-width: 0; color: var(--sh); }
-    .price-latest-item[data-market="sz"] { color: var(--sz); }
     .price-latest-item[hidden] { display: none; }
     .price-latest-name { display: flex; align-items: center; gap: 6px; font-size: 12px; }
     .price-latest-name::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
@@ -137,8 +154,9 @@ function htmlTemplate(data, echartsSource) {
       .wrap { padding: 20px 12px 26px; }
       .toolbar { align-items: flex-start; flex-direction: column; }
       .notes { grid-template-columns: 1fr; }
+      #chart { height: 1240px; min-height: 1240px; }
       .price-latest { right: 20px; flex-direction: column; align-items: stretch; gap: 10px; }
-      .price-latest-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+      .price-latest-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; column-gap: 8px; row-gap: 4px; }
       .price-latest-heading h2 { margin: 0; }
     }
   </style>
@@ -168,22 +186,13 @@ function htmlTemplate(data, echartsSource) {
       </div>
     </div>
     <div class="overview-chart-shell">
-      <div class="price-latest" aria-live="polite">
-        <div class="price-latest-heading">
-          <h2>指数价格</h2>
-          <div class="price-latest-date" id="priceLatestDate"></div>
-        </div>
-        <div class="price-latest-values">
-          <div class="price-latest-item" data-market="sh" id="priceLatestSh">
-            <div class="price-latest-name">上证综指</div>
-            <div class="price-latest-value"><span id="priceLatestShValue"></span><small>点</small></div>
-          </div>
-          <div class="price-latest-item" data-market="sz" id="priceLatestSz">
-            <div class="price-latest-name">深证成指</div>
-            <div class="price-latest-value"><span id="priceLatestSzValue"></span><small>点</small></div>
-          </div>
-        </div>
-      </div>
+      ${latestPanel("priceLatest", "指数价格", marketItems("点").map((item, i) => ({ ...item, name: i ? "深证成指" : "上证综指" })))}
+      ${latestPanel("tradingLatest", "交易规模 · 沪深A股合计", [
+        { suffix: "Volume", name: "交易量", color: "#5cdbad", unit: "亿股" },
+        { suffix: "Amount", name: "交易额", color: "#f6c85f", unit: "亿元" }
+      ], "28%")}
+      ${latestPanel("peLatest", "市盈率 PE(TTM)", marketItems("倍"), "52%")}
+      ${latestPanel("profitLatest", "过去12个月合计利润（亿元）", marketItems("亿元"), "73%")}
       <div id="chart"></div>
     </div>
     <div class="note" id="trading-scale"><strong>交易规模口径：</strong>沪深A股合计（上证A指 000002.SH + 深证A指 399107.SZ），不含B股、北交所、基金和债券。成交量按手×100÷1亿换算为亿股；成交额按千元×1000÷1亿换算为亿元。每周展示最后交易日的单日值，不是整周累计。两条曲线采用独立纵轴，上方市场勾选不改变两市合计口径。最新 ${data.trading.at(-1).date}：成交量 ${data.trading.at(-1).volume.toFixed(2)} 亿股，成交额 ${data.trading.at(-1).amount.toFixed(2)} 亿元。</div>
@@ -291,27 +300,44 @@ function overviewYAxis() {
 }
 function renderOverview() {
   chart.setOption({ series: visibleSeries(), yAxis: overviewYAxis() }, { replaceMerge: ["series", "yAxis"] });
-  renderLatestPrices();
+  renderLatestReadings();
 }
-function renderLatestPrices() {
-  const dates = [];
-  for (const [market, suffix] of [["sh", "Sh"], ["sz", "Sz"]]) {
-    const latest = DATA.prices[market].at(-1);
-    document.getElementById("priceLatest" + suffix).hidden = !visibleMarkets[market];
-    document.getElementById("priceLatest" + suffix + "Value").textContent = fmt(latest.close);
-    if (visibleMarkets[market]) dates.push(latest.date);
+function renderLatestReadings() {
+  for (const [prefix, source, field, digits, caption] of [
+    ["priceLatest", DATA.prices, "close", 2, "最新收盘"],
+    ["peLatest", DATA, "pe", 2, "最新数据"],
+    ["profitLatest", DATA, "profit", 0, "最新数据"]
+  ]) {
+    const dates = [];
+    for (const [market, suffix] of [["sh", "Sh"], ["sz", "Sz"]]) {
+      const latest = source[market].at(-1);
+      document.getElementById(prefix + suffix).hidden = !visibleMarkets[market];
+      document.getElementById(prefix + suffix + "Value").textContent = fmt(latest[field], digits);
+      if (visibleMarkets[market]) dates.push(latest.date);
+    }
+    document.getElementById(prefix + "Date").textContent = caption + " · " + [...new Set(dates)].join(" / ");
   }
-  const date = document.getElementById("priceLatestDate");
-  date.textContent = "最新收盘 · " + [...new Set(dates)].join(" / ");
+  const trading = DATA.trading.at(-1);
+  document.getElementById("tradingLatestDate").textContent = "最新交易日 · " + trading.date;
+  document.getElementById("tradingLatestVolumeValue").textContent = fmt(trading.volume);
+  document.getElementById("tradingLatestAmountValue").textContent = fmt(trading.amount);
 }
 function overviewGrids() {
-  const priceTop = chart.getWidth() <= 620 ? 112 : 82;
+  const height = chart.getHeight();
+  const headerSpace = chart.getWidth() <= 620 ? 98 : 68;
+  const grid = (start, end, extra = 0) => {
+    const top = Math.round(height * start) + headerSpace + extra;
+    return { left: 72, right: 68, top, height: Math.round(height * end) - 24 - top };
+  };
   return [
-    { left: 72, right: 68, top: priceTop, height: Math.round(chart.getHeight() * 0.26) - priceTop },
-    { left: 72, right: 68, top: "76%", height: "17%" },
-    { left: 72, right: 68, top: "55%", height: "15%" },
-    { left: 72, right: 68, top: "33%", height: "15%" }
+    { left: 72, right: 68, top: 14 + headerSpace, height: Math.round(height * 0.26) - 14 - headerSpace },
+    grid(0.73, 0.95),
+    grid(0.52, 0.73),
+    grid(0.28, 0.52, 18)
   ];
+}
+function overviewLegend() {
+  return { data: ["交易量", "交易额"], top: Math.round(chart.getHeight() * 0.28) + (chart.getWidth() <= 620 ? 86 : 48), left: "center", textStyle: { color: "#edf4ff" } };
 }
 const commonAxis = {
   type: "time", min: "${START}", max: "${END}", axisLine: { lineStyle: { color: "#344760" } },
@@ -322,12 +348,7 @@ chart.setOption({
   animation: false,
   backgroundColor: "transparent",
   grid: overviewGrids(),
-  title: [
-    { text: "交易规模 · 沪深A股合计", left: 20, top: "28%", textStyle: { color: "#edf4ff", fontSize: 13 } },
-    { text: "市盈率 PE(TTM)", left: 20, top: "52%", textStyle: { color: "#edf4ff", fontSize: 13 } },
-    { text: "过去12个月合计利润（亿元）", left: 20, top: "73%", textStyle: { color: "#edf4ff", fontSize: 13 } }
-  ],
-  legend: { data: ["交易量", "交易额"], top: "30%", left: "center", textStyle: { color: "#edf4ff" } },
+  legend: overviewLegend(),
   tooltip: {
     trigger: "axis", axisPointer: { type: "cross", link: [{ xAxisIndex: "all" }] },
     backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f", textStyle: { color: "#edf4ff" },
@@ -360,7 +381,11 @@ chart.setOption({
   ],
   series: visibleSeries()
 });
-renderLatestPrices();
+renderLatestReadings();
+chart.on("legendselectchanged", event => {
+  document.getElementById("tradingLatestVolume").hidden = event.selected["交易量"] === false;
+  document.getElementById("tradingLatestAmount").hidden = event.selected["交易额"] === false;
+});
 chart.on("datazoom", () => {
   const zoom = chart.getOption().dataZoom[0];
   const start = Date.parse("${START}"), end = Date.parse("${END}");
@@ -394,7 +419,7 @@ document.querySelectorAll(".ranges [data-years]").forEach(btn => btn.addEventLis
 }));
 window.addEventListener("resize", () => {
   chart.resize();
-  chart.setOption({ grid: overviewGrids() });
+  chart.setOption({ grid: overviewGrids(), legend: overviewLegend() });
 });
 </script>
 </body>
