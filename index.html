@@ -60,8 +60,8 @@
     .price-latest-heading { flex-shrink: 0; }
     .price-latest-heading h2 { margin: 0 0 6px; font-size: 13px; font-weight: 700; }
     .price-latest-date { color: var(--muted); font-size: 11px; }
-    .price-latest-values { display: flex; gap: 24px; }
-    .price-latest-item { min-width: 132px; color: var(--sh); }
+    .price-latest-values { display: flex; gap: 20px; }
+    .price-latest-item { min-width: 0; color: var(--sh); }
     .price-latest-item[data-market="sz"] { color: var(--sz); }
     .price-latest-item[hidden] { display: none; }
     .price-latest-name { display: flex; align-items: center; gap: 6px; font-size: 12px; }
@@ -91,8 +91,6 @@
       .price-latest { right: 20px; flex-direction: column; align-items: stretch; gap: 10px; }
       .price-latest-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
       .price-latest-heading h2 { margin: 0; }
-      .price-latest-values { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-      .price-latest-item { min-width: 0; }
     }
   </style>
 
