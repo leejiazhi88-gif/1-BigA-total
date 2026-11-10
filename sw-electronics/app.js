@@ -34,6 +34,8 @@ function peView(rows){
  const threshold=values.length>=8?Math.max(quantile(values,.75)+3*(quantile(values,.75)-quantile(values,.25)),3*quantile(values,.5)):Infinity;
  const spikes=new Set();for(let i=first;i<=last;i++)if(positivePE(rows[i].pe)&&rows[i].pe>threshold)spikes.add(i);
  const normal=values.filter(v=>v<=threshold),max=nice(Math.max(0,...normal))*(spikes.size?1.18:1.08);
+ // Statistical candidates that still fit the regular axis keep their true-height solid line.
+ for(const i of spikes)if(rows[i].pe<=max)spikes.delete(i);
  return {threshold,spikes,max,cap:max*.92,count:values.length};
 }
 function chartAxes(rows,mini,view){
