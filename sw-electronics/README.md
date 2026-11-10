@@ -1,4 +1,4 @@
-# 申万电子季度研究
+# 2.2 全览图
 
 公开地址：https://leejiazhi88-gif.github.io/1-BigA-total/sw-electronics/
 
