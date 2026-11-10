@@ -70,7 +70,9 @@
         "name": "利润表及单位",
         "url": "https://tushare.pro/document/2?doc_id=33"
       }
-    ]
+    ],
+    "peAuditDate": "2026-11-10",
+    "peVersionRule": "重建TTM同时查询合并报表、调整合并表和调整前合并表；每个版本仅在实际公告日（缺失时使用公告日）不晚于估值日时可用；同报告期选当时可得最新版本。"
   },
   "rawIncomeRows": 30378,
   "financialCompanyQuarterRows": 17693,
@@ -82,6 +84,14 @@
       "2005Q4"
     ],
     "marketIncompleteQuarters": [],
-    "peCoverageMinimum": 0.8780287516446552
+    "peCoverageMinimum": 0.9933884495519884
+  },
+  "peAudit": {
+    "report": "pe-audit.json",
+    "requeriedCompanies": 299,
+    "originalAndAdjustedReportRows": 22677,
+    "changedCompanyQuarters": 276,
+    "changedQuarters": 77,
+    "financialAndMarketTotalsUnchanged": true
   }
 }
