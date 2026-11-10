@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "asOf": "2026-11-10",
+    "industry": "商贸零售",
+    "indexCode": "801200.SI",
+    "classification": "申万2021版一级",
+    "universeType": "截至取数日在市的最新成分固定回溯，上市后纳入",
+    "universeCount": 100,
+    "rawMembershipCount": 117,
+    "excludedInactive": [
+      {
+        "code": "000653.SZ",
+        "name": "ST九州(退市)"
+      },
+      {
+        "code": "600306.SH",
+        "name": "退市商城(退市)"
+      },
+      {
+        "code": "600891.SH",
+        "name": "退市秋林(退市)"
+      },
+      {
+        "code": "600723.SH",
+        "name": "首商股份(退市)"
+      },
+      {
+        "code": "002336.SZ",
+        "name": "人乐退(退市)"
+      },
+      {
+        "code": "000861.SZ",
+        "name": "海印股份(退市)"
+      },
+      {
+        "code": "600870.SH",
+        "name": "退市厦华(退市)"
+      },
+      {
+        "code": "600145.SH",
+        "name": "退市新亿(退市)"
+      },
+      {
+        "code": "600608.SH",
+        "name": "退市沪科(退市)"
+      },
+      {
+        "code": "002499.SZ",
+        "name": "科林退(退市)"
+      },
+      {
+        "code": "600122.SH",
+        "name": "*ST宏图(退市)"
+      },
+      {
+        "code": "600811.SH",
+        "name": "*ST东方(退市)"
+      },
+      {
+        "code": "600788.SH",
+        "name": "*ST达曼(退市)"
+      },
+      {
+        "code": "600632.SH",
+        "name": "华联商厦(退市)"
+      },
+      {
+        "code": "600631.SH",
+        "name": "百联股份(退市)"
+      },
+      {
+        "code": "002280.SZ",
+        "name": "ST联络(退市)"
+      },
+      {
+        "code": "600247.SH",
+        "name": "*ST成城(退市)"
+      }
+    ],
+    "latestQuarter": "2026Q3",
+    "quarters": 87,
+    "source": "Tushare MCP",
+    "peVersionRule": "重建TTM包含合并、调整合并及调整前合并报表；版本仅在实际公告日不晚于估值日时可用。",
+    "currencyUnit": "亿元人民币",
+    "peMethod": "整体法TTM，含亏损；有效样本市值÷有效样本TTM归母净利润",
+    "financialMethod": "合并营业总收入（缺失时营业收入）及归母净利润；累计财报差分为单季；采用截至取数日已披露版本",
+    "estimateMethod": "最新季度缺报：上年同季营收×最近累计营收同比增长倍数；估算营收×最近累计归母净利率",
+    "quoteCarryMethod": "季度末无每日指标时沿用此前最后一条总市值，并标注原始日期；并非重算停牌期间股本变动",
+    "sourceLinks": [
+      {
+        "name": "申万2021分类",
+        "url": "https://tushare.pro/document/2?doc_id=181"
+      },
+      {
+        "name": "行业成分",
+        "url": "https://tushare.pro/document/2?doc_id=335"
+      },
+      {
+        "name": "每日指标及单位",
+        "url": "https://tushare.pro/document/2?doc_id=32"
+      },
+      {
+        "name": "利润表及单位",
+        "url": "https://tushare.pro/document/2?doc_id=33"
+      }
+    ]
+  },
+  "rawIncomeRows": 14861,
+  "financialCompanyQuarterRows": 6667,
+  "collectionFailures": [],
+  "validation": {
+    "uniqueQuarters": 87,
+    "financialIncompleteQuarters": [],
+    "marketIncompleteQuarters": [],
+    "peCoverageMinimum": 0.9880482868349918
+  },
+  "collection": {
+    "asOf": "2026-11-10",
+    "classification": "SW2021",
+    "members": {
+      "api": "index_member_all",
+      "l1_code": "801200.SI",
+      "is_new": "Y"
+    },
+    "income": {
+      "api": "income_vip",
+      "periods": "2003Q1–2026Q3",
+      "report_types": [
+        "1",
+        "4",
+        "5"
+      ],
+      "fields": [
+        "ts_code",
+        "ann_date",
+        "f_ann_date",
+        "end_date",
+        "report_type",
+        "total_revenue",
+        "revenue",
+        "n_income_attr_p",
+        "update_flag"
+      ]
+    },
+    "daily_basic": {
+      "quarterEndQueries": 87,
+      "carry": "latest valid quote no later than quarter-end"
+    },
+    "cache": "work/all-data"
+  }
+}

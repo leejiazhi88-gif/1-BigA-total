@@ -1,0 +1,1910 @@
+{
+  "asOf": "2026-11-10",
+  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+  "summary": {
+    "industry": "国防军工",
+    "code": "801740.SI",
+    "companies": 141,
+    "quarters": 87,
+    "companyQuarterRows": 6367,
+    "latest": {
+      "quarter": "2026Q3",
+      "endDate": "20260930",
+      "tradeDate": "20260930",
+      "companies": 140,
+      "marketCap": 28662.60346799001,
+      "marketCapObserved": 28662.60346799001,
+      "pe": 74.36067830892799,
+      "peMarketCap": 28662.60346799001,
+      "peProfit": 385.45376561672225,
+      "peCoverage": 1.0,
+      "peMissingCount": 0,
+      "peRebuiltCount": 54,
+      "revenue": 1543.4795725615002,
+      "profit": 98.57562433889997,
+      "reportedCount": 140,
+      "estimatedCount": 0,
+      "missingCount": 0,
+      "estimatedRevenue": 0,
+      "estimatedProfit": 0,
+      "carriedCount": 0,
+      "marketMissingCount": 0,
+      "financialCoverage": 1.0
+    },
+    "financialIncompleteQuarters": 0,
+    "peCoverageMin": 0.915558196158755,
+    "carriedCompanyQuarters": 199
+  },
+  "quality": [
+    {
+      "quarter": "2005Q1",
+      "financialMissing": [],
+      "peMissing": [
+        {
+          "code": "000561.SZ",
+          "name": "烽火电子"
+        }
+      ],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000561.SZ",
+          "name": "烽火电子",
+          "date": "20040330",
+          "marketCap": 10.322327210000001
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000561.SZ",
+          "name": "烽火电子",
+          "date": "20040330",
+          "marketCap": 10.322327210000001
+        },
+        {
+          "code": "002023.SZ",
+          "name": "海特高新",
+          "date": "20050617",
+          "marketCap": 12.69942041
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000561.SZ",
+          "name": "烽火电子",
+          "date": "20040330",
+          "marketCap": 10.322327210000001
+        },
+        {
+          "code": "002025.SZ",
+          "name": "航天电器",
+          "date": "20050916",
+          "marketCap": 26.1984
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600879.SH",
+          "name": "航天电子",
+          "date": "20051216",
+          "marketCap": 38.45407768
+        },
+        {
+          "code": "000738.SZ",
+          "name": "航发控制",
+          "date": "20051222",
+          "marketCap": 10.46214
+        },
+        {
+          "code": "600862.SH",
+          "name": "中航高科",
+          "date": "20051229",
+          "marketCap": 4.14893889
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600685.SH",
+          "name": "中船防务",
+          "date": "20060320",
+          "marketCap": 25.970572949999998
+        },
+        {
+          "code": "000768.SZ",
+          "name": "中航西飞",
+          "date": "20060310",
+          "marketCap": 26.9352
+        },
+        {
+          "code": "600372.SH",
+          "name": "中航机载",
+          "date": "20060324",
+          "marketCap": 12.136
+        },
+        {
+          "code": "600435.SH",
+          "name": "北方导航",
+          "date": "20060324",
+          "marketCap": 5.526
+        },
+        {
+          "code": "600967.SH",
+          "name": "内蒙一机",
+          "date": "20060324",
+          "marketCap": 6.604
+        },
+        {
+          "code": "600562.SH",
+          "name": "国睿科技",
+          "date": "20060316",
+          "marketCap": 4.29696292
+        },
+        {
+          "code": "600855.SH",
+          "name": "航天长峰",
+          "date": "20060324",
+          "marketCap": 14.607692000000002
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600038.SH",
+          "name": "中直股份",
+          "date": "20060629",
+          "marketCap": 44.901284999999994
+        },
+        {
+          "code": "600372.SH",
+          "name": "中航机载",
+          "date": "20060612",
+          "marketCap": 17.179
+        },
+        {
+          "code": "600391.SH",
+          "name": "航发科技",
+          "date": "20060629",
+          "marketCap": 17.304
+        },
+        {
+          "code": "600184.SH",
+          "name": "光电股份",
+          "date": "20060623",
+          "marketCap": 8.673
+        },
+        {
+          "code": "000697.SZ",
+          "name": "炼石航空",
+          "date": "20060623",
+          "marketCap": 9.04640672
+        },
+        {
+          "code": "600893.SH",
+          "name": "航发动力",
+          "date": "20060629",
+          "marketCap": 16.09139425
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000768.SZ",
+          "name": "中航西飞",
+          "date": "20060922",
+          "marketCap": 67.338
+        },
+        {
+          "code": "600184.SH",
+          "name": "光电股份",
+          "date": "20060804",
+          "marketCap": 8.316
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000519.SZ",
+          "name": "中兵红箭",
+          "date": "20061228",
+          "marketCap": 7.53145184
+        },
+        {
+          "code": "600893.SH",
+          "name": "航发动力",
+          "date": "20061201",
+          "marketCap": 15.6685547
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600893.SH",
+          "name": "航发动力",
+          "date": "20061201",
+          "marketCap": 15.6685547
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q2",
+      "financialMissing": [],
+      "peMissing": [
+        {
+          "code": "600879.SH",
+          "name": "航天电子"
+        }
+      ],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600879.SH",
+          "name": "航天电子",
+          "date": "20070628",
+          "marketCap": 143.77049631
+        },
+        {
+          "code": "000738.SZ",
+          "name": "航发控制",
+          "date": "20070628",
+          "marketCap": 23.54976
+        },
+        {
+          "code": "000768.SZ",
+          "name": "中航西飞",
+          "date": "20070517",
+          "marketCap": 194.12136
+        },
+        {
+          "code": "600862.SH",
+          "name": "中航高科",
+          "date": "20070510",
+          "marketCap": 38.55651834
+        },
+        {
+          "code": "000697.SZ",
+          "name": "炼石航空",
+          "date": "20070628",
+          "marketCap": 12.8016352
+        },
+        {
+          "code": "600893.SH",
+          "name": "航发动力",
+          "date": "20070528",
+          "marketCap": 35.94136235
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600435.SH",
+          "name": "北方导航",
+          "date": "20070823",
+          "marketCap": 28.224
+        },
+        {
+          "code": "600862.SH",
+          "name": "中航高科",
+          "date": "20070510",
+          "marketCap": 38.55651834
+        },
+        {
+          "code": "600893.SH",
+          "name": "航发动力",
+          "date": "20070528",
+          "marketCap": 35.94136235
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600038.SH",
+          "name": "中直股份",
+          "date": "20071203",
+          "marketCap": 105.38813999999999
+        },
+        {
+          "code": "600316.SH",
+          "name": "洪都航空",
+          "date": "20071101",
+          "marketCap": 96.2388
+        },
+        {
+          "code": "600372.SH",
+          "name": "中航机载",
+          "date": "20071227",
+          "marketCap": 34.645
+        },
+        {
+          "code": "600435.SH",
+          "name": "北方导航",
+          "date": "20070823",
+          "marketCap": 28.224
+        },
+        {
+          "code": "600862.SH",
+          "name": "中航高科",
+          "date": "20070510",
+          "marketCap": 38.55651834
+        },
+        {
+          "code": "600893.SH",
+          "name": "航发动力",
+          "date": "20070528",
+          "marketCap": 35.94136235
+        },
+        {
+          "code": "000547.SZ",
+          "name": "航天发展",
+          "date": "20071221",
+          "marketCap": 29.8467697
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600435.SH",
+          "name": "北方导航",
+          "date": "20070823",
+          "marketCap": 28.224
+        },
+        {
+          "code": "000697.SZ",
+          "name": "炼石航空",
+          "date": "20080305",
+          "marketCap": 17.61624436
+        },
+        {
+          "code": "600893.SH",
+          "name": "航发动力",
+          "date": "20070528",
+          "marketCap": 35.94136235
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000561.SZ",
+          "name": "烽火电子",
+          "date": "20080515",
+          "marketCap": 25.17059789
+        },
+        {
+          "code": "600372.SH",
+          "name": "中航机载",
+          "date": "20080616",
+          "marketCap": 22.058
+        },
+        {
+          "code": "600893.SH",
+          "name": "航发动力",
+          "date": "20070528",
+          "marketCap": 35.94136235
+        },
+        {
+          "code": "002214.SZ",
+          "name": "大立科技",
+          "date": "20080627",
+          "marketCap": 14.19
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000561.SZ",
+          "name": "烽火电子",
+          "date": "20080515",
+          "marketCap": 25.17059789
+        },
+        {
+          "code": "600893.SH",
+          "name": "航发动力",
+          "date": "20070528",
+          "marketCap": 35.94136235
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2009Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000561.SZ",
+          "name": "烽火电子",
+          "date": "20090324",
+          "marketCap": 30.172956459999998
+        },
+        {
+          "code": "600391.SH",
+          "name": "航发科技",
+          "date": "20090330",
+          "marketCap": 25.89157574
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000561.SZ",
+          "name": "烽火电子",
+          "date": "20090427",
+          "marketCap": 42.400944079999995
+        },
+        {
+          "code": "000738.SZ",
+          "name": "航发控制",
+          "date": "20090629",
+          "marketCap": 37.15452
+        },
+        {
+          "code": "600372.SH",
+          "name": "中航机载",
+          "date": "20090409",
+          "marketCap": 34.194
+        },
+        {
+          "code": "000547.SZ",
+          "name": "航天发展",
+          "date": "20090629",
+          "marketCap": 17.75136016
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600372.SH",
+          "name": "中航机载",
+          "date": "20090409",
+          "marketCap": 34.194
+        },
+        {
+          "code": "000519.SZ",
+          "name": "中兵红箭",
+          "date": "20090914",
+          "marketCap": 29.189154719999998
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600372.SH",
+          "name": "中航机载",
+          "date": "20090409",
+          "marketCap": 34.194
+        },
+        {
+          "code": "600760.SH",
+          "name": "中航沈飞",
+          "date": "20091230",
+          "marketCap": 22.87779227
+        },
+        {
+          "code": "000697.SZ",
+          "name": "炼石航空",
+          "date": "20091224",
+          "marketCap": 18.250727729999998
+        },
+        {
+          "code": "000547.SZ",
+          "name": "航天发展",
+          "date": "20091225",
+          "marketCap": 23.45628004
+        },
+        {
+          "code": "300034.SZ",
+          "name": "钢研高纳",
+          "date": "20091229",
+          "marketCap": 40.666394319999995
+        },
+        {
+          "code": "002025.SZ",
+          "name": "航天电器",
+          "date": "20091230",
+          "marketCap": 44.022
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600372.SH",
+          "name": "中航机载",
+          "date": "20090409",
+          "marketCap": 34.194
+        },
+        {
+          "code": "000697.SZ",
+          "name": "炼石航空",
+          "date": "20091224",
+          "marketCap": 18.250727729999998
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600372.SH",
+          "name": "中航机载",
+          "date": "20090409",
+          "marketCap": 34.194
+        },
+        {
+          "code": "600855.SH",
+          "name": "航天长峰",
+          "date": "20100611",
+          "marketCap": 27.9144216
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600765.SH",
+          "name": "中航重机",
+          "date": "20100910",
+          "marketCap": 140.040576
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2011Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000768.SZ",
+          "name": "中航西飞",
+          "date": "20110330",
+          "marketCap": 289.88135748
+        },
+        {
+          "code": "002214.SZ",
+          "name": "大立科技",
+          "date": "20110304",
+          "marketCap": 51.54
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600862.SH",
+          "name": "中航高科",
+          "date": "20110629",
+          "marketCap": 40.66794111
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600435.SH",
+          "name": "北方导航",
+          "date": "20110929",
+          "marketCap": 68.806584
+        },
+        {
+          "code": "600760.SH",
+          "name": "中航沈飞",
+          "date": "20110816",
+          "marketCap": 38.25441137
+        },
+        {
+          "code": "600764.SH",
+          "name": "中国海防",
+          "date": "20110929",
+          "marketCap": 22.7511619
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000768.SZ",
+          "name": "中航西飞",
+          "date": "20111227",
+          "marketCap": 179.87509874
+        },
+        {
+          "code": "002214.SZ",
+          "name": "大立科技",
+          "date": "20111109",
+          "marketCap": 37.9
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600038.SH",
+          "name": "中直股份",
+          "date": "20120206",
+          "marketCap": 59.137455
+        },
+        {
+          "code": "600372.SH",
+          "name": "中航机载",
+          "date": "20120329",
+          "marketCap": 197.78294328
+        },
+        {
+          "code": "600118.SH",
+          "name": "中国卫星",
+          "date": "20120329",
+          "marketCap": 121.48459135
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600372.SH",
+          "name": "中航机载",
+          "date": "20120628",
+          "marketCap": 236.51783296
+        },
+        {
+          "code": "002338.SZ",
+          "name": "奥普光电",
+          "date": "20120628",
+          "marketCap": 23.76
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600562.SH",
+          "name": "国睿科技",
+          "date": "20120927",
+          "marketCap": 25.563145379999998
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2013Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600893.SH",
+          "name": "航发动力",
+          "date": "20130122",
+          "marketCap": 155.04627148
+        },
+        {
+          "code": "302132.SZ",
+          "name": "中航成飞",
+          "date": "20130301",
+          "marketCap": 19.404
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2013Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600685.SH",
+          "name": "中船防务",
+          "date": "20130927",
+          "marketCap": 72.08936372999999
+        },
+        {
+          "code": "000547.SZ",
+          "name": "航天发展",
+          "date": "20130828",
+          "marketCap": 35.31534955
+        },
+        {
+          "code": "002189.SZ",
+          "name": "中光学",
+          "date": "20130827",
+          "marketCap": 15.281707999999998
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002446.SZ",
+          "name": "盛路通信",
+          "date": "20131101",
+          "marketCap": 14.36880398
+        },
+        {
+          "code": "002389.SZ",
+          "name": "航天彩虹",
+          "date": "20131112",
+          "marketCap": 32.89239598
+        },
+        {
+          "code": "002519.SZ",
+          "name": "银河电子",
+          "date": "20131101",
+          "marketCap": 28.17408
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600862.SH",
+          "name": "中航高科",
+          "date": "20140228",
+          "marketCap": 19.32923319
+        },
+        {
+          "code": "002111.SZ",
+          "name": "威海广泰",
+          "date": "20140321",
+          "marketCap": 39.79156018
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600685.SH",
+          "name": "中船防务",
+          "date": "20140404",
+          "marketCap": 176.63363918000002
+        },
+        {
+          "code": "002625.SZ",
+          "name": "光启技术",
+          "date": "20140509",
+          "marketCap": 14.53658976
+        },
+        {
+          "code": "600862.SH",
+          "name": "中航高科",
+          "date": "20140228",
+          "marketCap": 19.32923319
+        },
+        {
+          "code": "000547.SZ",
+          "name": "航天发展",
+          "date": "20140416",
+          "marketCap": 50.25967005
+        },
+        {
+          "code": "002151.SZ",
+          "name": "北斗星通",
+          "date": "20140516",
+          "marketCap": 58.44127527
+        },
+        {
+          "code": "600764.SH",
+          "name": "中国海防",
+          "date": "20140521",
+          "marketCap": 25.05925078
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600685.SH",
+          "name": "中船防务",
+          "date": "20140404",
+          "marketCap": 176.63363918000002
+        },
+        {
+          "code": "000768.SZ",
+          "name": "中航西飞",
+          "date": "20140923",
+          "marketCap": 419.04046897
+        },
+        {
+          "code": "600391.SH",
+          "name": "航发科技",
+          "date": "20140924",
+          "marketCap": 83.72080747
+        },
+        {
+          "code": "002413.SZ",
+          "name": "雷科防务",
+          "date": "20140711",
+          "marketCap": 18.49995
+        },
+        {
+          "code": "300123.SZ",
+          "name": "ST亚光",
+          "date": "20140912",
+          "marketCap": 29.12084965
+        },
+        {
+          "code": "600764.SH",
+          "name": "中国海防",
+          "date": "20140521",
+          "marketCap": 25.05925078
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002625.SZ",
+          "name": "光启技术",
+          "date": "20141230",
+          "marketCap": 21.34471662
+        },
+        {
+          "code": "300252.SZ",
+          "name": "金信诺",
+          "date": "20141110",
+          "marketCap": 70.9212203
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002446.SZ",
+          "name": "盛路通信",
+          "date": "20150109",
+          "marketCap": 54.57929134
+        },
+        {
+          "code": "300008.SZ",
+          "name": "天海防务",
+          "date": "20150323",
+          "marketCap": 43.22010243
+        },
+        {
+          "code": "300065.SZ",
+          "name": "海兰信",
+          "date": "20150326",
+          "marketCap": 72.60349871
+        },
+        {
+          "code": "300177.SZ",
+          "name": "中海达",
+          "date": "20150320",
+          "marketCap": 76.05391808
+        },
+        {
+          "code": "300034.SZ",
+          "name": "钢研高纳",
+          "date": "20150323",
+          "marketCap": 100.83216544999999
+        },
+        {
+          "code": "300101.SZ",
+          "name": "振芯科技",
+          "date": "20150310",
+          "marketCap": 100.2468
+        },
+        {
+          "code": "002151.SZ",
+          "name": "北斗星通",
+          "date": "20150325",
+          "marketCap": 112.35458341
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600879.SH",
+          "name": "航天电子",
+          "date": "20150514",
+          "marketCap": 254.68657407
+        },
+        {
+          "code": "300008.SZ",
+          "name": "天海防务",
+          "date": "20150323",
+          "marketCap": 43.22010243
+        },
+        {
+          "code": "600967.SH",
+          "name": "内蒙一机",
+          "date": "20150410",
+          "marketCap": 141.03271902999998
+        },
+        {
+          "code": "000519.SZ",
+          "name": "中兵红箭",
+          "date": "20150612",
+          "marketCap": 192.32729691
+        },
+        {
+          "code": "000697.SZ",
+          "name": "炼石航空",
+          "date": "20150515",
+          "marketCap": 189.45169658999998
+        },
+        {
+          "code": "002413.SZ",
+          "name": "雷科防务",
+          "date": "20150626",
+          "marketCap": 165.11128909
+        },
+        {
+          "code": "002414.SZ",
+          "name": "高德红外",
+          "date": "20150512",
+          "marketCap": 236.28
+        },
+        {
+          "code": "300123.SZ",
+          "name": "ST亚光",
+          "date": "20150514",
+          "marketCap": 59.0506118
+        },
+        {
+          "code": "002214.SZ",
+          "name": "大立科技",
+          "date": "20150612",
+          "marketCap": 95.86133319
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600967.SH",
+          "name": "内蒙一机",
+          "date": "20150410",
+          "marketCap": 141.03271902999998
+        },
+        {
+          "code": "000519.SZ",
+          "name": "中兵红箭",
+          "date": "20150612",
+          "marketCap": 192.32729691
+        },
+        {
+          "code": "002413.SZ",
+          "name": "雷科防务",
+          "date": "20150626",
+          "marketCap": 165.11128909
+        },
+        {
+          "code": "600990.SH",
+          "name": "四创电子",
+          "date": "20150831",
+          "marketCap": 85.7805301
+        },
+        {
+          "code": "300123.SZ",
+          "name": "ST亚光",
+          "date": "20150514",
+          "marketCap": 59.0506118
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002383.SZ",
+          "name": "合众思壮",
+          "date": "20151214",
+          "marketCap": 79.62212561
+        },
+        {
+          "code": "600990.SH",
+          "name": "四创电子",
+          "date": "20150831",
+          "marketCap": 85.7805301
+        },
+        {
+          "code": "002465.SZ",
+          "name": "海格通信",
+          "date": "20151229",
+          "marketCap": 358.12595104999997
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300045.SZ",
+          "name": "华力创通",
+          "date": "20160323",
+          "marketCap": 99.36648000000001
+        },
+        {
+          "code": "002389.SZ",
+          "name": "航天彩虹",
+          "date": "20160202",
+          "marketCap": 92.0770131
+        },
+        {
+          "code": "603268.SH",
+          "name": "松发股份",
+          "date": "20160318",
+          "marketCap": 37.884
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002297.SZ",
+          "name": "博云新材",
+          "date": "20160617",
+          "marketCap": 61.69513939
+        },
+        {
+          "code": "002389.SZ",
+          "name": "航天彩虹",
+          "date": "20160202",
+          "marketCap": 92.0770131
+        },
+        {
+          "code": "000547.SZ",
+          "name": "航天发展",
+          "date": "20160418",
+          "marketCap": 220.16285014
+        },
+        {
+          "code": "600764.SH",
+          "name": "中国海防",
+          "date": "20160617",
+          "marketCap": 88.663586
+        },
+        {
+          "code": "002465.SZ",
+          "name": "海格通信",
+          "date": "20160608",
+          "marketCap": 266.93150576
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002297.SZ",
+          "name": "博云新材",
+          "date": "20160617",
+          "marketCap": 61.69513939
+        },
+        {
+          "code": "300447.SZ",
+          "name": "全信股份",
+          "date": "20160712",
+          "marketCap": 74.7792
+        },
+        {
+          "code": "002389.SZ",
+          "name": "航天彩虹",
+          "date": "20160202",
+          "marketCap": 92.0770131
+        },
+        {
+          "code": "600760.SH",
+          "name": "中航沈飞",
+          "date": "20160826",
+          "marketCap": 33.59719399
+        },
+        {
+          "code": "000576.SZ",
+          "name": "甘化科工",
+          "date": "20160817",
+          "marketCap": 68.24493003
+        },
+        {
+          "code": "000547.SZ",
+          "name": "航天发展",
+          "date": "20160418",
+          "marketCap": 220.16285014
+        },
+        {
+          "code": "300123.SZ",
+          "name": "ST亚光",
+          "date": "20160927",
+          "marketCap": 45.50019183
+        },
+        {
+          "code": "600764.SH",
+          "name": "中国海防",
+          "date": "20160617",
+          "marketCap": 88.663586
+        },
+        {
+          "code": "002465.SZ",
+          "name": "海格通信",
+          "date": "20160608",
+          "marketCap": 266.93150576
+        },
+        {
+          "code": "002025.SZ",
+          "name": "航天电器",
+          "date": "20160909",
+          "marketCap": 108.108
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300065.SZ",
+          "name": "海兰信",
+          "date": "20161207",
+          "marketCap": 93.04916161
+        },
+        {
+          "code": "002297.SZ",
+          "name": "博云新材",
+          "date": "20160617",
+          "marketCap": 61.69513939
+        },
+        {
+          "code": "000697.SZ",
+          "name": "炼石航空",
+          "date": "20161116",
+          "marketCap": 131.58077952
+        },
+        {
+          "code": "000547.SZ",
+          "name": "航天发展",
+          "date": "20160418",
+          "marketCap": 220.16285014
+        },
+        {
+          "code": "300123.SZ",
+          "name": "ST亚光",
+          "date": "20160927",
+          "marketCap": 45.50019183
+        },
+        {
+          "code": "002151.SZ",
+          "name": "北斗星通",
+          "date": "20161115",
+          "marketCap": 161.53176683
+        },
+        {
+          "code": "002025.SZ",
+          "name": "航天电器",
+          "date": "20160909",
+          "marketCap": 108.108
+        },
+        {
+          "code": "600855.SH",
+          "name": "航天长峰",
+          "date": "20161107",
+          "marketCap": 95.80427408
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300065.SZ",
+          "name": "海兰信",
+          "date": "20161207",
+          "marketCap": 93.04916161
+        },
+        {
+          "code": "000697.SZ",
+          "name": "炼石航空",
+          "date": "20161116",
+          "marketCap": 131.58077952
+        },
+        {
+          "code": "000733.SZ",
+          "name": "振华科技",
+          "date": "20170310",
+          "marketCap": 88.33020542999999
+        },
+        {
+          "code": "002025.SZ",
+          "name": "航天电器",
+          "date": "20160909",
+          "marketCap": 108.108
+        },
+        {
+          "code": "603268.SH",
+          "name": "松发股份",
+          "date": "20170224",
+          "marketCap": 43.2608
+        },
+        {
+          "code": "600855.SH",
+          "name": "航天长峰",
+          "date": "20161107",
+          "marketCap": 95.80427408
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300065.SZ",
+          "name": "海兰信",
+          "date": "20161207",
+          "marketCap": 93.04916161
+        },
+        {
+          "code": "002625.SZ",
+          "name": "光启技术",
+          "date": "20170412",
+          "marketCap": 460.91921583000004
+        },
+        {
+          "code": "300252.SZ",
+          "name": "金信诺",
+          "date": "20170426",
+          "marketCap": 96.67102614
+        },
+        {
+          "code": "600764.SH",
+          "name": "中国海防",
+          "date": "20170628",
+          "marketCap": 109.63422218
+        },
+        {
+          "code": "002025.SZ",
+          "name": "航天电器",
+          "date": "20160909",
+          "marketCap": 108.108
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600685.SH",
+          "name": "中船防务",
+          "date": "20170926",
+          "marketCap": 376.84080036999995
+        },
+        {
+          "code": "600150.SH",
+          "name": "中国船舶",
+          "date": "20170926",
+          "marketCap": 339.98161143
+        },
+        {
+          "code": "002625.SZ",
+          "name": "光启技术",
+          "date": "20170412",
+          "marketCap": 460.91921583000004
+        },
+        {
+          "code": "300177.SZ",
+          "name": "中海达",
+          "date": "20170711",
+          "marketCap": 52.00328432
+        },
+        {
+          "code": "002389.SZ",
+          "name": "航天彩虹",
+          "date": "20170928",
+          "marketCap": 176.57376279
+        },
+        {
+          "code": "300034.SZ",
+          "name": "钢研高纳",
+          "date": "20170811",
+          "marketCap": 67.67914261
+        },
+        {
+          "code": "002189.SZ",
+          "name": "中光学",
+          "date": "20170907",
+          "marketCap": 36.022591999999996
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600685.SH",
+          "name": "中船防务",
+          "date": "20170926",
+          "marketCap": 376.84080036999995
+        },
+        {
+          "code": "600150.SH",
+          "name": "中国船舶",
+          "date": "20170926",
+          "marketCap": 339.98161143
+        },
+        {
+          "code": "002625.SZ",
+          "name": "光启技术",
+          "date": "20171219",
+          "marketCap": 355.79054177
+        },
+        {
+          "code": "002297.SZ",
+          "name": "博云新材",
+          "date": "20170929",
+          "marketCap": 53.16433708
+        },
+        {
+          "code": "300424.SZ",
+          "name": "航新科技",
+          "date": "20171227",
+          "marketCap": 56.22942083
+        },
+        {
+          "code": "300629.SZ",
+          "name": "新劲刚",
+          "date": "20171215",
+          "marketCap": 33.87335027
+        },
+        {
+          "code": "000547.SZ",
+          "name": "航天发展",
+          "date": "20171027",
+          "marketCap": 154.82880955000002
+        },
+        {
+          "code": "002189.SZ",
+          "name": "中光学",
+          "date": "20170907",
+          "marketCap": 36.022591999999996
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002413.SZ",
+          "name": "雷科防务",
+          "date": "20180201",
+          "marketCap": 94.16572364000001
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300008.SZ",
+          "name": "天海防务",
+          "date": "20180615",
+          "marketCap": 46.1767785
+        },
+        {
+          "code": "600764.SH",
+          "name": "中国海防",
+          "date": "20180413",
+          "marketCap": 125.73533411000001
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000576.SZ",
+          "name": "甘化科工",
+          "date": "20180914",
+          "marketCap": 25.68595679
+        },
+        {
+          "code": "002413.SZ",
+          "name": "雷科防务",
+          "date": "20180914",
+          "marketCap": 67.58697635
+        },
+        {
+          "code": "300034.SZ",
+          "name": "钢研高纳",
+          "date": "20180926",
+          "marketCap": 46.02374166
+        },
+        {
+          "code": "600764.SH",
+          "name": "中国海防",
+          "date": "20180413",
+          "marketCap": 125.73533411000001
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600685.SH",
+          "name": "中船防务",
+          "date": "20190328",
+          "marketCap": 228.70533196
+        },
+        {
+          "code": "600150.SH",
+          "name": "中国船舶",
+          "date": "20190327",
+          "marketCap": 279.75787239
+        },
+        {
+          "code": "600855.SH",
+          "name": "航天长峰",
+          "date": "20190325",
+          "marketCap": 61.32384758
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600038.SH",
+          "name": "中直股份",
+          "date": "20221223",
+          "marketCap": 273.5761439
+        }
+      ]
+    },
+    {
+      "quarter": "2023Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000561.SZ",
+          "name": "烽火电子",
+          "date": "20230629",
+          "marketCap": 69.96290154
+        }
+      ]
+    },
+    {
+      "quarter": "2023Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300965.SZ",
+          "name": "恒宇信通",
+          "date": "20230915",
+          "marketCap": 34.68
+        }
+      ]
+    },
+    {
+      "quarter": "2023Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "603268.SH",
+          "name": "松发股份",
+          "date": "20240927",
+          "marketCap": 17.8182228
+        }
+      ]
+    },
+    {
+      "quarter": "2024Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "301213.SZ",
+          "name": "观想科技",
+          "date": "20251219",
+          "marketCap": 55.239999309999995
+        }
+      ]
+    },
+    {
+      "quarter": "2026Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    }
+  ]
+}

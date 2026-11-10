@@ -1,0 +1,1532 @@
+{
+  "asOf": "2026-11-10",
+  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+  "summary": {
+    "industry": "钢铁",
+    "code": "801040.SI",
+    "companies": 44,
+    "quarters": 87,
+    "companyQuarterRows": 3241,
+    "latest": {
+      "quarter": "2026Q3",
+      "endDate": "20260930",
+      "tradeDate": "20260930",
+      "companies": 44,
+      "marketCap": 8381.928092939997,
+      "marketCapObserved": 8381.928092939997,
+      "pe": 76.04698882792775,
+      "peMarketCap": 8381.928092939997,
+      "peProfit": 110.22038113706076,
+      "peCoverage": 1.0,
+      "peMissingCount": 0,
+      "peRebuiltCount": 15,
+      "revenue": 4754.7392908641,
+      "profit": -27.326572151799997,
+      "reportedCount": 44,
+      "estimatedCount": 0,
+      "missingCount": 0,
+      "estimatedRevenue": 0,
+      "estimatedProfit": 0,
+      "carriedCount": 0,
+      "marketMissingCount": 0,
+      "financialCoverage": 1.0
+    },
+    "financialIncompleteQuarters": 0,
+    "peCoverageMin": 1.0,
+    "carriedCompanyQuarters": 139
+  },
+  "quality": [
+    {
+      "quarter": "2005Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2005Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000717.SZ",
+          "name": "中南股份",
+          "date": "20050617",
+          "marketCap": 47.69358
+        },
+        {
+          "code": "600507.SH",
+          "name": "方大特钢",
+          "date": "20050617",
+          "marketCap": 8.475
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000629.SZ",
+          "name": "钒钛股份",
+          "date": "20050923",
+          "marketCap": 68.21732403
+        },
+        {
+          "code": "000778.SZ",
+          "name": "新兴铸管",
+          "date": "20050923",
+          "marketCap": 44.43637413
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600295.SH",
+          "name": "鄂尔多斯",
+          "date": "20051228",
+          "marketCap": 46.2336
+        },
+        {
+          "code": "000708.SZ",
+          "name": "中信特钢",
+          "date": "20051229",
+          "marketCap": 16.71799546
+        },
+        {
+          "code": "000761.SZ",
+          "name": "本钢板材",
+          "date": "20051229",
+          "marketCap": 49.3024
+        },
+        {
+          "code": "600126.SH",
+          "name": "杭钢股份",
+          "date": "20051223",
+          "marketCap": 26.265236249999997
+        },
+        {
+          "code": "600581.SH",
+          "name": "*ST八钢",
+          "date": "20051222",
+          "marketCap": 18.6895625
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600307.SH",
+          "name": "酒钢宏兴",
+          "date": "20060327",
+          "marketCap": 36.9824
+        },
+        {
+          "code": "000655.SZ",
+          "name": "金岭矿业",
+          "date": "20060224",
+          "marketCap": 11.32941614
+        },
+        {
+          "code": "000778.SZ",
+          "name": "新兴铸管",
+          "date": "20060330",
+          "marketCap": 35.0519091
+        },
+        {
+          "code": "600569.SH",
+          "name": "安阳钢铁",
+          "date": "20060324",
+          "marketCap": 49.44676703
+        },
+        {
+          "code": "600022.SH",
+          "name": "山东钢铁",
+          "date": "20060328",
+          "marketCap": 54.426
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000655.SZ",
+          "name": "金岭矿业",
+          "date": "20060619",
+          "marketCap": 14.44046863
+        },
+        {
+          "code": "000923.SZ",
+          "name": "河钢资源",
+          "date": "20060629",
+          "marketCap": 8.3325
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600782.SH",
+          "name": "新钢股份",
+          "date": "20060901",
+          "marketCap": 9.69966277
+        },
+        {
+          "code": "000898.SZ",
+          "name": "鞍钢股份",
+          "date": "20060928",
+          "marketCap": 332.24719903
+        },
+        {
+          "code": "600282.SH",
+          "name": "南钢股份",
+          "date": "20060928",
+          "marketCap": 36.8784
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000923.SZ",
+          "name": "河钢资源",
+          "date": "20061222",
+          "marketCap": 8.745
+        },
+        {
+          "code": "600516.SH",
+          "name": "方大炭素",
+          "date": "20061214",
+          "marketCap": 10.88
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600782.SH",
+          "name": "新钢股份",
+          "date": "20070319",
+          "marketCap": 13.52542618
+        },
+        {
+          "code": "600516.SH",
+          "name": "方大炭素",
+          "date": "20070329",
+          "marketCap": 23.28
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600010.SH",
+          "name": "包钢股份",
+          "date": "20070628",
+          "marketCap": 237.04370239
+        },
+        {
+          "code": "000655.SZ",
+          "name": "金岭矿业",
+          "date": "20070628",
+          "marketCap": 77.3901787
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000629.SZ",
+          "name": "钒钛股份",
+          "date": "20070810",
+          "marketCap": 338.21678780999997
+        },
+        {
+          "code": "600117.SH",
+          "name": "西宁特钢",
+          "date": "20070924",
+          "marketCap": 147.87324077000002
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600231.SH",
+          "name": "凌钢股份",
+          "date": "20071221",
+          "marketCap": 70.46455
+        },
+        {
+          "code": "000708.SZ",
+          "name": "中信特钢",
+          "date": "20071227",
+          "marketCap": 72.53452867
+        },
+        {
+          "code": "000898.SZ",
+          "name": "鞍钢股份",
+          "date": "20071227",
+          "marketCap": 2183.4650082199996
+        },
+        {
+          "code": "000825.SZ",
+          "name": "太钢不锈",
+          "date": "20071227",
+          "marketCap": 856.6766920399999
+        },
+        {
+          "code": "600382.SH",
+          "name": "广东明珠",
+          "date": "20071227",
+          "marketCap": 50.236750199999996
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2008Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600581.SH",
+          "name": "*ST八钢",
+          "date": "20080627",
+          "marketCap": 69.28698372
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000709.SZ",
+          "name": "河钢股份",
+          "date": "20080828",
+          "marketCap": 164.98658595
+        },
+        {
+          "code": "600282.SH",
+          "name": "南钢股份",
+          "date": "20080925",
+          "marketCap": 65.87568
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600295.SH",
+          "name": "鄂尔多斯",
+          "date": "20081230",
+          "marketCap": 83.4888
+        },
+        {
+          "code": "000717.SZ",
+          "name": "中南股份",
+          "date": "20081230",
+          "marketCap": 52.089161589999996
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600569.SH",
+          "name": "安阳钢铁",
+          "date": "20090330",
+          "marketCap": 92.63558972
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2009Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600507.SH",
+          "name": "方大特钢",
+          "date": "20090923",
+          "marketCap": 63.86289172
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600307.SH",
+          "name": "酒钢宏兴",
+          "date": "20091230",
+          "marketCap": 310.32946061
+        },
+        {
+          "code": "600399.SH",
+          "name": "抚顺特钢",
+          "date": "20091230",
+          "marketCap": 42.848
+        },
+        {
+          "code": "000709.SZ",
+          "name": "河钢股份",
+          "date": "20091215",
+          "marketCap": 257.08906895
+        },
+        {
+          "code": "600022.SH",
+          "name": "山东钢铁",
+          "date": "20091106",
+          "marketCap": 164.449296
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000959.SZ",
+          "name": "首钢股份",
+          "date": "20100330",
+          "marketCap": 154.55600757
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000709.SZ",
+          "name": "河钢股份",
+          "date": "20100629",
+          "marketCap": 255.12855606999997
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20100427",
+          "marketCap": 24.75
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600022.SH",
+          "name": "山东钢铁",
+          "date": "20100907",
+          "marketCap": 128.251728
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20100427",
+          "marketCap": 24.75
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000959.SZ",
+          "name": "首钢股份",
+          "date": "20101028",
+          "marketCap": 131.12045171999998
+        },
+        {
+          "code": "600022.SH",
+          "name": "山东钢铁",
+          "date": "20101230",
+          "marketCap": 110.77703999999999
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20100427",
+          "marketCap": 24.75
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000629.SZ",
+          "name": "钒钛股份",
+          "date": "20110330",
+          "marketCap": 785.6754526100001
+        },
+        {
+          "code": "000959.SZ",
+          "name": "首钢股份",
+          "date": "20101028",
+          "marketCap": 131.12045171999998
+        },
+        {
+          "code": "600022.SH",
+          "name": "山东钢铁",
+          "date": "20110217",
+          "marketCap": 112.025232
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20100427",
+          "marketCap": 24.75
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000932.SZ",
+          "name": "华菱钢铁",
+          "date": "20110629",
+          "marketCap": 123.94321603000002
+        },
+        {
+          "code": "000959.SZ",
+          "name": "首钢股份",
+          "date": "20101028",
+          "marketCap": 131.12045171999998
+        },
+        {
+          "code": "600581.SH",
+          "name": "*ST八钢",
+          "date": "20110629",
+          "marketCap": 112.28476898000001
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000959.SZ",
+          "name": "首钢股份",
+          "date": "20101028",
+          "marketCap": 131.12045171999998
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600808.SH",
+          "name": "马钢股份",
+          "date": "20111229",
+          "marketCap": 190.97689341
+        },
+        {
+          "code": "000655.SZ",
+          "name": "金岭矿业",
+          "date": "20111209",
+          "marketCap": 88.11035404
+        },
+        {
+          "code": "600507.SH",
+          "name": "方大特钢",
+          "date": "20111229",
+          "marketCap": 50.33052977
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "601005.SH",
+          "name": "重庆钢铁",
+          "date": "20120224",
+          "marketCap": 56.673259439999995
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000959.SZ",
+          "name": "首钢股份",
+          "date": "20120628",
+          "marketCap": 84.54599261999999
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2012Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2013Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2013Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2013Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2013Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2014Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600782.SH",
+          "name": "新钢股份",
+          "date": "20140212",
+          "marketCap": 45.70509788
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600295.SH",
+          "name": "鄂尔多斯",
+          "date": "20140505",
+          "marketCap": 77.4
+        },
+        {
+          "code": "600507.SH",
+          "name": "方大特钢",
+          "date": "20140627",
+          "marketCap": 41.90453833
+        },
+        {
+          "code": "600516.SH",
+          "name": "方大炭素",
+          "date": "20140627",
+          "marketCap": 164.86748025
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600295.SH",
+          "name": "鄂尔多斯",
+          "date": "20140505",
+          "marketCap": 77.4
+        },
+        {
+          "code": "600569.SH",
+          "name": "安阳钢铁",
+          "date": "20140912",
+          "marketCap": 55.53348014
+        },
+        {
+          "code": "002443.SZ",
+          "name": "金洲管道",
+          "date": "20140815",
+          "marketCap": 32.89784486
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600231.SH",
+          "name": "凌钢股份",
+          "date": "20141219",
+          "marketCap": 42.2101155
+        },
+        {
+          "code": "600399.SH",
+          "name": "抚顺特钢",
+          "date": "20141211",
+          "marketCap": 147.576
+        },
+        {
+          "code": "600126.SH",
+          "name": "杭钢股份",
+          "date": "20141216",
+          "marketCap": 51.259157630000004
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600516.SH",
+          "name": "方大炭素",
+          "date": "20150330",
+          "marketCap": 224.17851329
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000655.SZ",
+          "name": "金岭矿业",
+          "date": "20150521",
+          "marketCap": 116.26994692
+        },
+        {
+          "code": "000778.SZ",
+          "name": "新兴铸管",
+          "date": "20150612",
+          "marketCap": 472.17263399
+        },
+        {
+          "code": "000708.SZ",
+          "name": "中信特钢",
+          "date": "20150512",
+          "marketCap": 63.456477379999995
+        },
+        {
+          "code": "000709.SZ",
+          "name": "河钢股份",
+          "date": "20150629",
+          "marketCap": 743.3025496399999
+        },
+        {
+          "code": "000761.SZ",
+          "name": "本钢板材",
+          "date": "20150619",
+          "marketCap": 243.04
+        },
+        {
+          "code": "000932.SZ",
+          "name": "华菱钢铁",
+          "date": "20150513",
+          "marketCap": 142.03711618
+        },
+        {
+          "code": "000959.SZ",
+          "name": "首钢股份",
+          "date": "20150422",
+          "marketCap": 325.2974604
+        },
+        {
+          "code": "002110.SZ",
+          "name": "三钢闽光",
+          "date": "20150401",
+          "marketCap": 51.438140000000004
+        },
+        {
+          "code": "601003.SH",
+          "name": "柳钢股份",
+          "date": "20150615",
+          "marketCap": 184.5211104
+        },
+        {
+          "code": "002443.SZ",
+          "name": "金洲管道",
+          "date": "20150515",
+          "marketCap": 83.02541544
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20150624",
+          "marketCap": 520.16763216
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000708.SZ",
+          "name": "中信特钢",
+          "date": "20150512",
+          "marketCap": 63.456477379999995
+        },
+        {
+          "code": "601003.SH",
+          "name": "柳钢股份",
+          "date": "20150615",
+          "marketCap": 184.5211104
+        },
+        {
+          "code": "002443.SZ",
+          "name": "金洲管道",
+          "date": "20150825",
+          "marketCap": 59.60131704
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20150624",
+          "marketCap": 520.16763216
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20150624",
+          "marketCap": 520.16763216
+        },
+        {
+          "code": "600282.SH",
+          "name": "南钢股份",
+          "date": "20151229",
+          "marketCap": 125.59769689
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000717.SZ",
+          "name": "中南股份",
+          "date": "20160129",
+          "marketCap": 106.45907404
+        },
+        {
+          "code": "000932.SZ",
+          "name": "华菱钢铁",
+          "date": "20160325",
+          "marketCap": 119.11817599
+        },
+        {
+          "code": "600581.SH",
+          "name": "*ST八钢",
+          "date": "20160129",
+          "marketCap": 46.44680546
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600019.SH",
+          "name": "宝钢股份",
+          "date": "20160624",
+          "marketCap": 806.87943398
+        },
+        {
+          "code": "600295.SH",
+          "name": "鄂尔多斯",
+          "date": "20160629",
+          "marketCap": 81.4248
+        },
+        {
+          "code": "000629.SZ",
+          "name": "钒钛股份",
+          "date": "20160525",
+          "marketCap": 205.29493423
+        },
+        {
+          "code": "000923.SZ",
+          "name": "河钢资源",
+          "date": "20160405",
+          "marketCap": 31.284
+        },
+        {
+          "code": "000932.SZ",
+          "name": "华菱钢铁",
+          "date": "20160325",
+          "marketCap": 119.11817599
+        },
+        {
+          "code": "600581.SH",
+          "name": "*ST八钢",
+          "date": "20160129",
+          "marketCap": 46.44680546
+        },
+        {
+          "code": "601005.SH",
+          "name": "重庆钢铁",
+          "date": "20160601",
+          "marketCap": 111.78776902000001
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600019.SH",
+          "name": "宝钢股份",
+          "date": "20160624",
+          "marketCap": 806.87943398
+        },
+        {
+          "code": "000923.SZ",
+          "name": "河钢资源",
+          "date": "20160405",
+          "marketCap": 31.284
+        },
+        {
+          "code": "002478.SZ",
+          "name": "常宝股份",
+          "date": "20160824",
+          "marketCap": 52.53313000000001
+        },
+        {
+          "code": "601005.SH",
+          "name": "重庆钢铁",
+          "date": "20160601",
+          "marketCap": 111.78776902000001
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20160914",
+          "marketCap": 355.73160965
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "601005.SH",
+          "name": "重庆钢铁",
+          "date": "20160601",
+          "marketCap": 111.78776902000001
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20160914",
+          "marketCap": 355.73160965
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000717.SZ",
+          "name": "中南股份",
+          "date": "20170330",
+          "marketCap": 139.8485109
+        },
+        {
+          "code": "002443.SZ",
+          "name": "金洲管道",
+          "date": "20170109",
+          "marketCap": 62.15194109
+        },
+        {
+          "code": "601005.SH",
+          "name": "重庆钢铁",
+          "date": "20160601",
+          "marketCap": 111.78776902000001
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20160914",
+          "marketCap": 355.73160965
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000629.SZ",
+          "name": "钒钛股份",
+          "date": "20170419",
+          "marketCap": 263.7052084
+        },
+        {
+          "code": "000932.SZ",
+          "name": "华菱钢铁",
+          "date": "20170614",
+          "marketCap": 117.30878596999999
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20160914",
+          "marketCap": 355.73160965
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000629.SZ",
+          "name": "钒钛股份",
+          "date": "20170419",
+          "marketCap": 263.7052084
+        },
+        {
+          "code": "600581.SH",
+          "name": "*ST八钢",
+          "date": "20170713",
+          "marketCap": 100.71139006
+        },
+        {
+          "code": "002110.SZ",
+          "name": "三钢闽光",
+          "date": "20170711",
+          "marketCap": 217.85533297
+        },
+        {
+          "code": "601005.SH",
+          "name": "重庆钢铁",
+          "date": "20170731",
+          "marketCap": 95.37448547
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20160914",
+          "marketCap": 355.73160965
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000629.SZ",
+          "name": "钒钛股份",
+          "date": "20170419",
+          "marketCap": 263.7052084
+        },
+        {
+          "code": "601003.SH",
+          "name": "柳钢股份",
+          "date": "20171016",
+          "marketCap": 204.51089736
+        },
+        {
+          "code": "601005.SH",
+          "name": "重庆钢铁",
+          "date": "20170731",
+          "marketCap": 95.37448547
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20160914",
+          "marketCap": 355.73160965
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600399.SH",
+          "name": "抚顺特钢",
+          "date": "20180130",
+          "marketCap": 71.5
+        },
+        {
+          "code": "000629.SZ",
+          "name": "钒钛股份",
+          "date": "20170419",
+          "marketCap": 263.7052084
+        },
+        {
+          "code": "600022.SH",
+          "name": "山东钢铁",
+          "date": "20180326",
+          "marketCap": 221.12030224
+        },
+        {
+          "code": "002110.SZ",
+          "name": "三钢闽光",
+          "date": "20180321",
+          "marketCap": 262.22309624999997
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20160914",
+          "marketCap": 355.73160965
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600399.SH",
+          "name": "抚顺特钢",
+          "date": "20180130",
+          "marketCap": 71.5
+        },
+        {
+          "code": "000629.SZ",
+          "name": "钒钛股份",
+          "date": "20170419",
+          "marketCap": 263.7052084
+        },
+        {
+          "code": "000825.SZ",
+          "name": "太钢不锈",
+          "date": "20180413",
+          "marketCap": 341.77486776
+        },
+        {
+          "code": "600022.SH",
+          "name": "山东钢铁",
+          "date": "20180326",
+          "marketCap": 221.12030224
+        },
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20160914",
+          "marketCap": 355.73160965
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002075.SZ",
+          "name": "沙钢股份",
+          "date": "20160914",
+          "marketCap": 355.73160965
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000708.SZ",
+          "name": "中信特钢",
+          "date": "20181224",
+          "marketCap": 39.4131237
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000959.SZ",
+          "name": "首钢股份",
+          "date": "20210330",
+          "marketCap": 243.84086055999998
+        }
+      ]
+    },
+    {
+      "quarter": "2021Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000959.SZ",
+          "name": "首钢股份",
+          "date": "20260326",
+          "marketCap": 362.15697618
+        }
+      ]
+    },
+    {
+      "quarter": "2026Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    }
+  ]
+}

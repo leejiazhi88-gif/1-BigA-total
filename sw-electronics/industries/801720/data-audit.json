@@ -1,0 +1,2039 @@
+{
+  "asOf": "2026-11-10",
+  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+  "summary": {
+    "industry": "建筑装饰",
+    "code": "801720.SI",
+    "companies": 156,
+    "quarters": 87,
+    "companyQuarterRows": 7365,
+    "latest": {
+      "quarter": "2026Q3",
+      "endDate": "20260930",
+      "tradeDate": "20260930",
+      "companies": 155,
+      "marketCap": 16876.981597530008,
+      "marketCapObserved": 16876.981597530008,
+      "pe": 15.365425105765981,
+      "peMarketCap": 16876.981597530008,
+      "peProfit": 1098.3738804074353,
+      "peCoverage": 1.0,
+      "peMissingCount": 0,
+      "peRebuiltCount": 66,
+      "revenue": 16771.401554087097,
+      "profit": 188.582843933,
+      "reportedCount": 155,
+      "estimatedCount": 0,
+      "missingCount": 0,
+      "estimatedRevenue": 0,
+      "estimatedProfit": 0,
+      "carriedCount": 0,
+      "marketMissingCount": 0,
+      "financialCoverage": 1.0
+    },
+    "financialIncompleteQuarters": 5,
+    "peCoverageMin": 1.0,
+    "carriedCompanyQuarters": 217
+  },
+  "quality": [
+    {
+      "quarter": "2005Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600496.SH",
+          "name": "精工钢构",
+          "date": "20050330",
+          "marketCap": 6.281
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2005Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000065.SZ",
+          "name": "北方国际",
+          "date": "20050923",
+          "marketCap": 9.40510925
+        },
+        {
+          "code": "600170.SH",
+          "name": "上海建工",
+          "date": "20050923",
+          "marketCap": 36.2526192
+        },
+        {
+          "code": "600496.SH",
+          "name": "精工钢构",
+          "date": "20050923",
+          "marketCap": 9.383
+        },
+        {
+          "code": "600491.SH",
+          "name": "ST龙元",
+          "date": "20050923",
+          "marketCap": 19.7802
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600820.SH",
+          "name": "隧道股份",
+          "date": "20051123",
+          "marketCap": 21.45797308
+        },
+        {
+          "code": "000779.SZ",
+          "name": "甘咨询",
+          "date": "20051226",
+          "marketCap": 4.707078360000001
+        },
+        {
+          "code": "000032.SZ",
+          "name": "深桑达A",
+          "date": "20051222",
+          "marketCap": 9.81911216
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600512.SH",
+          "name": "腾达建设",
+          "date": "20060327",
+          "marketCap": 9.10490435
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20060329",
+          "marketCap": 7.995
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000779.SZ",
+          "name": "甘咨询",
+          "date": "20060629",
+          "marketCap": 4.98181056
+        },
+        {
+          "code": "600970.SH",
+          "name": "中材国际",
+          "date": "20060615",
+          "marketCap": 45.0912
+        },
+        {
+          "code": "000928.SZ",
+          "name": "中钢国际",
+          "date": "20060629",
+          "marketCap": 17.3134188
+        },
+        {
+          "code": "000628.SZ",
+          "name": "高新发展",
+          "date": "20060601",
+          "marketCap": 12.794316
+        },
+        {
+          "code": "600234.SH",
+          "name": "科新发展",
+          "date": "20060629",
+          "marketCap": 2.168166
+        },
+        {
+          "code": "600629.SH",
+          "name": "华建集团",
+          "date": "20060427",
+          "marketCap": 1.83166894
+        },
+        {
+          "code": "600720.SH",
+          "name": "中交设计",
+          "date": "20060615",
+          "marketCap": 13.06477696
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600853.SH",
+          "name": "龙建股份",
+          "date": "20060914",
+          "marketCap": 19.00668064
+        },
+        {
+          "code": "600248.SH",
+          "name": "陕建股份",
+          "date": "20060828",
+          "marketCap": 4.418526
+        },
+        {
+          "code": "600629.SH",
+          "name": "华建集团",
+          "date": "20060427",
+          "marketCap": 1.83166894
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000779.SZ",
+          "name": "甘咨询",
+          "date": "20061222",
+          "marketCap": 6.355471560000001
+        },
+        {
+          "code": "600039.SH",
+          "name": "四川路桥",
+          "date": "20061123",
+          "marketCap": 14.7
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20061215",
+          "marketCap": 7.89483696
+        },
+        {
+          "code": "600248.SH",
+          "name": "陕建股份",
+          "date": "20061228",
+          "marketCap": 4.431408
+        },
+        {
+          "code": "600667.SH",
+          "name": "太极实业",
+          "date": "20061130",
+          "marketCap": 14.383877859999998
+        },
+        {
+          "code": "600234.SH",
+          "name": "科新发展",
+          "date": "20061208",
+          "marketCap": 2.29957
+        },
+        {
+          "code": "600629.SH",
+          "name": "华建集团",
+          "date": "20060427",
+          "marketCap": 1.83166894
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600820.SH",
+          "name": "隧道股份",
+          "date": "20070329",
+          "marketCap": 56.33456845
+        },
+        {
+          "code": "000779.SZ",
+          "name": "甘咨询",
+          "date": "20070329",
+          "marketCap": 12.23053091
+        },
+        {
+          "code": "600477.SH",
+          "name": "杭萧钢构",
+          "date": "20070316",
+          "marketCap": 26.61418716
+        },
+        {
+          "code": "600629.SH",
+          "name": "华建集团",
+          "date": "20060427",
+          "marketCap": 1.83166894
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600853.SH",
+          "name": "龙建股份",
+          "date": "20070628",
+          "marketCap": 25.76676758
+        },
+        {
+          "code": "600248.SH",
+          "name": "陕建股份",
+          "date": "20070427",
+          "marketCap": 6.858376799999999
+        },
+        {
+          "code": "600629.SH",
+          "name": "华建集团",
+          "date": "20060427",
+          "marketCap": 1.83166894
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20070913",
+          "marketCap": 21.7585823
+        },
+        {
+          "code": "600248.SH",
+          "name": "陕建股份",
+          "date": "20070427",
+          "marketCap": 6.858376799999999
+        },
+        {
+          "code": "600629.SH",
+          "name": "华建集团",
+          "date": "20060427",
+          "marketCap": 1.83166894
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q4",
+      "financialMissing": [
+        {
+          "code": "601390.SH",
+          "name": "中国中铁"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20071008",
+          "marketCap": 22.846511420000002
+        },
+        {
+          "code": "600248.SH",
+          "name": "陕建股份",
+          "date": "20070427",
+          "marketCap": 6.858376799999999
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20071008",
+          "marketCap": 22.846511420000002
+        },
+        {
+          "code": "000628.SZ",
+          "name": "高新发展",
+          "date": "20080102",
+          "marketCap": 28.576296000000003
+        },
+        {
+          "code": "600248.SH",
+          "name": "陕建股份",
+          "date": "20070427",
+          "marketCap": 6.858376799999999
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "000628.SZ",
+          "name": "高新发展",
+          "date": "20080627",
+          "marketCap": 12.18114
+        },
+        {
+          "code": "600248.SH",
+          "name": "陕建股份",
+          "date": "20070427",
+          "marketCap": 6.858376799999999
+        },
+        {
+          "code": "600629.SH",
+          "name": "华建集团",
+          "date": "20080620",
+          "marketCap": 27.195953279999998
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600970.SH",
+          "name": "中材国际",
+          "date": "20080922",
+          "marketCap": 74.928
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "600248.SH",
+          "name": "陕建股份",
+          "date": "20070427",
+          "marketCap": 6.858376799999999
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600477.SH",
+          "name": "杭萧钢构",
+          "date": "20081230",
+          "marketCap": 17.50347006
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002051.SZ",
+          "name": "中工国际",
+          "date": "20090623",
+          "marketCap": 37.525
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600170.SH",
+          "name": "上海建工",
+          "date": "20100629",
+          "marketCap": 104.31016165999999
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20100421",
+          "marketCap": 21.50865264
+        },
+        {
+          "code": "600629.SH",
+          "name": "华建集团",
+          "date": "20100629",
+          "marketCap": 33.867166350000005
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20100421",
+          "marketCap": 21.50865264
+        },
+        {
+          "code": "000628.SZ",
+          "name": "高新发展",
+          "date": "20100802",
+          "marketCap": 23.242932
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20100421",
+          "marketCap": 21.50865264
+        },
+        {
+          "code": "002200.SZ",
+          "name": "交投生态",
+          "date": "20101228",
+          "marketCap": 40.08340869
+        },
+        {
+          "code": "000628.SZ",
+          "name": "高新发展",
+          "date": "20100802",
+          "marketCap": 23.242932
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q1",
+      "financialMissing": [
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600820.SH",
+          "name": "隧道股份",
+          "date": "20110114",
+          "marketCap": 84.42830703999999
+        },
+        {
+          "code": "600039.SH",
+          "name": "四川路桥",
+          "date": "20110325",
+          "marketCap": 28.728
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20100421",
+          "marketCap": 21.50865264
+        },
+        {
+          "code": "000628.SZ",
+          "name": "高新发展",
+          "date": "20100802",
+          "marketCap": 23.242932
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q2",
+      "financialMissing": [
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600170.SH",
+          "name": "上海建工",
+          "date": "20110628",
+          "marketCap": 164.02017427
+        },
+        {
+          "code": "002586.SZ",
+          "name": "围海股份",
+          "date": "20110629",
+          "marketCap": 26.9319
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20100421",
+          "marketCap": 21.50865264
+        },
+        {
+          "code": "000628.SZ",
+          "name": "高新发展",
+          "date": "20100802",
+          "marketCap": 23.242932
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q3",
+      "financialMissing": [
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002375.SZ",
+          "name": "亚厦股份",
+          "date": "20110929",
+          "marketCap": 124.4056
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20100421",
+          "marketCap": 21.50865264
+        },
+        {
+          "code": "000628.SZ",
+          "name": "高新发展",
+          "date": "20110916",
+          "marketCap": 25.56942
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q4",
+      "financialMissing": [
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600820.SH",
+          "name": "隧道股份",
+          "date": "20111226",
+          "marketCap": 57.72813001
+        },
+        {
+          "code": "002051.SZ",
+          "name": "中工国际",
+          "date": "20111207",
+          "marketCap": 123.26378999999999
+        },
+        {
+          "code": "601789.SH",
+          "name": "宁波建工",
+          "date": "20111216",
+          "marketCap": 23.999534
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20100421",
+          "marketCap": 21.50865264
+        },
+        {
+          "code": "600853.SH",
+          "name": "龙建股份",
+          "date": "20111229",
+          "marketCap": 15.94318744
+        },
+        {
+          "code": "002060.SZ",
+          "name": "广东建工",
+          "date": "20111229",
+          "marketCap": 32.38317532
+        },
+        {
+          "code": "600720.SH",
+          "name": "中交设计",
+          "date": "20111229",
+          "marketCap": 43.168621980000005
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600284.SH",
+          "name": "浦东建设",
+          "date": "20120329",
+          "marketCap": 35.997840000000004
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "002200.SZ",
+          "name": "交投生态",
+          "date": "20120329",
+          "marketCap": 15.22958008
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002542.SZ",
+          "name": "*ST中岩",
+          "date": "20120628",
+          "marketCap": 33.42672
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "002200.SZ",
+          "name": "交投生态",
+          "date": "20120628",
+          "marketCap": 16.40805949
+        },
+        {
+          "code": "000628.SZ",
+          "name": "高新发展",
+          "date": "20120628",
+          "marketCap": 14.156460000000001
+        },
+        {
+          "code": "600629.SH",
+          "name": "华建集团",
+          "date": "20120628",
+          "marketCap": 30.27598373
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20120830",
+          "marketCap": 27.756894179999996
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "601618.SH",
+          "name": "中国中冶",
+          "date": "20121227",
+          "marketCap": 431.886
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20080424",
+          "marketCap": 14.196
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20121214",
+          "marketCap": 27.49226278
+        },
+        {
+          "code": "600234.SH",
+          "name": "科新发展",
+          "date": "20121228",
+          "marketCap": 9.150553780000001
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20121214",
+          "marketCap": 27.49226278
+        },
+        {
+          "code": "600234.SH",
+          "name": "科新发展",
+          "date": "20121228",
+          "marketCap": 9.150553780000001
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600284.SH",
+          "name": "浦东建设",
+          "date": "20130621",
+          "marketCap": 65.8388
+        },
+        {
+          "code": "601886.SH",
+          "name": "江河集团",
+          "date": "20130619",
+          "marketCap": 148.064
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20130425",
+          "marketCap": 35.093064840000004
+        },
+        {
+          "code": "000928.SZ",
+          "name": "中钢国际",
+          "date": "20130513",
+          "marketCap": 27.328043400000002
+        },
+        {
+          "code": "600234.SH",
+          "name": "科新发展",
+          "date": "20130617",
+          "marketCap": 9.53520095
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300355.SZ",
+          "name": "蒙草生态",
+          "date": "20130729",
+          "marketCap": 56.72902455
+        },
+        {
+          "code": "002200.SZ",
+          "name": "交投生态",
+          "date": "20130805",
+          "marketCap": 21.56012974
+        },
+        {
+          "code": "002060.SZ",
+          "name": "广东建工",
+          "date": "20130913",
+          "marketCap": 25.304062520000002
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002542.SZ",
+          "name": "*ST中岩",
+          "date": "20131213",
+          "marketCap": 25.43076
+        },
+        {
+          "code": "600234.SH",
+          "name": "科新发展",
+          "date": "20131011",
+          "marketCap": 11.68112728
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600629.SH",
+          "name": "华建集团",
+          "date": "20140326",
+          "marketCap": 41.411977750000005
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002047.SZ",
+          "name": "宝鹰股份",
+          "date": "20140627",
+          "marketCap": 62.776141319999994
+        },
+        {
+          "code": "002542.SZ",
+          "name": "*ST中岩",
+          "date": "20140624",
+          "marketCap": 41.64312
+        },
+        {
+          "code": "601669.SH",
+          "name": "中国电建",
+          "date": "20140512",
+          "marketCap": 267.84
+        },
+        {
+          "code": "300284.SZ",
+          "name": "苏交科",
+          "date": "20140624",
+          "marketCap": 42.0
+        },
+        {
+          "code": "000032.SZ",
+          "name": "深桑达A",
+          "date": "20140522",
+          "marketCap": 20.468773730000002
+        },
+        {
+          "code": "002163.SZ",
+          "name": "海南发展",
+          "date": "20140625",
+          "marketCap": 27.963540000000002
+        },
+        {
+          "code": "600629.SH",
+          "name": "华建集团",
+          "date": "20140326",
+          "marketCap": 41.411977750000005
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002482.SZ",
+          "name": "广田集团",
+          "date": "20140925",
+          "marketCap": 85.9548174
+        },
+        {
+          "code": "000032.SZ",
+          "name": "深桑达A",
+          "date": "20140522",
+          "marketCap": 20.468773730000002
+        },
+        {
+          "code": "600234.SH",
+          "name": "科新发展",
+          "date": "20140903",
+          "marketCap": 27.47190592
+        },
+        {
+          "code": "600629.SH",
+          "name": "华建集团",
+          "date": "20140326",
+          "marketCap": 41.411977750000005
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000779.SZ",
+          "name": "甘咨询",
+          "date": "20141230",
+          "marketCap": 16.92884462
+        },
+        {
+          "code": "002135.SZ",
+          "name": "东南网架",
+          "date": "20141212",
+          "marketCap": 42.07132
+        },
+        {
+          "code": "002482.SZ",
+          "name": "广田集团",
+          "date": "20141209",
+          "marketCap": 78.2488801
+        },
+        {
+          "code": "002663.SZ",
+          "name": "普邦股份",
+          "date": "20141208",
+          "marketCap": 92.693664
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20140930",
+          "marketCap": 51.97445252
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20141225",
+          "marketCap": 43.51716431
+        },
+        {
+          "code": "600234.SH",
+          "name": "科新发展",
+          "date": "20140903",
+          "marketCap": 27.47190592
+        },
+        {
+          "code": "002323.SZ",
+          "name": "*ST雅博",
+          "date": "20141021",
+          "marketCap": 23.615566
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002047.SZ",
+          "name": "宝鹰股份",
+          "date": "20150325",
+          "marketCap": 120.37356676
+        },
+        {
+          "code": "000010.SZ",
+          "name": "*ST美丽",
+          "date": "20141225",
+          "marketCap": 43.51716431
+        },
+        {
+          "code": "002717.SZ",
+          "name": "*ST岭南",
+          "date": "20150325",
+          "marketCap": 60.424028
+        },
+        {
+          "code": "600667.SH",
+          "name": "太极实业",
+          "date": "20141231",
+          "marketCap": 62.78015413000001
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002116.SZ",
+          "name": "中国海诚",
+          "date": "20150422",
+          "marketCap": 78.16684981
+        },
+        {
+          "code": "002375.SZ",
+          "name": "亚厦股份",
+          "date": "20150616",
+          "marketCap": 390.86988167
+        },
+        {
+          "code": "002620.SZ",
+          "name": "*ST瑞和",
+          "date": "20150608",
+          "marketCap": 70.188
+        },
+        {
+          "code": "002586.SZ",
+          "name": "围海股份",
+          "date": "20150430",
+          "marketCap": 90.97941867
+        },
+        {
+          "code": "300197.SZ",
+          "name": "节能铁汉",
+          "date": "20150615",
+          "marketCap": 193.98462357
+        },
+        {
+          "code": "601789.SH",
+          "name": "宁波建工",
+          "date": "20150612",
+          "marketCap": 91.75152
+        },
+        {
+          "code": "002200.SZ",
+          "name": "交投生态",
+          "date": "20150528",
+          "marketCap": 49.84477332
+        },
+        {
+          "code": "002061.SZ",
+          "name": "浙江交科",
+          "date": "20150604",
+          "marketCap": 85.30347874
+        },
+        {
+          "code": "603017.SH",
+          "name": "中衡设计",
+          "date": "20150619",
+          "marketCap": 70.212
+        },
+        {
+          "code": "603018.SH",
+          "name": "华设集团",
+          "date": "20150407",
+          "marketCap": 83.1168
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000779.SZ",
+          "name": "甘咨询",
+          "date": "20150907",
+          "marketCap": 25.31869052
+        },
+        {
+          "code": "601618.SH",
+          "name": "中国中冶",
+          "date": "20150819",
+          "marketCap": 1488.669
+        },
+        {
+          "code": "002431.SZ",
+          "name": "ST棕榈",
+          "date": "20150825",
+          "marketCap": 92.36892522
+        },
+        {
+          "code": "300197.SZ",
+          "name": "节能铁汉",
+          "date": "20150615",
+          "marketCap": 193.98462357
+        },
+        {
+          "code": "002061.SZ",
+          "name": "浙江交科",
+          "date": "20150909",
+          "marketCap": 30.504378950000003
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000065.SZ",
+          "name": "北方国际",
+          "date": "20151020",
+          "marketCap": 83.76569894
+        },
+        {
+          "code": "600502.SH",
+          "name": "安徽建工",
+          "date": "20151019",
+          "marketCap": 72.71211053
+        },
+        {
+          "code": "002542.SZ",
+          "name": "*ST中岩",
+          "date": "20151225",
+          "marketCap": 158.3235
+        },
+        {
+          "code": "300197.SZ",
+          "name": "节能铁汉",
+          "date": "20151229",
+          "marketCap": 138.17972145
+        },
+        {
+          "code": "300355.SZ",
+          "name": "蒙草生态",
+          "date": "20151211",
+          "marketCap": 83.62841029
+        },
+        {
+          "code": "603828.SH",
+          "name": "*ST利达",
+          "date": "20151110",
+          "marketCap": 43.07718
+        },
+        {
+          "code": "600234.SH",
+          "name": "科新发展",
+          "date": "20151230",
+          "marketCap": 41.197736580000004
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600502.SH",
+          "name": "安徽建工",
+          "date": "20151019",
+          "marketCap": 72.71211053
+        },
+        {
+          "code": "600039.SH",
+          "name": "四川路桥",
+          "date": "20160324",
+          "marketCap": 121.39325341
+        },
+        {
+          "code": "002047.SZ",
+          "name": "宝鹰股份",
+          "date": "20160329",
+          "marketCap": 143.99356359
+        },
+        {
+          "code": "002542.SZ",
+          "name": "*ST中岩",
+          "date": "20151225",
+          "marketCap": 158.3235
+        },
+        {
+          "code": "002717.SZ",
+          "name": "*ST岭南",
+          "date": "20160224",
+          "marketCap": 153.33718538
+        },
+        {
+          "code": "300384.SZ",
+          "name": "三联虹普",
+          "date": "20160314",
+          "marketCap": 80.65008
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002469.SZ",
+          "name": "三维化学",
+          "date": "20160509",
+          "marketCap": 45.34398269
+        },
+        {
+          "code": "300355.SZ",
+          "name": "蒙草生态",
+          "date": "20160629",
+          "marketCap": 66.6589683
+        },
+        {
+          "code": "002663.SZ",
+          "name": "普邦股份",
+          "date": "20160427",
+          "marketCap": 125.64372064
+        },
+        {
+          "code": "300284.SZ",
+          "name": "苏交科",
+          "date": "20160519",
+          "marketCap": 108.07466556
+        },
+        {
+          "code": "000498.SZ",
+          "name": "山东路桥",
+          "date": "20160617",
+          "marketCap": 64.52001003000001
+        },
+        {
+          "code": "002713.SZ",
+          "name": "东易日盛",
+          "date": "20160628",
+          "marketCap": 72.48238037
+        },
+        {
+          "code": "601611.SH",
+          "name": "中国核建",
+          "date": "20160629",
+          "marketCap": 549.15
+        },
+        {
+          "code": "600853.SH",
+          "name": "龙建股份",
+          "date": "20160627",
+          "marketCap": 27.645594390000003
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "601789.SH",
+          "name": "宁波建工",
+          "date": "20160708",
+          "marketCap": 59.931312
+        },
+        {
+          "code": "002061.SZ",
+          "name": "浙江交科",
+          "date": "20160818",
+          "marketCap": 40.4971616
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2017Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "601789.SH",
+          "name": "宁波建工",
+          "date": "20170316",
+          "marketCap": 67.251912
+        },
+        {
+          "code": "002717.SZ",
+          "name": "*ST岭南",
+          "date": "20170224",
+          "marketCap": 103.34385485
+        },
+        {
+          "code": "002061.SZ",
+          "name": "浙江交科",
+          "date": "20170126",
+          "marketCap": 49.77428915
+        },
+        {
+          "code": "000032.SZ",
+          "name": "深桑达A",
+          "date": "20170224",
+          "marketCap": 66.33612445
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002586.SZ",
+          "name": "围海股份",
+          "date": "20170417",
+          "marketCap": 102.84309664
+        },
+        {
+          "code": "002856.SZ",
+          "name": "*ST美芝",
+          "date": "20170616",
+          "marketCap": 32.286924
+        },
+        {
+          "code": "000032.SZ",
+          "name": "深桑达A",
+          "date": "20170224",
+          "marketCap": 66.33612445
+        },
+        {
+          "code": "300500.SZ",
+          "name": "启迪设计",
+          "date": "20170414",
+          "marketCap": 42.0045
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300384.SZ",
+          "name": "三联虹普",
+          "date": "20170724",
+          "marketCap": 56.76655378
+        },
+        {
+          "code": "600248.SH",
+          "name": "陕建股份",
+          "date": "20170717",
+          "marketCap": 34.11509618
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000032.SZ",
+          "name": "深桑达A",
+          "date": "20171228",
+          "marketCap": 42.47876588
+        },
+        {
+          "code": "600248.SH",
+          "name": "陕建股份",
+          "date": "20170717",
+          "marketCap": 34.11509618
+        },
+        {
+          "code": "002163.SZ",
+          "name": "海南发展",
+          "date": "20171031",
+          "marketCap": 61.39122
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000779.SZ",
+          "name": "甘咨询",
+          "date": "20180320",
+          "marketCap": 25.11360539
+        },
+        {
+          "code": "600512.SH",
+          "name": "腾达建设",
+          "date": "20180207",
+          "marketCap": 61.237978469999995
+        },
+        {
+          "code": "002047.SZ",
+          "name": "宝鹰股份",
+          "date": "20180202",
+          "marketCap": 98.85358307999999
+        },
+        {
+          "code": "603955.SH",
+          "name": "大千生态",
+          "date": "20180313",
+          "marketCap": 31.2156
+        },
+        {
+          "code": "603843.SH",
+          "name": "*ST正平",
+          "date": "20180206",
+          "marketCap": 49.520371399999995
+        },
+        {
+          "code": "002775.SZ",
+          "name": "文科股份",
+          "date": "20180323",
+          "marketCap": 42.07415
+        },
+        {
+          "code": "002163.SZ",
+          "name": "海南发展",
+          "date": "20171031",
+          "marketCap": 61.39122
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000779.SZ",
+          "name": "甘咨询",
+          "date": "20180320",
+          "marketCap": 25.11360539
+        },
+        {
+          "code": "601390.SH",
+          "name": "中国中铁",
+          "date": "20180504",
+          "marketCap": 1706.46932526
+        },
+        {
+          "code": "002051.SZ",
+          "name": "中工国际",
+          "date": "20180404",
+          "marketCap": 173.81530130000002
+        },
+        {
+          "code": "002431.SZ",
+          "name": "ST棕榈",
+          "date": "20180529",
+          "marketCap": 100.22281933000001
+        },
+        {
+          "code": "300197.SZ",
+          "name": "节能铁汉",
+          "date": "20180525",
+          "marketCap": 122.40809866
+        },
+        {
+          "code": "002856.SZ",
+          "name": "*ST美芝",
+          "date": "20180604",
+          "marketCap": 32.337594
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300197.SZ",
+          "name": "节能铁汉",
+          "date": "20180525",
+          "marketCap": 122.40809866
+        },
+        {
+          "code": "002323.SZ",
+          "name": "*ST雅博",
+          "date": "20180816",
+          "marketCap": 9.76905849
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002323.SZ",
+          "name": "*ST雅博",
+          "date": "20180816",
+          "marketCap": 9.76905849
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002323.SZ",
+          "name": "*ST雅博",
+          "date": "20180816",
+          "marketCap": 9.76905849
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002323.SZ",
+          "name": "*ST雅博",
+          "date": "20180816",
+          "marketCap": 9.76905849
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002323.SZ",
+          "name": "*ST雅博",
+          "date": "20180816",
+          "marketCap": 9.76905849
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600039.SH",
+          "name": "四川路桥",
+          "date": "20210929",
+          "marketCap": 403.04631639
+        }
+      ]
+    },
+    {
+      "quarter": "2021Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002323.SZ",
+          "name": "*ST雅博",
+          "date": "20211229",
+          "marketCap": 40.12025549
+        }
+      ]
+    },
+    {
+      "quarter": "2022Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000628.SZ",
+          "name": "高新发展",
+          "date": "20230926",
+          "marketCap": 57.527324
+        }
+      ]
+    },
+    {
+      "quarter": "2023Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "601133.SH",
+          "name": "柏诚股份",
+          "date": "20250929",
+          "marketCap": 70.64886513
+        },
+        {
+          "code": "300506.SZ",
+          "name": "名家汇",
+          "date": "20250929",
+          "marketCap": 28.658578639999998
+        }
+      ]
+    },
+    {
+      "quarter": "2025Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "603843.SH",
+          "name": "*ST正平",
+          "date": "20260326",
+          "marketCap": 64.92503639
+        }
+      ]
+    },
+    {
+      "quarter": "2026Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "603137.SH",
+          "name": "恒尚节能",
+          "date": "20260615",
+          "marketCap": 23.67156902
+        }
+      ]
+    },
+    {
+      "quarter": "2026Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    }
+  ]
+}

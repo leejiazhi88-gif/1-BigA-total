@@ -75,7 +75,7 @@
     "peVersionRule": "重建TTM同时查询合并报表、调整合并表和调整前合并表；每个版本仅在实际公告日（缺失时使用公告日）不晚于估值日时可用；同报告期选当时可得最新版本。"
   },
   "rawIncomeRows": 30378,
-  "financialCompanyQuarterRows": 17693,
+  "financialCompanyQuarterRows": 17691,
   "collectionFailures": [],
   "validation": {
     "uniqueQuarters": 87,
@@ -93,5 +93,18 @@
     "changedCompanyQuarters": 276,
     "changedQuarters": 77,
     "financialAndMarketTotalsUnchanged": true
+  },
+  "bseBoundaryCorrection": {
+    "removedCompanyQuarters": [
+      {
+        "quarter": "2021Q2",
+        "code": "920212.BJ"
+      },
+      {
+        "quarter": "2021Q3",
+        "code": "920212.BJ"
+      }
+    ],
+    "effectiveAShareListing": "20211115"
   }
 }

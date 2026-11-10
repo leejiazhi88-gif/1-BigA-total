@@ -3,7 +3,7 @@ window.RESEARCH_MODULES={};
 function mountIndustry(root,BASE,sectorData,prefix=''){
 const GROUPS=[...sectorData.groups].sort((a,b)=>(b.series.at(-1).marketCap||0)-(a.series.at(-1).marketCap||0)),$=id=>root.querySelector('#'+CSS.escape(id))||root.querySelector('#'+CSS.escape(prefix+id));
 const D=BASE,S=BASE.series,L=S.at(-1);
-const selectedSectors=new Set(GROUPS.map(g=>g.code));
+const selectedSectors=new Set();
 const visibleMetrics={mv:true,pe:true,revenue:true,profit:true};
 const miniCharts=new Map();
 const fmt=(v,n=1)=>v==null?'—':Number(v).toLocaleString('zh-CN',{minimumFractionDigits:n,maximumFractionDigits:n});
@@ -127,26 +127,30 @@ root.querySelectorAll('[data-metric]').forEach(button=>button.addEventListener('
 const chartObserver=new ResizeObserver(entries=>{for(const entry of entries){const instance=echarts.getInstanceByDom(entry.target);if(instance&&!instance.isDisposed())instance.resize();}});chartObserver.observe($('chart'));
 
 function renderCoverage(){
-const E=D.estimates[0];
-if(E){
-$('estimate-panel').innerHTML=`<div><h3>最新季度估算：${L.reportedCount} 家实报，${L.estimatedCount} 家估算</h3><p>截至 ${D.meta.asOf}，数据源未返回中芯国际（688981.SH）三季报。最新柱形合计含其估算，斜纹与 * 标出含估算季度。</p><p>估算营收占行业合计 <b>${pct(L.estimatedRevenue/L.revenue,2)}</b>，估算利润占 <b>${pct(L.estimatedProfit/L.profit,2)}</b>。这是机械外推，不是公司业绩指引或券商一致预期。</p></div><div class="estimate-formula"><div>营收依据：2025Q3 单季营收 <b>${fmt(E.priorRevenue,2)} 亿</b> ×（1 + 2026H1 营收同比 <b>${pct(E.growth,2)}</b>）</div><div class="formula-result">中芯国际 2026Q3 估算营收 = <b>${fmt(E.revenue,2)} 亿元</b></div><div>利润依据：估算营收 × 2026H1 归母净利率 <b>${pct(E.margin,2)}</b></div><div class="formula-result">中芯国际 2026Q3 估算归母净利润 = <b>${fmt(E.profit,2)} 亿元</b></div></div>`;
-}else{$('estimate-panel').innerHTML=`<h3>最新季度估算</h3><p>${L.companies?'当前所选行业均已取得最新季度财报，无估算公司。':'尚未选择二级行业。'}</p>`;}
+$('estimate-panel').innerHTML=D.estimates.length?`<h3>最新季度估算：${L.reportedCount} 家实报，${L.estimatedCount} 家估算</h3><p>估算营收＝上年同季营收×最近累计营收同比倍数；估算利润＝估算营收×最近累计归母净利率。估算只补最新季度缺失值，不用于季末PE分母；斜纹与*标记含估算季度。</p>${D.estimates.map(E=>`<p><b>${esc(E.name)} ${esc(E.code)}</b>：营收 ${fmt(E.revenue,2)} 亿，归母净利润 ${fmt(E.profit,2)} 亿；参考期 ${esc(E.referencePeriod)}，营收同比 ${pct(E.growth,2)}，归母净利率 ${pct(E.margin,2)}。</p>`).join('')}`:`<h3>最新季度估算</h3><p>${L.reportedCount} 家实报，无估算${L.missingCount?'；'+L.missingCount+' 家资料不足，保留缺失':''}。</p>`;
+if(L.missingCount)$('estimate-panel').insertAdjacentHTML('beforeend',`<p>资料不足、未作估算：${D.latestCompanies.filter(r=>r.status==='missing').map(r=>esc(r.name)+' '+esc(r.code)).join('、')}。保留缺失，不填零。</p>`);
+const universe=root.querySelector('.universe-method');if(universe)universe.textContent=`申万2021版一级「${D.meta.industry}」（${D.meta.indexCode}），原始成分 ${D.meta.rawMembershipCount} 个代码；与当前在市公司交叉后固定为 ${D.meta.universeCount} 家，每季仅纳入该季末已上市的公司；北交所公司最早从2021-11-15起纳入，不含此前新三板阶段。数据截至 ${D.meta.asOf}，最新统计季度 ${D.meta.latestQuarter}。`;
+const extra=root.querySelector('.industry-data-notes');if(extra)extra.innerHTML=D.meta.indexCode==='801080.SI'?`<h3>电子历史PE核查</h3><p>2009Q2整体PE为2,698.99倍，市值2,033.96亿元，TTM利润0.7536亿元；正负利润相抵使分母接近零。已补查原始与调整报表，真实值及亏损缺口保留。智新电子从北交所开市日2021-11-15起纳入，已剔除2021Q2/Q3精选层阶段。</p>`:D.meta.indexCode==='801780.SI'?`<h3>银行数据边界</h3><p>2007Q2中信银行缺少用于累计差分的Q1报表，显示已知财务合计并标†。2005Q4招商银行、2017Q1张家港行因季末可得TTM不全，从当期PE分子和分母同时剔除，覆盖率见下表。银行营收使用利润表口径，贷款和存款余额不计作营收。</p>`:'';
 const incomplete=S.filter(s=>s.missingCount);
 const available=S.filter(s=>s.companies>0),minCoverage=available.length?Math.min(...available.map(s=>s.peCoverage)):null;
 $('quality-note').innerHTML=available.length?`<b>${esc(D.meta.industry)}整体数据边界：</b>${incomplete.length?incomplete.map(s=>short(s.quarter)+' 缺 '+s.missingCount+' 家').join('；')+'。标 † 的柱形为已知公司合计，缺失不填零。':'已有样本的各季度财务均完整覆盖（含标注估算）。'} PE 历史市值覆盖最低 ${minCoverage==null?'—':pct(minCoverage,2)}；覆盖不足的点为空心圆，合计 TTM 利润非正时 PE 留空。`:'请选择二级行业。';
 $('quality-body').innerHTML=S.map((s,i)=>{const q=D.quality[i],notes=[];if(q.financialMissing.length)notes.push('财务缺失：'+q.financialMissing.map(c=>esc(c.name)+' '+c.code).join('、'));if(q.peMissing.length)notes.push('PE 缺失：'+q.peMissing.map(c=>esc(c.name)).join('、'));if(q.carried.length)notes.push('沿用市值：'+q.carried.map(c=>esc(c.name)+'（'+date(c.date)+'）').join('、'));if(s.estimatedCount)notes.push('财务估算：'+D.estimates.filter(e=>e.quarter===s.quarter).map(e=>esc(e.name)).join('、'));return`<tr><td>${short(s.quarter)}</td><td>${s.reportedCount}+${s.estimatedCount}估算 / ${s.companies}</td><td>${pct(s.peCoverage,2)}</td><td>${s.carriedCount} 家</td><td>${notes.join('<br>')||(s.companies?'完整覆盖':'无已上市样本')}</td></tr>`;}).join('');
 }
-renderCoverage();
+let coverageReady=false,quarterReady=false,companiesReady=false;
 function renderQuarterTable(){const rows=reverseTable?[...S].reverse():S;$('quarter-body').innerHTML=rows.map(s=>`<tr class="${s.estimatedCount?'estimate-row':''}"><td>${short(s.quarter)}</td><td>${fmt(s.marketCap,2)}</td><td title="${peReason(s)}；TTM利润 ${fmt(s.peProfit,4)}亿元">${peText(s)}${s.peCoverage<.9999?' ◦':''}</td><td>${fmt(s.revenue,2)}${s.estimatedCount?' *':s.missingCount?' †':''}</td><td>${fmt(s.profit,2)}${s.estimatedCount?' *':s.missingCount?' †':''}</td><td>${s.companies}</td><td><span class="tag ${s.estimatedCount?'estimate':s.missingCount?'partial':''}">${!s.companies?'无样本':s.estimatedCount?s.reportedCount+' 实报 + '+s.estimatedCount+' 估算':s.missingCount?'缺 '+s.missingCount+' 家 · 已知合计':'全部实报'}</span></td></tr>`).join('');}
-renderQuarterTable();$('table-order').addEventListener('click',()=>{reverseTable=!reverseTable;$('table-order').textContent='当前：'+(reverseTable?'由近到远':'由远到近')+' ⇅';renderQuarterTable();});
+$('table-order').addEventListener('click',()=>{reverseTable=!reverseTable;$('table-order').textContent='当前：'+(reverseTable?'由近到远':'由远到近')+' ⇅';renderQuarterTable();});
 function renderCompanies(){const query=$('company-search').value.trim().toLowerCase(),only=$('estimated-only').checked;let rows=D.latestCompanies.filter(r=>(!only||r.status==='estimated')&&(!query||(r.name+r.code).toLowerCase().includes(query))).sort((a,b)=>(b.revenue||0)-(a.revenue||0));$('company-count').textContent=`显示 ${rows.length} / ${D.latestCompanies.length} 家，按营收从高到低排列`;$('company-body').innerHTML=rows.map(r=>`<tr class="${r.status==='estimated'?'estimate-row':''}"><td>${esc(r.name)}</td><td>${r.code}</td><td>${fmt(r.revenue,2)}</td><td>${fmt(r.profit,2)}</td><td>${date(r.announcementDate)}</td><td><span class="tag ${r.status==='estimated'?'estimate':''}">${r.status==='estimated'?'估算':'已披露'}</span></td></tr>`).join('')||'<tr><td colspan="6" style="text-align:center">没有匹配的公司</td></tr>';}
-$('company-search').addEventListener('input',renderCompanies);$('estimated-only').addEventListener('change',renderCompanies);renderCompanies();
+$('company-search').addEventListener('input',renderCompanies);$('estimated-only').addEventListener('change',renderCompanies);
 $('source-links').innerHTML=D.meta.sourceLinks.map(s=>`<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.name} ↗</a>`).join('');
 
 
 // Supplementary data: only the selected panel is expanded; initial state is closed.
 const supplementButtons=[...root.querySelectorAll('.supplement-tabs button')];
 function openSupplement(panelId){
+ if(panelId&&panelId.endsWith('data-table')&&!quarterReady){renderQuarterTable();quarterReady=true;}
+ if(panelId&&panelId.endsWith('company-data')&&!companiesReady){renderCompanies();companiesReady=true;}
+ if(panelId&&panelId.endsWith('methodology')&&!coverageReady){renderCoverage();coverageReady=true;}
+
  for(const button of supplementButtons){
   const open=button.getAttribute('aria-controls')===panelId;
   button.setAttribute('aria-expanded',String(open));
@@ -168,7 +172,7 @@ showLinkedSupplement();
 
 // Selected industries appear as separate cards; the main chart always shows electronics.
 $('all-market-cap').textContent=marketLabel(L.marketCap);
-$('sector-options').innerHTML=GROUPS.map(g=>`<label class="sector-option"><input type="checkbox" data-sector="${g.code}" checked><span>${esc(g.name)}</span><strong>${marketLabel(g.series.at(-1).marketCap)}</strong></label>`).join('');
+$('sector-options').innerHTML=GROUPS.map(g=>`<label class="sector-option"><input type="checkbox" data-sector="${g.code}"><span>${esc(g.name)}</span><strong>${marketLabel(g.series.at(-1).marketCap)}</strong></label>`).join('');
 function syncSectorPicker(){
  const count=selectedSectors.size;
  $('sector-all').checked=count===GROUPS.length;$('sector-all').indeterminate=count>0&&count<GROUPS.length;
@@ -204,5 +208,31 @@ window.RESEARCH_MODULES[root.dataset.industry]=api;
 if(!prefix){window.RESEARCH_STATE=getState;window.RESEARCH_CHARTS=getCharts;}
 return api;
 }
-mountIndustry(document.getElementById('industry-electronics'),window.RESEARCH_DATA,window.SECTOR_DATA);
-mountIndustry(document.getElementById('industry-bank'),window.BANK_DATA,window.BANK_SECTOR_DATA,'bank-');
+
+const moduleTemplate=document.getElementById('industry-template');
+const industryList=document.getElementById('industry-list');
+const industryLoads=new Map();
+const assetVersion='20261110-all31';
+function loadIndustryJSON(path){return fetch(path+'?v='+assetVersion).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();});}
+function activateIndustry(root){
+ const key=root.dataset.industry;if(industryLoads.has(key))return industryLoads.get(key);
+ const item=window.INDUSTRY_CATALOG.industries.find(g=>g.key===key);
+ const job=Promise.all([loadIndustryJSON(item.path+'data.json'),loadIndustryJSON(item.path+'sectors.json')]).then(([data,sectors])=>{
+  root.querySelector('.module-loading')?.remove();mountIndustry(root,data,sectors,key==='electronics'?'':key+'-');root.dataset.loaded='true';return window.RESEARCH_MODULES[key];
+ }).catch(error=>{industryLoads.delete(key);const status=root.querySelector('.module-loading');if(status){status.textContent='数据加载失败，点击重试';status.onclick=()=>activateIndustry(root);}throw error;});
+ industryLoads.set(key,job);return job;
+}
+const moduleObserver=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){moduleObserver.unobserve(entry.target);activateIndustry(entry.target).catch(()=>{});}},{rootMargin:'700px 0px'});
+for(const item of window.INDUSTRY_CATALOG.industries){
+ const root=document.createElement('section');root.id='industry-'+item.key;root.className='industry-module';root.dataset.industry=item.key;
+ root.appendChild(moduleTemplate.content.cloneNode(true));
+ const prefix=item.key==='electronics'?'':item.key+'-';
+ if(prefix)for(const el of root.querySelectorAll('[id],[aria-controls],[aria-labelledby]'))for(const attr of ['id','aria-controls','aria-labelledby'])if(el.hasAttribute(attr))el.setAttribute(attr,prefix+el.getAttribute(attr));
+ root.querySelector('h1').textContent=item.name;root.querySelector('.sector-menu-title strong').textContent=item.name+' · 申万二级';root.querySelector('.research-chart').setAttribute('aria-label',item.name+'季度市值、PE、营收与归母净利润');
+ root.querySelector('#'+CSS.escape(prefix+'selected-market-cap')).textContent='0 / '+item.subIndustryCount;
+ root.querySelector('.focus-row').textContent=item.name+' · '+item.latest.quarter+' · 总市值 '+(item.latest.marketCap/10000).toLocaleString('zh-CN',{maximumFractionDigits:2})+' 万亿';
+ const status=document.createElement('div');status.className='module-loading';status.textContent='加载图表…';root.querySelector('.research-chart').appendChild(status);
+ industryList.appendChild(root);moduleObserver.observe(root);
+ root.addEventListener('pointerdown',()=>activateIndustry(root).catch(()=>{}),{once:true});
+}
+window.ACTIVATE_INDUSTRY=key=>activateIndustry(document.getElementById('industry-'+key));

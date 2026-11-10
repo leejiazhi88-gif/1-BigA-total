@@ -1,0 +1,1471 @@
+{
+  "asOf": "2026-11-10",
+  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+  "summary": {
+    "industry": "建筑材料",
+    "code": "801710.SI",
+    "companies": 76,
+    "quarters": 87,
+    "companyQuarterRows": 4461,
+    "latest": {
+      "quarter": "2026Q3",
+      "endDate": "20260930",
+      "tradeDate": "20260930",
+      "companies": 76,
+      "marketCap": 10875.917257310002,
+      "marketCapObserved": 10875.917257310002,
+      "pe": 158.55952620381396,
+      "peMarketCap": 10875.917257310002,
+      "peProfit": 68.59201410156834,
+      "peCoverage": 1.0,
+      "peMissingCount": 0,
+      "peRebuiltCount": 37,
+      "revenue": 1614.3569433266,
+      "profit": 30.325016338700006,
+      "reportedCount": 76,
+      "estimatedCount": 0,
+      "missingCount": 0,
+      "estimatedRevenue": 0,
+      "estimatedProfit": 0,
+      "carriedCount": 1,
+      "marketMissingCount": 0,
+      "financialCoverage": 1.0
+    },
+    "financialIncompleteQuarters": 0,
+    "peCoverageMin": 0.9979122539384804,
+    "carriedCompanyQuarters": 127
+  },
+  "quality": [
+    {
+      "quarter": "2005Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2005Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000786.SZ",
+          "name": "北新建材",
+          "date": "20050629",
+          "marketCap": 18.28977
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2005Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600819.SH",
+          "name": "耀皮玻璃",
+          "date": "20051208",
+          "marketCap": 26.54437798
+        },
+        {
+          "code": "600586.SH",
+          "name": "金晶科技",
+          "date": "20051201",
+          "marketCap": 10.066104750000001
+        },
+        {
+          "code": "600425.SH",
+          "name": "青松建化",
+          "date": "20051214",
+          "marketCap": 6.361505999999999
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600876.SH",
+          "name": "凯盛新能",
+          "date": "20060324",
+          "marketCap": 21.28
+        },
+        {
+          "code": "000401.SZ",
+          "name": "金隅冀东",
+          "date": "20060224",
+          "marketCap": 40.82147403
+        },
+        {
+          "code": "000055.SZ",
+          "name": "方大集团",
+          "date": "20060315",
+          "marketCap": 15.472079999999998
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600802.SH",
+          "name": "福建水泥",
+          "date": "20060629",
+          "marketCap": 10.75619691
+        },
+        {
+          "code": "600876.SH",
+          "name": "凯盛新能",
+          "date": "20060629",
+          "marketCap": 22.05
+        },
+        {
+          "code": "000789.SZ",
+          "name": "万年青",
+          "date": "20060623",
+          "marketCap": 11.1684
+        },
+        {
+          "code": "600668.SH",
+          "name": "尖峰集团",
+          "date": "20060623",
+          "marketCap": 11.561216620000001
+        },
+        {
+          "code": "600176.SH",
+          "name": "中国巨石",
+          "date": "20060623",
+          "marketCap": 31.584268800000004
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2006Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600176.SH",
+          "name": "中国巨石",
+          "date": "20061228",
+          "marketCap": 32.3535744
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070313",
+          "marketCap": 8.783865709999999
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000786.SZ",
+          "name": "北新建材",
+          "date": "20070927",
+          "marketCap": 70.11078499999999
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600876.SH",
+          "name": "凯盛新能",
+          "date": "20080627",
+          "marketCap": 17.650643940000002
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002080.SZ",
+          "name": "中材科技",
+          "date": "20080925",
+          "marketCap": 29.25
+        },
+        {
+          "code": "002225.SZ",
+          "name": "濮耐股份",
+          "date": "20080925",
+          "marketCap": 18.99310778
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000877.SZ",
+          "name": "天山股份",
+          "date": "20081230",
+          "marketCap": 33.137968320000006
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        },
+        {
+          "code": "600668.SH",
+          "name": "尖峰集团",
+          "date": "20081230",
+          "marketCap": 11.66444177
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        },
+        {
+          "code": "002205.SZ",
+          "name": "国统股份",
+          "date": "20090330",
+          "marketCap": 14.416
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600449.SH",
+          "name": "宁夏建材",
+          "date": "20090629",
+          "marketCap": 54.32527052
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000877.SZ",
+          "name": "天山股份",
+          "date": "20091230",
+          "marketCap": 66.24473327999999
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002088.SZ",
+          "name": "鲁阳节能",
+          "date": "20100330",
+          "marketCap": 54.51703454
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        },
+        {
+          "code": "600176.SH",
+          "name": "中国巨石",
+          "date": "20100305",
+          "marketCap": 87.0597504
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600425.SH",
+          "name": "青松建化",
+          "date": "20110330",
+          "marketCap": 116.03567842000001
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002372.SZ",
+          "name": "伟星新材",
+          "date": "20110627",
+          "marketCap": 44.06626
+        },
+        {
+          "code": "300196.SZ",
+          "name": "长海股份",
+          "date": "20110629",
+          "marketCap": 21.6
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600802.SH",
+          "name": "福建水泥",
+          "date": "20110929",
+          "marketCap": 37.347244530000005
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        },
+        {
+          "code": "002596.SZ",
+          "name": "海南瑞泽",
+          "date": "20110929",
+          "marketCap": 18.8002
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000877.SZ",
+          "name": "天山股份",
+          "date": "20111229",
+          "marketCap": 82.45637053
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        },
+        {
+          "code": "600678.SH",
+          "name": "ST金顶",
+          "date": "20111031",
+          "marketCap": 22.300461
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600449.SH",
+          "name": "宁夏建材",
+          "date": "20120329",
+          "marketCap": 51.63451813
+        },
+        {
+          "code": "300198.SZ",
+          "name": "*ST纳川",
+          "date": "20120329",
+          "marketCap": 19.8306
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        },
+        {
+          "code": "002247.SZ",
+          "name": "聚力文化",
+          "date": "20120329",
+          "marketCap": 14.00796
+        },
+        {
+          "code": "002302.SZ",
+          "name": "西部建设",
+          "date": "20120314",
+          "marketCap": 30.849
+        },
+        {
+          "code": "600678.SH",
+          "name": "ST金顶",
+          "date": "20111031",
+          "marketCap": 22.300461
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002392.SZ",
+          "name": "北京利尔",
+          "date": "20120417",
+          "marketCap": 55.782
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        },
+        {
+          "code": "600678.SH",
+          "name": "ST金顶",
+          "date": "20111031",
+          "marketCap": 22.300461
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        },
+        {
+          "code": "600678.SH",
+          "name": "ST金顶",
+          "date": "20111031",
+          "marketCap": 22.300461
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002392.SZ",
+          "name": "北京利尔",
+          "date": "20130326",
+          "marketCap": 44.55
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20070423",
+          "marketCap": 11.22607802
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2013Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2013Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2014Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600819.SH",
+          "name": "耀皮玻璃",
+          "date": "20140326",
+          "marketCap": 86.7602112
+        },
+        {
+          "code": "002088.SZ",
+          "name": "鲁阳节能",
+          "date": "20140108",
+          "marketCap": 20.66031824
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600819.SH",
+          "name": "耀皮玻璃",
+          "date": "20140326",
+          "marketCap": 86.7602112
+        },
+        {
+          "code": "600876.SH",
+          "name": "凯盛新能",
+          "date": "20140627",
+          "marketCap": 36.20132072
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600876.SH",
+          "name": "凯盛新能",
+          "date": "20140627",
+          "marketCap": 36.20132072
+        },
+        {
+          "code": "600678.SH",
+          "name": "ST金顶",
+          "date": "20140718",
+          "marketCap": 19.229349
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600876.SH",
+          "name": "凯盛新能",
+          "date": "20140627",
+          "marketCap": 36.20132072
+        },
+        {
+          "code": "002694.SZ",
+          "name": "*ST顾地",
+          "date": "20141229",
+          "marketCap": 28.581120000000002
+        },
+        {
+          "code": "002652.SZ",
+          "name": "扬子新材",
+          "date": "20141205",
+          "marketCap": 26.067258
+        },
+        {
+          "code": "300196.SZ",
+          "name": "长海股份",
+          "date": "20141217",
+          "marketCap": 45.1392
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000012.SZ",
+          "name": "南玻A",
+          "date": "20150318",
+          "marketCap": 225.58897536999999
+        },
+        {
+          "code": "002225.SZ",
+          "name": "濮耐股份",
+          "date": "20150327",
+          "marketCap": 75.80531942
+        },
+        {
+          "code": "600293.SH",
+          "name": "三峡新材",
+          "date": "20150127",
+          "marketCap": 24.735286679999998
+        },
+        {
+          "code": "002596.SZ",
+          "name": "海南瑞泽",
+          "date": "20150303",
+          "marketCap": 34.34091631
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000786.SZ",
+          "name": "北新建材",
+          "date": "20150409",
+          "marketCap": 265.75784022
+        },
+        {
+          "code": "002043.SZ",
+          "name": "兔宝宝",
+          "date": "20150529",
+          "marketCap": 62.17767175
+        },
+        {
+          "code": "002080.SZ",
+          "name": "中材科技",
+          "date": "20150420",
+          "marketCap": 91.64
+        },
+        {
+          "code": "002398.SZ",
+          "name": "垒知集团",
+          "date": "20150605",
+          "marketCap": 97.6443468
+        },
+        {
+          "code": "300196.SZ",
+          "name": "长海股份",
+          "date": "20150515",
+          "marketCap": 67.9872
+        },
+        {
+          "code": "000672.SZ",
+          "name": "上峰材料",
+          "date": "20150602",
+          "marketCap": 98.04119446
+        },
+        {
+          "code": "002671.SZ",
+          "name": "龙泉股份",
+          "date": "20150616",
+          "marketCap": 105.99892614
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000786.SZ",
+          "name": "北新建材",
+          "date": "20150409",
+          "marketCap": 265.75784022
+        },
+        {
+          "code": "002043.SZ",
+          "name": "兔宝宝",
+          "date": "20150529",
+          "marketCap": 62.17767175
+        },
+        {
+          "code": "002392.SZ",
+          "name": "北京利尔",
+          "date": "20150825",
+          "marketCap": 86.53599113
+        },
+        {
+          "code": "002247.SZ",
+          "name": "聚力文化",
+          "date": "20150807",
+          "marketCap": 54.80010969999999
+        },
+        {
+          "code": "002671.SZ",
+          "name": "龙泉股份",
+          "date": "20150616",
+          "marketCap": 105.99892614
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002201.SZ",
+          "name": "九鼎新材",
+          "date": "20151116",
+          "marketCap": 40.944647700000004
+        },
+        {
+          "code": "002652.SZ",
+          "name": "扬子新材",
+          "date": "20151023",
+          "marketCap": 38.788848
+        },
+        {
+          "code": "002247.SZ",
+          "name": "聚力文化",
+          "date": "20150807",
+          "marketCap": 54.80010969999999
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002201.SZ",
+          "name": "九鼎新材",
+          "date": "20151116",
+          "marketCap": 40.944647700000004
+        },
+        {
+          "code": "002652.SZ",
+          "name": "扬子新材",
+          "date": "20151023",
+          "marketCap": 38.788848
+        },
+        {
+          "code": "002596.SZ",
+          "name": "海南瑞泽",
+          "date": "20160314",
+          "marketCap": 84.39175625
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000619.SZ",
+          "name": "海螺新材",
+          "date": "20160513",
+          "marketCap": 41.22
+        },
+        {
+          "code": "000401.SZ",
+          "name": "金隅冀东",
+          "date": "20160405",
+          "marketCap": 146.87999763
+        },
+        {
+          "code": "300374.SZ",
+          "name": "中铁装配",
+          "date": "20160623",
+          "marketCap": 46.13916
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600876.SH",
+          "name": "凯盛新能",
+          "date": "20160907",
+          "marketCap": 134.90499669000002
+        },
+        {
+          "code": "300374.SZ",
+          "name": "中铁装配",
+          "date": "20160623",
+          "marketCap": 46.13916
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600876.SH",
+          "name": "凯盛新能",
+          "date": "20160907",
+          "marketCap": 134.90499669000002
+        },
+        {
+          "code": "002652.SZ",
+          "name": "扬子新材",
+          "date": "20161209",
+          "marketCap": 57.95924399999999
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002652.SZ",
+          "name": "扬子新材",
+          "date": "20161209",
+          "marketCap": 57.95924399999999
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002694.SZ",
+          "name": "*ST顾地",
+          "date": "20170524",
+          "marketCap": 130.24862208
+        },
+        {
+          "code": "300198.SZ",
+          "name": "*ST纳川",
+          "date": "20170419",
+          "marketCap": 59.4171959
+        },
+        {
+          "code": "300234.SZ",
+          "name": "开尔新材",
+          "date": "20170608",
+          "marketCap": 37.03147381
+        },
+        {
+          "code": "002596.SZ",
+          "name": "海南瑞泽",
+          "date": "20170519",
+          "marketCap": 80.91762539999999
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002392.SZ",
+          "name": "北京利尔",
+          "date": "20170920",
+          "marketCap": 86.07248766
+        },
+        {
+          "code": "002694.SZ",
+          "name": "*ST顾地",
+          "date": "20170524",
+          "marketCap": 130.24862208
+        },
+        {
+          "code": "002652.SZ",
+          "name": "扬子新材",
+          "date": "20170926",
+          "marketCap": 42.3988992
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000401.SZ",
+          "name": "金隅冀东",
+          "date": "20171120",
+          "marketCap": 185.82340984
+        },
+        {
+          "code": "002398.SZ",
+          "name": "垒知集团",
+          "date": "20171013",
+          "marketCap": 52.402431130000004
+        },
+        {
+          "code": "002694.SZ",
+          "name": "*ST顾地",
+          "date": "20170524",
+          "marketCap": 130.24862208
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002225.SZ",
+          "name": "濮耐股份",
+          "date": "20180328",
+          "marketCap": 40.24265827
+        },
+        {
+          "code": "300198.SZ",
+          "name": "*ST纳川",
+          "date": "20180201",
+          "marketCap": 61.789757550000004
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300198.SZ",
+          "name": "*ST纳川",
+          "date": "20180201",
+          "marketCap": 61.789757550000004
+        },
+        {
+          "code": "600293.SH",
+          "name": "三峡新材",
+          "date": "20180427",
+          "marketCap": 67.17123226
+        },
+        {
+          "code": "600678.SH",
+          "name": "ST金顶",
+          "date": "20180417",
+          "marketCap": 35.736576
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002205.SZ",
+          "name": "国统股份",
+          "date": "20180914",
+          "marketCap": 13.72916853
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002785.SZ",
+          "name": "万里石",
+          "date": "20181221",
+          "marketCap": 19.12
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002205.SZ",
+          "name": "国统股份",
+          "date": "20190322",
+          "marketCap": 21.2790497
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q2",
+      "financialMissing": [],
+      "peMissing": [
+        {
+          "code": "002652.SZ",
+          "name": "扬子新材"
+        }
+      ],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000401.SZ",
+          "name": "金隅冀东",
+          "date": "20210317",
+          "marketCap": 210.88733604
+        }
+      ]
+    },
+    {
+      "quarter": "2021Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "001212.SZ",
+          "name": "中旗新材",
+          "date": "20250327",
+          "marketCap": 35.63432801
+        }
+      ]
+    },
+    {
+      "quarter": "2025Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002718.SZ",
+          "name": "友邦吊顶",
+          "date": "20260326",
+          "marketCap": 78.44538437
+        }
+      ]
+    },
+    {
+      "quarter": "2026Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600293.SH",
+          "name": "三峡新材",
+          "date": "20260928",
+          "marketCap": 45.5936985
+        }
+      ]
+    }
+  ]
+}

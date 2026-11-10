@@ -1,0 +1,3407 @@
+{
+  "asOf": "2026-11-10",
+  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+  "summary": {
+    "industry": "机械设备",
+    "code": "801890.SI",
+    "companies": 620,
+    "quarters": 87,
+    "companyQuarterRows": 22981,
+    "latest": {
+      "quarter": "2026Q3",
+      "endDate": "20260930",
+      "tradeDate": "20260930",
+      "companies": 618,
+      "marketCap": 64503.58548666001,
+      "marketCapObserved": 64503.58548666001,
+      "pe": 49.52173573503184,
+      "peMarketCap": 64503.58548666001,
+      "peProfit": 1302.5307883348273,
+      "peCoverage": 1.0,
+      "peMissingCount": 0,
+      "peRebuiltCount": 147,
+      "revenue": 5854.667074339402,
+      "profit": 363.04565783679993,
+      "reportedCount": 618,
+      "estimatedCount": 0,
+      "missingCount": 0,
+      "estimatedRevenue": 0,
+      "estimatedProfit": 0,
+      "carriedCount": 1,
+      "marketMissingCount": 0,
+      "financialCoverage": 1.0
+    },
+    "financialIncompleteQuarters": 1,
+    "peCoverageMin": 1.0,
+    "carriedCompanyQuarters": 447
+  },
+  "quality": [
+    {
+      "quarter": "2005Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2005Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000927.SZ",
+          "name": "中国铁物",
+          "date": "20050629",
+          "marketCap": 44.18632035
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20050629",
+          "marketCap": 5.58
+        },
+        {
+          "code": "000988.SZ",
+          "name": "华工科技",
+          "date": "20050629",
+          "marketCap": 18.4483
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002006.SZ",
+          "name": "精工科技",
+          "date": "20050929",
+          "marketCap": 7.0
+        },
+        {
+          "code": "002046.SZ",
+          "name": "国机精工",
+          "date": "20050916",
+          "marketCap": 9.1975
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000425.SZ",
+          "name": "徐工机械",
+          "date": "20051229",
+          "marketCap": 18.15141775
+        },
+        {
+          "code": "000530.SZ",
+          "name": "冰山冷热",
+          "date": "20051216",
+          "marketCap": 15.015642430000002
+        },
+        {
+          "code": "600232.SH",
+          "name": "金鹰股份",
+          "date": "20051222",
+          "marketCap": 13.91897957
+        },
+        {
+          "code": "600302.SH",
+          "name": "ST标准",
+          "date": "20051222",
+          "marketCap": 15.32823432
+        },
+        {
+          "code": "600501.SH",
+          "name": "航天晨光",
+          "date": "20051216",
+          "marketCap": 17.0231304
+        },
+        {
+          "code": "001696.SZ",
+          "name": "宗申动力",
+          "date": "20051229",
+          "marketCap": 10.106037760000001
+        },
+        {
+          "code": "002031.SZ",
+          "name": "巨轮智能",
+          "date": "20051229",
+          "marketCap": 13.1976
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000039.SZ",
+          "name": "中集集团",
+          "date": "20060310",
+          "marketCap": 184.75415027
+        },
+        {
+          "code": "600894.SH",
+          "name": "广日股份",
+          "date": "20060320",
+          "marketCap": 24.393698999999998
+        },
+        {
+          "code": "000680.SZ",
+          "name": "山推股份",
+          "date": "20060303",
+          "marketCap": 15.372489600000002
+        },
+        {
+          "code": "000777.SZ",
+          "name": "中核科技",
+          "date": "20060317",
+          "marketCap": 9.0216
+        },
+        {
+          "code": "600169.SH",
+          "name": "ST太重",
+          "date": "20060320",
+          "marketCap": 14.849679759999999
+        },
+        {
+          "code": "600560.SH",
+          "name": "金自天正",
+          "date": "20060317",
+          "marketCap": 5.3575522
+        },
+        {
+          "code": "600495.SH",
+          "name": "晋西车轴",
+          "date": "20060330",
+          "marketCap": 8.2328
+        },
+        {
+          "code": "001696.SZ",
+          "name": "宗申动力",
+          "date": "20060330",
+          "marketCap": 8.291221120000001
+        },
+        {
+          "code": "600343.SH",
+          "name": "航天动力",
+          "date": "20060317",
+          "marketCap": 9.176
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600835.SH",
+          "name": "上海机电",
+          "date": "20060623",
+          "marketCap": 67.41556607999999
+        },
+        {
+          "code": "000039.SZ",
+          "name": "中集集团",
+          "date": "20060629",
+          "marketCap": 324.73163967
+        },
+        {
+          "code": "000157.SZ",
+          "name": "中联重科",
+          "date": "20060526",
+          "marketCap": 70.2702
+        },
+        {
+          "code": "000856.SZ",
+          "name": "冀东装备",
+          "date": "20060629",
+          "marketCap": 5.9325
+        },
+        {
+          "code": "600558.SH",
+          "name": "大西洋",
+          "date": "20060623",
+          "marketCap": 9.828
+        },
+        {
+          "code": "600579.SH",
+          "name": "中化装备",
+          "date": "20060623",
+          "marketCap": 7.992
+        },
+        {
+          "code": "600992.SH",
+          "name": "贵绳股份",
+          "date": "20060616",
+          "marketCap": 10.059444000000001
+        },
+        {
+          "code": "600984.SH",
+          "name": "建设机械",
+          "date": "20060421",
+          "marketCap": 5.379128
+        },
+        {
+          "code": "600520.SH",
+          "name": "三佳科技",
+          "date": "20060622",
+          "marketCap": 5.697216
+        },
+        {
+          "code": "000880.SZ",
+          "name": "潍柴重机",
+          "date": "20060427",
+          "marketCap": 7.31666325
+        },
+        {
+          "code": "600397.SH",
+          "name": "江钨装备",
+          "date": "20060623",
+          "marketCap": 13.156
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600579.SH",
+          "name": "中化装备",
+          "date": "20060915",
+          "marketCap": 9.72
+        },
+        {
+          "code": "600545.SH",
+          "name": "卓郎智能",
+          "date": "20060928",
+          "marketCap": 6.32531654
+        },
+        {
+          "code": "000880.SZ",
+          "name": "潍柴重机",
+          "date": "20060427",
+          "marketCap": 7.31666325
+        },
+        {
+          "code": "600889.SH",
+          "name": "*ST京化",
+          "date": "20060907",
+          "marketCap": 8.68478782
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000837.SZ",
+          "name": "秦川机床",
+          "date": "20061228",
+          "marketCap": 20.94630384
+        },
+        {
+          "code": "000852.SZ",
+          "name": "石化机械",
+          "date": "20061030",
+          "marketCap": 37.884
+        },
+        {
+          "code": "000856.SZ",
+          "name": "冀东装备",
+          "date": "20061214",
+          "marketCap": 7.3675
+        },
+        {
+          "code": "000927.SZ",
+          "name": "中国铁物",
+          "date": "20061228",
+          "marketCap": 85.97987968
+        },
+        {
+          "code": "600582.SH",
+          "name": "天地科技",
+          "date": "20061213",
+          "marketCap": 50.57832
+        },
+        {
+          "code": "000880.SZ",
+          "name": "潍柴重机",
+          "date": "20060427",
+          "marketCap": 7.31666325
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600783.SH",
+          "name": "鲁信创投",
+          "date": "20070329",
+          "marketCap": 12.88516593
+        },
+        {
+          "code": "000880.SZ",
+          "name": "潍柴重机",
+          "date": "20060427",
+          "marketCap": 7.31666325
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600169.SH",
+          "name": "ST太重",
+          "date": "20070628",
+          "marketCap": 85.07861636
+        },
+        {
+          "code": "000927.SZ",
+          "name": "中国铁物",
+          "date": "20070628",
+          "marketCap": 133.35654807
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20070420",
+          "marketCap": 15.813
+        },
+        {
+          "code": "000880.SZ",
+          "name": "潍柴重机",
+          "date": "20070628",
+          "marketCap": 27.80332035
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002073.SZ",
+          "name": "软控股份",
+          "date": "20070926",
+          "marketCap": 52.243749
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20070420",
+          "marketCap": 15.813
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000530.SZ",
+          "name": "冰山冷热",
+          "date": "20071221",
+          "marketCap": 41.26676555
+        },
+        {
+          "code": "600169.SH",
+          "name": "ST太重",
+          "date": "20071207",
+          "marketCap": 134.20537646000002
+        },
+        {
+          "code": "600579.SH",
+          "name": "中化装备",
+          "date": "20071018",
+          "marketCap": 24.614279999999997
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20070420",
+          "marketCap": 15.813
+        },
+        {
+          "code": "000880.SZ",
+          "name": "潍柴重机",
+          "date": "20071227",
+          "marketCap": 42.188156400000004
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000157.SZ",
+          "name": "中联重科",
+          "date": "20080328",
+          "marketCap": 334.62
+        },
+        {
+          "code": "600320.SH",
+          "name": "振华重工",
+          "date": "20080327",
+          "marketCap": 496.81928949999997
+        },
+        {
+          "code": "600495.SH",
+          "name": "晋西车轴",
+          "date": "20080328",
+          "marketCap": 17.731393
+        },
+        {
+          "code": "002073.SZ",
+          "name": "软控股份",
+          "date": "20080328",
+          "marketCap": 56.631825
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20070420",
+          "marketCap": 15.813
+        },
+        {
+          "code": "600444.SH",
+          "name": "国机通用",
+          "date": "20080328",
+          "marketCap": 18.655
+        },
+        {
+          "code": "002132.SZ",
+          "name": "恒星科技",
+          "date": "20080328",
+          "marketCap": 30.3977392
+        },
+        {
+          "code": "600783.SH",
+          "name": "鲁信创投",
+          "date": "20080131",
+          "marketCap": 23.52503607
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000425.SZ",
+          "name": "徐工机械",
+          "date": "20080612",
+          "marketCap": 79.52828376
+        },
+        {
+          "code": "000528.SZ",
+          "name": "柳工",
+          "date": "20080627",
+          "marketCap": 90.94781446
+        },
+        {
+          "code": "000852.SZ",
+          "name": "石化机械",
+          "date": "20080627",
+          "marketCap": 25.872
+        },
+        {
+          "code": "600579.SH",
+          "name": "中化装备",
+          "date": "20080627",
+          "marketCap": 8.997119999999999
+        },
+        {
+          "code": "600499.SH",
+          "name": "科达制造",
+          "date": "20080627",
+          "marketCap": 31.2315045
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20080417",
+          "marketCap": 20.187
+        },
+        {
+          "code": "600783.SH",
+          "name": "鲁信创投",
+          "date": "20080131",
+          "marketCap": 23.52503607
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000039.SZ",
+          "name": "中集集团",
+          "date": "20080925",
+          "marketCap": 226.03742473
+        },
+        {
+          "code": "600031.SH",
+          "name": "三一重工",
+          "date": "20080924",
+          "marketCap": 241.8
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20080417",
+          "marketCap": 20.187
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20080417",
+          "marketCap": 20.187
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20080417",
+          "marketCap": 20.187
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600843.SH",
+          "name": "上工申贝",
+          "date": "20090629",
+          "marketCap": 40.938474060000004
+        },
+        {
+          "code": "000856.SZ",
+          "name": "冀东装备",
+          "date": "20090615",
+          "marketCap": 18.2735
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2009Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000008.SZ",
+          "name": "神州高铁",
+          "date": "20091222",
+          "marketCap": 9.04461394
+        },
+        {
+          "code": "600397.SH",
+          "name": "江钨装备",
+          "date": "20091230",
+          "marketCap": 39.5501808
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600499.SH",
+          "name": "科达制造",
+          "date": "20100322",
+          "marketCap": 123.8643081
+        },
+        {
+          "code": "002132.SZ",
+          "name": "恒星科技",
+          "date": "20100330",
+          "marketCap": 34.3197651
+        },
+        {
+          "code": "600783.SH",
+          "name": "鲁信创投",
+          "date": "20100330",
+          "marketCap": 82.32613792
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600520.SH",
+          "name": "三佳科技",
+          "date": "20100629",
+          "marketCap": 14.423904
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600495.SH",
+          "name": "晋西车轴",
+          "date": "20100929",
+          "marketCap": 32.9741658
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600894.SH",
+          "name": "广日股份",
+          "date": "20101105",
+          "marketCap": 59.315468669999994
+        },
+        {
+          "code": "002131.SZ",
+          "name": "利欧股份",
+          "date": "20101015",
+          "marketCap": 49.08256
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002204.SZ",
+          "name": "大连重工",
+          "date": "20110311",
+          "marketCap": 59.0854
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300161.SZ",
+          "name": "华中数控",
+          "date": "20110520",
+          "marketCap": 31.777501
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600761.SH",
+          "name": "安徽合力",
+          "date": "20110929",
+          "marketCap": 53.200495200000006
+        },
+        {
+          "code": "002131.SZ",
+          "name": "利欧股份",
+          "date": "20110926",
+          "marketCap": 46.101471999999994
+        },
+        {
+          "code": "300157.SZ",
+          "name": "新锦动力",
+          "date": "20110923",
+          "marketCap": 72.8816
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000528.SZ",
+          "name": "柳工",
+          "date": "20111229",
+          "marketCap": 131.31575726999998
+        },
+        {
+          "code": "300227.SZ",
+          "name": "光韵达",
+          "date": "20111229",
+          "marketCap": 10.3582
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600815.SH",
+          "name": "厦工股份",
+          "date": "20120329",
+          "marketCap": 60.96141016000001
+        },
+        {
+          "code": "000008.SZ",
+          "name": "神州高铁",
+          "date": "20120329",
+          "marketCap": 6.90867091
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20120329",
+          "marketCap": 29.53113458
+        },
+        {
+          "code": "600444.SH",
+          "name": "国机通用",
+          "date": "20120316",
+          "marketCap": 10.122
+        },
+        {
+          "code": "002272.SZ",
+          "name": "川润股份",
+          "date": "20120328",
+          "marketCap": 42.77394
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600843.SH",
+          "name": "上工申贝",
+          "date": "20120628",
+          "marketCap": 32.05051588
+        },
+        {
+          "code": "600894.SH",
+          "name": "广日股份",
+          "date": "20120628",
+          "marketCap": 50.547758
+        },
+        {
+          "code": "000157.SZ",
+          "name": "中联重科",
+          "date": "20120628",
+          "marketCap": 772.90719122
+        },
+        {
+          "code": "600579.SH",
+          "name": "中化装备",
+          "date": "20120619",
+          "marketCap": 12.16656
+        },
+        {
+          "code": "600499.SH",
+          "name": "科达制造",
+          "date": "20120619",
+          "marketCap": 64.97080276
+        },
+        {
+          "code": "600860.SH",
+          "name": "京城股份",
+          "date": "20120406",
+          "marketCap": 20.889
+        },
+        {
+          "code": "300278.SZ",
+          "name": "华昌达",
+          "date": "20120509",
+          "marketCap": 18.24168
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600579.SH",
+          "name": "中化装备",
+          "date": "20120619",
+          "marketCap": 12.16656
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2013Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000777.SZ",
+          "name": "中核科技",
+          "date": "20130228",
+          "marketCap": 43.04927533
+        },
+        {
+          "code": "000837.SZ",
+          "name": "秦川机床",
+          "date": "20130222",
+          "marketCap": 21.79485
+        },
+        {
+          "code": "300157.SZ",
+          "name": "新锦动力",
+          "date": "20130227",
+          "marketCap": 47.8094428
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002175.SZ",
+          "name": "*ST东智",
+          "date": "20130607",
+          "marketCap": 13.287646890000001
+        },
+        {
+          "code": "300099.SZ",
+          "name": "尤洛卡",
+          "date": "20130614",
+          "marketCap": 20.00856
+        },
+        {
+          "code": "300165.SZ",
+          "name": "天瑞仪器",
+          "date": "20130621",
+          "marketCap": 24.642592
+        },
+        {
+          "code": "002639.SZ",
+          "name": "雪人集团",
+          "date": "20130531",
+          "marketCap": 20.08
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002175.SZ",
+          "name": "*ST东智",
+          "date": "20130607",
+          "marketCap": 13.287646890000001
+        },
+        {
+          "code": "600894.SH",
+          "name": "广日股份",
+          "date": "20130924",
+          "marketCap": 85.23883082
+        },
+        {
+          "code": "300165.SZ",
+          "name": "天瑞仪器",
+          "date": "20130621",
+          "marketCap": 24.642592
+        },
+        {
+          "code": "002633.SZ",
+          "name": "申科股份",
+          "date": "20130926",
+          "marketCap": 13.215
+        },
+        {
+          "code": "300195.SZ",
+          "name": "长荣股份",
+          "date": "20130726",
+          "marketCap": 38.471592
+        },
+        {
+          "code": "002611.SZ",
+          "name": "东方精工",
+          "date": "20130715",
+          "marketCap": 14.223063
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002021.SZ",
+          "name": "中捷资源",
+          "date": "20131224",
+          "marketCap": 34.750280450000005
+        },
+        {
+          "code": "300165.SZ",
+          "name": "天瑞仪器",
+          "date": "20131225",
+          "marketCap": 32.800352000000004
+        },
+        {
+          "code": "001696.SZ",
+          "name": "宗申动力",
+          "date": "20131206",
+          "marketCap": 53.81626524
+        },
+        {
+          "code": "600444.SH",
+          "name": "国机通用",
+          "date": "20131211",
+          "marketCap": 12.894
+        },
+        {
+          "code": "600243.SH",
+          "name": "*ST海华",
+          "date": "20131204",
+          "marketCap": 15.442620000000002
+        },
+        {
+          "code": "002445.SZ",
+          "name": "中南文化",
+          "date": "20131211",
+          "marketCap": 23.651670000000003
+        },
+        {
+          "code": "300278.SZ",
+          "name": "华昌达",
+          "date": "20131101",
+          "marketCap": 12.779580000000001
+        },
+        {
+          "code": "300220.SZ",
+          "name": "金运激光",
+          "date": "20131114",
+          "marketCap": 16.233
+        },
+        {
+          "code": "002527.SZ",
+          "name": "新时达",
+          "date": "20131120",
+          "marketCap": 38.616603669999996
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600592.SH",
+          "name": "龙溪股份",
+          "date": "20140314",
+          "marketCap": 31.52477675
+        },
+        {
+          "code": "002009.SZ",
+          "name": "天奇股份",
+          "date": "20140321",
+          "marketCap": 37.97558024
+        },
+        {
+          "code": "002490.SZ",
+          "name": "山东墨龙",
+          "date": "20140328",
+          "marketCap": 65.10442944
+        },
+        {
+          "code": "300084.SZ",
+          "name": "海默科技",
+          "date": "20140224",
+          "marketCap": 26.6112
+        },
+        {
+          "code": "300004.SZ",
+          "name": "南风股份",
+          "date": "20140326",
+          "marketCap": 90.5408
+        },
+        {
+          "code": "300007.SZ",
+          "name": "汉威科技",
+          "date": "20140114",
+          "marketCap": 20.0718
+        },
+        {
+          "code": "002520.SZ",
+          "name": "日发精机",
+          "date": "20140317",
+          "marketCap": 57.1104
+        },
+        {
+          "code": "300126.SZ",
+          "name": "锐奇股份",
+          "date": "20140327",
+          "marketCap": 22.976496
+        },
+        {
+          "code": "002633.SZ",
+          "name": "申科股份",
+          "date": "20140124",
+          "marketCap": 13.935
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20140326",
+          "marketCap": 41.71930647
+        },
+        {
+          "code": "600444.SH",
+          "name": "国机通用",
+          "date": "20131211",
+          "marketCap": 12.894
+        },
+        {
+          "code": "300278.SZ",
+          "name": "华昌达",
+          "date": "20131101",
+          "marketCap": 12.779580000000001
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000852.SZ",
+          "name": "石化机械",
+          "date": "20140527",
+          "marketCap": 63.2632
+        },
+        {
+          "code": "300161.SZ",
+          "name": "华中数控",
+          "date": "20140526",
+          "marketCap": 19.926984
+        },
+        {
+          "code": "300351.SZ",
+          "name": "永贵电器",
+          "date": "20140620",
+          "marketCap": 38.47077
+        },
+        {
+          "code": "000008.SZ",
+          "name": "神州高铁",
+          "date": "20140624",
+          "marketCap": 25.50253776
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20140326",
+          "marketCap": 41.71930647
+        },
+        {
+          "code": "600243.SH",
+          "name": "*ST海华",
+          "date": "20140616",
+          "marketCap": 14.424164999999999
+        },
+        {
+          "code": "600582.SH",
+          "name": "天地科技",
+          "date": "20140625",
+          "marketCap": 96.749424
+        },
+        {
+          "code": "300201.SZ",
+          "name": "海伦哲",
+          "date": "20140606",
+          "marketCap": 21.3312
+        },
+        {
+          "code": "002131.SZ",
+          "name": "利欧股份",
+          "date": "20140421",
+          "marketCap": 73.23973566000001
+        },
+        {
+          "code": "002564.SZ",
+          "name": "天沃科技",
+          "date": "20140523",
+          "marketCap": 46.971712
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000811.SZ",
+          "name": "冰轮环境",
+          "date": "20140820",
+          "marketCap": 47.35169004
+        },
+        {
+          "code": "002021.SZ",
+          "name": "中捷资源",
+          "date": "20140904",
+          "marketCap": 48.2158343
+        },
+        {
+          "code": "002514.SZ",
+          "name": "*ST宝馨",
+          "date": "20140923",
+          "marketCap": 33.8368
+        },
+        {
+          "code": "300066.SZ",
+          "name": "三川智慧",
+          "date": "20140912",
+          "marketCap": 35.360257270000005
+        },
+        {
+          "code": "300112.SZ",
+          "name": "万讯自控",
+          "date": "20140902",
+          "marketCap": 26.278360879999997
+        },
+        {
+          "code": "002559.SZ",
+          "name": "亚威股份",
+          "date": "20140918",
+          "marketCap": 34.1792
+        },
+        {
+          "code": "300349.SZ",
+          "name": "金卡智能",
+          "date": "20140905",
+          "marketCap": 46.188
+        },
+        {
+          "code": "002006.SZ",
+          "name": "精工科技",
+          "date": "20140909",
+          "marketCap": 39.8265
+        },
+        {
+          "code": "300157.SZ",
+          "name": "新锦动力",
+          "date": "20140709",
+          "marketCap": 88.460011
+        },
+        {
+          "code": "300278.SZ",
+          "name": "华昌达",
+          "date": "20140919",
+          "marketCap": 28.54164
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600761.SH",
+          "name": "安徽合力",
+          "date": "20141225",
+          "marketCap": 96.53191293
+        },
+        {
+          "code": "000811.SZ",
+          "name": "冰轮环境",
+          "date": "20140820",
+          "marketCap": 47.35169004
+        },
+        {
+          "code": "002009.SZ",
+          "name": "天奇股份",
+          "date": "20141017",
+          "marketCap": 52.32476399
+        },
+        {
+          "code": "600984.SH",
+          "name": "建设机械",
+          "date": "20141029",
+          "marketCap": 19.2278576
+        },
+        {
+          "code": "002021.SZ",
+          "name": "中捷资源",
+          "date": "20140904",
+          "marketCap": 48.2158343
+        },
+        {
+          "code": "002184.SZ",
+          "name": "海得控制",
+          "date": "20141126",
+          "marketCap": 48.004
+        },
+        {
+          "code": "300011.SZ",
+          "name": "鼎汉技术",
+          "date": "20141121",
+          "marketCap": 90.15891245
+        },
+        {
+          "code": "300112.SZ",
+          "name": "万讯自控",
+          "date": "20140902",
+          "marketCap": 26.278360879999997
+        },
+        {
+          "code": "300126.SZ",
+          "name": "锐奇股份",
+          "date": "20141209",
+          "marketCap": 37.3071912
+        },
+        {
+          "code": "002529.SZ",
+          "name": "海源复材",
+          "date": "20140930",
+          "marketCap": 24.048
+        },
+        {
+          "code": "300370.SZ",
+          "name": "安控科技",
+          "date": "20141126",
+          "marketCap": 38.892559999999996
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20141230",
+          "marketCap": 65.89447511
+        },
+        {
+          "code": "002006.SZ",
+          "name": "精工科技",
+          "date": "20140909",
+          "marketCap": 39.8265
+        },
+        {
+          "code": "600520.SH",
+          "name": "三佳科技",
+          "date": "20141224",
+          "marketCap": 24.889353
+        },
+        {
+          "code": "300159.SZ",
+          "name": "新研股份",
+          "date": "20141128",
+          "marketCap": 59.56808
+        },
+        {
+          "code": "300278.SZ",
+          "name": "华昌达",
+          "date": "20140919",
+          "marketCap": 28.54164
+        },
+        {
+          "code": "002722.SZ",
+          "name": "物产金轮",
+          "date": "20141226",
+          "marketCap": 28.375559999999997
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600894.SH",
+          "name": "广日股份",
+          "date": "20150324",
+          "marketCap": 192.88608855
+        },
+        {
+          "code": "600232.SH",
+          "name": "金鹰股份",
+          "date": "20150112",
+          "marketCap": 23.08668384
+        },
+        {
+          "code": "000410.SZ",
+          "name": "沈阳机床",
+          "date": "20150302",
+          "marketCap": 142.98996113
+        },
+        {
+          "code": "600172.SH",
+          "name": "黄河旋风",
+          "date": "20150326",
+          "marketCap": 84.02934873000001
+        },
+        {
+          "code": "600558.SH",
+          "name": "大西洋",
+          "date": "20150325",
+          "marketCap": 77.7924188
+        },
+        {
+          "code": "002021.SZ",
+          "name": "中捷资源",
+          "date": "20140904",
+          "marketCap": 48.2158343
+        },
+        {
+          "code": "601766.SH",
+          "name": "中国中车",
+          "date": "20150327",
+          "marketCap": 2345.1297
+        },
+        {
+          "code": "002520.SZ",
+          "name": "日发精机",
+          "date": "20150330",
+          "marketCap": 79.8336
+        },
+        {
+          "code": "300126.SZ",
+          "name": "锐奇股份",
+          "date": "20141209",
+          "marketCap": 37.3071912
+        },
+        {
+          "code": "002529.SZ",
+          "name": "海源复材",
+          "date": "20150320",
+          "marketCap": 24.816
+        },
+        {
+          "code": "002598.SZ",
+          "name": "ST章鼓",
+          "date": "20150114",
+          "marketCap": 28.4232
+        },
+        {
+          "code": "300349.SZ",
+          "name": "金卡智能",
+          "date": "20150325",
+          "marketCap": 69.318
+        },
+        {
+          "code": "601608.SH",
+          "name": "中信重工",
+          "date": "20150121",
+          "marketCap": 176.73
+        },
+        {
+          "code": "002691.SZ",
+          "name": "*ST冀凯",
+          "date": "20150217",
+          "marketCap": 30.52
+        },
+        {
+          "code": "000008.SZ",
+          "name": "神州高铁",
+          "date": "20150311",
+          "marketCap": 215.79656748000002
+        },
+        {
+          "code": "002611.SZ",
+          "name": "东方精工",
+          "date": "20150320",
+          "marketCap": 64.881156
+        },
+        {
+          "code": "002445.SZ",
+          "name": "中南文化",
+          "date": "20150327",
+          "marketCap": 112.84659754
+        },
+        {
+          "code": "300095.SZ",
+          "name": "华伍股份",
+          "date": "20150210",
+          "marketCap": 24.01864808
+        },
+        {
+          "code": "300201.SZ",
+          "name": "海伦哲",
+          "date": "20150217",
+          "marketCap": 29.88178223
+        },
+        {
+          "code": "002131.SZ",
+          "name": "利欧股份",
+          "date": "20150212",
+          "marketCap": 111.32111358
+        },
+        {
+          "code": "300278.SZ",
+          "name": "华昌达",
+          "date": "20150327",
+          "marketCap": 127.70367143000001
+        },
+        {
+          "code": "300220.SZ",
+          "name": "金运激光",
+          "date": "20150330",
+          "marketCap": 53.5626
+        },
+        {
+          "code": "002722.SZ",
+          "name": "物产金轮",
+          "date": "20141226",
+          "marketCap": 28.375559999999997
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600558.SH",
+          "name": "大西洋",
+          "date": "20150325",
+          "marketCap": 77.7924188
+        },
+        {
+          "code": "600499.SH",
+          "name": "科达制造",
+          "date": "20150609",
+          "marketCap": 209.17901252
+        },
+        {
+          "code": "002097.SZ",
+          "name": "山河智能",
+          "date": "20150520",
+          "marketCap": 99.7029
+        },
+        {
+          "code": "300048.SZ",
+          "name": "合康新能",
+          "date": "20150529",
+          "marketCap": 72.16010032
+        },
+        {
+          "code": "300099.SZ",
+          "name": "尤洛卡",
+          "date": "20150619",
+          "marketCap": 56.97615477
+        },
+        {
+          "code": "300084.SZ",
+          "name": "海默科技",
+          "date": "20150602",
+          "marketCap": 69.59729765
+        },
+        {
+          "code": "002248.SZ",
+          "name": "华东数控",
+          "date": "20150414",
+          "marketCap": 51.3517652
+        },
+        {
+          "code": "002209.SZ",
+          "name": "达意隆",
+          "date": "20150605",
+          "marketCap": 51.83729528
+        },
+        {
+          "code": "002278.SZ",
+          "name": "神开股份",
+          "date": "20150525",
+          "marketCap": 58.85843018
+        },
+        {
+          "code": "300007.SZ",
+          "name": "汉威科技",
+          "date": "20150626",
+          "marketCap": 109.47332032000001
+        },
+        {
+          "code": "002353.SZ",
+          "name": "杰瑞股份",
+          "date": "20150526",
+          "marketCap": 427.62853850999994
+        },
+        {
+          "code": "002438.SZ",
+          "name": "江苏神通",
+          "date": "20150522",
+          "marketCap": 67.8288
+        },
+        {
+          "code": "300112.SZ",
+          "name": "万讯自控",
+          "date": "20150623",
+          "marketCap": 54.678107250000004
+        },
+        {
+          "code": "002639.SZ",
+          "name": "雪人集团",
+          "date": "20150629",
+          "marketCap": 61.28
+        },
+        {
+          "code": "002633.SZ",
+          "name": "申科股份",
+          "date": "20150608",
+          "marketCap": 49.305
+        },
+        {
+          "code": "300228.SZ",
+          "name": "富瑞特装",
+          "date": "20150623",
+          "marketCap": 123.72350995000001
+        },
+        {
+          "code": "300161.SZ",
+          "name": "华中数控",
+          "date": "20150521",
+          "marketCap": 61.818939
+        },
+        {
+          "code": "300195.SZ",
+          "name": "长荣股份",
+          "date": "20150619",
+          "marketCap": 108.93642001
+        },
+        {
+          "code": "300349.SZ",
+          "name": "金卡智能",
+          "date": "20150617",
+          "marketCap": 107.622
+        },
+        {
+          "code": "002667.SZ",
+          "name": "*ST威领",
+          "date": "20150403",
+          "marketCap": 32.39247
+        },
+        {
+          "code": "300420.SZ",
+          "name": "五洋自控",
+          "date": "20150511",
+          "marketCap": 30.72
+        },
+        {
+          "code": "300421.SZ",
+          "name": "力星股份",
+          "date": "20150525",
+          "marketCap": 52.1136
+        },
+        {
+          "code": "000008.SZ",
+          "name": "神州高铁",
+          "date": "20150311",
+          "marketCap": 215.79656748000002
+        },
+        {
+          "code": "001696.SZ",
+          "name": "宗申动力",
+          "date": "20150629",
+          "marketCap": 197.5171437
+        },
+        {
+          "code": "603011.SH",
+          "name": "合锻智能",
+          "date": "20150511",
+          "marketCap": 48.87785
+        },
+        {
+          "code": "600520.SH",
+          "name": "三佳科技",
+          "date": "20150525",
+          "marketCap": 57.177387
+        },
+        {
+          "code": "600860.SH",
+          "name": "京城股份",
+          "date": "20150626",
+          "marketCap": 56.0838
+        },
+        {
+          "code": "002445.SZ",
+          "name": "中南文化",
+          "date": "20150601",
+          "marketCap": 213.50354624000002
+        },
+        {
+          "code": "300411.SZ",
+          "name": "金盾股份",
+          "date": "20150605",
+          "marketCap": 85.888
+        },
+        {
+          "code": "300083.SZ",
+          "name": "创世纪",
+          "date": "20150403",
+          "marketCap": 85.53237114000001
+        },
+        {
+          "code": "600202.SH",
+          "name": "哈空调",
+          "date": "20150612",
+          "marketCap": 72.29805074
+        },
+        {
+          "code": "002272.SZ",
+          "name": "川润股份",
+          "date": "20150417",
+          "marketCap": 47.0064
+        },
+        {
+          "code": "300278.SZ",
+          "name": "华昌达",
+          "date": "20150327",
+          "marketCap": 127.70367143000001
+        },
+        {
+          "code": "002367.SZ",
+          "name": "康力电梯",
+          "date": "20150601",
+          "marketCap": 210.42717533
+        },
+        {
+          "code": "603111.SH",
+          "name": "康尼机电",
+          "date": "20150515",
+          "marketCap": 114.39033309
+        },
+        {
+          "code": "002527.SZ",
+          "name": "新时达",
+          "date": "20150612",
+          "marketCap": 182.35706611999998
+        },
+        {
+          "code": "002530.SZ",
+          "name": "金财互联",
+          "date": "20150605",
+          "marketCap": 63.5428
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600528.SH",
+          "name": "中铁工业",
+          "date": "20150911",
+          "marketCap": 174.52032
+        },
+        {
+          "code": "600579.SH",
+          "name": "中化装备",
+          "date": "20150922",
+          "marketCap": 42.61807824
+        },
+        {
+          "code": "600499.SH",
+          "name": "科达制造",
+          "date": "20150609",
+          "marketCap": 209.17901252
+        },
+        {
+          "code": "002026.SZ",
+          "name": "山东威达",
+          "date": "20150722",
+          "marketCap": 38.45897966
+        },
+        {
+          "code": "002097.SZ",
+          "name": "山河智能",
+          "date": "20150520",
+          "marketCap": 99.7029
+        },
+        {
+          "code": "002514.SZ",
+          "name": "*ST宝馨",
+          "date": "20150707",
+          "marketCap": 40.99853554
+        },
+        {
+          "code": "300099.SZ",
+          "name": "尤洛卡",
+          "date": "20150619",
+          "marketCap": 56.97615477
+        },
+        {
+          "code": "300145.SZ",
+          "name": "南方泵业",
+          "date": "20150922",
+          "marketCap": 90.85379596
+        },
+        {
+          "code": "601100.SH",
+          "name": "恒立液压",
+          "date": "20150824",
+          "marketCap": 94.878
+        },
+        {
+          "code": "002535.SZ",
+          "name": "林州重机",
+          "date": "20150826",
+          "marketCap": 52.23273569
+        },
+        {
+          "code": "002483.SZ",
+          "name": "润邦股份",
+          "date": "20150929",
+          "marketCap": 51.16298564
+        },
+        {
+          "code": "300112.SZ",
+          "name": "万讯自控",
+          "date": "20150623",
+          "marketCap": 54.678107250000004
+        },
+        {
+          "code": "002639.SZ",
+          "name": "雪人集团",
+          "date": "20150831",
+          "marketCap": 51.84
+        },
+        {
+          "code": "300228.SZ",
+          "name": "富瑞特装",
+          "date": "20150918",
+          "marketCap": 55.39180352
+        },
+        {
+          "code": "002667.SZ",
+          "name": "*ST威领",
+          "date": "20150403",
+          "marketCap": 32.39247
+        },
+        {
+          "code": "300441.SZ",
+          "name": "鲍斯股份",
+          "date": "20150804",
+          "marketCap": 39.730944
+        },
+        {
+          "code": "000927.SZ",
+          "name": "中国铁物",
+          "date": "20150928",
+          "marketCap": 102.88872429
+        },
+        {
+          "code": "600243.SH",
+          "name": "*ST海华",
+          "date": "20150825",
+          "marketCap": 21.41124
+        },
+        {
+          "code": "600860.SH",
+          "name": "京城股份",
+          "date": "20150626",
+          "marketCap": 56.0838
+        },
+        {
+          "code": "002445.SZ",
+          "name": "中南文化",
+          "date": "20150601",
+          "marketCap": 213.50354624000002
+        },
+        {
+          "code": "300412.SZ",
+          "name": "迦南科技",
+          "date": "20150724",
+          "marketCap": 50.10522
+        },
+        {
+          "code": "300263.SZ",
+          "name": "隆华科技",
+          "date": "20150703",
+          "marketCap": 62.318067500000005
+        },
+        {
+          "code": "002131.SZ",
+          "name": "利欧股份",
+          "date": "20150910",
+          "marketCap": 175.20158382000002
+        },
+        {
+          "code": "300157.SZ",
+          "name": "新锦动力",
+          "date": "20150707",
+          "marketCap": 52.17945243
+        },
+        {
+          "code": "300278.SZ",
+          "name": "华昌达",
+          "date": "20150327",
+          "marketCap": 127.70367143000001
+        },
+        {
+          "code": "002730.SZ",
+          "name": "电光科技",
+          "date": "20150715",
+          "marketCap": 47.682417
+        },
+        {
+          "code": "002530.SZ",
+          "name": "金财互联",
+          "date": "20150605",
+          "marketCap": 63.5428
+        },
+        {
+          "code": "300466.SZ",
+          "name": "赛摩智能",
+          "date": "20150707",
+          "marketCap": 21.824
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002164.SZ",
+          "name": "宁波东力",
+          "date": "20151216",
+          "marketCap": 46.1221875
+        },
+        {
+          "code": "002514.SZ",
+          "name": "*ST宝馨",
+          "date": "20150707",
+          "marketCap": 40.99853554
+        },
+        {
+          "code": "002209.SZ",
+          "name": "达意隆",
+          "date": "20151123",
+          "marketCap": 44.73041186
+        },
+        {
+          "code": "300011.SZ",
+          "name": "鼎汉技术",
+          "date": "20151230",
+          "marketCap": 156.50260505
+        },
+        {
+          "code": "002483.SZ",
+          "name": "润邦股份",
+          "date": "20150929",
+          "marketCap": 51.16298564
+        },
+        {
+          "code": "002633.SZ",
+          "name": "申科股份",
+          "date": "20150930",
+          "marketCap": 28.32
+        },
+        {
+          "code": "300281.SZ",
+          "name": "金明精机",
+          "date": "20151204",
+          "marketCap": 45.95071629
+        },
+        {
+          "code": "300306.SZ",
+          "name": "远方信息",
+          "date": "20151102",
+          "marketCap": 44.808
+        },
+        {
+          "code": "300349.SZ",
+          "name": "金卡智能",
+          "date": "20151120",
+          "marketCap": 67.95
+        },
+        {
+          "code": "002691.SZ",
+          "name": "*ST冀凯",
+          "date": "20151211",
+          "marketCap": 47.52
+        },
+        {
+          "code": "300351.SZ",
+          "name": "永贵电器",
+          "date": "20151016",
+          "marketCap": 105.541722
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20151102",
+          "marketCap": 59.8906977
+        },
+        {
+          "code": "002006.SZ",
+          "name": "精工科技",
+          "date": "20151210",
+          "marketCap": 66.90852
+        },
+        {
+          "code": "601717.SH",
+          "name": "中创智领",
+          "date": "20151217",
+          "marketCap": 121.9083744
+        },
+        {
+          "code": "600783.SH",
+          "name": "鲁信创投",
+          "date": "20151230",
+          "marketCap": 290.82117617
+        },
+        {
+          "code": "300220.SZ",
+          "name": "金运激光",
+          "date": "20151209",
+          "marketCap": 51.786
+        },
+        {
+          "code": "002698.SZ",
+          "name": "博实股份",
+          "date": "20151225",
+          "marketCap": 199.94261
+        },
+        {
+          "code": "002530.SZ",
+          "name": "金财互联",
+          "date": "20150605",
+          "marketCap": 63.5428
+        },
+        {
+          "code": "300092.SZ",
+          "name": "科新机电",
+          "date": "20151118",
+          "marketCap": 32.123
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600843.SH",
+          "name": "上工申贝",
+          "date": "20160217",
+          "marketCap": 75.21163416
+        },
+        {
+          "code": "002164.SZ",
+          "name": "宁波东力",
+          "date": "20151216",
+          "marketCap": 46.1221875
+        },
+        {
+          "code": "002209.SZ",
+          "name": "达意隆",
+          "date": "20151123",
+          "marketCap": 44.73041186
+        },
+        {
+          "code": "002353.SZ",
+          "name": "杰瑞股份",
+          "date": "20160323",
+          "marketCap": 168.48651719
+        },
+        {
+          "code": "002639.SZ",
+          "name": "雪人集团",
+          "date": "20160323",
+          "marketCap": 65.94
+        },
+        {
+          "code": "002633.SZ",
+          "name": "申科股份",
+          "date": "20150930",
+          "marketCap": 28.32
+        },
+        {
+          "code": "300257.SZ",
+          "name": "开山股份",
+          "date": "20160325",
+          "marketCap": 152.724
+        },
+        {
+          "code": "002691.SZ",
+          "name": "*ST冀凯",
+          "date": "20160222",
+          "marketCap": 51.64
+        },
+        {
+          "code": "300472.SZ",
+          "name": "ST新元",
+          "date": "20160323",
+          "marketCap": 31.588246
+        },
+        {
+          "code": "000925.SZ",
+          "name": "众合科技",
+          "date": "20151102",
+          "marketCap": 59.8906977
+        },
+        {
+          "code": "002611.SZ",
+          "name": "东方精工",
+          "date": "20160328",
+          "marketCap": 69.57832958
+        },
+        {
+          "code": "002006.SZ",
+          "name": "精工科技",
+          "date": "20151210",
+          "marketCap": 66.90852
+        },
+        {
+          "code": "600520.SH",
+          "name": "三佳科技",
+          "date": "20160316",
+          "marketCap": 32.224662
+        },
+        {
+          "code": "600215.SH",
+          "name": "派斯林",
+          "date": "20160304",
+          "marketCap": 32.36628845
+        },
+        {
+          "code": "601717.SH",
+          "name": "中创智领",
+          "date": "20151217",
+          "marketCap": 121.9083744
+        },
+        {
+          "code": "300201.SZ",
+          "name": "海伦哲",
+          "date": "20160222",
+          "marketCap": 57.47572499
+        },
+        {
+          "code": "600202.SH",
+          "name": "哈空调",
+          "date": "20160324",
+          "marketCap": 48.95260381
+        },
+        {
+          "code": "300220.SZ",
+          "name": "金运激光",
+          "date": "20151209",
+          "marketCap": 51.786
+        },
+        {
+          "code": "002730.SZ",
+          "name": "电光科技",
+          "date": "20160329",
+          "marketCap": 60.12003299999999
+        },
+        {
+          "code": "603611.SH",
+          "name": "诺力股份",
+          "date": "20160329",
+          "marketCap": 40.992
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002175.SZ",
+          "name": "*ST东智",
+          "date": "20160506",
+          "marketCap": 133.62168385
+        },
+        {
+          "code": "600843.SH",
+          "name": "上工申贝",
+          "date": "20160217",
+          "marketCap": 75.21163416
+        },
+        {
+          "code": "600545.SH",
+          "name": "卓郎智能",
+          "date": "20160530",
+          "marketCap": 46.69679726
+        },
+        {
+          "code": "002278.SZ",
+          "name": "神开股份",
+          "date": "20160331",
+          "marketCap": 48.218028360000005
+        },
+        {
+          "code": "002347.SZ",
+          "name": "泰尔股份",
+          "date": "20160401",
+          "marketCap": 43.69934215
+        },
+        {
+          "code": "002691.SZ",
+          "name": "*ST冀凯",
+          "date": "20160222",
+          "marketCap": 51.64
+        },
+        {
+          "code": "300351.SZ",
+          "name": "永贵电器",
+          "date": "20160628",
+          "marketCap": 121.35575146999999
+        },
+        {
+          "code": "300441.SZ",
+          "name": "鲍斯股份",
+          "date": "20160331",
+          "marketCap": 81.151488
+        },
+        {
+          "code": "300488.SZ",
+          "name": "恒锋工具",
+          "date": "20160331",
+          "marketCap": 45.207232
+        },
+        {
+          "code": "300472.SZ",
+          "name": "ST新元",
+          "date": "20160323",
+          "marketCap": 31.588246
+        },
+        {
+          "code": "300503.SZ",
+          "name": "昊志机电",
+          "date": "20160629",
+          "marketCap": 84.72
+        },
+        {
+          "code": "002611.SZ",
+          "name": "东方精工",
+          "date": "20160328",
+          "marketCap": 69.57832958
+        },
+        {
+          "code": "300402.SZ",
+          "name": "宝色股份",
+          "date": "20160530",
+          "marketCap": 33.3098
+        },
+        {
+          "code": "600860.SH",
+          "name": "京城股份",
+          "date": "20160624",
+          "marketCap": 35.5746
+        },
+        {
+          "code": "002445.SZ",
+          "name": "中南文化",
+          "date": "20160613",
+          "marketCap": 172.02541707999998
+        },
+        {
+          "code": "002046.SZ",
+          "name": "国机精工",
+          "date": "20160506",
+          "marketCap": 36.52785598
+        },
+        {
+          "code": "300411.SZ",
+          "name": "金盾股份",
+          "date": "20160426",
+          "marketCap": 50.224
+        },
+        {
+          "code": "300227.SZ",
+          "name": "光韵达",
+          "date": "20160617",
+          "marketCap": 33.103784999999995
+        },
+        {
+          "code": "002686.SZ",
+          "name": "亿利达",
+          "date": "20160419",
+          "marketCap": 56.032680000000006
+        },
+        {
+          "code": "002272.SZ",
+          "name": "川润股份",
+          "date": "20160408",
+          "marketCap": 46.33488
+        },
+        {
+          "code": "300461.SZ",
+          "name": "田中精机",
+          "date": "20160524",
+          "marketCap": 30.90618
+        },
+        {
+          "code": "002685.SZ",
+          "name": "华东重机",
+          "date": "20160520",
+          "marketCap": 62.39457855999999
+        },
+        {
+          "code": "300466.SZ",
+          "name": "赛摩智能",
+          "date": "20160624",
+          "marketCap": 71.664
+        },
+        {
+          "code": "603611.SH",
+          "name": "诺力股份",
+          "date": "20160329",
+          "marketCap": 40.992
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002175.SZ",
+          "name": "*ST东智",
+          "date": "20160506",
+          "marketCap": 133.62168385
+        },
+        {
+          "code": "600545.SH",
+          "name": "卓郎智能",
+          "date": "20160530",
+          "marketCap": 46.69679726
+        },
+        {
+          "code": "002278.SZ",
+          "name": "神开股份",
+          "date": "20160726",
+          "marketCap": 54.65922913000001
+        },
+        {
+          "code": "002526.SZ",
+          "name": "山东矿机",
+          "date": "20160801",
+          "marketCap": 54.0408
+        },
+        {
+          "code": "601798.SH",
+          "name": "蓝科高新",
+          "date": "20160825",
+          "marketCap": 45.45051498
+        },
+        {
+          "code": "300179.SZ",
+          "name": "四方达",
+          "date": "20160704",
+          "marketCap": 36.8610935
+        },
+        {
+          "code": "300293.SZ",
+          "name": "蓝英装备",
+          "date": "20160805",
+          "marketCap": 43.416
+        },
+        {
+          "code": "300421.SZ",
+          "name": "力星股份",
+          "date": "20160921",
+          "marketCap": 38.416
+        },
+        {
+          "code": "300488.SZ",
+          "name": "恒锋工具",
+          "date": "20160331",
+          "marketCap": 45.207232
+        },
+        {
+          "code": "300411.SZ",
+          "name": "金盾股份",
+          "date": "20160426",
+          "marketCap": 50.224
+        },
+        {
+          "code": "300227.SZ",
+          "name": "光韵达",
+          "date": "20160617",
+          "marketCap": 33.103784999999995
+        },
+        {
+          "code": "603100.SH",
+          "name": "川仪股份",
+          "date": "20160819",
+          "marketCap": 57.9465
+        },
+        {
+          "code": "002122.SZ",
+          "name": "ST汇洲",
+          "date": "20160920",
+          "marketCap": 95.5152
+        },
+        {
+          "code": "300276.SZ",
+          "name": "三丰智能",
+          "date": "20160909",
+          "marketCap": 67.9536
+        },
+        {
+          "code": "002564.SZ",
+          "name": "天沃科技",
+          "date": "20160902",
+          "marketCap": 57.993420799999996
+        },
+        {
+          "code": "300461.SZ",
+          "name": "田中精机",
+          "date": "20160524",
+          "marketCap": 30.90618
+        },
+        {
+          "code": "002685.SZ",
+          "name": "华东重机",
+          "date": "20160914",
+          "marketCap": 76.11449141
+        },
+        {
+          "code": "300466.SZ",
+          "name": "赛摩智能",
+          "date": "20160624",
+          "marketCap": 71.664
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002282.SZ",
+          "name": "博深股份",
+          "date": "20160930",
+          "marketCap": 46.66194
+        },
+        {
+          "code": "002526.SZ",
+          "name": "山东矿机",
+          "date": "20160801",
+          "marketCap": 54.0408
+        },
+        {
+          "code": "603308.SH",
+          "name": "应流股份",
+          "date": "20161123",
+          "marketCap": 95.07895155
+        },
+        {
+          "code": "300179.SZ",
+          "name": "四方达",
+          "date": "20160704",
+          "marketCap": 36.8610935
+        },
+        {
+          "code": "300420.SZ",
+          "name": "五洋自控",
+          "date": "20161212",
+          "marketCap": 60.60535615
+        },
+        {
+          "code": "002795.SZ",
+          "name": "永和智控",
+          "date": "20161201",
+          "marketCap": 91.6
+        },
+        {
+          "code": "603169.SH",
+          "name": "兰石重装",
+          "date": "20161123",
+          "marketCap": 136.99552015
+        },
+        {
+          "code": "300480.SZ",
+          "name": "光力科技",
+          "date": "20160930",
+          "marketCap": 41.064782
+        },
+        {
+          "code": "002132.SZ",
+          "name": "恒星科技",
+          "date": "20161220",
+          "marketCap": 82.69575723
+        },
+        {
+          "code": "300276.SZ",
+          "name": "三丰智能",
+          "date": "20160909",
+          "marketCap": 67.9536
+        },
+        {
+          "code": "603111.SH",
+          "name": "康尼机电",
+          "date": "20161223",
+          "marketCap": 108.54233775
+        },
+        {
+          "code": "002685.SZ",
+          "name": "华东重机",
+          "date": "20161216",
+          "marketCap": 68.87534141
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002175.SZ",
+          "name": "*ST东智",
+          "date": "20170308",
+          "marketCap": 123.46887113000001
+        },
+        {
+          "code": "002248.SZ",
+          "name": "华东数控",
+          "date": "20170227",
+          "marketCap": 33.33252304
+        },
+        {
+          "code": "002282.SZ",
+          "name": "博深股份",
+          "date": "20160930",
+          "marketCap": 46.66194
+        },
+        {
+          "code": "300472.SZ",
+          "name": "ST新元",
+          "date": "20170317",
+          "marketCap": 37.881894
+        },
+        {
+          "code": "002816.SZ",
+          "name": "*ST和科",
+          "date": "20170217",
+          "marketCap": 40.16
+        },
+        {
+          "code": "002132.SZ",
+          "name": "恒星科技",
+          "date": "20161220",
+          "marketCap": 82.69575723
+        },
+        {
+          "code": "300486.SZ",
+          "name": "东杰智能",
+          "date": "20170124",
+          "marketCap": 31.99449337
+        },
+        {
+          "code": "300201.SZ",
+          "name": "海伦哲",
+          "date": "20170203",
+          "marketCap": 89.48496447
+        },
+        {
+          "code": "002747.SZ",
+          "name": "埃斯顿",
+          "date": "20170215",
+          "marketCap": 114.01255128999999
+        },
+        {
+          "code": "603111.SH",
+          "name": "康尼机电",
+          "date": "20161223",
+          "marketCap": 108.54233775
+        },
+        {
+          "code": "002685.SZ",
+          "name": "华东重机",
+          "date": "20161216",
+          "marketCap": 68.87534141
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002175.SZ",
+          "name": "*ST东智",
+          "date": "20170308",
+          "marketCap": 123.46887113000001
+        },
+        {
+          "code": "600172.SH",
+          "name": "黄河旋风",
+          "date": "20170629",
+          "marketCap": 117.38597032999999
+        },
+        {
+          "code": "600545.SH",
+          "name": "卓郎智能",
+          "date": "20170621",
+          "marketCap": 80.82397905
+        },
+        {
+          "code": "300145.SZ",
+          "name": "南方泵业",
+          "date": "20170627",
+          "marketCap": 203.40356579
+        },
+        {
+          "code": "002526.SZ",
+          "name": "山东矿机",
+          "date": "20170609",
+          "marketCap": 39.8898
+        },
+        {
+          "code": "601608.SH",
+          "name": "中信重工",
+          "date": "20170418",
+          "marketCap": 240.40382883
+        },
+        {
+          "code": "002006.SZ",
+          "name": "精工科技",
+          "date": "20170519",
+          "marketCap": 36.094188
+        },
+        {
+          "code": "300151.SZ",
+          "name": "昌红科技",
+          "date": "20170410",
+          "marketCap": 58.089
+        },
+        {
+          "code": "601717.SH",
+          "name": "中创智领",
+          "date": "20170421",
+          "marketCap": 134.95951972
+        },
+        {
+          "code": "300486.SZ",
+          "name": "东杰智能",
+          "date": "20170124",
+          "marketCap": 31.99449337
+        },
+        {
+          "code": "300201.SZ",
+          "name": "海伦哲",
+          "date": "20170203",
+          "marketCap": 89.48496447
+        },
+        {
+          "code": "002122.SZ",
+          "name": "ST汇洲",
+          "date": "20170421",
+          "marketCap": 122.364
+        },
+        {
+          "code": "300276.SZ",
+          "name": "三丰智能",
+          "date": "20170628",
+          "marketCap": 61.776
+        },
+        {
+          "code": "300278.SZ",
+          "name": "华昌达",
+          "date": "20170425",
+          "marketCap": 90.53171073
+        },
+        {
+          "code": "300461.SZ",
+          "name": "田中精机",
+          "date": "20170509",
+          "marketCap": 45.3596634
+        },
+        {
+          "code": "002757.SZ",
+          "name": "南兴股份",
+          "date": "20170616",
+          "marketCap": 40.991566
+        },
+        {
+          "code": "300092.SZ",
+          "name": "科新机电",
+          "date": "20170413",
+          "marketCap": 30.2002825
+        },
+        {
+          "code": "300466.SZ",
+          "name": "赛摩智能",
+          "date": "20170428",
+          "marketCap": 85.22724793
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600579.SH",
+          "name": "中化装备",
+          "date": "20170630",
+          "marketCap": 60.15817752
+        },
+        {
+          "code": "300145.SZ",
+          "name": "南方泵业",
+          "date": "20170627",
+          "marketCap": 203.40356579
+        },
+        {
+          "code": "300004.SZ",
+          "name": "南风股份",
+          "date": "20170922",
+          "marketCap": 57.847270220000006
+        },
+        {
+          "code": "002347.SZ",
+          "name": "泰尔股份",
+          "date": "20170926",
+          "marketCap": 33.07220136
+        },
+        {
+          "code": "300091.SZ",
+          "name": "*ST金灵",
+          "date": "20170920",
+          "marketCap": 94.95185201
+        },
+        {
+          "code": "000927.SZ",
+          "name": "中国铁物",
+          "date": "20170908",
+          "marketCap": 92.20105836
+        },
+        {
+          "code": "603131.SH",
+          "name": "上海沪工",
+          "date": "20170630",
+          "marketCap": 45.76
+        },
+        {
+          "code": "002837.SZ",
+          "name": "英维克",
+          "date": "20170725",
+          "marketCap": 47.067224939999996
+        },
+        {
+          "code": "001696.SZ",
+          "name": "宗申动力",
+          "date": "20170822",
+          "marketCap": 85.30450554
+        },
+        {
+          "code": "002006.SZ",
+          "name": "精工科技",
+          "date": "20170519",
+          "marketCap": 36.094188
+        },
+        {
+          "code": "603029.SH",
+          "name": "天鹅股份",
+          "date": "20170825",
+          "marketCap": 26.060528
+        },
+        {
+          "code": "601717.SH",
+          "name": "中创智领",
+          "date": "20170421",
+          "marketCap": 134.95951972
+        },
+        {
+          "code": "002757.SZ",
+          "name": "南兴股份",
+          "date": "20170616",
+          "marketCap": 40.991566
+        },
+        {
+          "code": "603111.SH",
+          "name": "康尼机电",
+          "date": "20170927",
+          "marketCap": 109.5760743
+        },
+        {
+          "code": "300092.SZ",
+          "name": "科新机电",
+          "date": "20170413",
+          "marketCap": 30.2002825
+        },
+        {
+          "code": "300466.SZ",
+          "name": "赛摩智能",
+          "date": "20170428",
+          "marketCap": 85.22724793
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600579.SH",
+          "name": "中化装备",
+          "date": "20170630",
+          "marketCap": 60.15817752
+        },
+        {
+          "code": "002523.SZ",
+          "name": "天桥起重",
+          "date": "20171221",
+          "marketCap": 52.21333236
+        },
+        {
+          "code": "002520.SZ",
+          "name": "日发精机",
+          "date": "20171122",
+          "marketCap": 57.1819816
+        },
+        {
+          "code": "300091.SZ",
+          "name": "*ST金灵",
+          "date": "20170920",
+          "marketCap": 94.95185201
+        },
+        {
+          "code": "300260.SZ",
+          "name": "新莱应材",
+          "date": "20171013",
+          "marketCap": 29.139941999999998
+        },
+        {
+          "code": "300159.SZ",
+          "name": "新研股份",
+          "date": "20171122",
+          "marketCap": 154.99746101
+        },
+        {
+          "code": "002122.SZ",
+          "name": "ST汇洲",
+          "date": "20171218",
+          "marketCap": 100.8612
+        },
+        {
+          "code": "300278.SZ",
+          "name": "华昌达",
+          "date": "20171024",
+          "marketCap": 93.31143213
+        },
+        {
+          "code": "601369.SH",
+          "name": "陕鼓动力",
+          "date": "20171227",
+          "marketCap": 124.54653771
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300004.SZ",
+          "name": "南风股份",
+          "date": "20180202",
+          "marketCap": 57.541738859999995
+        },
+        {
+          "code": "300103.SZ",
+          "name": "达刚控股",
+          "date": "20180201",
+          "marketCap": 37.3922244
+        },
+        {
+          "code": "002520.SZ",
+          "name": "日发精机",
+          "date": "20171122",
+          "marketCap": 57.1819816
+        },
+        {
+          "code": "300441.SZ",
+          "name": "鲍斯股份",
+          "date": "20180103",
+          "marketCap": 88.49507095999999
+        },
+        {
+          "code": "603667.SH",
+          "name": "五洲新春",
+          "date": "20180115",
+          "marketCap": 44.608959999999996
+        },
+        {
+          "code": "300411.SZ",
+          "name": "金盾股份",
+          "date": "20180130",
+          "marketCap": 93.16108316
+        },
+        {
+          "code": "002122.SZ",
+          "name": "ST汇洲",
+          "date": "20171218",
+          "marketCap": 100.8612
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600232.SH",
+          "name": "金鹰股份",
+          "date": "20180605",
+          "marketCap": 21.40897853
+        },
+        {
+          "code": "000008.SZ",
+          "name": "神州高铁",
+          "date": "20180605",
+          "marketCap": 141.19832343
+        },
+        {
+          "code": "002819.SZ",
+          "name": "东方中科",
+          "date": "20180521",
+          "marketCap": 32.335902000000004
+        },
+        {
+          "code": "002611.SZ",
+          "name": "东方精工",
+          "date": "20180615",
+          "marketCap": 113.88120451
+        },
+        {
+          "code": "002445.SZ",
+          "name": "中南文化",
+          "date": "20180612",
+          "marketCap": 70.03345614
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002520.SZ",
+          "name": "日发精机",
+          "date": "20180927",
+          "marketCap": 39.728179080000004
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300124.SZ",
+          "name": "汇川技术",
+          "date": "20190320",
+          "marketCap": 436.51040343000005
+        },
+        {
+          "code": "600343.SH",
+          "name": "航天动力",
+          "date": "20190318",
+          "marketCap": 70.33033955
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002795.SZ",
+          "name": "永和智控",
+          "date": "20190926",
+          "marketCap": 27.28
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300084.SZ",
+          "name": "海默科技",
+          "date": "20200624",
+          "marketCap": 14.92891063
+        },
+        {
+          "code": "002819.SZ",
+          "name": "东方中科",
+          "date": "20200624",
+          "marketCap": 40.83391077
+        }
+      ]
+    },
+    {
+      "quarter": "2020Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000927.SZ",
+          "name": "中国铁物",
+          "date": "20201230",
+          "marketCap": 324.27884352
+        }
+      ]
+    },
+    {
+      "quarter": "2021Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002786.SZ",
+          "name": "银宝山新",
+          "date": "20210927",
+          "marketCap": 36.5761656
+        },
+        {
+          "code": "300083.SZ",
+          "name": "创世纪",
+          "date": "20210915",
+          "marketCap": 236.89423481999998
+        }
+      ]
+    },
+    {
+      "quarter": "2021Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300201.SZ",
+          "name": "海伦哲",
+          "date": "20220831",
+          "marketCap": 19.77750884
+        }
+      ]
+    },
+    {
+      "quarter": "2022Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300084.SZ",
+          "name": "海默科技",
+          "date": "20221229",
+          "marketCap": 16.96816905
+        }
+      ]
+    },
+    {
+      "quarter": "2023Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000410.SZ",
+          "name": "沈阳机床",
+          "date": "20230927",
+          "marketCap": 147.21643279
+        }
+      ]
+    },
+    {
+      "quarter": "2023Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "688337.SH",
+          "name": "普源精电",
+          "date": "20231222",
+          "marketCap": 81.2136426
+        }
+      ]
+    },
+    {
+      "quarter": "2024Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002490.SZ",
+          "name": "山东墨龙",
+          "date": "20240328",
+          "marketCap": 27.047060759999997
+        }
+      ]
+    },
+    {
+      "quarter": "2024Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000777.SZ",
+          "name": "中核科技",
+          "date": "20241227",
+          "marketCap": 69.28355906
+        }
+      ]
+    },
+    {
+      "quarter": "2025Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300950.SZ",
+          "name": "德固特",
+          "date": "20250627",
+          "marketCap": 33.957296
+        },
+        {
+          "code": "301079.SZ",
+          "name": "邵阳液压",
+          "date": "20250620",
+          "marketCap": 34.878872720000004
+        }
+      ]
+    },
+    {
+      "quarter": "2025Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002686.SZ",
+          "name": "亿利达",
+          "date": "20260330",
+          "marketCap": 44.676267589999995
+        },
+        {
+          "code": "301309.SZ",
+          "name": "万得凯",
+          "date": "20260323",
+          "marketCap": 37.10724704
+        }
+      ]
+    },
+    {
+      "quarter": "2026Q2",
+      "financialMissing": [
+        {
+          "code": "920096.BJ",
+          "name": "嘉晨智能"
+        },
+        {
+          "code": "920178.BJ",
+          "name": "锐翔智能"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "603789.SH",
+          "name": "ST星农",
+          "date": "20260623",
+          "marketCap": 14.56028154
+        },
+        {
+          "code": "688121.SH",
+          "name": "*ST卓然",
+          "date": "20260430",
+          "marketCap": 15.13818739
+        },
+        {
+          "code": "601369.SH",
+          "name": "陕鼓动力",
+          "date": "20260626",
+          "marketCap": 155.97444225
+        }
+      ]
+    },
+    {
+      "quarter": "2026Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002667.SZ",
+          "name": "*ST威领",
+          "date": "20260929",
+          "marketCap": 57.82525385
+        }
+      ]
+    }
+  ]
+}

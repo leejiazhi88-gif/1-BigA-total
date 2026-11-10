@@ -1,0 +1,1439 @@
+{
+  "asOf": "2026-11-10",
+  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+  "summary": {
+    "industry": "家用电器",
+    "code": "801110.SI",
+    "companies": 103,
+    "quarters": 87,
+    "companyQuarterRows": 4644,
+    "latest": {
+      "quarter": "2026Q3",
+      "endDate": "20260930",
+      "tradeDate": "20260930",
+      "companies": 102,
+      "marketCap": 19035.291888220003,
+      "marketCapObserved": 19035.291888220003,
+      "pe": 15.94417317309743,
+      "peMarketCap": 19035.291888220003,
+      "peProfit": 1193.8713711626144,
+      "peCoverage": 1.0,
+      "peMissingCount": 0,
+      "peRebuiltCount": 22,
+      "revenue": 3909.5733836697,
+      "profit": 282.42595078230005,
+      "reportedCount": 102,
+      "estimatedCount": 0,
+      "missingCount": 0,
+      "estimatedRevenue": 0,
+      "estimatedProfit": 0,
+      "carriedCount": 1,
+      "marketMissingCount": 0,
+      "financialCoverage": 1.0
+    },
+    "financialIncompleteQuarters": 2,
+    "peCoverageMin": 0.9503538126659021,
+    "carriedCompanyQuarters": 120
+  },
+  "quality": [
+    {
+      "quarter": "2005Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2005Q2",
+      "financialMissing": [
+        {
+          "code": "002035.SZ",
+          "name": "华帝股份"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600619.SH",
+          "name": "海立股份",
+          "date": "20050629",
+          "marketCap": 36.52994632
+        },
+        {
+          "code": "002032.SZ",
+          "name": "苏泊尔",
+          "date": "20050617",
+          "marketCap": 15.584539999999999
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q3",
+      "financialMissing": [
+        {
+          "code": "002035.SZ",
+          "name": "华帝股份"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600261.SH",
+          "name": "阳光照明",
+          "date": "20050923",
+          "marketCap": 15.037835999999999
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000651.SZ",
+          "name": "格力电器",
+          "date": "20051222",
+          "marketCap": 55.680678
+        },
+        {
+          "code": "000404.SZ",
+          "name": "长虹华意",
+          "date": "20051229",
+          "marketCap": 5.94746748
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600839.SH",
+          "name": "四川长虹",
+          "date": "20060306",
+          "marketCap": 93.27751212000001
+        },
+        {
+          "code": "000921.SZ",
+          "name": "海信家电",
+          "date": "20060330",
+          "marketCap": 28.073785729999997
+        },
+        {
+          "code": "600983.SH",
+          "name": "惠而浦",
+          "date": "20060213",
+          "marketCap": 10.5561
+        },
+        {
+          "code": "000541.SZ",
+          "name": "佛山照明",
+          "date": "20060308",
+          "marketCap": 41.6516877
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q2",
+      "financialMissing": [],
+      "peMissing": [
+        {
+          "code": "000921.SZ",
+          "name": "海信家电"
+        }
+      ],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600336.SH",
+          "name": "澳柯玛",
+          "date": "20060629",
+          "marketCap": 11.595224
+        },
+        {
+          "code": "000921.SZ",
+          "name": "海信家电",
+          "date": "20060428",
+          "marketCap": 24.00655882
+        },
+        {
+          "code": "600854.SH",
+          "name": "春兰股份",
+          "date": "20060608",
+          "marketCap": 26.59627715
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000810.SZ",
+          "name": "创维数字",
+          "date": "20060824",
+          "marketCap": 7.42984564
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000921.SZ",
+          "name": "海信家电",
+          "date": "20061208",
+          "marketCap": 25.39536801
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2007Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600619.SH",
+          "name": "海立股份",
+          "date": "20070627",
+          "marketCap": 57.07804113
+        },
+        {
+          "code": "000651.SZ",
+          "name": "格力电器",
+          "date": "20070628",
+          "marketCap": 281.08808999999997
+        },
+        {
+          "code": "000921.SZ",
+          "name": "海信家电",
+          "date": "20070626",
+          "marketCap": 67.15884432
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q3",
+      "financialMissing": [],
+      "peMissing": [
+        {
+          "code": "002050.SZ",
+          "name": "三花智控"
+        }
+      ],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000921.SZ",
+          "name": "海信家电",
+          "date": "20070903",
+          "marketCap": 78.17011716
+        },
+        {
+          "code": "002050.SZ",
+          "name": "三花智控",
+          "date": "20070726",
+          "marketCap": 17.8766
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600060.SH",
+          "name": "海信视像",
+          "date": "20071227",
+          "marketCap": 65.86862585
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2008Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600839.SH",
+          "name": "四川长虹",
+          "date": "20080627",
+          "marketCap": 95.29021318
+        },
+        {
+          "code": "600060.SH",
+          "name": "海信视像",
+          "date": "20080627",
+          "marketCap": 32.98368971
+        },
+        {
+          "code": "002005.SZ",
+          "name": "德豪润达",
+          "date": "20080627",
+          "marketCap": 12.24928
+        },
+        {
+          "code": "600854.SH",
+          "name": "春兰股份",
+          "date": "20080429",
+          "marketCap": 33.816750819999996
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600854.SH",
+          "name": "春兰股份",
+          "date": "20080429",
+          "marketCap": 33.816750819999996
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600854.SH",
+          "name": "春兰股份",
+          "date": "20080429",
+          "marketCap": 33.816750819999996
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600854.SH",
+          "name": "春兰股份",
+          "date": "20080429",
+          "marketCap": 33.816750819999996
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600854.SH",
+          "name": "春兰股份",
+          "date": "20080429",
+          "marketCap": 33.816750819999996
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600690.SH",
+          "name": "海尔智家",
+          "date": "20090929",
+          "marketCap": 208.67507623999998
+        },
+        {
+          "code": "002005.SZ",
+          "name": "德豪润达",
+          "date": "20090925",
+          "marketCap": 34.032959999999996
+        },
+        {
+          "code": "600854.SH",
+          "name": "春兰股份",
+          "date": "20080429",
+          "marketCap": 33.816750819999996
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2010Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2010Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2010Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2010Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000404.SZ",
+          "name": "长虹华意",
+          "date": "20101227",
+          "marketCap": 29.50443272
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2011Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000810.SZ",
+          "name": "创维数字",
+          "date": "20110512",
+          "marketCap": 18.153200520000002
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000810.SZ",
+          "name": "创维数字",
+          "date": "20110512",
+          "marketCap": 18.153200520000002
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002035.SZ",
+          "name": "华帝股份",
+          "date": "20111214",
+          "marketCap": 18.17687071
+        },
+        {
+          "code": "002011.SZ",
+          "name": "盾安环境",
+          "date": "20111229",
+          "marketCap": 74.49264019
+        },
+        {
+          "code": "000810.SZ",
+          "name": "创维数字",
+          "date": "20110512",
+          "marketCap": 18.153200520000002
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2012Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002032.SZ",
+          "name": "苏泊尔",
+          "date": "20120628",
+          "marketCap": 79.62614088
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2012Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2013Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000921.SZ",
+          "name": "海信家电",
+          "date": "20130328",
+          "marketCap": 111.84492235
+        },
+        {
+          "code": "000810.SZ",
+          "name": "创维数字",
+          "date": "20130121",
+          "marketCap": 11.60508176
+        },
+        {
+          "code": "002638.SZ",
+          "name": "勤上股份",
+          "date": "20130326",
+          "marketCap": 43.873857
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600983.SH",
+          "name": "惠而浦",
+          "date": "20130513",
+          "marketCap": 53.066880000000005
+        },
+        {
+          "code": "300279.SZ",
+          "name": "和晶科技",
+          "date": "20130521",
+          "marketCap": 11.22
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600690.SH",
+          "name": "海尔智家",
+          "date": "20130912",
+          "marketCap": 359.09515073
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002290.SZ",
+          "name": "禾盛新材",
+          "date": "20131218",
+          "marketCap": 22.12056
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002290.SZ",
+          "name": "禾盛新材",
+          "date": "20131218",
+          "marketCap": 22.12056
+        },
+        {
+          "code": "300279.SZ",
+          "name": "和晶科技",
+          "date": "20140321",
+          "marketCap": 18.42
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002035.SZ",
+          "name": "华帝股份",
+          "date": "20140627",
+          "marketCap": 35.49138277
+        },
+        {
+          "code": "002418.SZ",
+          "name": "康盛股份",
+          "date": "20140612",
+          "marketCap": 17.2744
+        },
+        {
+          "code": "000810.SZ",
+          "name": "创维数字",
+          "date": "20140617",
+          "marketCap": 20.51311659
+        },
+        {
+          "code": "002076.SZ",
+          "name": "星光股份",
+          "date": "20140610",
+          "marketCap": 18.55605707
+        },
+        {
+          "code": "002638.SZ",
+          "name": "勤上股份",
+          "date": "20140609",
+          "marketCap": 53.01580500000001
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600839.SH",
+          "name": "四川长虹",
+          "date": "20140912",
+          "marketCap": 199.88337481
+        },
+        {
+          "code": "002005.SZ",
+          "name": "德豪润达",
+          "date": "20140807",
+          "marketCap": 113.8066
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600619.SH",
+          "name": "海立股份",
+          "date": "20141114",
+          "marketCap": 61.69955623
+        },
+        {
+          "code": "300247.SZ",
+          "name": "融捷健康",
+          "date": "20141222",
+          "marketCap": 21.90423236
+        },
+        {
+          "code": "300160.SZ",
+          "name": "秀强股份",
+          "date": "20141010",
+          "marketCap": 30.5418
+        },
+        {
+          "code": "002050.SZ",
+          "name": "三花智控",
+          "date": "20141024",
+          "marketCap": 104.91761266
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002290.SZ",
+          "name": "禾盛新材",
+          "date": "20150320",
+          "marketCap": 31.811472
+        },
+        {
+          "code": "002011.SZ",
+          "name": "盾安环境",
+          "date": "20150326",
+          "marketCap": 122.63435268
+        },
+        {
+          "code": "000541.SZ",
+          "name": "佛山照明",
+          "date": "20150326",
+          "marketCap": 142.67459402
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002242.SZ",
+          "name": "九阳股份",
+          "date": "20150612",
+          "marketCap": 153.9348775
+        },
+        {
+          "code": "002676.SZ",
+          "name": "顺威股份",
+          "date": "20150417",
+          "marketCap": 43.248
+        },
+        {
+          "code": "002668.SZ",
+          "name": "TCL智家",
+          "date": "20150626",
+          "marketCap": 48.01764
+        },
+        {
+          "code": "300279.SZ",
+          "name": "和晶科技",
+          "date": "20150421",
+          "marketCap": 50.997029479999995
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600983.SH",
+          "name": "惠而浦",
+          "date": "20150713",
+          "marketCap": 114.04612320000001
+        },
+        {
+          "code": "002418.SZ",
+          "name": "康盛股份",
+          "date": "20150703",
+          "marketCap": 108.94288
+        },
+        {
+          "code": "002668.SZ",
+          "name": "TCL智家",
+          "date": "20150724",
+          "marketCap": 58.23627
+        },
+        {
+          "code": "002005.SZ",
+          "name": "德豪润达",
+          "date": "20150825",
+          "marketCap": 96.77051999999999
+        },
+        {
+          "code": "002677.SZ",
+          "name": "浙江美大",
+          "date": "20150730",
+          "marketCap": 81.92
+        },
+        {
+          "code": "300272.SZ",
+          "name": "开能健康",
+          "date": "20150807",
+          "marketCap": 71.64023162
+        },
+        {
+          "code": "002638.SZ",
+          "name": "勤上股份",
+          "date": "20150828",
+          "marketCap": 57.436911
+        },
+        {
+          "code": "300279.SZ",
+          "name": "和晶科技",
+          "date": "20150421",
+          "marketCap": 50.997029479999995
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002242.SZ",
+          "name": "九阳股份",
+          "date": "20151223",
+          "marketCap": 174.126834
+        },
+        {
+          "code": "300247.SZ",
+          "name": "融捷健康",
+          "date": "20151106",
+          "marketCap": 66.73399013000001
+        },
+        {
+          "code": "002011.SZ",
+          "name": "盾安环境",
+          "date": "20151225",
+          "marketCap": 141.02107131
+        },
+        {
+          "code": "000810.SZ",
+          "name": "创维数字",
+          "date": "20151021",
+          "marketCap": 126.51036380000001
+        },
+        {
+          "code": "600690.SH",
+          "name": "海尔智家",
+          "date": "20151016",
+          "marketCap": 607.41690339
+        },
+        {
+          "code": "002638.SZ",
+          "name": "勤上股份",
+          "date": "20150828",
+          "marketCap": 57.436911
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000651.SZ",
+          "name": "格力电器",
+          "date": "20160219",
+          "marketCap": 1156.2234747500002
+        },
+        {
+          "code": "603519.SH",
+          "name": "立霸股份",
+          "date": "20160318",
+          "marketCap": 35.432
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000651.SZ",
+          "name": "格力电器",
+          "date": "20160219",
+          "marketCap": 1156.2234747500002
+        },
+        {
+          "code": "603519.SH",
+          "name": "立霸股份",
+          "date": "20160318",
+          "marketCap": 35.432
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2016Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002724.SZ",
+          "name": "海洋王",
+          "date": "20161228",
+          "marketCap": 103.36
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002050.SZ",
+          "name": "三花智控",
+          "date": "20170303",
+          "marketCap": 194.73957073
+        },
+        {
+          "code": "002418.SZ",
+          "name": "康盛股份",
+          "date": "20170317",
+          "marketCap": 105.79883999999998
+        },
+        {
+          "code": "002076.SZ",
+          "name": "星光股份",
+          "date": "20170317",
+          "marketCap": 52.00316826
+        },
+        {
+          "code": "002638.SZ",
+          "name": "勤上股份",
+          "date": "20170203",
+          "marketCap": 137.28917589
+        },
+        {
+          "code": "002724.SZ",
+          "name": "海洋王",
+          "date": "20161228",
+          "marketCap": 103.36
+        },
+        {
+          "code": "300543.SZ",
+          "name": "朗科智能",
+          "date": "20170324",
+          "marketCap": 67.968
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002418.SZ",
+          "name": "康盛股份",
+          "date": "20170317",
+          "marketCap": 105.79883999999998
+        },
+        {
+          "code": "002676.SZ",
+          "name": "顺威股份",
+          "date": "20170629",
+          "marketCap": 115.056
+        },
+        {
+          "code": "002076.SZ",
+          "name": "星光股份",
+          "date": "20170317",
+          "marketCap": 52.00316826
+        },
+        {
+          "code": "002638.SZ",
+          "name": "勤上股份",
+          "date": "20170425",
+          "marketCap": 123.62100571999999
+        },
+        {
+          "code": "300543.SZ",
+          "name": "朗科智能",
+          "date": "20170324",
+          "marketCap": 67.968
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "603578.SH",
+          "name": "三星新材",
+          "date": "20170922",
+          "marketCap": 46.6224
+        },
+        {
+          "code": "002676.SZ",
+          "name": "顺威股份",
+          "date": "20170629",
+          "marketCap": 115.056
+        },
+        {
+          "code": "002076.SZ",
+          "name": "星光股份",
+          "date": "20170317",
+          "marketCap": 52.00316826
+        },
+        {
+          "code": "300272.SZ",
+          "name": "开能健康",
+          "date": "20170814",
+          "marketCap": 36.354348200000004
+        },
+        {
+          "code": "002638.SZ",
+          "name": "勤上股份",
+          "date": "20170425",
+          "marketCap": 123.62100571999999
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002676.SZ",
+          "name": "顺威股份",
+          "date": "20170629",
+          "marketCap": 115.056
+        },
+        {
+          "code": "300272.SZ",
+          "name": "开能健康",
+          "date": "20170814",
+          "marketCap": 36.354348200000004
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002032.SZ",
+          "name": "苏泊尔",
+          "date": "20180329",
+          "marketCap": 321.04132675
+        },
+        {
+          "code": "002005.SZ",
+          "name": "德豪润达",
+          "date": "20171229",
+          "marketCap": 76.941792
+        },
+        {
+          "code": "300279.SZ",
+          "name": "和晶科技",
+          "date": "20180329",
+          "marketCap": 58.76650754
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300247.SZ",
+          "name": "融捷健康",
+          "date": "20180615",
+          "marketCap": 40.70984104
+        },
+        {
+          "code": "002723.SZ",
+          "name": "小崧股份",
+          "date": "20180614",
+          "marketCap": 30.2454
+        },
+        {
+          "code": "002011.SZ",
+          "name": "盾安环境",
+          "date": "20180427",
+          "marketCap": 58.70157952
+        },
+        {
+          "code": "002668.SZ",
+          "name": "TCL智家",
+          "date": "20180614",
+          "marketCap": 128.18023361
+        },
+        {
+          "code": "002005.SZ",
+          "name": "德豪润达",
+          "date": "20171229",
+          "marketCap": 76.941792
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000333.SZ",
+          "name": "美的集团",
+          "date": "20180907",
+          "marketCap": 2670.64533974
+        },
+        {
+          "code": "002011.SZ",
+          "name": "盾安环境",
+          "date": "20180427",
+          "marketCap": 58.70157952
+        },
+        {
+          "code": "002668.SZ",
+          "name": "TCL智家",
+          "date": "20180614",
+          "marketCap": 128.18023361
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002638.SZ",
+          "name": "勤上股份",
+          "date": "20200629",
+          "marketCap": 31.89239705
+        }
+      ]
+    },
+    {
+      "quarter": "2020Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002638.SZ",
+          "name": "勤上股份",
+          "date": "20211227",
+          "marketCap": 33.5872941
+        }
+      ]
+    },
+    {
+      "quarter": "2022Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300279.SZ",
+          "name": "和晶科技",
+          "date": "20220329",
+          "marketCap": 31.919776059999997
+        }
+      ]
+    },
+    {
+      "quarter": "2022Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000801.SZ",
+          "name": "四川九洲",
+          "date": "20231220",
+          "marketCap": 78.75611174
+        }
+      ]
+    },
+    {
+      "quarter": "2024Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "920641.BJ",
+          "name": "格利尔",
+          "date": "20251230",
+          "marketCap": 13.768754999999999
+        }
+      ]
+    },
+    {
+      "quarter": "2026Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "605555.SH",
+          "name": "德昌股份",
+          "date": "20260326",
+          "marketCap": 81.37200562
+        }
+      ]
+    },
+    {
+      "quarter": "2026Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002860.SZ",
+          "name": "星帅尔",
+          "date": "20260921",
+          "marketCap": 64.75948389
+        }
+      ]
+    }
+  ]
+}

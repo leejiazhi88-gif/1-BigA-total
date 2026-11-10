@@ -1,0 +1,3486 @@
+{
+  "asOf": "2026-11-10",
+  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+  "summary": {
+    "industry": "电力设备",
+    "code": "801730.SI",
+    "companies": 418,
+    "quarters": 87,
+    "companyQuarterRows": 16843,
+    "latest": {
+      "quarter": "2026Q3",
+      "endDate": "20260930",
+      "tradeDate": "20260930",
+      "companies": 418,
+      "marketCap": 70527.62087632001,
+      "marketCapObserved": 70527.62087632001,
+      "pe": 44.16746568949542,
+      "peMarketCap": 70527.62087632001,
+      "peProfit": 1596.822905170535,
+      "peCoverage": 1.0,
+      "peMissingCount": 0,
+      "peRebuiltCount": 119,
+      "revenue": 11483.220977979798,
+      "profit": 425.84834957899955,
+      "reportedCount": 418,
+      "estimatedCount": 0,
+      "missingCount": 0,
+      "estimatedRevenue": 0,
+      "estimatedProfit": 0,
+      "carriedCount": 0,
+      "marketMissingCount": 0,
+      "financialCoverage": 1.0
+    },
+    "financialIncompleteQuarters": 1,
+    "peCoverageMin": 1.0,
+    "carriedCompanyQuarters": 461
+  },
+  "quality": [
+    {
+      "quarter": "2005Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000720.SZ",
+          "name": "新能泰山",
+          "date": "20050330",
+          "marketCap": 22.536306
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600550.SH",
+          "name": "保变电气",
+          "date": "20050617",
+          "marketCap": 25.773
+        },
+        {
+          "code": "600580.SH",
+          "name": "卧龙电驱",
+          "date": "20050617",
+          "marketCap": 8.25701049
+        },
+        {
+          "code": "600973.SH",
+          "name": "宝胜股份",
+          "date": "20050617",
+          "marketCap": 6.792
+        },
+        {
+          "code": "000009.SZ",
+          "name": "中国宝安",
+          "date": "20050629",
+          "marketCap": 24.25789406
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600590.SH",
+          "name": "泰豪科技",
+          "date": "20050929",
+          "marketCap": 12.354326480000001
+        },
+        {
+          "code": "000695.SZ",
+          "name": "滨海能源",
+          "date": "20050923",
+          "marketCap": 9.66341795
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600847.SH",
+          "name": "万里股份",
+          "date": "20051229",
+          "marketCap": 1.99485
+        },
+        {
+          "code": "600869.SH",
+          "name": "远东股份",
+          "date": "20051214",
+          "marketCap": 4.956
+        },
+        {
+          "code": "600482.SH",
+          "name": "中国动力",
+          "date": "20051222",
+          "marketCap": 14.9766
+        },
+        {
+          "code": "600481.SH",
+          "name": "双良节能",
+          "date": "20051128",
+          "marketCap": 12.1176
+        },
+        {
+          "code": "000009.SZ",
+          "name": "中国宝安",
+          "date": "20051209",
+          "marketCap": 22.14851197
+        },
+        {
+          "code": "600067.SH",
+          "name": "冠城新材",
+          "date": "20051213",
+          "marketCap": 14.549071210000001
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600875.SH",
+          "name": "东方电气",
+          "date": "20060324",
+          "marketCap": 69.525
+        },
+        {
+          "code": "600312.SH",
+          "name": "平高电气",
+          "date": "20060324",
+          "marketCap": 28.605815000000003
+        },
+        {
+          "code": "600577.SH",
+          "name": "精达股份",
+          "date": "20060324",
+          "marketCap": 7.3008
+        },
+        {
+          "code": "600241.SH",
+          "name": "时代万恒",
+          "date": "20060322",
+          "marketCap": 6.0738
+        },
+        {
+          "code": "600212.SH",
+          "name": "绿能慧充",
+          "date": "20060324",
+          "marketCap": 9.3091152
+        },
+        {
+          "code": "600884.SH",
+          "name": "杉杉股份",
+          "date": "20060321",
+          "marketCap": 15.90021416
+        },
+        {
+          "code": "600072.SH",
+          "name": "中船科技",
+          "date": "20060316",
+          "marketCap": 11.09086767
+        },
+        {
+          "code": "600416.SH",
+          "name": "湘电股份",
+          "date": "20060330",
+          "marketCap": 11.037
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000533.SZ",
+          "name": "顺钠股份",
+          "date": "20060627",
+          "marketCap": 25.790464
+        },
+        {
+          "code": "600312.SH",
+          "name": "平高电气",
+          "date": "20060629",
+          "marketCap": 43.82084364
+        },
+        {
+          "code": "600089.SH",
+          "name": "特变电工",
+          "date": "20060629",
+          "marketCap": 55.042802720000005
+        },
+        {
+          "code": "600192.SH",
+          "name": "长城电工",
+          "date": "20060623",
+          "marketCap": 21.76195
+        },
+        {
+          "code": "000922.SZ",
+          "name": "佳电股份",
+          "date": "20060629",
+          "marketCap": 8.833675999999999
+        },
+        {
+          "code": "600885.SH",
+          "name": "宏发股份",
+          "date": "20060616",
+          "marketCap": 8.632174280000001
+        },
+        {
+          "code": "600379.SH",
+          "name": "宝光股份",
+          "date": "20060428",
+          "marketCap": 6.2726
+        },
+        {
+          "code": "000809.SZ",
+          "name": "和展能源",
+          "date": "20060616",
+          "marketCap": 5.980554
+        },
+        {
+          "code": "600110.SH",
+          "name": "诺德股份",
+          "date": "20060608",
+          "marketCap": 27.06402731
+        },
+        {
+          "code": "000009.SZ",
+          "name": "中国宝安",
+          "date": "20060629",
+          "marketCap": 34.80480452
+        },
+        {
+          "code": "000159.SZ",
+          "name": "国际实业",
+          "date": "20060622",
+          "marketCap": 9.55165188
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000682.SZ",
+          "name": "东方电子",
+          "date": "20060721",
+          "marketCap": 29.64984947
+        },
+        {
+          "code": "600577.SH",
+          "name": "精达股份",
+          "date": "20060928",
+          "marketCap": 7.67232
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600875.SH",
+          "name": "东方电气",
+          "date": "20061219",
+          "marketCap": 121.95
+        },
+        {
+          "code": "000922.SZ",
+          "name": "佳电股份",
+          "date": "20061221",
+          "marketCap": 14.1756625
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600089.SH",
+          "name": "特变电工",
+          "date": "20070202",
+          "marketCap": 87.15466280999999
+        },
+        {
+          "code": "000922.SZ",
+          "name": "佳电股份",
+          "date": "20070307",
+          "marketCap": 33.245659
+        },
+        {
+          "code": "600067.SH",
+          "name": "冠城新材",
+          "date": "20070329",
+          "marketCap": 45.40858677
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000922.SZ",
+          "name": "佳电股份",
+          "date": "20070628",
+          "marketCap": 27.217271999999998
+        },
+        {
+          "code": "600207.SH",
+          "name": "安彩高科",
+          "date": "20070628",
+          "marketCap": 20.768
+        },
+        {
+          "code": "600379.SH",
+          "name": "宝光股份",
+          "date": "20070625",
+          "marketCap": 24.2056
+        },
+        {
+          "code": "600478.SH",
+          "name": "科力远",
+          "date": "20070628",
+          "marketCap": 14.237585699999999
+        },
+        {
+          "code": "000809.SZ",
+          "name": "和展能源",
+          "date": "20070426",
+          "marketCap": 18.033317999999998
+        },
+        {
+          "code": "000009.SZ",
+          "name": "中国宝安",
+          "date": "20070628",
+          "marketCap": 111.22196487000001
+        },
+        {
+          "code": "600067.SH",
+          "name": "冠城新材",
+          "date": "20070628",
+          "marketCap": 95.61846758
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000400.SZ",
+          "name": "许继电气",
+          "date": "20070907",
+          "marketCap": 71.493408
+        },
+        {
+          "code": "600468.SH",
+          "name": "百利电气",
+          "date": "20070920",
+          "marketCap": 50.90976
+        },
+        {
+          "code": "600550.SH",
+          "name": "保变电气",
+          "date": "20070927",
+          "marketCap": 311.053
+        },
+        {
+          "code": "600379.SH",
+          "name": "宝光股份",
+          "date": "20070921",
+          "marketCap": 29.9568
+        },
+        {
+          "code": "600577.SH",
+          "name": "精达股份",
+          "date": "20070927",
+          "marketCap": 20.18824
+        },
+        {
+          "code": "600732.SH",
+          "name": "爱旭股份",
+          "date": "20070817",
+          "marketCap": 27.67575096
+        },
+        {
+          "code": "600072.SH",
+          "name": "中船科技",
+          "date": "20070927",
+          "marketCap": 173.93815021
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000400.SZ",
+          "name": "许继电气",
+          "date": "20070907",
+          "marketCap": 71.493408
+        },
+        {
+          "code": "000922.SZ",
+          "name": "佳电股份",
+          "date": "20071217",
+          "marketCap": 28.649759999999997
+        },
+        {
+          "code": "002169.SZ",
+          "name": "智光电气",
+          "date": "20071227",
+          "marketCap": 21.034860000000002
+        },
+        {
+          "code": "600885.SH",
+          "name": "宏发股份",
+          "date": "20071211",
+          "marketCap": 17.49604125
+        },
+        {
+          "code": "600207.SH",
+          "name": "安彩高科",
+          "date": "20071227",
+          "marketCap": 38.764
+        },
+        {
+          "code": "000009.SZ",
+          "name": "中国宝安",
+          "date": "20071227",
+          "marketCap": 152.45079668
+        },
+        {
+          "code": "600416.SH",
+          "name": "湘电股份",
+          "date": "20071227",
+          "marketCap": 71.6045
+        },
+        {
+          "code": "600067.SH",
+          "name": "冠城新材",
+          "date": "20071227",
+          "marketCap": 98.17914355
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000400.SZ",
+          "name": "许继电气",
+          "date": "20080118",
+          "marketCap": 99.0316096
+        },
+        {
+          "code": "600885.SH",
+          "name": "宏发股份",
+          "date": "20071211",
+          "marketCap": 17.49604125
+        },
+        {
+          "code": "600525.SH",
+          "name": "长园集团",
+          "date": "20080328",
+          "marketCap": 48.86107842
+        },
+        {
+          "code": "000009.SZ",
+          "name": "中国宝安",
+          "date": "20080310",
+          "marketCap": 137.39747902
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600089.SH",
+          "name": "特变电工",
+          "date": "20080627",
+          "marketCap": 166.09347211
+        },
+        {
+          "code": "000809.SZ",
+          "name": "和展能源",
+          "date": "20080627",
+          "marketCap": 8.203211999999999
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600550.SH",
+          "name": "保变电气",
+          "date": "20080925",
+          "marketCap": 239.44
+        },
+        {
+          "code": "600869.SH",
+          "name": "远东股份",
+          "date": "20080912",
+          "marketCap": 8.004
+        },
+        {
+          "code": "600885.SH",
+          "name": "宏发股份",
+          "date": "20080925",
+          "marketCap": 12.02276297
+        },
+        {
+          "code": "002058.SZ",
+          "name": "紫竹高科",
+          "date": "20080925",
+          "marketCap": 5.86267096
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600885.SH",
+          "name": "宏发股份",
+          "date": "20081212",
+          "marketCap": 11.80752169
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600207.SH",
+          "name": "安彩高科",
+          "date": "20090330",
+          "marketCap": 23.364
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000400.SZ",
+          "name": "许继电气",
+          "date": "20090604",
+          "marketCap": 69.1481216
+        },
+        {
+          "code": "600207.SH",
+          "name": "安彩高科",
+          "date": "20090629",
+          "marketCap": 25.3
+        },
+        {
+          "code": "002121.SZ",
+          "name": "科陆电子",
+          "date": "20090629",
+          "marketCap": 37.2
+        },
+        {
+          "code": "000809.SZ",
+          "name": "和展能源",
+          "date": "20090605",
+          "marketCap": 11.857994999999999
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2009Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002168.SZ",
+          "name": "ST惠程",
+          "date": "20091229",
+          "marketCap": 41.0599584
+        },
+        {
+          "code": "002125.SZ",
+          "name": "湘潭电化",
+          "date": "20091230",
+          "marketCap": 13.6851
+        },
+        {
+          "code": "000159.SZ",
+          "name": "国际实业",
+          "date": "20091209",
+          "marketCap": 45.154922739999996
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600268.SH",
+          "name": "国电南自",
+          "date": "20100330",
+          "marketCap": 50.94286691
+        },
+        {
+          "code": "300001.SZ",
+          "name": "特锐德",
+          "date": "20100330",
+          "marketCap": 53.6404
+        },
+        {
+          "code": "002129.SZ",
+          "name": "TCL中环",
+          "date": "20100330",
+          "marketCap": 60.01572027
+        },
+        {
+          "code": "600885.SH",
+          "name": "宏发股份",
+          "date": "20100226",
+          "marketCap": 14.928520259999999
+        },
+        {
+          "code": "002056.SZ",
+          "name": "横店东磁",
+          "date": "20100330",
+          "marketCap": 64.71675
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600847.SH",
+          "name": "万里股份",
+          "date": "20100629",
+          "marketCap": 13.901888
+        },
+        {
+          "code": "000922.SZ",
+          "name": "佳电股份",
+          "date": "20100416",
+          "marketCap": 27.157584999999997
+        },
+        {
+          "code": "300073.SZ",
+          "name": "当升科技",
+          "date": "20100629",
+          "marketCap": 47.0
+        },
+        {
+          "code": "000009.SZ",
+          "name": "中国宝安",
+          "date": "20100629",
+          "marketCap": 93.80454549
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000922.SZ",
+          "name": "佳电股份",
+          "date": "20100416",
+          "marketCap": 27.157584999999997
+        },
+        {
+          "code": "002227.SZ",
+          "name": "*ST特迅",
+          "date": "20100929",
+          "marketCap": 39.087702
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600405.SH",
+          "name": "动力源",
+          "date": "20101230",
+          "marketCap": 23.11269618
+        },
+        {
+          "code": "000695.SZ",
+          "name": "滨海能源",
+          "date": "20101109",
+          "marketCap": 36.40998164
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002090.SZ",
+          "name": "金智科技",
+          "date": "20110303",
+          "marketCap": 29.9676
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002364.SZ",
+          "name": "中恒电气",
+          "date": "20110629",
+          "marketCap": 16.04202
+        },
+        {
+          "code": "002276.SZ",
+          "name": "万马股份",
+          "date": "20110608",
+          "marketCap": 54.12
+        },
+        {
+          "code": "601311.SH",
+          "name": "骆驼股份",
+          "date": "20110629",
+          "marketCap": 73.317215
+        },
+        {
+          "code": "300207.SZ",
+          "name": "欣旺达",
+          "date": "20110629",
+          "marketCap": 29.4408
+        },
+        {
+          "code": "000809.SZ",
+          "name": "和展能源",
+          "date": "20110628",
+          "marketCap": 28.573758
+        },
+        {
+          "code": "002052.SZ",
+          "name": "同洲电子",
+          "date": "20110629",
+          "marketCap": 37.15300735
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600847.SH",
+          "name": "万里股份",
+          "date": "20110909",
+          "marketCap": 12.607452
+        },
+        {
+          "code": "300018.SZ",
+          "name": "中元股份",
+          "date": "20110929",
+          "marketCap": 15.86
+        },
+        {
+          "code": "600885.SH",
+          "name": "宏发股份",
+          "date": "20110720",
+          "marketCap": 12.02276297
+        },
+        {
+          "code": "600478.SH",
+          "name": "科力远",
+          "date": "20110815",
+          "marketCap": 87.61537031
+        },
+        {
+          "code": "600590.SH",
+          "name": "泰豪科技",
+          "date": "20110929",
+          "marketCap": 37.29117581
+        },
+        {
+          "code": "300051.SZ",
+          "name": "琏升科技",
+          "date": "20110929",
+          "marketCap": 15.32775
+        },
+        {
+          "code": "000695.SZ",
+          "name": "滨海能源",
+          "date": "20110919",
+          "marketCap": 23.769786670000002
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002052.SZ",
+          "name": "同洲电子",
+          "date": "20111229",
+          "marketCap": 26.498836129999997
+        },
+        {
+          "code": "600110.SH",
+          "name": "诺德股份",
+          "date": "20111229",
+          "marketCap": 44.05695332
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600192.SH",
+          "name": "长城电工",
+          "date": "20120329",
+          "marketCap": 20.846628
+        },
+        {
+          "code": "002112.SZ",
+          "name": "三变科技",
+          "date": "20120216",
+          "marketCap": 9.184
+        },
+        {
+          "code": "002518.SZ",
+          "name": "科士达",
+          "date": "20120329",
+          "marketCap": 22.7815
+        },
+        {
+          "code": "002498.SZ",
+          "name": "汉缆股份",
+          "date": "20120328",
+          "marketCap": 95.316
+        },
+        {
+          "code": "600478.SH",
+          "name": "科力远",
+          "date": "20120326",
+          "marketCap": 65.60921010999999
+        },
+        {
+          "code": "600481.SH",
+          "name": "双良节能",
+          "date": "20120329",
+          "marketCap": 60.675817169999995
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000922.SZ",
+          "name": "佳电股份",
+          "date": "20120628",
+          "marketCap": 25.4565055
+        },
+        {
+          "code": "601126.SH",
+          "name": "四方股份",
+          "date": "20120628",
+          "marketCap": 59.4949432
+        },
+        {
+          "code": "002471.SZ",
+          "name": "中超控股",
+          "date": "20120628",
+          "marketCap": 26.7488
+        },
+        {
+          "code": "601700.SH",
+          "name": "风范股份",
+          "date": "20120628",
+          "marketCap": 33.0498
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600312.SH",
+          "name": "平高电气",
+          "date": "20120914",
+          "marketCap": 60.93108327
+        },
+        {
+          "code": "000400.SZ",
+          "name": "许继电气",
+          "date": "20120925",
+          "marketCap": 64.7601664
+        },
+        {
+          "code": "600406.SH",
+          "name": "国电南瑞",
+          "date": "20120921",
+          "marketCap": 279.50049211
+        },
+        {
+          "code": "002196.SZ",
+          "name": "方正电机",
+          "date": "20120927",
+          "marketCap": 12.8570475
+        },
+        {
+          "code": "002534.SZ",
+          "name": "西子洁能",
+          "date": "20120926",
+          "marketCap": 56.633528000000005
+        },
+        {
+          "code": "300080.SZ",
+          "name": "易成新能",
+          "date": "20120905",
+          "marketCap": 21.6216
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600580.SH",
+          "name": "卧龙电驱",
+          "date": "20121119",
+          "marketCap": 27.09651299
+        },
+        {
+          "code": "002074.SZ",
+          "name": "国轩高科",
+          "date": "20121218",
+          "marketCap": 13.808556
+        },
+        {
+          "code": "002506.SZ",
+          "name": "协鑫集成",
+          "date": "20121219",
+          "marketCap": 43.103871999999996
+        },
+        {
+          "code": "002546.SZ",
+          "name": "新联电子",
+          "date": "20121106",
+          "marketCap": 26.2248
+        },
+        {
+          "code": "600110.SH",
+          "name": "诺德股份",
+          "date": "20121116",
+          "marketCap": 41.5262667
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600379.SH",
+          "name": "宝光股份",
+          "date": "20130114",
+          "marketCap": 17.38275376
+        },
+        {
+          "code": "600525.SH",
+          "name": "长园集团",
+          "date": "20130322",
+          "marketCap": 54.40113706
+        },
+        {
+          "code": "300051.SZ",
+          "name": "琏升科技",
+          "date": "20130201",
+          "marketCap": 13.40175
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600973.SH",
+          "name": "宝胜股份",
+          "date": "20130617",
+          "marketCap": 24.012838260000002
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002249.SZ",
+          "name": "大洋电机",
+          "date": "20130923",
+          "marketCap": 74.9681159
+        },
+        {
+          "code": "300118.SZ",
+          "name": "东方日升",
+          "date": "20130802",
+          "marketCap": 39.592
+        },
+        {
+          "code": "300222.SZ",
+          "name": "科大智能",
+          "date": "20130731",
+          "marketCap": 13.4028
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002196.SZ",
+          "name": "方正电机",
+          "date": "20131108",
+          "marketCap": 13.271763029999999
+        },
+        {
+          "code": "002518.SZ",
+          "name": "科士达",
+          "date": "20131227",
+          "marketCap": 40.125645
+        },
+        {
+          "code": "300062.SZ",
+          "name": "中能电气",
+          "date": "20131227",
+          "marketCap": 15.960882999999999
+        },
+        {
+          "code": "300141.SZ",
+          "name": "和顺电气",
+          "date": "20131230",
+          "marketCap": 15.516720000000001
+        },
+        {
+          "code": "601012.SH",
+          "name": "隆基绿能",
+          "date": "20131216",
+          "marketCap": 82.9865484
+        },
+        {
+          "code": "600732.SH",
+          "name": "爱旭股份",
+          "date": "20131127",
+          "marketCap": 23.39047339
+        },
+        {
+          "code": "002346.SZ",
+          "name": "柘中股份",
+          "date": "20131127",
+          "marketCap": 16.902
+        },
+        {
+          "code": "002125.SZ",
+          "name": "湘潭电化",
+          "date": "20131107",
+          "marketCap": 11.89566767
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002451.SZ",
+          "name": "摩恩电气",
+          "date": "20140321",
+          "marketCap": 20.2032
+        },
+        {
+          "code": "002506.SZ",
+          "name": "协鑫集成",
+          "date": "20140219",
+          "marketCap": 21.847168
+        },
+        {
+          "code": "002366.SZ",
+          "name": "融发核电",
+          "date": "20140321",
+          "marketCap": 13.6971
+        },
+        {
+          "code": "000695.SZ",
+          "name": "滨海能源",
+          "date": "20140221",
+          "marketCap": 18.63817852
+        },
+        {
+          "code": "300093.SZ",
+          "name": "金刚光伏",
+          "date": "20140328",
+          "marketCap": 16.308
+        },
+        {
+          "code": "600072.SH",
+          "name": "中船科技",
+          "date": "20140328",
+          "marketCap": 32.485368890000004
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002074.SZ",
+          "name": "国轩高科",
+          "date": "20140331",
+          "marketCap": 18.495864
+        },
+        {
+          "code": "002560.SZ",
+          "name": "通达股份",
+          "date": "20140416",
+          "marketCap": 24.6193289
+        },
+        {
+          "code": "002506.SZ",
+          "name": "协鑫集成",
+          "date": "20140428",
+          "marketCap": 16.111232
+        },
+        {
+          "code": "601012.SH",
+          "name": "隆基绿能",
+          "date": "20140618",
+          "marketCap": 83.47122
+        },
+        {
+          "code": "300173.SZ",
+          "name": "ST福能",
+          "date": "20140530",
+          "marketCap": 14.097135
+        },
+        {
+          "code": "600379.SH",
+          "name": "宝光股份",
+          "date": "20140611",
+          "marketCap": 22.43012053
+        },
+        {
+          "code": "002090.SZ",
+          "name": "金智科技",
+          "date": "20140620",
+          "marketCap": 29.172
+        },
+        {
+          "code": "002340.SZ",
+          "name": "格林美",
+          "date": "20140625",
+          "marketCap": 103.37771469
+        },
+        {
+          "code": "600212.SH",
+          "name": "绿能慧充",
+          "date": "20140611",
+          "marketCap": 17.90940246
+        },
+        {
+          "code": "000009.SZ",
+          "name": "中国宝安",
+          "date": "20140527",
+          "marketCap": 128.07047333
+        },
+        {
+          "code": "000695.SZ",
+          "name": "滨海能源",
+          "date": "20140221",
+          "marketCap": 18.63817852
+        },
+        {
+          "code": "300093.SZ",
+          "name": "金刚光伏",
+          "date": "20140328",
+          "marketCap": 16.308
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600847.SH",
+          "name": "万里股份",
+          "date": "20140805",
+          "marketCap": 27.69216496
+        },
+        {
+          "code": "002358.SZ",
+          "name": "森源电气",
+          "date": "20140902",
+          "marketCap": 122.91950290000001
+        },
+        {
+          "code": "002451.SZ",
+          "name": "摩恩电气",
+          "date": "20140813",
+          "marketCap": 37.37592
+        },
+        {
+          "code": "002452.SZ",
+          "name": "长高电气",
+          "date": "20140919",
+          "marketCap": 36.466276
+        },
+        {
+          "code": "002506.SZ",
+          "name": "协鑫集成",
+          "date": "20140428",
+          "marketCap": 16.111232
+        },
+        {
+          "code": "002630.SZ",
+          "name": "*ST华西",
+          "date": "20140926",
+          "marketCap": 81.18
+        },
+        {
+          "code": "002692.SZ",
+          "name": "远程股份",
+          "date": "20140924",
+          "marketCap": 32.022783000000004
+        },
+        {
+          "code": "300207.SZ",
+          "name": "欣旺达",
+          "date": "20140903",
+          "marketCap": 82.8555023
+        },
+        {
+          "code": "600379.SH",
+          "name": "宝光股份",
+          "date": "20140611",
+          "marketCap": 22.43012053
+        },
+        {
+          "code": "300037.SZ",
+          "name": "新宙邦",
+          "date": "20140912",
+          "marketCap": 73.49616
+        },
+        {
+          "code": "600241.SH",
+          "name": "时代万恒",
+          "date": "20140815",
+          "marketCap": 14.92056
+        },
+        {
+          "code": "600590.SH",
+          "name": "泰豪科技",
+          "date": "20140910",
+          "marketCap": 44.879216369999995
+        },
+        {
+          "code": "601222.SH",
+          "name": "林洋能源",
+          "date": "20140919",
+          "marketCap": 95.15084669999999
+        },
+        {
+          "code": "000159.SZ",
+          "name": "国际实业",
+          "date": "20140911",
+          "marketCap": 43.39876432
+        },
+        {
+          "code": "300345.SZ",
+          "name": "华民股份",
+          "date": "20140812",
+          "marketCap": 18.4224
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000533.SZ",
+          "name": "顺钠股份",
+          "date": "20141014",
+          "marketCap": 41.2417152
+        },
+        {
+          "code": "600580.SH",
+          "name": "卧龙电驱",
+          "date": "20141205",
+          "marketCap": 116.38325433
+        },
+        {
+          "code": "300018.SZ",
+          "name": "中元股份",
+          "date": "20141219",
+          "marketCap": 25.7985
+        },
+        {
+          "code": "002335.SZ",
+          "name": "科华数据",
+          "date": "20141205",
+          "marketCap": 47.05393455
+        },
+        {
+          "code": "002531.SZ",
+          "name": "天顺风能",
+          "date": "20141217",
+          "marketCap": 62.8772
+        },
+        {
+          "code": "002451.SZ",
+          "name": "摩恩电气",
+          "date": "20141217",
+          "marketCap": 32.98392
+        },
+        {
+          "code": "002506.SZ",
+          "name": "协鑫集成",
+          "date": "20140428",
+          "marketCap": 16.111232
+        },
+        {
+          "code": "002270.SZ",
+          "name": "华明装备",
+          "date": "20140930",
+          "marketCap": 22.262954999999998
+        },
+        {
+          "code": "600207.SH",
+          "name": "安彩高科",
+          "date": "20141125",
+          "marketCap": 37.122
+        },
+        {
+          "code": "300073.SZ",
+          "name": "当升科技",
+          "date": "20141210",
+          "marketCap": 28.16
+        },
+        {
+          "code": "600241.SH",
+          "name": "时代万恒",
+          "date": "20140815",
+          "marketCap": 14.92056
+        },
+        {
+          "code": "002168.SZ",
+          "name": "ST惠程",
+          "date": "20141127",
+          "marketCap": 76.69471300000001
+        },
+        {
+          "code": "000009.SZ",
+          "name": "中国宝安",
+          "date": "20141226",
+          "marketCap": 194.92802691
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600438.SH",
+          "name": "通威股份",
+          "date": "20150127",
+          "marketCap": 88.57468410999999
+        },
+        {
+          "code": "002074.SZ",
+          "name": "国轩高科",
+          "date": "20150325",
+          "marketCap": 71.956512
+        },
+        {
+          "code": "002196.SZ",
+          "name": "方正电机",
+          "date": "20150313",
+          "marketCap": 34.47139081
+        },
+        {
+          "code": "002169.SZ",
+          "name": "智光电气",
+          "date": "20150302",
+          "marketCap": 39.46455874
+        },
+        {
+          "code": "002364.SZ",
+          "name": "中恒电气",
+          "date": "20150324",
+          "marketCap": 116.46005074
+        },
+        {
+          "code": "002358.SZ",
+          "name": "森源电气",
+          "date": "20150324",
+          "marketCap": 185.29418916
+        },
+        {
+          "code": "002350.SZ",
+          "name": "北京科锐",
+          "date": "20150305",
+          "marketCap": 31.388664000000002
+        },
+        {
+          "code": "002249.SZ",
+          "name": "大洋电机",
+          "date": "20150319",
+          "marketCap": 165.04641466
+        },
+        {
+          "code": "300001.SZ",
+          "name": "特锐德",
+          "date": "20150130",
+          "marketCap": 78.156
+        },
+        {
+          "code": "002498.SZ",
+          "name": "汉缆股份",
+          "date": "20150326",
+          "marketCap": 149.16924
+        },
+        {
+          "code": "300141.SZ",
+          "name": "和顺电气",
+          "date": "20150122",
+          "marketCap": 23.19357573
+        },
+        {
+          "code": "300118.SZ",
+          "name": "东方日升",
+          "date": "20150320",
+          "marketCap": 68.50074841
+        },
+        {
+          "code": "300069.SZ",
+          "name": "金利华电",
+          "date": "20150326",
+          "marketCap": 26.91
+        },
+        {
+          "code": "300274.SZ",
+          "name": "阳光电源",
+          "date": "20150327",
+          "marketCap": 213.28434
+        },
+        {
+          "code": "300316.SZ",
+          "name": "晶盛机电",
+          "date": "20150306",
+          "marketCap": 126.65583000000001
+        },
+        {
+          "code": "002506.SZ",
+          "name": "协鑫集成",
+          "date": "20140428",
+          "marketCap": 16.111232
+        },
+        {
+          "code": "002630.SZ",
+          "name": "*ST华西",
+          "date": "20150326",
+          "marketCap": 87.8589
+        },
+        {
+          "code": "300222.SZ",
+          "name": "科大智能",
+          "date": "20150213",
+          "marketCap": 66.29584139
+        },
+        {
+          "code": "300073.SZ",
+          "name": "当升科技",
+          "date": "20141210",
+          "marketCap": 28.16
+        },
+        {
+          "code": "002255.SZ",
+          "name": "海陆重工",
+          "date": "20150303",
+          "marketCap": 37.33572
+        },
+        {
+          "code": "600481.SH",
+          "name": "双良节能",
+          "date": "20150127",
+          "marketCap": 88.38242408
+        },
+        {
+          "code": "002125.SZ",
+          "name": "湘潭电化",
+          "date": "20150325",
+          "marketCap": 22.73908074
+        },
+        {
+          "code": "300390.SZ",
+          "name": "天华新能",
+          "date": "20150130",
+          "marketCap": 29.04755
+        },
+        {
+          "code": "002176.SZ",
+          "name": "江特电机",
+          "date": "20150126",
+          "marketCap": 82.39737051
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600312.SH",
+          "name": "平高电气",
+          "date": "20150619",
+          "marketCap": 256.84424238
+        },
+        {
+          "code": "601877.SH",
+          "name": "正泰电器",
+          "date": "20150515",
+          "marketCap": 405.6991931
+        },
+        {
+          "code": "002276.SZ",
+          "name": "万马股份",
+          "date": "20150629",
+          "marketCap": 321.2493169
+        },
+        {
+          "code": "002498.SZ",
+          "name": "汉缆股份",
+          "date": "20150629",
+          "marketCap": 220.74901200000002
+        },
+        {
+          "code": "002471.SZ",
+          "name": "中超控股",
+          "date": "20150629",
+          "marketCap": 137.1976
+        },
+        {
+          "code": "601311.SH",
+          "name": "骆驼股份",
+          "date": "20150617",
+          "marketCap": 241.01291725
+        },
+        {
+          "code": "300316.SZ",
+          "name": "晶盛机电",
+          "date": "20150623",
+          "marketCap": 228.8100276
+        },
+        {
+          "code": "002506.SZ",
+          "name": "协鑫集成",
+          "date": "20140428",
+          "marketCap": 16.111232
+        },
+        {
+          "code": "300360.SZ",
+          "name": "炬华科技",
+          "date": "20150612",
+          "marketCap": 106.578828
+        },
+        {
+          "code": "002546.SZ",
+          "name": "新联电子",
+          "date": "20150616",
+          "marketCap": 83.5632
+        },
+        {
+          "code": "300427.SZ",
+          "name": "红相股份",
+          "date": "20150629",
+          "marketCap": 57.316288
+        },
+        {
+          "code": "002706.SZ",
+          "name": "良信股份",
+          "date": "20150618",
+          "marketCap": 74.9761532
+        },
+        {
+          "code": "600869.SH",
+          "name": "远东股份",
+          "date": "20150508",
+          "marketCap": 288.49863744
+        },
+        {
+          "code": "002309.SZ",
+          "name": "中利集团",
+          "date": "20150601",
+          "marketCap": 190.32109395
+        },
+        {
+          "code": "002346.SZ",
+          "name": "柘中股份",
+          "date": "20150408",
+          "marketCap": 73.08073135000001
+        },
+        {
+          "code": "600482.SH",
+          "name": "中国动力",
+          "date": "20150527",
+          "marketCap": 227.7979
+        },
+        {
+          "code": "300035.SZ",
+          "name": "中科电气",
+          "date": "20150505",
+          "marketCap": 40.597011
+        },
+        {
+          "code": "600110.SH",
+          "name": "诺德股份",
+          "date": "20150625",
+          "marketCap": 157.93785092
+        },
+        {
+          "code": "600212.SH",
+          "name": "绿能慧充",
+          "date": "20150522",
+          "marketCap": 62.63173887
+        },
+        {
+          "code": "000720.SZ",
+          "name": "新能泰山",
+          "date": "20150611",
+          "marketCap": 146.874546
+        },
+        {
+          "code": "300093.SZ",
+          "name": "金刚光伏",
+          "date": "20150518",
+          "marketCap": 55.8576
+        },
+        {
+          "code": "600416.SH",
+          "name": "湘电股份",
+          "date": "20150521",
+          "marketCap": 168.30693185
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600847.SH",
+          "name": "万里股份",
+          "date": "20150817",
+          "marketCap": 52.11125706
+        },
+        {
+          "code": "600312.SH",
+          "name": "平高电气",
+          "date": "20150619",
+          "marketCap": 256.84424238
+        },
+        {
+          "code": "600405.SH",
+          "name": "动力源",
+          "date": "20150925",
+          "marketCap": 43.15228724
+        },
+        {
+          "code": "002112.SZ",
+          "name": "三变科技",
+          "date": "20150720",
+          "marketCap": 38.54592
+        },
+        {
+          "code": "601877.SH",
+          "name": "正泰电器",
+          "date": "20150515",
+          "marketCap": 405.6991931
+        },
+        {
+          "code": "300129.SZ",
+          "name": "泰胜风能",
+          "date": "20150922",
+          "marketCap": 45.36
+        },
+        {
+          "code": "002452.SZ",
+          "name": "长高电气",
+          "date": "20150717",
+          "marketCap": 47.753209600000005
+        },
+        {
+          "code": "300316.SZ",
+          "name": "晶盛机电",
+          "date": "20150623",
+          "marketCap": 228.8100276
+        },
+        {
+          "code": "300360.SZ",
+          "name": "炬华科技",
+          "date": "20150612",
+          "marketCap": 106.578828
+        },
+        {
+          "code": "300407.SZ",
+          "name": "凯发电气",
+          "date": "20150814",
+          "marketCap": 49.8576
+        },
+        {
+          "code": "600207.SH",
+          "name": "安彩高科",
+          "date": "20150922",
+          "marketCap": 40.986
+        },
+        {
+          "code": "600478.SH",
+          "name": "科力远",
+          "date": "20150826",
+          "marketCap": 105.8140831
+        },
+        {
+          "code": "600525.SH",
+          "name": "长园集团",
+          "date": "20150720",
+          "marketCap": 186.19455556
+        },
+        {
+          "code": "600732.SH",
+          "name": "爱旭股份",
+          "date": "20150821",
+          "marketCap": 34.41613547
+        },
+        {
+          "code": "002090.SZ",
+          "name": "金智科技",
+          "date": "20150706",
+          "marketCap": 56.854496250000004
+        },
+        {
+          "code": "002121.SZ",
+          "name": "科陆电子",
+          "date": "20150901",
+          "marketCap": 77.74598689999999
+        },
+        {
+          "code": "300222.SZ",
+          "name": "科大智能",
+          "date": "20150820",
+          "marketCap": 115.95141429
+        },
+        {
+          "code": "600482.SH",
+          "name": "中国动力",
+          "date": "20150527",
+          "marketCap": 227.7979
+        },
+        {
+          "code": "002052.SZ",
+          "name": "同洲电子",
+          "date": "20150702",
+          "marketCap": 76.83296557999999
+        },
+        {
+          "code": "600110.SH",
+          "name": "诺德股份",
+          "date": "20150625",
+          "marketCap": 157.93785092
+        },
+        {
+          "code": "002150.SZ",
+          "name": "正泰电源",
+          "date": "20150925",
+          "marketCap": 21.66732
+        },
+        {
+          "code": "600590.SH",
+          "name": "泰豪科技",
+          "date": "20150728",
+          "marketCap": 86.13066501
+        },
+        {
+          "code": "002176.SZ",
+          "name": "江特电机",
+          "date": "20150810",
+          "marketCap": 133.14368759
+        },
+        {
+          "code": "300093.SZ",
+          "name": "金刚光伏",
+          "date": "20150518",
+          "marketCap": 55.8576
+        },
+        {
+          "code": "600072.SH",
+          "name": "中船科技",
+          "date": "20150810",
+          "marketCap": 124.39169236000001
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600847.SH",
+          "name": "万里股份",
+          "date": "20150817",
+          "marketCap": 52.11125706
+        },
+        {
+          "code": "300410.SZ",
+          "name": "正业科技",
+          "date": "20151229",
+          "marketCap": 75.49669399999999
+        },
+        {
+          "code": "002112.SZ",
+          "name": "三变科技",
+          "date": "20150720",
+          "marketCap": 38.54592
+        },
+        {
+          "code": "300062.SZ",
+          "name": "中能电气",
+          "date": "20151125",
+          "marketCap": 45.1066
+        },
+        {
+          "code": "300069.SZ",
+          "name": "金利华电",
+          "date": "20151028",
+          "marketCap": 34.9245
+        },
+        {
+          "code": "002452.SZ",
+          "name": "长高电气",
+          "date": "20150717",
+          "marketCap": 47.753209600000005
+        },
+        {
+          "code": "300407.SZ",
+          "name": "凯发电气",
+          "date": "20150814",
+          "marketCap": 49.8576
+        },
+        {
+          "code": "600379.SH",
+          "name": "宝光股份",
+          "date": "20151123",
+          "marketCap": 51.32275738
+        },
+        {
+          "code": "600732.SH",
+          "name": "爱旭股份",
+          "date": "20150821",
+          "marketCap": 34.41613547
+        },
+        {
+          "code": "300222.SZ",
+          "name": "科大智能",
+          "date": "20150820",
+          "marketCap": 115.95141429
+        },
+        {
+          "code": "002340.SZ",
+          "name": "格林美",
+          "date": "20151228",
+          "marketCap": 221.22609309999999
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000533.SZ",
+          "name": "顺钠股份",
+          "date": "20160325",
+          "marketCap": 65.62751999999999
+        },
+        {
+          "code": "600847.SH",
+          "name": "万里股份",
+          "date": "20150817",
+          "marketCap": 52.11125706
+        },
+        {
+          "code": "300410.SZ",
+          "name": "正业科技",
+          "date": "20160115",
+          "marketCap": 59.127377
+        },
+        {
+          "code": "600468.SH",
+          "name": "百利电气",
+          "date": "20160201",
+          "marketCap": 62.02314697
+        },
+        {
+          "code": "600438.SH",
+          "name": "通威股份",
+          "date": "20160203",
+          "marketCap": 112.84284018000001
+        },
+        {
+          "code": "002112.SZ",
+          "name": "三变科技",
+          "date": "20150720",
+          "marketCap": 38.54592
+        },
+        {
+          "code": "300153.SZ",
+          "name": "科泰电源",
+          "date": "20151231",
+          "marketCap": 60.608
+        },
+        {
+          "code": "300265.SZ",
+          "name": "通光线缆",
+          "date": "20160323",
+          "marketCap": 41.7825
+        },
+        {
+          "code": "601700.SH",
+          "name": "风范股份",
+          "date": "20160115",
+          "marketCap": 78.3073677
+        },
+        {
+          "code": "300283.SZ",
+          "name": "温州宏丰",
+          "date": "20160315",
+          "marketCap": 29.22628722
+        },
+        {
+          "code": "002759.SZ",
+          "name": "ST天际",
+          "date": "20160316",
+          "marketCap": 34.7328
+        },
+        {
+          "code": "300423.SZ",
+          "name": "昇辉科技",
+          "date": "20160318",
+          "marketCap": 30.2368
+        },
+        {
+          "code": "600732.SH",
+          "name": "爱旭股份",
+          "date": "20160317",
+          "marketCap": 34.23758224
+        },
+        {
+          "code": "300222.SZ",
+          "name": "科大智能",
+          "date": "20160323",
+          "marketCap": 171.22504834
+        },
+        {
+          "code": "002709.SZ",
+          "name": "天赐材料",
+          "date": "20160325",
+          "marketCap": 109.20490728
+        },
+        {
+          "code": "002346.SZ",
+          "name": "柘中股份",
+          "date": "20160307",
+          "marketCap": 100.23761943
+        },
+        {
+          "code": "002052.SZ",
+          "name": "同洲电子",
+          "date": "20160111",
+          "marketCap": 74.81975731
+        },
+        {
+          "code": "002168.SZ",
+          "name": "ST惠程",
+          "date": "20160224",
+          "marketCap": 69.43132388000001
+        },
+        {
+          "code": "300432.SZ",
+          "name": "富临精工",
+          "date": "20160226",
+          "marketCap": 69.12
+        },
+        {
+          "code": "000720.SZ",
+          "name": "新能泰山",
+          "date": "20160321",
+          "marketCap": 58.28355
+        },
+        {
+          "code": "300450.SZ",
+          "name": "先导智能",
+          "date": "20160311",
+          "marketCap": 155.0128
+        },
+        {
+          "code": "300340.SZ",
+          "name": "科恒股份",
+          "date": "20160119",
+          "marketCap": 24.35
+        },
+        {
+          "code": "000159.SZ",
+          "name": "国际实业",
+          "date": "20160222",
+          "marketCap": 36.85526992
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300265.SZ",
+          "name": "通光线缆",
+          "date": "20160323",
+          "marketCap": 41.7825
+        },
+        {
+          "code": "002249.SZ",
+          "name": "大洋电机",
+          "date": "20160607",
+          "marketCap": 285.25617181
+        },
+        {
+          "code": "002452.SZ",
+          "name": "长高电气",
+          "date": "20160613",
+          "marketCap": 63.15596480000001
+        },
+        {
+          "code": "002576.SZ",
+          "name": "通达动力",
+          "date": "20160613",
+          "marketCap": 31.137859999999996
+        },
+        {
+          "code": "002630.SZ",
+          "name": "*ST华西",
+          "date": "20160422",
+          "marketCap": 81.8442
+        },
+        {
+          "code": "300427.SZ",
+          "name": "红相股份",
+          "date": "20160608",
+          "marketCap": 62.1115616
+        },
+        {
+          "code": "300423.SZ",
+          "name": "昇辉科技",
+          "date": "20160318",
+          "marketCap": 30.2368
+        },
+        {
+          "code": "002129.SZ",
+          "name": "TCL中环",
+          "date": "20160422",
+          "marketCap": 219.20720303000002
+        },
+        {
+          "code": "300173.SZ",
+          "name": "ST福能",
+          "date": "20160408",
+          "marketCap": 95.48880394
+        },
+        {
+          "code": "600577.SH",
+          "name": "精达股份",
+          "date": "20160429",
+          "marketCap": 82.90574803000001
+        },
+        {
+          "code": "600732.SH",
+          "name": "爱旭股份",
+          "date": "20160317",
+          "marketCap": 34.23758224
+        },
+        {
+          "code": "002052.SZ",
+          "name": "同洲电子",
+          "date": "20160111",
+          "marketCap": 74.81975731
+        },
+        {
+          "code": "300035.SZ",
+          "name": "中科电气",
+          "date": "20160520",
+          "marketCap": 32.6459835
+        },
+        {
+          "code": "300080.SZ",
+          "name": "易成新能",
+          "date": "20160518",
+          "marketCap": 39.01759203
+        },
+        {
+          "code": "600212.SH",
+          "name": "绿能慧充",
+          "date": "20160510",
+          "marketCap": 50.96504241
+        },
+        {
+          "code": "000720.SZ",
+          "name": "新能泰山",
+          "date": "20160321",
+          "marketCap": 58.28355
+        },
+        {
+          "code": "603398.SH",
+          "name": "*ST沐邦",
+          "date": "20160627",
+          "marketCap": 78.01728
+        },
+        {
+          "code": "603606.SH",
+          "name": "东方电缆",
+          "date": "20160621",
+          "marketCap": 43.069345
+        },
+        {
+          "code": "300450.SZ",
+          "name": "先导智能",
+          "date": "20160311",
+          "marketCap": 155.0128
+        },
+        {
+          "code": "000159.SZ",
+          "name": "国际实业",
+          "date": "20160222",
+          "marketCap": 36.85526992
+        },
+        {
+          "code": "300345.SZ",
+          "name": "华民股份",
+          "date": "20160620",
+          "marketCap": 46.159507520000005
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000533.SZ",
+          "name": "顺钠股份",
+          "date": "20160908",
+          "marketCap": 81.99985919999999
+        },
+        {
+          "code": "601727.SH",
+          "name": "上海电气",
+          "date": "20160830",
+          "marketCap": 1079.80714399
+        },
+        {
+          "code": "002576.SZ",
+          "name": "通达动力",
+          "date": "20160613",
+          "marketCap": 31.137859999999996
+        },
+        {
+          "code": "002580.SZ",
+          "name": "圣阳股份",
+          "date": "20160929",
+          "marketCap": 40.64372374
+        },
+        {
+          "code": "002630.SZ",
+          "name": "*ST华西",
+          "date": "20160422",
+          "marketCap": 81.8442
+        },
+        {
+          "code": "300427.SZ",
+          "name": "红相股份",
+          "date": "20160608",
+          "marketCap": 62.1115616
+        },
+        {
+          "code": "002129.SZ",
+          "name": "TCL中环",
+          "date": "20160422",
+          "marketCap": 219.20720303000002
+        },
+        {
+          "code": "600379.SH",
+          "name": "宝光股份",
+          "date": "20160922",
+          "marketCap": 44.270595400000005
+        },
+        {
+          "code": "600525.SH",
+          "name": "长园集团",
+          "date": "20160928",
+          "marketCap": 183.20452313
+        },
+        {
+          "code": "600577.SH",
+          "name": "精达股份",
+          "date": "20160429",
+          "marketCap": 82.90574803000001
+        },
+        {
+          "code": "600732.SH",
+          "name": "爱旭股份",
+          "date": "20160317",
+          "marketCap": 34.23758224
+        },
+        {
+          "code": "300080.SZ",
+          "name": "易成新能",
+          "date": "20160518",
+          "marketCap": 39.01759203
+        },
+        {
+          "code": "300477.SZ",
+          "name": "ST合纵",
+          "date": "20160913",
+          "marketCap": 69.49448695000001
+        },
+        {
+          "code": "600212.SH",
+          "name": "绿能慧充",
+          "date": "20160510",
+          "marketCap": 50.96504241
+        },
+        {
+          "code": "000720.SZ",
+          "name": "新能泰山",
+          "date": "20160321",
+          "marketCap": 58.28355
+        },
+        {
+          "code": "300510.SZ",
+          "name": "金冠股份",
+          "date": "20160913",
+          "marketCap": 71.188299
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000533.SZ",
+          "name": "顺钠股份",
+          "date": "20161228",
+          "marketCap": 88.56261119999999
+        },
+        {
+          "code": "600875.SH",
+          "name": "东方电气",
+          "date": "20161208",
+          "marketCap": 252.15154970999998
+        },
+        {
+          "code": "000682.SZ",
+          "name": "东方电子",
+          "date": "20160930",
+          "marketCap": 50.86448614
+        },
+        {
+          "code": "600406.SH",
+          "name": "国电南瑞",
+          "date": "20161228",
+          "marketCap": 403.93494227
+        },
+        {
+          "code": "600973.SH",
+          "name": "宝胜股份",
+          "date": "20161125",
+          "marketCap": 72.87411675
+        },
+        {
+          "code": "601727.SH",
+          "name": "上海电气",
+          "date": "20160830",
+          "marketCap": 1079.80714399
+        },
+        {
+          "code": "002335.SZ",
+          "name": "科华数据",
+          "date": "20161215",
+          "marketCap": 116.1460014
+        },
+        {
+          "code": "601700.SH",
+          "name": "风范股份",
+          "date": "20161124",
+          "marketCap": 95.9860209
+        },
+        {
+          "code": "002129.SZ",
+          "name": "TCL中环",
+          "date": "20160422",
+          "marketCap": 219.20720303000002
+        },
+        {
+          "code": "000821.SZ",
+          "name": "ST京机",
+          "date": "20161202",
+          "marketCap": 77.58378009
+        },
+        {
+          "code": "600577.SH",
+          "name": "精达股份",
+          "date": "20160429",
+          "marketCap": 82.90574803000001
+        },
+        {
+          "code": "600732.SH",
+          "name": "爱旭股份",
+          "date": "20160317",
+          "marketCap": 34.23758224
+        },
+        {
+          "code": "300477.SZ",
+          "name": "ST合纵",
+          "date": "20160913",
+          "marketCap": 69.49448695000001
+        },
+        {
+          "code": "300490.SZ",
+          "name": "华自科技",
+          "date": "20161202",
+          "marketCap": 50.0
+        },
+        {
+          "code": "600212.SH",
+          "name": "绿能慧充",
+          "date": "20160510",
+          "marketCap": 50.96504241
+        },
+        {
+          "code": "600152.SH",
+          "name": "维科技术",
+          "date": "20161118",
+          "marketCap": 36.686775
+        },
+        {
+          "code": "600537.SH",
+          "name": "*ST亿晶",
+          "date": "20161226",
+          "marketCap": 87.40349361
+        },
+        {
+          "code": "300450.SZ",
+          "name": "先导智能",
+          "date": "20161114",
+          "marketCap": 138.6792
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000682.SZ",
+          "name": "东方电子",
+          "date": "20160930",
+          "marketCap": 50.86448614
+        },
+        {
+          "code": "000922.SZ",
+          "name": "佳电股份",
+          "date": "20170327",
+          "marketCap": 53.333759869999994
+        },
+        {
+          "code": "600406.SH",
+          "name": "国电南瑞",
+          "date": "20161228",
+          "marketCap": 403.93494227
+        },
+        {
+          "code": "601727.SH",
+          "name": "上海电气",
+          "date": "20160830",
+          "marketCap": 1079.80714399
+        },
+        {
+          "code": "300068.SZ",
+          "name": "ST南都",
+          "date": "20170113",
+          "marketCap": 157.95168597
+        },
+        {
+          "code": "002576.SZ",
+          "name": "通达动力",
+          "date": "20170120",
+          "marketCap": 40.73017
+        },
+        {
+          "code": "601700.SH",
+          "name": "风范股份",
+          "date": "20161124",
+          "marketCap": 95.9860209
+        },
+        {
+          "code": "002606.SZ",
+          "name": "大连电瓷",
+          "date": "20170301",
+          "marketCap": 85.2481632
+        },
+        {
+          "code": "300423.SZ",
+          "name": "昇辉科技",
+          "date": "20170224",
+          "marketCap": 36.617115999999996
+        },
+        {
+          "code": "002270.SZ",
+          "name": "华明装备",
+          "date": "20170317",
+          "marketCap": 74.20297097
+        },
+        {
+          "code": "002129.SZ",
+          "name": "TCL中环",
+          "date": "20160422",
+          "marketCap": 219.20720303000002
+        },
+        {
+          "code": "000821.SZ",
+          "name": "ST京机",
+          "date": "20161202",
+          "marketCap": 77.58378009
+        },
+        {
+          "code": "600732.SH",
+          "name": "爱旭股份",
+          "date": "20160317",
+          "marketCap": 34.23758224
+        },
+        {
+          "code": "002121.SZ",
+          "name": "科陆电子",
+          "date": "20170327",
+          "marketCap": 132.94845768
+        },
+        {
+          "code": "002623.SZ",
+          "name": "亚玛顿",
+          "date": "20170324",
+          "marketCap": 63.568
+        },
+        {
+          "code": "002255.SZ",
+          "name": "海陆重工",
+          "date": "20170303",
+          "marketCap": 62.43583311
+        },
+        {
+          "code": "002168.SZ",
+          "name": "ST惠程",
+          "date": "20170120",
+          "marketCap": 140.15132008
+        },
+        {
+          "code": "300490.SZ",
+          "name": "华自科技",
+          "date": "20161202",
+          "marketCap": 50.0
+        },
+        {
+          "code": "600481.SH",
+          "name": "双良节能",
+          "date": "20170220",
+          "marketCap": 135.31139997
+        },
+        {
+          "code": "603398.SH",
+          "name": "*ST沐邦",
+          "date": "20170324",
+          "marketCap": 73.53984
+        },
+        {
+          "code": "002812.SZ",
+          "name": "恩捷股份",
+          "date": "20170203",
+          "marketCap": 74.3034
+        },
+        {
+          "code": "600590.SH",
+          "name": "泰豪科技",
+          "date": "20170118",
+          "marketCap": 104.8462038
+        },
+        {
+          "code": "300510.SZ",
+          "name": "金冠股份",
+          "date": "20170309",
+          "marketCap": 60.688242200000005
+        },
+        {
+          "code": "300051.SZ",
+          "name": "琏升科技",
+          "date": "20170123",
+          "marketCap": 51.75650724
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000682.SZ",
+          "name": "东方电子",
+          "date": "20160930",
+          "marketCap": 50.86448614
+        },
+        {
+          "code": "600468.SH",
+          "name": "百利电气",
+          "date": "20170515",
+          "marketCap": 52.88460134
+        },
+        {
+          "code": "002358.SZ",
+          "name": "森源电气",
+          "date": "20170511",
+          "marketCap": 159.08141876000002
+        },
+        {
+          "code": "601727.SH",
+          "name": "上海电气",
+          "date": "20170621",
+          "marketCap": 1016.7386767999999
+        },
+        {
+          "code": "002576.SZ",
+          "name": "通达动力",
+          "date": "20170120",
+          "marketCap": 40.73017
+        },
+        {
+          "code": "002606.SZ",
+          "name": "大连电瓷",
+          "date": "20170301",
+          "marketCap": 85.2481632
+        },
+        {
+          "code": "300423.SZ",
+          "name": "昇辉科技",
+          "date": "20170224",
+          "marketCap": 36.617115999999996
+        },
+        {
+          "code": "002129.SZ",
+          "name": "TCL中环",
+          "date": "20160422",
+          "marketCap": 219.20720303000002
+        },
+        {
+          "code": "603016.SH",
+          "name": "新宏泰",
+          "date": "20170428",
+          "marketCap": 42.877503999999995
+        },
+        {
+          "code": "603861.SH",
+          "name": "白云电器",
+          "date": "20170614",
+          "marketCap": 99.28856999999999
+        },
+        {
+          "code": "600577.SH",
+          "name": "精达股份",
+          "date": "20170623",
+          "marketCap": 93.85556380999999
+        },
+        {
+          "code": "002255.SZ",
+          "name": "海陆重工",
+          "date": "20170303",
+          "marketCap": 62.43583311
+        },
+        {
+          "code": "002168.SZ",
+          "name": "ST惠程",
+          "date": "20170120",
+          "marketCap": 140.15132008
+        },
+        {
+          "code": "300510.SZ",
+          "name": "金冠股份",
+          "date": "20170309",
+          "marketCap": 60.688242200000005
+        },
+        {
+          "code": "300340.SZ",
+          "name": "科恒股份",
+          "date": "20170602",
+          "marketCap": 47.2729152
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600468.SH",
+          "name": "百利电气",
+          "date": "20170515",
+          "marketCap": 52.88460134
+        },
+        {
+          "code": "002471.SZ",
+          "name": "中超控股",
+          "date": "20170919",
+          "marketCap": 71.3884
+        },
+        {
+          "code": "002576.SZ",
+          "name": "通达动力",
+          "date": "20170120",
+          "marketCap": 40.73017
+        },
+        {
+          "code": "002606.SZ",
+          "name": "大连电瓷",
+          "date": "20170301",
+          "marketCap": 85.2481632
+        },
+        {
+          "code": "300376.SZ",
+          "name": "易事特",
+          "date": "20170711",
+          "marketCap": 200.20322292
+        },
+        {
+          "code": "002129.SZ",
+          "name": "TCL中环",
+          "date": "20160422",
+          "marketCap": 219.20720303000002
+        },
+        {
+          "code": "300222.SZ",
+          "name": "科大智能",
+          "date": "20170731",
+          "marketCap": 187.64175389000002
+        },
+        {
+          "code": "002168.SZ",
+          "name": "ST惠程",
+          "date": "20170120",
+          "marketCap": 140.15132008
+        },
+        {
+          "code": "000720.SZ",
+          "name": "新能泰山",
+          "date": "20170821",
+          "marketCap": 48.78549
+        },
+        {
+          "code": "300340.SZ",
+          "name": "科恒股份",
+          "date": "20170927",
+          "marketCap": 76.12459717
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002112.SZ",
+          "name": "三变科技",
+          "date": "20171222",
+          "marketCap": 35.09856
+        },
+        {
+          "code": "002358.SZ",
+          "name": "森源电气",
+          "date": "20171206",
+          "marketCap": 138.16188678
+        },
+        {
+          "code": "002576.SZ",
+          "name": "通达动力",
+          "date": "20170120",
+          "marketCap": 40.73017
+        },
+        {
+          "code": "002580.SZ",
+          "name": "圣阳股份",
+          "date": "20171109",
+          "marketCap": 29.663389399999996
+        },
+        {
+          "code": "300444.SZ",
+          "name": "双杰电气",
+          "date": "20171117",
+          "marketCap": 55.33995669
+        },
+        {
+          "code": "300173.SZ",
+          "name": "ST福能",
+          "date": "20171225",
+          "marketCap": 46.308259740000004
+        },
+        {
+          "code": "600525.SH",
+          "name": "长园集团",
+          "date": "20171222",
+          "marketCap": 209.21929247999998
+        },
+        {
+          "code": "002150.SZ",
+          "name": "正泰电源",
+          "date": "20171226",
+          "marketCap": 24.59967666
+        },
+        {
+          "code": "002168.SZ",
+          "name": "ST惠程",
+          "date": "20171218",
+          "marketCap": 112.91315208
+        },
+        {
+          "code": "002366.SZ",
+          "name": "融发核电",
+          "date": "20171205",
+          "marketCap": 229.33666908
+        },
+        {
+          "code": "603032.SH",
+          "name": "德新科技",
+          "date": "20171101",
+          "marketCap": 72.350284
+        },
+        {
+          "code": "000695.SZ",
+          "name": "滨海能源",
+          "date": "20170929",
+          "marketCap": 26.05790632
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000533.SZ",
+          "name": "顺钠股份",
+          "date": "20180129",
+          "marketCap": 66.5255808
+        },
+        {
+          "code": "300410.SZ",
+          "name": "正业科技",
+          "date": "20180306",
+          "marketCap": 66.52387373
+        },
+        {
+          "code": "002451.SZ",
+          "name": "摩恩电气",
+          "date": "20180202",
+          "marketCap": 115.0704
+        },
+        {
+          "code": "002580.SZ",
+          "name": "圣阳股份",
+          "date": "20171109",
+          "marketCap": 29.663389399999996
+        },
+        {
+          "code": "002692.SZ",
+          "name": "远程股份",
+          "date": "20180131",
+          "marketCap": 65.2076568
+        },
+        {
+          "code": "300423.SZ",
+          "name": "昇辉科技",
+          "date": "20180323",
+          "marketCap": 40.96857838
+        },
+        {
+          "code": "300444.SZ",
+          "name": "双杰电气",
+          "date": "20171117",
+          "marketCap": 55.33995669
+        },
+        {
+          "code": "300491.SZ",
+          "name": "通合科技",
+          "date": "20180312",
+          "marketCap": 29.9126196
+        },
+        {
+          "code": "002851.SZ",
+          "name": "麦格米特",
+          "date": "20180108",
+          "marketCap": 65.94314366
+        },
+        {
+          "code": "603659.SH",
+          "name": "璞泰来",
+          "date": "20180206",
+          "marketCap": 171.69651072
+        },
+        {
+          "code": "300173.SZ",
+          "name": "ST福能",
+          "date": "20171225",
+          "marketCap": 46.308259740000004
+        },
+        {
+          "code": "002121.SZ",
+          "name": "科陆电子",
+          "date": "20180202",
+          "marketCap": 120.90526129999999
+        },
+        {
+          "code": "002309.SZ",
+          "name": "中利集团",
+          "date": "20180202",
+          "marketCap": 124.97614672
+        },
+        {
+          "code": "600241.SH",
+          "name": "时代万恒",
+          "date": "20180207",
+          "marketCap": 23.83847132
+        },
+        {
+          "code": "002168.SZ",
+          "name": "ST惠程",
+          "date": "20171218",
+          "marketCap": 112.91315208
+        },
+        {
+          "code": "002857.SZ",
+          "name": "三晖电气",
+          "date": "20180227",
+          "marketCap": 16.008
+        },
+        {
+          "code": "300080.SZ",
+          "name": "易成新能",
+          "date": "20180326",
+          "marketCap": 29.313474420000002
+        },
+        {
+          "code": "002366.SZ",
+          "name": "融发核电",
+          "date": "20171205",
+          "marketCap": 229.33666908
+        },
+        {
+          "code": "603398.SH",
+          "name": "*ST沐邦",
+          "date": "20180202",
+          "marketCap": 28.451071999999996
+        },
+        {
+          "code": "300409.SZ",
+          "name": "道氏技术",
+          "date": "20180228",
+          "marketCap": 112.0365
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "601727.SH",
+          "name": "上海电气",
+          "date": "20180605",
+          "marketCap": 933.57645746
+        },
+        {
+          "code": "300118.SZ",
+          "name": "东方日升",
+          "date": "20180504",
+          "marketCap": 97.66460963
+        },
+        {
+          "code": "002630.SZ",
+          "name": "*ST华西",
+          "date": "20180619",
+          "marketCap": 77.22431999999999
+        },
+        {
+          "code": "002270.SZ",
+          "name": "华明装备",
+          "date": "20180502",
+          "marketCap": 44.69387679
+        },
+        {
+          "code": "300670.SZ",
+          "name": "大烨智能",
+          "date": "20180517",
+          "marketCap": 38.4156
+        },
+        {
+          "code": "300491.SZ",
+          "name": "通合科技",
+          "date": "20180312",
+          "marketCap": 29.9126196
+        },
+        {
+          "code": "603016.SH",
+          "name": "新宏泰",
+          "date": "20180606",
+          "marketCap": 32.532864000000004
+        },
+        {
+          "code": "002121.SZ",
+          "name": "科陆电子",
+          "date": "20180606",
+          "marketCap": 91.40015361
+        },
+        {
+          "code": "002309.SZ",
+          "name": "中利集团",
+          "date": "20180202",
+          "marketCap": 124.97614672
+        },
+        {
+          "code": "600212.SH",
+          "name": "绿能慧充",
+          "date": "20180419",
+          "marketCap": 28.552704489999996
+        },
+        {
+          "code": "300510.SZ",
+          "name": "金冠股份",
+          "date": "20180615",
+          "marketCap": 64.20187812
+        },
+        {
+          "code": "603032.SH",
+          "name": "德新科技",
+          "date": "20180604",
+          "marketCap": 22.681134
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002459.SZ",
+          "name": "晶澳科技",
+          "date": "20180718",
+          "marketCap": 46.798197859999995
+        },
+        {
+          "code": "603016.SH",
+          "name": "新宏泰",
+          "date": "20180606",
+          "marketCap": 32.532864000000004
+        },
+        {
+          "code": "300510.SZ",
+          "name": "金冠股份",
+          "date": "20180615",
+          "marketCap": 64.20187812
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300080.SZ",
+          "name": "易成新能",
+          "date": "20181102",
+          "marketCap": 21.87197491
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002121.SZ",
+          "name": "科陆电子",
+          "date": "20190322",
+          "marketCap": 91.54269456
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "603032.SH",
+          "name": "德新科技",
+          "date": "20200327",
+          "marketCap": 27.5053752
+        },
+        {
+          "code": "600416.SH",
+          "name": "湘电股份",
+          "date": "20200330",
+          "marketCap": 77.84216495000001
+        }
+      ]
+    },
+    {
+      "quarter": "2020Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002857.SZ",
+          "name": "三晖电气",
+          "date": "20201229",
+          "marketCap": 14.784
+        }
+      ]
+    },
+    {
+      "quarter": "2021Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600416.SH",
+          "name": "湘电股份",
+          "date": "20210330",
+          "marketCap": 228.33399063
+        }
+      ]
+    },
+    {
+      "quarter": "2021Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300660.SZ",
+          "name": "江苏雷利",
+          "date": "20210618",
+          "marketCap": 53.34676624
+        },
+        {
+          "code": "300530.SZ",
+          "name": "领湃科技",
+          "date": "20210629",
+          "marketCap": 52.276455
+        }
+      ]
+    },
+    {
+      "quarter": "2021Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600072.SH",
+          "name": "中船科技",
+          "date": "20211228",
+          "marketCap": 107.86060785999999
+        }
+      ]
+    },
+    {
+      "quarter": "2022Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002196.SZ",
+          "name": "方正电机",
+          "date": "20220929",
+          "marketCap": 40.41210933
+        }
+      ]
+    },
+    {
+      "quarter": "2022Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300850.SZ",
+          "name": "新强联",
+          "date": "20221229",
+          "marketCap": 175.66884650999998
+        }
+      ]
+    },
+    {
+      "quarter": "2023Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002309.SZ",
+          "name": "中利集团",
+          "date": "20241108",
+          "marketCap": 21.27160446
+        }
+      ]
+    },
+    {
+      "quarter": "2025Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600590.SH",
+          "name": "泰豪科技",
+          "date": "20250321",
+          "marketCap": 81.44906113
+        }
+      ]
+    },
+    {
+      "quarter": "2025Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002169.SZ",
+          "name": "智光电气",
+          "date": "20250926",
+          "marketCap": 62.85113875
+        }
+      ]
+    },
+    {
+      "quarter": "2025Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q2",
+      "financialMissing": [
+        {
+          "code": "920200.BJ",
+          "name": "振宏股份"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    }
+  ]
+}

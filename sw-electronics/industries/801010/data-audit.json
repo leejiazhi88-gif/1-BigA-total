@@ -1,0 +1,1876 @@
+{
+  "asOf": "2026-11-10",
+  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+  "summary": {
+    "industry": "农林牧渔",
+    "code": "801010.SI",
+    "companies": 114,
+    "quarters": 87,
+    "companyQuarterRows": 6463,
+    "latest": {
+      "quarter": "2026Q3",
+      "endDate": "20260930",
+      "tradeDate": "20260930",
+      "companies": 114,
+      "marketCap": 12581.051452669997,
+      "marketCapObserved": 12581.051452669997,
+      "pe": null,
+      "peMarketCap": 12581.051452669997,
+      "peProfit": -91.37735871433809,
+      "peCoverage": 1.0,
+      "peMissingCount": 0,
+      "peRebuiltCount": 51,
+      "revenue": 3398.0328722445,
+      "profit": -53.68872609660002,
+      "reportedCount": 114,
+      "estimatedCount": 0,
+      "missingCount": 0,
+      "estimatedRevenue": 0,
+      "estimatedProfit": 0,
+      "carriedCount": 0,
+      "marketMissingCount": 0,
+      "financialCoverage": 1.0
+    },
+    "financialIncompleteQuarters": 0,
+    "peCoverageMin": 1.0,
+    "carriedCompanyQuarters": 195
+  },
+  "quality": [
+    {
+      "quarter": "2005Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600467.SH",
+          "name": "好当家",
+          "date": "20050330",
+          "marketCap": 12.744
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600359.SH",
+          "name": "新农开发",
+          "date": "20050629",
+          "marketCap": 12.6474
+        },
+        {
+          "code": "002041.SZ",
+          "name": "登海种业",
+          "date": "20050629",
+          "marketCap": 18.9464
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000972.SZ",
+          "name": "*ST中基",
+          "date": "20050929",
+          "marketCap": 8.60911185
+        },
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20050919",
+          "marketCap": 4.82823634
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600097.SH",
+          "name": "开创国际",
+          "date": "20051229",
+          "marketCap": 4.964345229999999
+        },
+        {
+          "code": "000702.SZ",
+          "name": "正虹科技",
+          "date": "20051229",
+          "marketCap": 8.9366246
+        },
+        {
+          "code": "000713.SZ",
+          "name": "国投丰乐",
+          "date": "20051222",
+          "marketCap": 6.4575
+        },
+        {
+          "code": "600127.SH",
+          "name": "金健米业",
+          "date": "20051229",
+          "marketCap": 9.644751450000001
+        },
+        {
+          "code": "600598.SH",
+          "name": "北大荒",
+          "date": "20051206",
+          "marketCap": 72.1456368
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600359.SH",
+          "name": "新农开发",
+          "date": "20060317",
+          "marketCap": 12.1338
+        },
+        {
+          "code": "600257.SH",
+          "name": "大湖股份",
+          "date": "20060322",
+          "marketCap": 6.0663
+        },
+        {
+          "code": "000735.SZ",
+          "name": "罗牛山",
+          "date": "20060315",
+          "marketCap": 13.2719404
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600097.SH",
+          "name": "开创国际",
+          "date": "20060629",
+          "marketCap": 5.968759260000001
+        },
+        {
+          "code": "000798.SZ",
+          "name": "中水渔业",
+          "date": "20060629",
+          "marketCap": 8.816958
+        },
+        {
+          "code": "600127.SH",
+          "name": "金健米业",
+          "date": "20060629",
+          "marketCap": 11.81040228
+        },
+        {
+          "code": "600201.SH",
+          "name": "生物股份",
+          "date": "20060608",
+          "marketCap": 14.1103519
+        },
+        {
+          "code": "600371.SH",
+          "name": "万向德农",
+          "date": "20060613",
+          "marketCap": 12.4775
+        },
+        {
+          "code": "600975.SH",
+          "name": "新五丰",
+          "date": "20060623",
+          "marketCap": 8.80352781
+        },
+        {
+          "code": "600965.SH",
+          "name": "*ST福成",
+          "date": "20060606",
+          "marketCap": 11.7908166
+        },
+        {
+          "code": "000930.SZ",
+          "name": "中粮科技",
+          "date": "20060629",
+          "marketCap": 55.260756889999996
+        },
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20060428",
+          "marketCap": 2.00195165
+        },
+        {
+          "code": "000048.SZ",
+          "name": "京基智农",
+          "date": "20060629",
+          "marketCap": 9.847370510000001
+        },
+        {
+          "code": "000876.SZ",
+          "name": "新希望",
+          "date": "20060629",
+          "marketCap": 33.70474153
+        },
+        {
+          "code": "600883.SH",
+          "name": "博闻科技",
+          "date": "20060615",
+          "marketCap": 15.022044000000001
+        },
+        {
+          "code": "000663.SZ",
+          "name": "永安林业",
+          "date": "20060629",
+          "marketCap": 11.07079812
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000972.SZ",
+          "name": "*ST中基",
+          "date": "20060927",
+          "marketCap": 13.91661062
+        },
+        {
+          "code": "000998.SZ",
+          "name": "隆平高科",
+          "date": "20060928",
+          "marketCap": 12.915
+        },
+        {
+          "code": "600127.SH",
+          "name": "金健米业",
+          "date": "20060922",
+          "marketCap": 12.9576985
+        },
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20060428",
+          "marketCap": 2.00195165
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600540.SH",
+          "name": "新赛股份",
+          "date": "20061228",
+          "marketCap": 8.478
+        },
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20060428",
+          "marketCap": 2.00195165
+        },
+        {
+          "code": "600737.SH",
+          "name": "中粮糖业",
+          "date": "20061221",
+          "marketCap": 60.661998219999994
+        },
+        {
+          "code": "600313.SH",
+          "name": "农发种业",
+          "date": "20061222",
+          "marketCap": 9.10442
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000702.SZ",
+          "name": "正虹科技",
+          "date": "20070319",
+          "marketCap": 17.891180050000003
+        },
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20060428",
+          "marketCap": 2.00195165
+        },
+        {
+          "code": "000505.SZ",
+          "name": "京粮控股",
+          "date": "20070309",
+          "marketCap": 25.73274786
+        },
+        {
+          "code": "000911.SZ",
+          "name": "*ST广糖",
+          "date": "20070308",
+          "marketCap": 34.327048
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000998.SZ",
+          "name": "隆平高科",
+          "date": "20070627",
+          "marketCap": 31.45275
+        },
+        {
+          "code": "600354.SH",
+          "name": "敦煌种业",
+          "date": "20070628",
+          "marketCap": 11.64149664
+        },
+        {
+          "code": "002100.SZ",
+          "name": "天康生物",
+          "date": "20070604",
+          "marketCap": 17.1936
+        },
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20060428",
+          "marketCap": 2.00195165
+        },
+        {
+          "code": "000019.SZ",
+          "name": "深粮控股",
+          "date": "20070430",
+          "marketCap": 21.41234746
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002100.SZ",
+          "name": "天康生物",
+          "date": "20070604",
+          "marketCap": 17.1936
+        },
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20060428",
+          "marketCap": 2.00195165
+        },
+        {
+          "code": "600313.SH",
+          "name": "农发种业",
+          "date": "20070831",
+          "marketCap": 33.21474
+        },
+        {
+          "code": "000019.SZ",
+          "name": "深粮控股",
+          "date": "20070430",
+          "marketCap": 21.41234746
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600108.SH",
+          "name": "亚盛集团",
+          "date": "20071227",
+          "marketCap": 117.31291126
+        },
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20060428",
+          "marketCap": 2.00195165
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20060428",
+          "marketCap": 2.00195165
+        },
+        {
+          "code": "000505.SZ",
+          "name": "京粮控股",
+          "date": "20080314",
+          "marketCap": 81.46569762
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002124.SZ",
+          "name": "天邦食品",
+          "date": "20080627",
+          "marketCap": 12.5629
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002124.SZ",
+          "name": "天邦食品",
+          "date": "20080925",
+          "marketCap": 10.2887
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600097.SH",
+          "name": "开创国际",
+          "date": "20081230",
+          "marketCap": 22.508626800000002
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600097.SH",
+          "name": "开创国际",
+          "date": "20090326",
+          "marketCap": 31.60527256
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600265.SH",
+          "name": "*ST景谷",
+          "date": "20090629",
+          "marketCap": 13.4992
+        },
+        {
+          "code": "002215.SZ",
+          "name": "诺普信",
+          "date": "20090629",
+          "marketCap": 34.82076
+        },
+        {
+          "code": "000019.SZ",
+          "name": "深粮控股",
+          "date": "20090629",
+          "marketCap": 15.609000949999999
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2009Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600359.SH",
+          "name": "新农开发",
+          "date": "20091221",
+          "marketCap": 66.9927
+        },
+        {
+          "code": "600540.SH",
+          "name": "新赛股份",
+          "date": "20091229",
+          "marketCap": 30.92283484
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2010Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600313.SH",
+          "name": "农发种业",
+          "date": "20100429",
+          "marketCap": 20.47266
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600313.SH",
+          "name": "农发种业",
+          "date": "20100429",
+          "marketCap": 20.47266
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600313.SH",
+          "name": "农发种业",
+          "date": "20100429",
+          "marketCap": 20.47266
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600313.SH",
+          "name": "农发种业",
+          "date": "20100429",
+          "marketCap": 20.47266
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600257.SH",
+          "name": "大湖股份",
+          "date": "20110629",
+          "marketCap": 35.27433
+        },
+        {
+          "code": "600313.SH",
+          "name": "农发种业",
+          "date": "20100429",
+          "marketCap": 20.47266
+        },
+        {
+          "code": "000876.SZ",
+          "name": "新希望",
+          "date": "20110628",
+          "marketCap": 166.05812223
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600313.SH",
+          "name": "农发种业",
+          "date": "20100429",
+          "marketCap": 20.47266
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2012Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002458.SZ",
+          "name": "益生股份",
+          "date": "20120329",
+          "marketCap": 42.822
+        },
+        {
+          "code": "002215.SZ",
+          "name": "诺普信",
+          "date": "20120329",
+          "marketCap": 29.2116
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002286.SZ",
+          "name": "保龄宝",
+          "date": "20120628",
+          "marketCap": 17.251520000000003
+        },
+        {
+          "code": "002299.SZ",
+          "name": "圣农发展",
+          "date": "20120628",
+          "marketCap": 131.53396
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600359.SH",
+          "name": "新农开发",
+          "date": "20120913",
+          "marketCap": 16.3389
+        },
+        {
+          "code": "600191.SH",
+          "name": "华资实业",
+          "date": "20120821",
+          "marketCap": 32.8783896
+        },
+        {
+          "code": "300268.SZ",
+          "name": "佳沃食品",
+          "date": "20120918",
+          "marketCap": 11.658
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000972.SZ",
+          "name": "*ST中基",
+          "date": "20121119",
+          "marketCap": 19.61957049
+        },
+        {
+          "code": "600127.SH",
+          "name": "金健米业",
+          "date": "20121220",
+          "marketCap": 25.53515604
+        },
+        {
+          "code": "000019.SZ",
+          "name": "深粮控股",
+          "date": "20121227",
+          "marketCap": 21.12579297
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000972.SZ",
+          "name": "*ST中基",
+          "date": "20121119",
+          "marketCap": 19.61957049
+        },
+        {
+          "code": "600265.SH",
+          "name": "*ST景谷",
+          "date": "20130321",
+          "marketCap": 9.2807
+        },
+        {
+          "code": "600965.SH",
+          "name": "*ST福成",
+          "date": "20130116",
+          "marketCap": 18.04944911
+        },
+        {
+          "code": "002299.SZ",
+          "name": "圣农发展",
+          "date": "20130227",
+          "marketCap": 109.49018000000001
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000998.SZ",
+          "name": "隆平高科",
+          "date": "20130502",
+          "marketCap": 86.81904
+        },
+        {
+          "code": "600598.SH",
+          "name": "北大荒",
+          "date": "20130524",
+          "marketCap": 148.4362724
+        },
+        {
+          "code": "300268.SZ",
+          "name": "佳沃食品",
+          "date": "20130422",
+          "marketCap": 7.571
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002124.SZ",
+          "name": "天邦食品",
+          "date": "20130821",
+          "marketCap": 14.1795
+        },
+        {
+          "code": "300268.SZ",
+          "name": "佳沃食品",
+          "date": "20130422",
+          "marketCap": 7.571
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000735.SZ",
+          "name": "罗牛山",
+          "date": "20131230",
+          "marketCap": 57.4726196
+        },
+        {
+          "code": "300087.SZ",
+          "name": "ST荃银",
+          "date": "20131210",
+          "marketCap": 12.60864
+        },
+        {
+          "code": "300268.SZ",
+          "name": "佳沃食品",
+          "date": "20130422",
+          "marketCap": 7.571
+        },
+        {
+          "code": "000505.SZ",
+          "name": "京粮控股",
+          "date": "20131217",
+          "marketCap": 15.14946184
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000798.SZ",
+          "name": "中水渔业",
+          "date": "20140328",
+          "marketCap": 20.9243025
+        },
+        {
+          "code": "300268.SZ",
+          "name": "佳沃食品",
+          "date": "20130422",
+          "marketCap": 7.571
+        },
+        {
+          "code": "600737.SH",
+          "name": "中粮糖业",
+          "date": "20140328",
+          "marketCap": 102.38862012999999
+        },
+        {
+          "code": "000505.SZ",
+          "name": "京粮控股",
+          "date": "20131217",
+          "marketCap": 15.14946184
+        },
+        {
+          "code": "000663.SZ",
+          "name": "永安林业",
+          "date": "20140220",
+          "marketCap": 24.73675416
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000713.SZ",
+          "name": "国投丰乐",
+          "date": "20140618",
+          "marketCap": 23.3422131
+        },
+        {
+          "code": "000798.SZ",
+          "name": "中水渔业",
+          "date": "20140328",
+          "marketCap": 20.9243025
+        },
+        {
+          "code": "600962.SH",
+          "name": "国投中鲁",
+          "date": "20140530",
+          "marketCap": 19.351098
+        },
+        {
+          "code": "600965.SH",
+          "name": "*ST福成",
+          "date": "20140609",
+          "marketCap": 29.16202737
+        },
+        {
+          "code": "300087.SZ",
+          "name": "ST荃银",
+          "date": "20140623",
+          "marketCap": 13.416479999999998
+        },
+        {
+          "code": "300268.SZ",
+          "name": "佳沃食品",
+          "date": "20130422",
+          "marketCap": 7.571
+        },
+        {
+          "code": "002100.SZ",
+          "name": "天康生物",
+          "date": "20140526",
+          "marketCap": 43.15540897
+        },
+        {
+          "code": "002679.SZ",
+          "name": "福建金森",
+          "date": "20140527",
+          "marketCap": 21.675684
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000713.SZ",
+          "name": "国投丰乐",
+          "date": "20140618",
+          "marketCap": 23.3422131
+        },
+        {
+          "code": "600201.SH",
+          "name": "生物股份",
+          "date": "20140918",
+          "marketCap": 100.24932395
+        },
+        {
+          "code": "300138.SZ",
+          "name": "晨光生物",
+          "date": "20140912",
+          "marketCap": 20.18376601
+        },
+        {
+          "code": "002458.SZ",
+          "name": "益生股份",
+          "date": "20140926",
+          "marketCap": 37.84032436
+        },
+        {
+          "code": "300268.SZ",
+          "name": "佳沃食品",
+          "date": "20130422",
+          "marketCap": 7.571
+        },
+        {
+          "code": "300189.SZ",
+          "name": "神农种业",
+          "date": "20140929",
+          "marketCap": 34.6112
+        },
+        {
+          "code": "002688.SZ",
+          "name": "金河生物",
+          "date": "20140815",
+          "marketCap": 35.268296
+        },
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20140912",
+          "marketCap": 105.50217572999999
+        },
+        {
+          "code": "600313.SH",
+          "name": "农发种业",
+          "date": "20140717",
+          "marketCap": 30.888857559999998
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002157.SZ",
+          "name": "正邦科技",
+          "date": "20141118",
+          "marketCap": 59.81356077
+        },
+        {
+          "code": "300313.SZ",
+          "name": "天山生物",
+          "date": "20141031",
+          "marketCap": 21.536579
+        },
+        {
+          "code": "000663.SZ",
+          "name": "永安林业",
+          "date": "20141223",
+          "marketCap": 27.19015355
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600191.SH",
+          "name": "华资实业",
+          "date": "20150305",
+          "marketCap": 56.155125600000005
+        },
+        {
+          "code": "600962.SH",
+          "name": "国投中鲁",
+          "date": "20150212",
+          "marketCap": 47.145358
+        },
+        {
+          "code": "002458.SZ",
+          "name": "益生股份",
+          "date": "20150313",
+          "marketCap": 42.76241167
+        },
+        {
+          "code": "002548.SZ",
+          "name": "金新农",
+          "date": "20150202",
+          "marketCap": 33.625679999999996
+        },
+        {
+          "code": "002086.SZ",
+          "name": "东方海洋",
+          "date": "20150320",
+          "marketCap": 39.69878
+        },
+        {
+          "code": "000663.SZ",
+          "name": "永安林业",
+          "date": "20141223",
+          "marketCap": 27.19015355
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600097.SH",
+          "name": "开创国际",
+          "date": "20150604",
+          "marketCap": 61.58976189999999
+        },
+        {
+          "code": "600191.SH",
+          "name": "华资实业",
+          "date": "20150305",
+          "marketCap": 56.155125600000005
+        },
+        {
+          "code": "002069.SZ",
+          "name": "獐子岛",
+          "date": "20150529",
+          "marketCap": 140.51576953
+        },
+        {
+          "code": "300087.SZ",
+          "name": "ST荃银",
+          "date": "20150529",
+          "marketCap": 47.45664
+        },
+        {
+          "code": "300094.SZ",
+          "name": "国联水产",
+          "date": "20150626",
+          "marketCap": 110.07186588
+        },
+        {
+          "code": "300189.SZ",
+          "name": "神农种业",
+          "date": "20150529",
+          "marketCap": 116.20352
+        },
+        {
+          "code": "002688.SZ",
+          "name": "金河生物",
+          "date": "20150601",
+          "marketCap": 64.69848
+        },
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20150629",
+          "marketCap": 252.18833332000003
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000972.SZ",
+          "name": "*ST中基",
+          "date": "20150630",
+          "marketCap": 113.37868611
+        },
+        {
+          "code": "600097.SH",
+          "name": "开创国际",
+          "date": "20150604",
+          "marketCap": 61.58976189999999
+        },
+        {
+          "code": "600195.SH",
+          "name": "中牧股份",
+          "date": "20150901",
+          "marketCap": 73.83964
+        },
+        {
+          "code": "300087.SZ",
+          "name": "ST荃银",
+          "date": "20150529",
+          "marketCap": 47.45664
+        },
+        {
+          "code": "002286.SZ",
+          "name": "保龄宝",
+          "date": "20150731",
+          "marketCap": 53.54212
+        },
+        {
+          "code": "300094.SZ",
+          "name": "国联水产",
+          "date": "20150626",
+          "marketCap": 110.07186588
+        },
+        {
+          "code": "300189.SZ",
+          "name": "神农种业",
+          "date": "20150529",
+          "marketCap": 116.20352
+        },
+        {
+          "code": "000048.SZ",
+          "name": "京基智农",
+          "date": "20150907",
+          "marketCap": 94.80047958
+        },
+        {
+          "code": "000876.SZ",
+          "name": "新希望",
+          "date": "20150814",
+          "marketCap": 395.77387375
+        },
+        {
+          "code": "002481.SZ",
+          "name": "双塔食品",
+          "date": "20150706",
+          "marketCap": 175.56067439999998
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000972.SZ",
+          "name": "*ST中基",
+          "date": "20150630",
+          "marketCap": 113.37868611
+        },
+        {
+          "code": "600354.SH",
+          "name": "敦煌种业",
+          "date": "20151214",
+          "marketCap": 52.146845500000005
+        },
+        {
+          "code": "002286.SZ",
+          "name": "保龄宝",
+          "date": "20150731",
+          "marketCap": 53.54212
+        },
+        {
+          "code": "300313.SZ",
+          "name": "天山生物",
+          "date": "20151102",
+          "marketCap": 33.090327
+        },
+        {
+          "code": "002696.SZ",
+          "name": "百洋股份",
+          "date": "20151201",
+          "marketCap": 43.9472
+        },
+        {
+          "code": "000876.SZ",
+          "name": "新希望",
+          "date": "20150814",
+          "marketCap": 395.77387375
+        },
+        {
+          "code": "002481.SZ",
+          "name": "双塔食品",
+          "date": "20150706",
+          "marketCap": 175.56067439999998
+        },
+        {
+          "code": "002567.SZ",
+          "name": "唐人神",
+          "date": "20151123",
+          "marketCap": 63.32630027
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300189.SZ",
+          "name": "神农种业",
+          "date": "20160224",
+          "marketCap": 67.584
+        },
+        {
+          "code": "300313.SZ",
+          "name": "天山生物",
+          "date": "20151102",
+          "marketCap": 33.090327
+        },
+        {
+          "code": "002714.SZ",
+          "name": "牧原股份",
+          "date": "20160324",
+          "marketCap": 313.48354061
+        },
+        {
+          "code": "002696.SZ",
+          "name": "百洋股份",
+          "date": "20151201",
+          "marketCap": 43.9472
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600540.SH",
+          "name": "新赛股份",
+          "date": "20160603",
+          "marketCap": 36.637833750000006
+        },
+        {
+          "code": "000505.SZ",
+          "name": "京粮控股",
+          "date": "20160429",
+          "marketCap": 41.991747749999995
+        },
+        {
+          "code": "002567.SZ",
+          "name": "唐人神",
+          "date": "20160513",
+          "marketCap": 69.58988293
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002100.SZ",
+          "name": "天康生物",
+          "date": "20160923",
+          "marketCap": 91.9068916
+        },
+        {
+          "code": "000505.SZ",
+          "name": "京粮控股",
+          "date": "20160429",
+          "marketCap": 41.991747749999995
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300189.SZ",
+          "name": "神农种业",
+          "date": "20161209",
+          "marketCap": 53.76
+        },
+        {
+          "code": "000048.SZ",
+          "name": "京基智农",
+          "date": "20161130",
+          "marketCap": 148.17948004000002
+        },
+        {
+          "code": "002567.SZ",
+          "name": "唐人神",
+          "date": "20161221",
+          "marketCap": 62.3399093
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600265.SH",
+          "name": "*ST景谷",
+          "date": "20170324",
+          "marketCap": 44.10604
+        },
+        {
+          "code": "002069.SZ",
+          "name": "獐子岛",
+          "date": "20170330",
+          "marketCap": 81.63567987
+        },
+        {
+          "code": "002299.SZ",
+          "name": "圣农发展",
+          "date": "20170213",
+          "marketCap": 206.51631
+        },
+        {
+          "code": "300268.SZ",
+          "name": "佳沃食品",
+          "date": "20170306",
+          "marketCap": 47.302
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600265.SH",
+          "name": "*ST景谷",
+          "date": "20170619",
+          "marketCap": 32.281259999999996
+        },
+        {
+          "code": "600127.SH",
+          "name": "金健米业",
+          "date": "20170629",
+          "marketCap": 36.1965735
+        },
+        {
+          "code": "300087.SZ",
+          "name": "ST荃银",
+          "date": "20170511",
+          "marketCap": 45.222547999999996
+        },
+        {
+          "code": "300268.SZ",
+          "name": "佳沃食品",
+          "date": "20170306",
+          "marketCap": 47.302
+        },
+        {
+          "code": "300313.SZ",
+          "name": "天山生物",
+          "date": "20170512",
+          "marketCap": 25.85321536
+        },
+        {
+          "code": "002696.SZ",
+          "name": "百洋股份",
+          "date": "20170621",
+          "marketCap": 36.7312
+        },
+        {
+          "code": "002567.SZ",
+          "name": "唐人神",
+          "date": "20170602",
+          "marketCap": 78.58471633
+        },
+        {
+          "code": "603336.SH",
+          "name": "宏辉果蔬",
+          "date": "20170620",
+          "marketCap": 37.8714
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600257.SH",
+          "name": "大湖股份",
+          "date": "20170922",
+          "marketCap": 35.611551909999996
+        },
+        {
+          "code": "600975.SH",
+          "name": "新五丰",
+          "date": "20170707",
+          "marketCap": 42.619715639999995
+        },
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20170808",
+          "marketCap": 111.07740129
+        },
+        {
+          "code": "000019.SZ",
+          "name": "深粮控股",
+          "date": "20170821",
+          "marketCap": 60.359049809999995
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600257.SH",
+          "name": "大湖股份",
+          "date": "20170922",
+          "marketCap": 35.611551909999996
+        },
+        {
+          "code": "600265.SH",
+          "name": "*ST景谷",
+          "date": "20171123",
+          "marketCap": 27.79018
+        },
+        {
+          "code": "000930.SZ",
+          "name": "中粮科技",
+          "date": "20171023",
+          "marketCap": 128.65244274
+        },
+        {
+          "code": "002458.SZ",
+          "name": "益生股份",
+          "date": "20171226",
+          "marketCap": 78.44054797999999
+        },
+        {
+          "code": "000592.SZ",
+          "name": "平潭发展",
+          "date": "20170808",
+          "marketCap": 111.07740129
+        },
+        {
+          "code": "000019.SZ",
+          "name": "深粮控股",
+          "date": "20170821",
+          "marketCap": 60.359049809999995
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600257.SH",
+          "name": "大湖股份",
+          "date": "20170922",
+          "marketCap": 35.611551909999996
+        },
+        {
+          "code": "000930.SZ",
+          "name": "中粮科技",
+          "date": "20171023",
+          "marketCap": 128.65244274
+        },
+        {
+          "code": "000019.SZ",
+          "name": "深粮控股",
+          "date": "20170821",
+          "marketCap": 60.359049809999995
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000972.SZ",
+          "name": "*ST中基",
+          "date": "20180503",
+          "marketCap": 28.151850630000002
+        },
+        {
+          "code": "601118.SH",
+          "name": "海南橡胶",
+          "date": "20180523",
+          "marketCap": 283.29812016
+        },
+        {
+          "code": "000048.SZ",
+          "name": "京基智农",
+          "date": "20180427",
+          "marketCap": 85.57833895
+        },
+        {
+          "code": "002086.SZ",
+          "name": "东方海洋",
+          "date": "20180614",
+          "marketCap": 50.52418
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "601118.SH",
+          "name": "海南橡胶",
+          "date": "20180523",
+          "marketCap": 283.29812016
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002086.SZ",
+          "name": "东方海洋",
+          "date": "20200629",
+          "marketCap": 13.00922
+        }
+      ]
+    },
+    {
+      "quarter": "2020Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002321.SZ",
+          "name": "华英农业",
+          "date": "20211230",
+          "marketCap": 16.45616588
+        }
+      ]
+    },
+    {
+      "quarter": "2022Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300313.SZ",
+          "name": "天山生物",
+          "date": "20230927",
+          "marketCap": 17.96490253
+        }
+      ]
+    },
+    {
+      "quarter": "2023Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000972.SZ",
+          "name": "*ST中基",
+          "date": "20250328",
+          "marketCap": 23.29276409
+        }
+      ]
+    },
+    {
+      "quarter": "2025Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600962.SH",
+          "name": "国投中鲁",
+          "date": "20250620",
+          "marketCap": 35.214803
+        }
+      ]
+    },
+    {
+      "quarter": "2025Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    }
+  ]
+}

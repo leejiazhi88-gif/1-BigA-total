@@ -1,0 +1,2418 @@
+{
+  "asOf": "2026-11-10",
+  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+  "summary": {
+    "industry": "交通运输",
+    "code": "801170.SI",
+    "companies": 128,
+    "quarters": 87,
+    "companyQuarterRows": 8169,
+    "latest": {
+      "quarter": "2026Q3",
+      "endDate": "20260930",
+      "tradeDate": "20260930",
+      "companies": 128,
+      "marketCap": 31738.385395399997,
+      "marketCapObserved": 31738.385395399997,
+      "pe": 18.4538160892232,
+      "peMarketCap": 31738.385395399997,
+      "peProfit": 1719.8819605628792,
+      "peCoverage": 1.0,
+      "peMissingCount": 0,
+      "peRebuiltCount": 20,
+      "revenue": 13230.156396340002,
+      "profit": 671.4618879288998,
+      "reportedCount": 128,
+      "estimatedCount": 0,
+      "missingCount": 0,
+      "estimatedRevenue": 0,
+      "estimatedProfit": 0,
+      "carriedCount": 0,
+      "marketMissingCount": 0,
+      "financialCoverage": 1.0
+    },
+    "financialIncompleteQuarters": 15,
+    "peCoverageMin": 0.964209652211338,
+    "carriedCompanyQuarters": 268
+  },
+  "quality": [
+    {
+      "quarter": "2005Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2005Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600115.SH",
+          "name": "中国东航",
+          "date": "20050629",
+          "marketCap": 140.16816
+        },
+        {
+          "code": "600751.SH",
+          "name": "海航科技",
+          "date": "20050429",
+          "marketCap": 7.24193765
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q3",
+      "financialMissing": [
+        {
+          "code": "600794.SH",
+          "name": "保税科技"
+        },
+        {
+          "code": "600119.SH",
+          "name": "*ST长投"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600834.SH",
+          "name": "申通地铁",
+          "date": "20050923",
+          "marketCap": 35.80364288
+        },
+        {
+          "code": "600233.SH",
+          "name": "圆通速递",
+          "date": "20050923",
+          "marketCap": 5.9895
+        },
+        {
+          "code": "600106.SH",
+          "name": "重庆路桥",
+          "date": "20050929",
+          "marketCap": 17.422
+        },
+        {
+          "code": "600751.SH",
+          "name": "海航科技",
+          "date": "20050429",
+          "marketCap": 7.24193765
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q4",
+      "financialMissing": [
+        {
+          "code": "600794.SH",
+          "name": "保税科技"
+        },
+        {
+          "code": "600119.SH",
+          "name": "*ST长投"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600787.SH",
+          "name": "中储股份",
+          "date": "20051216",
+          "marketCap": 23.3374846
+        },
+        {
+          "code": "000429.SZ",
+          "name": "粤高速A",
+          "date": "20051209",
+          "marketCap": 57.198857530000005
+        },
+        {
+          "code": "600548.SH",
+          "name": "深高速",
+          "date": "20051222",
+          "marketCap": 84.17501999999999
+        },
+        {
+          "code": "000906.SZ",
+          "name": "浙商中拓",
+          "date": "20051229",
+          "marketCap": 6.48375
+        },
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20051222",
+          "marketCap": 14.313672
+        },
+        {
+          "code": "600119.SH",
+          "name": "*ST长投",
+          "date": "20051208",
+          "marketCap": 7.8507
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "financialMissing": [],
+      "peMissing": [
+        {
+          "code": "001872.SZ",
+          "name": "招商港口"
+        }
+      ],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20060306",
+          "marketCap": 8.538917320000001
+        },
+        {
+          "code": "001872.SZ",
+          "name": "招商港口",
+          "date": "20060224",
+          "marketCap": 92.652548
+        },
+        {
+          "code": "600269.SH",
+          "name": "赣粤高速",
+          "date": "20060302",
+          "marketCap": 71.69478321
+        },
+        {
+          "code": "600377.SH",
+          "name": "宁沪高速",
+          "date": "20060217",
+          "marketCap": 322.91961475
+        },
+        {
+          "code": "600350.SH",
+          "name": "山东高速",
+          "date": "20060224",
+          "marketCap": 141.2796
+        },
+        {
+          "code": "600012.SH",
+          "name": "皖通高速",
+          "date": "20060217",
+          "marketCap": 98.189712
+        },
+        {
+          "code": "600020.SH",
+          "name": "中原高速",
+          "date": "20060324",
+          "marketCap": 64.05
+        },
+        {
+          "code": "000755.SZ",
+          "name": "山西高速",
+          "date": "20060323",
+          "marketCap": 18.38328259
+        },
+        {
+          "code": "600153.SH",
+          "name": "建发股份",
+          "date": "20060321",
+          "marketCap": 28.224320000000002
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600611.SH",
+          "name": "大众交通",
+          "date": "20060608",
+          "marketCap": 50.1711924
+        },
+        {
+          "code": "000520.SZ",
+          "name": "凤凰航运",
+          "date": "20060612",
+          "marketCap": 28.03511315
+        },
+        {
+          "code": "600368.SH",
+          "name": "五洲交通",
+          "date": "20060615",
+          "marketCap": 19.9784
+        },
+        {
+          "code": "600033.SH",
+          "name": "福建高速",
+          "date": "20060628",
+          "marketCap": 80.09568
+        },
+        {
+          "code": "600897.SH",
+          "name": "厦门空港",
+          "date": "20060606",
+          "marketCap": 32.643
+        },
+        {
+          "code": "600035.SH",
+          "name": "楚天高速",
+          "date": "20060623",
+          "marketCap": 45.83730275
+        },
+        {
+          "code": "600794.SH",
+          "name": "保税科技",
+          "date": "20060623",
+          "marketCap": 7.3451642900000005
+        },
+        {
+          "code": "600221.SH",
+          "name": "海航控股",
+          "date": "20060623",
+          "marketCap": 29.79431428
+        },
+        {
+          "code": "600755.SH",
+          "name": "厦门国贸",
+          "date": "20060621",
+          "marketCap": 28.67192624
+        },
+        {
+          "code": "000886.SZ",
+          "name": "海南高速",
+          "date": "20060518",
+          "marketCap": 34.51010767
+        },
+        {
+          "code": "600753.SH",
+          "name": "ST海钦",
+          "date": "20060516",
+          "marketCap": 5.1584
+        },
+        {
+          "code": "000089.SZ",
+          "name": "深圳机场",
+          "date": "20060629",
+          "marketCap": 79.90241759999999
+        },
+        {
+          "code": "600603.SH",
+          "name": "广汇物流",
+          "date": "20060629",
+          "marketCap": 4.84658381
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000905.SZ",
+          "name": "厦门港务",
+          "date": "20060920",
+          "marketCap": 34.928
+        },
+        {
+          "code": "000906.SZ",
+          "name": "浙商中拓",
+          "date": "20060922",
+          "marketCap": 15.36625
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q4",
+      "financialMissing": [
+        {
+          "code": "601872.SH",
+          "name": "招商轮船"
+        },
+        {
+          "code": "601333.SH",
+          "name": "广深铁路"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000582.SZ",
+          "name": "北部湾港",
+          "date": "20061215",
+          "marketCap": 10.72404542
+        },
+        {
+          "code": "600787.SH",
+          "name": "中储股份",
+          "date": "20061228",
+          "marketCap": 38.79236138
+        },
+        {
+          "code": "600221.SH",
+          "name": "海航控股",
+          "date": "20061228",
+          "marketCap": 127.08910084
+        },
+        {
+          "code": "600115.SH",
+          "name": "中国东航",
+          "date": "20061207",
+          "marketCap": 181.537235
+        },
+        {
+          "code": "600751.SH",
+          "name": "海航科技",
+          "date": "20061215",
+          "marketCap": 22.85890525
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000582.SZ",
+          "name": "北部湾港",
+          "date": "20070316",
+          "marketCap": 25.5379289
+        },
+        {
+          "code": "000828.SZ",
+          "name": "东莞控股",
+          "date": "20070329",
+          "marketCap": 107.38210526999998
+        },
+        {
+          "code": "600029.SH",
+          "name": "南方航空",
+          "date": "20070322",
+          "marketCap": 325.0014254
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q2",
+      "financialMissing": [
+        {
+          "code": "601919.SH",
+          "name": "中远海控"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600004.SH",
+          "name": "白云机场",
+          "date": "20070628",
+          "marketCap": 186.0
+        },
+        {
+          "code": "600115.SH",
+          "name": "中国东航",
+          "date": "20070522",
+          "marketCap": 467.2272
+        },
+        {
+          "code": "600751.SH",
+          "name": "海航科技",
+          "date": "20070628",
+          "marketCap": 53.50166185
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000828.SZ",
+          "name": "东莞控股",
+          "date": "20070921",
+          "marketCap": 150.83391554
+        },
+        {
+          "code": "600704.SH",
+          "name": "物产中大",
+          "date": "20070806",
+          "marketCap": 76.78669873
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q4",
+      "financialMissing": [
+        {
+          "code": "601866.SH",
+          "name": "中远海发"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600428.SH",
+          "name": "中远海特",
+          "date": "20071227",
+          "marketCap": 255.2004
+        },
+        {
+          "code": "600704.SH",
+          "name": "物产中大",
+          "date": "20070806",
+          "marketCap": 76.78669873
+        },
+        {
+          "code": "600221.SH",
+          "name": "海航控股",
+          "date": "20071227",
+          "marketCap": 454.69656076999996
+        },
+        {
+          "code": "000089.SZ",
+          "name": "深圳机场",
+          "date": "20071227",
+          "marketCap": 183.12770304
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600279.SH",
+          "name": "重庆港",
+          "date": "20080325",
+          "marketCap": 31.403757000000002
+        },
+        {
+          "code": "000429.SZ",
+          "name": "粤高速A",
+          "date": "20080325",
+          "marketCap": 102.20367291
+        },
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20080325",
+          "marketCap": 24.887736
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600269.SH",
+          "name": "赣粤高速",
+          "date": "20080627",
+          "marketCap": 114.31464619
+        },
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20080627",
+          "marketCap": 12.68028
+        },
+        {
+          "code": "600704.SH",
+          "name": "物产中大",
+          "date": "20080626",
+          "marketCap": 48.68029363
+        },
+        {
+          "code": "600115.SH",
+          "name": "中国东航",
+          "date": "20080627",
+          "marketCap": 312.45819
+        },
+        {
+          "code": "000089.SZ",
+          "name": "深圳机场",
+          "date": "20080627",
+          "marketCap": 103.61190816
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20080728",
+          "marketCap": 31.581398080000003
+        },
+        {
+          "code": "000828.SZ",
+          "name": "东莞控股",
+          "date": "20080925",
+          "marketCap": 45.115037449999996
+        },
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20080925",
+          "marketCap": 7.73712
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002040.SZ",
+          "name": "南京港",
+          "date": "20081230",
+          "marketCap": 9.1710256
+        },
+        {
+          "code": "600180.SH",
+          "name": "*ST瑞茂",
+          "date": "20081105",
+          "marketCap": 5.39628672
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q1",
+      "financialMissing": [
+        {
+          "code": "600180.SH",
+          "name": "*ST瑞茂"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600180.SH",
+          "name": "*ST瑞茂",
+          "date": "20081105",
+          "marketCap": 5.39628672
+        },
+        {
+          "code": "600751.SH",
+          "name": "海航科技",
+          "date": "20090325",
+          "marketCap": 23.69640824
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q2",
+      "financialMissing": [
+        {
+          "code": "600180.SH",
+          "name": "*ST瑞茂"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600279.SH",
+          "name": "重庆港",
+          "date": "20090619",
+          "marketCap": 19.57310527
+        },
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20090429",
+          "marketCap": 17.107632000000002
+        },
+        {
+          "code": "600153.SH",
+          "name": "建发股份",
+          "date": "20090629",
+          "marketCap": 168.20426402
+        },
+        {
+          "code": "600115.SH",
+          "name": "中国东航",
+          "date": "20090605",
+          "marketCap": 259.408435
+        },
+        {
+          "code": "600029.SH",
+          "name": "南方航空",
+          "date": "20090629",
+          "marketCap": 355.6206714
+        },
+        {
+          "code": "600753.SH",
+          "name": "ST海钦",
+          "date": "20090629",
+          "marketCap": 10.8032
+        },
+        {
+          "code": "000626.SZ",
+          "name": "远大控股",
+          "date": "20090629",
+          "marketCap": 13.66875
+        },
+        {
+          "code": "600751.SH",
+          "name": "海航科技",
+          "date": "20090629",
+          "marketCap": 48.27958436
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20090429",
+          "marketCap": 17.107632000000002
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600125.SH",
+          "name": "铁龙物流",
+          "date": "20091230",
+          "marketCap": 110.56766021
+        },
+        {
+          "code": "002040.SZ",
+          "name": "南京港",
+          "date": "20091230",
+          "marketCap": 26.4066528
+        },
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20090429",
+          "marketCap": 17.107632000000002
+        },
+        {
+          "code": "600180.SH",
+          "name": "*ST瑞茂",
+          "date": "20091223",
+          "marketCap": 18.02108774
+        },
+        {
+          "code": "000886.SZ",
+          "name": "海南高速",
+          "date": "20091230",
+          "marketCap": 54.978853480000005
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q1",
+      "financialMissing": [
+        {
+          "code": "600180.SH",
+          "name": "*ST瑞茂"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20090429",
+          "marketCap": 17.107632000000002
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q2",
+      "financialMissing": [
+        {
+          "code": "600180.SH",
+          "name": "*ST瑞茂"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20090429",
+          "marketCap": 17.107632000000002
+        },
+        {
+          "code": "600029.SH",
+          "name": "南方航空",
+          "date": "20100629",
+          "marketCap": 502.6240076
+        },
+        {
+          "code": "600753.SH",
+          "name": "ST海钦",
+          "date": "20100629",
+          "marketCap": 8.5248
+        },
+        {
+          "code": "601111.SH",
+          "name": "中国国航",
+          "date": "20100629",
+          "marketCap": 1259.44004166
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q3",
+      "financialMissing": [
+        {
+          "code": "600180.SH",
+          "name": "*ST瑞茂"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600020.SH",
+          "name": "中原高速",
+          "date": "20100929",
+          "marketCap": 79.40713804
+        },
+        {
+          "code": "600179.SH",
+          "name": "安通控股",
+          "date": "20100727",
+          "marketCap": 20.28
+        },
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20090429",
+          "marketCap": 17.107632000000002
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q4",
+      "financialMissing": [
+        {
+          "code": "600180.SH",
+          "name": "*ST瑞茂"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "002120.SZ",
+          "name": "韵达股份",
+          "date": "20101224",
+          "marketCap": 15.809455999999999
+        },
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20090429",
+          "marketCap": 17.107632000000002
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q1",
+      "financialMissing": [
+        {
+          "code": "600180.SH",
+          "name": "*ST瑞茂"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "600279.SH",
+          "name": "重庆港",
+          "date": "20110330",
+          "marketCap": 42.35102204
+        },
+        {
+          "code": "600106.SH",
+          "name": "重庆路桥",
+          "date": "20110330",
+          "marketCap": 41.619970699999996
+        },
+        {
+          "code": "600787.SH",
+          "name": "中储股份",
+          "date": "20110324",
+          "marketCap": 85.85850432
+        },
+        {
+          "code": "000429.SZ",
+          "name": "粤高速A",
+          "date": "20110311",
+          "marketCap": 61.22163432999999
+        },
+        {
+          "code": "002120.SZ",
+          "name": "韵达股份",
+          "date": "20101224",
+          "marketCap": 15.809455999999999
+        },
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20090429",
+          "marketCap": 17.107632000000002
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q2",
+      "financialMissing": [
+        {
+          "code": "600180.SH",
+          "name": "*ST瑞茂"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "600009.SH",
+          "name": "上海机场",
+          "date": "20110629",
+          "marketCap": 246.65068133999998
+        },
+        {
+          "code": "600035.SH",
+          "name": "楚天高速",
+          "date": "20110629",
+          "marketCap": 43.78766727
+        },
+        {
+          "code": "600794.SH",
+          "name": "保税科技",
+          "date": "20110629",
+          "marketCap": 27.5309874
+        },
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20090429",
+          "marketCap": 17.107632000000002
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "600180.SH",
+          "name": "*ST瑞茂",
+          "date": "20110725",
+          "marketCap": 23.06598835
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "600794.SH",
+          "name": "保税科技",
+          "date": "20111229",
+          "marketCap": 24.600338389999997
+        },
+        {
+          "code": "600603.SH",
+          "name": "广汇物流",
+          "date": "20111026",
+          "marketCap": 18.160091140000002
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q1",
+      "financialMissing": [
+        {
+          "code": "600753.SH",
+          "name": "ST海钦"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "000582.SZ",
+          "name": "北部湾港",
+          "date": "20120120",
+          "marketCap": 10.87237959
+        },
+        {
+          "code": "600428.SH",
+          "name": "中远海特",
+          "date": "20120329",
+          "marketCap": 74.88677521000001
+        },
+        {
+          "code": "000088.SZ",
+          "name": "盐田港",
+          "date": "20111230",
+          "marketCap": 75.1482
+        },
+        {
+          "code": "002320.SZ",
+          "name": "海峡股份",
+          "date": "20120329",
+          "marketCap": 48.28824
+        },
+        {
+          "code": "600603.SH",
+          "name": "广汇物流",
+          "date": "20111026",
+          "marketCap": 18.160091140000002
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q2",
+      "financialMissing": [
+        {
+          "code": "600753.SH",
+          "name": "ST海钦"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "000582.SZ",
+          "name": "北部湾港",
+          "date": "20120120",
+          "marketCap": 10.87237959
+        },
+        {
+          "code": "002492.SZ",
+          "name": "恒基达鑫",
+          "date": "20120628",
+          "marketCap": 13.596
+        },
+        {
+          "code": "600179.SH",
+          "name": "安通控股",
+          "date": "20120628",
+          "marketCap": 17.784
+        },
+        {
+          "code": "600119.SH",
+          "name": "*ST长投",
+          "date": "20120628",
+          "marketCap": 20.042479999999998
+        },
+        {
+          "code": "600753.SH",
+          "name": "ST海钦",
+          "date": "20120628",
+          "marketCap": 9.2032
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "600798.SH",
+          "name": "宁波海运",
+          "date": "20120720",
+          "marketCap": 27.35488062
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "601188.SH",
+          "name": "龙江交通",
+          "date": "20121228",
+          "marketCap": 32.7564
+        },
+        {
+          "code": "600751.SH",
+          "name": "海航科技",
+          "date": "20121221",
+          "marketCap": 36.653072210000005
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "600751.SH",
+          "name": "海航科技",
+          "date": "20121221",
+          "marketCap": 36.653072210000005
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "600368.SH",
+          "name": "五洲交通",
+          "date": "20130618",
+          "marketCap": 41.6900766
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "600794.SH",
+          "name": "保税科技",
+          "date": "20130923",
+          "marketCap": 46.29674446
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "000520.SZ",
+          "name": "凤凰航运",
+          "date": "20131226",
+          "marketCap": 17.070474270000002
+        },
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20131209",
+          "marketCap": 58.55510400000001
+        },
+        {
+          "code": "600603.SH",
+          "name": "广汇物流",
+          "date": "20131108",
+          "marketCap": 10.23816499
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "000520.SZ",
+          "name": "凤凰航运",
+          "date": "20131226",
+          "marketCap": 17.070474270000002
+        },
+        {
+          "code": "601919.SH",
+          "name": "中远海控",
+          "date": "20140327",
+          "marketCap": 367.78587684999997
+        },
+        {
+          "code": "600753.SH",
+          "name": "ST海钦",
+          "date": "20140328",
+          "marketCap": 15.9104
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "000520.SZ",
+          "name": "凤凰航运",
+          "date": "20131226",
+          "marketCap": 17.070474270000002
+        },
+        {
+          "code": "600755.SH",
+          "name": "厦门国贸",
+          "date": "20140626",
+          "marketCap": 64.54554057
+        },
+        {
+          "code": "600753.SH",
+          "name": "ST海钦",
+          "date": "20140328",
+          "marketCap": 15.9104
+        },
+        {
+          "code": "600603.SH",
+          "name": "广汇物流",
+          "date": "20140611",
+          "marketCap": 13.8779689
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20101103",
+          "marketCap": 48.029379719999994
+        },
+        {
+          "code": "000520.SZ",
+          "name": "凤凰航运",
+          "date": "20131226",
+          "marketCap": 17.070474270000002
+        },
+        {
+          "code": "600018.SH",
+          "name": "上港集团",
+          "date": "20140905",
+          "marketCap": 1206.02452145
+        },
+        {
+          "code": "300013.SZ",
+          "name": "新宁物流",
+          "date": "20140702",
+          "marketCap": 16.668
+        },
+        {
+          "code": "300350.SZ",
+          "name": "华鹏飞",
+          "date": "20140718",
+          "marketCap": 17.07399
+        },
+        {
+          "code": "600753.SH",
+          "name": "ST海钦",
+          "date": "20140929",
+          "marketCap": 19.1104
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000520.SZ",
+          "name": "凤凰航运",
+          "date": "20131226",
+          "marketCap": 17.070474270000002
+        },
+        {
+          "code": "600428.SH",
+          "name": "中远海特",
+          "date": "20141219",
+          "marketCap": 135.23571144000002
+        },
+        {
+          "code": "600035.SH",
+          "name": "楚天高速",
+          "date": "20141219",
+          "marketCap": 54.6227858
+        },
+        {
+          "code": "300350.SZ",
+          "name": "华鹏飞",
+          "date": "20140718",
+          "marketCap": 17.07399
+        },
+        {
+          "code": "000906.SZ",
+          "name": "浙商中拓",
+          "date": "20141010",
+          "marketCap": 52.896928319999994
+        },
+        {
+          "code": "000755.SZ",
+          "name": "山西高速",
+          "date": "20141226",
+          "marketCap": 25.10565722
+        },
+        {
+          "code": "600179.SH",
+          "name": "安通控股",
+          "date": "20141128",
+          "marketCap": 32.76
+        },
+        {
+          "code": "600704.SH",
+          "name": "物产中大",
+          "date": "20141010",
+          "marketCap": 103.38430031
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000520.SZ",
+          "name": "凤凰航运",
+          "date": "20131226",
+          "marketCap": 17.070474270000002
+        },
+        {
+          "code": "000828.SZ",
+          "name": "东莞控股",
+          "date": "20150123",
+          "marketCap": 85.24039334
+        },
+        {
+          "code": "002357.SZ",
+          "name": "富临运业",
+          "date": "20150327",
+          "marketCap": 34.48379405
+        },
+        {
+          "code": "002010.SZ",
+          "name": "传化智联",
+          "date": "20141231",
+          "marketCap": 44.259786
+        },
+        {
+          "code": "000755.SZ",
+          "name": "山西高速",
+          "date": "20141226",
+          "marketCap": 25.10565722
+        },
+        {
+          "code": "600179.SH",
+          "name": "安通控股",
+          "date": "20141128",
+          "marketCap": 32.76
+        },
+        {
+          "code": "600221.SH",
+          "name": "海航控股",
+          "date": "20150327",
+          "marketCap": 531.14312604
+        },
+        {
+          "code": "000626.SZ",
+          "name": "远大控股",
+          "date": "20150317",
+          "marketCap": 98.1315
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "001872.SZ",
+          "name": "招商港口",
+          "date": "20150422",
+          "marketCap": 172.08743954
+        },
+        {
+          "code": "000520.SZ",
+          "name": "凤凰航运",
+          "date": "20131226",
+          "marketCap": 17.070474270000002
+        },
+        {
+          "code": "000429.SZ",
+          "name": "粤高速A",
+          "date": "20150407",
+          "marketCap": 81.96407717000001
+        },
+        {
+          "code": "600561.SH",
+          "name": "江西长运",
+          "date": "20150430",
+          "marketCap": 46.1800672
+        },
+        {
+          "code": "002682.SZ",
+          "name": "龙洲股份",
+          "date": "20150624",
+          "marketCap": 61.776
+        },
+        {
+          "code": "600153.SH",
+          "name": "建发股份",
+          "date": "20150626",
+          "marketCap": 496.4436128
+        },
+        {
+          "code": "601021.SH",
+          "name": "春秋航空",
+          "date": "20150625",
+          "marketCap": 504.36
+        },
+        {
+          "code": "600753.SH",
+          "name": "ST海钦",
+          "date": "20150529",
+          "marketCap": 47.3728
+        },
+        {
+          "code": "603885.SH",
+          "name": "吉祥航空",
+          "date": "20150626",
+          "marketCap": 391.6928
+        },
+        {
+          "code": "002320.SZ",
+          "name": "海峡股份",
+          "date": "20150625",
+          "marketCap": 116.81888400000001
+        },
+        {
+          "code": "601111.SH",
+          "name": "中国国航",
+          "date": "20150629",
+          "marketCap": 2009.8177542100002
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "001872.SZ",
+          "name": "招商港口",
+          "date": "20150422",
+          "marketCap": 172.08743954
+        },
+        {
+          "code": "000520.SZ",
+          "name": "凤凰航运",
+          "date": "20131226",
+          "marketCap": 17.070474270000002
+        },
+        {
+          "code": "600106.SH",
+          "name": "重庆路桥",
+          "date": "20150831",
+          "marketCap": 95.6760068
+        },
+        {
+          "code": "600428.SH",
+          "name": "中远海特",
+          "date": "20150807",
+          "marketCap": 240.888611
+        },
+        {
+          "code": "600026.SH",
+          "name": "中远海能",
+          "date": "20150807",
+          "marketCap": 446.74924100000004
+        },
+        {
+          "code": "002040.SZ",
+          "name": "南京港",
+          "date": "20150724",
+          "marketCap": 37.2741952
+        },
+        {
+          "code": "601866.SH",
+          "name": "中远海发",
+          "date": "20150807",
+          "marketCap": 1019.9368125
+        },
+        {
+          "code": "601919.SH",
+          "name": "中远海控",
+          "date": "20150807",
+          "marketCap": 1188.1527077199999
+        },
+        {
+          "code": "002357.SZ",
+          "name": "富临运业",
+          "date": "20150918",
+          "marketCap": 31.72509044
+        },
+        {
+          "code": "002468.SZ",
+          "name": "申通快递",
+          "date": "20150825",
+          "marketCap": 45.4864896
+        },
+        {
+          "code": "601018.SH",
+          "name": "宁波港",
+          "date": "20150803",
+          "marketCap": 1044.48
+        },
+        {
+          "code": "603128.SH",
+          "name": "华贸物流",
+          "date": "20150720",
+          "marketCap": 83.68
+        },
+        {
+          "code": "600153.SH",
+          "name": "建发股份",
+          "date": "20150626",
+          "marketCap": 496.4436128
+        },
+        {
+          "code": "002485.SZ",
+          "name": "ST雪发",
+          "date": "20150907",
+          "marketCap": 48.448
+        },
+        {
+          "code": "000626.SZ",
+          "name": "远大控股",
+          "date": "20150821",
+          "marketCap": 87.54075
+        },
+        {
+          "code": "002320.SZ",
+          "name": "海峡股份",
+          "date": "20150625",
+          "marketCap": 116.81888400000001
+        },
+        {
+          "code": "600603.SH",
+          "name": "广汇物流",
+          "date": "20150910",
+          "marketCap": 23.97988454
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600106.SH",
+          "name": "重庆路桥",
+          "date": "20150831",
+          "marketCap": 95.6760068
+        },
+        {
+          "code": "002040.SZ",
+          "name": "南京港",
+          "date": "20150724",
+          "marketCap": 37.2741952
+        },
+        {
+          "code": "601018.SH",
+          "name": "宁波港",
+          "date": "20150803",
+          "marketCap": 1044.48
+        },
+        {
+          "code": "601518.SH",
+          "name": "吉林高速",
+          "date": "20151209",
+          "marketCap": 56.4138
+        },
+        {
+          "code": "601000.SH",
+          "name": "唐山港",
+          "date": "20151028",
+          "marketCap": 185.49617295
+        },
+        {
+          "code": "600153.SH",
+          "name": "建发股份",
+          "date": "20150626",
+          "marketCap": 496.4436128
+        },
+        {
+          "code": "002485.SZ",
+          "name": "ST雪发",
+          "date": "20150907",
+          "marketCap": 48.448
+        },
+        {
+          "code": "000626.SZ",
+          "name": "远大控股",
+          "date": "20150821",
+          "marketCap": 87.54075
+        },
+        {
+          "code": "002320.SZ",
+          "name": "海峡股份",
+          "date": "20150625",
+          "marketCap": 116.81888400000001
+        },
+        {
+          "code": "600603.SH",
+          "name": "广汇物流",
+          "date": "20150910",
+          "marketCap": 23.97988454
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000582.SZ",
+          "name": "北部湾港",
+          "date": "20160226",
+          "marketCap": 156.27268894
+        },
+        {
+          "code": "600233.SH",
+          "name": "圆通速递",
+          "date": "20151231",
+          "marketCap": 41.4645
+        },
+        {
+          "code": "002492.SZ",
+          "name": "恒基达鑫",
+          "date": "20160223",
+          "marketCap": 34.29
+        },
+        {
+          "code": "600153.SH",
+          "name": "建发股份",
+          "date": "20150626",
+          "marketCap": 496.4436128
+        },
+        {
+          "code": "002485.SZ",
+          "name": "ST雪发",
+          "date": "20150907",
+          "marketCap": 48.448
+        },
+        {
+          "code": "600751.SH",
+          "name": "海航科技",
+          "date": "20160205",
+          "marketCap": 177.14953854
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000582.SZ",
+          "name": "北部湾港",
+          "date": "20160226",
+          "marketCap": 156.27268894
+        },
+        {
+          "code": "600035.SH",
+          "name": "楚天高速",
+          "date": "20160408",
+          "marketCap": 74.84896149000001
+        },
+        {
+          "code": "002120.SZ",
+          "name": "韵达股份",
+          "date": "20160520",
+          "marketCap": 30.777344
+        },
+        {
+          "code": "002492.SZ",
+          "name": "恒基达鑫",
+          "date": "20160223",
+          "marketCap": 34.29
+        },
+        {
+          "code": "000755.SZ",
+          "name": "山西高速",
+          "date": "20160418",
+          "marketCap": 43.40697744
+        },
+        {
+          "code": "002682.SZ",
+          "name": "龙洲股份",
+          "date": "20160405",
+          "marketCap": 34.27249589
+        },
+        {
+          "code": "600751.SH",
+          "name": "海航科技",
+          "date": "20160205",
+          "marketCap": 177.14953854
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "601866.SH",
+          "name": "中远海发",
+          "date": "20160927",
+          "marketCap": 464.988375
+        },
+        {
+          "code": "002492.SZ",
+          "name": "恒基达鑫",
+          "date": "20160223",
+          "marketCap": 34.29
+        },
+        {
+          "code": "002352.SZ",
+          "name": "顺丰控股",
+          "date": "20160928",
+          "marketCap": 110.20838448
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000520.SZ",
+          "name": "凤凰航运",
+          "date": "20161228",
+          "marketCap": 79.95459294999999
+        },
+        {
+          "code": "002492.SZ",
+          "name": "恒基达鑫",
+          "date": "20160223",
+          "marketCap": 34.29
+        },
+        {
+          "code": "601518.SH",
+          "name": "吉林高速",
+          "date": "20161228",
+          "marketCap": 51.80364
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600834.SH",
+          "name": "申通地铁",
+          "date": "20170215",
+          "marketCap": 70.41383099
+        },
+        {
+          "code": "002492.SZ",
+          "name": "恒基达鑫",
+          "date": "20160223",
+          "marketCap": 34.29
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20170428",
+          "marketCap": 85.02324705000001
+        },
+        {
+          "code": "601872.SH",
+          "name": "招商轮船",
+          "date": "20170428",
+          "marketCap": 273.45203857999996
+        },
+        {
+          "code": "601919.SH",
+          "name": "中远海控",
+          "date": "20170516",
+          "marketCap": 546.5706781
+        },
+        {
+          "code": "002010.SZ",
+          "name": "传化智联",
+          "date": "20170629",
+          "marketCap": 500.40033454
+        },
+        {
+          "code": "000755.SZ",
+          "name": "山西高速",
+          "date": "20170331",
+          "marketCap": 31.67536192
+        },
+        {
+          "code": "600057.SH",
+          "name": "厦门象屿",
+          "date": "20170626",
+          "marketCap": 119.06826529000001
+        },
+        {
+          "code": "000099.SZ",
+          "name": "中信海直",
+          "date": "20170503",
+          "marketCap": 68.24352929
+        },
+        {
+          "code": "600603.SH",
+          "name": "广汇物流",
+          "date": "20170614",
+          "marketCap": 74.13936903
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000755.SZ",
+          "name": "山西高速",
+          "date": "20170331",
+          "marketCap": 31.67536192
+        },
+        {
+          "code": "000099.SZ",
+          "name": "中信海直",
+          "date": "20170503",
+          "marketCap": 68.24352929
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000557.SZ",
+          "name": "西部创业",
+          "date": "20171127",
+          "marketCap": 69.71031233
+        },
+        {
+          "code": "001872.SZ",
+          "name": "招商港口",
+          "date": "20171117",
+          "marketCap": 155.64596441999998
+        },
+        {
+          "code": "000900.SZ",
+          "name": "现代投资",
+          "date": "20171026",
+          "marketCap": 94.86427088
+        },
+        {
+          "code": "002357.SZ",
+          "name": "富临运业",
+          "date": "20171115",
+          "marketCap": 31.75643935
+        },
+        {
+          "code": "300013.SZ",
+          "name": "新宁物流",
+          "date": "20171117",
+          "marketCap": 38.5639876
+        },
+        {
+          "code": "300240.SZ",
+          "name": "飞力达",
+          "date": "20171025",
+          "marketCap": 40.0653486
+        },
+        {
+          "code": "600794.SH",
+          "name": "保税科技",
+          "date": "20171208",
+          "marketCap": 53.940770990000004
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "603066.SH",
+          "name": "音飞储存",
+          "date": "20180205",
+          "marketCap": 33.77156532
+        },
+        {
+          "code": "001872.SZ",
+          "name": "招商港口",
+          "date": "20171117",
+          "marketCap": 155.64596441999998
+        },
+        {
+          "code": "600798.SH",
+          "name": "宁波海运",
+          "date": "20180118",
+          "marketCap": 51.74871759
+        },
+        {
+          "code": "000900.SZ",
+          "name": "现代投资",
+          "date": "20171026",
+          "marketCap": 94.86427088
+        },
+        {
+          "code": "002357.SZ",
+          "name": "富临运业",
+          "date": "20171115",
+          "marketCap": 31.75643935
+        },
+        {
+          "code": "300240.SZ",
+          "name": "飞力达",
+          "date": "20171025",
+          "marketCap": 40.0653486
+        },
+        {
+          "code": "600794.SH",
+          "name": "保税科技",
+          "date": "20171208",
+          "marketCap": 53.940770990000004
+        },
+        {
+          "code": "600221.SH",
+          "name": "海航控股",
+          "date": "20180109",
+          "marketCap": 546.1989107300001
+        },
+        {
+          "code": "600753.SH",
+          "name": "ST海钦",
+          "date": "20180202",
+          "marketCap": 36.992
+        },
+        {
+          "code": "600751.SH",
+          "name": "海航科技",
+          "date": "20180111",
+          "marketCap": 188.16702212
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q2",
+      "financialMissing": [],
+      "peMissing": [
+        {
+          "code": "001872.SZ",
+          "name": "招商港口"
+        }
+      ],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "001872.SZ",
+          "name": "招商港口",
+          "date": "20171117",
+          "marketCap": 155.64596441999998
+        },
+        {
+          "code": "300013.SZ",
+          "name": "新宁物流",
+          "date": "20180615",
+          "marketCap": 29.36223303
+        },
+        {
+          "code": "300350.SZ",
+          "name": "华鹏飞",
+          "date": "20180509",
+          "marketCap": 43.139347869999995
+        },
+        {
+          "code": "600221.SH",
+          "name": "海航控股",
+          "date": "20180109",
+          "marketCap": 546.1989107300001
+        },
+        {
+          "code": "002485.SZ",
+          "name": "ST雪发",
+          "date": "20180605",
+          "marketCap": 77.344
+        },
+        {
+          "code": "600753.SH",
+          "name": "ST海钦",
+          "date": "20180202",
+          "marketCap": 36.992
+        },
+        {
+          "code": "600751.SH",
+          "name": "海航科技",
+          "date": "20180111",
+          "marketCap": 188.16702212
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q3",
+      "financialMissing": [],
+      "peMissing": [
+        {
+          "code": "001872.SZ",
+          "name": "招商港口"
+        }
+      ],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "001872.SZ",
+          "name": "招商港口",
+          "date": "20180927",
+          "marketCap": 124.63282901000001
+        },
+        {
+          "code": "002485.SZ",
+          "name": "ST雪发",
+          "date": "20180605",
+          "marketCap": 77.344
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002682.SZ",
+          "name": "龙洲股份",
+          "date": "20190315",
+          "marketCap": 30.14295664
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "601880.SH",
+          "name": "辽港股份",
+          "date": "20200619",
+          "marketCap": 221.78601918
+        }
+      ]
+    },
+    {
+      "quarter": "2020Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2020Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000088.SZ",
+          "name": "盐田港",
+          "date": "20220916",
+          "marketCap": 114.7072491
+        }
+      ]
+    },
+    {
+      "quarter": "2022Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "601298.SH",
+          "name": "青岛港",
+          "date": "20230627",
+          "marketCap": 452.42967000000004
+        }
+      ]
+    },
+    {
+      "quarter": "2023Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002357.SZ",
+          "name": "富临运业",
+          "date": "20260325",
+          "marketCap": 45.33051461
+        }
+      ]
+    },
+    {
+      "quarter": "2026Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    }
+  ]
+}

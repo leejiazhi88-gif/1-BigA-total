@@ -1,0 +1,1888 @@
+{
+  "asOf": "2026-11-10",
+  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+  "summary": {
+    "industry": "食品饮料",
+    "code": "801120.SI",
+    "companies": 127,
+    "quarters": 87,
+    "companyQuarterRows": 6989,
+    "latest": {
+      "quarter": "2026Q3",
+      "endDate": "20260930",
+      "tradeDate": "20260930",
+      "companies": 126,
+      "marketCap": 36667.528143830015,
+      "marketCapObserved": 36667.528143830015,
+      "pe": 21.297134891109213,
+      "peMarketCap": 36667.528143830015,
+      "peProfit": 1721.7117857077287,
+      "peCoverage": 1.0,
+      "peMissingCount": 0,
+      "peRebuiltCount": 35,
+      "revenue": 2270.7061553175,
+      "profit": 381.2392553170002,
+      "reportedCount": 126,
+      "estimatedCount": 0,
+      "missingCount": 0,
+      "estimatedRevenue": 0,
+      "estimatedProfit": 0,
+      "carriedCount": 0,
+      "marketMissingCount": 0,
+      "financialCoverage": 1.0
+    },
+    "financialIncompleteQuarters": 0,
+    "peCoverageMin": 1.0,
+    "carriedCompanyQuarters": 197
+  },
+  "quality": [
+    {
+      "quarter": "2005Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2005Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600809.SH",
+          "name": "山西汾酒",
+          "date": "20050629",
+          "marketCap": 28.702870020000002
+        },
+        {
+          "code": "000596.SZ",
+          "name": "古井贡酒",
+          "date": "20050429",
+          "marketCap": 8.272
+        },
+        {
+          "code": "000752.SZ",
+          "name": "*ST西发",
+          "date": "20050629",
+          "marketCap": 7.01597586
+        },
+        {
+          "code": "600197.SH",
+          "name": "伊力特",
+          "date": "20050629",
+          "marketCap": 14.5089
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20050629",
+          "marketCap": 4.79784205
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2005Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600238.SH",
+          "name": "ST椰岛",
+          "date": "20051228",
+          "marketCap": 6.225
+        },
+        {
+          "code": "600300.SH",
+          "name": "维维股份",
+          "date": "20051206",
+          "marketCap": 20.394
+        },
+        {
+          "code": "600779.SH",
+          "name": "水井坊",
+          "date": "20051226",
+          "marketCap": 20.128082759999998
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600872.SH",
+          "name": "中炬高新",
+          "date": "20060324",
+          "marketCap": 15.21189111
+        },
+        {
+          "code": "600702.SH",
+          "name": "舍得酒业",
+          "date": "20060308",
+          "marketCap": 13.8293
+        },
+        {
+          "code": "000596.SZ",
+          "name": "古井贡酒",
+          "date": "20060330",
+          "marketCap": 10.669
+        },
+        {
+          "code": "600887.SH",
+          "name": "伊利股份",
+          "date": "20060310",
+          "marketCap": 69.84080036
+        },
+        {
+          "code": "000729.SZ",
+          "name": "燕京啤酒",
+          "date": "20060324",
+          "marketCap": 75.54095149
+        },
+        {
+          "code": "000799.SZ",
+          "name": "酒鬼酒",
+          "date": "20060327",
+          "marketCap": 11.303765
+        },
+        {
+          "code": "000895.SZ",
+          "name": "双汇发展",
+          "date": "20060302",
+          "marketCap": 94.904964
+        },
+        {
+          "code": "600519.SH",
+          "name": "贵州茅台",
+          "date": "20060223",
+          "marketCap": 293.85213
+        },
+        {
+          "code": "600429.SH",
+          "name": "三元股份",
+          "date": "20060309",
+          "marketCap": 16.51
+        },
+        {
+          "code": "600419.SH",
+          "name": "天润乳业",
+          "date": "20060317",
+          "marketCap": 3.222432
+        },
+        {
+          "code": "600882.SH",
+          "name": "妙可蓝多",
+          "date": "20060320",
+          "marketCap": 5.1108492299999995
+        },
+        {
+          "code": "600298.SH",
+          "name": "安琪酵母",
+          "date": "20060303",
+          "marketCap": 15.30696
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20060622",
+          "marketCap": 8.9166
+        },
+        {
+          "code": "600132.SH",
+          "name": "重庆啤酒",
+          "date": "20060623",
+          "marketCap": 63.7694304
+        },
+        {
+          "code": "000752.SZ",
+          "name": "*ST西发",
+          "date": "20060629",
+          "marketCap": 15.403495869999999
+        },
+        {
+          "code": "000895.SZ",
+          "name": "双汇发展",
+          "date": "20060531",
+          "marketCap": 160.0750935
+        },
+        {
+          "code": "600186.SH",
+          "name": "莲花控股",
+          "date": "20060421",
+          "marketCap": 25.636
+        },
+        {
+          "code": "600199.SH",
+          "name": "金种子酒",
+          "date": "20060531",
+          "marketCap": 11.74296
+        },
+        {
+          "code": "600573.SH",
+          "name": "惠泉啤酒",
+          "date": "20060616",
+          "marketCap": 19.8
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        },
+        {
+          "code": "600543.SH",
+          "name": "*ST莫高",
+          "date": "20060615",
+          "marketCap": 8.60848
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600600.SH",
+          "name": "青岛啤酒",
+          "date": "20060928",
+          "marketCap": 162.08835615
+        },
+        {
+          "code": "000895.SZ",
+          "name": "双汇发展",
+          "date": "20060531",
+          "marketCap": 160.0750935
+        },
+        {
+          "code": "600186.SH",
+          "name": "莲花控股",
+          "date": "20060928",
+          "marketCap": 35.0064
+        },
+        {
+          "code": "600597.SH",
+          "name": "光明乳业",
+          "date": "20060724",
+          "marketCap": 81.99694447
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        },
+        {
+          "code": "600381.SH",
+          "name": "*ST春天",
+          "date": "20060928",
+          "marketCap": 9.1234
+        },
+        {
+          "code": "000716.SZ",
+          "name": "黑芝麻",
+          "date": "20060921",
+          "marketCap": 6.75603649
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000799.SZ",
+          "name": "酒鬼酒",
+          "date": "20061214",
+          "marketCap": 32.699095
+        },
+        {
+          "code": "000895.SZ",
+          "name": "双汇发展",
+          "date": "20060531",
+          "marketCap": 160.0750935
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        },
+        {
+          "code": "600084.SH",
+          "name": "*ST尼雅",
+          "date": "20061228",
+          "marketCap": 24.78801416
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600300.SH",
+          "name": "维维股份",
+          "date": "20070329",
+          "marketCap": 49.632
+        },
+        {
+          "code": "000596.SZ",
+          "name": "古井贡酒",
+          "date": "20070112",
+          "marketCap": 21.2675
+        },
+        {
+          "code": "000895.SZ",
+          "name": "双汇发展",
+          "date": "20060531",
+          "marketCap": 160.0750935
+        },
+        {
+          "code": "600419.SH",
+          "name": "天润乳业",
+          "date": "20070125",
+          "marketCap": 3.68736
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000752.SZ",
+          "name": "*ST西发",
+          "date": "20070628",
+          "marketCap": 20.54678645
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        },
+        {
+          "code": "000639.SZ",
+          "name": "ST西王",
+          "date": "20070625",
+          "marketCap": 9.982496099999999
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        },
+        {
+          "code": "600084.SH",
+          "name": "*ST尼雅",
+          "date": "20070829",
+          "marketCap": 55.972935199999995
+        },
+        {
+          "code": "600381.SH",
+          "name": "*ST春天",
+          "date": "20070912",
+          "marketCap": 28.1566896
+        },
+        {
+          "code": "600616.SH",
+          "name": "金枫酒业",
+          "date": "20070921",
+          "marketCap": 121.07333189999999
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000799.SZ",
+          "name": "酒鬼酒",
+          "date": "20071119",
+          "marketCap": 84.15698499999999
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600887.SH",
+          "name": "伊利股份",
+          "date": "20080328",
+          "marketCap": 143.14538255
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        },
+        {
+          "code": "600084.SH",
+          "name": "*ST尼雅",
+          "date": "20080219",
+          "marketCap": 65.3801512
+        },
+        {
+          "code": "000639.SZ",
+          "name": "ST西王",
+          "date": "20080125",
+          "marketCap": 11.366929859999999
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600809.SH",
+          "name": "山西汾酒",
+          "date": "20080627",
+          "marketCap": 56.323429700000005
+        },
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20080627",
+          "marketCap": 8.3913984
+        },
+        {
+          "code": "600073.SH",
+          "name": "光明肉业",
+          "date": "20080626",
+          "marketCap": 28.76148
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        },
+        {
+          "code": "000716.SZ",
+          "name": "黑芝麻",
+          "date": "20080516",
+          "marketCap": 10.74905014
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600429.SH",
+          "name": "三元股份",
+          "date": "20080925",
+          "marketCap": 35.4965
+        },
+        {
+          "code": "000869.SZ",
+          "name": "张裕A",
+          "date": "20080925",
+          "marketCap": 266.69822400000004
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        }
+      ]
+    },
+    {
+      "quarter": "2008Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600429.SH",
+          "name": "三元股份",
+          "date": "20080925",
+          "marketCap": 35.4965
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20090629",
+          "marketCap": 9.3494016
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20060428",
+          "marketCap": 3.4496880899999995
+        }
+      ]
+    },
+    {
+      "quarter": "2009Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2009Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000639.SZ",
+          "name": "ST西王",
+          "date": "20091230",
+          "marketCap": 11.47622726
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600702.SH",
+          "name": "舍得酒业",
+          "date": "20100330",
+          "marketCap": 48.09898
+        },
+        {
+          "code": "600305.SH",
+          "name": "恒顺醋业",
+          "date": "20100330",
+          "marketCap": 18.43675
+        },
+        {
+          "code": "600132.SH",
+          "name": "重庆啤酒",
+          "date": "20100330",
+          "marketCap": 140.83561862000002
+        },
+        {
+          "code": "000860.SZ",
+          "name": "顺鑫农业",
+          "date": "20100330",
+          "marketCap": 76.788354
+        },
+        {
+          "code": "000895.SZ",
+          "name": "双汇发展",
+          "date": "20100319",
+          "marketCap": 305.90622552
+        },
+        {
+          "code": "600073.SH",
+          "name": "光明肉业",
+          "date": "20100305",
+          "marketCap": 41.77008
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000895.SZ",
+          "name": "双汇发展",
+          "date": "20100319",
+          "marketCap": 305.90622552
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000895.SZ",
+          "name": "双汇发展",
+          "date": "20100319",
+          "marketCap": 305.90622552
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000716.SZ",
+          "name": "黑芝麻",
+          "date": "20101115",
+          "marketCap": 24.06503763
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20110330",
+          "marketCap": 29.0594304
+        },
+        {
+          "code": "000752.SZ",
+          "name": "*ST西发",
+          "date": "20110328",
+          "marketCap": 74.85465975
+        },
+        {
+          "code": "000895.SZ",
+          "name": "双汇发展",
+          "date": "20110315",
+          "marketCap": 472.31242506
+        },
+        {
+          "code": "002216.SZ",
+          "name": "三全食品",
+          "date": "20110330",
+          "marketCap": 63.767
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20110603",
+          "marketCap": 30.8512512
+        },
+        {
+          "code": "002570.SZ",
+          "name": "贝因美",
+          "date": "20110629",
+          "marketCap": 142.72675
+        },
+        {
+          "code": "000716.SZ",
+          "name": "黑芝麻",
+          "date": "20110624",
+          "marketCap": 17.05943779
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000716.SZ",
+          "name": "黑芝麻",
+          "date": "20110624",
+          "marketCap": 17.05943779
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600132.SH",
+          "name": "重庆啤酒",
+          "date": "20111222",
+          "marketCap": 137.68980582999998
+        },
+        {
+          "code": "002461.SZ",
+          "name": "珠江啤酒",
+          "date": "20111229",
+          "marketCap": 63.59512531
+        },
+        {
+          "code": "000716.SZ",
+          "name": "黑芝麻",
+          "date": "20110624",
+          "marketCap": 17.05943779
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000895.SZ",
+          "name": "双汇发展",
+          "date": "20120328",
+          "marketCap": 417.5304861
+        },
+        {
+          "code": "300146.SZ",
+          "name": "汤臣倍健",
+          "date": "20120328",
+          "marketCap": 123.292464
+        },
+        {
+          "code": "600298.SH",
+          "name": "安琪酵母",
+          "date": "20120329",
+          "marketCap": 87.81406523
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600779.SH",
+          "name": "水井坊",
+          "date": "20120628",
+          "marketCap": 118.5700409
+        },
+        {
+          "code": "600197.SH",
+          "name": "伊力特",
+          "date": "20120628",
+          "marketCap": 61.2549
+        },
+        {
+          "code": "600419.SH",
+          "name": "天润乳业",
+          "date": "20120419",
+          "marketCap": 7.863696000000001
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002626.SZ",
+          "name": "金达威",
+          "date": "20120927",
+          "marketCap": 25.002
+        }
+      ]
+    },
+    {
+      "quarter": "2012Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2013Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600419.SH",
+          "name": "天润乳业",
+          "date": "20130219",
+          "marketCap": 9.001968
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2013Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600381.SH",
+          "name": "*ST春天",
+          "date": "20130717",
+          "marketCap": 33.318384110000004
+        }
+      ]
+    },
+    {
+      "quarter": "2013Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "300106.SZ",
+          "name": "西部牧业",
+          "date": "20131225",
+          "marketCap": 21.5397
+        },
+        {
+          "code": "600381.SH",
+          "name": "*ST春天",
+          "date": "20130717",
+          "marketCap": 33.318384110000004
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002329.SZ",
+          "name": "皇氏集团",
+          "date": "20140306",
+          "marketCap": 30.9658
+        },
+        {
+          "code": "600381.SH",
+          "name": "*ST春天",
+          "date": "20130717",
+          "marketCap": 33.318384110000004
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002570.SZ",
+          "name": "贝因美",
+          "date": "20140618",
+          "marketCap": 146.83387199999999
+        },
+        {
+          "code": "600059.SH",
+          "name": "古越龙山",
+          "date": "20140627",
+          "marketCap": 64.43937595
+        },
+        {
+          "code": "600381.SH",
+          "name": "*ST春天",
+          "date": "20130717",
+          "marketCap": 33.318384110000004
+        },
+        {
+          "code": "002719.SZ",
+          "name": "ST麦趣",
+          "date": "20140626",
+          "marketCap": 28.23112
+        }
+      ]
+    },
+    {
+      "quarter": "2014Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2014Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20141212",
+          "marketCap": 21.9808512
+        },
+        {
+          "code": "600238.SH",
+          "name": "ST椰岛",
+          "date": "20141127",
+          "marketCap": 50.15358
+        },
+        {
+          "code": "002329.SZ",
+          "name": "皇氏集团",
+          "date": "20141128",
+          "marketCap": 74.20161417
+        },
+        {
+          "code": "002507.SZ",
+          "name": "涪陵榨菜",
+          "date": "20141219",
+          "marketCap": 58.032
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20141212",
+          "marketCap": 21.9808512
+        },
+        {
+          "code": "600238.SH",
+          "name": "ST椰岛",
+          "date": "20141127",
+          "marketCap": 50.15358
+        },
+        {
+          "code": "000860.SZ",
+          "name": "顺鑫农业",
+          "date": "20150304",
+          "marketCap": 129.46686918
+        },
+        {
+          "code": "600597.SH",
+          "name": "光明乳业",
+          "date": "20150306",
+          "marketCap": 244.15832902000002
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600872.SH",
+          "name": "中炬高新",
+          "date": "20150430",
+          "marketCap": 173.10926225999998
+        },
+        {
+          "code": "600702.SH",
+          "name": "舍得酒业",
+          "date": "20150626",
+          "marketCap": 88.06903
+        },
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20141212",
+          "marketCap": 21.9808512
+        },
+        {
+          "code": "000799.SZ",
+          "name": "酒鬼酒",
+          "date": "20150605",
+          "marketCap": 67.48774915
+        },
+        {
+          "code": "600186.SH",
+          "name": "莲花控股",
+          "date": "20150519",
+          "marketCap": 111.08774292999999
+        },
+        {
+          "code": "002461.SZ",
+          "name": "珠江啤酒",
+          "date": "20150603",
+          "marketCap": 179.56270675
+        },
+        {
+          "code": "002329.SZ",
+          "name": "皇氏集团",
+          "date": "20150611",
+          "marketCap": 185.11770746
+        },
+        {
+          "code": "600882.SH",
+          "name": "妙可蓝多",
+          "date": "20150518",
+          "marketCap": 53.57774564
+        },
+        {
+          "code": "002702.SZ",
+          "name": "海欣食品",
+          "date": "20150629",
+          "marketCap": 70.89796
+        },
+        {
+          "code": "002557.SZ",
+          "name": "洽洽食品",
+          "date": "20150626",
+          "marketCap": 83.0466
+        },
+        {
+          "code": "000716.SZ",
+          "name": "黑芝麻",
+          "date": "20150605",
+          "marketCap": 75.65377773
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600238.SH",
+          "name": "ST椰岛",
+          "date": "20150826",
+          "marketCap": 45.44748
+        },
+        {
+          "code": "000799.SZ",
+          "name": "酒鬼酒",
+          "date": "20150605",
+          "marketCap": 67.48774915
+        },
+        {
+          "code": "000858.SZ",
+          "name": "五粮液",
+          "date": "20150729",
+          "marketCap": 976.70223706
+        },
+        {
+          "code": "600186.SH",
+          "name": "莲花控股",
+          "date": "20150519",
+          "marketCap": 111.08774292999999
+        },
+        {
+          "code": "600530.SH",
+          "name": "ST交昂",
+          "date": "20150803",
+          "marketCap": 67.1424
+        },
+        {
+          "code": "600429.SH",
+          "name": "三元股份",
+          "date": "20150918",
+          "marketCap": 109.17193636
+        },
+        {
+          "code": "002330.SZ",
+          "name": "得利斯",
+          "date": "20150911",
+          "marketCap": 56.475
+        },
+        {
+          "code": "600073.SH",
+          "name": "光明肉业",
+          "date": "20150817",
+          "marketCap": 127.06234346000001
+        },
+        {
+          "code": "000529.SZ",
+          "name": "广弘控股",
+          "date": "20150813",
+          "marketCap": 82.37281556
+        },
+        {
+          "code": "600882.SH",
+          "name": "妙可蓝多",
+          "date": "20150518",
+          "marketCap": 53.57774564
+        },
+        {
+          "code": "600189.SH",
+          "name": "泉阳泉",
+          "date": "20150807",
+          "marketCap": 42.81795
+        },
+        {
+          "code": "002582.SZ",
+          "name": "好想你",
+          "date": "20150916",
+          "marketCap": 23.055120000000002
+        },
+        {
+          "code": "002702.SZ",
+          "name": "海欣食品",
+          "date": "20150924",
+          "marketCap": 58.9638
+        },
+        {
+          "code": "000716.SZ",
+          "name": "黑芝麻",
+          "date": "20150921",
+          "marketCap": 36.37752175
+        },
+        {
+          "code": "002719.SZ",
+          "name": "ST麦趣",
+          "date": "20150707",
+          "marketCap": 57.23134555000001
+        }
+      ]
+    },
+    {
+      "quarter": "2015Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000929.SZ",
+          "name": "兰州黄河",
+          "date": "20151008",
+          "marketCap": 23.22075
+        },
+        {
+          "code": "600530.SH",
+          "name": "ST交昂",
+          "date": "20150803",
+          "marketCap": 67.1424
+        },
+        {
+          "code": "600429.SH",
+          "name": "三元股份",
+          "date": "20150918",
+          "marketCap": 109.17193636
+        },
+        {
+          "code": "002568.SZ",
+          "name": "百润股份",
+          "date": "20151218",
+          "marketCap": 382.5024
+        },
+        {
+          "code": "002582.SZ",
+          "name": "好想你",
+          "date": "20150916",
+          "marketCap": 23.055120000000002
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000752.SZ",
+          "name": "*ST西发",
+          "date": "20160302",
+          "marketCap": 36.55692685
+        },
+        {
+          "code": "000929.SZ",
+          "name": "兰州黄河",
+          "date": "20151008",
+          "marketCap": 23.22075
+        },
+        {
+          "code": "002515.SZ",
+          "name": "金字火腿",
+          "date": "20160202",
+          "marketCap": 58.806699
+        },
+        {
+          "code": "600882.SH",
+          "name": "妙可蓝多",
+          "date": "20160325",
+          "marketCap": 34.294548070000005
+        },
+        {
+          "code": "600381.SH",
+          "name": "*ST春天",
+          "date": "20160201",
+          "marketCap": 104.41723577
+        },
+        {
+          "code": "002507.SZ",
+          "name": "涪陵榨菜",
+          "date": "20160328",
+          "marketCap": 57.19551019
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002515.SZ",
+          "name": "金字火腿",
+          "date": "20160202",
+          "marketCap": 58.806699
+        },
+        {
+          "code": "603919.SH",
+          "name": "金徽酒",
+          "date": "20160603",
+          "marketCap": 86.52
+        },
+        {
+          "code": "000639.SZ",
+          "name": "ST西王",
+          "date": "20160526",
+          "marketCap": 64.17970208000001
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600887.SH",
+          "name": "伊利股份",
+          "date": "20160914",
+          "marketCap": 977.0392973999999
+        },
+        {
+          "code": "600189.SH",
+          "name": "泉阳泉",
+          "date": "20160707",
+          "marketCap": 37.5705
+        },
+        {
+          "code": "000639.SZ",
+          "name": "ST西王",
+          "date": "20160526",
+          "marketCap": 64.17970208000001
+        }
+      ]
+    },
+    {
+      "quarter": "2016Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600189.SH",
+          "name": "泉阳泉",
+          "date": "20160707",
+          "marketCap": 37.5705
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600559.SH",
+          "name": "老白干酒",
+          "date": "20170120",
+          "marketCap": 99.39585325
+        },
+        {
+          "code": "000716.SZ",
+          "name": "黑芝麻",
+          "date": "20161230",
+          "marketCap": 51.39091819
+        },
+        {
+          "code": "603345.SH",
+          "name": "安井食品",
+          "date": "20170321",
+          "marketCap": 96.289028
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600559.SH",
+          "name": "老白干酒",
+          "date": "20170120",
+          "marketCap": 99.39585325
+        },
+        {
+          "code": "002650.SZ",
+          "name": "ST加加",
+          "date": "20170419",
+          "marketCap": 67.7376
+        },
+        {
+          "code": "000716.SZ",
+          "name": "黑芝麻",
+          "date": "20161230",
+          "marketCap": 51.39091819
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20170721",
+          "marketCap": 25.3338624
+        },
+        {
+          "code": "600559.SH",
+          "name": "老白干酒",
+          "date": "20170120",
+          "marketCap": 99.39585325
+        },
+        {
+          "code": "002650.SZ",
+          "name": "ST加加",
+          "date": "20170419",
+          "marketCap": 67.7376
+        },
+        {
+          "code": "600084.SH",
+          "name": "*ST尼雅",
+          "date": "20170707",
+          "marketCap": 84.50425762
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20170721",
+          "marketCap": 25.3338624
+        },
+        {
+          "code": "600530.SH",
+          "name": "ST交昂",
+          "date": "20171110",
+          "marketCap": 57.486
+        },
+        {
+          "code": "600084.SH",
+          "name": "*ST尼雅",
+          "date": "20170707",
+          "marketCap": 84.50425762
+        },
+        {
+          "code": "002507.SZ",
+          "name": "涪陵榨菜",
+          "date": "20171201",
+          "marketCap": 132.37520932
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002650.SZ",
+          "name": "ST加加",
+          "date": "20180309",
+          "marketCap": 55.9872
+        },
+        {
+          "code": "002515.SZ",
+          "name": "金字火腿",
+          "date": "20180305",
+          "marketCap": 76.69976115
+        },
+        {
+          "code": "002726.SZ",
+          "name": "ST龙大",
+          "date": "20180212",
+          "marketCap": 77.877476
+        },
+        {
+          "code": "603696.SH",
+          "name": "安记食品",
+          "date": "20180207",
+          "marketCap": 45.168
+        },
+        {
+          "code": "002661.SZ",
+          "name": "克明食品",
+          "date": "20180201",
+          "marketCap": 38.89269058
+        },
+        {
+          "code": "600084.SH",
+          "name": "*ST尼雅",
+          "date": "20170707",
+          "marketCap": 84.50425762
+        },
+        {
+          "code": "600189.SH",
+          "name": "泉阳泉",
+          "date": "20180327",
+          "marketCap": 41.4133102
+        },
+        {
+          "code": "300146.SZ",
+          "name": "汤臣倍健",
+          "date": "20180130",
+          "marketCap": 248.74772928
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002650.SZ",
+          "name": "ST加加",
+          "date": "20180309",
+          "marketCap": 55.9872
+        },
+        {
+          "code": "600189.SH",
+          "name": "泉阳泉",
+          "date": "20180327",
+          "marketCap": 41.4133102
+        },
+        {
+          "code": "300146.SZ",
+          "name": "汤臣倍健",
+          "date": "20180130",
+          "marketCap": 248.74772928
+        },
+        {
+          "code": "002719.SZ",
+          "name": "ST麦趣",
+          "date": "20180607",
+          "marketCap": 26.773941609999998
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002650.SZ",
+          "name": "ST加加",
+          "date": "20180309",
+          "marketCap": 55.9872
+        },
+        {
+          "code": "002719.SZ",
+          "name": "ST麦趣",
+          "date": "20180607",
+          "marketCap": 26.773941609999998
+        }
+      ]
+    },
+    {
+      "quarter": "2018Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2019Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20190425",
+          "marketCap": 13.2523776
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20190425",
+          "marketCap": 13.2523776
+        }
+      ]
+    },
+    {
+      "quarter": "2019Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20190425",
+          "marketCap": 13.2523776
+        }
+      ]
+    },
+    {
+      "quarter": "2020Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20190425",
+          "marketCap": 13.2523776
+        }
+      ]
+    },
+    {
+      "quarter": "2020Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20190425",
+          "marketCap": 13.2523776
+        }
+      ]
+    },
+    {
+      "quarter": "2020Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "000995.SZ",
+          "name": "皇台酒业",
+          "date": "20190425",
+          "marketCap": 13.2523776
+        }
+      ]
+    },
+    {
+      "quarter": "2020Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2021Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2022Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2023Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600530.SH",
+          "name": "ST交昂",
+          "date": "20230428",
+          "marketCap": 19.295507999999998
+        }
+      ]
+    },
+    {
+      "quarter": "2023Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600530.SH",
+          "name": "ST交昂",
+          "date": "20230927",
+          "marketCap": 18.98554
+        }
+      ]
+    },
+    {
+      "quarter": "2023Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2024Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2025Q4",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q1",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q2",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    },
+    {
+      "quarter": "2026Q3",
+      "financialMissing": [],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    }
+  ]
+}
