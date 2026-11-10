@@ -1,0 +1,478 @@
+{
+  "asOf": "2026-11-10",
+  "quarterCount": 87,
+  "companyCount": 42,
+  "companyQuarterRows": 2102,
+  "subIndustryCount": 4,
+  "latest": {
+    "quarter": "2026Q3",
+    "endDate": "20260930",
+    "tradeDate": "20260930",
+    "companies": 42,
+    "marketCap": 163915.97473293007,
+    "marketCapObserved": 163915.97473293007,
+    "pe": 7.425420251270827,
+    "peMarketCap": 163915.97473293007,
+    "peProfit": 22074.976120695203,
+    "peCoverage": 1.0,
+    "peMissingCount": 0,
+    "peRebuiltCount": 0,
+    "revenue": 15166.6552147402,
+    "profit": 6140.631977342699,
+    "reportedCount": 42,
+    "estimatedCount": 0,
+    "missingCount": 0,
+    "estimatedRevenue": 0,
+    "estimatedProfit": 0,
+    "carriedCount": 0,
+    "marketMissingCount": 0,
+    "financialCoverage": 1.0
+  },
+  "financialMissing": [
+    {
+      "quarter": "2007Q2",
+      "financialMissing": [
+        {
+          "code": "601998.SH",
+          "name": "中信银行"
+        }
+      ],
+      "peMissing": [],
+      "marketMissing": [],
+      "carried": []
+    }
+  ],
+  "peMissing": [
+    {
+      "quarter": "2005Q4",
+      "financialMissing": [],
+      "peMissing": [
+        {
+          "code": "600036.SH",
+          "name": "招商银行"
+        }
+      ],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "600036.SH",
+          "name": "招商银行",
+          "date": "20051216",
+          "marketCap": 678.12741908
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q1",
+      "financialMissing": [],
+      "peMissing": [
+        {
+          "code": "002839.SZ",
+          "name": "张家港行"
+        }
+      ],
+      "marketMissing": [],
+      "carried": [
+        {
+          "code": "002839.SZ",
+          "name": "张家港行",
+          "date": "20170316",
+          "marketCap": 532.31660284
+        }
+      ]
+    }
+  ],
+  "carriedCompanyQuarters": 11,
+  "ttmReconstructionTraces": [
+    {
+      "quarter": "2005Q3",
+      "code": "000001.SZ",
+      "name": "平安银行",
+      "asOf": "20050930",
+      "ttmProfit": 2.80225258,
+      "missingPeriods": [],
+      "reports": [
+        {
+          "ts_code": "000001.SZ",
+          "ann_date": "20050819",
+          "f_ann_date": "20050819",
+          "end_date": "20050630",
+          "report_type": "5",
+          "total_revenue": 4199083639,
+          "revenue": 4199083639,
+          "n_income_attr_p": 207486792,
+          "update_flag": "0"
+        },
+        {
+          "ts_code": "000001.SZ",
+          "ann_date": "20050426",
+          "f_ann_date": "20050426",
+          "end_date": "20041231",
+          "report_type": "1",
+          "total_revenue": 5273549277,
+          "revenue": 5273549277,
+          "n_income_attr_p": 289774275,
+          "update_flag": "0"
+        },
+        {
+          "ts_code": "000001.SZ",
+          "ann_date": "20050819",
+          "f_ann_date": "20050819",
+          "end_date": "20040630",
+          "report_type": "4",
+          "total_revenue": 4435006354,
+          "revenue": 4082611976,
+          "n_income_attr_p": 217035809,
+          "update_flag": "1"
+        }
+      ]
+    },
+    {
+      "quarter": "2005Q4",
+      "code": "600036.SH",
+      "name": "招商银行",
+      "asOf": "20051230",
+      "ttmProfit": null,
+      "missingPeriods": [
+        "20041231"
+      ],
+      "reports": [
+        {
+          "ts_code": "600036.SH",
+          "ann_date": "20051028",
+          "f_ann_date": "20051028",
+          "end_date": "20050930",
+          "report_type": "1",
+          "total_revenue": 17720085000,
+          "revenue": 17720085000,
+          "n_income_attr_p": 3219845000,
+          "update_flag": "0"
+        },
+        {
+          "ts_code": "600036.SH",
+          "ann_date": "20051028",
+          "f_ann_date": "20051028",
+          "end_date": "20040930",
+          "report_type": "4",
+          "total_revenue": 16334721000,
+          "revenue": 14385946000,
+          "n_income_attr_p": 2533683000,
+          "update_flag": "1"
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "code": "600016.SH",
+      "name": "民生银行",
+      "asOf": "20060331",
+      "ttmProfit": 26.73417,
+      "missingPeriods": [],
+      "reports": [
+        {
+          "ts_code": "600016.SH",
+          "ann_date": "20070319",
+          "f_ann_date": "20060228",
+          "end_date": "20051231",
+          "report_type": "1",
+          "total_revenue": 12826233000,
+          "revenue": 12826233000,
+          "n_income_attr_p": 2673417000,
+          "update_flag": "0"
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "code": "600000.SH",
+      "name": "浦发银行",
+      "asOf": "20060331",
+      "ttmProfit": 25.580038035599998,
+      "missingPeriods": [],
+      "reports": [
+        {
+          "ts_code": "600000.SH",
+          "ann_date": "20070324",
+          "f_ann_date": "20060302",
+          "end_date": "20051231",
+          "report_type": "1",
+          "total_revenue": 14568403043.83,
+          "revenue": 14568403043.83,
+          "n_income_attr_p": 2558003803.56,
+          "update_flag": "0"
+        }
+      ]
+    },
+    {
+      "quarter": "2006Q1",
+      "code": "600015.SH",
+      "name": "华夏银行",
+      "asOf": "20060331",
+      "ttmProfit": 12.7959408221,
+      "missingPeriods": [],
+      "reports": [
+        {
+          "ts_code": "600015.SH",
+          "ann_date": "20070314",
+          "f_ann_date": "20060217",
+          "end_date": "20051231",
+          "report_type": "1",
+          "total_revenue": 7630887704.56,
+          "revenue": 7630887704.56,
+          "n_income_attr_p": 1279594082.21,
+          "update_flag": "0"
+        }
+      ]
+    },
+    {
+      "quarter": "2007Q3",
+      "code": "600015.SH",
+      "name": "华夏银行",
+      "asOf": "20070928",
+      "ttmProfit": 17.2170415382,
+      "missingPeriods": [],
+      "reports": [
+        {
+          "ts_code": "600015.SH",
+          "ann_date": "20070827",
+          "f_ann_date": "20070827",
+          "end_date": "20070630",
+          "report_type": "1",
+          "total_revenue": 6541884790.83,
+          "revenue": 6541884790.83,
+          "n_income_attr_p": 1010017819.04,
+          "update_flag": "1"
+        },
+        {
+          "ts_code": "600015.SH",
+          "ann_date": "20070314",
+          "f_ann_date": "20070314",
+          "end_date": "20061231",
+          "report_type": "1",
+          "total_revenue": 10070477467.05,
+          "revenue": 10070477467.05,
+          "n_income_attr_p": 1457043272.9,
+          "update_flag": "1"
+        },
+        {
+          "ts_code": "600015.SH",
+          "ann_date": "20060831",
+          "f_ann_date": "20060831",
+          "end_date": "20060630",
+          "report_type": "1",
+          "total_revenue": 8228868426.26,
+          "revenue": 8228868426.26,
+          "n_income_attr_p": 745356938.12,
+          "update_flag": "0"
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q2",
+      "code": "000001.SZ",
+      "name": "平安银行",
+      "asOf": "20100630",
+      "ttmProfit": 54.8677,
+      "missingPeriods": [],
+      "reports": [
+        {
+          "ts_code": "000001.SZ",
+          "ann_date": "20100429",
+          "f_ann_date": "20100429",
+          "end_date": "20100331",
+          "report_type": "1",
+          "total_revenue": 4084252000,
+          "revenue": 4084252000,
+          "n_income_attr_p": 1578118000,
+          "update_flag": "1"
+        },
+        {
+          "ts_code": "000001.SZ",
+          "ann_date": "20100312",
+          "f_ann_date": "20100312",
+          "end_date": "20091231",
+          "report_type": "1",
+          "total_revenue": 15114440000,
+          "revenue": 15114440000,
+          "n_income_attr_p": 5030729000,
+          "update_flag": "1"
+        },
+        {
+          "ts_code": "000001.SZ",
+          "ann_date": "20100429",
+          "f_ann_date": "20100429",
+          "end_date": "20090331",
+          "report_type": "4",
+          "total_revenue": 3760604000,
+          "revenue": 3760604000,
+          "n_income_attr_p": 1122077000,
+          "update_flag": "1"
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q3",
+      "code": "000001.SZ",
+      "name": "平安银行",
+      "asOf": "20100930",
+      "ttmProfit": 57.5246,
+      "missingPeriods": [],
+      "reports": [
+        {
+          "ts_code": "000001.SZ",
+          "ann_date": "20100825",
+          "f_ann_date": "20100825",
+          "end_date": "20100630",
+          "report_type": "1",
+          "total_revenue": 8496111000,
+          "revenue": 8496111000,
+          "n_income_attr_p": 3033119000,
+          "update_flag": "1"
+        },
+        {
+          "ts_code": "000001.SZ",
+          "ann_date": "20100312",
+          "f_ann_date": "20100312",
+          "end_date": "20091231",
+          "report_type": "1",
+          "total_revenue": 15114440000,
+          "revenue": 15114440000,
+          "n_income_attr_p": 5030729000,
+          "update_flag": "1"
+        },
+        {
+          "ts_code": "000001.SZ",
+          "ann_date": "20100825",
+          "f_ann_date": "20100825",
+          "end_date": "20090630",
+          "report_type": "4",
+          "total_revenue": 7490850000,
+          "revenue": 7490850000,
+          "n_income_attr_p": 2311388000,
+          "update_flag": "1"
+        }
+      ]
+    },
+    {
+      "quarter": "2010Q3",
+      "code": "601998.SH",
+      "name": "中信银行",
+      "asOf": "20100930",
+      "ttmProfit": 176.54,
+      "missingPeriods": [],
+      "reports": [
+        {
+          "ts_code": "601998.SH",
+          "ann_date": "20100812",
+          "f_ann_date": "20100812",
+          "end_date": "20100630",
+          "report_type": "1",
+          "total_revenue": 25505000000,
+          "revenue": 25505000000,
+          "n_income_attr_p": 10685000000,
+          "update_flag": "1"
+        },
+        {
+          "ts_code": "601998.SH",
+          "ann_date": "20100429",
+          "f_ann_date": "20100429",
+          "end_date": "20091231",
+          "report_type": "1",
+          "total_revenue": 40801000000,
+          "revenue": 40801000000,
+          "n_income_attr_p": 14320000000,
+          "update_flag": "1"
+        },
+        {
+          "ts_code": "601998.SH",
+          "ann_date": "20100812",
+          "f_ann_date": "20100812",
+          "end_date": "20090630",
+          "report_type": "4",
+          "total_revenue": 18310000000,
+          "revenue": 18310000000,
+          "n_income_attr_p": 7351000000,
+          "update_flag": "1"
+        }
+      ]
+    },
+    {
+      "quarter": "2011Q2",
+      "code": "601998.SH",
+      "name": "中信银行",
+      "asOf": "20110630",
+      "ttmProfit": 237.02,
+      "missingPeriods": [],
+      "reports": [
+        {
+          "ts_code": "601998.SH",
+          "ann_date": "20110430",
+          "f_ann_date": "20110430",
+          "end_date": "20110331",
+          "report_type": "1",
+          "total_revenue": 16830000000,
+          "revenue": 16830000000,
+          "n_income_attr_p": 6505000000,
+          "update_flag": "1"
+        },
+        {
+          "ts_code": "601998.SH",
+          "ann_date": "20110401",
+          "f_ann_date": "20110401",
+          "end_date": "20101231",
+          "report_type": "1",
+          "total_revenue": 55765000000,
+          "revenue": 55765000000,
+          "n_income_attr_p": 21509000000,
+          "update_flag": "1"
+        },
+        {
+          "ts_code": "601998.SH",
+          "ann_date": "20110430",
+          "f_ann_date": "20110430",
+          "end_date": "20100331",
+          "report_type": "4",
+          "total_revenue": 12182000000,
+          "revenue": 12182000000,
+          "n_income_attr_p": 4312000000,
+          "update_flag": "1"
+        }
+      ]
+    },
+    {
+      "quarter": "2017Q1",
+      "code": "002839.SZ",
+      "name": "张家港行",
+      "asOf": "20170331",
+      "ttmProfit": null,
+      "missingPeriods": [
+        "20150630"
+      ],
+      "reports": [
+        {
+          "ts_code": "002839.SZ",
+          "ann_date": "20161213",
+          "f_ann_date": "20161213",
+          "end_date": "20160630",
+          "report_type": "1",
+          "total_revenue": 1188527733.99,
+          "revenue": 1188527733.99,
+          "n_income_attr_p": 333226990.59,
+          "update_flag": "1"
+        },
+        {
+          "ts_code": "002839.SZ",
+          "ann_date": "20160324",
+          "f_ann_date": "20161213",
+          "end_date": "20151231",
+          "report_type": "1",
+          "total_revenue": 2405784223.96,
+          "revenue": 2405784223.96,
+          "n_income_attr_p": 673009701.42,
+          "update_flag": "1"
+        }
+      ]
+    }
+  ],
+  "validation": "PASS: unique keys; listing and quote dates; no future reports for PE; company/industry/subindustry totals reconcile; 42 latest reports; no estimates"
+}
