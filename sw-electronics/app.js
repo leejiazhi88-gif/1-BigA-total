@@ -6,17 +6,8 @@ const date=v=>v?v.slice(0,4)+'-'+v.slice(4,6)+'-'+v.slice(6,8):'—';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const short=q=>q.replace('Q',' Q');
 let first=Math.max(0,S.length-(innerWidth<720?8:20)),last=S.length-1,showLabels=true,reverseTable=true;
-const previous=S.at(-5);
-function growth(a,b){return b>0?(a/b-1):null;}
-const cards=[
- ['季度末总市值',fmt(L.marketCap/10000,2),'万亿元','季度末 '+date(L.tradeDate),'2026 Q3'],
- ['整体 PE · TTM',fmt(L.pe,2),'倍','有效样本市值覆盖 <b>'+pct(L.peCoverage)+'</b>','含亏损'],
- ['单季度总营收',fmt(L.revenue,1),'亿元','较上年同季 <b>'+fmt(growth(L.revenue,previous.revenue)*100,1)+'%</b> · 含估算','2026 Q3'],
- ['单季度归母净利润',fmt(L.profit,1),'亿元','归母净利率 <b>'+pct(L.profit/L.revenue)+'</b> · 含估算','2026 Q3']
-];
-$('metrics').innerHTML=cards.map(([label,v,unit,note,tag])=>`<article class="metric"><div class="metric-label">${label}<small>${tag}</small></div><div class="metric-value">${v}<small>${unit}</small></div><div class="metric-note">${note}</div></article>`).join('');
 for(const id of ['from-quarter','to-quarter'])$(id).innerHTML=S.map((s,i)=>`<option value="${i}">${short(s.quarter)}</option>`).join('');
-function focus(s){$('focus-row').innerHTML=`<div><span>所选季度</span><strong class="focus-quarter">${short(s.quarter)}</strong></div><div><span>总市值</span><strong>${fmt(s.marketCap/10000,2)} <small>万亿元</small></strong></div><div><span>PE · TTM</span><strong>${fmt(s.pe,2)} <small>倍</small></strong></div><div><span>单季营收${s.missingCount?' · 已知合计':''}</span><strong>${fmt(s.revenue)} <small>亿元${s.estimatedCount?' *':''}</small></strong></div><div><span>归母净利润${s.missingCount?' · 已知合计':''}</span><strong>${fmt(s.profit)} <small>亿元${s.estimatedCount?' *':''}</small></strong></div><div><span>披露 / 样本</span><strong class="focus-coverage">${s.reportedCount} / ${s.companies} 家${s.estimatedCount?' · '+s.estimatedCount+' 家估算':''}</strong></div>`;}
+function focus(s){$('focus-row').innerHTML=`<div><span>所选季度</span><strong class="focus-quarter">${short(s.quarter)}</strong></div><div><span>总市值</span><strong>${fmt(s.marketCap/10000,2)} <small>万亿元</small></strong></div><div><span>PE · TTM</span><strong>${fmt(s.pe,2)} <small>倍</small></strong></div><div><span>单季营收${s.missingCount?' · 已知合计':''}</span><strong>${fmt(s.revenue)} <small>亿元${s.estimatedCount?' *':''}</small></strong></div><div><span>归母净利润${s.missingCount?' · 已知合计':''}</span><strong>${fmt(s.profit)} <small>亿元${s.estimatedCount?' *':''}</small></strong></div><div><span>披露 / 样本</span><strong class="focus-coverage">${s.reportedCount} / ${s.companies} 家${s.estimatedCount?'<small>'+s.estimatedCount+' 家估算</small>':''}</strong></div>`;}
 focus(L);
 const C={mv:'#147b76',pe:'#c47a36',rev:'#ccdde4',profit:'#427f93',loss:'#c47b6c',estimated:'#e2d1ad'};
 const chart=echarts.init($('chart'),null,{renderer:'canvas'});window.researchChart=chart;
@@ -53,10 +44,9 @@ document.querySelectorAll('[data-range]').forEach(b=>b.addEventListener('click',
 $('from-quarter').addEventListener('change',e=>{const a=Number(e.target.value);setRange(a,Math.max(a,last));});
 $('to-quarter').addEventListener('change',e=>{const b=Number(e.target.value);setRange(Math.min(first,b),b);});
 $('labels').addEventListener('change',e=>{showLabels=e.target.checked;redraw();});
-$('save-chart').addEventListener('click',()=>{chart.dispatchAction({type:'hideTip'});chart.setOption({title:{show:true,text:`电子 · ${S[first].quarter}—${S[last].quarter} | 左轴市值(万亿元) · 右轴PE(倍) · 柱形财务(亿元/独立刻度)`,left:'center',top:1,textStyle:{fontSize:10,fontWeight:400,color:'#385852'}},graphic:[{id:'export-note',type:'text',left:56,bottom:0,style:{text:'固定成分回溯 · 快照2026-11-10 · *含估算 · †财务缺失 · PE空心点表示部分样本',fontSize:9,fill:'#748d86'}}]});const link=document.createElement('a');link.download=`申万电子_${S[first].quarter}_${S[last].quarter}.png`;link.href=chart.getDataURL({type:'png',pixelRatio:2,backgroundColor:'#fff'});link.click();chart.setOption({title:{show:false},graphic:[{id:'export-note',$action:'remove'}]});});
 new ResizeObserver(()=>chart.resize()).observe($('chart').parentElement);
 const E=D.estimates[0];
-$('estimate-panel').innerHTML=`<div><span class="estimate-badge">2026 Q3 · ESTIMATION NOTE</span><h3>${L.reportedCount} 家已披露，${L.estimatedCount} 家待正式财报补齐</h3><p>截至 ${D.meta.asOf}，数据源未返回中芯国际（688981.SH）三季报。最新柱形合计含其估算，斜纹与 * 标出含估算季度。</p><p>估算营收占行业合计 <b>${pct(L.estimatedRevenue/L.revenue,2)}</b>，估算利润占 <b>${pct(L.estimatedProfit/L.profit,2)}</b>。这是机械外推，不是公司业绩指引或券商一致预期。</p></div><div class="estimate-formula"><div>营收依据：2025Q3 单季营收 <b>${fmt(E.priorRevenue,2)} 亿</b> ×（1 + 2026H1 营收同比 <b>${pct(E.growth,2)}</b>）</div><div class="formula-result">中芯国际 2026Q3 估算营收 = <b>${fmt(E.revenue,2)} 亿元</b></div><div>利润依据：估算营收 × 2026H1 归母净利率 <b>${pct(E.margin,2)}</b></div><div class="formula-result">中芯国际 2026Q3 估算归母净利润 = <b>${fmt(E.profit,2)} 亿元</b></div></div>`;
+$('estimate-panel').innerHTML=`<div><h3>最新季度估算：${L.reportedCount} 家实报，${L.estimatedCount} 家估算</h3><p>截至 ${D.meta.asOf}，数据源未返回中芯国际（688981.SH）三季报。最新柱形合计含其估算，斜纹与 * 标出含估算季度。</p><p>估算营收占行业合计 <b>${pct(L.estimatedRevenue/L.revenue,2)}</b>，估算利润占 <b>${pct(L.estimatedProfit/L.profit,2)}</b>。这是机械外推，不是公司业绩指引或券商一致预期。</p></div><div class="estimate-formula"><div>营收依据：2025Q3 单季营收 <b>${fmt(E.priorRevenue,2)} 亿</b> ×（1 + 2026H1 营收同比 <b>${pct(E.growth,2)}</b>）</div><div class="formula-result">中芯国际 2026Q3 估算营收 = <b>${fmt(E.revenue,2)} 亿元</b></div><div>利润依据：估算营收 × 2026H1 归母净利率 <b>${pct(E.margin,2)}</b></div><div class="formula-result">中芯国际 2026Q3 估算归母净利润 = <b>${fmt(E.profit,2)} 亿元</b></div></div>`;
 const incomplete=S.filter(s=>s.missingCount);const minPe=Math.min(...S.map(s=>s.peCoverage));
 $('quality-note').innerHTML=`<b>历史数据边界：</b>${incomplete.map(s=>short(s.quarter)+' 缺 '+s.missingCount+' 家').join('；')}，对应柱形为已知公司合计并标 †，不是完整行业总额，不将缺失填零或伪装为估算。PE 历史市值覆盖最低 ${pct(minPe,2)}，不满 100% 的点为空心圆。悬停或展开下表可查覆盖率。`;
 $('quality-body').innerHTML=S.map((s,i)=>{const q=D.quality[i],notes=[];if(q.financialMissing.length)notes.push('财务缺失：'+q.financialMissing.map(c=>esc(c.name)+' '+c.code).join('、'));if(q.peMissing.length)notes.push('PE 缺失：'+q.peMissing.map(c=>esc(c.name)).join('、'));if(q.carried.length)notes.push('沿用市值：'+q.carried.map(c=>esc(c.name)+'（'+date(c.date)+'）').join('、'));if(s.estimatedCount)notes.push('财务估算：中芯国际');return`<tr><td>${short(s.quarter)}</td><td>${s.reportedCount}+${s.estimatedCount}估算 / ${s.companies}</td><td>${pct(s.peCoverage,2)}</td><td>${s.carriedCount} 家</td><td>${notes.join('<br>')||'完整覆盖'}</td></tr>`;}).join('');
@@ -85,6 +75,5 @@ function showLinkedSupplement(){
   requestAnimationFrame(()=>$(panelId).scrollIntoView({block:'start'}));
  }
 }
-for(const link of document.querySelectorAll('a[href="#data-table"],a[href="#company-data"]'))link.addEventListener('click',()=>openSupplement(link.getAttribute('href').slice(1)));
 window.addEventListener('hashchange',showLinkedSupplement);
 showLinkedSupplement();
