@@ -27,14 +27,24 @@ focus(L);
 const C={mv:'#147b76',pe:'#c47a36',rev:'#ccdde4',profit:'#427f93',loss:'#c47b6c'};
 const chart=echarts.init($('chart'),null,{renderer:'canvas'});window.researchChart=chart;
 function nice(x){if(!x||x<0)return 1;const p=10**Math.floor(Math.log10(x));return Math.ceil(x/p*2)/2*p;}
-function chartAxes(rows,mini){
+function positivePE(value){return Number.isFinite(value)&&value>0;}
+function quantile(sorted,p){const index=(sorted.length-1)*p,lo=Math.floor(index),weight=index-lo;return sorted[lo]+((sorted[lo+1]??sorted[lo])-sorted[lo])*weight;}
+function peView(rows){
+ const values=rows.slice(first,last+1).map(s=>s.pe).filter(positivePE).sort((a,b)=>a-b);
+ const threshold=values.length>=8?Math.max(quantile(values,.75)+3*(quantile(values,.75)-quantile(values,.25)),3*quantile(values,.5)):Infinity;
+ const spikes=new Set();for(let i=first;i<=last;i++)if(positivePE(rows[i].pe)&&rows[i].pe>threshold)spikes.add(i);
+ const normal=values.filter(v=>v<=threshold),max=nice(Math.max(0,...normal))*(spikes.size?1.18:1.08);
+ return {threshold,spikes,max,cap:max*.92,count:values.length};
+}
+function chartAxes(rows,mini,view){
  const visible=rows.slice(first,last+1);
  const mvmax=nice(Math.max(0,...visible.map(s=>(s.marketCap||s.marketCapObserved||0)/10000)))*1.08;
- const pemax=nice(Math.max(0,...visible.map(s=>s.pe||0)))*1.08;
+ const pemax=view.max;
  const financial=visibleMetrics.revenue||visibleMetrics.profit;
  const finmax=nice(Math.max(0,...visible.map(s=>visibleMetrics.revenue?(s.revenue||0):visibleMetrics.profit?Math.max(0,s.profit||0):0)))*1.17;
  const negative=visibleMetrics.profit?Math.min(0,...visible.map(s=>s.profit||0)):0;
- const negRatio=negative<0?Math.max(.08,-negative/finmax*1.25):0;
+ const labelSpace=visibleMetrics.profit&&showLabels?(mini?.18:.12):0;
+ const negRatio=negative<0?Math.max(.08,-negative/finmax*1.25,-negative/finmax+labelSpace):labelSpace;
  const scale=financial?`${visibleMetrics.revenue?'柱':'利润'}：${negRatio?fmt(-finmax*negRatio,0):'0'}—${fmt(finmax,0)}亿元`:'';
  return {scale,finmax,axes:[
  {type:'value',min:-mvmax*negRatio,max:mvmax,show:visibleMetrics.mv,splitNumber:mini?3:5,axisLabel:{color:'#6f8f8c',fontSize:mini?8:10,formatter:v=>v<0?'':fmt(v,v<1?2:v<2?1:0)},axisLine:{show:false},axisTick:{show:false},splitLine:{show:true,lineStyle:{color:'#edf1ee',type:'dashed'}}},
@@ -48,21 +58,33 @@ function bars(rows,key,mini,finmax){return rows.map(s=>{
  const color=key==='revenue'?C.rev:key==='profit'?C.profit:C.loss;
  const metric=key==='loss'?'profit':key;
  const label={show:showLabels,position:key==='revenue'?'insideTop':'inside',rotate:last-first>(mini?10:38)?90:0,distance:mini?2:5,color:key==='revenue'?'#4f6e7b':'#fff',fontSize:mini?8:last-first>38?8:10,formatter:fmt(s[metric],0)+(s.estimatedCount?'*':s.missingCount?'†':'')};
- if(key!=='revenue'&&Math.abs(v)<finmax*.04){label.position=key==='loss'?'bottom':'top';label.color=key==='loss'?C.loss:C.profit;label.distance=3;}
+ if(key!=='revenue'){label.position='bottom';label.color=key==='loss'?C.loss:C.profit;label.distance=4;}
  if((key==='profit'&&s.profit<=0)||(key==='loss'&&s.profit>=0))label.show=false;
  if(key==='revenue'&&s.revenue<finmax*.1){label.position='top';label.distance=4;}
  return {value:v,itemStyle:{color,opacity:s.missingCount?.65:1,borderColor:s.estimatedCount?'#aa884f':color,borderWidth:s.estimatedCount?1:0,decal:s.estimatedCount?{symbol:'rect',dashArrayX:[1,0],dashArrayY:[2,4],rotation:Math.PI/4,color:'rgba(137,99,38,.18)'}:undefined},label};
 });}
 function lossAreas(rows){const areas=[];let start=null;for(let i=first;i<=last+1;i++){const loss=i<=last&&rows[i].companies>0&&rows[i].peProfit<=0;if(loss&&start===null)start=i;if(!loss&&start!==null){if(i-1>start)areas.push([{name:'PE不适用',xAxis:rows[start].quarter},{xAxis:rows[i-1].quarter}]);start=null;}}return areas;}
-function makeSeries(rows,mini,finmax){const series=[],barMaxWidth=mini?24:43;
+function makeSeries(rows,mini,finmax,view){const series=[],barMaxWidth=mini?24:43;
  if(visibleMetrics.profit)series.push({id:'profit',name:'归母净利润',type:'bar',stack:'finance',yAxisIndex:2,barMaxWidth,barCategoryGap:'24%',z:1,data:bars(rows,'profit',mini,finmax)});
  if(visibleMetrics.revenue)series.push({id:'revenue',name:'单季营收',type:'bar',stack:'finance',yAxisIndex:2,barMaxWidth,z:1,data:bars(rows,'revenue',mini,finmax)});
  if(visibleMetrics.profit)series.push({id:'loss',name:'归母净亏损',type:'bar',stack:'finance',yAxisIndex:2,barMaxWidth,z:1,data:bars(rows,'loss',mini,finmax)});
  if(visibleMetrics.mv)series.push({id:'mv',name:'总市值',type:'line',yAxisIndex:0,z:6,smooth:false,showSymbol:!mini||last-first<30,symbol:'circle',symbolSize:mini?3:last-first>40?3:5,lineStyle:{color:C.mv,width:mini?1.8:2.5},itemStyle:{color:C.mv,borderColor:'#fff',borderWidth:1},data:rows.map(s=>s.marketCap==null?null:s.marketCap/10000)});
- if(visibleMetrics.pe)series.push({id:'pe',name:'PE（TTM）',type:'line',yAxisIndex:1,z:7,connectNulls:false,smooth:false,markArea:{silent:true,itemStyle:{color:'rgba(193,136,91,.07)'},label:{show:true,position:'insideTop',fontSize:mini?8:9,color:'#a18c77'},data:lossAreas(rows)},showSymbol:!mini||last-first<30,symbolSize:mini?3:4,lineStyle:{color:C.pe,width:mini?1.5:2},itemStyle:{color:C.pe,borderColor:'#fff',borderWidth:1},data:rows.map(s=>({value:s.pe,symbol:s.peCoverage<.9999?'emptyCircle':'circle',symbolSize:s.peCoverage<.9999?mini?4:6:mini?2:4}))});
+ if(visibleMetrics.pe){series.push({id:'pe',name:'PE（TTM）',type:'line',yAxisIndex:1,z:7,connectNulls:false,smooth:false,markArea:{silent:true,itemStyle:{color:'rgba(193,136,91,.07)'},label:{show:true,position:'insideTop',fontSize:mini?8:9,color:'#a18c77'},data:lossAreas(rows)},showSymbol:!mini||last-first<30,symbolSize:mini?3:4,lineStyle:{color:C.pe,width:mini?1.5:2},itemStyle:{color:C.pe,borderColor:'#fff',borderWidth:1},data:rows.map((s,i)=>({value:positivePE(s.pe)&&!view.spikes.has(i)?s.pe:null,symbol:s.peCoverage<.9999?'emptyCircle':'circle',symbolSize:s.peCoverage<.9999?mini?4:6:mini?2:4}))});
+  // Each spike run gets its own dashed path. Full-length arrays retain quarter indices
+  // for tooltips; null/negative PE never becomes a bridge across a missing quarter.
+  const indices=[...view.spikes];
+  for(let k=0;k<indices.length;k++){
+   const start=indices[k];let end=start;while(k+1<indices.length&&indices[k+1]===end+1)end=indices[++k];
+   series.push({id:'pe-spike-'+start,name:'PE尖峰（原值见标签）',type:'line',yAxisIndex:1,z:8,connectNulls:false,smooth:false,showSymbol:true,showAllSymbol:true,clip:true,lineStyle:{color:C.pe,width:mini?1.5:2,type:'dashed'},itemStyle:{color:C.pe,borderColor:'#fff',borderWidth:1},labelLayout:{hideOverlap:true},data:rows.map((s,i)=>{
+    const active=i>=Math.max(first,start-1)&&i<=Math.min(last,end+1)&&positivePE(s.pe),spike=view.spikes.has(i)&&i>=start&&i<=end,compressed=spike&&s.pe>view.cap;
+    return {value:active?(spike?Math.min(s.pe,view.cap):s.pe):null,symbol:spike?'triangle':'none',symbolSize:spike?(mini?6:8):0,label:{show:spike,position:'top',distance:4,fontSize:mini?8:10,color:C.pe,backgroundColor:'rgba(255,255,255,.88)',padding:[1,2],formatter:(compressed?'↑':'')+fmt(s.pe,1)}};
+   })});
+  }
+ }
+
  return series;
 }
-function tooltipFor(rows,name,main){return params=>{
+function tooltipFor(rows,name,main,view){return params=>{
  const p=params.find(p=>p.dataIndex!=null);if(!p)return'';const s=rows[p.dataIndex];if(main)focus(s);
  let body=`<div class="tooltip"><div class="tooltip-title">${esc(name)} · ${short(s.quarter)}${s.estimatedCount?' <small>含估算</small>':''}</div>`;
  const row=(label,v,color='')=>`<div class="tooltip-row"><span>${label}</span><b style="color:${color}">${v}</b></div>`;
@@ -72,6 +94,7 @@ function tooltipFor(rows,name,main){return params=>{
  if(visibleMetrics.profit)body+=row('归母净利润'+(s.missingCount?'（已知合计）':''),fmt(s.profit,2)+' 亿');
  if(visibleMetrics.pe)body+=row('PE分位 · 所选区间',pePercentileText(rows,s.pe),C.pe);
  body+='<div class="tooltip-footer">';
+ if(visibleMetrics.pe&&view.spikes.has(p.dataIndex))body+=`<b>PE尖峰：原值 ${fmt(s.pe,2)} 倍</b><br>区间门槛 ${fmt(view.threshold,2)} 倍；虚线为示意，不按高度读取<br>`;
  if(visibleMetrics.pe)body+=`${peReason(s)?'<b>'+peReason(s)+'</b><br>':''}PE 分子市值 ${fmt(s.peMarketCap,2)} 亿<br>PE 分母 TTM 归母净利润 ${fmt(s.peProfit,4)} 亿<br>PE 市值覆盖 ${pct(s.peCoverage,2)}<br>`;
  body+=`财报 ${s.reportedCount} / ${s.companies} 家；估算 ${s.estimatedCount} 家${s.missingCount?'；缺失 '+s.missingCount+' 家':''}<br>季度末 ${date(s.tradeDate)}`;
  if(visibleMetrics.mv)body+=`；市值沿用 ${s.carriedCount} 家`;
@@ -81,11 +104,12 @@ function tooltipFor(rows,name,main){return params=>{
 };}
 function miniSummary(group){const s=group.series.at(-1),parts=[];if(visibleMetrics.pe)parts.push('PE '+peText(s));if(visibleMetrics.revenue)parts.push('营收 '+fmt(s.revenue,0)+'亿'+(s.estimatedCount?'*':''));if(visibleMetrics.profit)parts.push('净利 '+fmt(s.profit,1)+'亿'+(s.estimatedCount?'*':''));if(visibleMetrics.pe)parts.push('PE分位 '+pePercentileText(group.series,s.pe));return parts.map(part=>`<span${part.startsWith('PE分位 ')?' class="pe-percentile" title="'+pePercentileHint(group.series,s)+'"':''}>${esc(part)}</span>`).join('');}
 function updateChart(instance,rows,name,mini=false,code=''){
- const {axes,scale,finmax}=chartAxes(rows,mini);
- if(mini){const el=instance.getDom().closest('.mini-card');el.querySelector('.mini-axis-mv').textContent=visibleMetrics.mv?'市值·万亿':'';el.querySelector('.mini-axis-pe').textContent=visibleMetrics.pe?'PE·倍':'';el.querySelector('.mini-axis-finance').textContent=scale;el.querySelector('.mini-summary').innerHTML=miniSummary(GROUPS.find(g=>g.code===code));el.querySelector('.mini-cap').hidden=!visibleMetrics.mv;}
- else{$('finance-scale').textContent=scale;document.querySelector('.axis-caption>.mv-text').textContent=visibleMetrics.mv?'市值 · 万亿元':'';document.querySelector('.axis-caption>.pe-text').textContent=visibleMetrics.pe?'PE · 倍':'';}
+ const view=peView(rows),{axes,scale,finmax}=chartAxes(rows,mini,view);
+ const peCaption=visibleMetrics.pe?('PE'+(mini?'·':' · ')+'倍'+(view.spikes.size?' · 虚线尖峰':'')):'';
+ if(mini){const el=instance.getDom().closest('.mini-card');el.querySelector('.mini-axis-mv').textContent=visibleMetrics.mv?'市值·万亿':'';el.querySelector('.mini-axis-pe').textContent=peCaption;el.querySelector('.mini-axis-finance').textContent=scale;el.querySelector('.mini-summary').innerHTML=miniSummary(GROUPS.find(g=>g.code===code));el.querySelector('.mini-cap').hidden=!visibleMetrics.mv;}
+ else{$('finance-scale').textContent=scale;document.querySelector('.axis-caption>.mv-text').textContent=visibleMetrics.mv?'市值 · 万亿元':'';document.querySelector('.axis-caption>.pe-text').textContent=peCaption;}
  const zoom={startValue:first,endValue:last,filterMode:'none'};
- instance.setOption({animation:false,textStyle:{fontFamily:'-apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, sans-serif'},grid:{left:mini?40:56,right:mini?35:51,top:mini?12:16,bottom:mini?49:76},tooltip:{trigger:'axis',confine:true,backgroundColor:'rgba(255,255,255,.98)',borderColor:'#dce5df',borderWidth:1,padding:mini?10:16,extraCssText:'box-shadow:0 6px 24px #1b42351a;border-radius:8px;',axisPointer:{type:'line',lineStyle:{color:'#aebeb5',type:'dashed'}},formatter:tooltipFor(rows,name,!mini)},xAxis:{type:'category',data:rows.map(s=>s.quarter),axisTick:{show:false},axisLine:{lineStyle:{color:'#d8e1dd'}},axisLabel:{interval:mini?Math.max(0,Math.floor((last-first+1)/8)-1):0,rotate:mini?45:last-first>38?90:45,fontSize:mini?8:last-first>38?8:10,color:'#8a9998',margin:mini?6:9,formatter:short}},yAxis:axes,dataZoom:mini?[{type:'inside',...zoom,disabled:true}]:[{type:'slider',...zoom,height:20,bottom:10,left:56,right:51,borderColor:'#e3ebe5',backgroundColor:'#f8faf7',fillerColor:'rgba(20,123,118,.08)',handleStyle:{color:'#fff',borderColor:'#9ab6aa'},moveHandleSize:0,dataBackground:{lineStyle:{color:'#b4c9c0'},areaStyle:{color:'#e5ece6'}},selectedDataBackground:{lineStyle:{color:'#739c90'},areaStyle:{color:'#c8dad0'}},textStyle:{fontSize:9,color:'#8fa197'},brushSelect:false,showDetail:true},{type:'inside',...zoom,zoomOnMouseWheel:'ctrl',moveOnMouseWheel:false}],series:makeSeries(rows,mini,finmax),graphic:[{id:'all-hidden',type:'text',left:'center',top:'middle',silent:true,style:{text:Object.values(visibleMetrics).some(Boolean)?'':'点击上方图例显示指标',fontSize:mini?10:12,fill:'#8b9b92'}}]}, {replaceMerge:['series']});
+ instance.setOption({animation:false,textStyle:{fontFamily:'-apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, sans-serif'},grid:{left:mini?40:56,right:mini?35:51,top:mini?12:16,bottom:mini?49:76},tooltip:{trigger:'axis',confine:true,backgroundColor:'rgba(255,255,255,.98)',borderColor:'#dce5df',borderWidth:1,padding:mini?10:16,extraCssText:'box-shadow:0 6px 24px #1b42351a;border-radius:8px;',axisPointer:{type:'line',lineStyle:{color:'#aebeb5',type:'dashed'}},formatter:tooltipFor(rows,name,!mini,view)},xAxis:{type:'category',data:rows.map(s=>s.quarter),axisTick:{show:false},axisLine:{lineStyle:{color:'#d8e1dd'}},axisLabel:{interval:mini?Math.max(0,Math.floor((last-first+1)/8)-1):0,rotate:mini?45:last-first>38?90:45,fontSize:mini?8:last-first>38?8:10,color:'#8a9998',margin:mini?6:9,formatter:short}},yAxis:axes,dataZoom:mini?[{type:'inside',...zoom,disabled:true}]:[{type:'slider',...zoom,height:20,bottom:10,left:56,right:51,borderColor:'#e3ebe5',backgroundColor:'#f8faf7',fillerColor:'rgba(20,123,118,.08)',handleStyle:{color:'#fff',borderColor:'#9ab6aa'},moveHandleSize:0,dataBackground:{lineStyle:{color:'#b4c9c0'},areaStyle:{color:'#e5ece6'}},selectedDataBackground:{lineStyle:{color:'#739c90'},areaStyle:{color:'#c8dad0'}},textStyle:{fontSize:9,color:'#8fa197'},brushSelect:false,showDetail:true},{type:'inside',...zoom,zoomOnMouseWheel:'ctrl',moveOnMouseWheel:false}],series:makeSeries(rows,mini,finmax,view),graphic:[{id:'all-hidden',type:'text',left:'center',top:'middle',silent:true,style:{text:Object.values(visibleMetrics).some(Boolean)?'':'点击上方图例显示指标',fontSize:mini?10:12,fill:'#8b9b92'}}]}, {notMerge:true});
 }
 function syncControls(){ $('from-quarter').value=first;$('to-quarter').value=last;document.querySelectorAll('[data-range]').forEach(b=>b.classList.toggle('active',last===S.length-1&&((b.dataset.range==='all'&&first===0)||Number(b.dataset.range)===last-first+1)));}
 function redraw(){if(!S.slice(first,last+1).includes(focusedQuarter))focusedQuarter=S[last];focus(focusedQuarter);updateChart(chart,S,'电子');for(const [code,item]of miniCharts)updateChart(item.chart,item.group.series,item.group.name,true,code);syncControls();}
