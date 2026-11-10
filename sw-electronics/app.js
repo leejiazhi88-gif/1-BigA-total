@@ -66,3 +66,25 @@ function renderCompanies(){const query=$('company-search').value.trim().toLowerC
 $('company-search').addEventListener('input',renderCompanies);$('estimated-only').addEventListener('change',renderCompanies);renderCompanies();
 $('source-links').innerHTML=D.meta.sourceLinks.map(s=>`<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.name} ↗</a>`).join('');
 window.RESEARCH_STATE=()=>({first,last,showLabels});
+
+// Supplementary data: only the selected panel is expanded; initial state is closed.
+const supplementButtons=[...document.querySelectorAll('.supplement-tabs button')];
+function openSupplement(panelId){
+ for(const button of supplementButtons){
+  const open=button.getAttribute('aria-controls')===panelId;
+  button.setAttribute('aria-expanded',String(open));
+  button.querySelector('span').textContent=open?'−':'＋';
+  $(button.getAttribute('aria-controls')).hidden=!open;
+ }
+}
+for(const button of supplementButtons)button.addEventListener('click',()=>openSupplement(button.getAttribute('aria-expanded')==='true'?null:button.getAttribute('aria-controls')));
+function showLinkedSupplement(){
+ const panelId=location.hash.slice(1);
+ if(supplementButtons.some(button=>button.getAttribute('aria-controls')===panelId)){
+  openSupplement(panelId);
+  requestAnimationFrame(()=>$(panelId).scrollIntoView({block:'start'}));
+ }
+}
+for(const link of document.querySelectorAll('a[href="#data-table"],a[href="#company-data"]'))link.addEventListener('click',()=>openSupplement(link.getAttribute('href').slice(1)));
+window.addEventListener('hashchange',showLinkedSupplement);
+showLinkedSupplement();
