@@ -5,7 +5,7 @@ const pct=(v,n=1)=>fmt(v*100,n)+'%';
 const date=v=>v?v.slice(0,4)+'-'+v.slice(4,6)+'-'+v.slice(6,8):'—';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const short=q=>q.replace('Q',' Q');
-let first=Math.max(0,S.length-(innerWidth<720?8:20)),last=S.length-1,showLabels=true,reverseTable=true;
+let first=Math.max(0,S.length-20),last=S.length-1,showLabels=true,reverseTable=true;
 for(const id of ['from-quarter','to-quarter'])$(id).innerHTML=S.map((s,i)=>`<option value="${i}">${short(s.quarter)}</option>`).join('');
 function focus(s){$('focus-row').innerHTML=`<strong class="focus-quarter">${short(s.quarter)}</strong><div><span>总市值</span><strong>${fmt(s.marketCap/10000,2)}<small> 万亿</small></strong></div><div><span>PE</span><strong>${fmt(s.pe,2)}<small> 倍</small></strong></div><div><span>营收</span><strong>${fmt(s.revenue)}<small> 亿${s.estimatedCount?'*':s.missingCount?'†':''}</small></strong></div><div><span>归母净利</span><strong>${fmt(s.profit)}<small> 亿${s.estimatedCount?'*':s.missingCount?'†':''}</small></strong></div><small class="focus-coverage">${s.reportedCount} 家实报${s.estimatedCount?' / '+s.estimatedCount+' 家估算':''}</small>`;}
 focus(L);
