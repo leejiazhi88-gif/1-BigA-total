@@ -69,6 +69,7 @@ const moduleHtml = `
             <div class="panel-subtitle" id="largeMoneyMetricSubtitle">沪深A股大宗交易周成交额</div>
           </div>
           <div class="range-tabs" id="largeMoneyRangeTabs">
+            <button class="range-tab" data-years="1">1年</button>
             <button class="range-tab" data-years="3">3年</button>
             <button class="range-tab" data-years="5">5年</button>
             <button class="range-tab" data-years="10">10年</button>

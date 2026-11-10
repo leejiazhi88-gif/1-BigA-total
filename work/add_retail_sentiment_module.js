@@ -69,6 +69,7 @@ const moduleHtml = `
             <div class="panel-subtitle" id="retailMetricSubtitle">沪深两市股票成交额，周频展示</div>
           </div>
           <div class="range-tabs" id="retailRangeTabs">
+            <button class="range-tab" data-years="1">1年</button>
             <button class="range-tab" data-years="3">3年</button>
             <button class="range-tab" data-years="5">5年</button>
             <button class="range-tab" data-years="10">10年</button>

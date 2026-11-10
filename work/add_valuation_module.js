@@ -118,6 +118,7 @@ const moduleHtml = `
             <div class="panel-subtitle" id="valuationMetricSubtitle">上证与深证 PE(TTM)，周频展示</div>
           </div>
           <div class="range-tabs" id="valuationRangeTabs">
+            <button class="range-tab" data-years="1">1年</button>
             <button class="range-tab" data-years="3">3年</button>
             <button class="range-tab" data-years="5">5年</button>
             <button class="range-tab" data-years="10">10年</button>
