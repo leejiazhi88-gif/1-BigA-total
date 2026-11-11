@@ -1,6 +1,6 @@
 'use strict';
 window.RESEARCH_MODULES={};
-const GLOBAL_VIEW={first:67,last:86,showLabels:true,financeMode:'quarter',metrics:{mv:true,pe:true,revenue:true,profit:true}};
+const GLOBAL_VIEW={first:67,last:86,showLabels:true,financeMode:'rolling',metrics:{mv:true,pe:false,revenue:true,profit:true}};
 function rollingFinancialRows(rows){return rows.map((s,i)=>{
  const windowRows=rows.slice(Math.max(0,i-3),i+1),complete=windowRows.length===4&&windowRows.every(r=>r.companies>0&&!r.missingCount&&Number.isFinite(r.revenue)&&Number.isFinite(r.profit));
  return {...s,rolling:true,revenue:complete?windowRows.reduce((sum,r)=>sum+r.revenue,0):null,profit:complete?windowRows.reduce((sum,r)=>sum+r.profit,0):null,windowStart:windowRows[0].quarter,financialReason:complete?'':windowRows.length<4?'不足4个季度':windowRows.some(r=>!r.companies)?'窗口内部分季度无上市样本':'窗口内有财务缺失',windowEstimatedCount:windowRows.reduce((sum,r)=>sum+r.estimatedCount,0),windowMissingCount:windowRows.reduce((sum,r)=>sum+r.missingCount,0),estimatedRevenue:complete?windowRows.reduce((sum,r)=>sum+r.estimatedRevenue,0):null,estimatedProfit:complete?windowRows.reduce((sum,r)=>sum+r.estimatedProfit,0):null};
@@ -146,7 +146,19 @@ $('quality-body').innerHTML=S.map((s,i)=>{const q=D.quality[i],notes=[];if(q.fin
 let coverageReady=false,quarterReady=false,companiesReady=false;
 function renderQuarterTable(){const rows=reverseTable?[...S].reverse():S;$('quarter-body').innerHTML=rows.map(s=>`<tr class="${s.estimatedCount?'estimate-row':''}"><td>${short(s.quarter)}</td><td>${fmt(s.marketCap,2)}</td><td title="${peReason(s)}；TTM利润 ${fmt(s.peProfit,4)}亿元">${peText(s)}${s.peCoverage<.9999?' ◦':''}</td><td>${fmt(s.revenue,2)}${s.estimatedCount?' *':s.missingCount?' †':''}</td><td>${fmt(s.profit,2)}${s.estimatedCount?' *':s.missingCount?' †':''}</td><td>${s.companies}</td><td><span class="tag ${s.estimatedCount?'estimate':s.missingCount?'partial':''}">${!s.companies?'无样本':s.estimatedCount?s.reportedCount+' 实报 + '+s.estimatedCount+' 估算':s.missingCount?'缺 '+s.missingCount+' 家 · 已知合计':'全部实报'}</span></td></tr>`).join('');}
 $('table-order').addEventListener('click',()=>{reverseTable=!reverseTable;$('table-order').textContent='当前：'+(reverseTable?'由近到远':'由远到近')+' ⇅';renderQuarterTable();});
-function renderCompanies(){const query=$('company-search').value.trim().toLowerCase(),only=$('estimated-only').checked;let rows=D.latestCompanies.filter(r=>(!only||r.status==='estimated')&&(!query||(r.name+r.code).toLowerCase().includes(query))).sort((a,b)=>(b.revenue||0)-(a.revenue||0));$('company-count').textContent=`显示 ${rows.length} / ${D.latestCompanies.length} 家，按营收从高到低排列`;$('company-body').innerHTML=rows.map(r=>`<tr class="${r.status==='estimated'?'estimate-row':''}"><td>${esc(r.name)}</td><td>${r.code}</td><td>${fmt(r.revenue,2)}</td><td>${fmt(r.profit,2)}</td><td>${date(r.announcementDate)}</td><td><span class="tag ${r.status==='estimated'?'estimate':''}">${r.status==='estimated'?'估算':'已披露'}</span></td></tr>`).join('')||'<tr><td colspan="6" style="text-align:center">没有匹配的公司</td></tr>';}
+const companySector=new Map(GROUPS.flatMap(g=>g.codes.map(code=>[code,g])));
+function renderCompanies(){
+ const query=$('company-search').value.trim().toLowerCase(),only=$('estimated-only').checked;
+ const rows=D.latestCompanies.filter(r=>(!only||r.status==='estimated')&&(!query||(r.name+r.code+(companySector.get(r.code)?.name||'')).toLowerCase().includes(query)));
+ $('company-count').textContent=`${short(L.quarter)} · 显示 ${rows.length} / ${D.latestCompanies.length} 家 · 二级行业及公司按市值降序`;
+ const sections=GROUPS.map(group=>({group,rows:rows.filter(r=>companySector.get(r.code)?.code===group.code)}));
+ const unassigned=rows.filter(r=>!companySector.has(r.code));if(unassigned.length)sections.push({group:{code:'unassigned',name:'未分类',series:[]},rows:unassigned});
+ $('company-body').innerHTML=sections.filter(section=>section.rows.length).map(({group,rows:groupRows})=>{
+  groupRows.sort((a,b)=>(b.marketCap??-Infinity)-(a.marketCap??-Infinity)||a.code.localeCompare(b.code));
+  const header=`<tr class="company-group" data-company-group="${esc(group.code)}"><th colspan="7" scope="rowgroup"><span>${esc(group.name)}</span><small>${groupRows.length} 家</small><strong>行业总市值 ${fmt(group.series.at(-1)?.marketCap,2)} 亿</strong></th></tr>`;
+  return header+groupRows.map(r=>`<tr data-company-code="${esc(r.code)}" data-company-sector="${esc(group.code)}" class="${r.status==='estimated'?'estimate-row':''}"><td>${esc(r.name)}</td><td>${esc(r.code)}</td><td class="company-market-cap" title="${short(L.quarter)}季末总市值${r.quoteCarried?'；沿用 '+date(r.quoteDate):''}">${fmt(r.marketCap,2)}</td><td>${fmt(r.revenue,2)}</td><td>${fmt(r.profit,2)}</td><td>${date(r.announcementDate)}</td><td><span class="tag ${r.status==='estimated'?'estimate':r.status==='missing'?'partial':''}">${r.status==='estimated'?'估算':r.status==='missing'?'财务缺失':'已披露'}</span></td></tr>`).join('');
+ }).join('')||'<tr><td colspan="7" style="text-align:center">没有匹配的公司</td></tr>';
+}
 $('company-search').addEventListener('input',renderCompanies);$('estimated-only').addEventListener('change',renderCompanies);
 $('source-links').innerHTML=D.meta.sourceLinks.map(s=>`<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.name} ↗</a>`).join('');
 
