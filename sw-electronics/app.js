@@ -1,10 +1,21 @@
 'use strict';
 window.RESEARCH_MODULES={};
+const GLOBAL_VIEW={first:67,last:86,showLabels:true,financeMode:'quarter',metrics:{mv:true,pe:true,revenue:true,profit:true}};
+function rollingFinancialRows(rows){return rows.map((s,i)=>{
+ const windowRows=rows.slice(Math.max(0,i-3),i+1),complete=windowRows.length===4&&windowRows.every(r=>r.companies>0&&!r.missingCount&&Number.isFinite(r.revenue)&&Number.isFinite(r.profit));
+ return {...s,rolling:true,revenue:complete?windowRows.reduce((sum,r)=>sum+r.revenue,0):null,profit:complete?windowRows.reduce((sum,r)=>sum+r.profit,0):null,windowStart:windowRows[0].quarter,financialReason:complete?'':windowRows.length<4?'不足4个季度':windowRows.some(r=>!r.companies)?'窗口内部分季度无上市样本':'窗口内有财务缺失',windowEstimatedCount:windowRows.reduce((sum,r)=>sum+r.estimatedCount,0),windowMissingCount:windowRows.reduce((sum,r)=>sum+r.missingCount,0),estimatedRevenue:complete?windowRows.reduce((sum,r)=>sum+r.estimatedRevenue,0):null,estimatedProfit:complete?windowRows.reduce((sum,r)=>sum+r.estimatedProfit,0):null};
+});}
+
 function mountIndustry(root,BASE,sectorData,prefix=''){
 const GROUPS=[...sectorData.groups].sort((a,b)=>(b.series.at(-1).marketCap||0)-(a.series.at(-1).marketCap||0)),$=id=>root.querySelector('#'+CSS.escape(id))||root.querySelector('#'+CSS.escape(prefix+id));
 const D=BASE,S=BASE.series,L=S.at(-1);
 const selectedSectors=new Set();
-const visibleMetrics={mv:true,pe:true,revenue:true,profit:true};
+const visibleMetrics={...GLOBAL_VIEW.metrics};
+let financeMode=GLOBAL_VIEW.financeMode;
+const rollingCache=new Map();
+function displayRows(rows){if(financeMode!=='rolling')return rows;if(!rollingCache.has(rows))rollingCache.set(rows,rollingFinancialRows(rows));return rollingCache.get(rows);}
+function financeTag(s){return (s.rolling?s.windowEstimatedCount:s.estimatedCount)?'*':(s.rolling?s.windowMissingCount:s.missingCount)?'†':'';}
+function financeLabel(label){return financeMode==='rolling'?'近4季'+label:label;}
 const miniCharts=new Map();
 const fmt=(v,n=1)=>v==null?'—':Number(v).toLocaleString('zh-CN',{minimumFractionDigits:n,maximumFractionDigits:n});
 const pct=(v,n=1)=>fmt(v*100,n)+'%';
@@ -22,9 +33,8 @@ function pePercentile(rows,value){
 function pePercentileText(rows,value){const rank=pePercentile(rows,value);return rank==null?'—':pct(rank,1);}
 function pePercentileHint(rows,s){const count=rows.slice(first,last+1).filter(r=>Number.isFinite(r.pe)&&r.pe>0).length;return `${short(s.quarter)} PE；区间 ${short(S[first].quarter)}—${short(S[last].quarter)}，${count} 个有效季度；不高于该 PE 的季度占比`;}
 function peReason(s){return !s.companies?'无已上市样本':s.peProfit<=0?'TTM利润合计非正，PE不适用':s.pe>500?'TTM净利润相对市值接近零，PE对利润变化高度敏感':'';}
-let first=Math.max(0,S.length-20),last=S.length-1,showLabels=true,reverseTable=true,focusedQuarter=L;
-for(const id of ['from-quarter','to-quarter'])$(id).innerHTML=S.map((s,i)=>`<option value="${i}">${short(s.quarter)}</option>`).join('');
-function focus(s){focusedQuarter=s;$('focus-row').innerHTML=`<strong class="focus-quarter">${esc(D.meta.industry)} · ${short(s.quarter)}</strong>${visibleMetrics.mv?`<div><span>总市值</span><strong>${fmt(s.marketCap==null?null:s.marketCap/10000,2)}<small> 万亿</small></strong></div>`:''}${visibleMetrics.pe?`<div><span>PE</span><strong>${peText(s)}<small>${s.pe==null?'':' 倍'}</small></strong></div>`:''}${visibleMetrics.revenue?`<div><span>营收</span><strong>${fmt(s.revenue)}<small> 亿${s.estimatedCount?'*':s.missingCount?'†':''}</small></strong></div>`:''}${visibleMetrics.profit?`<div><span>归母净利</span><strong>${fmt(s.profit)}<small> 亿${s.estimatedCount?'*':s.missingCount?'†':''}</small></strong></div>`:''}${visibleMetrics.pe?`<div class="pe-percentile" title="${pePercentileHint(S,s)}"><span>PE分位</span><strong>${pePercentileText(S,s.pe)}</strong></div>`:''}<small class="focus-coverage">${s.reportedCount} 家实报${s.estimatedCount?' / '+s.estimatedCount+' 家估算':''}</small>`;}
+let first=GLOBAL_VIEW.first,last=GLOBAL_VIEW.last,showLabels=GLOBAL_VIEW.showLabels,reverseTable=true,focusedQuarter=L;
+function focus(s){focusedQuarter=S.find(r=>r.quarter===s.quarter)||s;s=displayRows(S)[S.indexOf(focusedQuarter)]||s;$('focus-row').innerHTML=`<strong class="focus-quarter">${esc(D.meta.industry)} · ${short(s.quarter)}</strong>${visibleMetrics.mv?`<div><span>总市值</span><strong>${fmt(s.marketCap==null?null:s.marketCap/10000,2)}<small> 万亿</small></strong></div>`:''}${visibleMetrics.pe?`<div><span>PE</span><strong>${peText(s)}<small>${s.pe==null?'':' 倍'}</small></strong></div>`:''}${visibleMetrics.revenue?`<div><span>${financeLabel('营收')}</span><strong>${fmt(s.revenue)}<small> 亿${financeTag(s)}</small></strong></div>`:''}${visibleMetrics.profit?`<div><span>${financeLabel('归母净利')}</span><strong>${fmt(s.profit)}<small> 亿${financeTag(s)}</small></strong></div>`:''}${visibleMetrics.pe?`<div class="pe-percentile" title="${pePercentileHint(S,s)}"><span>PE分位</span><strong>${pePercentileText(S,s.pe)}</strong></div>`:''}<small class="focus-coverage">${s.reportedCount} 家实报${s.estimatedCount?' / '+s.estimatedCount+' 家估算':''}</small>`;}
 focus(L);
 const C={mv:'#147b76',pe:'#c47a36',rev:'#ccdde4',profit:'#427f93',loss:'#c47b6c'};
 const chart=echarts.init($('chart'),null,{renderer:'canvas'});if(!prefix)window.researchChart=chart;
@@ -57,20 +67,20 @@ function chartAxes(rows,mini,view){
  ]};
 }
 function bars(rows,key,mini,finmax){return rows.map(s=>{
- if(!s.companies)return{value:null,label:{show:false}};
+ if(!s.companies||!Number.isFinite(key==='revenue'?s.revenue:s.profit))return{value:null,label:{show:false}};
  const v=key==='revenue'?s.revenue-(visibleMetrics.profit?Math.max(0,s.profit):0):key==='profit'?Math.max(0,s.profit):Math.min(0,s.profit);
  const color=key==='revenue'?C.rev:key==='profit'?C.profit:C.loss;
  const metric=key==='loss'?'profit':key;
- const label={show:showLabels,position:key==='revenue'?'insideTop':'inside',rotate:last-first>(mini?10:38)?90:0,distance:mini?2:5,color:key==='revenue'?'#4f6e7b':'#fff',fontSize:mini?8:last-first>38?8:10,formatter:fmt(s[metric],0)+(s.estimatedCount?'*':s.missingCount?'†':'')};
+ const label={show:showLabels,position:key==='revenue'?'insideTop':'inside',rotate:last-first>(mini?10:38)?90:0,distance:mini?2:5,color:key==='revenue'?'#4f6e7b':'#fff',fontSize:mini?8:last-first>38?8:10,formatter:fmt(s[metric],0)+financeTag(s)};
  if(key!=='revenue'){label.position='bottom';label.color=key==='loss'?C.loss:C.profit;label.distance=4;}
  if((key==='profit'&&s.profit<=0)||(key==='loss'&&s.profit>=0))label.show=false;
  if(key==='revenue'&&s.revenue<finmax*.1){label.position='top';label.distance=4;}
- return {value:v,itemStyle:{color,opacity:s.missingCount?.65:1,borderColor:s.estimatedCount?'#aa884f':color,borderWidth:s.estimatedCount?1:0,decal:s.estimatedCount?{symbol:'rect',dashArrayX:[1,0],dashArrayY:[2,4],rotation:Math.PI/4,color:'rgba(137,99,38,.18)'}:undefined},label};
+ return {value:v,itemStyle:{color,opacity:s.missingCount?.65:1,borderColor:financeTag(s)==='*'?'#aa884f':color,borderWidth:financeTag(s)==='*'?1:0,decal:financeTag(s)==='*'?{symbol:'rect',dashArrayX:[1,0],dashArrayY:[2,4],rotation:Math.PI/4,color:'rgba(137,99,38,.18)'}:undefined},label};
 });}
 function lossAreas(rows){const areas=[];let start=null;for(let i=first;i<=last+1;i++){const loss=i<=last&&rows[i].companies>0&&rows[i].peProfit<=0;if(loss&&start===null)start=i;if(!loss&&start!==null){if(i-1>start)areas.push([{name:'PE不适用',xAxis:rows[start].quarter},{xAxis:rows[i-1].quarter}]);start=null;}}return areas;}
 function makeSeries(rows,mini,finmax,view){const series=[],barMaxWidth=mini?24:43;
  if(visibleMetrics.profit)series.push({id:'profit',name:'归母净利润',type:'bar',stack:'finance',yAxisIndex:2,barMaxWidth,barCategoryGap:'24%',z:1,data:bars(rows,'profit',mini,finmax)});
- if(visibleMetrics.revenue)series.push({id:'revenue',name:'单季营收',type:'bar',stack:'finance',yAxisIndex:2,barMaxWidth,z:1,data:bars(rows,'revenue',mini,finmax)});
+ if(visibleMetrics.revenue)series.push({id:'revenue',name:financeLabel('营收'),type:'bar',stack:'finance',yAxisIndex:2,barMaxWidth,z:1,data:bars(rows,'revenue',mini,finmax)});
  if(visibleMetrics.profit)series.push({id:'loss',name:'归母净亏损',type:'bar',stack:'finance',yAxisIndex:2,barMaxWidth,z:1,data:bars(rows,'loss',mini,finmax)});
  if(visibleMetrics.mv)series.push({id:'mv',name:'总市值',type:'line',yAxisIndex:0,z:6,smooth:false,showSymbol:!mini||last-first<30,symbol:'circle',symbolSize:mini?3:last-first>40?3:5,lineStyle:{color:C.mv,width:mini?1.8:2.5},itemStyle:{color:C.mv,borderColor:'#fff',borderWidth:1},data:rows.map(s=>s.marketCap==null?null:s.marketCap/10000)});
  if(visibleMetrics.pe){series.push({id:'pe',name:'PE（TTM）',type:'line',yAxisIndex:1,z:7,connectNulls:false,smooth:false,markArea:{silent:true,itemStyle:{color:'rgba(193,136,91,.07)'},label:{show:true,position:'insideTop',fontSize:mini?8:9,color:'#a18c77'},data:lossAreas(rows)},showSymbol:!mini||last-first<30,symbolSize:mini?3:4,lineStyle:{color:C.pe,width:mini?1.5:2},itemStyle:{color:C.pe,borderColor:'#fff',borderWidth:1},data:rows.map((s,i)=>({value:positivePE(s.pe)&&!view.spikes.has(i)?s.pe:null,symbol:s.peCoverage<.9999?'emptyCircle':'circle',symbolSize:s.peCoverage<.9999?mini?4:6:mini?2:4}))});
@@ -90,24 +100,26 @@ function makeSeries(rows,mini,finmax,view){const series=[],barMaxWidth=mini?24:4
 }
 function tooltipFor(rows,name,main,view){return params=>{
  const p=params.find(p=>p.dataIndex!=null);if(!p)return'';const s=rows[p.dataIndex];if(main)focus(s);
- let body=`<div class="tooltip"><div class="tooltip-title">${esc(name)} · ${short(s.quarter)}${s.estimatedCount?' <small>含估算</small>':''}</div>`;
+ let body=`<div class="tooltip"><div class="tooltip-title">${esc(name)} · ${short(s.quarter)}${financeTag(s)==='*'?' <small>含估算</small>':''}</div>`;
  const row=(label,v,color='')=>`<div class="tooltip-row"><span>${label}</span><b style="color:${color}">${v}</b></div>`;
  if(visibleMetrics.mv)body+=row('总市值 · 亿元',fmt(s.marketCap,2),C.mv);
  if(visibleMetrics.pe)body+=row('整体 PE（TTM）',peText(s)+(s.pe==null?'':' 倍'),C.pe);
- if(visibleMetrics.revenue)body+=row('单季营收'+(s.missingCount?'（已知合计）':''),fmt(s.revenue,2)+' 亿');
- if(visibleMetrics.profit)body+=row('归母净利润'+(s.missingCount?'（已知合计）':''),fmt(s.profit,2)+' 亿');
+ if(visibleMetrics.revenue)body+=row(financeLabel('营收')+(!s.rolling&&s.missingCount?'（已知合计）':''),fmt(s.revenue,2)+' 亿');
+ if(visibleMetrics.profit)body+=row(financeLabel('归母净利润')+(!s.rolling&&s.missingCount?'（已知合计）':''),fmt(s.profit,2)+' 亿');
  if(visibleMetrics.pe)body+=row('PE分位 · 所选区间',pePercentileText(rows,s.pe),C.pe);
  body+='<div class="tooltip-footer">';
+ if(s.rolling)body+=`财务窗口 ${short(s.windowStart)}—${short(s.quarter)}${s.financialReason?'；'+s.financialReason:''}${s.windowEstimatedCount?'；含估算':''}<br>`;
  if(visibleMetrics.pe&&view.spikes.has(p.dataIndex))body+=`<b>PE尖峰：原值 ${fmt(s.pe,2)} 倍</b><br>区间门槛 ${fmt(view.threshold,2)} 倍；虚线为示意，不按高度读取<br>`;
  if(visibleMetrics.pe)body+=`${peReason(s)?'<b>'+peReason(s)+'</b><br>':''}PE 分子市值 ${fmt(s.peMarketCap,2)} 亿<br>PE 分母 TTM 归母净利润 ${fmt(s.peProfit,4)} 亿<br>PE 市值覆盖 ${pct(s.peCoverage,2)}<br>`;
- body+=`财报 ${s.reportedCount} / ${s.companies} 家；估算 ${s.estimatedCount} 家${s.missingCount?'；缺失 '+s.missingCount+' 家':''}<br>季度末 ${date(s.tradeDate)}`;
+ body+=`本季财报 ${s.reportedCount} / ${s.companies} 家；估算 ${s.estimatedCount} 家${s.missingCount?'；缺失 '+s.missingCount+' 家':''}<br>季度末 ${date(s.tradeDate)}`;
  if(visibleMetrics.mv)body+=`；市值沿用 ${s.carriedCount} 家`;
- if(s.estimatedCount&&visibleMetrics.revenue)body+=`<br>估算营收 ${fmt(s.estimatedRevenue,2)} 亿`;
- if(s.estimatedCount&&visibleMetrics.profit)body+=`<br>估算利润 ${fmt(s.estimatedProfit,2)} 亿`;
+ if(financeTag(s)==='*'&&visibleMetrics.revenue)body+=`<br>估算营收 ${fmt(s.estimatedRevenue,2)} 亿`;
+ if(financeTag(s)==='*'&&visibleMetrics.profit)body+=`<br>估算利润 ${fmt(s.estimatedProfit,2)} 亿`;
  return body+'</div></div>';
 };}
-function miniSummary(group){const s=group.series.at(-1),parts=[];if(visibleMetrics.pe)parts.push('PE '+peText(s));if(visibleMetrics.revenue)parts.push('营收 '+fmt(s.revenue,0)+'亿'+(s.estimatedCount?'*':''));if(visibleMetrics.profit)parts.push('净利 '+fmt(s.profit,1)+'亿'+(s.estimatedCount?'*':''));if(visibleMetrics.pe)parts.push('PE分位 '+pePercentileText(group.series,s.pe));return parts.map(part=>`<span${part.startsWith('PE分位 ')?' class="pe-percentile" title="'+pePercentileHint(group.series,s)+'"':''}>${esc(part)}</span>`).join('');}
+function miniSummary(group){const s=displayRows(group.series).at(-1),parts=[];if(visibleMetrics.pe)parts.push('PE '+peText(s));if(visibleMetrics.revenue)parts.push(financeLabel('营收')+' '+fmt(s.revenue,0)+'亿'+financeTag(s));if(visibleMetrics.profit)parts.push(financeLabel('净利')+' '+fmt(s.profit,1)+'亿'+financeTag(s));if(visibleMetrics.pe)parts.push('PE分位 '+pePercentileText(group.series,s.pe));return parts.map(part=>`<span${part.startsWith('PE分位 ')?' class="pe-percentile" title="'+pePercentileHint(group.series,s)+'"':''}>${esc(part)}</span>`).join('');}
 function updateChart(instance,rows,name,mini=false,code=''){
+ rows=displayRows(rows);
  const view=peView(rows),{axes,scale,finmax}=chartAxes(rows,mini,view);
  const peCaption=visibleMetrics.pe?('PE'+(mini?'·':' · ')+'倍'+(view.spikes.size?' · 虚线尖峰':'')):'';
  if(mini){const el=instance.getDom().closest('.mini-card');el.querySelector('.mini-axis-mv').textContent=visibleMetrics.mv?'市值·万亿':'';el.querySelector('.mini-axis-pe').textContent=peCaption;el.querySelector('.mini-axis-finance').textContent=scale;el.querySelector('.mini-summary').innerHTML=miniSummary(GROUPS.find(g=>g.code===code));el.querySelector('.mini-cap').hidden=!visibleMetrics.mv;}
@@ -115,15 +127,10 @@ function updateChart(instance,rows,name,mini=false,code=''){
  const zoom={startValue:first,endValue:last,filterMode:'none'};
  instance.setOption({animation:false,textStyle:{fontFamily:'-apple-system, BlinkMacSystemFont, PingFang SC, Microsoft YaHei, sans-serif'},grid:{left:mini?40:56,right:mini?35:51,top:mini?12:16,bottom:mini?49:76},tooltip:{trigger:'axis',confine:true,backgroundColor:'rgba(255,255,255,.98)',borderColor:'#dce5df',borderWidth:1,padding:mini?10:16,extraCssText:'box-shadow:0 6px 24px #1b42351a;border-radius:8px;',axisPointer:{type:'line',lineStyle:{color:'#aebeb5',type:'dashed'}},formatter:tooltipFor(rows,name,!mini,view)},xAxis:{type:'category',data:rows.map(s=>s.quarter),axisTick:{show:false},axisLine:{lineStyle:{color:'#d8e1dd'}},axisLabel:{interval:mini?Math.max(0,Math.floor((last-first+1)/8)-1):0,rotate:mini?45:last-first>38?90:45,fontSize:mini?8:last-first>38?8:10,color:'#8a9998',margin:mini?6:9,formatter:short}},yAxis:axes,dataZoom:mini?[{type:'inside',...zoom,disabled:true}]:[{type:'slider',...zoom,height:20,bottom:10,left:56,right:51,borderColor:'#e3ebe5',backgroundColor:'#f8faf7',fillerColor:'rgba(20,123,118,.08)',handleStyle:{color:'#fff',borderColor:'#9ab6aa'},moveHandleSize:0,dataBackground:{lineStyle:{color:'#b4c9c0'},areaStyle:{color:'#e5ece6'}},selectedDataBackground:{lineStyle:{color:'#739c90'},areaStyle:{color:'#c8dad0'}},textStyle:{fontSize:9,color:'#8fa197'},brushSelect:false,showDetail:true},{type:'inside',...zoom,disabled:true}],series:makeSeries(rows,mini,finmax,view),graphic:[{id:'all-hidden',type:'text',left:'center',top:'middle',silent:true,style:{text:Object.values(visibleMetrics).some(Boolean)?'':'点击上方图例显示指标',fontSize:mini?10:12,fill:'#8b9b92'}}]}, {notMerge:true});
 }
-function syncControls(){ $('from-quarter').value=first;$('to-quarter').value=last;root.querySelectorAll('[data-range]').forEach(b=>b.classList.toggle('active',last===S.length-1&&((b.dataset.range==='all'&&first===0)||Number(b.dataset.range)===last-first+1)));}
-function redraw(){if(!S.slice(first,last+1).includes(focusedQuarter))focusedQuarter=S[last];focus(focusedQuarter);updateChart(chart,S,D.meta.industry);for(const [code,item]of miniCharts)updateChart(item.chart,item.group.series,item.group.name,true,code);syncControls();}
-function setRange(a,b){first=Math.max(0,Math.min(a,S.length-1));last=Math.max(first,Math.min(b,S.length-1));redraw();}
-chart.on('datazoom',e=>{const z=e.batch?e.batch[0]:e;if(z.startValue!=null){first=Math.round(z.startValue);last=Math.round(z.endValue);}else if(z.start!=null){first=Math.round(z.start/100*(S.length-1));last=Math.round(z.end/100*(S.length-1));}redraw();});
-root.querySelectorAll('[data-range]').forEach(b=>b.addEventListener('click',()=>setRange(b.dataset.range==='all'?0:Math.max(0,S.length-Number(b.dataset.range)),S.length-1)));
-$('from-quarter').addEventListener('change',e=>{const a=Number(e.target.value);setRange(a,Math.max(a,last));});
-$('to-quarter').addEventListener('change',e=>{const b=Number(e.target.value);setRange(Math.min(first,b),b);});
-$('labels').addEventListener('change',e=>{showLabels=e.target.checked;redraw();});
-root.querySelectorAll('[data-metric]').forEach(button=>button.addEventListener('click',()=>{const key=button.dataset.metric;visibleMetrics[key]=!visibleMetrics[key];button.setAttribute('aria-pressed',String(visibleMetrics[key]));chart.dispatchAction({type:'hideTip'});for(const item of miniCharts.values())item.chart.dispatchAction({type:'hideTip'});focus(focusedQuarter);redraw();}));
+function redraw(){if(!S.slice(first,last+1).includes(focusedQuarter))focusedQuarter=S[last];focus(focusedQuarter);updateChart(chart,S,D.meta.industry);for(const [code,item]of miniCharts)updateChart(item.chart,item.group.series,item.group.name,true,code);}
+function applyGlobal(){first=GLOBAL_VIEW.first;last=GLOBAL_VIEW.last;showLabels=GLOBAL_VIEW.showLabels;financeMode=GLOBAL_VIEW.financeMode;Object.assign(visibleMetrics,GLOBAL_VIEW.metrics);redraw();}
+function setRange(a,b){setGlobalRange(a,b);}
+chart.on('datazoom',e=>{const z=e.batch?e.batch[0]:e;let a=first,b=last;if(z.startValue!=null){a=Math.round(z.startValue);b=Math.round(z.endValue);}else if(z.start!=null){a=Math.round(z.start/100*(S.length-1));b=Math.round(z.end/100*(S.length-1));}setGlobalRange(a,b);});
 const chartObserver=new ResizeObserver(entries=>{for(const entry of entries){const instance=echarts.getInstanceByDom(entry.target);if(instance&&!instance.isDisposed())instance.resize();}});chartObserver.observe($('chart'));
 
 function renderCoverage(){
@@ -199,11 +206,11 @@ $('sector-options').addEventListener('change',e=>{const code=e.target.dataset.se
 document.addEventListener('click',e=>{if(!$('sector-picker').contains(e.target))closeSectorMenu();});
 $('sector-picker').addEventListener('keydown',e=>{if(e.key==='Escape'){closeSectorMenu();$('sector-trigger').focus();}});
 $('sector-picker').addEventListener('focusout',e=>{if(e.relatedTarget&&!$('sector-picker').contains(e.relatedTarget))closeSectorMenu();});
-const getState=()=>({first,last,showLabels,selectedSectors:[...selectedSectors],visibleMetrics:{...visibleMetrics},latest:L,miniOrder:[...$('sector-grid').children].map(e=>e.dataset.sectorCard)});
+const getState=()=>({first,last,showLabels,financeMode,selectedSectors:[...selectedSectors],visibleMetrics:{...visibleMetrics},latest:L,miniOrder:[...$('sector-grid').children].map(e=>e.dataset.sectorCard)});
 const getCharts=()=>({main:chart,children:Object.fromEntries([...miniCharts].map(([code,item])=>[code,item.chart]))});
 redraw();renderMiniCharts();
 
-const api={getState,getCharts,setRange,peView,pePercentile,focus};
+const api={getState,getCharts,setRange,peView,pePercentile,focus,applyGlobal};
 window.RESEARCH_MODULES[root.dataset.industry]=api;
 if(!prefix){window.RESEARCH_STATE=getState;window.RESEARCH_CHARTS=getCharts;}
 return api;
@@ -228,7 +235,7 @@ for(const item of window.INDUSTRY_CATALOG.industries){
  root.appendChild(moduleTemplate.content.cloneNode(true));
  const prefix=item.key==='electronics'?'':item.key+'-';
  if(prefix)for(const el of root.querySelectorAll('[id],[aria-controls],[aria-labelledby]'))for(const attr of ['id','aria-controls','aria-labelledby'])if(el.hasAttribute(attr))el.setAttribute(attr,prefix+el.getAttribute(attr));
- root.querySelector('h1').textContent=item.name;root.querySelector('.sector-menu-title strong').textContent=item.name+' · 申万二级';root.querySelector('.research-chart').setAttribute('aria-label',item.name+'季度市值、PE、营收与归母净利润');
+ root.querySelector('.heading-main h2').textContent=item.name;root.querySelector('.sector-menu-title strong').textContent=item.name+' · 申万二级';root.querySelector('.research-chart').setAttribute('aria-label',item.name+'季度市值、PE、营收与归母净利润');
  root.querySelector('#'+CSS.escape(prefix+'selected-market-cap')).textContent='0 / '+item.subIndustryCount;
  root.querySelector('.focus-row').textContent=item.name+' · '+item.latest.quarter+' · 总市值 '+(item.latest.marketCap/10000).toLocaleString('zh-CN',{maximumFractionDigits:2})+' 万亿';
  const status=document.createElement('div');status.className='module-loading';status.textContent='加载图表…';root.querySelector('.research-chart').appendChild(status);
@@ -236,3 +243,60 @@ for(const item of window.INDUSTRY_CATALOG.industries){
  root.addEventListener('pointerdown',()=>activateIndustry(root).catch(()=>{}),{once:true});
 }
 window.ACTIVATE_INDUSTRY=key=>activateIndustry(document.getElementById('industry-'+key));
+
+// Keep the active industry visible in the sticky navigation without moving the page.
+const industryNav=document.querySelector('.floating-controls');
+const navLinks=document.getElementById('industry-navigation-links');
+const navSections=[...industryList.querySelectorAll('.industry-module')];
+const navAnchors=window.INDUSTRY_CATALOG.industries.map(item=>{
+ const link=document.createElement('a');link.href='#industry-'+item.key;link.textContent=item.name;link.dataset.industry=item.key;navLinks.appendChild(link);return link;
+});
+let currentNavIndex=-1,navFrame=0;
+function updateIndustryNavigation(){
+ navFrame=0;const threshold=industryNav.getBoundingClientRect().bottom+24;
+ let index=0;for(let i=0;i<navSections.length;i++){if(navSections[i].getBoundingClientRect().top<=threshold)index=i;else break;}
+ if(window.scrollY>0&&window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-2)index=navSections.length-1;
+ if(index===currentNavIndex)return;
+ currentNavIndex=index;navAnchors.forEach((link,i)=>{if(i===index)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});
+ const active=navAnchors[index],box=navLinks.getBoundingClientRect(),rect=active.getBoundingClientRect();
+ if(rect.left<box.left+8||rect.right>box.right-8)navLinks.scrollTo({left:navLinks.scrollLeft+rect.left-box.left-(box.width-rect.width)/2,behavior:'instant'});
+}
+function scheduleIndustryNavigation(){if(!navFrame)navFrame=requestAnimationFrame(updateIndustryNavigation);}
+async function navigateIndustry(root,behavior='smooth'){
+ await activateIndustry(root).catch(()=>{});
+ root.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':behavior});
+ scheduleIndustryNavigation();
+}
+navLinks.addEventListener('click',event=>{
+ const link=event.target.closest('a');if(!link||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
+ event.preventDefault();const root=document.getElementById('industry-'+link.dataset.industry);
+ if(location.hash!==link.hash)history.pushState(null,'',link.hash);
+ navigateIndustry(root);
+});
+function navigateIndustryHash(){const root=navSections.find(section=>'#'+section.id===location.hash);if(root)navigateIndustry(root,'instant');}
+window.addEventListener('scroll',scheduleIndustryNavigation,{passive:true});
+window.addEventListener('resize',scheduleIndustryNavigation);
+window.addEventListener('hashchange',navigateIndustryHash);
+new ResizeObserver(()=>{document.documentElement.style.setProperty('--industry-nav-height',industryNav.offsetHeight+'px');scheduleIndustryNavigation();}).observe(industryNav);
+new ResizeObserver(scheduleIndustryNavigation).observe(industryList);
+updateIndustryNavigation();navigateIndustryHash();
+
+const globalControls=document.getElementById('global-controls');
+const globalQuarters=Array.from({length:87},(_,i)=>(2005+Math.floor(i/4))+' Q'+(i%4+1));
+for(const id of ['from-quarter','to-quarter'])document.getElementById(id).innerHTML=globalQuarters.map((q,i)=>`<option value="${i}">${q}</option>`).join('');
+function syncGlobalControls(){
+ document.getElementById('from-quarter').value=GLOBAL_VIEW.first;document.getElementById('to-quarter').value=GLOBAL_VIEW.last;
+ globalControls.querySelectorAll('[data-range]').forEach(b=>b.classList.toggle('active',GLOBAL_VIEW.last===86&&(b.dataset.range==='all'?GLOBAL_VIEW.first===0:Number(b.dataset.range)===GLOBAL_VIEW.last-GLOBAL_VIEW.first+1)));
+ globalControls.querySelectorAll('[data-finance-mode]').forEach(b=>{const active=b.dataset.financeMode===GLOBAL_VIEW.financeMode;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
+ globalControls.querySelectorAll('[data-metric]').forEach(b=>b.setAttribute('aria-pressed',String(GLOBAL_VIEW.metrics[b.dataset.metric])));
+ document.getElementById('revenue-mode-label').textContent=GLOBAL_VIEW.financeMode==='rolling'?'近4季营收':'单季营收';
+}
+function updateGlobalCharts(){syncGlobalControls();for(const module of Object.values(window.RESEARCH_MODULES))module.applyGlobal();}
+function setGlobalRange(a,b){GLOBAL_VIEW.first=Math.max(0,Math.min(a,86));GLOBAL_VIEW.last=Math.max(GLOBAL_VIEW.first,Math.min(b,86));updateGlobalCharts();}
+globalControls.querySelectorAll('[data-range]').forEach(b=>b.addEventListener('click',()=>setGlobalRange(b.dataset.range==='all'?0:Math.max(0,87-Number(b.dataset.range)),86)));
+globalControls.querySelectorAll('[data-finance-mode]').forEach(b=>b.addEventListener('click',()=>{GLOBAL_VIEW.financeMode=b.dataset.financeMode;updateGlobalCharts();}));
+globalControls.querySelectorAll('[data-metric]').forEach(b=>b.addEventListener('click',()=>{GLOBAL_VIEW.metrics[b.dataset.metric]=!GLOBAL_VIEW.metrics[b.dataset.metric];updateGlobalCharts();}));
+document.getElementById('labels').addEventListener('change',e=>{GLOBAL_VIEW.showLabels=e.target.checked;updateGlobalCharts();});
+document.getElementById('from-quarter').addEventListener('change',e=>setGlobalRange(Number(e.target.value),Math.max(Number(e.target.value),GLOBAL_VIEW.last)));
+document.getElementById('to-quarter').addEventListener('change',e=>setGlobalRange(Math.min(Number(e.target.value),GLOBAL_VIEW.first),Number(e.target.value)));
+syncGlobalControls();
