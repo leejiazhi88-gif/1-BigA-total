@@ -1,6 +1,6 @@
 'use strict';
 window.RESEARCH_MODULES={};
-const GLOBAL_VIEW={first:67,last:86,showLabels:true,financeMode:'rolling',metrics:{mv:true,pe:false,revenue:true,profit:true}};
+const GLOBAL_VIEW={first:67,last:86,showLabels:true,expandSectors:false,financeMode:'rolling',metrics:{mv:true,pe:false,revenue:true,profit:true}};
 function rollingFinancialRows(rows){return rows.map((s,i)=>{
  const windowRows=rows.slice(Math.max(0,i-3),i+1),complete=windowRows.length===4&&windowRows.every(r=>r.companies>0&&!r.missingCount&&Number.isFinite(r.revenue)&&Number.isFinite(r.profit));
  return {...s,rolling:true,revenue:complete?windowRows.reduce((sum,r)=>sum+r.revenue,0):null,profit:complete?windowRows.reduce((sum,r)=>sum+r.profit,0):null,windowStart:windowRows[0].quarter,financialReason:complete?'':windowRows.length<4?'不足4个季度':windowRows.some(r=>!r.companies)?'窗口内部分季度无上市样本':'窗口内有财务缺失',windowEstimatedCount:windowRows.reduce((sum,r)=>sum+r.estimatedCount,0),windowMissingCount:windowRows.reduce((sum,r)=>sum+r.missingCount,0),estimatedRevenue:complete?windowRows.reduce((sum,r)=>sum+r.estimatedRevenue,0):null,estimatedProfit:complete?windowRows.reduce((sum,r)=>sum+r.estimatedProfit,0):null};
@@ -9,7 +9,7 @@ function rollingFinancialRows(rows){return rows.map((s,i)=>{
 function mountIndustry(root,BASE,sectorData,prefix=''){
 const GROUPS=[...sectorData.groups].sort((a,b)=>(b.series.at(-1).marketCap||0)-(a.series.at(-1).marketCap||0)),$=id=>root.querySelector('#'+CSS.escape(id))||root.querySelector('#'+CSS.escape(prefix+id));
 const D=BASE,S=BASE.series,L=S.at(-1);
-const selectedSectors=new Set();
+const selectedSectors=new Set(GLOBAL_VIEW.expandSectors?GROUPS.map(g=>g.code):[]);
 const visibleMetrics={...GLOBAL_VIEW.metrics};
 let financeMode=GLOBAL_VIEW.financeMode;
 const rollingCache=new Map();
@@ -213,7 +213,8 @@ function renderMiniCharts(){
 }
 function closeSectorMenu(){ $('sector-menu').hidden=true;$('sector-trigger').setAttribute('aria-expanded','false');}
 $('sector-trigger').addEventListener('click',()=>{const open=$('sector-menu').hidden;$('sector-menu').hidden=!open;$('sector-trigger').setAttribute('aria-expanded',String(open));});
-$('sector-all').addEventListener('change',e=>{selectedSectors.clear();if(e.target.checked)GROUPS.forEach(g=>selectedSectors.add(g.code));renderMiniCharts();});
+function setAllSectors(expanded){selectedSectors.clear();if(expanded)GROUPS.forEach(g=>selectedSectors.add(g.code));renderMiniCharts();}
+$('sector-all').addEventListener('change',e=>setAllSectors(e.target.checked));
 $('sector-options').addEventListener('change',e=>{const code=e.target.dataset.sector;if(!code)return;if(e.target.checked)selectedSectors.add(code);else selectedSectors.delete(code);renderMiniCharts();});
 document.addEventListener('click',e=>{if(!$('sector-picker').contains(e.target))closeSectorMenu();});
 $('sector-picker').addEventListener('keydown',e=>{if(e.key==='Escape'){closeSectorMenu();$('sector-trigger').focus();}});
@@ -222,7 +223,7 @@ const getState=()=>({first,last,showLabels,financeMode,selectedSectors:[...selec
 const getCharts=()=>({main:chart,children:Object.fromEntries([...miniCharts].map(([code,item])=>[code,item.chart]))});
 redraw();renderMiniCharts();
 
-const api={getState,getCharts,setRange,peView,pePercentile,focus,applyGlobal};
+const api={getState,getCharts,setRange,peView,pePercentile,focus,applyGlobal,setAllSectors};
 window.RESEARCH_MODULES[root.dataset.industry]=api;
 if(!prefix){window.RESEARCH_STATE=getState;window.RESEARCH_CHARTS=getCharts;}
 return api;
@@ -297,6 +298,9 @@ const globalControls=document.getElementById('global-controls');
 const globalQuarters=Array.from({length:87},(_,i)=>(2005+Math.floor(i/4))+' Q'+(i%4+1));
 for(const id of ['from-quarter','to-quarter'])document.getElementById(id).innerHTML=globalQuarters.map((q,i)=>`<option value="${i}">${q}</option>`).join('');
 function syncGlobalControls(){
+ const sectorsToggle=document.getElementById('global-sectors-toggle');
+ sectorsToggle.textContent=GLOBAL_VIEW.expandSectors?'收拢全部二级':'展开全部二级';
+ sectorsToggle.setAttribute('aria-pressed',String(GLOBAL_VIEW.expandSectors));
  document.getElementById('from-quarter').value=GLOBAL_VIEW.first;document.getElementById('to-quarter').value=GLOBAL_VIEW.last;
  globalControls.querySelectorAll('[data-range]').forEach(b=>b.classList.toggle('active',GLOBAL_VIEW.last===86&&(b.dataset.range==='all'?GLOBAL_VIEW.first===0:Number(b.dataset.range)===GLOBAL_VIEW.last-GLOBAL_VIEW.first+1)));
  globalControls.querySelectorAll('[data-finance-mode]').forEach(b=>{const active=b.dataset.financeMode===GLOBAL_VIEW.financeMode;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
@@ -308,6 +312,11 @@ function setGlobalRange(a,b){GLOBAL_VIEW.first=Math.max(0,Math.min(a,86));GLOBAL
 globalControls.querySelectorAll('[data-range]').forEach(b=>b.addEventListener('click',()=>setGlobalRange(b.dataset.range==='all'?0:Math.max(0,87-Number(b.dataset.range)),86)));
 globalControls.querySelectorAll('[data-finance-mode]').forEach(b=>b.addEventListener('click',()=>{GLOBAL_VIEW.financeMode=b.dataset.financeMode;updateGlobalCharts();}));
 globalControls.querySelectorAll('[data-metric]').forEach(b=>b.addEventListener('click',()=>{GLOBAL_VIEW.metrics[b.dataset.metric]=!GLOBAL_VIEW.metrics[b.dataset.metric];updateGlobalCharts();}));
+document.getElementById('global-sectors-toggle').addEventListener('click',()=>{
+ GLOBAL_VIEW.expandSectors=!GLOBAL_VIEW.expandSectors;syncGlobalControls();
+ for(const module of Object.values(window.RESEARCH_MODULES))module.setAllSectors(GLOBAL_VIEW.expandSectors);
+ scheduleIndustryNavigation();
+});
 document.getElementById('labels').addEventListener('change',e=>{GLOBAL_VIEW.showLabels=e.target.checked;updateGlobalCharts();});
 document.getElementById('from-quarter').addEventListener('change',e=>setGlobalRange(Number(e.target.value),Math.max(Number(e.target.value),GLOBAL_VIEW.last)));
 document.getElementById('to-quarter').addEventListener('change',e=>setGlobalRange(Math.min(Number(e.target.value),GLOBAL_VIEW.first),Number(e.target.value)));
