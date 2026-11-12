@@ -132,6 +132,7 @@ function updateChart(instance,rows,name,mini=false,code=''){
 function redraw(){if(!S.slice(first,last+1).includes(focusedQuarter))focusedQuarter=S[last];focus(focusedQuarter);updateChart(chart,S,D.meta.industry);for(const [code,item]of miniCharts)updateChart(item.chart,item.group.series,item.group.name,true,code);}
 function applyGlobal(){first=GLOBAL_VIEW.first;last=GLOBAL_VIEW.last;showLabels=GLOBAL_VIEW.showLabels;financeMode=GLOBAL_VIEW.financeMode;Object.assign(visibleMetrics,GLOBAL_VIEW.metrics);redraw();}
 function setRange(a,b){setGlobalRange(a,b);}
+chart.on('globalout',()=>focus(L));
 chart.on('datazoom',e=>{const z=e.batch?e.batch[0]:e;let a=first,b=last;if(z.startValue!=null){a=Math.round(z.startValue);b=Math.round(z.endValue);}else if(z.start!=null){a=Math.round(z.start/100*(S.length-1));b=Math.round(z.end/100*(S.length-1));}setGlobalRange(a,b);});
 const chartObserver=new ResizeObserver(entries=>{for(const entry of entries){const instance=echarts.getInstanceByDom(entry.target);if(instance&&!instance.isDisposed())instance.resize();}});chartObserver.observe($('chart'));
 
