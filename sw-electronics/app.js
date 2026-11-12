@@ -1,6 +1,6 @@
 'use strict';
 window.RESEARCH_MODULES={};
-const GLOBAL_VIEW={first:67,last:86,showLabels:true,expandSectors:false,financeMode:'rolling',metrics:{mv:true,pe:false,revenue:true,profit:true}};
+const GLOBAL_VIEW={first:47,last:86,showLabels:true,expandSectors:false,financeMode:'rolling',metrics:{mv:true,pe:false,revenue:true,profit:true}};
 function rollingFinancialRows(rows){return rows.map((s,i)=>{
  const windowRows=rows.slice(Math.max(0,i-3),i+1),complete=windowRows.length===4&&windowRows.every(r=>r.companies>0&&!r.missingCount&&Number.isFinite(r.revenue)&&Number.isFinite(r.profit));
  return {...s,rolling:true,revenue:complete?windowRows.reduce((sum,r)=>sum+r.revenue,0):null,profit:complete?windowRows.reduce((sum,r)=>sum+r.profit,0):null,windowStart:windowRows[0].quarter,financialReason:complete?'':windowRows.length<4?'不足4个季度':windowRows.some(r=>!r.companies)?'窗口内部分季度无上市样本':'窗口内有财务缺失',windowEstimatedCount:windowRows.reduce((sum,r)=>sum+r.estimatedCount,0),windowMissingCount:windowRows.reduce((sum,r)=>sum+r.missingCount,0),estimatedRevenue:complete?windowRows.reduce((sum,r)=>sum+r.estimatedRevenue,0):null,estimatedProfit:complete?windowRows.reduce((sum,r)=>sum+r.estimatedProfit,0):null};
@@ -30,11 +30,13 @@ function pePercentile(rows,value){
  const values=rows.slice(first,last+1).map(s=>s.pe).filter(v=>Number.isFinite(v)&&v>0);
  return values.length?values.filter(v=>v<=value).length/values.length:null;
 }
+function percentileWindowLabel(){const n=last-first+1;return n===4?'近1年':n===12?'近3年':n===20?'近5年':n===40?'近10年':n===80?'近20年':n===87?'全部':'所选区间';}
 function pePercentileText(rows,value){const rank=pePercentile(rows,value);return rank==null?'—':pct(rank,1);}
+function pePercentileMarkup(rows,value,extraClass=''){const rank=pePercentile(rows,value),text=rank==null?'—':pct(rank,1),position=rank==null?0:Math.max(0,Math.min(100,rank*100));return `<span class="pe-percentile ${extraClass}" title="${pePercentileHint(rows,{quarter:focusedQuarter.quarter})}"><span class="pe-percentile-label">PE分位 · ${percentileWindowLabel()}</span><strong style="--pe-position:${position}%">${text}</strong><i class="pe-percentile-track" aria-hidden="true"><b style="left:${position}%"></b></i></span>`;}
 function pePercentileHint(rows,s){const count=rows.slice(first,last+1).filter(r=>Number.isFinite(r.pe)&&r.pe>0).length;return `${short(s.quarter)} PE；区间 ${short(S[first].quarter)}—${short(S[last].quarter)}，${count} 个有效季度；不高于该 PE 的季度占比`;}
 function peReason(s){return !s.companies?'无已上市样本':s.peProfit<=0?'TTM利润合计非正，PE不适用':s.pe>500?'TTM净利润相对市值接近零，PE对利润变化高度敏感':'';}
 let first=GLOBAL_VIEW.first,last=GLOBAL_VIEW.last,showLabels=GLOBAL_VIEW.showLabels,reverseTable=true,focusedQuarter=L;
-function focus(s){focusedQuarter=S.find(r=>r.quarter===s.quarter)||s;s=displayRows(S)[S.indexOf(focusedQuarter)]||s;$('focus-row').innerHTML=`<strong class="focus-quarter">${esc(D.meta.industry)} · ${short(s.quarter)}</strong><div><span>总市值</span><strong>${fmt(s.marketCap==null?null:s.marketCap/10000,2)}<small> 万亿</small></strong></div><div><span>PE</span><strong>${peText(s)}<small>${s.pe==null?'':' 倍'}</small></strong></div><div><span>${financeLabel('营收')}</span><strong>${fmt(s.revenue)}<small> 亿${financeTag(s)}</small></strong></div><div><span>${financeLabel('归母净利')}</span><strong>${fmt(s.profit)}<small> 亿${financeTag(s)}</small></strong></div><div class="pe-percentile" title="${pePercentileHint(S,s)}"><span>PE分位</span><strong>${pePercentileText(S,s.pe)}</strong></div><small class="focus-coverage">${s.reportedCount} 家实报${s.estimatedCount?' / '+s.estimatedCount+' 家估算':''}</small>`;}
+function focus(s){focusedQuarter=S.find(r=>r.quarter===s.quarter)||s;s=displayRows(S)[S.indexOf(focusedQuarter)]||s;$('focus-row').innerHTML=`<strong class="focus-quarter">${esc(D.meta.industry)} · ${short(s.quarter)}</strong><div><span>总市值</span><strong>${fmt(s.marketCap==null?null:s.marketCap/10000,2)}<small> 万亿</small></strong></div><div><span>PE</span><strong>${peText(s)}<small>${s.pe==null?'':' 倍'}</small></strong></div><div><span>${financeLabel('营收')}</span><strong>${fmt(s.revenue)}<small> 亿${financeTag(s)}</small></strong></div><div><span>${financeLabel('归母净利')}</span><strong>${fmt(s.profit)}<small> 亿${financeTag(s)}</small></strong></div>${pePercentileMarkup(S,s.pe,'focus-pe-percentile')}<small class="focus-coverage">${s.reportedCount} 家实报${s.estimatedCount?' / '+s.estimatedCount+' 家估算':''}</small>`;}
 focus(L);
 const C={mv:'#147b76',pe:'#c47a36',rev:'#ccdde4',profit:'#427f93',loss:'#c47b6c'};
 const chart=echarts.init($('chart'),null,{renderer:'canvas'});if(!prefix)window.researchChart=chart;
@@ -117,7 +119,7 @@ function tooltipFor(rows,name,main,view){return params=>{
  if(financeTag(s)==='*'&&visibleMetrics.profit)body+=`<br>估算利润 ${fmt(s.estimatedProfit,2)} 亿`;
  return body+'</div></div>';
 };}
-function miniSummary(group){const s=displayRows(group.series).at(-1),parts=['PE '+peText(s),financeLabel('营收')+' '+fmt(s.revenue,0)+'亿'+financeTag(s),financeLabel('净利')+' '+fmt(s.profit,1)+'亿'+financeTag(s),'PE分位 '+pePercentileText(group.series,s.pe)];return parts.map(part=>`<span${part.startsWith('PE分位 ')?' class="pe-percentile" title="'+pePercentileHint(group.series,s)+'"':''}>${esc(part)}</span>`).join('');}
+function miniSummary(group){const s=displayRows(group.series).at(-1);return `<span>PE ${esc(peText(s))}</span><span>${esc(financeLabel('营收')+' '+fmt(s.revenue,0)+'亿'+financeTag(s))}</span><span>${esc(financeLabel('净利')+' '+fmt(s.profit,1)+'亿'+financeTag(s))}</span>${pePercentileMarkup(group.series,s.pe,'mini-pe-percentile')}`;}
 function updateChart(instance,rows,name,mini=false,code=''){
  rows=displayRows(rows);
  const view=peView(rows),{axes,scale,finmax}=chartAxes(rows,mini,view);
