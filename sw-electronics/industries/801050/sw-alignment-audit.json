@@ -3,8 +3,8 @@
   "code": "801050.SI",
   "scope": "SW公布市值/PE与财报汇总分离",
   "project2AsOf": "20261110",
-  "financialAsOf": "2026-11-10",
-  "financialHash": "1fbf3deb3f6f51360426dbbba9a1e05453c996a904c0105590127721384a3b4a",
+  "financialAsOf": "20261113",
+  "financialHash": "94b0dc3f2de7ea54d529ed16d83b4a44f4c0a95c18255589baaa4eae4a52efb8",
   "sectorFinancialHashes": {
     "801055.SI": "7266d916a44ac48a17b7d243e8a6777a3e4c5068c7cdbd3553bbbad23bbb0602",
     "801054.SI": "d2058795afb72f09484ab39b7a89f5a9720cd0d206e42f5767a51edefa15900f",
@@ -20,8 +20,8 @@
     "marketCap": 46684.5403,
     "marketCapObserved": 46684.5403,
     "pe": 16.51,
-    "revenue": 12178.315598480796,
-    "profit": 875.8840176919005,
+    "revenue": 12178.3155984808,
+    "profit": 875.8840176919,
     "reportedCount": 147,
     "estimatedCount": 0,
     "missingCount": 0,
@@ -217,6 +217,15 @@
       ]
     },
     {
+      "code": "801056.SI",
+      "name": "能源金属",
+      "dailyCount": 5306,
+      "firstDate": "20050104",
+      "lastDate": "20261110",
+      "quarterQuotes": 87,
+      "missingQuarterQuotes": []
+    },
+    {
       "code": "801051.SI",
       "name": "金属新材料",
       "dailyCount": 3466,
@@ -255,15 +264,6 @@
         "2012Q1",
         "2012Q2"
       ]
-    },
-    {
-      "code": "801056.SI",
-      "name": "能源金属",
-      "dailyCount": 5306,
-      "firstDate": "20050104",
-      "lastDate": "20261110",
-      "quarterQuotes": 87,
-      "missingQuarterQuotes": []
     }
   ]
 }

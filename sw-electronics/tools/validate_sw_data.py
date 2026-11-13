@@ -60,14 +60,22 @@ def main():
                 assert not {'peProfit', 'peMarketCap', 'peCoverage'} & quarter.keys()
                 quarter_checks += 1
             if project:
-                assert source['project2AsOf'] == project['asOf']
+                assert source['project2AsOf'] <= project['asOf']
+                comparison_rows=rows+(supplement['indices'][code]['rows'] if supplement else [])
+                comparison_by_date={r['trade_date']:r for r in comparison_rows}
+                assert len(comparison_by_date)==len(comparison_rows)
+                latest=project['metrics'][source['indices'][code]['name']]['latest']
+                if latest['date'] is not None:
+                    raw=comparison_by_date[latest['date']]
+                    assert (round(raw['total_mv'],2) if raw['total_mv'] is not None else None)==latest['totalMv']
+                    assert (round(raw['pe'],2) if raw['pe'] is not None else None)==latest['pe']
                 name = source['indices'][code]['name']
                 for interval, period in project['metrics'][name]['periods'].items():
                     if period is None:
                         continue
-                    values = sorted(r['pe'] for r in rows if project['periodStarts'][interval] <= r['trade_date'] <= project['asOf'] and positive(r['pe']))
+                    values = sorted(r['pe'] for r in comparison_rows if project['periodStarts'][interval] <= r['trade_date'] <= project['asOf'] and positive(r['pe']))
                     for date, rank in zip(period['dates'], period['pePercentileSeries']):
-                        pe = by_date.get(date, {}).get('pe')
+                        pe = comparison_by_date.get(date, {}).get('pe')
                         result = round(bisect_right(values, pe) / len(values) * 100) if positive(pe) and values else None
                         assert result == rank, (code, interval, date)
                         percentile_checks += 1
@@ -84,7 +92,7 @@ def main():
         assert item['latest'] == data['series'][-1]
         if 'latestObservation' in item:
             assert item['latestObservation'] == data['latestQuote']
-    caps = [x['latest']['marketCap'] or 0 for x in catalog['industries']]
+    caps = [x.get('latestObservation', x['latest'])['marketCap'] or 0 for x in catalog['industries']]
     assert caps == sorted(caps, reverse=True)
     assert json.loads((SITE / 'catalog.js').read_text().split('=', 1)[1].rstrip(';')) == catalog
     print(f'PASS {quarter_checks} index-quarter records; financial checksums, sector totals, CSV/JS/catalog; {percentile_checks} project2 percentile points')

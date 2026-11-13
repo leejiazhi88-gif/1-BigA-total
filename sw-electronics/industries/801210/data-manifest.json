@@ -1,6 +1,6 @@
 {
   "meta": {
-    "asOf": "2026-11-10",
+    "asOf": "2026-11-13",
     "industry": "社会服务",
     "indexCode": "801210.SI",
     "classification": "申万2021版一级",
@@ -82,7 +82,12 @@
     "percentileMethod": "所选起始季度首日至结束季度末日的全部有效正日度PE；含相等值；与项目2同源同公式，日期范围需一致",
     "companyMarketCapMethod": "daily_basic.total_mv÷10000，全部普通股按A股价格估值，与项目2公司明细同字段；不等于申万行业市值分拆",
     "financialVersusValuation": "财务柱是全公司实际合并报表汇总，不是指数PE分母；不以公布市值÷PE反推真实利润",
-    "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/"
+    "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/",
+    "financialAsOf": "20261113",
+    "universeAsOf": "20261113",
+    "companyQuoteAsOf": "20261113",
+    "latestQuoteDate": "20261113",
+    "latestQuoteMethod": "最右侧最新交易日观察点；市值/PE使用同日申万值，财务沿用最近财报季度；最近4季不重复计入该观察点"
   },
   "rawIncomeRows": 10825,
   "financialCompanyQuarterRows": 4661,
@@ -134,15 +139,15 @@
     "code": "801210.SI",
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
-    "financialAsOf": "2026-11-10",
-    "financialHash": "957a824b807b787772a1be4e436f19844997802f4db5c1aa4093afd86a408d2e",
+    "financialAsOf": "20261113",
+    "financialHash": "6265fdb379b6ee11af1429d6187c2e237069702b2e730d3fb881e4ef7268b0ff",
     "sectorFinancialHashes": {
       "801218.SI": "a25f139b45a341e005e00844da8690e7545d8c8aa5d72f18ecd40b711ca6e3dc",
       "801993.SI": "dc777f2dbe60cf728faf673d48ede7a3e486cb5c593e2c68d29b34e53c21db77",
-      "801994.SI": "1dfa276bb55c831eb43c33be0d1dcd85ec3141f2d6ee55a5b7126021f7f5c6e9",
+      "801994.SI": "a322f843c3842ab373ace42af096b9119897a88c6a7f86b997f90ae38333b085",
       "801219.SI": "67a578519fa7d7fcce46986fb3400b84f9be09e8c59619634808ff2a98f94d48",
       "801216.SI": "a32aa0825d5d643b06768611b67dc5bee87dea987ff565e8098a0ced155ec137",
-      "801217.SI": "5e1e5c4f1451cb2a0c37c1509940c4ddc82b434742241766029f41918242461a"
+      "801217.SI": "b9c07e0ddd47f8ec4ffd734729b45a424279e3ca2288db47af4074759bd6c376"
     },
     "latest": {
       "quarter": "2026Q3",
@@ -153,7 +158,7 @@
       "marketCapObserved": 4616.9854,
       "pe": 41.62,
       "revenue": 569.0772681512,
-      "profit": 35.573989779200005,
+      "profit": 35.5739897792,
       "reportedCount": 86,
       "estimatedCount": 0,
       "missingCount": 0,
@@ -442,7 +447,7 @@
       }
     ]
   },
-  "collectionScopeNote": "既有财报与daily_basic查询用于财务及公司明细；现行行业行情源为sw-source.json。",
+  "collectionScopeNote": "历史取数统计与旧公司估值审计仅作历史资料；本次新查询见项目根refresh-source.json.gz，核查与哈希见freshness-audit.json。",
   "industryValuationCollection": {
     "api": "sw_daily",
     "snapshot": "20261110",
@@ -478,5 +483,113 @@
       ]
     ]
   },
-  "validationScopeNote": "既有validation中的market字段仅核验公司报价；申万行情覆盖见valuationAlignment。"
+  "validationScopeNote": "既有validation中的market字段仅核验公司报价；申万行情覆盖见valuationAlignment。",
+  "latestQuote": {
+    "sourceFile": "latest-quotes-source.json",
+    "date": "20261113",
+    "financialSnapshot": "2026-11-13",
+    "quarterlySeriesUnchanged": true,
+    "indices": [
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801210.SI",
+        "marketCap": 4344.9539,
+        "marketCapObserved": 4344.9539,
+        "pe": 40.17,
+        "peRaw": 40.17,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801218.SI",
+        "marketCap": 1752.3837,
+        "marketCapObserved": 1752.3837,
+        "pe": 28.35,
+        "peRaw": 28.35,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801993.SI",
+        "marketCap": 1170.3778,
+        "marketCapObserved": 1170.3778,
+        "pe": 49.6,
+        "peRaw": 49.6,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801994.SI",
+        "marketCap": 792.9742,
+        "marketCapObserved": 792.9742,
+        "pe": 120.17,
+        "peRaw": 120.17,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801219.SI",
+        "marketCap": 545.6391,
+        "marketCapObserved": 545.6391,
+        "pe": 25.57,
+        "peRaw": 25.57,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": null,
+        "valuationSource": "sw_daily",
+        "valuationCode": "801216.SI",
+        "marketCap": null,
+        "marketCapObserved": null,
+        "pe": null,
+        "peRaw": null,
+        "peStatus": "source_missing",
+        "peNote": "申万未提供该日PE",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": null,
+        "valuationSource": "sw_daily",
+        "valuationCode": "801217.SI",
+        "marketCap": null,
+        "marketCapObserved": null,
+        "pe": null,
+        "peRaw": null,
+        "peStatus": "source_missing",
+        "peNote": "申万未提供该日PE",
+        "financialQuarter": "2026Q3"
+      }
+    ]
+  },
+  "currentRefresh": {
+    "sourceFile": "../../refresh-source.json.gz",
+    "financialAsOf": "20261113",
+    "universeAsOf": "20261113",
+    "companyQuoteAsOf": "20261113",
+    "estimatedCount": 0,
+    "missingCount": 0,
+    "auditFile": "freshness-audit.json (project root)"
+  }
 }

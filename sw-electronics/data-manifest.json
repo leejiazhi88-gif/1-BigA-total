@@ -1,6 +1,6 @@
 {
   "meta": {
-    "asOf": "2026-11-10",
+    "asOf": "2026-11-13",
     "industry": "电子",
     "indexCode": "801080.SI",
     "classification": "申万2021版一级",
@@ -85,7 +85,10 @@
     "financialVersusValuation": "财务柱是全公司实际合并报表汇总，不是指数PE分母；不以公布市值÷PE反推真实利润",
     "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/",
     "latestQuoteDate": "20261113",
-    "latestQuoteMethod": "最右侧最新交易日观察点；市值/PE使用同日申万值，财务沿用最近财报季度；最近4季不重复计入该观察点"
+    "latestQuoteMethod": "最右侧最新交易日观察点；市值/PE使用同日申万值，财务沿用最近财报季度；最近4季不重复计入该观察点",
+    "financialAsOf": "20261113",
+    "universeAsOf": "20261113",
+    "companyQuoteAsOf": "20261113"
   },
   "rawIncomeRows": 30378,
   "financialCompanyQuarterRows": 17691,
@@ -116,15 +119,15 @@
     "code": "801080.SI",
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
-    "financialAsOf": "2026-11-10",
-    "financialHash": "e03353d2faaf113edee100758be8500514de1ec82a3b0ba279b65b631257790a",
+    "financialAsOf": "20261113",
+    "financialHash": "e3a3b7ef9f00c78f273e697c169e76992ee9c54e0cff3ff28a085c23a1d669aa",
     "sectorFinancialHashes": {
-      "801081.SI": "43544a52849ef82c1c7846a73d20d723ead083d0f1b638b3766bc74c61bfc2b8",
-      "801085.SI": "f4a62c5603cd429fb70eba9d90f2321f8b27c855470897c9d7b4359ffd505d21",
-      "801083.SI": "3c8ae00e46d8cc44d5a83c14664535a5c0a554f352f287f611c6b21b278440c0",
-      "801084.SI": "3183a1c3dd1c3ea26efdc05131138c4f642305d88daf1d36c8d8cd83edd69def",
+      "801081.SI": "0924a0fc6fc5c27be6425d4a14a82d9327bf7197ed0a6bb48fdc058827ae984f",
+      "801085.SI": "fc641c7d3cfa3e34b7fce5c10089782dd9c66304c5d03353b9dfa90c306318a6",
+      "801083.SI": "58e23ee68efa039fe32b93e000327a8c111b0bd7b10f78df65b4fdcaf40065ed",
+      "801084.SI": "0dd6eed830d2da90f58dec792e8628a6929619e0f2623240dacc8e58c41c8e8b",
       "801086.SI": "f50a5c703bdf110a69e0ef6adad70a253a0ffb5232eafaf11376f866e9fe2f5b",
-      "801082.SI": "7a4d080413b491a5a2b732f1b5f05f7273b4b079ca93f431c579291ba18e07aa"
+      "801082.SI": "3c576ea723d747a53760e8fccb782aa14bd2d6ddb5144a9dadee227c5959bf5f"
     },
     "latest": {
       "quarter": "2026Q3",
@@ -134,13 +137,13 @@
       "marketCap": 218190.4815,
       "marketCapObserved": 218190.4815,
       "pe": 58.55,
-      "revenue": 17107.778085890866,
-      "profit": 1644.2853686044173,
-      "reportedCount": 519,
-      "estimatedCount": 1,
+      "revenue": 17122.6275242068,
+      "profit": 1649.0509020665,
+      "reportedCount": 520,
+      "estimatedCount": 0,
       "missingCount": 0,
-      "estimatedRevenue": 204.97991168407253,
-      "estimatedProfit": 23.702106537917327,
+      "estimatedRevenue": 0,
+      "estimatedProfit": 0,
       "carriedCount": 1,
       "marketMissingCount": 0,
       "financialCoverage": 1.0,
@@ -435,7 +438,7 @@
       "financialAndMarketTotalsUnchanged": true
     }
   },
-  "collectionScopeNote": "既有财报与daily_basic查询用于财务及公司明细；现行行业行情源为sw-source.json。",
+  "collectionScopeNote": "历史取数统计与旧公司估值审计仅作历史资料；本次新查询见项目根refresh-source.json.gz，核查与哈希见freshness-audit.json。",
   "industryValuationCollection": {
     "api": "sw_daily",
     "snapshot": "20261110",
@@ -475,7 +478,7 @@
   "latestQuote": {
     "sourceFile": "latest-quotes-source.json",
     "date": "20261113",
-    "financialSnapshot": "2026-11-10",
+    "financialSnapshot": "2026-11-13",
     "quarterlySeriesUnchanged": true,
     "indices": [
       {
@@ -570,5 +573,14 @@
         "financialQuarter": "2026Q3"
       }
     ]
+  },
+  "currentRefresh": {
+    "sourceFile": "refresh-source.json.gz",
+    "financialAsOf": "20261113",
+    "universeAsOf": "20261113",
+    "companyQuoteAsOf": "20261113",
+    "estimatedCount": 0,
+    "missingCount": 0,
+    "auditFile": "freshness-audit.json (project root)"
   }
 }

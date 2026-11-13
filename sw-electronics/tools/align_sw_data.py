@@ -177,7 +177,7 @@ def main():
             for i, row in enumerate(data['series']):
                 assert math.isclose(sum(g['series'][i][metric] or 0 for g in sectors['groups']), row[metric] or 0, abs_tol=1e-6)
         audit = {'industry': name, 'code': code, 'scope': 'SW公布市值/PE与财报汇总分离',
-                 'project2AsOf': source['project2AsOf'], 'financialAsOf': data['meta']['asOf'],
+                 'project2AsOf': source['project2AsOf'], 'financialAsOf': data['meta'].get('financialAsOf', data['meta']['asOf']),
                  'financialHash': before,
                  'sectorFinancialHashes': {g['code']: finance_hash(g['series']) for g in sectors['groups']},
                  'latest': data['series'][-1], 'indices': []}

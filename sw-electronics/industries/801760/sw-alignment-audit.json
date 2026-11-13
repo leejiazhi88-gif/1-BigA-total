@@ -3,8 +3,8 @@
   "code": "801760.SI",
   "scope": "SW公布市值/PE与财报汇总分离",
   "project2AsOf": "20261110",
-  "financialAsOf": "2026-11-10",
-  "financialHash": "6f8fe8a8651603f87cd3a7e7cd020cb7727329e2f4861af4782f833529088772",
+  "financialAsOf": "20261113",
+  "financialHash": "4e1527b47dba52a94e2ac0012e162367ddb1ca4c1fc772068f51a196384f8fb9",
   "sectorFinancialHashes": {
     "801764.SI": "fda3f61043cd0962a559b11623d4fa9730f768a9502ce9f0a00273b4c325c0f1",
     "801769.SI": "6733fb95cd9428324cdfdb7b0a91133274d4ac958ae5c71c3459cc51580b2b74",
@@ -12,7 +12,7 @@
     "801766.SI": "67e5e96c2b7cc2ad8f3ae03bc7f85050274eb2892b25456dd1a6496bc348ac44",
     "801995.SI": "756ba0fad04f1d84d63f44ec0625ad6147bdb0b36e5e182d6296172f5cbdef65",
     "801767.SI": "692142dbe83d7856e5132f0c1e9770645e6fdf528f335b41baf1ea570caeac3a",
-    "801768.SI": "5e1e5c4f1451cb2a0c37c1509940c4ddc82b434742241766029f41918242461a"
+    "801768.SI": "b9c07e0ddd47f8ec4ffd734729b45a424279e3ca2288db47af4074759bd6c376"
   },
   "latest": {
     "quarter": "2026Q3",
@@ -22,8 +22,8 @@
     "marketCap": 14370.2582,
     "marketCapObserved": 14370.2582,
     "pe": 34.1,
-    "revenue": 1357.0723690448997,
-    "profit": 65.55683262210002,
+    "revenue": 1357.0723690449,
+    "profit": 65.5568326221,
     "reportedCount": 131,
     "estimatedCount": 0,
     "missingCount": 0,
@@ -123,8 +123,8 @@
       "missingQuarterQuotes": []
     },
     {
-      "code": "801995.SI",
-      "name": "电视广播",
+      "code": "801767.SI",
+      "name": "数字媒体",
       "dailyCount": 5306,
       "firstDate": "20050104",
       "lastDate": "20261110",
@@ -132,8 +132,8 @@
       "missingQuarterQuotes": []
     },
     {
-      "code": "801767.SI",
-      "name": "数字媒体",
+      "code": "801995.SI",
+      "name": "电视广播",
       "dailyCount": 5306,
       "firstDate": "20050104",
       "lastDate": "20261110",

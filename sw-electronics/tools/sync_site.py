@@ -25,6 +25,9 @@ if git(deploy, 'status', '--porcelain', '--', 'sw-electronics', capture=True).st
 if checkout.exists() and git(checkout, 'status', '--porcelain', capture=True).strip():
     sys.exit('work/quanlantu 有未提交修改，请先合并到主编辑目录，避免覆盖。')
 
+# A static date label is not proof of fresh financials. Fail before either push.
+subprocess.run([sys.executable, str(site / 'tools/check_freshness.py')], check=True)
+
 git(deploy, 'push', 'origin', 'main')
 commit = git(deploy, 'subtree', 'split', '--prefix=sw-electronics', capture=True).strip()
 git(deploy, 'push', remote, commit + ':refs/heads/main')

@@ -3,8 +3,8 @@
   "code": "801150.SI",
   "scope": "SW公布市值/PE与财报汇总分离",
   "project2AsOf": "20261110",
-  "financialAsOf": "2026-11-10",
-  "financialHash": "dae6b2ed4b0ebdb51ae18847cc3277b7f44efcda4a9fcd7165fd8ad0fec09db6",
+  "financialAsOf": "20261113",
+  "financialHash": "4e0cab25f88175614540589c5df9d144f310d5d8ef0e760c4f8be522428b3d1a",
   "sectorFinancialHashes": {
     "801151.SI": "01ef5090f1e3062bc04cda642999a0b1f582b06e2bdfca11a241d66a380c2bcc",
     "801153.SI": "7398825a95f146a9b0d8b3c1f5443ee0e9027ce3075409ab9bd7b734afe83c66",
@@ -22,7 +22,7 @@
     "marketCapObserved": 61646.2945,
     "pe": 33.73,
     "revenue": 6401.53025942248,
-    "profit": 557.3832044749396,
+    "profit": 557.3832044749399,
     "reportedCount": 506,
     "estimatedCount": 1,
     "missingCount": 0,
@@ -200,8 +200,8 @@
       ]
     },
     {
-      "code": "801152.SI",
-      "name": "生物制品",
+      "code": "801155.SI",
+      "name": "中药",
       "dailyCount": 3466,
       "firstDate": "20120801",
       "lastDate": "20261110",
@@ -240,8 +240,8 @@
       ]
     },
     {
-      "code": "801155.SI",
-      "name": "中药",
+      "code": "801152.SI",
+      "name": "生物制品",
       "dailyCount": 3466,
       "firstDate": "20120801",
       "lastDate": "20261110",

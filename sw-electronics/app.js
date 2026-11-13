@@ -10,7 +10,7 @@ function rollingFinancialRows(rows){return rows.map((s,i)=>{
 });}
 
 function mountIndustry(root,BASE,sectorData,prefix=''){
-const D=BASE,Q=BASE.series,L=Q.at(-1),official=D.meta.valuationMethod==='sw_daily',isElectronics=D.meta.indexCode==='801080.SI';
+const D=BASE,Q=BASE.series,L=Q.at(-1),official=D.meta.valuationMethod==='sw_daily';
 function withLatest(obj){return obj.latestQuote?[...obj.series,{...obj.series.at(-1),...obj.latestQuote,quarter:'最新',endDate:obj.latestQuote.date,tradeDate:obj.latestQuote.date,isLatest:true}]:obj.series;}
 const S=withLatest(D),LATEST=S.at(-1);
 const GROUPS=sectorData.groups.map(g=>({...g,quarterSeries:g.series,series:withLatest(g)})).sort((a,b)=>(b.series.at(-1).marketCap||0)-(a.series.at(-1).marketCap||0)),$=id=>root.querySelector('#'+CSS.escape(id))||root.querySelector('#'+CSS.escape(prefix+id));
@@ -63,7 +63,7 @@ function focus(s){
  focusedQuarter=S.find(r=>r.quarter===s.quarter)||s;s=displayRows(S)[S.indexOf(focusedQuarter)]||s;
  const pe=`<div class="summary-pe"><span>${official?'申万PE':'PE'}</span><strong>${peText(s)}<small>${s.pe==null?'':' 倍'}</small></strong></div>`;
  const percentile=pePercentileMarkup(S,s,'focus-pe-percentile');
- $('focus-row').innerHTML=`<strong class="focus-quarter">${esc(D.meta.industry)} · ${pointLabel(s)}</strong><div><span>总市值</span><strong>${fmt(s.marketCap==null?null:s.marketCap/10000,2)}<small> 万亿</small></strong></div>${isElectronics?'':pe}<div><span>${financeLabel('营收')}</span><strong>${fmt(s.revenue)}<small> 亿${financeTag(s)}</small></strong></div><div><span>${financeLabel('归母净利')}</span><strong>${fmt(s.profit)}<small> 亿${financeTag(s)}</small></strong></div>${isElectronics?`<div class="valuation-summary">${pe}${percentile}</div>`:percentile}<small class="focus-coverage">${s.isLatest?'财报 '+short(s.financialQuarter)+' · ':''}${s.reportedCount} 家实报${s.estimatedCount?' / '+s.estimatedCount+' 家估算':''}</small>`;
+ $('focus-row').innerHTML=`<strong class="focus-quarter">${esc(D.meta.industry)} · ${pointLabel(s)}</strong><div><span>总市值</span><strong>${fmt(s.marketCap==null?null:s.marketCap/10000,2)}<small> 万亿</small></strong></div><div><span>${financeLabel('营收')}</span><strong>${fmt(s.revenue)}<small> 亿${financeTag(s)}</small></strong></div><div><span>${financeLabel('归母净利')}</span><strong>${fmt(s.profit)}<small> 亿${financeTag(s)}</small></strong></div><div class="valuation-summary">${pe}${percentile}</div><small class="focus-coverage">${s.isLatest?'财报 '+short(s.financialQuarter)+' · ':''}${s.reportedCount} 家实报${s.estimatedCount?' / '+s.estimatedCount+' 家估算':''}</small>`;
 }
 focus(LATEST);
 const C={mv:'#147b76',pe:'#c47a36',rev:'#ccdde4',profit:'#427f93',loss:'#c47b6c'};
@@ -87,7 +87,7 @@ function chartAxes(rows,mini,view){
  const financial=visibleMetrics.revenue||visibleMetrics.profit;
  const finmax=nice(Math.max(0,...visible.map(s=>visibleMetrics.revenue?(s.revenue||0):visibleMetrics.profit?Math.max(0,s.profit||0):0)))*1.17;
  const negative=visibleMetrics.profit?Math.min(0,...visible.map(s=>s.profit||0)):0;
- const labelSpace=visibleMetrics.profit&&showLabels?(isElectronics?(mini?.24:.17):(mini?.18:.12)):0;
+ const labelSpace=visibleMetrics.profit&&showLabels?(mini?.24:.17):0;
  const negRatio=negative<0?Math.max(.08,-negative/finmax*1.25,-negative/finmax+labelSpace):labelSpace;
  const scale=financial?`${visibleMetrics.revenue?'柱':'利润'}：${negRatio?fmt(-finmax*negRatio,0):'0'}—${fmt(finmax,0)}亿元`:'';
  return {scale,finmax,axes:[
@@ -102,9 +102,7 @@ function bars(rows,key,mini,finmax){return rows.map(s=>{
  const color=key==='revenue'?C.rev:key==='profit'?C.profit:C.loss;
  const metric=key==='loss'?'profit':key;
  const label={show:showLabels,position:key==='revenue'?'insideTop':'inside',rotate:last-first>(mini?10:38)?90:0,distance:mini?2:5,color:key==='revenue'?'#4f6e7b':'#fff',fontSize:mini?8:last-first>38?8:10,formatter:fmt(s[metric],0)+financeTag(s)};
- if(key!=='revenue'){label.position='bottom';label.color=key==='loss'?C.loss:C.profit;label.distance=4;
-  if(isElectronics){label.color=key==='loss'?'#8f4435':'#244c60';label.distance=8;label.align=label.rotate?'right':'center';label.verticalAlign=label.rotate?'middle':'top';}
- }
+ if(key!=='revenue'){label.position='bottom';label.color=key==='loss'?'#8f4435':'#244c60';label.distance=8;label.align=label.rotate?'right':'center';label.verticalAlign=label.rotate?'middle':'top';}
  if((key==='profit'&&s.profit<=0)||(key==='loss'&&s.profit>=0))label.show=false;
  if(key==='revenue'&&s.revenue<finmax*.1){label.position='top';label.distance=4;}
  return {value:v,itemStyle:{color,opacity:s.missingCount?.65:1,borderColor:financeTag(s)==='*'?'#aa884f':color,borderWidth:financeTag(s)==='*'?1:0,decal:financeTag(s)==='*'?{symbol:'rect',dashArrayX:[1,0],dashArrayY:[2,4],rotation:Math.PI/4,color:'rgba(137,99,38,.18)'}:undefined},label};
@@ -152,7 +150,7 @@ function tooltipFor(rows,name,main,view){return params=>{
 };}
 function miniSummary(group){
  const s=displayRows(group.series).at(-1),pe=`<span class="summary-pe">${official?'申万PE':'PE'} ${esc(peText(s))}</span>`,percentile=pePercentileMarkup(group.series,s,'mini-pe-percentile');
- return `${isElectronics?'':pe}<span>${esc(financeLabel('营收')+' '+fmt(s.revenue,0)+'亿'+financeTag(s))}</span><span>${esc(financeLabel('净利')+' '+fmt(s.profit,1)+'亿'+financeTag(s))}</span>${isElectronics?`<div class="valuation-summary">${pe}${percentile}</div>`:percentile}`;
+ return `<span>${esc(financeLabel('营收')+' '+fmt(s.revenue,0)+'亿'+financeTag(s))}</span><span>${esc(financeLabel('净利')+' '+fmt(s.profit,1)+'亿'+financeTag(s))}</span><div class="valuation-summary">${pe}${percentile}</div>`;
 }
 function updateChart(instance,rows,name,mini=false,code=''){
  rows=displayRows(rows);
@@ -177,16 +175,16 @@ function prepareOfficialModule(){
  root.querySelector('.table-section thead th:nth-child(2)').innerHTML='申万总市值 <small>亿元</small>';
  root.querySelector('.table-section thead th:nth-child(3)').innerHTML='申万PE <small>倍</small>';
  root.querySelector('.table-section thead th:nth-child(6)').textContent='财务样本数';
- root.querySelector('.method-grid').innerHTML=`<article><h3>与项目2统一的申万行情</h3><p>一级、二级行业市值和PE均直接使用 Tushare sw_daily 的对应申万指数公布值，与项目2使用同一份截至2026-11-10的历史行情快照${D.latestQuote?'；电子另补充截至 '+date(LATEST.tradeDate)+' 的最新行情':''}。市值 total_mv 原单位为万元，除以10000转为亿元；PE直接使用 pe，不用公司财报重算、不把一级PE分摊给二级行业。季度点取该季度最后交易日，缺少当天数据则留空。${D.latestQuote?'最右侧“最新”使用 '+date(LATEST.tradeDate)+' 当天市值和PE；营收、利润沿用2026Q3财报（截至2026-11-10的版本，含原估算）。该柱不是新增一季，最近4季仍仅累计真实的4个季度。':''}</p><p>申万公布总市值与PE是两个独立指标。不能把总市值÷PE认定为实际归母净利润，也不能认为财务柱就是其PE分母。指数权重、利润切换规则与个股汇总可能不同，页面不宣称复现申万内部算法。</p></article><article><h3>财务与公司范围</h3><p class="universe-method"></p><p>申万日行情接口不提供营收或净利润。柱形仍按最新在市SW2021公司归属固定回溯，上市后纳入，汇总全公司合并营业总收入（缺失时营业收入）及归母净利润；不按自由流通比例缩放，也不使用市值÷PE代替财报。与项目2“隐含TTM利润”不是同一指标。固定成分财务存在存续样本偏差，不能称为申万历史成分财务或用于无前视回测。</p><p>公司明细市值与项目2同样使用 daily_basic.total_mv÷10000，即全部普通股股本按A股价估值。含H股股份时并非A股实际市值加港股实际市值；这不是申万指数市值的逐股分拆，不能要求公司金额之和等于申万行业市值。组间按申万二级市值排序，组内按公司总市值排序。公司数是财务样本数，不是已核实的历史指数成分数。</p></article><article><h3>单季度财务与估算</h3><p>Q1取一季报；Q2＝半年报−Q1；Q3＝三季报−半年报；Q4＝年报−三季报。采用截至2026-11-10已披露版本；早期缺报可使用次年调整合并表，存在追溯调整影响。最新季度缺报才使用上年同季营收×最近累计同比倍数，再乘最近累计归母净利率估算并标*；缺少依据则留空，不填零。</p></article>`;
+ root.querySelector('.method-grid').innerHTML=`<article><h3>与项目2统一的申万行情</h3><p>一级、二级行业市值和PE均直接使用 Tushare sw_daily 的对应申万指数公布值，与项目2使用同一份截至2026-11-10的历史行情快照${D.latestQuote?'；另补充截至 '+date(LATEST.tradeDate)+' 的最新行情':''}。市值 total_mv 原单位为万元，除以10000转为亿元；PE直接使用 pe，不用公司财报重算、不把一级PE分摊给二级行业。季度点取该季度最后交易日，缺少当天数据则留空。${D.latestQuote?`最右侧“最新”使用 ${date(LATEST.tradeDate)} 当天市值和PE；营收、利润沿用 ${L.quarter} 财报（已核查至 ${date(D.meta.financialAsOf)}，${L.estimatedCount?'含 '+L.estimatedCount+' 家估算':'无估算'}）。该柱不是新增一季，最近4季只累计4个财务季度。`:''}</p><p>申万公布总市值与PE是两个独立指标。不能把总市值÷PE认定为实际归母净利润，也不能认为财务柱就是其PE分母。指数权重、利润切换规则与个股汇总可能不同，页面不宣称复现申万内部算法。</p></article><article><h3>财务与公司范围</h3><p class="universe-method"></p><p>申万日行情接口不提供营收或净利润。柱形仍按最新在市SW2021公司归属固定回溯，上市后纳入，汇总全公司合并营业总收入（缺失时营业收入）及归母净利润；不按自由流通比例缩放，也不使用市值÷PE代替财报。与项目2“隐含TTM利润”不是同一指标。固定成分财务存在存续样本偏差，不能称为申万历史成分财务或用于无前视回测。</p><p>公司明细市值与项目2同样使用 daily_basic.total_mv÷10000，即全部普通股股本按A股价估值。含H股股份时并非A股实际市值加港股实际市值；这不是申万指数市值的逐股分拆，不能要求公司金额之和等于申万行业市值。组间按申万二级市值排序，组内按公司总市值排序。公司数是财务样本数，不是已核实的历史指数成分数。</p></article><article><h3>单季度财务与估算</h3><p>Q1取一季报；Q2＝半年报−Q1；Q3＝三季报−半年报；Q4＝年报−三季报。采用截至 ${date(D.meta.financialAsOf)} 已披露版本；早期缺报可使用次年调整合并表，存在追溯调整影响。最新季度缺报才使用上年同季营收×最近累计同比倍数，再乘最近累计归母净利率估算并标*；缺少依据则留空，不填零。</p></article>`;
  const reading=root.querySelector('.reading-notes'),links=$('source-links');
- reading.innerHTML=`<div class="industry-data-notes"></div><h3>日度PE分位与时间</h3><p>与项目2采用同一公式：区间内不高于目标PE的有效正日度PE数量÷全部有效正日度PE数量，包含相等值。${D.latestQuote?'选择1/3/5/10/20年且结束为“最新”时，从最新交易日向前推相应整年计算；手动选择季度时，从起始季度首日至选定季末或最新日。':'采用所选起始季度第一天至结束季度最后一天的全部日度样本；'}不使用图中抽样点代替；显示1位小数，项目2卡片通常为整数。PE分位与汇总数值始终显示，颜色为低分位绿、中间黄、高分位红。</p><p>两页只有同一指数、同一观察日期、同一起止日期才可直接对比分位。${D.latestQuote?'电子默认近10年为2016-11-13至2026-11-13，目标为最新日PE；项目2若仍截至2026-11-10，日期不同仍会产生差异。':'本模块默认近10年为2016-10-01至2026-09-30、末值取2026Q3；项目2截至2026-11-10的近10年为2016-11-10至2026-11-10，因此默认分位可不同。'}全部范围或早期区间只使用接口实际可得历史，不补造数据。悬停大图时读取对应点，移出后恢复${D.latestQuote?'最新交易日':'最后一季'}；小图汇总同样取${D.latestQuote?'最新交易日':'最后一季'}。</p><h3>历史覆盖</h3><p class="sw-history-note"></p><p>使用SW2021代码对应的接口历史，早期记录可能沿用旧分类名称及指数延续历史，不宣称2005年已存在2021版分类。官方一级与二级历史各自取数；历史分类变更时，二级市值之和也未必严格等于一级。无申万行情的分类保留空值；有实际财报时仍展示财务柱，无当前公司则显示暂无财务数据。</p><h3>最近4季与图表读法</h3><p>最近4季为当前季及此前连续3季的实际财报汇总，窗口可超出显示区间；不足4季、无上市样本或存在财务缺失时留空。市值和PE取对应季末${D.latestQuote?'或最新交易日':''}的申万值。季度表、公司明细保留单季度口径${D.latestQuote?'；季度表的最新观察行注明财务沿用2026Q3，公司明细及其分组市值仍为2026Q3季末':''}。利润位于柱底，标签在下方；亏损在零线下方。财务柱使用独立亿元刻度，不能读成左侧市值轴。指标开关统一控制大图小图，全部汇总数字始终显示。</p><h3>PE尖峰</h3><p>区间至少8个有效正PE观察点时，同时超过Q3＋3×IQR与中位数3倍的点为候选；仅当超过普通纵轴上限时压缩并用虚线、↑真实值显示。范围内的点保持实线；非正或缺失PE留空、不跨缺口连线。原始PE与日度分位不受尖峰显示影响。</p><h3>数据日期</h3><p>申万历史行情与项目2复用截至2026-11-10的静态快照${D.latestQuote?'，电子最新观察点补充至 '+date(LATEST.tradeDate):''}；图中最新完整财报季度为2026Q3。财报汇总也截至2026-11-10，不自动更新。2005年行情补查于2026-11-13，补查不代表财报日期更新。</p>`;
+ reading.innerHTML=`<div class="industry-data-notes"></div><h3>日度PE分位与时间</h3><p>与项目2采用同一公式：区间内不高于目标PE的有效正日度PE数量÷全部有效正日度PE数量，包含相等值。${D.latestQuote?'选择1/3/5/10/20年且结束为“最新”时，从最新交易日向前推相应整年计算；手动选择季度时，从起始季度首日至选定季末或最新日。':'采用所选起始季度第一天至结束季度最后一天的全部日度样本；'}不使用图中抽样点代替；显示1位小数，项目2卡片通常为整数。PE分位与汇总数值始终显示，颜色为低分位绿、中间黄、高分位红。</p><p>两页只有同一指数、同一观察日期、同一起止日期才可直接对比分位。${D.latestQuote?'本模块默认近10年从最新交易日向前推10整年，目标为最新日PE；项目2若仍截至2026-11-10，日期不同仍会产生差异。':'本模块默认近10年为2016-10-01至2026-09-30、末值取2026Q3；项目2截至2026-11-10的近10年为2016-11-10至2026-11-10，因此默认分位可不同。'}全部范围或早期区间只使用接口实际可得历史，不补造数据。悬停大图时读取对应点，移出后恢复${D.latestQuote?'最新交易日':'最后一季'}；小图汇总同样取${D.latestQuote?'最新交易日':'最后一季'}。</p><h3>历史覆盖</h3><p class="sw-history-note"></p><p>使用SW2021代码对应的接口历史，早期记录可能沿用旧分类名称及指数延续历史，不宣称2005年已存在2021版分类。官方一级与二级历史各自取数；历史分类变更时，二级市值之和也未必严格等于一级。无申万行情的分类保留空值；有实际财报时仍展示财务柱，无当前公司则显示暂无财务数据。</p><h3>最近4季与图表读法</h3><p>最近4季为当前季及此前连续3季的实际财报汇总，窗口可超出显示区间；不足4季、无上市样本或存在财务缺失时留空。市值和PE取对应季末${D.latestQuote?'或最新交易日':''}的申万值。季度表、公司明细保留单季度口径${D.latestQuote?`；季度表的最新观察行注明财务沿用 ${L.quarter}，公司明细及其分组市值取最新可得报价，停牌公司标注实际报价日`:''}。利润位于柱底，标签在下方；亏损在零线下方。财务柱使用独立亿元刻度，不能读成左侧市值轴。指标开关统一控制大图小图，全部汇总数字始终显示。</p><h3>PE尖峰</h3><p>区间至少8个有效正PE观察点时，同时超过Q3＋3×IQR与中位数3倍的点为候选；仅当超过普通纵轴上限时压缩并用虚线、↑真实值显示。范围内的点保持实线；非正或缺失PE留空、不跨缺口连线。原始PE与日度分位不受尖峰显示影响。</p><h3>数据日期</h3><p>申万历史行情与项目2复用截至2026-11-10的静态快照${D.latestQuote?'，最新观察点补充至 '+date(LATEST.tradeDate):''}；财报及在市成分已核查至 ${date(D.meta.financialAsOf)}，最新统计季度为 ${L.quarter}。每次刷新重新查询财报及披露状态；已披露仍估算、查询缺失或核查记录过期时阻止发布。当前为静态快照，不会随交易实时更新。2005年行情补查日期不等于财报日期。</p>`;
  reading.appendChild(links);
  root.querySelector('.quality-details summary').innerHTML='逐季度查看财务覆盖与申万行情日期 <span>＋</span>';
  root.querySelector('.quality-details thead').innerHTML='<tr><th>季度</th><th>财务覆盖</th><th>申万行情日</th><th>公司报价沿用</th><th>需要留意</th></tr>';
 }
 function renderOfficialCoverage(){
  const universe=root.querySelector('.universe-method');universe.textContent=`${D.meta.industry}（${D.meta.indexCode}）财务样本共 ${D.meta.universeCount} 家当前在市公司，每季仅计入已上市公司；北交所最早从2021-11-15纳入。最新季度 ${L.companies} 家，其中 ${L.reportedCount} 家实报、${L.estimatedCount} 家估算${L.missingCount?`、${L.missingCount} 家资料不足`:""}。`;
- root.querySelector('.sw-history-note').textContent=[{name:D.meta.industry,rows:D.valuationDaily},...GROUPS.map(g=>({name:g.name,rows:g.valuationDaily}))].map(g=>g.name+'：'+(g.rows.length?date(g.rows[0][0])+' 至 '+date(g.rows[g.rows.length-1][0]):'暂无申万行情')).join('；')+'。覆盖外和缺失日的市值/PE留空，不沿用历史末值；财报柱按实际资料展示。';
+ root.querySelector('.sw-history-note').textContent=[{name:D.meta.industry,code:D.meta.indexCode,rows:D.valuationDaily},...GROUPS.map(g=>({name:g.name,code:g.code,rows:g.valuationDaily}))].map(g=>g.name+'：'+(g.rows.length?date(g.rows[0][0])+' 至 '+date((dailyByCode.get(g.code)||g.rows).at(-1)[0]):'暂无申万行情')).join('；')+'。覆盖外和缺失日的市值/PE留空，不沿用历史末值；财报柱按实际资料展示。';
  root.querySelector('.industry-data-notes').innerHTML=D.meta.indexCode==='801080.SI'?'<h3>电子财务历史</h3><p>智新电子从北交所开市日2021-11-15纳入财务样本。此前自算整体法的2009Q2高PE已不用于该图，2009年申万行情接口无值，保持缺口。</p>':D.meta.indexCode==='801780.SI'?'<h3>银行财务历史</h3><p>2007Q2中信银行缺少Q1差分依据，单季度财务显示已知合计并标†；相应最近4季窗口留空。银行营收按利润表口径，贷款和存款余额不计入营收。</p>':'';
  $('estimate-panel').innerHTML=D.estimates.length?`<h3>最新季度估算</h3>${D.estimates.map(e=>`<p>${esc(e.name)} ${esc(e.code)}：单季营收 ${fmt(e.revenue,2)} 亿元，归母净利润 ${fmt(e.profit,2)} 亿元；参考期 ${esc(e.referencePeriod)}，营收同比 ${pct(e.growth,2)}，归母净利率 ${pct(e.margin,2)}。估算只用于财务柱，不用于申万PE。</p>`).join('')}`:`<h3>最新季度估算</h3><p>${L.reportedCount} 家实报，无估算${L.missingCount?"；"+L.missingCount+" 家资料不足":""}。</p>`;
  if(L.missingCount)$('estimate-panel').insertAdjacentHTML('beforeend',`<p>资料不足、未作估算：${D.latestCompanies.filter(r=>r.status==='missing').map(r=>esc(r.name)+' '+esc(r.code)).join('、')}。保留缺失，不填零；受影响的最近4季窗口留空。</p>`);
@@ -213,14 +211,14 @@ const companySector=new Map(GROUPS.flatMap(g=>g.codes.map(code=>[code,g])));
 function renderCompanies(){
  const query=$('company-search').value.trim().toLowerCase(),only=$('estimated-only').checked;
  const rows=D.latestCompanies.filter(r=>(!only||r.status==='estimated')&&(!query||(r.name+r.code+(companySector.get(r.code)?.name||'')).toLowerCase().includes(query)));
- $('company-count').textContent=`${short(L.quarter)} · 显示 ${rows.length} / ${D.latestCompanies.length} 家 · 二级行业及公司按市值降序`;
- const companyGroups=[...GROUPS].sort((a,b)=>(b.quarterSeries.at(-1).marketCap||0)-(a.quarterSeries.at(-1).marketCap||0));
+ $('company-count').textContent=`财报 ${short(L.quarter)} · 市值 ${date(D.meta.companyQuoteAsOf)} · 显示 ${rows.length} / ${D.latestCompanies.length} 家 · 二级行业及公司按市值降序`;
+ const companyGroups=[...GROUPS].sort((a,b)=>(b.series.at(-1).marketCap||0)-(a.series.at(-1).marketCap||0));
  const sections=companyGroups.map(group=>({group,rows:rows.filter(r=>companySector.get(r.code)?.code===group.code)}));
  const unassigned=rows.filter(r=>!companySector.has(r.code));if(unassigned.length)sections.push({group:{code:'unassigned',name:'未分类',series:[]},rows:unassigned});
  $('company-body').innerHTML=sections.filter(section=>section.rows.length).map(({group,rows:groupRows})=>{
   groupRows.sort((a,b)=>(b.marketCap??-Infinity)-(a.marketCap??-Infinity)||a.code.localeCompare(b.code));
-  const header=`<tr class="company-group" data-company-group="${esc(group.code)}"><th colspan="7" scope="rowgroup"><span>${esc(group.name)}</span><small>${groupRows.length} 家</small><strong>${official?'申万行业市值':'行业总市值'} ${fmt(group.quarterSeries?.at(-1)?.marketCap,2)} 亿</strong></th></tr>`;
-  return header+groupRows.map(r=>`<tr data-company-code="${esc(r.code)}" data-company-sector="${esc(group.code)}" class="${r.status==='estimated'?'estimate-row':''}"><td>${esc(r.name)}</td><td>${esc(r.code)}</td><td class="company-market-cap" title="${short(L.quarter)}季末公司总股本×A股价${r.quoteCarried?'；沿用 '+date(r.quoteDate):''}">${fmt(r.marketCap,2)}</td><td>${fmt(r.revenue,2)}</td><td>${fmt(r.profit,2)}</td><td>${date(r.announcementDate)}</td><td><span class="tag ${r.status==='estimated'?'estimate':r.status==='missing'?'partial':''}">${r.status==='estimated'?'估算':r.status==='missing'?'财务缺失':'已披露'}</span></td></tr>`).join('');
+  const header=`<tr class="company-group" data-company-group="${esc(group.code)}"><th colspan="7" scope="rowgroup"><span>${esc(group.name)}</span><small>${groupRows.length} 家</small><strong>${official?'申万行业市值':'行业总市值'} ${fmt(group.series?.at(-1)?.marketCap,2)} 亿</strong></th></tr>`;
+  return header+groupRows.map(r=>`<tr data-company-code="${esc(r.code)}" data-company-sector="${esc(group.code)}" class="${r.status==='estimated'?'estimate-row':''}"><td>${esc(r.name)}</td><td>${esc(r.code)}</td><td class="company-market-cap" title="${date(r.quoteDate)} 公司总股本×A股价${r.quoteCarried?'；沿用 '+date(r.quoteDate):''}">${fmt(r.marketCap,2)}</td><td>${fmt(r.revenue,2)}</td><td>${fmt(r.profit,2)}</td><td>${date(r.announcementDate)}</td><td><span class="tag ${r.status==='estimated'?'estimate':r.status==='missing'?'partial':''}">${r.status==='estimated'?'估算':r.status==='missing'?'财务缺失':'已披露'}</span></td></tr>`).join('');
  }).join('')||'<tr><td colspan="7" style="text-align:center">没有匹配的公司</td></tr>';
 }
 $('company-search').addEventListener('input',renderCompanies);$('estimated-only').addEventListener('change',renderCompanies);
@@ -297,7 +295,7 @@ return api;
 const moduleTemplate=document.getElementById('industry-template');
 const industryList=document.getElementById('industry-list');
 const industryLoads=new Map();
-const assetVersion='20261113-electronics-layout';
+const assetVersion='refresh-202611132154290800';
 function loadIndustryJSON(path){return fetch(path+'?v='+assetVersion).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();});}
 function activateIndustry(root){
  const key=root.dataset.industry;if(industryLoads.has(key))return industryLoads.get(key);

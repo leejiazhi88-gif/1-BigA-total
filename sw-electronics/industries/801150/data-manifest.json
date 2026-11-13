@@ -1,6 +1,6 @@
 {
   "meta": {
-    "asOf": "2026-11-10",
+    "asOf": "2026-11-13",
     "industry": "医药生物",
     "indexCode": "801150.SI",
     "classification": "申万2021版一级",
@@ -134,7 +134,12 @@
     "percentileMethod": "所选起始季度首日至结束季度末日的全部有效正日度PE；含相等值；与项目2同源同公式，日期范围需一致",
     "companyMarketCapMethod": "daily_basic.total_mv÷10000，全部普通股按A股价格估值，与项目2公司明细同字段；不等于申万行业市值分拆",
     "financialVersusValuation": "财务柱是全公司实际合并报表汇总，不是指数PE分母；不以公布市值÷PE反推真实利润",
-    "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/"
+    "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/",
+    "financialAsOf": "20261113",
+    "universeAsOf": "20261113",
+    "companyQuoteAsOf": "20261113",
+    "latestQuoteDate": "20261113",
+    "latestQuoteMethod": "最右侧最新交易日观察点；市值/PE使用同日申万值，财务沿用最近财报季度；最近4季不重复计入该观察点"
   },
   "rawIncomeRows": 53724,
   "financialCompanyQuarterRows": 22735,
@@ -191,8 +196,8 @@
     "code": "801150.SI",
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
-    "financialAsOf": "2026-11-10",
-    "financialHash": "dae6b2ed4b0ebdb51ae18847cc3277b7f44efcda4a9fcd7165fd8ad0fec09db6",
+    "financialAsOf": "20261113",
+    "financialHash": "4e0cab25f88175614540589c5df9d144f310d5d8ef0e760c4f8be522428b3d1a",
     "sectorFinancialHashes": {
       "801151.SI": "01ef5090f1e3062bc04cda642999a0b1f582b06e2bdfca11a241d66a380c2bcc",
       "801153.SI": "7398825a95f146a9b0d8b3c1f5443ee0e9027ce3075409ab9bd7b734afe83c66",
@@ -210,7 +215,7 @@
       "marketCapObserved": 61646.2945,
       "pe": 33.73,
       "revenue": 6401.53025942248,
-      "profit": 557.3832044749396,
+      "profit": 557.3832044749399,
       "reportedCount": 506,
       "estimatedCount": 1,
       "missingCount": 0,
@@ -388,8 +393,8 @@
         ]
       },
       {
-        "code": "801152.SI",
-        "name": "生物制品",
+        "code": "801155.SI",
+        "name": "中药",
         "dailyCount": 3466,
         "firstDate": "20120801",
         "lastDate": "20261110",
@@ -428,8 +433,8 @@
         ]
       },
       {
-        "code": "801155.SI",
-        "name": "中药",
+        "code": "801152.SI",
+        "name": "生物制品",
         "dailyCount": 3466,
         "firstDate": "20120801",
         "lastDate": "20261110",
@@ -509,7 +514,7 @@
       }
     ]
   },
-  "collectionScopeNote": "既有财报与daily_basic查询用于财务及公司明细；现行行业行情源为sw-source.json。",
+  "collectionScopeNote": "历史取数统计与旧公司估值审计仅作历史资料；本次新查询见项目根refresh-source.json.gz，核查与哈希见freshness-audit.json。",
   "industryValuationCollection": {
     "api": "sw_daily",
     "snapshot": "20261110",
@@ -545,5 +550,113 @@
       ]
     ]
   },
-  "validationScopeNote": "既有validation中的market字段仅核验公司报价；申万行情覆盖见valuationAlignment。"
+  "validationScopeNote": "既有validation中的market字段仅核验公司报价；申万行情覆盖见valuationAlignment。",
+  "latestQuote": {
+    "sourceFile": "latest-quotes-source.json",
+    "date": "20261113",
+    "financialSnapshot": "2026-11-13",
+    "quarterlySeriesUnchanged": true,
+    "indices": [
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801150.SI",
+        "marketCap": 57577.5571,
+        "marketCapObserved": 57577.5571,
+        "pe": 29.62,
+        "peRaw": 29.62,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801151.SI",
+        "marketCap": 18231.4585,
+        "marketCapObserved": 18231.4585,
+        "pe": 32.54,
+        "peRaw": 32.54,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801153.SI",
+        "marketCap": 12607.2996,
+        "marketCapObserved": 12607.2996,
+        "pe": 32.36,
+        "peRaw": 32.36,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801156.SI",
+        "marketCap": 9802.129,
+        "marketCapObserved": 9802.129,
+        "pe": 26.7,
+        "peRaw": 26.7,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801155.SI",
+        "marketCap": 7520.1165,
+        "marketCapObserved": 7520.1165,
+        "pe": 24.1,
+        "peRaw": 24.1,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801152.SI",
+        "marketCap": 6436.0102,
+        "marketCapObserved": 6436.0102,
+        "pe": 40.13,
+        "peRaw": 40.13,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801154.SI",
+        "marketCap": 2980.5433,
+        "marketCapObserved": 2980.5433,
+        "pe": 19.54,
+        "peRaw": 19.54,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      }
+    ]
+  },
+  "currentRefresh": {
+    "sourceFile": "../../refresh-source.json.gz",
+    "financialAsOf": "20261113",
+    "universeAsOf": "20261113",
+    "companyQuoteAsOf": "20261113",
+    "estimatedCount": 1,
+    "missingCount": 0,
+    "auditFile": "freshness-audit.json (project root)"
+  }
 }

@@ -3,8 +3,8 @@
   "code": "801040.SI",
   "scope": "SW公布市值/PE与财报汇总分离",
   "project2AsOf": "20261110",
-  "financialAsOf": "2026-11-10",
-  "financialHash": "95a63bc2c43bb82ab09fa81f39142c1cd8de5c9ce3b8eeea96315b0731d61963",
+  "financialAsOf": "20261113",
+  "financialHash": "cfb7979182245106caa2e9e3f08de1b3704500ecda395de246c4bc0f31d763f8",
   "sectorFinancialHashes": {
     "801044.SI": "893688f60bcbb46bee11e36147c668acd6867ade246da058fb9b7391f3208c1b",
     "801045.SI": "2473ec904cd94b74fef2f35ac0cac74566d1f204dc3a48cf892268a49cbdeb6b",

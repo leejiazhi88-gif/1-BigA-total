@@ -3412,8 +3412,8 @@
     "code": "801890.SI",
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
-    "financialAsOf": "2026-11-10",
-    "financialHash": "2708964ef8d742711ebbe5779a8ecaee0b31bfb547e3817e502f323b3505303f",
+    "financialAsOf": "20261113",
+    "financialHash": "a7650fdc730516c49f73193ee9da670d14df540ddd4035bc22f35d53fd10d13e",
     "sectorFinancialHashes": {
       "801072.SI": "3a49668056361dc0f16f583e764c21005d55e0322af5ff8441f55d83053e0b27",
       "801074.SI": "770fb1951f2daacf02db6997daeb39b3977f8ac0682ddf95af265527a478ddd0",
@@ -3429,8 +3429,8 @@
       "marketCap": 61238.8755,
       "marketCapObserved": 61238.8755,
       "pe": 41.09,
-      "revenue": 5854.667074339402,
-      "profit": 363.04565783679993,
+      "revenue": 5854.6670743394,
+      "profit": 363.0456578368,
       "reportedCount": 618,
       "estimatedCount": 0,
       "missingCount": 0,
@@ -3534,6 +3534,15 @@
         ]
       },
       {
+        "code": "801078.SI",
+        "name": "自动化设备",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
         "code": "801074.SI",
         "name": "专用设备",
         "dailyCount": 3466,
@@ -3572,15 +3581,6 @@
           "2012Q1",
           "2012Q2"
         ]
-      },
-      {
-        "code": "801078.SI",
-        "name": "自动化设备",
-        "dailyCount": 5306,
-        "firstDate": "20050104",
-        "lastDate": "20261110",
-        "quarterQuotes": 87,
-        "missingQuarterQuotes": []
       },
       {
         "code": "801077.SI",

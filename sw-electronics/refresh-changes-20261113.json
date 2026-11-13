@@ -1,0 +1,796 @@
+{
+  "checkedThrough": "20261113",
+  "quoteDate": "20261113",
+  "financialPeriod": "20260930",
+  "fetchedAt": "2026-11-13T21:28:37+08:00",
+  "requests": 244,
+  "modules": 31,
+  "indices": 165,
+  "activeCompanies": 5579,
+  "removedCodes": [
+    "002731.SZ"
+  ],
+  "addedCodes": [],
+  "financialChanges": [
+    {
+      "code": "001287.SZ",
+      "name": "中电港",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "174.7035528266",
+        "profit": "0.8455505311",
+        "status": "reported",
+        "announcementDate": "20250429",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 122.20619333440001,
+        "profit": 0.8455505311,
+        "status": "reported",
+        "announcementDate": "20260428",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "001287.SZ",
+      "name": "中电港",
+      "industry": "电子",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "103.71339080740002",
+        "profit": "0.9632417349",
+        "status": "reported",
+        "announcementDate": "20260428",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 156.21075029960002,
+        "profit": 0.9632417349,
+        "status": "reported",
+        "announcementDate": "20260821",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "002655.SZ",
+      "name": "共达电声",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "2.9057275794",
+        "profit": "0.21852519129999998",
+        "status": "reported",
+        "announcementDate": "20250425",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 2.90802779,
+        "profit": 0.2068874276,
+        "status": "reported",
+        "announcementDate": "20260417",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "002655.SZ",
+      "name": "共达电声",
+      "industry": "电子",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "3.6245774631",
+        "profit": "0.21225161099999998",
+        "status": "reported",
+        "announcementDate": "20250815",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 3.6222772525,
+        "profit": 0.22388937469999995,
+        "status": "reported",
+        "announcementDate": "20260815",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "002922.SZ",
+      "name": "伊戈尔",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "10.8369827248",
+        "profit": "0.42017425770000005",
+        "status": "reported",
+        "announcementDate": "20250429",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 10.8369827248,
+        "profit": 0.4199483993,
+        "status": "reported",
+        "announcementDate": "20260429",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "002922.SZ",
+      "name": "伊戈尔",
+      "industry": "电子",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "13.832158577800001",
+        "profit": "0.625420075",
+        "status": "reported",
+        "announcementDate": "20250828",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 13.832158577800001,
+        "profit": 0.6256459334,
+        "status": "reported",
+        "announcementDate": "20260821",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "300301.SZ",
+      "name": "ST长方",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "1.1787584",
+        "profit": "-0.2395586954",
+        "status": "reported",
+        "announcementDate": "20250428",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 1.1787584,
+        "profit": -0.2277995118,
+        "status": "reported",
+        "announcementDate": "20260429",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "300301.SZ",
+      "name": "ST长方",
+      "industry": "电子",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "0.9512106659",
+        "profit": "-0.3019801157",
+        "status": "reported",
+        "announcementDate": "20250828",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 0.9512106659,
+        "profit": -0.3137392993,
+        "status": "reported",
+        "announcementDate": "20260826",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "300831.SZ",
+      "name": "ST派瑞",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "0.3366367754",
+        "profit": "0.1522196416",
+        "status": "reported",
+        "announcementDate": "20250429",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 0.1094863329,
+        "profit": 0.0067223334,
+        "status": "reported",
+        "announcementDate": "20260425",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "300831.SZ",
+      "name": "ST派瑞",
+      "industry": "电子",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "0.28142257270000004",
+        "profit": "0.0035340462999999896",
+        "status": "reported",
+        "announcementDate": "20251226",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 0.5085730152,
+        "profit": 0.1490313545,
+        "status": "reported",
+        "announcementDate": "20260829",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "301297.SZ",
+      "name": "富乐德",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "2.1422119481",
+        "profit": "0.28895897579999996",
+        "status": "reported",
+        "announcementDate": "20250430",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 7.379802639299999,
+        "profit": 0.6625572424,
+        "status": "reported",
+        "announcementDate": "20260429",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "301297.SZ",
+      "name": "富乐德",
+      "industry": "电子",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "2.2699515137",
+        "profit": "0.29376764450000004",
+        "status": "reported",
+        "announcementDate": "20250830",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 7.1680056661,
+        "profit": 0.4838772043,
+        "status": "reported",
+        "announcementDate": "20260825",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "301297.SZ",
+      "name": "富乐德",
+      "industry": "电子",
+      "quarter": "2025Q3",
+      "before": {
+        "revenue": "17.0440164171",
+        "profit": "1.5253357957",
+        "status": "reported",
+        "announcementDate": "20251024",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 6.908371573500001,
+        "profit": 0.9616279692999999,
+        "status": "reported",
+        "announcementDate": "20261030",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "301321.SZ",
+      "name": "翰博高新",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "7.286275767899999",
+        "profit": "-0.36000804880000004",
+        "status": "reported",
+        "announcementDate": "20250429",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 7.286275767899999,
+        "profit": -0.3600081221,
+        "status": "reported",
+        "announcementDate": "20260425",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "301321.SZ",
+      "name": "翰博高新",
+      "industry": "电子",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "8.2566399919",
+        "profit": "0.09551365180000003",
+        "status": "reported",
+        "announcementDate": "20250822",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 8.2566399919,
+        "profit": 0.0955118604,
+        "status": "reported",
+        "announcementDate": "20260822",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "301321.SZ",
+      "name": "翰博高新",
+      "industry": "电子",
+      "quarter": "2025Q3",
+      "before": {
+        "revenue": "8.697149162800002",
+        "profit": "0.1766249843",
+        "status": "reported",
+        "announcementDate": "20251027",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 8.697149162800002,
+        "profit": 0.17662502150000003,
+        "status": "reported",
+        "announcementDate": "20261029",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "301321.SZ",
+      "name": "翰博高新",
+      "industry": "电子",
+      "quarter": "2025Q4",
+      "before": {
+        "revenue": "8.528753440099997",
+        "profit": "-0.8800906726000001",
+        "status": "reported",
+        "announcementDate": "20260425",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 8.528753440099997,
+        "profit": -0.8800888451000001,
+        "status": "reported",
+        "announcementDate": "20260425",
+        "reportType": "1"
+      }
+    },
+    {
+      "code": "301379.SZ",
+      "name": "天山电子",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "3.9461412922",
+        "profit": "0.35944350159999994",
+        "status": "reported",
+        "announcementDate": "20250428",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 3.9461412922,
+        "profit": 0.3583563321,
+        "status": "reported",
+        "announcementDate": "20260427",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "301379.SZ",
+      "name": "天山电子",
+      "industry": "电子",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "4.611431490799999",
+        "profit": "0.38273945380000013",
+        "status": "reported",
+        "announcementDate": "20260112",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 4.611431490799999,
+        "profit": 0.38382662330000006,
+        "status": "reported",
+        "announcementDate": "20260829",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "600071.SH",
+      "name": "凤凰光学",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "3.3457160031",
+        "profit": "0.037521284700000004",
+        "status": "reported",
+        "announcementDate": "20250430",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 3.5432148068,
+        "profit": 0.054436221900000005,
+        "status": "reported",
+        "announcementDate": "20260430",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "600071.SH",
+      "name": "凤凰光学",
+      "industry": "电子",
+      "quarter": "2025Q4",
+      "before": {
+        "revenue": "4.521611230300002",
+        "profit": "0.050120247900000026",
+        "status": "reported",
+        "announcementDate": "20260421",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 4.324112426600001,
+        "profit": 0.033205310700000004,
+        "status": "reported",
+        "announcementDate": "20260421",
+        "reportType": "1"
+      }
+    },
+    {
+      "code": "603685.SH",
+      "name": "晨丰科技",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "2.5892728973",
+        "profit": "-0.0356706033",
+        "status": "reported",
+        "announcementDate": "20250429",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 2.5892728973,
+        "profit": -0.0486896712,
+        "status": "reported",
+        "announcementDate": "20260427",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "603685.SH",
+      "name": "晨丰科技",
+      "industry": "电子",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "3.2131384923",
+        "profit": "0.1743353133",
+        "status": "reported",
+        "announcementDate": "20250828",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 3.2131384923,
+        "profit": 0.1873543812,
+        "status": "reported",
+        "announcementDate": "20260828",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "603690.SH",
+      "name": "至纯科技",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "7.2767934012",
+        "profit": "0.19016075940000002",
+        "status": "reported",
+        "announcementDate": "20250429",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 7.2767934012,
+        "profit": -0.23696476809999997,
+        "status": "reported",
+        "announcementDate": "20260430",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "603690.SH",
+      "name": "至纯科技",
+      "industry": "电子",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "8.7997615107",
+        "profit": "-0.5441143528",
+        "status": "reported",
+        "announcementDate": "20260430",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 8.7997615107,
+        "profit": -0.11698882530000004,
+        "status": "reported",
+        "announcementDate": "20260825",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "603989.SH",
+      "name": "艾华集团",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "9.4108415607",
+        "profit": "0.7154704479",
+        "status": "reported",
+        "announcementDate": "20250430",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 9.4380492519,
+        "profit": 0.6942895399,
+        "status": "reported",
+        "announcementDate": "20260430",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "603989.SH",
+      "name": "艾华集团",
+      "industry": "电子",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "10.201394327999997",
+        "profit": "0.7618519302999999",
+        "status": "reported",
+        "announcementDate": "20250830",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 10.2416668503,
+        "profit": 0.7538158178000002,
+        "status": "reported",
+        "announcementDate": "20260829",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "603989.SH",
+      "name": "艾华集团",
+      "industry": "电子",
+      "quarter": "2025Q3",
+      "before": {
+        "revenue": "9.824646299600001",
+        "profit": "0.7356119483000001",
+        "status": "reported",
+        "announcementDate": "20251031",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 9.916932524399998,
+        "profit": 0.7707635782999999,
+        "status": "reported",
+        "announcementDate": "20261031",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "603989.SH",
+      "name": "艾华集团",
+      "industry": "电子",
+      "quarter": "2025Q4",
+      "before": {
+        "revenue": "10.2784322967",
+        "profit": "0.43728393629999995",
+        "status": "reported",
+        "announcementDate": "20260430",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 10.118665858400002,
+        "profit": 0.4313493268000001,
+        "status": "reported",
+        "announcementDate": "20260430",
+        "reportType": "1"
+      }
+    },
+    {
+      "code": "688347.SH",
+      "name": "华虹宏力",
+      "industry": "电子",
+      "quarter": "2025Q3",
+      "before": {
+        "revenue": "45.65736161090001",
+        "profit": "1.7695292591",
+        "status": "reported",
+        "announcementDate": "20251107",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 82.99734936170002,
+        "profit": 5.9867239787,
+        "status": "reported",
+        "announcementDate": "20261106",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "688347.SH",
+      "name": "华虹宏力",
+      "industry": "电子",
+      "quarter": "2025Q4",
+      "before": {
+        "revenue": "47.08057592159998",
+        "profit": "1.2534313506",
+        "status": "reported",
+        "announcementDate": "20260327",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 9.74058817079998,
+        "profit": -2.9637633690000005,
+        "status": "reported",
+        "announcementDate": "20260327",
+        "reportType": "1"
+      }
+    },
+    {
+      "code": "688432.SH",
+      "name": "有研硅",
+      "industry": "电子",
+      "quarter": "2025Q1",
+      "before": {
+        "revenue": "2.3082436790000003",
+        "profit": "0.49079915630000004",
+        "status": "reported",
+        "announcementDate": "20250424",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 2.6592644986000002,
+        "profit": 0.5080824536999999,
+        "status": "reported",
+        "announcementDate": "20260429",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "688432.SH",
+      "name": "有研硅",
+      "industry": "电子",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "2.6009056030999997",
+        "profit": "0.5695483073",
+        "status": "reported",
+        "announcementDate": "20250814",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 2.8257433217999997,
+        "profit": 0.5485366857,
+        "status": "reported",
+        "announcementDate": "20260814",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "688432.SH",
+      "name": "有研硅",
+      "industry": "电子",
+      "quarter": "2025Q3",
+      "before": {
+        "revenue": "2.5565138854000002",
+        "profit": "0.5008328445",
+        "status": "reported",
+        "announcementDate": "20251028",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 2.8618004119000005,
+        "profit": 0.4848347322,
+        "status": "reported",
+        "announcementDate": "20261029",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "688432.SH",
+      "name": "有研硅",
+      "industry": "电子",
+      "quarter": "2025Q4",
+      "before": {
+        "revenue": "2.5867940773",
+        "profit": "0.5316260678999999",
+        "status": "reported",
+        "announcementDate": "20260327",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 1.7056490125,
+        "profit": 0.5513525043999999,
+        "status": "reported",
+        "announcementDate": "20260327",
+        "reportType": "1"
+      }
+    },
+    {
+      "code": "688981.SH",
+      "name": "中芯国际",
+      "industry": "电子",
+      "quarter": "2026Q3",
+      "before": {
+        "revenue": "204.97991168407253",
+        "profit": "23.702106537917327",
+        "status": "estimated",
+        "announcementDate": "",
+        "reportType": ""
+      },
+      "after": {
+        "revenue": 219.82935,
+        "profit": 28.46764,
+        "status": "reported",
+        "announcementDate": "20261113",
+        "reportType": "1"
+      }
+    },
+    {
+      "code": "600880.SH",
+      "name": "博瑞传播",
+      "industry": "社会服务",
+      "quarter": "2025Q2",
+      "before": {
+        "revenue": "1.0156761400999998",
+        "profit": "0.0325271462",
+        "status": "reported",
+        "announcementDate": "20260827",
+        "reportType": "1"
+      },
+      "after": {
+        "revenue": 1.0714285433,
+        "profit": 0.0160841862,
+        "status": "reported",
+        "announcementDate": "20260827",
+        "reportType": "4"
+      }
+    },
+    {
+      "code": "600880.SH",
+      "name": "博瑞传播",
+      "industry": "社会服务",
+      "quarter": "2025Q3",
+      "before": {
+        "revenue": "1.0566985043000001",
+        "profit": "-0.052985838599999995",
+        "status": "reported",
+        "announcementDate": "20261031",
+        "reportType": "4"
+      },
+      "after": {
+        "revenue": 1.0009461011,
+        "profit": -0.0365428786,
+        "status": "reported",
+        "announcementDate": "20261031",
+        "reportType": "4"
+      }
+    }
+  ],
+  "stillPending": [
+    {
+      "code": "688613.SH",
+      "name": "奥精医疗",
+      "industry": "医药生物",
+      "status": "estimated",
+      "disclosure": [
+        {
+          "ts_code": "688613.SH",
+          "ann_date": "20260924",
+          "end_date": "20260930",
+          "pre_date": "20261031",
+          "actual_date": null
+        }
+      ]
+    }
+  ],
+  "sourceFile": "refresh-source.json.gz",
+  "verifiedFinancialRows": 38133,
+  "recordScope": "首次全量刷新相对2026-11-10快照的财务变化记录；现行哈希及核查以freshness-audit.json为准"
+}

@@ -3,14 +3,14 @@
   "code": "801780.SI",
   "scope": "SW公布市值/PE与财报汇总分离",
   "project2AsOf": "20261110",
-  "financialAsOf": "2026-11-10",
-  "financialHash": "96533939fa7120b8bc487926dc15c05176a7d4e1484a2daa62707fa13d1eb10d",
+  "financialAsOf": "20261113",
+  "financialHash": "fce3bb08c76a7a2b7adf5a3c63ea38cd0f99432d1dbdb2daafed6540190842fa",
   "sectorFinancialHashes": {
     "801782.SI": "34db4dbbc9e0b40c83244bc8e6f28004c90856de71c447a300d6b2fa8fe5ea60",
     "801783.SI": "fcba57459ff68d0976ea99bea200c64c7d6b57c4eb08d762f75ff575676007f0",
     "801784.SI": "e882cc73f778d6e8dd18a64f97ba77c35e0e4824aca76733e74e6d5ea4192e8f",
     "801785.SI": "2db1c273894d615aaf47eb792dd084ae55f696e4820d9699b3e177cced47f5f8",
-    "801786.SI": "5e1e5c4f1451cb2a0c37c1509940c4ddc82b434742241766029f41918242461a"
+    "801786.SI": "b9c07e0ddd47f8ec4ffd734729b45a424279e3ca2288db47af4074759bd6c376"
   },
   "latest": {
     "quarter": "2026Q3",

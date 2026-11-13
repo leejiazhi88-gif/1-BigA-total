@@ -1,6 +1,6 @@
 {
   "meta": {
-    "asOf": "2026-11-10",
+    "asOf": "2026-11-13",
     "industry": "计算机",
     "indexCode": "801750.SI",
     "classification": "申万2021版一级",
@@ -142,7 +142,12 @@
     "percentileMethod": "所选起始季度首日至结束季度末日的全部有效正日度PE；含相等值；与项目2同源同公式，日期范围需一致",
     "companyMarketCapMethod": "daily_basic.total_mv÷10000，全部普通股按A股价格估值，与项目2公司明细同字段；不等于申万行业市值分拆",
     "financialVersusValuation": "财务柱是全公司实际合并报表汇总，不是指数PE分母；不以公布市值÷PE反推真实利润",
-    "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/"
+    "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/",
+    "financialAsOf": "20261113",
+    "universeAsOf": "20261113",
+    "companyQuoteAsOf": "20261113",
+    "latestQuoteDate": "20261113",
+    "latestQuoteMethod": "最右侧最新交易日观察点；市值/PE使用同日申万值，财务沿用最近财报季度；最近4季不重复计入该观察点"
   },
   "rawIncomeRows": 36857,
   "financialCompanyQuarterRows": 15185,
@@ -191,8 +196,8 @@
     "code": "801750.SI",
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
-    "financialAsOf": "2026-11-10",
-    "financialHash": "e9cf8b0258b6edfacbed766e3c4bebb3b19ef3b012f31d74a379ee3e6e24ed77",
+    "financialAsOf": "20261113",
+    "financialHash": "abc6d429e65dab7037ef2842bbd2ac2e244683762180201b6b0dee3ff0e489c7",
     "sectorFinancialHashes": {
       "801104.SI": "8b68ef4d305f2f04d955c912348fdd75f4fbf401111ca7b2758f5359a2149d7b",
       "801103.SI": "e1a77f24546551d6d1ddf7ae4f2cb7be19e926652ac4da62d3f200dbb622287f",
@@ -206,8 +211,8 @@
       "marketCap": 38878.1868,
       "marketCapObserved": 38878.1868,
       "pe": 59.69,
-      "revenue": 3793.5291971050005,
-      "profit": 107.47692551469987,
+      "revenue": 3793.529197105,
+      "profit": 107.47692551470001,
       "reportedCount": 357,
       "estimatedCount": 0,
       "missingCount": 0,
@@ -330,7 +335,7 @@
       }
     ]
   },
-  "collectionScopeNote": "既有财报与daily_basic查询用于财务及公司明细；现行行业行情源为sw-source.json。",
+  "collectionScopeNote": "历史取数统计与旧公司估值审计仅作历史资料；本次新查询见项目根refresh-source.json.gz，核查与哈希见freshness-audit.json。",
   "industryValuationCollection": {
     "api": "sw_daily",
     "snapshot": "20261110",
@@ -354,5 +359,74 @@
       ]
     ]
   },
-  "validationScopeNote": "既有validation中的market字段仅核验公司报价；申万行情覆盖见valuationAlignment。"
+  "validationScopeNote": "既有validation中的market字段仅核验公司报价；申万行情覆盖见valuationAlignment。",
+  "latestQuote": {
+    "sourceFile": "latest-quotes-source.json",
+    "date": "20261113",
+    "financialSnapshot": "2026-11-13",
+    "quarterlySeriesUnchanged": true,
+    "indices": [
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801750.SI",
+        "marketCap": 36796.1536,
+        "marketCapObserved": 36796.1536,
+        "pe": 55.3,
+        "peRaw": 55.3,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801104.SI",
+        "marketCap": 14409.254,
+        "marketCapObserved": 14409.254,
+        "pe": 73.84,
+        "peRaw": 73.84,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801103.SI",
+        "marketCap": 11364.0774,
+        "marketCapObserved": 11364.0774,
+        "pe": 99.48,
+        "peRaw": 99.48,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      },
+      {
+        "date": "20261113",
+        "valuationDate": "20261113",
+        "valuationSource": "sw_daily",
+        "valuationCode": "801101.SI",
+        "marketCap": 11022.8222,
+        "marketCapObserved": 11022.8222,
+        "pe": 29.11,
+        "peRaw": 29.11,
+        "peStatus": "valid",
+        "peNote": "",
+        "financialQuarter": "2026Q3"
+      }
+    ]
+  },
+  "currentRefresh": {
+    "sourceFile": "../../refresh-source.json.gz",
+    "financialAsOf": "20261113",
+    "universeAsOf": "20261113",
+    "companyQuoteAsOf": "20261113",
+    "estimatedCount": 0,
+    "missingCount": 0,
+    "auditFile": "freshness-audit.json (project root)"
+  }
 }

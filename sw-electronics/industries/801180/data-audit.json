@@ -3113,8 +3113,8 @@
     "code": "801180.SI",
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
-    "financialAsOf": "2026-11-10",
-    "financialHash": "a1665e9d4020e19082eef3ff207d3938c0ce212fb7b225ce8634784748837bdd",
+    "financialAsOf": "20261113",
+    "financialHash": "27ab42c8df9c7066373890e0091425362cf77ea79d749415254a63d581c0b9dc",
     "sectorFinancialHashes": {
       "801181.SI": "bbdf4f711ad62e859a6d6b3066d7bb93b318a5ac25bc53c2fa36e204d2297403",
       "801183.SI": "2404121722376d58070889ea71963b4db41ebba2ab552b2b1ae4c343e4ef1841"
@@ -3128,7 +3128,7 @@
       "marketCapObserved": 9982.4279,
       "pe": 17.57,
       "revenue": 2449.7733642183,
-      "profit": -217.06174026160014,
+      "profit": -217.06174026160002,
       "reportedCount": 95,
       "estimatedCount": 0,
       "missingCount": 0,
