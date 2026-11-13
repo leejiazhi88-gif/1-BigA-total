@@ -1,25 +1,2216 @@
 {
-  "asOf": "2026-11-10",
-  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
-  "summary": {
+  "historicalCompanyAggregateAudit": {
+    "asOf": "2026-11-10",
+    "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+    "summary": {
+      "industry": "环保",
+      "code": "801970.SI",
+      "companies": 134,
+      "quarters": 87,
+      "companyQuarterRows": 6173,
+      "latest": {
+        "quarter": "2026Q3",
+        "endDate": "20260930",
+        "tradeDate": "20260930",
+        "companies": 134,
+        "marketCap": 8167.643411159998,
+        "marketCapObserved": 8167.643411159998,
+        "pe": 30.92607505044851,
+        "peMarketCap": 8167.643411159998,
+        "peProfit": 264.1021661441498,
+        "peCoverage": 1.0,
+        "peMissingCount": 0,
+        "peRebuiltCount": 47,
+        "revenue": 1001.3720925654002,
+        "profit": 81.64763257940001,
+        "reportedCount": 134,
+        "estimatedCount": 0,
+        "missingCount": 0,
+        "estimatedRevenue": 0,
+        "estimatedProfit": 0,
+        "carriedCount": 0,
+        "marketMissingCount": 0,
+        "financialCoverage": 1.0
+      },
+      "financialIncompleteQuarters": 2,
+      "peCoverageMin": 0.9916913758117836,
+      "carriedCompanyQuarters": 245
+    },
+    "quality": [
+      {
+        "quarter": "2005Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2005Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20050429",
+            "marketCap": 3.2564303199999998
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20050617",
+            "marketCap": 10.59531002
+          },
+          {
+            "code": "000546.SZ",
+            "name": "金圆股份",
+            "date": "20050629",
+            "marketCap": 3.03416597
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q3",
+        "financialMissing": [
+          {
+            "code": "600168.SH",
+            "name": "武汉控股"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2005Q4",
+        "financialMissing": [
+          {
+            "code": "600168.SH",
+            "name": "武汉控股"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000685.SZ",
+            "name": "中山公用",
+            "date": "20051223",
+            "marketCap": 6.7176054
+          },
+          {
+            "code": "000826.SZ",
+            "name": "*ST启环",
+            "date": "20051202",
+            "marketCap": 7.695303200000001
+          },
+          {
+            "code": "600526.SH",
+            "name": "菲达环保",
+            "date": "20051229",
+            "marketCap": 8.904
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600874.SH",
+            "name": "创业环保",
+            "date": "20060308",
+            "marketCap": 49.10128234
+          },
+          {
+            "code": "000967.SZ",
+            "name": "盈峰环境",
+            "date": "20060317",
+            "marketCap": 5.52615763
+          },
+          {
+            "code": "600323.SH",
+            "name": "瀚蓝环境",
+            "date": "20060324",
+            "marketCap": 16.91049902
+          },
+          {
+            "code": "000685.SZ",
+            "name": "中山公用",
+            "date": "20060330",
+            "marketCap": 5.3650674
+          },
+          {
+            "code": "600168.SH",
+            "name": "武汉控股",
+            "date": "20060327",
+            "marketCap": 16.85193
+          },
+          {
+            "code": "600461.SH",
+            "name": "洪城环境",
+            "date": "20060316",
+            "marketCap": 7.742
+          },
+          {
+            "code": "000890.SZ",
+            "name": "法尔胜",
+            "date": "20060310",
+            "marketCap": 9.7246656
+          },
+          {
+            "code": "000711.SZ",
+            "name": "京蓝科技",
+            "date": "20060316",
+            "marketCap": 3.7757491199999995
+          },
+          {
+            "code": "600796.SH",
+            "name": "钱江生化",
+            "date": "20060317",
+            "marketCap": 16.48227109
+          },
+          {
+            "code": "000546.SZ",
+            "name": "金圆股份",
+            "date": "20060324",
+            "marketCap": 4.08510614
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20060629",
+            "marketCap": 2.50316352
+          },
+          {
+            "code": "600874.SH",
+            "name": "创业环保",
+            "date": "20060629",
+            "marketCap": 54.29093249
+          },
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20060427",
+            "marketCap": 3.206805
+          },
+          {
+            "code": "600217.SH",
+            "name": "中再资环",
+            "date": "20060626",
+            "marketCap": 17.1808
+          },
+          {
+            "code": "000803.SZ",
+            "name": "山高环能",
+            "date": "20060609",
+            "marketCap": 4.358523
+          },
+          {
+            "code": "600769.SH",
+            "name": "祥龙电业",
+            "date": "20060623",
+            "marketCap": 18.1733136
+          },
+          {
+            "code": "000885.SZ",
+            "name": "城发环境",
+            "date": "20060629",
+            "marketCap": 5.136
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20060427",
+            "marketCap": 3.206805
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20061124",
+            "marketCap": 3.45343856
+          },
+          {
+            "code": "000544.SZ",
+            "name": "中原环保",
+            "date": "20061120",
+            "marketCap": 9.61971482
+          },
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20060427",
+            "marketCap": 3.206805
+          },
+          {
+            "code": "600133.SH",
+            "name": "东湖高新",
+            "date": "20061228",
+            "marketCap": 14.192998300000001
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000605.SZ",
+            "name": "渤海股份",
+            "date": "20070323",
+            "marketCap": 10.124235
+          },
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20060427",
+            "marketCap": 3.206805
+          },
+          {
+            "code": "000068.SZ",
+            "name": "华控赛格",
+            "date": "20070322",
+            "marketCap": 67.27907626
+          },
+          {
+            "code": "000551.SZ",
+            "name": "创元科技",
+            "date": "20070329",
+            "marketCap": 20.0632907
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000605.SZ",
+            "name": "渤海股份",
+            "date": "20070323",
+            "marketCap": 10.124235
+          },
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20060427",
+            "marketCap": 3.206805
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20070628",
+            "marketCap": 14.13434165
+          },
+          {
+            "code": "000885.SZ",
+            "name": "城发环境",
+            "date": "20070412",
+            "marketCap": 15.744
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20070723",
+            "marketCap": 7.005306350000001
+          },
+          {
+            "code": "000605.SZ",
+            "name": "渤海股份",
+            "date": "20070323",
+            "marketCap": 10.124235
+          },
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20060427",
+            "marketCap": 3.206805
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20070723",
+            "marketCap": 7.005306350000001
+          },
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20060427",
+            "marketCap": 3.206805
+          },
+          {
+            "code": "000068.SZ",
+            "name": "华控赛格",
+            "date": "20071031",
+            "marketCap": 80.95496324999999
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000826.SZ",
+            "name": "*ST启环",
+            "date": "20080328",
+            "marketCap": 39.44931848
+          },
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20060427",
+            "marketCap": 3.206805
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20060427",
+            "marketCap": 3.206805
+          },
+          {
+            "code": "000546.SZ",
+            "name": "金圆股份",
+            "date": "20080430",
+            "marketCap": 12.28921973
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20060427",
+            "marketCap": 3.206805
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20060427",
+            "marketCap": 3.206805
+          },
+          {
+            "code": "000546.SZ",
+            "name": "金圆股份",
+            "date": "20081226",
+            "marketCap": 12.034960009999999
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000598.SZ",
+            "name": "兴蓉环境",
+            "date": "20090304",
+            "marketCap": 19.267385949999998
+          },
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20060427",
+            "marketCap": 3.206805
+          },
+          {
+            "code": "002266.SZ",
+            "name": "浙富控股",
+            "date": "20090330",
+            "marketCap": 37.644651
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002034.SZ",
+            "name": "旺能环境",
+            "date": "20090622",
+            "marketCap": 7.398144
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600217.SH",
+            "name": "中再资环",
+            "date": "20090922",
+            "marketCap": 38.19424
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000685.SZ",
+            "name": "中山公用",
+            "date": "20091225",
+            "marketCap": 182.51136602
+          },
+          {
+            "code": "600217.SH",
+            "name": "中再资环",
+            "date": "20090922",
+            "marketCap": 38.19424
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20091230",
+            "marketCap": 9.358530400000001
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000598.SZ",
+            "name": "兴蓉环境",
+            "date": "20100330",
+            "marketCap": 49.72618916
+          },
+          {
+            "code": "000068.SZ",
+            "name": "华控赛格",
+            "date": "20100330",
+            "marketCap": 84.28711762
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20100319",
+            "marketCap": 9.088201459999999
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20100319",
+            "marketCap": 9.088201459999999
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20100319",
+            "marketCap": 9.088201459999999
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000605.SZ",
+            "name": "渤海股份",
+            "date": "20101119",
+            "marketCap": 12.52944
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20100319",
+            "marketCap": 9.088201459999999
+          },
+          {
+            "code": "600133.SH",
+            "name": "东湖高新",
+            "date": "20101230",
+            "marketCap": 47.77115195
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600008.SH",
+            "name": "首创环保",
+            "date": "20110330",
+            "marketCap": 150.04
+          },
+          {
+            "code": "000605.SZ",
+            "name": "渤海股份",
+            "date": "20101119",
+            "marketCap": 12.52944
+          },
+          {
+            "code": "000068.SZ",
+            "name": "华控赛格",
+            "date": "20110228",
+            "marketCap": 61.0633267
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20100319",
+            "marketCap": 9.088201459999999
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000605.SZ",
+            "name": "渤海股份",
+            "date": "20101119",
+            "marketCap": 12.52944
+          },
+          {
+            "code": "000068.SZ",
+            "name": "华控赛格",
+            "date": "20110228",
+            "marketCap": 61.0633267
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20100319",
+            "marketCap": 9.088201459999999
+          },
+          {
+            "code": "300210.SZ",
+            "name": "森远股份",
+            "date": "20110629",
+            "marketCap": 15.471495
+          },
+          {
+            "code": "600133.SH",
+            "name": "东湖高新",
+            "date": "20110429",
+            "marketCap": 43.60419788
+          },
+          {
+            "code": "000546.SZ",
+            "name": "金圆股份",
+            "date": "20110629",
+            "marketCap": 20.67979044
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20110421",
+            "marketCap": 17.73062122
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000068.SZ",
+            "name": "华控赛格",
+            "date": "20110228",
+            "marketCap": 61.0633267
+          },
+          {
+            "code": "000890.SZ",
+            "name": "法尔胜",
+            "date": "20110927",
+            "marketCap": 23.87945664
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20100319",
+            "marketCap": 9.088201459999999
+          },
+          {
+            "code": "600133.SH",
+            "name": "东湖高新",
+            "date": "20110429",
+            "marketCap": 43.60419788
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20110421",
+            "marketCap": 17.73062122
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20111108",
+            "marketCap": 18.375803599999998
+          },
+          {
+            "code": "000068.SZ",
+            "name": "华控赛格",
+            "date": "20110228",
+            "marketCap": 61.0633267
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20100319",
+            "marketCap": 9.088201459999999
+          },
+          {
+            "code": "600133.SH",
+            "name": "东湖高新",
+            "date": "20110429",
+            "marketCap": 43.60419788
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20110421",
+            "marketCap": 17.73062122
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20111108",
+            "marketCap": 18.375803599999998
+          },
+          {
+            "code": "000598.SZ",
+            "name": "兴蓉环境",
+            "date": "20120329",
+            "marketCap": 88.24823504999999
+          },
+          {
+            "code": "000605.SZ",
+            "name": "渤海股份",
+            "date": "20120307",
+            "marketCap": 10.357297500000001
+          },
+          {
+            "code": "000068.SZ",
+            "name": "华控赛格",
+            "date": "20110228",
+            "marketCap": 61.0633267
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20100319",
+            "marketCap": 9.088201459999999
+          },
+          {
+            "code": "300210.SZ",
+            "name": "森远股份",
+            "date": "20120329",
+            "marketCap": 20.2095
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20110421",
+            "marketCap": 17.73062122
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20111108",
+            "marketCap": 18.375803599999998
+          },
+          {
+            "code": "000068.SZ",
+            "name": "华控赛格",
+            "date": "20110228",
+            "marketCap": 61.0633267
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20100319",
+            "marketCap": 9.088201459999999
+          },
+          {
+            "code": "600769.SH",
+            "name": "祥龙电业",
+            "date": "20120416",
+            "marketCap": 14.061645
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20110421",
+            "marketCap": 17.73062122
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20111108",
+            "marketCap": 18.375803599999998
+          },
+          {
+            "code": "000605.SZ",
+            "name": "渤海股份",
+            "date": "20120926",
+            "marketCap": 10.236105
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20100319",
+            "marketCap": 9.088201459999999
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20110421",
+            "marketCap": 17.73062122
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20111108",
+            "marketCap": 18.375803599999998
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20100319",
+            "marketCap": 9.088201459999999
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20110421",
+            "marketCap": 17.73062122
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20111108",
+            "marketCap": 18.375803599999998
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20110421",
+            "marketCap": 17.73062122
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20111108",
+            "marketCap": 18.375803599999998
+          },
+          {
+            "code": "300056.SZ",
+            "name": "中创环保",
+            "date": "20130509",
+            "marketCap": 13.6656
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300266.SZ",
+            "name": "兴源环境",
+            "date": "20130806",
+            "marketCap": 19.638528
+          },
+          {
+            "code": "000885.SZ",
+            "name": "城发环境",
+            "date": "20130918",
+            "marketCap": 27.78463332
+          },
+          {
+            "code": "000546.SZ",
+            "name": "金圆股份",
+            "date": "20130830",
+            "marketCap": 10.0856355
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300056.SZ",
+            "name": "中创环保",
+            "date": "20131227",
+            "marketCap": 23.40936
+          },
+          {
+            "code": "300190.SZ",
+            "name": "维尔利",
+            "date": "20131220",
+            "marketCap": 34.55231328
+          },
+          {
+            "code": "002266.SZ",
+            "name": "浙富控股",
+            "date": "20131205",
+            "marketCap": 131.94488082
+          },
+          {
+            "code": "600217.SH",
+            "name": "中再资环",
+            "date": "20131206",
+            "marketCap": 31.98272
+          },
+          {
+            "code": "002573.SZ",
+            "name": "清新环境",
+            "date": "20131220",
+            "marketCap": 118.12176000000001
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20140326",
+            "marketCap": 22.84450318
+          },
+          {
+            "code": "600217.SH",
+            "name": "中再资环",
+            "date": "20131206",
+            "marketCap": 31.98272
+          },
+          {
+            "code": "600769.SH",
+            "name": "祥龙电业",
+            "date": "20140327",
+            "marketCap": 21.41119812
+          },
+          {
+            "code": "300334.SZ",
+            "name": "津膜科技",
+            "date": "20140328",
+            "marketCap": 57.768
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000711.SZ",
+            "name": "京蓝科技",
+            "date": "20140430",
+            "marketCap": 10.41012648
+          },
+          {
+            "code": "300137.SZ",
+            "name": "先河环保",
+            "date": "20140613",
+            "marketCap": 42.30408
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20140509",
+            "marketCap": 19.774248009999997
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000967.SZ",
+            "name": "盈峰环境",
+            "date": "20140909",
+            "marketCap": 36.58531834
+          },
+          {
+            "code": "000605.SZ",
+            "name": "渤海股份",
+            "date": "20140909",
+            "marketCap": 33.65545799
+          },
+          {
+            "code": "300056.SZ",
+            "name": "中创环保",
+            "date": "20140815",
+            "marketCap": 26.911872
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20140509",
+            "marketCap": 19.774248009999997
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20141223",
+            "marketCap": 78.27684929
+          },
+          {
+            "code": "000544.SZ",
+            "name": "中原环保",
+            "date": "20140930",
+            "marketCap": 33.062717340000006
+          },
+          {
+            "code": "000967.SZ",
+            "name": "盈峰环境",
+            "date": "20140909",
+            "marketCap": 36.58531834
+          },
+          {
+            "code": "002645.SZ",
+            "name": "华宏科技",
+            "date": "20141210",
+            "marketCap": 27.94099698
+          },
+          {
+            "code": "300140.SZ",
+            "name": "节能环境",
+            "date": "20141202",
+            "marketCap": 30.5122
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000605.SZ",
+            "name": "渤海股份",
+            "date": "20150112",
+            "marketCap": 33.109483010000005
+          },
+          {
+            "code": "000826.SZ",
+            "name": "*ST启环",
+            "date": "20150320",
+            "marketCap": 242.70203295
+          },
+          {
+            "code": "600461.SH",
+            "name": "洪城环境",
+            "date": "20150225",
+            "marketCap": 43.23
+          },
+          {
+            "code": "000068.SZ",
+            "name": "华控赛格",
+            "date": "20150126",
+            "marketCap": 101.57315072
+          },
+          {
+            "code": "002672.SZ",
+            "name": "东江环保",
+            "date": "20150324",
+            "marketCap": 174.82279628999999
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20150121",
+            "marketCap": 18.08629322
+          },
+          {
+            "code": "002645.SZ",
+            "name": "华宏科技",
+            "date": "20141210",
+            "marketCap": 27.94099698
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20150326",
+            "marketCap": 37.79270399
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20150616",
+            "marketCap": 145.09703947999998
+          },
+          {
+            "code": "300203.SZ",
+            "name": "聚光科技",
+            "date": "20150417",
+            "marketCap": 170.7126312
+          },
+          {
+            "code": "600461.SH",
+            "name": "洪城环境",
+            "date": "20150225",
+            "marketCap": 43.23
+          },
+          {
+            "code": "000068.SZ",
+            "name": "华控赛格",
+            "date": "20150126",
+            "marketCap": 101.57315072
+          },
+          {
+            "code": "300056.SZ",
+            "name": "中创环保",
+            "date": "20150604",
+            "marketCap": 69.71328000000001
+          },
+          {
+            "code": "300190.SZ",
+            "name": "维尔利",
+            "date": "20150522",
+            "marketCap": 119.54471294
+          },
+          {
+            "code": "000890.SZ",
+            "name": "法尔胜",
+            "date": "20150417",
+            "marketCap": 44.7977088
+          },
+          {
+            "code": "000711.SZ",
+            "name": "京蓝科技",
+            "date": "20150623",
+            "marketCap": 36.41130792
+          },
+          {
+            "code": "300266.SZ",
+            "name": "兴源环境",
+            "date": "20150602",
+            "marketCap": 228.65896401999998
+          },
+          {
+            "code": "600217.SH",
+            "name": "中再资环",
+            "date": "20150610",
+            "marketCap": 206.06784353
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20150121",
+            "marketCap": 18.08629322
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20150430",
+            "marketCap": 48.8167753
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300070.SZ",
+            "name": "碧水源",
+            "date": "20150923",
+            "marketCap": 537.15093332
+          },
+          {
+            "code": "300056.SZ",
+            "name": "中创环保",
+            "date": "20150604",
+            "marketCap": 69.71328000000001
+          },
+          {
+            "code": "000711.SZ",
+            "name": "京蓝科技",
+            "date": "20150623",
+            "marketCap": 36.41130792
+          },
+          {
+            "code": "002210.SZ",
+            "name": "飞马国际",
+            "date": "20150702",
+            "marketCap": 172.32696
+          },
+          {
+            "code": "300266.SZ",
+            "name": "兴源环境",
+            "date": "20150602",
+            "marketCap": 228.65896401999998
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20150821",
+            "marketCap": 24.74797061
+          },
+          {
+            "code": "603686.SH",
+            "name": "福龙马",
+            "date": "20150729",
+            "marketCap": 105.58653000000001
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20151211",
+            "marketCap": 95.05930670000001
+          },
+          {
+            "code": "600168.SH",
+            "name": "武汉控股",
+            "date": "20150930",
+            "marketCap": 68.68634619
+          },
+          {
+            "code": "000711.SZ",
+            "name": "京蓝科技",
+            "date": "20151117",
+            "marketCap": 34.12655064
+          },
+          {
+            "code": "300266.SZ",
+            "name": "兴源环境",
+            "date": "20151223",
+            "marketCap": 212.13987536
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20150821",
+            "marketCap": 24.74797061
+          },
+          {
+            "code": "000803.SZ",
+            "name": "山高环能",
+            "date": "20151223",
+            "marketCap": 38.47254497
+          },
+          {
+            "code": "300437.SZ",
+            "name": "清水源",
+            "date": "20151224",
+            "marketCap": 70.54859
+          },
+          {
+            "code": "600133.SH",
+            "name": "东湖高新",
+            "date": "20151225",
+            "marketCap": 76.74519185999999
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600168.SH",
+            "name": "武汉控股",
+            "date": "20150930",
+            "marketCap": 68.68634619
+          },
+          {
+            "code": "000890.SZ",
+            "name": "法尔胜",
+            "date": "20160314",
+            "marketCap": 30.67504128
+          },
+          {
+            "code": "300152.SZ",
+            "name": "*ST动力",
+            "date": "20160318",
+            "marketCap": 52.7472
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20150821",
+            "marketCap": 24.74797061
+          },
+          {
+            "code": "300437.SZ",
+            "name": "清水源",
+            "date": "20151224",
+            "marketCap": 70.54859
+          },
+          {
+            "code": "600769.SH",
+            "name": "祥龙电业",
+            "date": "20160318",
+            "marketCap": 37.460222279999996
+          },
+          {
+            "code": "002573.SZ",
+            "name": "清新环境",
+            "date": "20151231",
+            "marketCap": 239.12063999999998
+          },
+          {
+            "code": "300425.SZ",
+            "name": "中建环能",
+            "date": "20160126",
+            "marketCap": 56.25387418
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300385.SZ",
+            "name": "ST雪浪",
+            "date": "20160620",
+            "marketCap": 42.804
+          },
+          {
+            "code": "002672.SZ",
+            "name": "东江环保",
+            "date": "20160520",
+            "marketCap": 151.35942396
+          },
+          {
+            "code": "000551.SZ",
+            "name": "创元科技",
+            "date": "20160606",
+            "marketCap": 36.72738118
+          },
+          {
+            "code": "002266.SZ",
+            "name": "浙富控股",
+            "date": "20160524",
+            "marketCap": 105.86151192000001
+          },
+          {
+            "code": "600796.SH",
+            "name": "钱江生化",
+            "date": "20160530",
+            "marketCap": 29.537410110000003
+          },
+          {
+            "code": "600817.SH",
+            "name": "宇通重工",
+            "date": "20150821",
+            "marketCap": 24.74797061
+          },
+          {
+            "code": "000803.SZ",
+            "name": "山高环能",
+            "date": "20160622",
+            "marketCap": 27.13004167
+          },
+          {
+            "code": "300334.SZ",
+            "name": "津膜科技",
+            "date": "20160519",
+            "marketCap": 49.82480611
+          },
+          {
+            "code": "000546.SZ",
+            "name": "金圆股份",
+            "date": "20160615",
+            "marketCap": 63.07552256
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600168.SH",
+            "name": "武汉控股",
+            "date": "20160912",
+            "marketCap": 79.68467641000001
+          },
+          {
+            "code": "300070.SZ",
+            "name": "碧水源",
+            "date": "20160919",
+            "marketCap": 578.14169706
+          },
+          {
+            "code": "300190.SZ",
+            "name": "维尔利",
+            "date": "20160729",
+            "marketCap": 70.48247735999999
+          },
+          {
+            "code": "600796.SH",
+            "name": "钱江生化",
+            "date": "20160530",
+            "marketCap": 29.537410110000003
+          },
+          {
+            "code": "000803.SZ",
+            "name": "山高环能",
+            "date": "20160622",
+            "marketCap": 27.13004167
+          },
+          {
+            "code": "300334.SZ",
+            "name": "津膜科技",
+            "date": "20160519",
+            "marketCap": 49.82480611
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002034.SZ",
+            "name": "旺能环境",
+            "date": "20160930",
+            "marketCap": 39.250932
+          },
+          {
+            "code": "000711.SZ",
+            "name": "京蓝科技",
+            "date": "20161019",
+            "marketCap": 52.35633936
+          },
+          {
+            "code": "000803.SZ",
+            "name": "山高环能",
+            "date": "20160622",
+            "marketCap": 27.13004167
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q1",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "603177.SH",
+            "name": "德创环保"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600168.SH",
+            "name": "武汉控股",
+            "date": "20170330",
+            "marketCap": 72.16323768
+          },
+          {
+            "code": "300266.SZ",
+            "name": "兴源环境",
+            "date": "20170123",
+            "marketCap": 268.92661261
+          },
+          {
+            "code": "000803.SZ",
+            "name": "山高环能",
+            "date": "20170217",
+            "marketCap": 26.31256396
+          },
+          {
+            "code": "300334.SZ",
+            "name": "津膜科技",
+            "date": "20170329",
+            "marketCap": 44.690504759999996
+          },
+          {
+            "code": "603177.SH",
+            "name": "德创环保",
+            "date": "20170330",
+            "marketCap": 58.2366
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300152.SZ",
+            "name": "*ST动力",
+            "date": "20170511",
+            "marketCap": 56.23992
+          },
+          {
+            "code": "300388.SZ",
+            "name": "节能国祯",
+            "date": "20170623",
+            "marketCap": 64.64888077
+          },
+          {
+            "code": "000885.SZ",
+            "name": "城发环境",
+            "date": "20170505",
+            "marketCap": 95.80172272
+          },
+          {
+            "code": "603126.SH",
+            "name": "中材节能",
+            "date": "20170626",
+            "marketCap": 100.4883
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20170821",
+            "marketCap": 90.82223963
+          },
+          {
+            "code": "300152.SZ",
+            "name": "*ST动力",
+            "date": "20170922",
+            "marketCap": 47.97144
+          },
+          {
+            "code": "000803.SZ",
+            "name": "山高环能",
+            "date": "20170801",
+            "marketCap": 30.78314521
+          },
+          {
+            "code": "603588.SH",
+            "name": "高能时代",
+            "date": "20170717",
+            "marketCap": 93.96489636999999
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20170714",
+            "marketCap": 184.54621629000002
+          },
+          {
+            "code": "300140.SZ",
+            "name": "节能环境",
+            "date": "20170712",
+            "marketCap": 59.74627961
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20170821",
+            "marketCap": 90.82223963
+          },
+          {
+            "code": "600187.SH",
+            "name": "*ST国中",
+            "date": "20171108",
+            "marketCap": 77.40416399
+          },
+          {
+            "code": "300152.SZ",
+            "name": "*ST动力",
+            "date": "20170922",
+            "marketCap": 47.97144
+          },
+          {
+            "code": "300187.SZ",
+            "name": "永清环保",
+            "date": "20170929",
+            "marketCap": 72.63539192
+          },
+          {
+            "code": "000820.SZ",
+            "name": "神雾节能",
+            "date": "20170714",
+            "marketCap": 184.54621629000002
+          },
+          {
+            "code": "300140.SZ",
+            "name": "节能环境",
+            "date": "20170712",
+            "marketCap": 59.74627961
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20170821",
+            "marketCap": 90.82223963
+          },
+          {
+            "code": "300056.SZ",
+            "name": "中创环保",
+            "date": "20180228",
+            "marketCap": 27.0614291
+          },
+          {
+            "code": "002034.SZ",
+            "name": "旺能环境",
+            "date": "20180302",
+            "marketCap": 113.91828799999999
+          },
+          {
+            "code": "000890.SZ",
+            "name": "法尔胜",
+            "date": "20180322",
+            "marketCap": 28.359227519999997
+          },
+          {
+            "code": "000711.SZ",
+            "name": "京蓝科技",
+            "date": "20180323",
+            "marketCap": 87.81161537999999
+          },
+          {
+            "code": "002210.SZ",
+            "name": "飞马国际",
+            "date": "20180323",
+            "marketCap": 203.80015159
+          },
+          {
+            "code": "300266.SZ",
+            "name": "兴源环境",
+            "date": "20180202",
+            "marketCap": 208.4865122
+          },
+          {
+            "code": "600217.SH",
+            "name": "中再资环",
+            "date": "20180328",
+            "marketCap": 85.12484464
+          },
+          {
+            "code": "600133.SH",
+            "name": "东湖高新",
+            "date": "20180319",
+            "marketCap": 69.16678835
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000035.SZ",
+            "name": "中国天楹",
+            "date": "20170821",
+            "marketCap": 90.82223963
+          },
+          {
+            "code": "603315.SH",
+            "name": "福鞍股份",
+            "date": "20180404",
+            "marketCap": 27.36189208
+          },
+          {
+            "code": "000967.SZ",
+            "name": "盈峰环境",
+            "date": "20180517",
+            "marketCap": 102.57832009
+          },
+          {
+            "code": "000711.SZ",
+            "name": "京蓝科技",
+            "date": "20180323",
+            "marketCap": 87.81161537999999
+          },
+          {
+            "code": "002210.SZ",
+            "name": "飞马国际",
+            "date": "20180323",
+            "marketCap": 203.80015159
+          },
+          {
+            "code": "300266.SZ",
+            "name": "兴源环境",
+            "date": "20180202",
+            "marketCap": 208.4865122
+          },
+          {
+            "code": "300187.SZ",
+            "name": "永清环保",
+            "date": "20180404",
+            "marketCap": 60.44302256
+          },
+          {
+            "code": "600217.SH",
+            "name": "中再资环",
+            "date": "20180328",
+            "marketCap": 85.12484464
+          },
+          {
+            "code": "600796.SH",
+            "name": "钱江生化",
+            "date": "20180427",
+            "marketCap": 18.415671
+          },
+          {
+            "code": "002573.SZ",
+            "name": "清新环境",
+            "date": "20180615",
+            "marketCap": 124.88692755
+          },
+          {
+            "code": "002778.SZ",
+            "name": "中晟高科",
+            "date": "20180420",
+            "marketCap": 17.011003549999998
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000711.SZ",
+            "name": "京蓝科技",
+            "date": "20180323",
+            "marketCap": 87.81161537999999
+          },
+          {
+            "code": "300187.SZ",
+            "name": "永清环保",
+            "date": "20180404",
+            "marketCap": 60.44302256
+          },
+          {
+            "code": "600796.SH",
+            "name": "钱江生化",
+            "date": "20180427",
+            "marketCap": 18.415671
+          },
+          {
+            "code": "002573.SZ",
+            "name": "清新环境",
+            "date": "20180615",
+            "marketCap": 124.88692755
+          },
+          {
+            "code": "300425.SZ",
+            "name": "中建环能",
+            "date": "20180907",
+            "marketCap": 29.45258872
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300266.SZ",
+            "name": "兴源环境",
+            "date": "20190322",
+            "marketCap": 68.20919409000001
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002645.SZ",
+            "name": "华宏科技",
+            "date": "20190620",
+            "marketCap": 40.871729259999995
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300422.SZ",
+            "name": "博世科",
+            "date": "20201228",
+            "marketCap": 48.68548716
+          }
+        ]
+      },
+      {
+        "quarter": "2021Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "920263.BJ",
+            "name": "中航泰达",
+            "date": "20211220",
+            "marketCap": 8.061696000000001
+          }
+        ]
+      },
+      {
+        "quarter": "2022Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300692.SZ",
+            "name": "中赋科技",
+            "date": "20250926",
+            "marketCap": 37.611377610000005
+          }
+        ]
+      },
+      {
+        "quarter": "2025Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      }
+    ]
+  },
+  "historicalAuditScope": "旧公司整体法，市值/PE已被sw-alignment-audit.json取代；财务核验仍有效",
+  "valuationAlignment": {
     "industry": "环保",
     "code": "801970.SI",
-    "companies": 134,
-    "quarters": 87,
-    "companyQuarterRows": 6173,
+    "scope": "SW公布市值/PE与财报汇总分离",
+    "project2AsOf": "20261110",
+    "financialAsOf": "2026-11-10",
+    "financialHash": "7f5359fc6dcc0980ce465212717ed5fd5ce75bfca3da534803fec3c04a21c0c8",
+    "sectorFinancialHashes": {
+      "801971.SI": "c3d4539f0ba17d2f2f39cd1356029150e7efcd4ce6f856d973bfd41edd5db455",
+      "801972.SI": "95828a62bdd9898116c84a528506b3bf704a52bfba1d751009f6371176e136ec"
+    },
     "latest": {
       "quarter": "2026Q3",
       "endDate": "20260930",
       "tradeDate": "20260930",
       "companies": 134,
-      "marketCap": 8167.643411159998,
-      "marketCapObserved": 8167.643411159998,
-      "pe": 30.92607505044851,
-      "peMarketCap": 8167.643411159998,
-      "peProfit": 264.1021661441498,
-      "peCoverage": 1.0,
-      "peMissingCount": 0,
-      "peRebuiltCount": 47,
+      "marketCap": 8074.8252,
+      "marketCapObserved": 8074.8252,
+      "pe": 24.96,
       "revenue": 1001.3720925654002,
       "profit": 81.64763257940001,
       "reportedCount": 134,
@@ -29,2164 +2220,42 @@
       "estimatedProfit": 0,
       "carriedCount": 0,
       "marketMissingCount": 0,
-      "financialCoverage": 1.0
-    },
-    "financialIncompleteQuarters": 2,
-    "peCoverageMin": 0.9916913758117836,
-    "carriedCompanyQuarters": 245
-  },
-  "quality": [
-    {
-      "quarter": "2005Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2005Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20050429",
-          "marketCap": 3.2564303199999998
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20050617",
-          "marketCap": 10.59531002
-        },
-        {
-          "code": "000546.SZ",
-          "name": "金圆股份",
-          "date": "20050629",
-          "marketCap": 3.03416597
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q3",
-      "financialMissing": [
-        {
-          "code": "600168.SH",
-          "name": "武汉控股"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2005Q4",
-      "financialMissing": [
-        {
-          "code": "600168.SH",
-          "name": "武汉控股"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000685.SZ",
-          "name": "中山公用",
-          "date": "20051223",
-          "marketCap": 6.7176054
-        },
-        {
-          "code": "000826.SZ",
-          "name": "*ST启环",
-          "date": "20051202",
-          "marketCap": 7.695303200000001
-        },
-        {
-          "code": "600526.SH",
-          "name": "菲达环保",
-          "date": "20051229",
-          "marketCap": 8.904
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600874.SH",
-          "name": "创业环保",
-          "date": "20060308",
-          "marketCap": 49.10128234
-        },
-        {
-          "code": "000967.SZ",
-          "name": "盈峰环境",
-          "date": "20060317",
-          "marketCap": 5.52615763
-        },
-        {
-          "code": "600323.SH",
-          "name": "瀚蓝环境",
-          "date": "20060324",
-          "marketCap": 16.91049902
-        },
-        {
-          "code": "000685.SZ",
-          "name": "中山公用",
-          "date": "20060330",
-          "marketCap": 5.3650674
-        },
-        {
-          "code": "600168.SH",
-          "name": "武汉控股",
-          "date": "20060327",
-          "marketCap": 16.85193
-        },
-        {
-          "code": "600461.SH",
-          "name": "洪城环境",
-          "date": "20060316",
-          "marketCap": 7.742
-        },
-        {
-          "code": "000890.SZ",
-          "name": "法尔胜",
-          "date": "20060310",
-          "marketCap": 9.7246656
-        },
-        {
-          "code": "000711.SZ",
-          "name": "京蓝科技",
-          "date": "20060316",
-          "marketCap": 3.7757491199999995
-        },
-        {
-          "code": "600796.SH",
-          "name": "钱江生化",
-          "date": "20060317",
-          "marketCap": 16.48227109
-        },
-        {
-          "code": "000546.SZ",
-          "name": "金圆股份",
-          "date": "20060324",
-          "marketCap": 4.08510614
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20060629",
-          "marketCap": 2.50316352
-        },
-        {
-          "code": "600874.SH",
-          "name": "创业环保",
-          "date": "20060629",
-          "marketCap": 54.29093249
-        },
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20060427",
-          "marketCap": 3.206805
-        },
-        {
-          "code": "600217.SH",
-          "name": "中再资环",
-          "date": "20060626",
-          "marketCap": 17.1808
-        },
-        {
-          "code": "000803.SZ",
-          "name": "山高环能",
-          "date": "20060609",
-          "marketCap": 4.358523
-        },
-        {
-          "code": "600769.SH",
-          "name": "祥龙电业",
-          "date": "20060623",
-          "marketCap": 18.1733136
-        },
-        {
-          "code": "000885.SZ",
-          "name": "城发环境",
-          "date": "20060629",
-          "marketCap": 5.136
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20060427",
-          "marketCap": 3.206805
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20061124",
-          "marketCap": 3.45343856
-        },
-        {
-          "code": "000544.SZ",
-          "name": "中原环保",
-          "date": "20061120",
-          "marketCap": 9.61971482
-        },
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20060427",
-          "marketCap": 3.206805
-        },
-        {
-          "code": "600133.SH",
-          "name": "东湖高新",
-          "date": "20061228",
-          "marketCap": 14.192998300000001
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000605.SZ",
-          "name": "渤海股份",
-          "date": "20070323",
-          "marketCap": 10.124235
-        },
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20060427",
-          "marketCap": 3.206805
-        },
-        {
-          "code": "000068.SZ",
-          "name": "华控赛格",
-          "date": "20070322",
-          "marketCap": 67.27907626
-        },
-        {
-          "code": "000551.SZ",
-          "name": "创元科技",
-          "date": "20070329",
-          "marketCap": 20.0632907
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000605.SZ",
-          "name": "渤海股份",
-          "date": "20070323",
-          "marketCap": 10.124235
-        },
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20060427",
-          "marketCap": 3.206805
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20070628",
-          "marketCap": 14.13434165
-        },
-        {
-          "code": "000885.SZ",
-          "name": "城发环境",
-          "date": "20070412",
-          "marketCap": 15.744
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20070723",
-          "marketCap": 7.005306350000001
-        },
-        {
-          "code": "000605.SZ",
-          "name": "渤海股份",
-          "date": "20070323",
-          "marketCap": 10.124235
-        },
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20060427",
-          "marketCap": 3.206805
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20070723",
-          "marketCap": 7.005306350000001
-        },
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20060427",
-          "marketCap": 3.206805
-        },
-        {
-          "code": "000068.SZ",
-          "name": "华控赛格",
-          "date": "20071031",
-          "marketCap": 80.95496324999999
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000826.SZ",
-          "name": "*ST启环",
-          "date": "20080328",
-          "marketCap": 39.44931848
-        },
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20060427",
-          "marketCap": 3.206805
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20060427",
-          "marketCap": 3.206805
-        },
-        {
-          "code": "000546.SZ",
-          "name": "金圆股份",
-          "date": "20080430",
-          "marketCap": 12.28921973
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20060427",
-          "marketCap": 3.206805
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20060427",
-          "marketCap": 3.206805
-        },
-        {
-          "code": "000546.SZ",
-          "name": "金圆股份",
-          "date": "20081226",
-          "marketCap": 12.034960009999999
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000598.SZ",
-          "name": "兴蓉环境",
-          "date": "20090304",
-          "marketCap": 19.267385949999998
-        },
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20060427",
-          "marketCap": 3.206805
-        },
-        {
-          "code": "002266.SZ",
-          "name": "浙富控股",
-          "date": "20090330",
-          "marketCap": 37.644651
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002034.SZ",
-          "name": "旺能环境",
-          "date": "20090622",
-          "marketCap": 7.398144
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600217.SH",
-          "name": "中再资环",
-          "date": "20090922",
-          "marketCap": 38.19424
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000685.SZ",
-          "name": "中山公用",
-          "date": "20091225",
-          "marketCap": 182.51136602
-        },
-        {
-          "code": "600217.SH",
-          "name": "中再资环",
-          "date": "20090922",
-          "marketCap": 38.19424
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20091230",
-          "marketCap": 9.358530400000001
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000598.SZ",
-          "name": "兴蓉环境",
-          "date": "20100330",
-          "marketCap": 49.72618916
-        },
-        {
-          "code": "000068.SZ",
-          "name": "华控赛格",
-          "date": "20100330",
-          "marketCap": 84.28711762
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20100319",
-          "marketCap": 9.088201459999999
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20100319",
-          "marketCap": 9.088201459999999
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20100319",
-          "marketCap": 9.088201459999999
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000605.SZ",
-          "name": "渤海股份",
-          "date": "20101119",
-          "marketCap": 12.52944
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20100319",
-          "marketCap": 9.088201459999999
-        },
-        {
-          "code": "600133.SH",
-          "name": "东湖高新",
-          "date": "20101230",
-          "marketCap": 47.77115195
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600008.SH",
-          "name": "首创环保",
-          "date": "20110330",
-          "marketCap": 150.04
-        },
-        {
-          "code": "000605.SZ",
-          "name": "渤海股份",
-          "date": "20101119",
-          "marketCap": 12.52944
-        },
-        {
-          "code": "000068.SZ",
-          "name": "华控赛格",
-          "date": "20110228",
-          "marketCap": 61.0633267
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20100319",
-          "marketCap": 9.088201459999999
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000605.SZ",
-          "name": "渤海股份",
-          "date": "20101119",
-          "marketCap": 12.52944
-        },
-        {
-          "code": "000068.SZ",
-          "name": "华控赛格",
-          "date": "20110228",
-          "marketCap": 61.0633267
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20100319",
-          "marketCap": 9.088201459999999
-        },
-        {
-          "code": "300210.SZ",
-          "name": "森远股份",
-          "date": "20110629",
-          "marketCap": 15.471495
-        },
-        {
-          "code": "600133.SH",
-          "name": "东湖高新",
-          "date": "20110429",
-          "marketCap": 43.60419788
-        },
-        {
-          "code": "000546.SZ",
-          "name": "金圆股份",
-          "date": "20110629",
-          "marketCap": 20.67979044
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20110421",
-          "marketCap": 17.73062122
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000068.SZ",
-          "name": "华控赛格",
-          "date": "20110228",
-          "marketCap": 61.0633267
-        },
-        {
-          "code": "000890.SZ",
-          "name": "法尔胜",
-          "date": "20110927",
-          "marketCap": 23.87945664
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20100319",
-          "marketCap": 9.088201459999999
-        },
-        {
-          "code": "600133.SH",
-          "name": "东湖高新",
-          "date": "20110429",
-          "marketCap": 43.60419788
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20110421",
-          "marketCap": 17.73062122
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20111108",
-          "marketCap": 18.375803599999998
-        },
-        {
-          "code": "000068.SZ",
-          "name": "华控赛格",
-          "date": "20110228",
-          "marketCap": 61.0633267
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20100319",
-          "marketCap": 9.088201459999999
-        },
-        {
-          "code": "600133.SH",
-          "name": "东湖高新",
-          "date": "20110429",
-          "marketCap": 43.60419788
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20110421",
-          "marketCap": 17.73062122
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20111108",
-          "marketCap": 18.375803599999998
-        },
-        {
-          "code": "000598.SZ",
-          "name": "兴蓉环境",
-          "date": "20120329",
-          "marketCap": 88.24823504999999
-        },
-        {
-          "code": "000605.SZ",
-          "name": "渤海股份",
-          "date": "20120307",
-          "marketCap": 10.357297500000001
-        },
-        {
-          "code": "000068.SZ",
-          "name": "华控赛格",
-          "date": "20110228",
-          "marketCap": 61.0633267
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20100319",
-          "marketCap": 9.088201459999999
-        },
-        {
-          "code": "300210.SZ",
-          "name": "森远股份",
-          "date": "20120329",
-          "marketCap": 20.2095
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20110421",
-          "marketCap": 17.73062122
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20111108",
-          "marketCap": 18.375803599999998
-        },
-        {
-          "code": "000068.SZ",
-          "name": "华控赛格",
-          "date": "20110228",
-          "marketCap": 61.0633267
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20100319",
-          "marketCap": 9.088201459999999
-        },
-        {
-          "code": "600769.SH",
-          "name": "祥龙电业",
-          "date": "20120416",
-          "marketCap": 14.061645
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20110421",
-          "marketCap": 17.73062122
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20111108",
-          "marketCap": 18.375803599999998
-        },
-        {
-          "code": "000605.SZ",
-          "name": "渤海股份",
-          "date": "20120926",
-          "marketCap": 10.236105
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20100319",
-          "marketCap": 9.088201459999999
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20110421",
-          "marketCap": 17.73062122
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20111108",
-          "marketCap": 18.375803599999998
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20100319",
-          "marketCap": 9.088201459999999
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20110421",
-          "marketCap": 17.73062122
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20111108",
-          "marketCap": 18.375803599999998
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20110421",
-          "marketCap": 17.73062122
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20111108",
-          "marketCap": 18.375803599999998
-        },
-        {
-          "code": "300056.SZ",
-          "name": "中创环保",
-          "date": "20130509",
-          "marketCap": 13.6656
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300266.SZ",
-          "name": "兴源环境",
-          "date": "20130806",
-          "marketCap": 19.638528
-        },
-        {
-          "code": "000885.SZ",
-          "name": "城发环境",
-          "date": "20130918",
-          "marketCap": 27.78463332
-        },
-        {
-          "code": "000546.SZ",
-          "name": "金圆股份",
-          "date": "20130830",
-          "marketCap": 10.0856355
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300056.SZ",
-          "name": "中创环保",
-          "date": "20131227",
-          "marketCap": 23.40936
-        },
-        {
-          "code": "300190.SZ",
-          "name": "维尔利",
-          "date": "20131220",
-          "marketCap": 34.55231328
-        },
-        {
-          "code": "002266.SZ",
-          "name": "浙富控股",
-          "date": "20131205",
-          "marketCap": 131.94488082
-        },
-        {
-          "code": "600217.SH",
-          "name": "中再资环",
-          "date": "20131206",
-          "marketCap": 31.98272
-        },
-        {
-          "code": "002573.SZ",
-          "name": "清新环境",
-          "date": "20131220",
-          "marketCap": 118.12176000000001
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20140326",
-          "marketCap": 22.84450318
-        },
-        {
-          "code": "600217.SH",
-          "name": "中再资环",
-          "date": "20131206",
-          "marketCap": 31.98272
-        },
-        {
-          "code": "600769.SH",
-          "name": "祥龙电业",
-          "date": "20140327",
-          "marketCap": 21.41119812
-        },
-        {
-          "code": "300334.SZ",
-          "name": "津膜科技",
-          "date": "20140328",
-          "marketCap": 57.768
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000711.SZ",
-          "name": "京蓝科技",
-          "date": "20140430",
-          "marketCap": 10.41012648
-        },
-        {
-          "code": "300137.SZ",
-          "name": "先河环保",
-          "date": "20140613",
-          "marketCap": 42.30408
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20140509",
-          "marketCap": 19.774248009999997
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000967.SZ",
-          "name": "盈峰环境",
-          "date": "20140909",
-          "marketCap": 36.58531834
-        },
-        {
-          "code": "000605.SZ",
-          "name": "渤海股份",
-          "date": "20140909",
-          "marketCap": 33.65545799
-        },
-        {
-          "code": "300056.SZ",
-          "name": "中创环保",
-          "date": "20140815",
-          "marketCap": 26.911872
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20140509",
-          "marketCap": 19.774248009999997
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20141223",
-          "marketCap": 78.27684929
-        },
-        {
-          "code": "000544.SZ",
-          "name": "中原环保",
-          "date": "20140930",
-          "marketCap": 33.062717340000006
-        },
-        {
-          "code": "000967.SZ",
-          "name": "盈峰环境",
-          "date": "20140909",
-          "marketCap": 36.58531834
-        },
-        {
-          "code": "002645.SZ",
-          "name": "华宏科技",
-          "date": "20141210",
-          "marketCap": 27.94099698
-        },
-        {
-          "code": "300140.SZ",
-          "name": "节能环境",
-          "date": "20141202",
-          "marketCap": 30.5122
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000605.SZ",
-          "name": "渤海股份",
-          "date": "20150112",
-          "marketCap": 33.109483010000005
-        },
-        {
-          "code": "000826.SZ",
-          "name": "*ST启环",
-          "date": "20150320",
-          "marketCap": 242.70203295
-        },
-        {
-          "code": "600461.SH",
-          "name": "洪城环境",
-          "date": "20150225",
-          "marketCap": 43.23
-        },
-        {
-          "code": "000068.SZ",
-          "name": "华控赛格",
-          "date": "20150126",
-          "marketCap": 101.57315072
-        },
-        {
-          "code": "002672.SZ",
-          "name": "东江环保",
-          "date": "20150324",
-          "marketCap": 174.82279628999999
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20150121",
-          "marketCap": 18.08629322
-        },
-        {
-          "code": "002645.SZ",
-          "name": "华宏科技",
-          "date": "20141210",
-          "marketCap": 27.94099698
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20150326",
-          "marketCap": 37.79270399
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20150616",
-          "marketCap": 145.09703947999998
-        },
-        {
-          "code": "300203.SZ",
-          "name": "聚光科技",
-          "date": "20150417",
-          "marketCap": 170.7126312
-        },
-        {
-          "code": "600461.SH",
-          "name": "洪城环境",
-          "date": "20150225",
-          "marketCap": 43.23
-        },
-        {
-          "code": "000068.SZ",
-          "name": "华控赛格",
-          "date": "20150126",
-          "marketCap": 101.57315072
-        },
-        {
-          "code": "300056.SZ",
-          "name": "中创环保",
-          "date": "20150604",
-          "marketCap": 69.71328000000001
-        },
-        {
-          "code": "300190.SZ",
-          "name": "维尔利",
-          "date": "20150522",
-          "marketCap": 119.54471294
-        },
-        {
-          "code": "000890.SZ",
-          "name": "法尔胜",
-          "date": "20150417",
-          "marketCap": 44.7977088
-        },
-        {
-          "code": "000711.SZ",
-          "name": "京蓝科技",
-          "date": "20150623",
-          "marketCap": 36.41130792
-        },
-        {
-          "code": "300266.SZ",
-          "name": "兴源环境",
-          "date": "20150602",
-          "marketCap": 228.65896401999998
-        },
-        {
-          "code": "600217.SH",
-          "name": "中再资环",
-          "date": "20150610",
-          "marketCap": 206.06784353
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20150121",
-          "marketCap": 18.08629322
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20150430",
-          "marketCap": 48.8167753
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300070.SZ",
-          "name": "碧水源",
-          "date": "20150923",
-          "marketCap": 537.15093332
-        },
-        {
-          "code": "300056.SZ",
-          "name": "中创环保",
-          "date": "20150604",
-          "marketCap": 69.71328000000001
-        },
-        {
-          "code": "000711.SZ",
-          "name": "京蓝科技",
-          "date": "20150623",
-          "marketCap": 36.41130792
-        },
-        {
-          "code": "002210.SZ",
-          "name": "飞马国际",
-          "date": "20150702",
-          "marketCap": 172.32696
-        },
-        {
-          "code": "300266.SZ",
-          "name": "兴源环境",
-          "date": "20150602",
-          "marketCap": 228.65896401999998
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20150821",
-          "marketCap": 24.74797061
-        },
-        {
-          "code": "603686.SH",
-          "name": "福龙马",
-          "date": "20150729",
-          "marketCap": 105.58653000000001
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20151211",
-          "marketCap": 95.05930670000001
-        },
-        {
-          "code": "600168.SH",
-          "name": "武汉控股",
-          "date": "20150930",
-          "marketCap": 68.68634619
-        },
-        {
-          "code": "000711.SZ",
-          "name": "京蓝科技",
-          "date": "20151117",
-          "marketCap": 34.12655064
-        },
-        {
-          "code": "300266.SZ",
-          "name": "兴源环境",
-          "date": "20151223",
-          "marketCap": 212.13987536
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20150821",
-          "marketCap": 24.74797061
-        },
-        {
-          "code": "000803.SZ",
-          "name": "山高环能",
-          "date": "20151223",
-          "marketCap": 38.47254497
-        },
-        {
-          "code": "300437.SZ",
-          "name": "清水源",
-          "date": "20151224",
-          "marketCap": 70.54859
-        },
-        {
-          "code": "600133.SH",
-          "name": "东湖高新",
-          "date": "20151225",
-          "marketCap": 76.74519185999999
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600168.SH",
-          "name": "武汉控股",
-          "date": "20150930",
-          "marketCap": 68.68634619
-        },
-        {
-          "code": "000890.SZ",
-          "name": "法尔胜",
-          "date": "20160314",
-          "marketCap": 30.67504128
-        },
-        {
-          "code": "300152.SZ",
-          "name": "*ST动力",
-          "date": "20160318",
-          "marketCap": 52.7472
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20150821",
-          "marketCap": 24.74797061
-        },
-        {
-          "code": "300437.SZ",
-          "name": "清水源",
-          "date": "20151224",
-          "marketCap": 70.54859
-        },
-        {
-          "code": "600769.SH",
-          "name": "祥龙电业",
-          "date": "20160318",
-          "marketCap": 37.460222279999996
-        },
-        {
-          "code": "002573.SZ",
-          "name": "清新环境",
-          "date": "20151231",
-          "marketCap": 239.12063999999998
-        },
-        {
-          "code": "300425.SZ",
-          "name": "中建环能",
-          "date": "20160126",
-          "marketCap": 56.25387418
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300385.SZ",
-          "name": "ST雪浪",
-          "date": "20160620",
-          "marketCap": 42.804
-        },
-        {
-          "code": "002672.SZ",
-          "name": "东江环保",
-          "date": "20160520",
-          "marketCap": 151.35942396
-        },
-        {
-          "code": "000551.SZ",
-          "name": "创元科技",
-          "date": "20160606",
-          "marketCap": 36.72738118
-        },
-        {
-          "code": "002266.SZ",
-          "name": "浙富控股",
-          "date": "20160524",
-          "marketCap": 105.86151192000001
-        },
-        {
-          "code": "600796.SH",
-          "name": "钱江生化",
-          "date": "20160530",
-          "marketCap": 29.537410110000003
-        },
-        {
-          "code": "600817.SH",
-          "name": "宇通重工",
-          "date": "20150821",
-          "marketCap": 24.74797061
-        },
-        {
-          "code": "000803.SZ",
-          "name": "山高环能",
-          "date": "20160622",
-          "marketCap": 27.13004167
-        },
-        {
-          "code": "300334.SZ",
-          "name": "津膜科技",
-          "date": "20160519",
-          "marketCap": 49.82480611
-        },
-        {
-          "code": "000546.SZ",
-          "name": "金圆股份",
-          "date": "20160615",
-          "marketCap": 63.07552256
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600168.SH",
-          "name": "武汉控股",
-          "date": "20160912",
-          "marketCap": 79.68467641000001
-        },
-        {
-          "code": "300070.SZ",
-          "name": "碧水源",
-          "date": "20160919",
-          "marketCap": 578.14169706
-        },
-        {
-          "code": "300190.SZ",
-          "name": "维尔利",
-          "date": "20160729",
-          "marketCap": 70.48247735999999
-        },
-        {
-          "code": "600796.SH",
-          "name": "钱江生化",
-          "date": "20160530",
-          "marketCap": 29.537410110000003
-        },
-        {
-          "code": "000803.SZ",
-          "name": "山高环能",
-          "date": "20160622",
-          "marketCap": 27.13004167
-        },
-        {
-          "code": "300334.SZ",
-          "name": "津膜科技",
-          "date": "20160519",
-          "marketCap": 49.82480611
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002034.SZ",
-          "name": "旺能环境",
-          "date": "20160930",
-          "marketCap": 39.250932
-        },
-        {
-          "code": "000711.SZ",
-          "name": "京蓝科技",
-          "date": "20161019",
-          "marketCap": 52.35633936
-        },
-        {
-          "code": "000803.SZ",
-          "name": "山高环能",
-          "date": "20160622",
-          "marketCap": 27.13004167
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q1",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "603177.SH",
-          "name": "德创环保"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600168.SH",
-          "name": "武汉控股",
-          "date": "20170330",
-          "marketCap": 72.16323768
-        },
-        {
-          "code": "300266.SZ",
-          "name": "兴源环境",
-          "date": "20170123",
-          "marketCap": 268.92661261
-        },
-        {
-          "code": "000803.SZ",
-          "name": "山高环能",
-          "date": "20170217",
-          "marketCap": 26.31256396
-        },
-        {
-          "code": "300334.SZ",
-          "name": "津膜科技",
-          "date": "20170329",
-          "marketCap": 44.690504759999996
-        },
-        {
-          "code": "603177.SH",
-          "name": "德创环保",
-          "date": "20170330",
-          "marketCap": 58.2366
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300152.SZ",
-          "name": "*ST动力",
-          "date": "20170511",
-          "marketCap": 56.23992
-        },
-        {
-          "code": "300388.SZ",
-          "name": "节能国祯",
-          "date": "20170623",
-          "marketCap": 64.64888077
-        },
-        {
-          "code": "000885.SZ",
-          "name": "城发环境",
-          "date": "20170505",
-          "marketCap": 95.80172272
-        },
-        {
-          "code": "603126.SH",
-          "name": "中材节能",
-          "date": "20170626",
-          "marketCap": 100.4883
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20170821",
-          "marketCap": 90.82223963
-        },
-        {
-          "code": "300152.SZ",
-          "name": "*ST动力",
-          "date": "20170922",
-          "marketCap": 47.97144
-        },
-        {
-          "code": "000803.SZ",
-          "name": "山高环能",
-          "date": "20170801",
-          "marketCap": 30.78314521
-        },
-        {
-          "code": "603588.SH",
-          "name": "高能时代",
-          "date": "20170717",
-          "marketCap": 93.96489636999999
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20170714",
-          "marketCap": 184.54621629000002
-        },
-        {
-          "code": "300140.SZ",
-          "name": "节能环境",
-          "date": "20170712",
-          "marketCap": 59.74627961
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20170821",
-          "marketCap": 90.82223963
-        },
-        {
-          "code": "600187.SH",
-          "name": "*ST国中",
-          "date": "20171108",
-          "marketCap": 77.40416399
-        },
-        {
-          "code": "300152.SZ",
-          "name": "*ST动力",
-          "date": "20170922",
-          "marketCap": 47.97144
-        },
-        {
-          "code": "300187.SZ",
-          "name": "永清环保",
-          "date": "20170929",
-          "marketCap": 72.63539192
-        },
-        {
-          "code": "000820.SZ",
-          "name": "神雾节能",
-          "date": "20170714",
-          "marketCap": 184.54621629000002
-        },
-        {
-          "code": "300140.SZ",
-          "name": "节能环境",
-          "date": "20170712",
-          "marketCap": 59.74627961
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20170821",
-          "marketCap": 90.82223963
-        },
-        {
-          "code": "300056.SZ",
-          "name": "中创环保",
-          "date": "20180228",
-          "marketCap": 27.0614291
-        },
-        {
-          "code": "002034.SZ",
-          "name": "旺能环境",
-          "date": "20180302",
-          "marketCap": 113.91828799999999
-        },
-        {
-          "code": "000890.SZ",
-          "name": "法尔胜",
-          "date": "20180322",
-          "marketCap": 28.359227519999997
-        },
-        {
-          "code": "000711.SZ",
-          "name": "京蓝科技",
-          "date": "20180323",
-          "marketCap": 87.81161537999999
-        },
-        {
-          "code": "002210.SZ",
-          "name": "飞马国际",
-          "date": "20180323",
-          "marketCap": 203.80015159
-        },
-        {
-          "code": "300266.SZ",
-          "name": "兴源环境",
-          "date": "20180202",
-          "marketCap": 208.4865122
-        },
-        {
-          "code": "600217.SH",
-          "name": "中再资环",
-          "date": "20180328",
-          "marketCap": 85.12484464
-        },
-        {
-          "code": "600133.SH",
-          "name": "东湖高新",
-          "date": "20180319",
-          "marketCap": 69.16678835
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000035.SZ",
-          "name": "中国天楹",
-          "date": "20170821",
-          "marketCap": 90.82223963
-        },
-        {
-          "code": "603315.SH",
-          "name": "福鞍股份",
-          "date": "20180404",
-          "marketCap": 27.36189208
-        },
-        {
-          "code": "000967.SZ",
-          "name": "盈峰环境",
-          "date": "20180517",
-          "marketCap": 102.57832009
-        },
-        {
-          "code": "000711.SZ",
-          "name": "京蓝科技",
-          "date": "20180323",
-          "marketCap": 87.81161537999999
-        },
-        {
-          "code": "002210.SZ",
-          "name": "飞马国际",
-          "date": "20180323",
-          "marketCap": 203.80015159
-        },
-        {
-          "code": "300266.SZ",
-          "name": "兴源环境",
-          "date": "20180202",
-          "marketCap": 208.4865122
-        },
-        {
-          "code": "300187.SZ",
-          "name": "永清环保",
-          "date": "20180404",
-          "marketCap": 60.44302256
-        },
-        {
-          "code": "600217.SH",
-          "name": "中再资环",
-          "date": "20180328",
-          "marketCap": 85.12484464
-        },
-        {
-          "code": "600796.SH",
-          "name": "钱江生化",
-          "date": "20180427",
-          "marketCap": 18.415671
-        },
-        {
-          "code": "002573.SZ",
-          "name": "清新环境",
-          "date": "20180615",
-          "marketCap": 124.88692755
-        },
-        {
-          "code": "002778.SZ",
-          "name": "中晟高科",
-          "date": "20180420",
-          "marketCap": 17.011003549999998
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000711.SZ",
-          "name": "京蓝科技",
-          "date": "20180323",
-          "marketCap": 87.81161537999999
-        },
-        {
-          "code": "300187.SZ",
-          "name": "永清环保",
-          "date": "20180404",
-          "marketCap": 60.44302256
-        },
-        {
-          "code": "600796.SH",
-          "name": "钱江生化",
-          "date": "20180427",
-          "marketCap": 18.415671
-        },
-        {
-          "code": "002573.SZ",
-          "name": "清新环境",
-          "date": "20180615",
-          "marketCap": 124.88692755
-        },
-        {
-          "code": "300425.SZ",
-          "name": "中建环能",
-          "date": "20180907",
-          "marketCap": 29.45258872
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300266.SZ",
-          "name": "兴源环境",
-          "date": "20190322",
-          "marketCap": 68.20919409000001
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002645.SZ",
-          "name": "华宏科技",
-          "date": "20190620",
-          "marketCap": 40.871729259999995
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300422.SZ",
-          "name": "博世科",
-          "date": "20201228",
-          "marketCap": 48.68548716
-        }
-      ]
-    },
-    {
-      "quarter": "2021Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "920263.BJ",
-          "name": "中航泰达",
-          "date": "20211220",
-          "marketCap": 8.061696000000001
-        }
-      ]
-    },
-    {
-      "quarter": "2022Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300692.SZ",
-          "name": "中赋科技",
-          "date": "20250926",
-          "marketCap": 37.611377610000005
-        }
-      ]
-    },
-    {
-      "quarter": "2025Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    }
-  ]
+      "financialCoverage": 1.0,
+      "peRaw": 24.96,
+      "valuationSource": "sw_daily",
+      "valuationCode": "801970.SI",
+      "valuationDate": "20260930",
+      "peStatus": "valid",
+      "peNote": ""
+    },
+    "indices": [
+      {
+        "code": "801970.SI",
+        "name": "环保",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801971.SI",
+        "name": "环境治理",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801972.SI",
+        "name": "环保设备",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      }
+    ]
+  }
 }

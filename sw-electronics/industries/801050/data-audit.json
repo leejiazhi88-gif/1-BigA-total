@@ -1,25 +1,2823 @@
 {
-  "asOf": "2026-11-10",
-  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
-  "summary": {
+  "historicalCompanyAggregateAudit": {
+    "asOf": "2026-11-10",
+    "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+    "summary": {
+      "industry": "有色金属",
+      "code": "801050.SI",
+      "companies": 147,
+      "quarters": 87,
+      "companyQuarterRows": 8141,
+      "latest": {
+        "quarter": "2026Q3",
+        "endDate": "20260930",
+        "tradeDate": "20260930",
+        "companies": 147,
+        "marketCap": 52143.88790103,
+        "marketCapObserved": 52143.88790103,
+        "pe": 16.733459745431393,
+        "peMarketCap": 52143.88790103,
+        "peProfit": 3116.145058720833,
+        "peCoverage": 1.0,
+        "peMissingCount": 0,
+        "peRebuiltCount": 13,
+        "revenue": 12178.315598480796,
+        "profit": 875.8840176919005,
+        "reportedCount": 147,
+        "estimatedCount": 0,
+        "missingCount": 0,
+        "estimatedRevenue": 0,
+        "estimatedProfit": 0,
+        "carriedCount": 0,
+        "marketMissingCount": 0,
+        "financialCoverage": 1.0
+      },
+      "financialIncompleteQuarters": 11,
+      "peCoverageMin": 0.9381230486899216,
+      "carriedCompanyQuarters": 333
+    },
+    "quality": [
+      {
+        "quarter": "2005Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600338.SH",
+            "name": "西藏珠峰",
+            "date": "20050330",
+            "marketCap": 7.188333319999999
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600595.SH",
+            "name": "中孚实业",
+            "date": "20050617",
+            "marketCap": 7.7733451
+          },
+          {
+            "code": "000969.SZ",
+            "name": "安泰科技",
+            "date": "20050629",
+            "marketCap": 17.743107199999997
+          },
+          {
+            "code": "600459.SH",
+            "name": "贵研铂业",
+            "date": "20050629",
+            "marketCap": 5.8446
+          },
+          {
+            "code": "600361.SH",
+            "name": "创新新材",
+            "date": "20050617",
+            "marketCap": 20.31769522
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q3",
+        "financialMissing": [
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金"
+          }
+        ],
+        "peMissing": [
+          {
+            "code": "600338.SH",
+            "name": "西藏珠峰"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000630.SZ",
+            "name": "铜陵有色",
+            "date": "20050929",
+            "marketCap": 43.67788812
+          },
+          {
+            "code": "000807.SZ",
+            "name": "云铝股份",
+            "date": "20050923",
+            "marketCap": 19.5468
+          },
+          {
+            "code": "600392.SH",
+            "name": "盛和资源",
+            "date": "20050923",
+            "marketCap": 8.8992
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q4",
+        "financialMissing": [
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金"
+          }
+        ],
+        "peMissing": [
+          {
+            "code": "600338.SH",
+            "name": "西藏珠峰"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000960.SZ",
+            "name": "锡业股份",
+            "date": "20051222",
+            "marketCap": 30.600792
+          },
+          {
+            "code": "600338.SH",
+            "name": "西藏珠峰",
+            "date": "20051229",
+            "marketCap": 4.544166659999999
+          },
+          {
+            "code": "600961.SH",
+            "name": "株冶集团",
+            "date": "20051229",
+            "marketCap": 11.4131263
+          },
+          {
+            "code": "000933.SZ",
+            "name": "神火股份",
+            "date": "20051213",
+            "marketCap": 35.0
+          },
+          {
+            "code": "000970.SZ",
+            "name": "中科三环",
+            "date": "20051222",
+            "marketCap": 35.430479999999996
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q1",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "600338.SH",
+            "name": "西藏珠峰"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20060330",
+            "marketCap": 3.0202875
+          },
+          {
+            "code": "000751.SZ",
+            "name": "锌业股份",
+            "date": "20060316",
+            "marketCap": 31.71955576
+          },
+          {
+            "code": "000060.SZ",
+            "name": "中金岭南",
+            "date": "20060330",
+            "marketCap": 48.5136
+          },
+          {
+            "code": "000807.SZ",
+            "name": "云铝股份",
+            "date": "20060324",
+            "marketCap": 34.8894
+          },
+          {
+            "code": "000831.SZ",
+            "name": "中国稀土",
+            "date": "20060324",
+            "marketCap": 17.6781
+          },
+          {
+            "code": "600362.SH",
+            "name": "江西铜业",
+            "date": "20060324",
+            "marketCap": 220.89141466
+          },
+          {
+            "code": "600497.SH",
+            "name": "驰宏锌锗",
+            "date": "20060224",
+            "marketCap": 30.208
+          },
+          {
+            "code": "000426.SZ",
+            "name": "兴业银锡",
+            "date": "20060320",
+            "marketCap": 11.12746748
+          },
+          {
+            "code": "600111.SH",
+            "name": "北方稀土",
+            "date": "20060320",
+            "marketCap": 24.3011748
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600888.SH",
+            "name": "新疆众和",
+            "date": "20060629",
+            "marketCap": 32.916560340000004
+          },
+          {
+            "code": "000612.SZ",
+            "name": "焦作万方",
+            "date": "20060629",
+            "marketCap": 35.53303014
+          },
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20060609",
+            "marketCap": 22.805137289999998
+          },
+          {
+            "code": "000762.SZ",
+            "name": "西藏矿业",
+            "date": "20060629",
+            "marketCap": 27.19416875
+          },
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20060629",
+            "marketCap": 4.23472963
+          },
+          {
+            "code": "000975.SZ",
+            "name": "山金国际",
+            "date": "20060623",
+            "marketCap": 20.13984
+          },
+          {
+            "code": "600281.SH",
+            "name": "华阳新材",
+            "date": "20060615",
+            "marketCap": 16.7250196
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20060629",
+            "marketCap": 5.3972704799999995
+          },
+          {
+            "code": "600711.SH",
+            "name": "盛屯矿业",
+            "date": "20060629",
+            "marketCap": 3.313764
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600338.SH",
+            "name": "西藏珠峰",
+            "date": "20060913",
+            "marketCap": 9.38916665
+          },
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20060809",
+            "marketCap": 26.31230394
+          },
+          {
+            "code": "000737.SZ",
+            "name": "北方铜业",
+            "date": "20060928",
+            "marketCap": 13.94765
+          },
+          {
+            "code": "600281.SH",
+            "name": "华阳新材",
+            "date": "20060615",
+            "marketCap": 16.7250196
+          },
+          {
+            "code": "600711.SH",
+            "name": "盛屯矿业",
+            "date": "20060717",
+            "marketCap": 3.331872
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q4",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000831.SZ",
+            "name": "中国稀土",
+            "date": "20061228",
+            "marketCap": 21.1266
+          },
+          {
+            "code": "600988.SH",
+            "name": "赤峰黄金",
+            "date": "20061215",
+            "marketCap": 4.3931203000000005
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20061222",
+            "marketCap": 12.785531579999999
+          },
+          {
+            "code": "600615.SH",
+            "name": "鑫源智造",
+            "date": "20061221",
+            "marketCap": 10.829981230000001
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q1",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000807.SZ",
+            "name": "云铝股份",
+            "date": "20070329",
+            "marketCap": 93.8028
+          },
+          {
+            "code": "600988.SH",
+            "name": "赤峰黄金",
+            "date": "20070323",
+            "marketCap": 10.30798124
+          },
+          {
+            "code": "600497.SH",
+            "name": "驰宏锌锗",
+            "date": "20070329",
+            "marketCap": 201.0255
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q2",
+        "financialMissing": [
+          {
+            "code": "601600.SH",
+            "name": "中国铝业"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20070420",
+            "marketCap": 11.06011739
+          },
+          {
+            "code": "601600.SH",
+            "name": "中国铝业",
+            "date": "20070611",
+            "marketCap": 2974.22910147
+          },
+          {
+            "code": "600259.SH",
+            "name": "中稀有色",
+            "date": "20070427",
+            "marketCap": 16.8586
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          },
+          {
+            "code": "600615.SH",
+            "name": "鑫源智造",
+            "date": "20070628",
+            "marketCap": 18.06877082
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000751.SZ",
+            "name": "锌业股份",
+            "date": "20070816",
+            "marketCap": 279.08750935999996
+          },
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20070420",
+            "marketCap": 11.06011739
+          },
+          {
+            "code": "000975.SZ",
+            "name": "山金国际",
+            "date": "20070927",
+            "marketCap": 97.5024
+          },
+          {
+            "code": "600259.SH",
+            "name": "中稀有色",
+            "date": "20070427",
+            "marketCap": 16.8586
+          },
+          {
+            "code": "600490.SH",
+            "name": "鹏欣资源",
+            "date": "20070927",
+            "marketCap": 16.2096
+          },
+          {
+            "code": "600281.SH",
+            "name": "华阳新材",
+            "date": "20070927",
+            "marketCap": 50.607361080000004
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20070420",
+            "marketCap": 11.06011739
+          },
+          {
+            "code": "600595.SH",
+            "name": "中孚实业",
+            "date": "20071227",
+            "marketCap": 204.60366641
+          },
+          {
+            "code": "000975.SZ",
+            "name": "山金国际",
+            "date": "20070927",
+            "marketCap": 97.5024
+          },
+          {
+            "code": "600259.SH",
+            "name": "中稀有色",
+            "date": "20070427",
+            "marketCap": 16.8586
+          },
+          {
+            "code": "000962.SZ",
+            "name": "东方钽业",
+            "date": "20071012",
+            "marketCap": 108.20303999999999
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          },
+          {
+            "code": "600615.SH",
+            "name": "鑫源智造",
+            "date": "20071226",
+            "marketCap": 36.5323847
+          },
+          {
+            "code": "600361.SH",
+            "name": "创新新材",
+            "date": "20071227",
+            "marketCap": 121.35115127
+          },
+          {
+            "code": "002182.SZ",
+            "name": "宝武镁业",
+            "date": "20071227",
+            "marketCap": 53.6256
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20080215",
+            "marketCap": 10.835985
+          },
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20070420",
+            "marketCap": 11.06011739
+          },
+          {
+            "code": "600497.SH",
+            "name": "驰宏锌锗",
+            "date": "20080117",
+            "marketCap": 303.888
+          },
+          {
+            "code": "000426.SZ",
+            "name": "兴业银锡",
+            "date": "20080314",
+            "marketCap": 37.991516499999996
+          },
+          {
+            "code": "002149.SZ",
+            "name": "西部材料",
+            "date": "20080115",
+            "marketCap": 42.60172
+          },
+          {
+            "code": "600259.SH",
+            "name": "中稀有色",
+            "date": "20070427",
+            "marketCap": 16.8586
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          },
+          {
+            "code": "600615.SH",
+            "name": "鑫源智造",
+            "date": "20071226",
+            "marketCap": 36.5323847
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20080215",
+            "marketCap": 10.835985
+          },
+          {
+            "code": "000751.SZ",
+            "name": "锌业股份",
+            "date": "20080627",
+            "marketCap": 63.83266422999999
+          },
+          {
+            "code": "000060.SZ",
+            "name": "中金岭南",
+            "date": "20080627",
+            "marketCap": 143.5356384
+          },
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20070420",
+            "marketCap": 11.06011739
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20080410",
+            "marketCap": 46.52084986
+          },
+          {
+            "code": "600259.SH",
+            "name": "中稀有色",
+            "date": "20070427",
+            "marketCap": 16.8586
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q3",
+        "financialMissing": [
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业"
+          }
+        ],
+        "peMissing": [
+          {
+            "code": "601958.SH",
+            "name": "金钼股份"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20080215",
+            "marketCap": 10.835985
+          },
+          {
+            "code": "600888.SH",
+            "name": "新疆众和",
+            "date": "20080925",
+            "marketCap": 30.10101748
+          },
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20070420",
+            "marketCap": 11.06011739
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20080410",
+            "marketCap": 46.52084986
+          },
+          {
+            "code": "600259.SH",
+            "name": "中稀有色",
+            "date": "20070427",
+            "marketCap": 16.8586
+          },
+          {
+            "code": "601168.SH",
+            "name": "西部矿业",
+            "date": "20080925",
+            "marketCap": 203.0316
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q4",
+        "financialMissing": [
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20080215",
+            "marketCap": 10.835985
+          },
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20070420",
+            "marketCap": 11.06011739
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20080410",
+            "marketCap": 46.52084986
+          },
+          {
+            "code": "600259.SH",
+            "name": "中稀有色",
+            "date": "20070427",
+            "marketCap": 16.8586
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q1",
+        "financialMissing": [
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20080215",
+            "marketCap": 10.835985
+          },
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20070420",
+            "marketCap": 11.06011739
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20080410",
+            "marketCap": 46.52084986
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q2",
+        "financialMissing": [
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20080215",
+            "marketCap": 10.835985
+          },
+          {
+            "code": "600988.SH",
+            "name": "赤峰黄金",
+            "date": "20090611",
+            "marketCap": 7.64221773
+          },
+          {
+            "code": "000795.SZ",
+            "name": "英洛华",
+            "date": "20090629",
+            "marketCap": 17.13392
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20080410",
+            "marketCap": 46.52084986
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q3",
+        "financialMissing": [
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20080215",
+            "marketCap": 10.835985
+          },
+          {
+            "code": "002203.SZ",
+            "name": "海亮股份",
+            "date": "20090929",
+            "marketCap": 44.73118
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20080410",
+            "marketCap": 46.52084986
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q4",
+        "financialMissing": [
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20080215",
+            "marketCap": 10.835985
+          },
+          {
+            "code": "600338.SH",
+            "name": "西藏珠峰",
+            "date": "20091222",
+            "marketCap": 24.19333328
+          },
+          {
+            "code": "002114.SZ",
+            "name": "罗平锌电",
+            "date": "20091230",
+            "marketCap": 33.001434
+          },
+          {
+            "code": "000426.SZ",
+            "name": "兴业银锡",
+            "date": "20091229",
+            "marketCap": 58.433845510000005
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          },
+          {
+            "code": "600361.SH",
+            "name": "创新新材",
+            "date": "20091230",
+            "marketCap": 46.39611775
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q1",
+        "financialMissing": [
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20080215",
+            "marketCap": 10.835985
+          },
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20100326",
+            "marketCap": 22.03488738
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q2",
+        "financialMissing": [
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20100326",
+            "marketCap": 22.03488738
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20100326",
+            "marketCap": 22.03488738
+          },
+          {
+            "code": "002203.SZ",
+            "name": "海亮股份",
+            "date": "20100929",
+            "marketCap": 51.45286
+          },
+          {
+            "code": "300057.SZ",
+            "name": "万顺新材",
+            "date": "20100928",
+            "marketCap": 42.2633
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20100326",
+            "marketCap": 22.03488738
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600338.SH",
+            "name": "西藏珠峰",
+            "date": "20110309",
+            "marketCap": 22.70499995
+          },
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20100326",
+            "marketCap": 22.03488738
+          },
+          {
+            "code": "000751.SZ",
+            "name": "锌业股份",
+            "date": "20110330",
+            "marketCap": 122.78074198
+          },
+          {
+            "code": "000831.SZ",
+            "name": "中国稀土",
+            "date": "20110317",
+            "marketCap": 59.7861
+          },
+          {
+            "code": "600497.SH",
+            "name": "驰宏锌锗",
+            "date": "20110330",
+            "marketCap": 365.71826725
+          },
+          {
+            "code": "000975.SZ",
+            "name": "山金国际",
+            "date": "20110318",
+            "marketCap": 57.12228641
+          },
+          {
+            "code": "600490.SH",
+            "name": "鹏欣资源",
+            "date": "20110318",
+            "marketCap": 21.7668
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20110628",
+            "marketCap": 42.1929675
+          },
+          {
+            "code": "600338.SH",
+            "name": "西藏珠峰",
+            "date": "20110309",
+            "marketCap": 22.70499995
+          },
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20100326",
+            "marketCap": 22.03488738
+          },
+          {
+            "code": "000831.SZ",
+            "name": "中国稀土",
+            "date": "20110317",
+            "marketCap": 59.7861
+          },
+          {
+            "code": "600547.SH",
+            "name": "山东黄金",
+            "date": "20110629",
+            "marketCap": 638.1056677500001
+          },
+          {
+            "code": "000975.SZ",
+            "name": "山金国际",
+            "date": "20110318",
+            "marketCap": 57.12228641
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20100326",
+            "marketCap": 22.03488738
+          },
+          {
+            "code": "000831.SZ",
+            "name": "中国稀土",
+            "date": "20110317",
+            "marketCap": 59.7861
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20100326",
+            "marketCap": 22.03488738
+          },
+          {
+            "code": "000831.SZ",
+            "name": "中国稀土",
+            "date": "20110317",
+            "marketCap": 59.7861
+          },
+          {
+            "code": "002114.SZ",
+            "name": "罗平锌电",
+            "date": "20111229",
+            "marketCap": 12.2813136
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          },
+          {
+            "code": "600711.SH",
+            "name": "盛屯矿业",
+            "date": "20111103",
+            "marketCap": 29.67290514
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20100326",
+            "marketCap": 22.03488738
+          },
+          {
+            "code": "000831.SZ",
+            "name": "中国稀土",
+            "date": "20110317",
+            "marketCap": 59.7861
+          },
+          {
+            "code": "600392.SH",
+            "name": "盛和资源",
+            "date": "20120120",
+            "marketCap": 15.378120000000001
+          },
+          {
+            "code": "000969.SZ",
+            "name": "安泰科技",
+            "date": "20120329",
+            "marketCap": 135.18850656
+          },
+          {
+            "code": "000975.SZ",
+            "name": "山金国际",
+            "date": "20120116",
+            "marketCap": 31.893795689999997
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600338.SH",
+            "name": "西藏珠峰",
+            "date": "20120618",
+            "marketCap": 11.24166664
+          },
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20100326",
+            "marketCap": 22.03488738
+          },
+          {
+            "code": "000831.SZ",
+            "name": "中国稀土",
+            "date": "20110317",
+            "marketCap": 59.7861
+          },
+          {
+            "code": "600392.SH",
+            "name": "盛和资源",
+            "date": "20120120",
+            "marketCap": 15.378120000000001
+          },
+          {
+            "code": "601600.SH",
+            "name": "中国铝业",
+            "date": "20120628",
+            "marketCap": 834.46090294
+          },
+          {
+            "code": "002192.SZ",
+            "name": "融捷股份",
+            "date": "20120427",
+            "marketCap": 22.68966
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600338.SH",
+            "name": "西藏珠峰",
+            "date": "20120618",
+            "marketCap": 11.24166664
+          },
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20100326",
+            "marketCap": 22.03488738
+          },
+          {
+            "code": "000831.SZ",
+            "name": "中国稀土",
+            "date": "20110317",
+            "marketCap": 59.7861
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600338.SH",
+            "name": "西藏珠峰",
+            "date": "20120618",
+            "marketCap": 11.24166664
+          },
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20100326",
+            "marketCap": 22.03488738
+          },
+          {
+            "code": "000751.SZ",
+            "name": "锌业股份",
+            "date": "20121227",
+            "marketCap": 28.974478899999998
+          },
+          {
+            "code": "000831.SZ",
+            "name": "中国稀土",
+            "date": "20110317",
+            "marketCap": 59.7861
+          },
+          {
+            "code": "002114.SZ",
+            "name": "罗平锌电",
+            "date": "20121105",
+            "marketCap": 14.5794636
+          },
+          {
+            "code": "002460.SZ",
+            "name": "赣锋锂业",
+            "date": "20121224",
+            "marketCap": 29.505873100000002
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000751.SZ",
+            "name": "锌业股份",
+            "date": "20130311",
+            "marketCap": 43.07317169
+          },
+          {
+            "code": "600988.SH",
+            "name": "赤峰黄金",
+            "date": "20130308",
+            "marketCap": 54.13906972
+          },
+          {
+            "code": "002167.SZ",
+            "name": "东方锆业",
+            "date": "20130228",
+            "marketCap": 63.99883440000001
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20070426",
+            "marketCap": 13.162375760000002
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000751.SZ",
+            "name": "锌业股份",
+            "date": "20130311",
+            "marketCap": 43.07317169
+          },
+          {
+            "code": "600547.SH",
+            "name": "山东黄金",
+            "date": "20130402",
+            "marketCap": 457.23316469
+          },
+          {
+            "code": "002240.SZ",
+            "name": "盛新锂能",
+            "date": "20130415",
+            "marketCap": 23.4065808
+          },
+          {
+            "code": "002295.SZ",
+            "name": "精艺股份",
+            "date": "20130614",
+            "marketCap": 11.88198
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000751.SZ",
+            "name": "锌业股份",
+            "date": "20130311",
+            "marketCap": 43.07317169
+          },
+          {
+            "code": "002171.SZ",
+            "name": "楚江新材",
+            "date": "20130712",
+            "marketCap": 20.833956
+          },
+          {
+            "code": "002155.SZ",
+            "name": "湖南黄金",
+            "date": "20130830",
+            "marketCap": 96.9368764
+          },
+          {
+            "code": "002240.SZ",
+            "name": "盛新锂能",
+            "date": "20130415",
+            "marketCap": 23.4065808
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000751.SZ",
+            "name": "锌业股份",
+            "date": "20130311",
+            "marketCap": 43.07317169
+          },
+          {
+            "code": "600547.SH",
+            "name": "山东黄金",
+            "date": "20131225",
+            "marketCap": 245.47999038
+          },
+          {
+            "code": "002160.SZ",
+            "name": "常铝股份",
+            "date": "20131217",
+            "marketCap": 16.048
+          },
+          {
+            "code": "002295.SZ",
+            "name": "精艺股份",
+            "date": "20131227",
+            "marketCap": 12.55974
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000751.SZ",
+            "name": "锌业股份",
+            "date": "20130311",
+            "marketCap": 43.07317169
+          },
+          {
+            "code": "002114.SZ",
+            "name": "罗平锌电",
+            "date": "20140310",
+            "marketCap": 19.84438037
+          },
+          {
+            "code": "002167.SZ",
+            "name": "东方锆业",
+            "date": "20131231",
+            "marketCap": 47.150499599999996
+          },
+          {
+            "code": "002460.SZ",
+            "name": "赣锋锂业",
+            "date": "20140310",
+            "marketCap": 58.822590749999996
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20140207",
+            "marketCap": 23.14489302
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000960.SZ",
+            "name": "锡业股份",
+            "date": "20140505",
+            "marketCap": 143.21181664
+          },
+          {
+            "code": "000612.SZ",
+            "name": "焦作万方",
+            "date": "20140402",
+            "marketCap": 73.02197916
+          },
+          {
+            "code": "000751.SZ",
+            "name": "锌业股份",
+            "date": "20130311",
+            "marketCap": 43.07317169
+          },
+          {
+            "code": "000762.SZ",
+            "name": "西藏矿业",
+            "date": "20140428",
+            "marketCap": 50.26294701
+          },
+          {
+            "code": "000807.SZ",
+            "name": "云铝股份",
+            "date": "20140430",
+            "marketCap": 50.02312198
+          },
+          {
+            "code": "000878.SZ",
+            "name": "云南铜业",
+            "date": "20140416",
+            "marketCap": 107.78794868000001
+          },
+          {
+            "code": "600988.SH",
+            "name": "赤峰黄金",
+            "date": "20140508",
+            "marketCap": 38.01916879
+          },
+          {
+            "code": "002167.SZ",
+            "name": "东方锆业",
+            "date": "20131231",
+            "marketCap": 47.150499599999996
+          },
+          {
+            "code": "002466.SZ",
+            "name": "天齐锂业",
+            "date": "20140428",
+            "marketCap": 111.680816
+          },
+          {
+            "code": "002149.SZ",
+            "name": "西部材料",
+            "date": "20140523",
+            "marketCap": 23.924310000000002
+          },
+          {
+            "code": "600490.SH",
+            "name": "鹏欣资源",
+            "date": "20140331",
+            "marketCap": 90.306
+          },
+          {
+            "code": "600615.SH",
+            "name": "鑫源智造",
+            "date": "20140507",
+            "marketCap": 18.95246721
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600497.SH",
+            "name": "驰宏锌锗",
+            "date": "20140819",
+            "marketCap": 173.25957646999998
+          },
+          {
+            "code": "600547.SH",
+            "name": "山东黄金",
+            "date": "20140731",
+            "marketCap": 235.51848352000002
+          },
+          {
+            "code": "002160.SZ",
+            "name": "常铝股份",
+            "date": "20140815",
+            "marketCap": 21.182
+          },
+          {
+            "code": "000795.SZ",
+            "name": "英洛华",
+            "date": "20140910",
+            "marketCap": 37.44753755
+          },
+          {
+            "code": "002203.SZ",
+            "name": "海亮股份",
+            "date": "20140814",
+            "marketCap": 98.22292392
+          },
+          {
+            "code": "300224.SZ",
+            "name": "正海磁材",
+            "date": "20140718",
+            "marketCap": 60.0
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000612.SZ",
+            "name": "焦作万方",
+            "date": "20141226",
+            "marketCap": 121.48730399
+          },
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20141103",
+            "marketCap": 64.75253794
+          },
+          {
+            "code": "002171.SZ",
+            "name": "楚江新材",
+            "date": "20141121",
+            "marketCap": 52.04518098
+          },
+          {
+            "code": "000426.SZ",
+            "name": "兴业银锡",
+            "date": "20141210",
+            "marketCap": 71.3348711
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20141027",
+            "marketCap": 38.85723304
+          },
+          {
+            "code": "600490.SH",
+            "name": "鹏欣资源",
+            "date": "20141223",
+            "marketCap": 159.5841
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000630.SZ",
+            "name": "铜陵有色",
+            "date": "20150306",
+            "marketCap": 323.72339517
+          },
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20150327",
+            "marketCap": 64.10222551
+          },
+          {
+            "code": "002160.SZ",
+            "name": "常铝股份",
+            "date": "20150320",
+            "marketCap": 42.6748829
+          },
+          {
+            "code": "002171.SZ",
+            "name": "楚江新材",
+            "date": "20141121",
+            "marketCap": 52.04518098
+          },
+          {
+            "code": "002114.SZ",
+            "name": "罗平锌电",
+            "date": "20150318",
+            "marketCap": 50.80705057
+          },
+          {
+            "code": "000969.SZ",
+            "name": "安泰科技",
+            "date": "20150116",
+            "marketCap": 81.01657708
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20150129",
+            "marketCap": 31.193616210000002
+          },
+          {
+            "code": "600490.SH",
+            "name": "鹏欣资源",
+            "date": "20150330",
+            "marketCap": 225.3996
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000630.SZ",
+            "name": "铜陵有色",
+            "date": "20150306",
+            "marketCap": 323.72339517
+          },
+          {
+            "code": "000878.SZ",
+            "name": "云南铜业",
+            "date": "20150605",
+            "marketCap": 347.01770600000003
+          },
+          {
+            "code": "600595.SH",
+            "name": "中孚实业",
+            "date": "20150521",
+            "marketCap": 177.46296707
+          },
+          {
+            "code": "600531.SH",
+            "name": "豫光金铅",
+            "date": "20150610",
+            "marketCap": 81.37111387
+          },
+          {
+            "code": "002379.SZ",
+            "name": "宏桥控股",
+            "date": "20150521",
+            "marketCap": 78.00288
+          },
+          {
+            "code": "002203.SZ",
+            "name": "海亮股份",
+            "date": "20150424",
+            "marketCap": 197.99388447
+          },
+          {
+            "code": "300057.SZ",
+            "name": "万顺新材",
+            "date": "20150602",
+            "marketCap": 110.8172
+          },
+          {
+            "code": "600366.SH",
+            "name": "宁波韵升",
+            "date": "20150521",
+            "marketCap": 187.72369247999998
+          },
+          {
+            "code": "000737.SZ",
+            "name": "北方铜业",
+            "date": "20150610",
+            "marketCap": 63.985416
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20150609",
+            "marketCap": 194.1369929
+          },
+          {
+            "code": "002716.SZ",
+            "name": "湖南白银",
+            "date": "20150417",
+            "marketCap": 70.04890306
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20150922",
+            "marketCap": 82.31315272
+          },
+          {
+            "code": "000630.SZ",
+            "name": "铜陵有色",
+            "date": "20150306",
+            "marketCap": 323.72339517
+          },
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20150805",
+            "marketCap": 100.64761171
+          },
+          {
+            "code": "600219.SH",
+            "name": "南山铝业",
+            "date": "20150928",
+            "marketCap": 186.55513095
+          },
+          {
+            "code": "600988.SH",
+            "name": "赤峰黄金",
+            "date": "20150828",
+            "marketCap": 82.51616953999999
+          },
+          {
+            "code": "600392.SH",
+            "name": "盛和资源",
+            "date": "20150724",
+            "marketCap": 101.97102749
+          },
+          {
+            "code": "600547.SH",
+            "name": "山东黄金",
+            "date": "20150922",
+            "marketCap": 246.47614106999998
+          },
+          {
+            "code": "000795.SZ",
+            "name": "英洛华",
+            "date": "20150814",
+            "marketCap": 41.11684754
+          },
+          {
+            "code": "002203.SZ",
+            "name": "海亮股份",
+            "date": "20150424",
+            "marketCap": 197.99388447
+          },
+          {
+            "code": "002240.SZ",
+            "name": "盛新锂能",
+            "date": "20150724",
+            "marketCap": 60.7982256
+          },
+          {
+            "code": "601388.SH",
+            "name": "怡球资源",
+            "date": "20150724",
+            "marketCap": 124.3489
+          },
+          {
+            "code": "000426.SZ",
+            "name": "兴业银锡",
+            "date": "20150707",
+            "marketCap": 58.26178593
+          },
+          {
+            "code": "002149.SZ",
+            "name": "西部材料",
+            "date": "20150918",
+            "marketCap": 29.058432
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20150724",
+            "marketCap": 49.56319021
+          },
+          {
+            "code": "600259.SH",
+            "name": "中稀有色",
+            "date": "20150814",
+            "marketCap": 126.99842199
+          },
+          {
+            "code": "600490.SH",
+            "name": "鹏欣资源",
+            "date": "20150826",
+            "marketCap": 97.7619
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20150609",
+            "marketCap": 194.1369929
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20150805",
+            "marketCap": 100.64761171
+          },
+          {
+            "code": "600219.SH",
+            "name": "南山铝业",
+            "date": "20150928",
+            "marketCap": 186.55513095
+          },
+          {
+            "code": "600595.SH",
+            "name": "中孚实业",
+            "date": "20151228",
+            "marketCap": 122.77859841
+          },
+          {
+            "code": "600988.SH",
+            "name": "赤峰黄金",
+            "date": "20150828",
+            "marketCap": 82.51616953999999
+          },
+          {
+            "code": "002379.SZ",
+            "name": "宏桥控股",
+            "date": "20151021",
+            "marketCap": 40.20576
+          },
+          {
+            "code": "002240.SZ",
+            "name": "盛新锂能",
+            "date": "20151225",
+            "marketCap": 67.12830720000001
+          },
+          {
+            "code": "601388.SH",
+            "name": "怡球资源",
+            "date": "20150724",
+            "marketCap": 124.3489
+          },
+          {
+            "code": "000426.SZ",
+            "name": "兴业银锡",
+            "date": "20151027",
+            "marketCap": 84.28856735000001
+          },
+          {
+            "code": "600490.SH",
+            "name": "鹏欣资源",
+            "date": "20150826",
+            "marketCap": 97.7619
+          },
+          {
+            "code": "601137.SH",
+            "name": "博威合金",
+            "date": "20151218",
+            "marketCap": 53.4275
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600768.SH",
+            "name": "富邦新材",
+            "date": "20160330",
+            "marketCap": 32.66106624
+          },
+          {
+            "code": "000612.SZ",
+            "name": "焦作万方",
+            "date": "20160226",
+            "marketCap": 71.44896888
+          },
+          {
+            "code": "002379.SZ",
+            "name": "宏桥控股",
+            "date": "20151021",
+            "marketCap": 40.20576
+          },
+          {
+            "code": "300057.SZ",
+            "name": "万顺新材",
+            "date": "20160205",
+            "marketCap": 57.64005279
+          },
+          {
+            "code": "601388.SH",
+            "name": "怡球资源",
+            "date": "20160329",
+            "marketCap": 74.0337
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20160217",
+            "marketCap": 39.74297769
+          },
+          {
+            "code": "300224.SZ",
+            "name": "正海磁材",
+            "date": "20160318",
+            "marketCap": 92.42854603
+          },
+          {
+            "code": "601168.SH",
+            "name": "西部矿业",
+            "date": "20160129",
+            "marketCap": 142.5034
+          },
+          {
+            "code": "000962.SZ",
+            "name": "东方钽业",
+            "date": "20160201",
+            "marketCap": 41.08560242
+          },
+          {
+            "code": "603399.SH",
+            "name": "永杉锂业",
+            "date": "20160122",
+            "marketCap": 50.72386594
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600768.SH",
+            "name": "富邦新材",
+            "date": "20160330",
+            "marketCap": 32.66106624
+          },
+          {
+            "code": "600497.SH",
+            "name": "驰宏锌锗",
+            "date": "20160608",
+            "marketCap": 214.84842457
+          },
+          {
+            "code": "002379.SZ",
+            "name": "宏桥控股",
+            "date": "20160513",
+            "marketCap": 35.481120000000004
+          },
+          {
+            "code": "000975.SZ",
+            "name": "山金国际",
+            "date": "20160418",
+            "marketCap": 162.2424105
+          },
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20160217",
+            "marketCap": 39.74297769
+          },
+          {
+            "code": "601168.SH",
+            "name": "西部矿业",
+            "date": "20160129",
+            "marketCap": 142.5034
+          },
+          {
+            "code": "000962.SZ",
+            "name": "东方钽业",
+            "date": "20160201",
+            "marketCap": 41.08560242
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600768.SH",
+            "name": "富邦新材",
+            "date": "20160330",
+            "marketCap": 32.66106624
+          },
+          {
+            "code": "002160.SZ",
+            "name": "常铝股份",
+            "date": "20160908",
+            "marketCap": 74.83567891
+          },
+          {
+            "code": "000975.SZ",
+            "name": "山金国际",
+            "date": "20160418",
+            "marketCap": 162.2424105
+          },
+          {
+            "code": "600255.SH",
+            "name": "鑫科材料",
+            "date": "20160805",
+            "marketCap": 77.86211642
+          },
+          {
+            "code": "600281.SH",
+            "name": "华阳新材",
+            "date": "20160826",
+            "marketCap": 34.979337699999995
+          },
+          {
+            "code": "600301.SH",
+            "name": "华锡有色",
+            "date": "20160901",
+            "marketCap": 31.674454460000003
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600768.SH",
+            "name": "富邦新材",
+            "date": "20160330",
+            "marketCap": 32.66106624
+          },
+          {
+            "code": "002379.SZ",
+            "name": "宏桥控股",
+            "date": "20161107",
+            "marketCap": 74.48255999999999
+          },
+          {
+            "code": "002578.SZ",
+            "name": "闽发铝业",
+            "date": "20161011",
+            "marketCap": 51.06755
+          },
+          {
+            "code": "601168.SH",
+            "name": "西部矿业",
+            "date": "20161216",
+            "marketCap": 186.5889
+          },
+          {
+            "code": "600711.SH",
+            "name": "盛屯矿业",
+            "date": "20161216",
+            "marketCap": 105.09307181
+          },
+          {
+            "code": "603399.SH",
+            "name": "永杉锂业",
+            "date": "20161019",
+            "marketCap": 55.96599775000001
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002379.SZ",
+            "name": "宏桥控股",
+            "date": "20161107",
+            "marketCap": 74.48255999999999
+          },
+          {
+            "code": "300057.SZ",
+            "name": "万顺新材",
+            "date": "20170307",
+            "marketCap": 65.11435407
+          },
+          {
+            "code": "002578.SZ",
+            "name": "闽发铝业",
+            "date": "20161011",
+            "marketCap": 51.06755
+          },
+          {
+            "code": "600255.SH",
+            "name": "鑫科材料",
+            "date": "20170310",
+            "marketCap": 87.06400291
+          },
+          {
+            "code": "600490.SH",
+            "name": "鹏欣资源",
+            "date": "20170220",
+            "marketCap": 132.90250939
+          },
+          {
+            "code": "601168.SH",
+            "name": "西部矿业",
+            "date": "20161216",
+            "marketCap": 186.5889
+          },
+          {
+            "code": "000962.SZ",
+            "name": "东方钽业",
+            "date": "20170330",
+            "marketCap": 49.505505920000004
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20170424",
+            "marketCap": 81.28905409000001
+          },
+          {
+            "code": "002756.SZ",
+            "name": "永兴材料",
+            "date": "20170629",
+            "marketCap": 101.52
+          },
+          {
+            "code": "601069.SH",
+            "name": "西部黄金",
+            "date": "20170414",
+            "marketCap": 167.3952
+          },
+          {
+            "code": "600255.SH",
+            "name": "鑫科材料",
+            "date": "20170623",
+            "marketCap": 71.49157962
+          },
+          {
+            "code": "600490.SH",
+            "name": "鹏欣资源",
+            "date": "20170220",
+            "marketCap": 132.90250939
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20170424",
+            "marketCap": 81.28905409000001
+          },
+          {
+            "code": "002756.SZ",
+            "name": "永兴材料",
+            "date": "20170629",
+            "marketCap": 101.52
+          },
+          {
+            "code": "601600.SH",
+            "name": "中国铝业",
+            "date": "20170911",
+            "marketCap": 1205.71727729
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20170905",
+            "marketCap": 124.53427488
+          },
+          {
+            "code": "601212.SH",
+            "name": "白银有色",
+            "date": "20170922",
+            "marketCap": 596.88587822
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002160.SZ",
+            "name": "常铝股份",
+            "date": "20171115",
+            "marketCap": 48.67094004
+          },
+          {
+            "code": "601600.SH",
+            "name": "中国铝业",
+            "date": "20170911",
+            "marketCap": 1205.71727729
+          },
+          {
+            "code": "000688.SZ",
+            "name": "国城矿业",
+            "date": "20170905",
+            "marketCap": 124.53427488
+          },
+          {
+            "code": "002738.SZ",
+            "name": "中矿资源",
+            "date": "20170929",
+            "marketCap": 55.150438
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000506.SZ",
+            "name": "招金黄金",
+            "date": "20180227",
+            "marketCap": 41.619995689999996
+          },
+          {
+            "code": "002578.SZ",
+            "name": "闽发铝业",
+            "date": "20180315",
+            "marketCap": 49.10823681
+          },
+          {
+            "code": "300337.SZ",
+            "name": "银邦股份",
+            "date": "20180201",
+            "marketCap": 60.00016
+          },
+          {
+            "code": "601020.SH",
+            "name": "华钰矿业",
+            "date": "20180323",
+            "marketCap": 87.88061373
+          },
+          {
+            "code": "600255.SH",
+            "name": "鑫科材料",
+            "date": "20180202",
+            "marketCap": 55.91915634
+          },
+          {
+            "code": "000962.SZ",
+            "name": "东方钽业",
+            "date": "20180312",
+            "marketCap": 31.695867099999997
+          },
+          {
+            "code": "600711.SH",
+            "name": "盛屯矿业",
+            "date": "20180205",
+            "marketCap": 145.03442734
+          },
+          {
+            "code": "002532.SZ",
+            "name": "天山铝业",
+            "date": "20180228",
+            "marketCap": 32.4940644
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600768.SH",
+            "name": "富邦新材",
+            "date": "20180613",
+            "marketCap": 14.765690880000001
+          },
+          {
+            "code": "000603.SZ",
+            "name": "盛达资源",
+            "date": "20180608",
+            "marketCap": 74.72368017
+          },
+          {
+            "code": "002171.SZ",
+            "name": "楚江新材",
+            "date": "20180606",
+            "marketCap": 72.4923062
+          },
+          {
+            "code": "000426.SZ",
+            "name": "兴业银锡",
+            "date": "20180615",
+            "marketCap": 134.71889016
+          },
+          {
+            "code": "600490.SH",
+            "name": "鹏欣资源",
+            "date": "20180413",
+            "marketCap": 163.98150694
+          },
+          {
+            "code": "002716.SZ",
+            "name": "湖南白银",
+            "date": "20180502",
+            "marketCap": 95.14383976
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600768.SH",
+            "name": "富邦新材",
+            "date": "20180613",
+            "marketCap": 14.765690880000001
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000758.SZ",
+            "name": "中色股份",
+            "date": "20190927",
+            "marketCap": 86.45571281
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "603799.SH",
+            "name": "华友钴业",
+            "date": "20191230",
+            "marketCap": 424.88869243
+          }
+        ]
+      },
+      {
+        "quarter": "2020Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600547.SH",
+            "name": "山东黄金",
+            "date": "20200929",
+            "marketCap": 1106.56135217
+          }
+        ]
+      },
+      {
+        "quarter": "2020Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "603045.SH",
+            "name": "福达合金",
+            "date": "20210924",
+            "marketCap": 19.211752
+          }
+        ]
+      },
+      {
+        "quarter": "2021Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002501.SZ",
+            "name": "*ST利源",
+            "date": "20220629",
+            "marketCap": 77.39
+          }
+        ]
+      },
+      {
+        "quarter": "2022Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002716.SZ",
+            "name": "湖南白银",
+            "date": "20220929",
+            "marketCap": 63.440749829999994
+          }
+        ]
+      },
+      {
+        "quarter": "2022Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000657.SZ",
+            "name": "中钨高新",
+            "date": "20231225",
+            "marketCap": 118.49766407000001
+          }
+        ]
+      },
+      {
+        "quarter": "2024Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002379.SZ",
+            "name": "宏桥控股",
+            "date": "20241220",
+            "marketCap": 101.93272564
+          }
+        ]
+      },
+      {
+        "quarter": "2025Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000633.SZ",
+            "name": "合金投资",
+            "date": "20250623",
+            "marketCap": 23.68404194
+          }
+        ]
+      },
+      {
+        "quarter": "2025Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      }
+    ]
+  },
+  "historicalAuditScope": "旧公司整体法，市值/PE已被sw-alignment-audit.json取代；财务核验仍有效",
+  "valuationAlignment": {
     "industry": "有色金属",
     "code": "801050.SI",
-    "companies": 147,
-    "quarters": 87,
-    "companyQuarterRows": 8141,
+    "scope": "SW公布市值/PE与财报汇总分离",
+    "project2AsOf": "20261110",
+    "financialAsOf": "2026-11-10",
+    "financialHash": "1fbf3deb3f6f51360426dbbba9a1e05453c996a904c0105590127721384a3b4a",
+    "sectorFinancialHashes": {
+      "801055.SI": "7266d916a44ac48a17b7d243e8a6777a3e4c5068c7cdbd3553bbbad23bbb0602",
+      "801054.SI": "d2058795afb72f09484ab39b7a89f5a9720cd0d206e42f5767a51edefa15900f",
+      "801053.SI": "2af977cf1fd713c7ce77d558497e7944bf97f11ffd9def250555758ebb4f5cae",
+      "801051.SI": "b7e9aba640472d3bb5918a4d1323517daa811ff4b79e95d9872baacb8b79205f",
+      "801056.SI": "065a1219ad3ecb20399b868633ac07f24cdea1e503749f4d59b25763603423f2"
+    },
     "latest": {
       "quarter": "2026Q3",
       "endDate": "20260930",
       "tradeDate": "20260930",
       "companies": 147,
-      "marketCap": 52143.88790103,
-      "marketCapObserved": 52143.88790103,
-      "pe": 16.733459745431393,
-      "peMarketCap": 52143.88790103,
-      "peProfit": 3116.145058720833,
-      "peCoverage": 1.0,
-      "peMissingCount": 0,
-      "peRebuiltCount": 13,
+      "marketCap": 46684.5403,
+      "marketCapObserved": 46684.5403,
+      "pe": 16.51,
       "revenue": 12178.315598480796,
       "profit": 875.8840176919005,
       "reportedCount": 147,
@@ -29,2768 +2827,242 @@
       "estimatedProfit": 0,
       "carriedCount": 0,
       "marketMissingCount": 0,
-      "financialCoverage": 1.0
-    },
-    "financialIncompleteQuarters": 11,
-    "peCoverageMin": 0.9381230486899216,
-    "carriedCompanyQuarters": 333
-  },
-  "quality": [
-    {
-      "quarter": "2005Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600338.SH",
-          "name": "西藏珠峰",
-          "date": "20050330",
-          "marketCap": 7.188333319999999
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600595.SH",
-          "name": "中孚实业",
-          "date": "20050617",
-          "marketCap": 7.7733451
-        },
-        {
-          "code": "000969.SZ",
-          "name": "安泰科技",
-          "date": "20050629",
-          "marketCap": 17.743107199999997
-        },
-        {
-          "code": "600459.SH",
-          "name": "贵研铂业",
-          "date": "20050629",
-          "marketCap": 5.8446
-        },
-        {
-          "code": "600361.SH",
-          "name": "创新新材",
-          "date": "20050617",
-          "marketCap": 20.31769522
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q3",
-      "financialMissing": [
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金"
-        }
-      ],
-      "peMissing": [
-        {
-          "code": "600338.SH",
-          "name": "西藏珠峰"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000630.SZ",
-          "name": "铜陵有色",
-          "date": "20050929",
-          "marketCap": 43.67788812
-        },
-        {
-          "code": "000807.SZ",
-          "name": "云铝股份",
-          "date": "20050923",
-          "marketCap": 19.5468
-        },
-        {
-          "code": "600392.SH",
-          "name": "盛和资源",
-          "date": "20050923",
-          "marketCap": 8.8992
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q4",
-      "financialMissing": [
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金"
-        }
-      ],
-      "peMissing": [
-        {
-          "code": "600338.SH",
-          "name": "西藏珠峰"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000960.SZ",
-          "name": "锡业股份",
-          "date": "20051222",
-          "marketCap": 30.600792
-        },
-        {
-          "code": "600338.SH",
-          "name": "西藏珠峰",
-          "date": "20051229",
-          "marketCap": 4.544166659999999
-        },
-        {
-          "code": "600961.SH",
-          "name": "株冶集团",
-          "date": "20051229",
-          "marketCap": 11.4131263
-        },
-        {
-          "code": "000933.SZ",
-          "name": "神火股份",
-          "date": "20051213",
-          "marketCap": 35.0
-        },
-        {
-          "code": "000970.SZ",
-          "name": "中科三环",
-          "date": "20051222",
-          "marketCap": 35.430479999999996
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q1",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "600338.SH",
-          "name": "西藏珠峰"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20060330",
-          "marketCap": 3.0202875
-        },
-        {
-          "code": "000751.SZ",
-          "name": "锌业股份",
-          "date": "20060316",
-          "marketCap": 31.71955576
-        },
-        {
-          "code": "000060.SZ",
-          "name": "中金岭南",
-          "date": "20060330",
-          "marketCap": 48.5136
-        },
-        {
-          "code": "000807.SZ",
-          "name": "云铝股份",
-          "date": "20060324",
-          "marketCap": 34.8894
-        },
-        {
-          "code": "000831.SZ",
-          "name": "中国稀土",
-          "date": "20060324",
-          "marketCap": 17.6781
-        },
-        {
-          "code": "600362.SH",
-          "name": "江西铜业",
-          "date": "20060324",
-          "marketCap": 220.89141466
-        },
-        {
-          "code": "600497.SH",
-          "name": "驰宏锌锗",
-          "date": "20060224",
-          "marketCap": 30.208
-        },
-        {
-          "code": "000426.SZ",
-          "name": "兴业银锡",
-          "date": "20060320",
-          "marketCap": 11.12746748
-        },
-        {
-          "code": "600111.SH",
-          "name": "北方稀土",
-          "date": "20060320",
-          "marketCap": 24.3011748
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600888.SH",
-          "name": "新疆众和",
-          "date": "20060629",
-          "marketCap": 32.916560340000004
-        },
-        {
-          "code": "000612.SZ",
-          "name": "焦作万方",
-          "date": "20060629",
-          "marketCap": 35.53303014
-        },
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20060609",
-          "marketCap": 22.805137289999998
-        },
-        {
-          "code": "000762.SZ",
-          "name": "西藏矿业",
-          "date": "20060629",
-          "marketCap": 27.19416875
-        },
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20060629",
-          "marketCap": 4.23472963
-        },
-        {
-          "code": "000975.SZ",
-          "name": "山金国际",
-          "date": "20060623",
-          "marketCap": 20.13984
-        },
-        {
-          "code": "600281.SH",
-          "name": "华阳新材",
-          "date": "20060615",
-          "marketCap": 16.7250196
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20060629",
-          "marketCap": 5.3972704799999995
-        },
-        {
-          "code": "600711.SH",
-          "name": "盛屯矿业",
-          "date": "20060629",
-          "marketCap": 3.313764
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600338.SH",
-          "name": "西藏珠峰",
-          "date": "20060913",
-          "marketCap": 9.38916665
-        },
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20060809",
-          "marketCap": 26.31230394
-        },
-        {
-          "code": "000737.SZ",
-          "name": "北方铜业",
-          "date": "20060928",
-          "marketCap": 13.94765
-        },
-        {
-          "code": "600281.SH",
-          "name": "华阳新材",
-          "date": "20060615",
-          "marketCap": 16.7250196
-        },
-        {
-          "code": "600711.SH",
-          "name": "盛屯矿业",
-          "date": "20060717",
-          "marketCap": 3.331872
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q4",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000831.SZ",
-          "name": "中国稀土",
-          "date": "20061228",
-          "marketCap": 21.1266
-        },
-        {
-          "code": "600988.SH",
-          "name": "赤峰黄金",
-          "date": "20061215",
-          "marketCap": 4.3931203000000005
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20061222",
-          "marketCap": 12.785531579999999
-        },
-        {
-          "code": "600615.SH",
-          "name": "鑫源智造",
-          "date": "20061221",
-          "marketCap": 10.829981230000001
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q1",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000807.SZ",
-          "name": "云铝股份",
-          "date": "20070329",
-          "marketCap": 93.8028
-        },
-        {
-          "code": "600988.SH",
-          "name": "赤峰黄金",
-          "date": "20070323",
-          "marketCap": 10.30798124
-        },
-        {
-          "code": "600497.SH",
-          "name": "驰宏锌锗",
-          "date": "20070329",
-          "marketCap": 201.0255
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q2",
-      "financialMissing": [
-        {
-          "code": "601600.SH",
-          "name": "中国铝业"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20070420",
-          "marketCap": 11.06011739
-        },
-        {
-          "code": "601600.SH",
-          "name": "中国铝业",
-          "date": "20070611",
-          "marketCap": 2974.22910147
-        },
-        {
-          "code": "600259.SH",
-          "name": "中稀有色",
-          "date": "20070427",
-          "marketCap": 16.8586
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        },
-        {
-          "code": "600615.SH",
-          "name": "鑫源智造",
-          "date": "20070628",
-          "marketCap": 18.06877082
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000751.SZ",
-          "name": "锌业股份",
-          "date": "20070816",
-          "marketCap": 279.08750935999996
-        },
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20070420",
-          "marketCap": 11.06011739
-        },
-        {
-          "code": "000975.SZ",
-          "name": "山金国际",
-          "date": "20070927",
-          "marketCap": 97.5024
-        },
-        {
-          "code": "600259.SH",
-          "name": "中稀有色",
-          "date": "20070427",
-          "marketCap": 16.8586
-        },
-        {
-          "code": "600490.SH",
-          "name": "鹏欣资源",
-          "date": "20070927",
-          "marketCap": 16.2096
-        },
-        {
-          "code": "600281.SH",
-          "name": "华阳新材",
-          "date": "20070927",
-          "marketCap": 50.607361080000004
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20070420",
-          "marketCap": 11.06011739
-        },
-        {
-          "code": "600595.SH",
-          "name": "中孚实业",
-          "date": "20071227",
-          "marketCap": 204.60366641
-        },
-        {
-          "code": "000975.SZ",
-          "name": "山金国际",
-          "date": "20070927",
-          "marketCap": 97.5024
-        },
-        {
-          "code": "600259.SH",
-          "name": "中稀有色",
-          "date": "20070427",
-          "marketCap": 16.8586
-        },
-        {
-          "code": "000962.SZ",
-          "name": "东方钽业",
-          "date": "20071012",
-          "marketCap": 108.20303999999999
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        },
-        {
-          "code": "600615.SH",
-          "name": "鑫源智造",
-          "date": "20071226",
-          "marketCap": 36.5323847
-        },
-        {
-          "code": "600361.SH",
-          "name": "创新新材",
-          "date": "20071227",
-          "marketCap": 121.35115127
-        },
-        {
-          "code": "002182.SZ",
-          "name": "宝武镁业",
-          "date": "20071227",
-          "marketCap": 53.6256
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20080215",
-          "marketCap": 10.835985
-        },
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20070420",
-          "marketCap": 11.06011739
-        },
-        {
-          "code": "600497.SH",
-          "name": "驰宏锌锗",
-          "date": "20080117",
-          "marketCap": 303.888
-        },
-        {
-          "code": "000426.SZ",
-          "name": "兴业银锡",
-          "date": "20080314",
-          "marketCap": 37.991516499999996
-        },
-        {
-          "code": "002149.SZ",
-          "name": "西部材料",
-          "date": "20080115",
-          "marketCap": 42.60172
-        },
-        {
-          "code": "600259.SH",
-          "name": "中稀有色",
-          "date": "20070427",
-          "marketCap": 16.8586
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        },
-        {
-          "code": "600615.SH",
-          "name": "鑫源智造",
-          "date": "20071226",
-          "marketCap": 36.5323847
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20080215",
-          "marketCap": 10.835985
-        },
-        {
-          "code": "000751.SZ",
-          "name": "锌业股份",
-          "date": "20080627",
-          "marketCap": 63.83266422999999
-        },
-        {
-          "code": "000060.SZ",
-          "name": "中金岭南",
-          "date": "20080627",
-          "marketCap": 143.5356384
-        },
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20070420",
-          "marketCap": 11.06011739
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20080410",
-          "marketCap": 46.52084986
-        },
-        {
-          "code": "600259.SH",
-          "name": "中稀有色",
-          "date": "20070427",
-          "marketCap": 16.8586
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q3",
-      "financialMissing": [
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业"
-        }
-      ],
-      "peMissing": [
-        {
-          "code": "601958.SH",
-          "name": "金钼股份"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20080215",
-          "marketCap": 10.835985
-        },
-        {
-          "code": "600888.SH",
-          "name": "新疆众和",
-          "date": "20080925",
-          "marketCap": 30.10101748
-        },
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20070420",
-          "marketCap": 11.06011739
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20080410",
-          "marketCap": 46.52084986
-        },
-        {
-          "code": "600259.SH",
-          "name": "中稀有色",
-          "date": "20070427",
-          "marketCap": 16.8586
-        },
-        {
-          "code": "601168.SH",
-          "name": "西部矿业",
-          "date": "20080925",
-          "marketCap": 203.0316
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q4",
-      "financialMissing": [
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20080215",
-          "marketCap": 10.835985
-        },
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20070420",
-          "marketCap": 11.06011739
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20080410",
-          "marketCap": 46.52084986
-        },
-        {
-          "code": "600259.SH",
-          "name": "中稀有色",
-          "date": "20070427",
-          "marketCap": 16.8586
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q1",
-      "financialMissing": [
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20080215",
-          "marketCap": 10.835985
-        },
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20070420",
-          "marketCap": 11.06011739
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20080410",
-          "marketCap": 46.52084986
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q2",
-      "financialMissing": [
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20080215",
-          "marketCap": 10.835985
-        },
-        {
-          "code": "600988.SH",
-          "name": "赤峰黄金",
-          "date": "20090611",
-          "marketCap": 7.64221773
-        },
-        {
-          "code": "000795.SZ",
-          "name": "英洛华",
-          "date": "20090629",
-          "marketCap": 17.13392
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20080410",
-          "marketCap": 46.52084986
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q3",
-      "financialMissing": [
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20080215",
-          "marketCap": 10.835985
-        },
-        {
-          "code": "002203.SZ",
-          "name": "海亮股份",
-          "date": "20090929",
-          "marketCap": 44.73118
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20080410",
-          "marketCap": 46.52084986
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q4",
-      "financialMissing": [
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20080215",
-          "marketCap": 10.835985
-        },
-        {
-          "code": "600338.SH",
-          "name": "西藏珠峰",
-          "date": "20091222",
-          "marketCap": 24.19333328
-        },
-        {
-          "code": "002114.SZ",
-          "name": "罗平锌电",
-          "date": "20091230",
-          "marketCap": 33.001434
-        },
-        {
-          "code": "000426.SZ",
-          "name": "兴业银锡",
-          "date": "20091229",
-          "marketCap": 58.433845510000005
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        },
-        {
-          "code": "600361.SH",
-          "name": "创新新材",
-          "date": "20091230",
-          "marketCap": 46.39611775
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q1",
-      "financialMissing": [
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20080215",
-          "marketCap": 10.835985
-        },
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20100326",
-          "marketCap": 22.03488738
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q2",
-      "financialMissing": [
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20100326",
-          "marketCap": 22.03488738
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20100326",
-          "marketCap": 22.03488738
-        },
-        {
-          "code": "002203.SZ",
-          "name": "海亮股份",
-          "date": "20100929",
-          "marketCap": 51.45286
-        },
-        {
-          "code": "300057.SZ",
-          "name": "万顺新材",
-          "date": "20100928",
-          "marketCap": 42.2633
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20100326",
-          "marketCap": 22.03488738
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600338.SH",
-          "name": "西藏珠峰",
-          "date": "20110309",
-          "marketCap": 22.70499995
-        },
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20100326",
-          "marketCap": 22.03488738
-        },
-        {
-          "code": "000751.SZ",
-          "name": "锌业股份",
-          "date": "20110330",
-          "marketCap": 122.78074198
-        },
-        {
-          "code": "000831.SZ",
-          "name": "中国稀土",
-          "date": "20110317",
-          "marketCap": 59.7861
-        },
-        {
-          "code": "600497.SH",
-          "name": "驰宏锌锗",
-          "date": "20110330",
-          "marketCap": 365.71826725
-        },
-        {
-          "code": "000975.SZ",
-          "name": "山金国际",
-          "date": "20110318",
-          "marketCap": 57.12228641
-        },
-        {
-          "code": "600490.SH",
-          "name": "鹏欣资源",
-          "date": "20110318",
-          "marketCap": 21.7668
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20110628",
-          "marketCap": 42.1929675
-        },
-        {
-          "code": "600338.SH",
-          "name": "西藏珠峰",
-          "date": "20110309",
-          "marketCap": 22.70499995
-        },
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20100326",
-          "marketCap": 22.03488738
-        },
-        {
-          "code": "000831.SZ",
-          "name": "中国稀土",
-          "date": "20110317",
-          "marketCap": 59.7861
-        },
-        {
-          "code": "600547.SH",
-          "name": "山东黄金",
-          "date": "20110629",
-          "marketCap": 638.1056677500001
-        },
-        {
-          "code": "000975.SZ",
-          "name": "山金国际",
-          "date": "20110318",
-          "marketCap": 57.12228641
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20100326",
-          "marketCap": 22.03488738
-        },
-        {
-          "code": "000831.SZ",
-          "name": "中国稀土",
-          "date": "20110317",
-          "marketCap": 59.7861
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20100326",
-          "marketCap": 22.03488738
-        },
-        {
-          "code": "000831.SZ",
-          "name": "中国稀土",
-          "date": "20110317",
-          "marketCap": 59.7861
-        },
-        {
-          "code": "002114.SZ",
-          "name": "罗平锌电",
-          "date": "20111229",
-          "marketCap": 12.2813136
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        },
-        {
-          "code": "600711.SH",
-          "name": "盛屯矿业",
-          "date": "20111103",
-          "marketCap": 29.67290514
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20100326",
-          "marketCap": 22.03488738
-        },
-        {
-          "code": "000831.SZ",
-          "name": "中国稀土",
-          "date": "20110317",
-          "marketCap": 59.7861
-        },
-        {
-          "code": "600392.SH",
-          "name": "盛和资源",
-          "date": "20120120",
-          "marketCap": 15.378120000000001
-        },
-        {
-          "code": "000969.SZ",
-          "name": "安泰科技",
-          "date": "20120329",
-          "marketCap": 135.18850656
-        },
-        {
-          "code": "000975.SZ",
-          "name": "山金国际",
-          "date": "20120116",
-          "marketCap": 31.893795689999997
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600338.SH",
-          "name": "西藏珠峰",
-          "date": "20120618",
-          "marketCap": 11.24166664
-        },
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20100326",
-          "marketCap": 22.03488738
-        },
-        {
-          "code": "000831.SZ",
-          "name": "中国稀土",
-          "date": "20110317",
-          "marketCap": 59.7861
-        },
-        {
-          "code": "600392.SH",
-          "name": "盛和资源",
-          "date": "20120120",
-          "marketCap": 15.378120000000001
-        },
-        {
-          "code": "601600.SH",
-          "name": "中国铝业",
-          "date": "20120628",
-          "marketCap": 834.46090294
-        },
-        {
-          "code": "002192.SZ",
-          "name": "融捷股份",
-          "date": "20120427",
-          "marketCap": 22.68966
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600338.SH",
-          "name": "西藏珠峰",
-          "date": "20120618",
-          "marketCap": 11.24166664
-        },
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20100326",
-          "marketCap": 22.03488738
-        },
-        {
-          "code": "000831.SZ",
-          "name": "中国稀土",
-          "date": "20110317",
-          "marketCap": 59.7861
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600338.SH",
-          "name": "西藏珠峰",
-          "date": "20120618",
-          "marketCap": 11.24166664
-        },
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20100326",
-          "marketCap": 22.03488738
-        },
-        {
-          "code": "000751.SZ",
-          "name": "锌业股份",
-          "date": "20121227",
-          "marketCap": 28.974478899999998
-        },
-        {
-          "code": "000831.SZ",
-          "name": "中国稀土",
-          "date": "20110317",
-          "marketCap": 59.7861
-        },
-        {
-          "code": "002114.SZ",
-          "name": "罗平锌电",
-          "date": "20121105",
-          "marketCap": 14.5794636
-        },
-        {
-          "code": "002460.SZ",
-          "name": "赣锋锂业",
-          "date": "20121224",
-          "marketCap": 29.505873100000002
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000751.SZ",
-          "name": "锌业股份",
-          "date": "20130311",
-          "marketCap": 43.07317169
-        },
-        {
-          "code": "600988.SH",
-          "name": "赤峰黄金",
-          "date": "20130308",
-          "marketCap": 54.13906972
-        },
-        {
-          "code": "002167.SZ",
-          "name": "东方锆业",
-          "date": "20130228",
-          "marketCap": 63.99883440000001
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20070426",
-          "marketCap": 13.162375760000002
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000751.SZ",
-          "name": "锌业股份",
-          "date": "20130311",
-          "marketCap": 43.07317169
-        },
-        {
-          "code": "600547.SH",
-          "name": "山东黄金",
-          "date": "20130402",
-          "marketCap": 457.23316469
-        },
-        {
-          "code": "002240.SZ",
-          "name": "盛新锂能",
-          "date": "20130415",
-          "marketCap": 23.4065808
-        },
-        {
-          "code": "002295.SZ",
-          "name": "精艺股份",
-          "date": "20130614",
-          "marketCap": 11.88198
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000751.SZ",
-          "name": "锌业股份",
-          "date": "20130311",
-          "marketCap": 43.07317169
-        },
-        {
-          "code": "002171.SZ",
-          "name": "楚江新材",
-          "date": "20130712",
-          "marketCap": 20.833956
-        },
-        {
-          "code": "002155.SZ",
-          "name": "湖南黄金",
-          "date": "20130830",
-          "marketCap": 96.9368764
-        },
-        {
-          "code": "002240.SZ",
-          "name": "盛新锂能",
-          "date": "20130415",
-          "marketCap": 23.4065808
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000751.SZ",
-          "name": "锌业股份",
-          "date": "20130311",
-          "marketCap": 43.07317169
-        },
-        {
-          "code": "600547.SH",
-          "name": "山东黄金",
-          "date": "20131225",
-          "marketCap": 245.47999038
-        },
-        {
-          "code": "002160.SZ",
-          "name": "常铝股份",
-          "date": "20131217",
-          "marketCap": 16.048
-        },
-        {
-          "code": "002295.SZ",
-          "name": "精艺股份",
-          "date": "20131227",
-          "marketCap": 12.55974
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000751.SZ",
-          "name": "锌业股份",
-          "date": "20130311",
-          "marketCap": 43.07317169
-        },
-        {
-          "code": "002114.SZ",
-          "name": "罗平锌电",
-          "date": "20140310",
-          "marketCap": 19.84438037
-        },
-        {
-          "code": "002167.SZ",
-          "name": "东方锆业",
-          "date": "20131231",
-          "marketCap": 47.150499599999996
-        },
-        {
-          "code": "002460.SZ",
-          "name": "赣锋锂业",
-          "date": "20140310",
-          "marketCap": 58.822590749999996
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20140207",
-          "marketCap": 23.14489302
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000960.SZ",
-          "name": "锡业股份",
-          "date": "20140505",
-          "marketCap": 143.21181664
-        },
-        {
-          "code": "000612.SZ",
-          "name": "焦作万方",
-          "date": "20140402",
-          "marketCap": 73.02197916
-        },
-        {
-          "code": "000751.SZ",
-          "name": "锌业股份",
-          "date": "20130311",
-          "marketCap": 43.07317169
-        },
-        {
-          "code": "000762.SZ",
-          "name": "西藏矿业",
-          "date": "20140428",
-          "marketCap": 50.26294701
-        },
-        {
-          "code": "000807.SZ",
-          "name": "云铝股份",
-          "date": "20140430",
-          "marketCap": 50.02312198
-        },
-        {
-          "code": "000878.SZ",
-          "name": "云南铜业",
-          "date": "20140416",
-          "marketCap": 107.78794868000001
-        },
-        {
-          "code": "600988.SH",
-          "name": "赤峰黄金",
-          "date": "20140508",
-          "marketCap": 38.01916879
-        },
-        {
-          "code": "002167.SZ",
-          "name": "东方锆业",
-          "date": "20131231",
-          "marketCap": 47.150499599999996
-        },
-        {
-          "code": "002466.SZ",
-          "name": "天齐锂业",
-          "date": "20140428",
-          "marketCap": 111.680816
-        },
-        {
-          "code": "002149.SZ",
-          "name": "西部材料",
-          "date": "20140523",
-          "marketCap": 23.924310000000002
-        },
-        {
-          "code": "600490.SH",
-          "name": "鹏欣资源",
-          "date": "20140331",
-          "marketCap": 90.306
-        },
-        {
-          "code": "600615.SH",
-          "name": "鑫源智造",
-          "date": "20140507",
-          "marketCap": 18.95246721
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600497.SH",
-          "name": "驰宏锌锗",
-          "date": "20140819",
-          "marketCap": 173.25957646999998
-        },
-        {
-          "code": "600547.SH",
-          "name": "山东黄金",
-          "date": "20140731",
-          "marketCap": 235.51848352000002
-        },
-        {
-          "code": "002160.SZ",
-          "name": "常铝股份",
-          "date": "20140815",
-          "marketCap": 21.182
-        },
-        {
-          "code": "000795.SZ",
-          "name": "英洛华",
-          "date": "20140910",
-          "marketCap": 37.44753755
-        },
-        {
-          "code": "002203.SZ",
-          "name": "海亮股份",
-          "date": "20140814",
-          "marketCap": 98.22292392
-        },
-        {
-          "code": "300224.SZ",
-          "name": "正海磁材",
-          "date": "20140718",
-          "marketCap": 60.0
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000612.SZ",
-          "name": "焦作万方",
-          "date": "20141226",
-          "marketCap": 121.48730399
-        },
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20141103",
-          "marketCap": 64.75253794
-        },
-        {
-          "code": "002171.SZ",
-          "name": "楚江新材",
-          "date": "20141121",
-          "marketCap": 52.04518098
-        },
-        {
-          "code": "000426.SZ",
-          "name": "兴业银锡",
-          "date": "20141210",
-          "marketCap": 71.3348711
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20141027",
-          "marketCap": 38.85723304
-        },
-        {
-          "code": "600490.SH",
-          "name": "鹏欣资源",
-          "date": "20141223",
-          "marketCap": 159.5841
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000630.SZ",
-          "name": "铜陵有色",
-          "date": "20150306",
-          "marketCap": 323.72339517
-        },
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20150327",
-          "marketCap": 64.10222551
-        },
-        {
-          "code": "002160.SZ",
-          "name": "常铝股份",
-          "date": "20150320",
-          "marketCap": 42.6748829
-        },
-        {
-          "code": "002171.SZ",
-          "name": "楚江新材",
-          "date": "20141121",
-          "marketCap": 52.04518098
-        },
-        {
-          "code": "002114.SZ",
-          "name": "罗平锌电",
-          "date": "20150318",
-          "marketCap": 50.80705057
-        },
-        {
-          "code": "000969.SZ",
-          "name": "安泰科技",
-          "date": "20150116",
-          "marketCap": 81.01657708
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20150129",
-          "marketCap": 31.193616210000002
-        },
-        {
-          "code": "600490.SH",
-          "name": "鹏欣资源",
-          "date": "20150330",
-          "marketCap": 225.3996
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000630.SZ",
-          "name": "铜陵有色",
-          "date": "20150306",
-          "marketCap": 323.72339517
-        },
-        {
-          "code": "000878.SZ",
-          "name": "云南铜业",
-          "date": "20150605",
-          "marketCap": 347.01770600000003
-        },
-        {
-          "code": "600595.SH",
-          "name": "中孚实业",
-          "date": "20150521",
-          "marketCap": 177.46296707
-        },
-        {
-          "code": "600531.SH",
-          "name": "豫光金铅",
-          "date": "20150610",
-          "marketCap": 81.37111387
-        },
-        {
-          "code": "002379.SZ",
-          "name": "宏桥控股",
-          "date": "20150521",
-          "marketCap": 78.00288
-        },
-        {
-          "code": "002203.SZ",
-          "name": "海亮股份",
-          "date": "20150424",
-          "marketCap": 197.99388447
-        },
-        {
-          "code": "300057.SZ",
-          "name": "万顺新材",
-          "date": "20150602",
-          "marketCap": 110.8172
-        },
-        {
-          "code": "600366.SH",
-          "name": "宁波韵升",
-          "date": "20150521",
-          "marketCap": 187.72369247999998
-        },
-        {
-          "code": "000737.SZ",
-          "name": "北方铜业",
-          "date": "20150610",
-          "marketCap": 63.985416
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20150609",
-          "marketCap": 194.1369929
-        },
-        {
-          "code": "002716.SZ",
-          "name": "湖南白银",
-          "date": "20150417",
-          "marketCap": 70.04890306
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20150922",
-          "marketCap": 82.31315272
-        },
-        {
-          "code": "000630.SZ",
-          "name": "铜陵有色",
-          "date": "20150306",
-          "marketCap": 323.72339517
-        },
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20150805",
-          "marketCap": 100.64761171
-        },
-        {
-          "code": "600219.SH",
-          "name": "南山铝业",
-          "date": "20150928",
-          "marketCap": 186.55513095
-        },
-        {
-          "code": "600988.SH",
-          "name": "赤峰黄金",
-          "date": "20150828",
-          "marketCap": 82.51616953999999
-        },
-        {
-          "code": "600392.SH",
-          "name": "盛和资源",
-          "date": "20150724",
-          "marketCap": 101.97102749
-        },
-        {
-          "code": "600547.SH",
-          "name": "山东黄金",
-          "date": "20150922",
-          "marketCap": 246.47614106999998
-        },
-        {
-          "code": "000795.SZ",
-          "name": "英洛华",
-          "date": "20150814",
-          "marketCap": 41.11684754
-        },
-        {
-          "code": "002203.SZ",
-          "name": "海亮股份",
-          "date": "20150424",
-          "marketCap": 197.99388447
-        },
-        {
-          "code": "002240.SZ",
-          "name": "盛新锂能",
-          "date": "20150724",
-          "marketCap": 60.7982256
-        },
-        {
-          "code": "601388.SH",
-          "name": "怡球资源",
-          "date": "20150724",
-          "marketCap": 124.3489
-        },
-        {
-          "code": "000426.SZ",
-          "name": "兴业银锡",
-          "date": "20150707",
-          "marketCap": 58.26178593
-        },
-        {
-          "code": "002149.SZ",
-          "name": "西部材料",
-          "date": "20150918",
-          "marketCap": 29.058432
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20150724",
-          "marketCap": 49.56319021
-        },
-        {
-          "code": "600259.SH",
-          "name": "中稀有色",
-          "date": "20150814",
-          "marketCap": 126.99842199
-        },
-        {
-          "code": "600490.SH",
-          "name": "鹏欣资源",
-          "date": "20150826",
-          "marketCap": 97.7619
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20150609",
-          "marketCap": 194.1369929
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20150805",
-          "marketCap": 100.64761171
-        },
-        {
-          "code": "600219.SH",
-          "name": "南山铝业",
-          "date": "20150928",
-          "marketCap": 186.55513095
-        },
-        {
-          "code": "600595.SH",
-          "name": "中孚实业",
-          "date": "20151228",
-          "marketCap": 122.77859841
-        },
-        {
-          "code": "600988.SH",
-          "name": "赤峰黄金",
-          "date": "20150828",
-          "marketCap": 82.51616953999999
-        },
-        {
-          "code": "002379.SZ",
-          "name": "宏桥控股",
-          "date": "20151021",
-          "marketCap": 40.20576
-        },
-        {
-          "code": "002240.SZ",
-          "name": "盛新锂能",
-          "date": "20151225",
-          "marketCap": 67.12830720000001
-        },
-        {
-          "code": "601388.SH",
-          "name": "怡球资源",
-          "date": "20150724",
-          "marketCap": 124.3489
-        },
-        {
-          "code": "000426.SZ",
-          "name": "兴业银锡",
-          "date": "20151027",
-          "marketCap": 84.28856735000001
-        },
-        {
-          "code": "600490.SH",
-          "name": "鹏欣资源",
-          "date": "20150826",
-          "marketCap": 97.7619
-        },
-        {
-          "code": "601137.SH",
-          "name": "博威合金",
-          "date": "20151218",
-          "marketCap": 53.4275
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600768.SH",
-          "name": "富邦新材",
-          "date": "20160330",
-          "marketCap": 32.66106624
-        },
-        {
-          "code": "000612.SZ",
-          "name": "焦作万方",
-          "date": "20160226",
-          "marketCap": 71.44896888
-        },
-        {
-          "code": "002379.SZ",
-          "name": "宏桥控股",
-          "date": "20151021",
-          "marketCap": 40.20576
-        },
-        {
-          "code": "300057.SZ",
-          "name": "万顺新材",
-          "date": "20160205",
-          "marketCap": 57.64005279
-        },
-        {
-          "code": "601388.SH",
-          "name": "怡球资源",
-          "date": "20160329",
-          "marketCap": 74.0337
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20160217",
-          "marketCap": 39.74297769
-        },
-        {
-          "code": "300224.SZ",
-          "name": "正海磁材",
-          "date": "20160318",
-          "marketCap": 92.42854603
-        },
-        {
-          "code": "601168.SH",
-          "name": "西部矿业",
-          "date": "20160129",
-          "marketCap": 142.5034
-        },
-        {
-          "code": "000962.SZ",
-          "name": "东方钽业",
-          "date": "20160201",
-          "marketCap": 41.08560242
-        },
-        {
-          "code": "603399.SH",
-          "name": "永杉锂业",
-          "date": "20160122",
-          "marketCap": 50.72386594
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600768.SH",
-          "name": "富邦新材",
-          "date": "20160330",
-          "marketCap": 32.66106624
-        },
-        {
-          "code": "600497.SH",
-          "name": "驰宏锌锗",
-          "date": "20160608",
-          "marketCap": 214.84842457
-        },
-        {
-          "code": "002379.SZ",
-          "name": "宏桥控股",
-          "date": "20160513",
-          "marketCap": 35.481120000000004
-        },
-        {
-          "code": "000975.SZ",
-          "name": "山金国际",
-          "date": "20160418",
-          "marketCap": 162.2424105
-        },
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20160217",
-          "marketCap": 39.74297769
-        },
-        {
-          "code": "601168.SH",
-          "name": "西部矿业",
-          "date": "20160129",
-          "marketCap": 142.5034
-        },
-        {
-          "code": "000962.SZ",
-          "name": "东方钽业",
-          "date": "20160201",
-          "marketCap": 41.08560242
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600768.SH",
-          "name": "富邦新材",
-          "date": "20160330",
-          "marketCap": 32.66106624
-        },
-        {
-          "code": "002160.SZ",
-          "name": "常铝股份",
-          "date": "20160908",
-          "marketCap": 74.83567891
-        },
-        {
-          "code": "000975.SZ",
-          "name": "山金国际",
-          "date": "20160418",
-          "marketCap": 162.2424105
-        },
-        {
-          "code": "600255.SH",
-          "name": "鑫科材料",
-          "date": "20160805",
-          "marketCap": 77.86211642
-        },
-        {
-          "code": "600281.SH",
-          "name": "华阳新材",
-          "date": "20160826",
-          "marketCap": 34.979337699999995
-        },
-        {
-          "code": "600301.SH",
-          "name": "华锡有色",
-          "date": "20160901",
-          "marketCap": 31.674454460000003
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600768.SH",
-          "name": "富邦新材",
-          "date": "20160330",
-          "marketCap": 32.66106624
-        },
-        {
-          "code": "002379.SZ",
-          "name": "宏桥控股",
-          "date": "20161107",
-          "marketCap": 74.48255999999999
-        },
-        {
-          "code": "002578.SZ",
-          "name": "闽发铝业",
-          "date": "20161011",
-          "marketCap": 51.06755
-        },
-        {
-          "code": "601168.SH",
-          "name": "西部矿业",
-          "date": "20161216",
-          "marketCap": 186.5889
-        },
-        {
-          "code": "600711.SH",
-          "name": "盛屯矿业",
-          "date": "20161216",
-          "marketCap": 105.09307181
-        },
-        {
-          "code": "603399.SH",
-          "name": "永杉锂业",
-          "date": "20161019",
-          "marketCap": 55.96599775000001
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002379.SZ",
-          "name": "宏桥控股",
-          "date": "20161107",
-          "marketCap": 74.48255999999999
-        },
-        {
-          "code": "300057.SZ",
-          "name": "万顺新材",
-          "date": "20170307",
-          "marketCap": 65.11435407
-        },
-        {
-          "code": "002578.SZ",
-          "name": "闽发铝业",
-          "date": "20161011",
-          "marketCap": 51.06755
-        },
-        {
-          "code": "600255.SH",
-          "name": "鑫科材料",
-          "date": "20170310",
-          "marketCap": 87.06400291
-        },
-        {
-          "code": "600490.SH",
-          "name": "鹏欣资源",
-          "date": "20170220",
-          "marketCap": 132.90250939
-        },
-        {
-          "code": "601168.SH",
-          "name": "西部矿业",
-          "date": "20161216",
-          "marketCap": 186.5889
-        },
-        {
-          "code": "000962.SZ",
-          "name": "东方钽业",
-          "date": "20170330",
-          "marketCap": 49.505505920000004
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20170424",
-          "marketCap": 81.28905409000001
-        },
-        {
-          "code": "002756.SZ",
-          "name": "永兴材料",
-          "date": "20170629",
-          "marketCap": 101.52
-        },
-        {
-          "code": "601069.SH",
-          "name": "西部黄金",
-          "date": "20170414",
-          "marketCap": 167.3952
-        },
-        {
-          "code": "600255.SH",
-          "name": "鑫科材料",
-          "date": "20170623",
-          "marketCap": 71.49157962
-        },
-        {
-          "code": "600490.SH",
-          "name": "鹏欣资源",
-          "date": "20170220",
-          "marketCap": 132.90250939
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20170424",
-          "marketCap": 81.28905409000001
-        },
-        {
-          "code": "002756.SZ",
-          "name": "永兴材料",
-          "date": "20170629",
-          "marketCap": 101.52
-        },
-        {
-          "code": "601600.SH",
-          "name": "中国铝业",
-          "date": "20170911",
-          "marketCap": 1205.71727729
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20170905",
-          "marketCap": 124.53427488
-        },
-        {
-          "code": "601212.SH",
-          "name": "白银有色",
-          "date": "20170922",
-          "marketCap": 596.88587822
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002160.SZ",
-          "name": "常铝股份",
-          "date": "20171115",
-          "marketCap": 48.67094004
-        },
-        {
-          "code": "601600.SH",
-          "name": "中国铝业",
-          "date": "20170911",
-          "marketCap": 1205.71727729
-        },
-        {
-          "code": "000688.SZ",
-          "name": "国城矿业",
-          "date": "20170905",
-          "marketCap": 124.53427488
-        },
-        {
-          "code": "002738.SZ",
-          "name": "中矿资源",
-          "date": "20170929",
-          "marketCap": 55.150438
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000506.SZ",
-          "name": "招金黄金",
-          "date": "20180227",
-          "marketCap": 41.619995689999996
-        },
-        {
-          "code": "002578.SZ",
-          "name": "闽发铝业",
-          "date": "20180315",
-          "marketCap": 49.10823681
-        },
-        {
-          "code": "300337.SZ",
-          "name": "银邦股份",
-          "date": "20180201",
-          "marketCap": 60.00016
-        },
-        {
-          "code": "601020.SH",
-          "name": "华钰矿业",
-          "date": "20180323",
-          "marketCap": 87.88061373
-        },
-        {
-          "code": "600255.SH",
-          "name": "鑫科材料",
-          "date": "20180202",
-          "marketCap": 55.91915634
-        },
-        {
-          "code": "000962.SZ",
-          "name": "东方钽业",
-          "date": "20180312",
-          "marketCap": 31.695867099999997
-        },
-        {
-          "code": "600711.SH",
-          "name": "盛屯矿业",
-          "date": "20180205",
-          "marketCap": 145.03442734
-        },
-        {
-          "code": "002532.SZ",
-          "name": "天山铝业",
-          "date": "20180228",
-          "marketCap": 32.4940644
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600768.SH",
-          "name": "富邦新材",
-          "date": "20180613",
-          "marketCap": 14.765690880000001
-        },
-        {
-          "code": "000603.SZ",
-          "name": "盛达资源",
-          "date": "20180608",
-          "marketCap": 74.72368017
-        },
-        {
-          "code": "002171.SZ",
-          "name": "楚江新材",
-          "date": "20180606",
-          "marketCap": 72.4923062
-        },
-        {
-          "code": "000426.SZ",
-          "name": "兴业银锡",
-          "date": "20180615",
-          "marketCap": 134.71889016
-        },
-        {
-          "code": "600490.SH",
-          "name": "鹏欣资源",
-          "date": "20180413",
-          "marketCap": 163.98150694
-        },
-        {
-          "code": "002716.SZ",
-          "name": "湖南白银",
-          "date": "20180502",
-          "marketCap": 95.14383976
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600768.SH",
-          "name": "富邦新材",
-          "date": "20180613",
-          "marketCap": 14.765690880000001
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000758.SZ",
-          "name": "中色股份",
-          "date": "20190927",
-          "marketCap": 86.45571281
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "603799.SH",
-          "name": "华友钴业",
-          "date": "20191230",
-          "marketCap": 424.88869243
-        }
-      ]
-    },
-    {
-      "quarter": "2020Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600547.SH",
-          "name": "山东黄金",
-          "date": "20200929",
-          "marketCap": 1106.56135217
-        }
-      ]
-    },
-    {
-      "quarter": "2020Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "603045.SH",
-          "name": "福达合金",
-          "date": "20210924",
-          "marketCap": 19.211752
-        }
-      ]
-    },
-    {
-      "quarter": "2021Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002501.SZ",
-          "name": "*ST利源",
-          "date": "20220629",
-          "marketCap": 77.39
-        }
-      ]
-    },
-    {
-      "quarter": "2022Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002716.SZ",
-          "name": "湖南白银",
-          "date": "20220929",
-          "marketCap": 63.440749829999994
-        }
-      ]
-    },
-    {
-      "quarter": "2022Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000657.SZ",
-          "name": "中钨高新",
-          "date": "20231225",
-          "marketCap": 118.49766407000001
-        }
-      ]
-    },
-    {
-      "quarter": "2024Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002379.SZ",
-          "name": "宏桥控股",
-          "date": "20241220",
-          "marketCap": 101.93272564
-        }
-      ]
-    },
-    {
-      "quarter": "2025Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000633.SZ",
-          "name": "合金投资",
-          "date": "20250623",
-          "marketCap": 23.68404194
-        }
-      ]
-    },
-    {
-      "quarter": "2025Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    }
-  ]
+      "financialCoverage": 1.0,
+      "peRaw": 16.51,
+      "valuationSource": "sw_daily",
+      "valuationCode": "801050.SI",
+      "valuationDate": "20260930",
+      "peStatus": "valid",
+      "peNote": ""
+    },
+    "indices": [
+      {
+        "code": "801050.SI",
+        "name": "有色金属",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      },
+      {
+        "code": "801055.SI",
+        "name": "工业金属",
+        "dailyCount": 3093,
+        "firstDate": "20140221",
+        "lastDate": "20261110",
+        "quarterQuotes": 51,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2",
+          "2012Q3",
+          "2012Q4",
+          "2013Q1",
+          "2013Q2",
+          "2013Q3",
+          "2013Q4"
+        ]
+      },
+      {
+        "code": "801054.SI",
+        "name": "小金属",
+        "dailyCount": 3093,
+        "firstDate": "20140221",
+        "lastDate": "20261110",
+        "quarterQuotes": 51,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2",
+          "2012Q3",
+          "2012Q4",
+          "2013Q1",
+          "2013Q2",
+          "2013Q3",
+          "2013Q4"
+        ]
+      },
+      {
+        "code": "801053.SI",
+        "name": "贵金属",
+        "dailyCount": 3093,
+        "firstDate": "20140221",
+        "lastDate": "20261110",
+        "quarterQuotes": 51,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2",
+          "2012Q3",
+          "2012Q4",
+          "2013Q1",
+          "2013Q2",
+          "2013Q3",
+          "2013Q4"
+        ]
+      },
+      {
+        "code": "801051.SI",
+        "name": "金属新材料",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      },
+      {
+        "code": "801056.SI",
+        "name": "能源金属",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      }
+    ]
+  }
 }

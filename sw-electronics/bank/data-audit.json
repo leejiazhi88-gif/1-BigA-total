@@ -485,6 +485,13 @@
     "project2AsOf": "20261110",
     "financialAsOf": "2026-11-10",
     "financialHash": "96533939fa7120b8bc487926dc15c05176a7d4e1484a2daa62707fa13d1eb10d",
+    "sectorFinancialHashes": {
+      "801782.SI": "34db4dbbc9e0b40c83244bc8e6f28004c90856de71c447a300d6b2fa8fe5ea60",
+      "801783.SI": "fcba57459ff68d0976ea99bea200c64c7d6b57c4eb08d762f75ff575676007f0",
+      "801784.SI": "e882cc73f778d6e8dd18a64f97ba77c35e0e4824aca76733e74e6d5ea4192e8f",
+      "801785.SI": "2db1c273894d615aaf47eb792dd084ae55f696e4820d9699b3e177cced47f5f8",
+      "801786.SI": "5e1e5c4f1451cb2a0c37c1509940c4ddc82b434742241766029f41918242461a"
+    },
     "latest": {
       "quarter": "2026Q3",
       "endDate": "20260930",
@@ -516,6 +523,7 @@
         "name": "银行",
         "dailyCount": 3093,
         "firstDate": "20140221",
+        "lastDate": "20261110",
         "quarterQuotes": 51,
         "missingQuarterQuotes": [
           "2005Q1",
@@ -561,6 +569,7 @@
         "name": "国有大型银行",
         "dailyCount": 4941,
         "firstDate": "20060712",
+        "lastDate": "20261110",
         "quarterQuotes": 81,
         "missingQuarterQuotes": [
           "2005Q1",
@@ -576,6 +585,7 @@
         "name": "股份制银行",
         "dailyCount": 5306,
         "firstDate": "20050104",
+        "lastDate": "20261110",
         "quarterQuotes": 87,
         "missingQuarterQuotes": []
       },
@@ -584,6 +594,7 @@
         "name": "城商行",
         "dailyCount": 4688,
         "firstDate": "20070726",
+        "lastDate": "20261110",
         "quarterQuotes": 77,
         "missingQuarterQuotes": [
           "2005Q1",
@@ -603,6 +614,7 @@
         "name": "农商行",
         "dailyCount": 2465,
         "firstDate": "20160909",
+        "lastDate": "20261110",
         "quarterQuotes": 41,
         "missingQuarterQuotes": [
           "2005Q1",
@@ -658,6 +670,7 @@
         "name": "其他银行",
         "dailyCount": 0,
         "firstDate": null,
+        "lastDate": null,
         "quarterQuotes": 0,
         "missingQuarterQuotes": [
           "2005Q1",

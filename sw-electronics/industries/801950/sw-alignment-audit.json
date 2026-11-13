@@ -1,0 +1,66 @@
+{
+  "industry": "煤炭",
+  "code": "801950.SI",
+  "scope": "SW公布市值/PE与财报汇总分离",
+  "project2AsOf": "20261110",
+  "financialAsOf": "2026-11-10",
+  "financialHash": "2b106b653b4d7b0f75c0ee2693389f88f3372f0e42d081c95d8fed6a51be738e",
+  "sectorFinancialHashes": {
+    "801951.SI": "fc7681c4bcfe26bc24f8a39958242781cbc3a6a02ffeff1c9f5131df3e529210",
+    "801952.SI": "aec1a9622093297f09ac9a42ad9f71f7bf7513e4b346b42ab7965c800c8dc90c"
+  },
+  "latest": {
+    "quarter": "2026Q3",
+    "endDate": "20260930",
+    "tradeDate": "20260930",
+    "companies": 33,
+    "marketCap": 19150.0404,
+    "marketCapObserved": 19150.0404,
+    "pe": 18.37,
+    "revenue": 3472.5752682507996,
+    "profit": 374.1849820405,
+    "reportedCount": 33,
+    "estimatedCount": 0,
+    "missingCount": 0,
+    "estimatedRevenue": 0,
+    "estimatedProfit": 0,
+    "carriedCount": 0,
+    "marketMissingCount": 0,
+    "financialCoverage": 1.0,
+    "peRaw": 18.37,
+    "valuationSource": "sw_daily",
+    "valuationCode": "801950.SI",
+    "valuationDate": "20260930",
+    "peStatus": "valid",
+    "peNote": ""
+  },
+  "indices": [
+    {
+      "code": "801950.SI",
+      "name": "煤炭",
+      "dailyCount": 5306,
+      "firstDate": "20050104",
+      "lastDate": "20261110",
+      "quarterQuotes": 87,
+      "missingQuarterQuotes": []
+    },
+    {
+      "code": "801951.SI",
+      "name": "煤炭开采",
+      "dailyCount": 5306,
+      "firstDate": "20050104",
+      "lastDate": "20261110",
+      "quarterQuotes": 87,
+      "missingQuarterQuotes": []
+    },
+    {
+      "code": "801952.SI",
+      "name": "焦炭",
+      "dailyCount": 5306,
+      "firstDate": "20050104",
+      "lastDate": "20261110",
+      "quarterQuotes": 87,
+      "missingQuarterQuotes": []
+    }
+  ]
+}

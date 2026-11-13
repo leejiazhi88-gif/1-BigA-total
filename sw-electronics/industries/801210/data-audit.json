@@ -1,25 +1,1815 @@
 {
-  "asOf": "2026-11-10",
-  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
-  "summary": {
+  "historicalCompanyAggregateAudit": {
+    "asOf": "2026-11-10",
+    "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+    "summary": {
+      "industry": "社会服务",
+      "code": "801210.SI",
+      "companies": 86,
+      "quarters": 87,
+      "companyQuarterRows": 4661,
+      "latest": {
+        "quarter": "2026Q3",
+        "endDate": "20260930",
+        "tradeDate": "20260930",
+        "companies": 86,
+        "marketCap": 4708.928103570001,
+        "marketCapObserved": 4708.928103570001,
+        "pe": 54.55462713657806,
+        "peMarketCap": 4708.928103570001,
+        "peProfit": 86.3158333349278,
+        "peCoverage": 1.0,
+        "peMissingCount": 0,
+        "peRebuiltCount": 27,
+        "revenue": 569.0772681512,
+        "profit": 35.573989779200005,
+        "reportedCount": 86,
+        "estimatedCount": 0,
+        "missingCount": 0,
+        "estimatedRevenue": 0,
+        "estimatedProfit": 0,
+        "carriedCount": 1,
+        "marketMissingCount": 0,
+        "financialCoverage": 1.0
+      },
+      "financialIncompleteQuarters": 2,
+      "peCoverageMin": 1.0,
+      "carriedCompanyQuarters": 179
+    },
+    "quality": [
+      {
+        "quarter": "2005Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000430.SZ",
+            "name": "张家界",
+            "date": "20050330",
+            "marketCap": 6.664680000000001
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000796.SZ",
+            "name": "凯撒旅业",
+            "date": "20050629",
+            "marketCap": 6.21485401
+          },
+          {
+            "code": "000524.SZ",
+            "name": "岭南控股",
+            "date": "20050629",
+            "marketCap": 7.28119109
+          },
+          {
+            "code": "600158.SH",
+            "name": "中体产业",
+            "date": "20050629",
+            "marketCap": 16.18275516
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2005Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600754.SH",
+            "name": "锦江酒店",
+            "date": "20051205",
+            "marketCap": 47.65601846
+          },
+          {
+            "code": "600880.SH",
+            "name": "博瑞传播",
+            "date": "20051220",
+            "marketCap": 21.97959964
+          },
+          {
+            "code": "000526.SZ",
+            "name": "学大教育",
+            "date": "20051229",
+            "marketCap": 3.613813
+          },
+          {
+            "code": "600749.SH",
+            "name": "西藏旅游",
+            "date": "20051223",
+            "marketCap": 5.76
+          },
+          {
+            "code": "000524.SZ",
+            "name": "岭南控股",
+            "date": "20051222",
+            "marketCap": 6.90364785
+          },
+          {
+            "code": "600661.SH",
+            "name": "昂立教育",
+            "date": "20051222",
+            "marketCap": 14.53675025
+          },
+          {
+            "code": "600826.SH",
+            "name": "兰生股份",
+            "date": "20051223",
+            "marketCap": 10.6562713
+          },
+          {
+            "code": "600138.SH",
+            "name": "中青旅",
+            "date": "20051222",
+            "marketCap": 14.8986
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000888.SZ",
+            "name": "峨眉山A",
+            "date": "20060223",
+            "marketCap": 13.52331
+          },
+          {
+            "code": "600258.SH",
+            "name": "首旅酒店",
+            "date": "20060317",
+            "marketCap": 17.0079
+          },
+          {
+            "code": "600861.SH",
+            "name": "北京人力",
+            "date": "20060317",
+            "marketCap": 19.02915657
+          },
+          {
+            "code": "000558.SZ",
+            "name": "天府文旅",
+            "date": "20060323",
+            "marketCap": 4.0538873099999995
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000524.SZ",
+            "name": "岭南控股",
+            "date": "20060629",
+            "marketCap": 9.30374417
+          },
+          {
+            "code": "600662.SH",
+            "name": "外服控股",
+            "date": "20060615",
+            "marketCap": 32.66672054
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000796.SZ",
+            "name": "凯撒旅业",
+            "date": "20060921",
+            "marketCap": 7.19902684
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000721.SZ",
+            "name": "西安饮食",
+            "date": "20061013",
+            "marketCap": 11.84196285
+          },
+          {
+            "code": "600258.SH",
+            "name": "首旅酒店",
+            "date": "20061220",
+            "marketCap": 44.752759999999995
+          },
+          {
+            "code": "600158.SH",
+            "name": "中体产业",
+            "date": "20061214",
+            "marketCap": 41.75049372
+          },
+          {
+            "code": "600576.SH",
+            "name": "祥源文旅",
+            "date": "20061214",
+            "marketCap": 17.09960123
+          },
+          {
+            "code": "002093.SZ",
+            "name": "国脉科技",
+            "date": "20061228",
+            "marketCap": 13.41675
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2007Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000430.SZ",
+            "name": "张家界",
+            "date": "20070402",
+            "marketCap": 15.45912
+          },
+          {
+            "code": "600662.SH",
+            "name": "外服控股",
+            "date": "20070628",
+            "marketCap": 81.97970096
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2007Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000430.SZ",
+            "name": "张家界",
+            "date": "20071203",
+            "marketCap": 20.39796
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2008Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000428.SZ",
+            "name": "华天酒店",
+            "date": "20080627",
+            "marketCap": 35.061468
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000428.SZ",
+            "name": "华天酒店",
+            "date": "20080924",
+            "marketCap": 27.09798
+          },
+          {
+            "code": "000610.SZ",
+            "name": "*ST西旅",
+            "date": "20080912",
+            "marketCap": 7.98796478
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2009Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000430.SZ",
+            "name": "张家界",
+            "date": "20090318",
+            "marketCap": 11.6586
+          },
+          {
+            "code": "002033.SZ",
+            "name": "丽江股份",
+            "date": "20090330",
+            "marketCap": 13.895294419999999
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000978.SZ",
+            "name": "桂林旅游",
+            "date": "20090625",
+            "marketCap": 17.8239
+          },
+          {
+            "code": "600593.SH",
+            "name": "大连圣亚",
+            "date": "20090629",
+            "marketCap": 8.4916
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000430.SZ",
+            "name": "张家界",
+            "date": "20090911",
+            "marketCap": 15.072426060000002
+          },
+          {
+            "code": "600706.SH",
+            "name": "曲江文旅",
+            "date": "20090929",
+            "marketCap": 8.384010340000001
+          },
+          {
+            "code": "600826.SH",
+            "name": "兰生股份",
+            "date": "20090911",
+            "marketCap": 44.75633944
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000526.SZ",
+            "name": "学大教育",
+            "date": "20091229",
+            "marketCap": 12.71699315
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000796.SZ",
+            "name": "凯撒旅业",
+            "date": "20100330",
+            "marketCap": 19.35354818
+          },
+          {
+            "code": "002306.SZ",
+            "name": "ST云网",
+            "date": "20100330",
+            "marketCap": 57.94
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000721.SZ",
+            "name": "西安饮食",
+            "date": "20100629",
+            "marketCap": 14.405918710000002
+          },
+          {
+            "code": "600662.SH",
+            "name": "外服控股",
+            "date": "20100611",
+            "marketCap": 57.517208499999995
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000526.SZ",
+            "name": "学大教育",
+            "date": "20100929",
+            "marketCap": 10.26401792
+          },
+          {
+            "code": "600706.SH",
+            "name": "曲江文旅",
+            "date": "20100915",
+            "marketCap": 10.03461237
+          },
+          {
+            "code": "300010.SZ",
+            "name": "ST豆神",
+            "date": "20100914",
+            "marketCap": 29.194897499999996
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2011Q1",
+        "financialMissing": [
+          {
+            "code": "600706.SH",
+            "name": "曲江文旅"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2011Q2",
+        "financialMissing": [
+          {
+            "code": "600706.SH",
+            "name": "曲江文旅"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000428.SZ",
+            "name": "华天酒店",
+            "date": "20110629",
+            "marketCap": 40.7631042
+          },
+          {
+            "code": "601007.SH",
+            "name": "金陵饭店",
+            "date": "20110629",
+            "marketCap": 27.57
+          },
+          {
+            "code": "000524.SZ",
+            "name": "岭南控股",
+            "date": "20110629",
+            "marketCap": 25.32236456
+          },
+          {
+            "code": "000558.SZ",
+            "name": "天府文旅",
+            "date": "20110628",
+            "marketCap": 49.728235940000005
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000524.SZ",
+            "name": "岭南控股",
+            "date": "20110711",
+            "marketCap": 27.506721889999998
+          },
+          {
+            "code": "600706.SH",
+            "name": "曲江文旅",
+            "date": "20110926",
+            "marketCap": 13.693883549999999
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2012Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2012Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "601007.SH",
+            "name": "金陵饭店",
+            "date": "20120628",
+            "marketCap": 21.48
+          },
+          {
+            "code": "600826.SH",
+            "name": "兰生股份",
+            "date": "20120628",
+            "marketCap": 53.67395595
+          },
+          {
+            "code": "600250.SH",
+            "name": "南京商旅",
+            "date": "20120628",
+            "marketCap": 12.3137611
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600880.SH",
+            "name": "博瑞传播",
+            "date": "20120717",
+            "marketCap": 61.856037580000006
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000428.SZ",
+            "name": "华天酒店",
+            "date": "20121228",
+            "marketCap": 30.194892
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000526.SZ",
+            "name": "学大教育",
+            "date": "20130322",
+            "marketCap": 9.23473027
+          },
+          {
+            "code": "600661.SH",
+            "name": "昂立教育",
+            "date": "20130322",
+            "marketCap": 11.74055337
+          },
+          {
+            "code": "600576.SH",
+            "name": "祥源文旅",
+            "date": "20130327",
+            "marketCap": 17.62192167
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000526.SZ",
+            "name": "学大教育",
+            "date": "20130322",
+            "marketCap": 9.23473027
+          },
+          {
+            "code": "600661.SH",
+            "name": "昂立教育",
+            "date": "20130322",
+            "marketCap": 11.74055337
+          },
+          {
+            "code": "600576.SH",
+            "name": "祥源文旅",
+            "date": "20130327",
+            "marketCap": 17.62192167
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002186.SZ",
+            "name": "全聚德",
+            "date": "20130917",
+            "marketCap": 48.1304
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000796.SZ",
+            "name": "凯撒旅业",
+            "date": "20131025",
+            "marketCap": 12.22848394
+          },
+          {
+            "code": "300010.SZ",
+            "name": "ST豆神",
+            "date": "20131204",
+            "marketCap": 31.26784316
+          },
+          {
+            "code": "600576.SH",
+            "name": "祥源文旅",
+            "date": "20131230",
+            "marketCap": 15.768130410000001
+          },
+          {
+            "code": "300012.SZ",
+            "name": "华测检测",
+            "date": "20131114",
+            "marketCap": 59.6560005
+          },
+          {
+            "code": "000558.SZ",
+            "name": "天府文旅",
+            "date": "20131225",
+            "marketCap": 21.68125876
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000428.SZ",
+            "name": "华天酒店",
+            "date": "20140129",
+            "marketCap": 51.978349800000004
+          },
+          {
+            "code": "600730.SH",
+            "name": "*ST高科",
+            "date": "20140211",
+            "marketCap": 27.9248257
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002707.SZ",
+            "name": "众信旅游",
+            "date": "20140612",
+            "marketCap": 52.461
+          },
+          {
+            "code": "300192.SZ",
+            "name": "科德教育",
+            "date": "20140618",
+            "marketCap": 17.518725
+          },
+          {
+            "code": "002059.SZ",
+            "name": "云南旅游",
+            "date": "20140620",
+            "marketCap": 27.86250256
+          },
+          {
+            "code": "600730.SH",
+            "name": "*ST高科",
+            "date": "20140211",
+            "marketCap": 27.9248257
+          },
+          {
+            "code": "002306.SZ",
+            "name": "ST云网",
+            "date": "20140620",
+            "marketCap": 44.56
+          },
+          {
+            "code": "600576.SH",
+            "name": "祥源文旅",
+            "date": "20140411",
+            "marketCap": 25.53870084
+          },
+          {
+            "code": "300050.SZ",
+            "name": "世纪鼎利",
+            "date": "20140529",
+            "marketCap": 38.4048
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300359.SZ",
+            "name": "全通教育",
+            "date": "20140919",
+            "marketCap": 85.6818
+          },
+          {
+            "code": "600258.SH",
+            "name": "首旅酒店",
+            "date": "20140901",
+            "marketCap": 35.26536
+          },
+          {
+            "code": "000796.SZ",
+            "name": "凯撒旅业",
+            "date": "20140901",
+            "marketCap": 17.82498768
+          },
+          {
+            "code": "600749.SH",
+            "name": "西藏旅游",
+            "date": "20140925",
+            "marketCap": 23.037
+          },
+          {
+            "code": "300010.SZ",
+            "name": "ST豆神",
+            "date": "20140804",
+            "marketCap": 59.93003272000001
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600754.SH",
+            "name": "锦江酒店",
+            "date": "20141107",
+            "marketCap": 151.47374981
+          },
+          {
+            "code": "300144.SZ",
+            "name": "宋城演艺",
+            "date": "20141218",
+            "marketCap": 168.00183
+          },
+          {
+            "code": "300359.SZ",
+            "name": "全通教育",
+            "date": "20140919",
+            "marketCap": 85.6818
+          },
+          {
+            "code": "000796.SZ",
+            "name": "凯撒旅业",
+            "date": "20140901",
+            "marketCap": 17.82498768
+          },
+          {
+            "code": "002659.SZ",
+            "name": "凯文教育",
+            "date": "20141124",
+            "marketCap": 31.0378
+          },
+          {
+            "code": "600749.SH",
+            "name": "西藏旅游",
+            "date": "20140925",
+            "marketCap": 23.037
+          },
+          {
+            "code": "300192.SZ",
+            "name": "科德教育",
+            "date": "20141114",
+            "marketCap": 22.387365
+          },
+          {
+            "code": "600250.SH",
+            "name": "南京商旅",
+            "date": "20141118",
+            "marketCap": 26.69706187
+          },
+          {
+            "code": "000558.SZ",
+            "name": "天府文旅",
+            "date": "20141114",
+            "marketCap": 51.31111319
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000978.SZ",
+            "name": "桂林旅游",
+            "date": "20150109",
+            "marketCap": 34.67763
+          },
+          {
+            "code": "000721.SZ",
+            "name": "西安饮食",
+            "date": "20150105",
+            "marketCap": 31.49042855
+          },
+          {
+            "code": "002607.SZ",
+            "name": "中公教育",
+            "date": "20150311",
+            "marketCap": 31.492032000000002
+          },
+          {
+            "code": "600258.SH",
+            "name": "首旅酒店",
+            "date": "20150316",
+            "marketCap": 43.2718
+          },
+          {
+            "code": "000796.SZ",
+            "name": "凯撒旅业",
+            "date": "20140901",
+            "marketCap": 17.82498768
+          },
+          {
+            "code": "000526.SZ",
+            "name": "学大教育",
+            "date": "20150206",
+            "marketCap": 21.45150886
+          },
+          {
+            "code": "002659.SZ",
+            "name": "凯文教育",
+            "date": "20141124",
+            "marketCap": 31.0378
+          },
+          {
+            "code": "300192.SZ",
+            "name": "科德教育",
+            "date": "20141114",
+            "marketCap": 22.387365
+          },
+          {
+            "code": "002057.SZ",
+            "name": "中钢天源",
+            "date": "20150217",
+            "marketCap": 28.11281547
+          },
+          {
+            "code": "600576.SH",
+            "name": "祥源文旅",
+            "date": "20150316",
+            "marketCap": 45.101651010000005
+          },
+          {
+            "code": "600250.SH",
+            "name": "南京商旅",
+            "date": "20141118",
+            "marketCap": 26.69706187
+          },
+          {
+            "code": "002159.SZ",
+            "name": "三特索道",
+            "date": "20150114",
+            "marketCap": 31.04746652
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300144.SZ",
+            "name": "宋城演艺",
+            "date": "20150617",
+            "marketCap": 426.46569594
+          },
+          {
+            "code": "300215.SZ",
+            "name": "电科院",
+            "date": "20150615",
+            "marketCap": 112.68
+          },
+          {
+            "code": "600258.SH",
+            "name": "首旅酒店",
+            "date": "20150316",
+            "marketCap": 43.2718
+          },
+          {
+            "code": "000526.SZ",
+            "name": "学大教育",
+            "date": "20150206",
+            "marketCap": 21.45150886
+          },
+          {
+            "code": "002057.SZ",
+            "name": "中钢天源",
+            "date": "20150217",
+            "marketCap": 28.11281547
+          },
+          {
+            "code": "002306.SZ",
+            "name": "ST云网",
+            "date": "20150602",
+            "marketCap": 73.76
+          },
+          {
+            "code": "600576.SH",
+            "name": "祥源文旅",
+            "date": "20150629",
+            "marketCap": 89.15645519
+          },
+          {
+            "code": "300012.SZ",
+            "name": "华测检测",
+            "date": "20150612",
+            "marketCap": 164.24087509999998
+          },
+          {
+            "code": "002159.SZ",
+            "name": "三特索道",
+            "date": "20150114",
+            "marketCap": 31.04746652
+          },
+          {
+            "code": "000558.SZ",
+            "name": "天府文旅",
+            "date": "20150612",
+            "marketCap": 281.91030362
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600754.SH",
+            "name": "锦江酒店",
+            "date": "20150707",
+            "marketCap": 231.78156088999998
+          },
+          {
+            "code": "600880.SH",
+            "name": "博瑞传播",
+            "date": "20150915",
+            "marketCap": 81.9999069
+          },
+          {
+            "code": "600593.SH",
+            "name": "大连圣亚",
+            "date": "20150714",
+            "marketCap": 27.1308
+          },
+          {
+            "code": "600258.SH",
+            "name": "首旅酒店",
+            "date": "20150316",
+            "marketCap": 43.2718
+          },
+          {
+            "code": "300010.SZ",
+            "name": "ST豆神",
+            "date": "20150701",
+            "marketCap": 167.36679618
+          },
+          {
+            "code": "002057.SZ",
+            "name": "中钢天源",
+            "date": "20150217",
+            "marketCap": 28.11281547
+          },
+          {
+            "code": "002306.SZ",
+            "name": "ST云网",
+            "date": "20150602",
+            "marketCap": 73.76
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000430.SZ",
+            "name": "张家界",
+            "date": "20151214",
+            "marketCap": 49.92194918
+          },
+          {
+            "code": "600880.SH",
+            "name": "博瑞传播",
+            "date": "20150915",
+            "marketCap": 81.9999069
+          },
+          {
+            "code": "002707.SZ",
+            "name": "众信旅游",
+            "date": "20151113",
+            "marketCap": 219.70691173999998
+          },
+          {
+            "code": "000796.SZ",
+            "name": "凯撒旅业",
+            "date": "20151106",
+            "marketCap": 67.70043732
+          },
+          {
+            "code": "600749.SH",
+            "name": "西藏旅游",
+            "date": "20151127",
+            "marketCap": 44.6743793
+          },
+          {
+            "code": "300010.SZ",
+            "name": "ST豆神",
+            "date": "20151229",
+            "marketCap": 218.38022569
+          },
+          {
+            "code": "002306.SZ",
+            "name": "ST云网",
+            "date": "20150602",
+            "marketCap": 73.76
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000796.SZ",
+            "name": "凯撒旅业",
+            "date": "20151106",
+            "marketCap": 67.70043732
+          },
+          {
+            "code": "600749.SH",
+            "name": "西藏旅游",
+            "date": "20151127",
+            "marketCap": 44.6743793
+          },
+          {
+            "code": "002057.SZ",
+            "name": "中钢天源",
+            "date": "20160329",
+            "marketCap": 23.8659859
+          },
+          {
+            "code": "002306.SZ",
+            "name": "ST云网",
+            "date": "20160226",
+            "marketCap": 43.76
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000524.SZ",
+            "name": "岭南控股",
+            "date": "20160401",
+            "marketCap": 35.38119521
+          },
+          {
+            "code": "300338.SZ",
+            "name": "*ST开元",
+            "date": "20160414",
+            "marketCap": 45.8892
+          },
+          {
+            "code": "002059.SZ",
+            "name": "云南旅游",
+            "date": "20160531",
+            "marketCap": 62.55584451
+          },
+          {
+            "code": "002057.SZ",
+            "name": "中钢天源",
+            "date": "20160608",
+            "marketCap": 30.0268795
+          },
+          {
+            "code": "002306.SZ",
+            "name": "ST云网",
+            "date": "20160226",
+            "marketCap": 43.76
+          },
+          {
+            "code": "600576.SH",
+            "name": "祥源文旅",
+            "date": "20160408",
+            "marketCap": 141.91548813
+          },
+          {
+            "code": "000610.SZ",
+            "name": "*ST西旅",
+            "date": "20160408",
+            "marketCap": 30.42210528
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300359.SZ",
+            "name": "全通教育",
+            "date": "20160812",
+            "marketCap": 170.16791007
+          },
+          {
+            "code": "002059.SZ",
+            "name": "云南旅游",
+            "date": "20160531",
+            "marketCap": 62.55584451
+          },
+          {
+            "code": "300050.SZ",
+            "name": "世纪鼎利",
+            "date": "20160718",
+            "marketCap": 71.04541996
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002659.SZ",
+            "name": "凯文教育",
+            "date": "20161102",
+            "marketCap": 108.53803307000001
+          },
+          {
+            "code": "600576.SH",
+            "name": "祥源文旅",
+            "date": "20161125",
+            "marketCap": 116.70723364
+          },
+          {
+            "code": "002159.SZ",
+            "name": "三特索道",
+            "date": "20161228",
+            "marketCap": 44.37333312
+          },
+          {
+            "code": "000558.SZ",
+            "name": "天府文旅",
+            "date": "20161014",
+            "marketCap": 126.77368836999999
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000526.SZ",
+            "name": "学大教育",
+            "date": "20170317",
+            "marketCap": 35.20740916
+          },
+          {
+            "code": "300192.SZ",
+            "name": "科德教育",
+            "date": "20170303",
+            "marketCap": 37.061640000000004
+          },
+          {
+            "code": "600158.SH",
+            "name": "中体产业",
+            "date": "20170330",
+            "marketCap": 155.83792339000001
+          },
+          {
+            "code": "000558.SZ",
+            "name": "天府文旅",
+            "date": "20161014",
+            "marketCap": 126.77368836999999
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300192.SZ",
+            "name": "科德教育",
+            "date": "20170303",
+            "marketCap": 37.061640000000004
+          },
+          {
+            "code": "600706.SH",
+            "name": "曲江文旅",
+            "date": "20170616",
+            "marketCap": 35.68652339
+          },
+          {
+            "code": "300492.SZ",
+            "name": "华图山鼎",
+            "date": "20170605",
+            "marketCap": 38.29696
+          },
+          {
+            "code": "000610.SZ",
+            "name": "*ST西旅",
+            "date": "20170519",
+            "marketCap": 27.10763466
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300492.SZ",
+            "name": "华图山鼎",
+            "date": "20170605",
+            "marketCap": 38.29696
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000526.SZ",
+            "name": "学大教育",
+            "date": "20171013",
+            "marketCap": 35.28436525
+          },
+          {
+            "code": "300010.SZ",
+            "name": "ST豆神",
+            "date": "20171116",
+            "marketCap": 97.52087985
+          },
+          {
+            "code": "002033.SZ",
+            "name": "丽江股份",
+            "date": "20171213",
+            "marketCap": 50.003654700000006
+          },
+          {
+            "code": "300492.SZ",
+            "name": "华图山鼎",
+            "date": "20170605",
+            "marketCap": 38.29696
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600880.SH",
+            "name": "博瑞传播",
+            "date": "20180305",
+            "marketCap": 51.71460795
+          },
+          {
+            "code": "002607.SZ",
+            "name": "中公教育",
+            "date": "20180103",
+            "marketCap": 33.30563998
+          },
+          {
+            "code": "000796.SZ",
+            "name": "凯撒旅业",
+            "date": "20180118",
+            "marketCap": 103.58703328
+          },
+          {
+            "code": "000526.SZ",
+            "name": "学大教育",
+            "date": "20180321",
+            "marketCap": 27.10778115
+          },
+          {
+            "code": "300662.SZ",
+            "name": "科锐国际",
+            "date": "20180305",
+            "marketCap": 37.332
+          },
+          {
+            "code": "600158.SH",
+            "name": "中体产业",
+            "date": "20180326",
+            "marketCap": 98.21079742
+          },
+          {
+            "code": "002059.SZ",
+            "name": "云南旅游",
+            "date": "20180323",
+            "marketCap": 53.27477879
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000796.SZ",
+            "name": "凯撒旅业",
+            "date": "20180118",
+            "marketCap": 103.58703328
+          },
+          {
+            "code": "000526.SZ",
+            "name": "学大教育",
+            "date": "20180321",
+            "marketCap": 27.10778115
+          },
+          {
+            "code": "600158.SH",
+            "name": "中体产业",
+            "date": "20180326",
+            "marketCap": 98.21079742
+          },
+          {
+            "code": "002059.SZ",
+            "name": "云南旅游",
+            "date": "20180323",
+            "marketCap": 53.27477879
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000526.SZ",
+            "name": "学大教育",
+            "date": "20180321",
+            "marketCap": 27.10778115
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300359.SZ",
+            "name": "全通教育",
+            "date": "20190315",
+            "marketCap": 45.70284707
+          },
+          {
+            "code": "300492.SZ",
+            "name": "华图山鼎",
+            "date": "20190322",
+            "marketCap": 21.68192
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600826.SH",
+            "name": "兰生股份",
+            "date": "20190917",
+            "marketCap": 47.95322083
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300050.SZ",
+            "name": "世纪鼎利",
+            "date": "20200925",
+            "marketCap": 38.18266076
+          }
+        ]
+      },
+      {
+        "quarter": "2020Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600861.SH",
+            "name": "北京人力",
+            "date": "20210928",
+            "marketCap": 71.37615501
+          }
+        ]
+      },
+      {
+        "quarter": "2021Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002627.SZ",
+            "name": "三峡旅游",
+            "date": "20220325",
+            "marketCap": 53.66336811000001
+          }
+        ]
+      },
+      {
+        "quarter": "2022Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "603377.SH",
+            "name": "ST东时",
+            "date": "20250619",
+            "marketCap": 21.088592639999998
+          }
+        ]
+      },
+      {
+        "quarter": "2025Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000524.SZ",
+            "name": "岭南控股",
+            "date": "20260623",
+            "marketCap": 59.98366970000001
+          }
+        ]
+      },
+      {
+        "quarter": "2026Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "603183.SH",
+            "name": "建研院",
+            "date": "20260929",
+            "marketCap": 25.80225627
+          }
+        ]
+      }
+    ]
+  },
+  "historicalAuditScope": "旧公司整体法，市值/PE已被sw-alignment-audit.json取代；财务核验仍有效",
+  "valuationAlignment": {
     "industry": "社会服务",
     "code": "801210.SI",
-    "companies": 86,
-    "quarters": 87,
-    "companyQuarterRows": 4661,
+    "scope": "SW公布市值/PE与财报汇总分离",
+    "project2AsOf": "20261110",
+    "financialAsOf": "2026-11-10",
+    "financialHash": "957a824b807b787772a1be4e436f19844997802f4db5c1aa4093afd86a408d2e",
+    "sectorFinancialHashes": {
+      "801218.SI": "a25f139b45a341e005e00844da8690e7545d8c8aa5d72f18ecd40b711ca6e3dc",
+      "801993.SI": "dc777f2dbe60cf728faf673d48ede7a3e486cb5c593e2c68d29b34e53c21db77",
+      "801994.SI": "1dfa276bb55c831eb43c33be0d1dcd85ec3141f2d6ee55a5b7126021f7f5c6e9",
+      "801219.SI": "67a578519fa7d7fcce46986fb3400b84f9be09e8c59619634808ff2a98f94d48",
+      "801216.SI": "a32aa0825d5d643b06768611b67dc5bee87dea987ff565e8098a0ced155ec137",
+      "801217.SI": "5e1e5c4f1451cb2a0c37c1509940c4ddc82b434742241766029f41918242461a"
+    },
     "latest": {
       "quarter": "2026Q3",
       "endDate": "20260930",
       "tradeDate": "20260930",
       "companies": 86,
-      "marketCap": 4708.928103570001,
-      "marketCapObserved": 4708.928103570001,
-      "pe": 54.55462713657806,
-      "peMarketCap": 4708.928103570001,
-      "peProfit": 86.3158333349278,
-      "peCoverage": 1.0,
-      "peMissingCount": 0,
-      "peRebuiltCount": 27,
+      "marketCap": 4616.9854,
+      "marketCapObserved": 4616.9854,
+      "pe": 41.62,
       "revenue": 569.0772681512,
       "profit": 35.573989779200005,
       "reportedCount": 86,
@@ -29,1759 +1819,285 @@
       "estimatedProfit": 0,
       "carriedCount": 1,
       "marketMissingCount": 0,
-      "financialCoverage": 1.0
-    },
-    "financialIncompleteQuarters": 2,
-    "peCoverageMin": 1.0,
-    "carriedCompanyQuarters": 179
-  },
-  "quality": [
-    {
-      "quarter": "2005Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000430.SZ",
-          "name": "张家界",
-          "date": "20050330",
-          "marketCap": 6.664680000000001
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000796.SZ",
-          "name": "凯撒旅业",
-          "date": "20050629",
-          "marketCap": 6.21485401
-        },
-        {
-          "code": "000524.SZ",
-          "name": "岭南控股",
-          "date": "20050629",
-          "marketCap": 7.28119109
-        },
-        {
-          "code": "600158.SH",
-          "name": "中体产业",
-          "date": "20050629",
-          "marketCap": 16.18275516
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2005Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600754.SH",
-          "name": "锦江酒店",
-          "date": "20051205",
-          "marketCap": 47.65601846
-        },
-        {
-          "code": "600880.SH",
-          "name": "博瑞传播",
-          "date": "20051220",
-          "marketCap": 21.97959964
-        },
-        {
-          "code": "000526.SZ",
-          "name": "学大教育",
-          "date": "20051229",
-          "marketCap": 3.613813
-        },
-        {
-          "code": "600749.SH",
-          "name": "西藏旅游",
-          "date": "20051223",
-          "marketCap": 5.76
-        },
-        {
-          "code": "000524.SZ",
-          "name": "岭南控股",
-          "date": "20051222",
-          "marketCap": 6.90364785
-        },
-        {
-          "code": "600661.SH",
-          "name": "昂立教育",
-          "date": "20051222",
-          "marketCap": 14.53675025
-        },
-        {
-          "code": "600826.SH",
-          "name": "兰生股份",
-          "date": "20051223",
-          "marketCap": 10.6562713
-        },
-        {
-          "code": "600138.SH",
-          "name": "中青旅",
-          "date": "20051222",
-          "marketCap": 14.8986
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000888.SZ",
-          "name": "峨眉山A",
-          "date": "20060223",
-          "marketCap": 13.52331
-        },
-        {
-          "code": "600258.SH",
-          "name": "首旅酒店",
-          "date": "20060317",
-          "marketCap": 17.0079
-        },
-        {
-          "code": "600861.SH",
-          "name": "北京人力",
-          "date": "20060317",
-          "marketCap": 19.02915657
-        },
-        {
-          "code": "000558.SZ",
-          "name": "天府文旅",
-          "date": "20060323",
-          "marketCap": 4.0538873099999995
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000524.SZ",
-          "name": "岭南控股",
-          "date": "20060629",
-          "marketCap": 9.30374417
-        },
-        {
-          "code": "600662.SH",
-          "name": "外服控股",
-          "date": "20060615",
-          "marketCap": 32.66672054
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000796.SZ",
-          "name": "凯撒旅业",
-          "date": "20060921",
-          "marketCap": 7.19902684
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000721.SZ",
-          "name": "西安饮食",
-          "date": "20061013",
-          "marketCap": 11.84196285
-        },
-        {
-          "code": "600258.SH",
-          "name": "首旅酒店",
-          "date": "20061220",
-          "marketCap": 44.752759999999995
-        },
-        {
-          "code": "600158.SH",
-          "name": "中体产业",
-          "date": "20061214",
-          "marketCap": 41.75049372
-        },
-        {
-          "code": "600576.SH",
-          "name": "祥源文旅",
-          "date": "20061214",
-          "marketCap": 17.09960123
-        },
-        {
-          "code": "002093.SZ",
-          "name": "国脉科技",
-          "date": "20061228",
-          "marketCap": 13.41675
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2007Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000430.SZ",
-          "name": "张家界",
-          "date": "20070402",
-          "marketCap": 15.45912
-        },
-        {
-          "code": "600662.SH",
-          "name": "外服控股",
-          "date": "20070628",
-          "marketCap": 81.97970096
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2007Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000430.SZ",
-          "name": "张家界",
-          "date": "20071203",
-          "marketCap": 20.39796
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2008Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000428.SZ",
-          "name": "华天酒店",
-          "date": "20080627",
-          "marketCap": 35.061468
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000428.SZ",
-          "name": "华天酒店",
-          "date": "20080924",
-          "marketCap": 27.09798
-        },
-        {
-          "code": "000610.SZ",
-          "name": "*ST西旅",
-          "date": "20080912",
-          "marketCap": 7.98796478
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2009Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000430.SZ",
-          "name": "张家界",
-          "date": "20090318",
-          "marketCap": 11.6586
-        },
-        {
-          "code": "002033.SZ",
-          "name": "丽江股份",
-          "date": "20090330",
-          "marketCap": 13.895294419999999
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000978.SZ",
-          "name": "桂林旅游",
-          "date": "20090625",
-          "marketCap": 17.8239
-        },
-        {
-          "code": "600593.SH",
-          "name": "大连圣亚",
-          "date": "20090629",
-          "marketCap": 8.4916
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000430.SZ",
-          "name": "张家界",
-          "date": "20090911",
-          "marketCap": 15.072426060000002
-        },
-        {
-          "code": "600706.SH",
-          "name": "曲江文旅",
-          "date": "20090929",
-          "marketCap": 8.384010340000001
-        },
-        {
-          "code": "600826.SH",
-          "name": "兰生股份",
-          "date": "20090911",
-          "marketCap": 44.75633944
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000526.SZ",
-          "name": "学大教育",
-          "date": "20091229",
-          "marketCap": 12.71699315
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000796.SZ",
-          "name": "凯撒旅业",
-          "date": "20100330",
-          "marketCap": 19.35354818
-        },
-        {
-          "code": "002306.SZ",
-          "name": "ST云网",
-          "date": "20100330",
-          "marketCap": 57.94
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000721.SZ",
-          "name": "西安饮食",
-          "date": "20100629",
-          "marketCap": 14.405918710000002
-        },
-        {
-          "code": "600662.SH",
-          "name": "外服控股",
-          "date": "20100611",
-          "marketCap": 57.517208499999995
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000526.SZ",
-          "name": "学大教育",
-          "date": "20100929",
-          "marketCap": 10.26401792
-        },
-        {
-          "code": "600706.SH",
-          "name": "曲江文旅",
-          "date": "20100915",
-          "marketCap": 10.03461237
-        },
-        {
-          "code": "300010.SZ",
-          "name": "ST豆神",
-          "date": "20100914",
-          "marketCap": 29.194897499999996
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2011Q1",
-      "financialMissing": [
-        {
-          "code": "600706.SH",
-          "name": "曲江文旅"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2011Q2",
-      "financialMissing": [
-        {
-          "code": "600706.SH",
-          "name": "曲江文旅"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000428.SZ",
-          "name": "华天酒店",
-          "date": "20110629",
-          "marketCap": 40.7631042
-        },
-        {
-          "code": "601007.SH",
-          "name": "金陵饭店",
-          "date": "20110629",
-          "marketCap": 27.57
-        },
-        {
-          "code": "000524.SZ",
-          "name": "岭南控股",
-          "date": "20110629",
-          "marketCap": 25.32236456
-        },
-        {
-          "code": "000558.SZ",
-          "name": "天府文旅",
-          "date": "20110628",
-          "marketCap": 49.728235940000005
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000524.SZ",
-          "name": "岭南控股",
-          "date": "20110711",
-          "marketCap": 27.506721889999998
-        },
-        {
-          "code": "600706.SH",
-          "name": "曲江文旅",
-          "date": "20110926",
-          "marketCap": 13.693883549999999
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2012Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2012Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "601007.SH",
-          "name": "金陵饭店",
-          "date": "20120628",
-          "marketCap": 21.48
-        },
-        {
-          "code": "600826.SH",
-          "name": "兰生股份",
-          "date": "20120628",
-          "marketCap": 53.67395595
-        },
-        {
-          "code": "600250.SH",
-          "name": "南京商旅",
-          "date": "20120628",
-          "marketCap": 12.3137611
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600880.SH",
-          "name": "博瑞传播",
-          "date": "20120717",
-          "marketCap": 61.856037580000006
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000428.SZ",
-          "name": "华天酒店",
-          "date": "20121228",
-          "marketCap": 30.194892
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000526.SZ",
-          "name": "学大教育",
-          "date": "20130322",
-          "marketCap": 9.23473027
-        },
-        {
-          "code": "600661.SH",
-          "name": "昂立教育",
-          "date": "20130322",
-          "marketCap": 11.74055337
-        },
-        {
-          "code": "600576.SH",
-          "name": "祥源文旅",
-          "date": "20130327",
-          "marketCap": 17.62192167
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000526.SZ",
-          "name": "学大教育",
-          "date": "20130322",
-          "marketCap": 9.23473027
-        },
-        {
-          "code": "600661.SH",
-          "name": "昂立教育",
-          "date": "20130322",
-          "marketCap": 11.74055337
-        },
-        {
-          "code": "600576.SH",
-          "name": "祥源文旅",
-          "date": "20130327",
-          "marketCap": 17.62192167
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002186.SZ",
-          "name": "全聚德",
-          "date": "20130917",
-          "marketCap": 48.1304
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000796.SZ",
-          "name": "凯撒旅业",
-          "date": "20131025",
-          "marketCap": 12.22848394
-        },
-        {
-          "code": "300010.SZ",
-          "name": "ST豆神",
-          "date": "20131204",
-          "marketCap": 31.26784316
-        },
-        {
-          "code": "600576.SH",
-          "name": "祥源文旅",
-          "date": "20131230",
-          "marketCap": 15.768130410000001
-        },
-        {
-          "code": "300012.SZ",
-          "name": "华测检测",
-          "date": "20131114",
-          "marketCap": 59.6560005
-        },
-        {
-          "code": "000558.SZ",
-          "name": "天府文旅",
-          "date": "20131225",
-          "marketCap": 21.68125876
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000428.SZ",
-          "name": "华天酒店",
-          "date": "20140129",
-          "marketCap": 51.978349800000004
-        },
-        {
-          "code": "600730.SH",
-          "name": "*ST高科",
-          "date": "20140211",
-          "marketCap": 27.9248257
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002707.SZ",
-          "name": "众信旅游",
-          "date": "20140612",
-          "marketCap": 52.461
-        },
-        {
-          "code": "300192.SZ",
-          "name": "科德教育",
-          "date": "20140618",
-          "marketCap": 17.518725
-        },
-        {
-          "code": "002059.SZ",
-          "name": "云南旅游",
-          "date": "20140620",
-          "marketCap": 27.86250256
-        },
-        {
-          "code": "600730.SH",
-          "name": "*ST高科",
-          "date": "20140211",
-          "marketCap": 27.9248257
-        },
-        {
-          "code": "002306.SZ",
-          "name": "ST云网",
-          "date": "20140620",
-          "marketCap": 44.56
-        },
-        {
-          "code": "600576.SH",
-          "name": "祥源文旅",
-          "date": "20140411",
-          "marketCap": 25.53870084
-        },
-        {
-          "code": "300050.SZ",
-          "name": "世纪鼎利",
-          "date": "20140529",
-          "marketCap": 38.4048
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300359.SZ",
-          "name": "全通教育",
-          "date": "20140919",
-          "marketCap": 85.6818
-        },
-        {
-          "code": "600258.SH",
-          "name": "首旅酒店",
-          "date": "20140901",
-          "marketCap": 35.26536
-        },
-        {
-          "code": "000796.SZ",
-          "name": "凯撒旅业",
-          "date": "20140901",
-          "marketCap": 17.82498768
-        },
-        {
-          "code": "600749.SH",
-          "name": "西藏旅游",
-          "date": "20140925",
-          "marketCap": 23.037
-        },
-        {
-          "code": "300010.SZ",
-          "name": "ST豆神",
-          "date": "20140804",
-          "marketCap": 59.93003272000001
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600754.SH",
-          "name": "锦江酒店",
-          "date": "20141107",
-          "marketCap": 151.47374981
-        },
-        {
-          "code": "300144.SZ",
-          "name": "宋城演艺",
-          "date": "20141218",
-          "marketCap": 168.00183
-        },
-        {
-          "code": "300359.SZ",
-          "name": "全通教育",
-          "date": "20140919",
-          "marketCap": 85.6818
-        },
-        {
-          "code": "000796.SZ",
-          "name": "凯撒旅业",
-          "date": "20140901",
-          "marketCap": 17.82498768
-        },
-        {
-          "code": "002659.SZ",
-          "name": "凯文教育",
-          "date": "20141124",
-          "marketCap": 31.0378
-        },
-        {
-          "code": "600749.SH",
-          "name": "西藏旅游",
-          "date": "20140925",
-          "marketCap": 23.037
-        },
-        {
-          "code": "300192.SZ",
-          "name": "科德教育",
-          "date": "20141114",
-          "marketCap": 22.387365
-        },
-        {
-          "code": "600250.SH",
-          "name": "南京商旅",
-          "date": "20141118",
-          "marketCap": 26.69706187
-        },
-        {
-          "code": "000558.SZ",
-          "name": "天府文旅",
-          "date": "20141114",
-          "marketCap": 51.31111319
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000978.SZ",
-          "name": "桂林旅游",
-          "date": "20150109",
-          "marketCap": 34.67763
-        },
-        {
-          "code": "000721.SZ",
-          "name": "西安饮食",
-          "date": "20150105",
-          "marketCap": 31.49042855
-        },
-        {
-          "code": "002607.SZ",
-          "name": "中公教育",
-          "date": "20150311",
-          "marketCap": 31.492032000000002
-        },
-        {
-          "code": "600258.SH",
-          "name": "首旅酒店",
-          "date": "20150316",
-          "marketCap": 43.2718
-        },
-        {
-          "code": "000796.SZ",
-          "name": "凯撒旅业",
-          "date": "20140901",
-          "marketCap": 17.82498768
-        },
-        {
-          "code": "000526.SZ",
-          "name": "学大教育",
-          "date": "20150206",
-          "marketCap": 21.45150886
-        },
-        {
-          "code": "002659.SZ",
-          "name": "凯文教育",
-          "date": "20141124",
-          "marketCap": 31.0378
-        },
-        {
-          "code": "300192.SZ",
-          "name": "科德教育",
-          "date": "20141114",
-          "marketCap": 22.387365
-        },
-        {
-          "code": "002057.SZ",
-          "name": "中钢天源",
-          "date": "20150217",
-          "marketCap": 28.11281547
-        },
-        {
-          "code": "600576.SH",
-          "name": "祥源文旅",
-          "date": "20150316",
-          "marketCap": 45.101651010000005
-        },
-        {
-          "code": "600250.SH",
-          "name": "南京商旅",
-          "date": "20141118",
-          "marketCap": 26.69706187
-        },
-        {
-          "code": "002159.SZ",
-          "name": "三特索道",
-          "date": "20150114",
-          "marketCap": 31.04746652
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300144.SZ",
-          "name": "宋城演艺",
-          "date": "20150617",
-          "marketCap": 426.46569594
-        },
-        {
-          "code": "300215.SZ",
-          "name": "电科院",
-          "date": "20150615",
-          "marketCap": 112.68
-        },
-        {
-          "code": "600258.SH",
-          "name": "首旅酒店",
-          "date": "20150316",
-          "marketCap": 43.2718
-        },
-        {
-          "code": "000526.SZ",
-          "name": "学大教育",
-          "date": "20150206",
-          "marketCap": 21.45150886
-        },
-        {
-          "code": "002057.SZ",
-          "name": "中钢天源",
-          "date": "20150217",
-          "marketCap": 28.11281547
-        },
-        {
-          "code": "002306.SZ",
-          "name": "ST云网",
-          "date": "20150602",
-          "marketCap": 73.76
-        },
-        {
-          "code": "600576.SH",
-          "name": "祥源文旅",
-          "date": "20150629",
-          "marketCap": 89.15645519
-        },
-        {
-          "code": "300012.SZ",
-          "name": "华测检测",
-          "date": "20150612",
-          "marketCap": 164.24087509999998
-        },
-        {
-          "code": "002159.SZ",
-          "name": "三特索道",
-          "date": "20150114",
-          "marketCap": 31.04746652
-        },
-        {
-          "code": "000558.SZ",
-          "name": "天府文旅",
-          "date": "20150612",
-          "marketCap": 281.91030362
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600754.SH",
-          "name": "锦江酒店",
-          "date": "20150707",
-          "marketCap": 231.78156088999998
-        },
-        {
-          "code": "600880.SH",
-          "name": "博瑞传播",
-          "date": "20150915",
-          "marketCap": 81.9999069
-        },
-        {
-          "code": "600593.SH",
-          "name": "大连圣亚",
-          "date": "20150714",
-          "marketCap": 27.1308
-        },
-        {
-          "code": "600258.SH",
-          "name": "首旅酒店",
-          "date": "20150316",
-          "marketCap": 43.2718
-        },
-        {
-          "code": "300010.SZ",
-          "name": "ST豆神",
-          "date": "20150701",
-          "marketCap": 167.36679618
-        },
-        {
-          "code": "002057.SZ",
-          "name": "中钢天源",
-          "date": "20150217",
-          "marketCap": 28.11281547
-        },
-        {
-          "code": "002306.SZ",
-          "name": "ST云网",
-          "date": "20150602",
-          "marketCap": 73.76
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000430.SZ",
-          "name": "张家界",
-          "date": "20151214",
-          "marketCap": 49.92194918
-        },
-        {
-          "code": "600880.SH",
-          "name": "博瑞传播",
-          "date": "20150915",
-          "marketCap": 81.9999069
-        },
-        {
-          "code": "002707.SZ",
-          "name": "众信旅游",
-          "date": "20151113",
-          "marketCap": 219.70691173999998
-        },
-        {
-          "code": "000796.SZ",
-          "name": "凯撒旅业",
-          "date": "20151106",
-          "marketCap": 67.70043732
-        },
-        {
-          "code": "600749.SH",
-          "name": "西藏旅游",
-          "date": "20151127",
-          "marketCap": 44.6743793
-        },
-        {
-          "code": "300010.SZ",
-          "name": "ST豆神",
-          "date": "20151229",
-          "marketCap": 218.38022569
-        },
-        {
-          "code": "002306.SZ",
-          "name": "ST云网",
-          "date": "20150602",
-          "marketCap": 73.76
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000796.SZ",
-          "name": "凯撒旅业",
-          "date": "20151106",
-          "marketCap": 67.70043732
-        },
-        {
-          "code": "600749.SH",
-          "name": "西藏旅游",
-          "date": "20151127",
-          "marketCap": 44.6743793
-        },
-        {
-          "code": "002057.SZ",
-          "name": "中钢天源",
-          "date": "20160329",
-          "marketCap": 23.8659859
-        },
-        {
-          "code": "002306.SZ",
-          "name": "ST云网",
-          "date": "20160226",
-          "marketCap": 43.76
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000524.SZ",
-          "name": "岭南控股",
-          "date": "20160401",
-          "marketCap": 35.38119521
-        },
-        {
-          "code": "300338.SZ",
-          "name": "*ST开元",
-          "date": "20160414",
-          "marketCap": 45.8892
-        },
-        {
-          "code": "002059.SZ",
-          "name": "云南旅游",
-          "date": "20160531",
-          "marketCap": 62.55584451
-        },
-        {
-          "code": "002057.SZ",
-          "name": "中钢天源",
-          "date": "20160608",
-          "marketCap": 30.0268795
-        },
-        {
-          "code": "002306.SZ",
-          "name": "ST云网",
-          "date": "20160226",
-          "marketCap": 43.76
-        },
-        {
-          "code": "600576.SH",
-          "name": "祥源文旅",
-          "date": "20160408",
-          "marketCap": 141.91548813
-        },
-        {
-          "code": "000610.SZ",
-          "name": "*ST西旅",
-          "date": "20160408",
-          "marketCap": 30.42210528
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300359.SZ",
-          "name": "全通教育",
-          "date": "20160812",
-          "marketCap": 170.16791007
-        },
-        {
-          "code": "002059.SZ",
-          "name": "云南旅游",
-          "date": "20160531",
-          "marketCap": 62.55584451
-        },
-        {
-          "code": "300050.SZ",
-          "name": "世纪鼎利",
-          "date": "20160718",
-          "marketCap": 71.04541996
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002659.SZ",
-          "name": "凯文教育",
-          "date": "20161102",
-          "marketCap": 108.53803307000001
-        },
-        {
-          "code": "600576.SH",
-          "name": "祥源文旅",
-          "date": "20161125",
-          "marketCap": 116.70723364
-        },
-        {
-          "code": "002159.SZ",
-          "name": "三特索道",
-          "date": "20161228",
-          "marketCap": 44.37333312
-        },
-        {
-          "code": "000558.SZ",
-          "name": "天府文旅",
-          "date": "20161014",
-          "marketCap": 126.77368836999999
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000526.SZ",
-          "name": "学大教育",
-          "date": "20170317",
-          "marketCap": 35.20740916
-        },
-        {
-          "code": "300192.SZ",
-          "name": "科德教育",
-          "date": "20170303",
-          "marketCap": 37.061640000000004
-        },
-        {
-          "code": "600158.SH",
-          "name": "中体产业",
-          "date": "20170330",
-          "marketCap": 155.83792339000001
-        },
-        {
-          "code": "000558.SZ",
-          "name": "天府文旅",
-          "date": "20161014",
-          "marketCap": 126.77368836999999
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300192.SZ",
-          "name": "科德教育",
-          "date": "20170303",
-          "marketCap": 37.061640000000004
-        },
-        {
-          "code": "600706.SH",
-          "name": "曲江文旅",
-          "date": "20170616",
-          "marketCap": 35.68652339
-        },
-        {
-          "code": "300492.SZ",
-          "name": "华图山鼎",
-          "date": "20170605",
-          "marketCap": 38.29696
-        },
-        {
-          "code": "000610.SZ",
-          "name": "*ST西旅",
-          "date": "20170519",
-          "marketCap": 27.10763466
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300492.SZ",
-          "name": "华图山鼎",
-          "date": "20170605",
-          "marketCap": 38.29696
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000526.SZ",
-          "name": "学大教育",
-          "date": "20171013",
-          "marketCap": 35.28436525
-        },
-        {
-          "code": "300010.SZ",
-          "name": "ST豆神",
-          "date": "20171116",
-          "marketCap": 97.52087985
-        },
-        {
-          "code": "002033.SZ",
-          "name": "丽江股份",
-          "date": "20171213",
-          "marketCap": 50.003654700000006
-        },
-        {
-          "code": "300492.SZ",
-          "name": "华图山鼎",
-          "date": "20170605",
-          "marketCap": 38.29696
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600880.SH",
-          "name": "博瑞传播",
-          "date": "20180305",
-          "marketCap": 51.71460795
-        },
-        {
-          "code": "002607.SZ",
-          "name": "中公教育",
-          "date": "20180103",
-          "marketCap": 33.30563998
-        },
-        {
-          "code": "000796.SZ",
-          "name": "凯撒旅业",
-          "date": "20180118",
-          "marketCap": 103.58703328
-        },
-        {
-          "code": "000526.SZ",
-          "name": "学大教育",
-          "date": "20180321",
-          "marketCap": 27.10778115
-        },
-        {
-          "code": "300662.SZ",
-          "name": "科锐国际",
-          "date": "20180305",
-          "marketCap": 37.332
-        },
-        {
-          "code": "600158.SH",
-          "name": "中体产业",
-          "date": "20180326",
-          "marketCap": 98.21079742
-        },
-        {
-          "code": "002059.SZ",
-          "name": "云南旅游",
-          "date": "20180323",
-          "marketCap": 53.27477879
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000796.SZ",
-          "name": "凯撒旅业",
-          "date": "20180118",
-          "marketCap": 103.58703328
-        },
-        {
-          "code": "000526.SZ",
-          "name": "学大教育",
-          "date": "20180321",
-          "marketCap": 27.10778115
-        },
-        {
-          "code": "600158.SH",
-          "name": "中体产业",
-          "date": "20180326",
-          "marketCap": 98.21079742
-        },
-        {
-          "code": "002059.SZ",
-          "name": "云南旅游",
-          "date": "20180323",
-          "marketCap": 53.27477879
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000526.SZ",
-          "name": "学大教育",
-          "date": "20180321",
-          "marketCap": 27.10778115
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300359.SZ",
-          "name": "全通教育",
-          "date": "20190315",
-          "marketCap": 45.70284707
-        },
-        {
-          "code": "300492.SZ",
-          "name": "华图山鼎",
-          "date": "20190322",
-          "marketCap": 21.68192
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600826.SH",
-          "name": "兰生股份",
-          "date": "20190917",
-          "marketCap": 47.95322083
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300050.SZ",
-          "name": "世纪鼎利",
-          "date": "20200925",
-          "marketCap": 38.18266076
-        }
-      ]
-    },
-    {
-      "quarter": "2020Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600861.SH",
-          "name": "北京人力",
-          "date": "20210928",
-          "marketCap": 71.37615501
-        }
-      ]
-    },
-    {
-      "quarter": "2021Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002627.SZ",
-          "name": "三峡旅游",
-          "date": "20220325",
-          "marketCap": 53.66336811000001
-        }
-      ]
-    },
-    {
-      "quarter": "2022Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "603377.SH",
-          "name": "ST东时",
-          "date": "20250619",
-          "marketCap": 21.088592639999998
-        }
-      ]
-    },
-    {
-      "quarter": "2025Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000524.SZ",
-          "name": "岭南控股",
-          "date": "20260623",
-          "marketCap": 59.98366970000001
-        }
-      ]
-    },
-    {
-      "quarter": "2026Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "603183.SH",
-          "name": "建研院",
-          "date": "20260929",
-          "marketCap": 25.80225627
-        }
-      ]
-    }
-  ]
+      "financialCoverage": 1.0,
+      "peRaw": 41.62,
+      "valuationSource": "sw_daily",
+      "valuationCode": "801210.SI",
+      "valuationDate": "20260930",
+      "peStatus": "valid",
+      "peNote": ""
+    },
+    "indices": [
+      {
+        "code": "801210.SI",
+        "name": "社会服务",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      },
+      {
+        "code": "801218.SI",
+        "name": "专业服务",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801993.SI",
+        "name": "旅游及景区",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801994.SI",
+        "name": "教育",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801219.SI",
+        "name": "酒店餐饮",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801216.SI",
+        "name": "体育",
+        "dailyCount": 0,
+        "firstDate": null,
+        "lastDate": null,
+        "quarterQuotes": 0,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2",
+          "2012Q3",
+          "2012Q4",
+          "2013Q1",
+          "2013Q2",
+          "2013Q3",
+          "2013Q4",
+          "2014Q1",
+          "2014Q2",
+          "2014Q3",
+          "2014Q4",
+          "2015Q1",
+          "2015Q2",
+          "2015Q3",
+          "2015Q4",
+          "2016Q1",
+          "2016Q2",
+          "2016Q3",
+          "2016Q4",
+          "2017Q1",
+          "2017Q2",
+          "2017Q3",
+          "2017Q4",
+          "2018Q1",
+          "2018Q2",
+          "2018Q3",
+          "2018Q4",
+          "2019Q1",
+          "2019Q2",
+          "2019Q3",
+          "2019Q4",
+          "2020Q1",
+          "2020Q2",
+          "2020Q3",
+          "2020Q4",
+          "2021Q1",
+          "2021Q2",
+          "2021Q3",
+          "2021Q4",
+          "2022Q1",
+          "2022Q2",
+          "2022Q3",
+          "2022Q4",
+          "2023Q1",
+          "2023Q2",
+          "2023Q3",
+          "2023Q4",
+          "2024Q1",
+          "2024Q2",
+          "2024Q3",
+          "2024Q4",
+          "2025Q1",
+          "2025Q2",
+          "2025Q3",
+          "2025Q4",
+          "2026Q1",
+          "2026Q2",
+          "2026Q3"
+        ]
+      },
+      {
+        "code": "801217.SI",
+        "name": "本地生活服务",
+        "dailyCount": 0,
+        "firstDate": null,
+        "lastDate": null,
+        "quarterQuotes": 0,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2",
+          "2012Q3",
+          "2012Q4",
+          "2013Q1",
+          "2013Q2",
+          "2013Q3",
+          "2013Q4",
+          "2014Q1",
+          "2014Q2",
+          "2014Q3",
+          "2014Q4",
+          "2015Q1",
+          "2015Q2",
+          "2015Q3",
+          "2015Q4",
+          "2016Q1",
+          "2016Q2",
+          "2016Q3",
+          "2016Q4",
+          "2017Q1",
+          "2017Q2",
+          "2017Q3",
+          "2017Q4",
+          "2018Q1",
+          "2018Q2",
+          "2018Q3",
+          "2018Q4",
+          "2019Q1",
+          "2019Q2",
+          "2019Q3",
+          "2019Q4",
+          "2020Q1",
+          "2020Q2",
+          "2020Q3",
+          "2020Q4",
+          "2021Q1",
+          "2021Q2",
+          "2021Q3",
+          "2021Q4",
+          "2022Q1",
+          "2022Q2",
+          "2022Q3",
+          "2022Q4",
+          "2023Q1",
+          "2023Q2",
+          "2023Q3",
+          "2023Q4",
+          "2024Q1",
+          "2024Q2",
+          "2024Q3",
+          "2024Q4",
+          "2025Q1",
+          "2025Q2",
+          "2025Q3",
+          "2025Q4",
+          "2026Q1",
+          "2026Q2",
+          "2026Q3"
+        ]
+      }
+    ]
+  }
 }

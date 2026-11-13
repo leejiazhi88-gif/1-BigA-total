@@ -1,25 +1,1198 @@
 {
-  "asOf": "2026-11-10",
-  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
-  "summary": {
+  "historicalCompanyAggregateAudit": {
+    "asOf": "2026-11-10",
+    "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+    "summary": {
+      "industry": "综合",
+      "code": "801230.SI",
+      "companies": 20,
+      "quarters": 87,
+      "companyQuarterRows": 1675,
+      "latest": {
+        "quarter": "2026Q3",
+        "endDate": "20260930",
+        "tradeDate": "20260930",
+        "companies": 20,
+        "marketCap": 1891.5643310900002,
+        "marketCapObserved": 1891.5643310900002,
+        "pe": null,
+        "peMarketCap": 1891.5643310900002,
+        "peProfit": -24.241768116964682,
+        "peCoverage": 1.0,
+        "peMissingCount": 0,
+        "peRebuiltCount": 6,
+        "revenue": 201.94389102589997,
+        "profit": 2.7823955795000006,
+        "reportedCount": 20,
+        "estimatedCount": 0,
+        "missingCount": 0,
+        "estimatedRevenue": 0,
+        "estimatedProfit": 0,
+        "carriedCount": 0,
+        "marketMissingCount": 0,
+        "financialCoverage": 1.0
+      },
+      "financialIncompleteQuarters": 0,
+      "peCoverageMin": 1.0,
+      "carriedCompanyQuarters": 81
+    },
+    "quality": [
+      {
+        "quarter": "2005Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2005Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2005Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600770.SH",
+            "name": "综艺股份",
+            "date": "20050929",
+            "marketCap": 30.591
+          },
+          {
+            "code": "000421.SZ",
+            "name": "南京公用",
+            "date": "20050831",
+            "marketCap": 5.76760289
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000025.SZ",
+            "name": "特力A",
+            "date": "20051205",
+            "marketCap": 7.0049548800000005
+          },
+          {
+            "code": "600673.SH",
+            "name": "东阳光",
+            "date": "20051124",
+            "marketCap": 5.39568723
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2006Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000753.SZ",
+            "name": "漳州发展",
+            "date": "20060628",
+            "marketCap": 15.25998764
+          },
+          {
+            "code": "600881.SH",
+            "name": "亚泰集团",
+            "date": "20060623",
+            "marketCap": 36.56123049
+          },
+          {
+            "code": "600689.SH",
+            "name": "上海三毛",
+            "date": "20060629",
+            "marketCap": 7.83866238
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600805.SH",
+            "name": "悦达投资",
+            "date": "20060809",
+            "marketCap": 18.926948019999998
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000753.SZ",
+            "name": "漳州发展",
+            "date": "20061228",
+            "marketCap": 9.23603645
+          },
+          {
+            "code": "000421.SZ",
+            "name": "南京公用",
+            "date": "20061115",
+            "marketCap": 13.71920472
+          },
+          {
+            "code": "600807.SH",
+            "name": "济高发展",
+            "date": "20061218",
+            "marketCap": 4.67297064
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000833.SZ",
+            "name": "粤桂股份",
+            "date": "20070323",
+            "marketCap": 24.7129353
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000632.SZ",
+            "name": "ST三木",
+            "date": "20070619",
+            "marketCap": 40.77951433
+          },
+          {
+            "code": "000025.SZ",
+            "name": "特力A",
+            "date": "20070524",
+            "marketCap": 36.17023872
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2007Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2008Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600881.SH",
+            "name": "亚泰集团",
+            "date": "20080328",
+            "marketCap": 162.694326
+          },
+          {
+            "code": "600682.SH",
+            "name": "南京新百",
+            "date": "20080313",
+            "marketCap": 55.18090818
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000833.SZ",
+            "name": "粤桂股份",
+            "date": "20080627",
+            "marketCap": 32.30100571
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2008Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000652.SZ",
+            "name": "泰达股份",
+            "date": "20081229",
+            "marketCap": 78.64808631
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2009Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600805.SH",
+            "name": "悦达投资",
+            "date": "20090629",
+            "marketCap": 33.54487906
+          },
+          {
+            "code": "600682.SH",
+            "name": "南京新百",
+            "date": "20090629",
+            "marketCap": 31.42481177
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2009Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2010Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000652.SZ",
+            "name": "泰达股份",
+            "date": "20100330",
+            "marketCap": 124.09576095
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600807.SH",
+            "name": "济高发展",
+            "date": "20100629",
+            "marketCap": 22.641159599999998
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2010Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000652.SZ",
+            "name": "泰达股份",
+            "date": "20101119",
+            "marketCap": 114.79964569
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000652.SZ",
+            "name": "泰达股份",
+            "date": "20101119",
+            "marketCap": 114.79964569
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000652.SZ",
+            "name": "泰达股份",
+            "date": "20101119",
+            "marketCap": 114.79964569
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2011Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2012Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2012Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000523.SZ",
+            "name": "红棉股份",
+            "date": "20120628",
+            "marketCap": 24.61754642
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2012Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2013Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600807.SH",
+            "name": "济高发展",
+            "date": "20130104",
+            "marketCap": 22.57692936
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600807.SH",
+            "name": "济高发展",
+            "date": "20130104",
+            "marketCap": 22.57692936
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600051.SH",
+            "name": "宁波联合",
+            "date": "20130918",
+            "marketCap": 20.29104
+          },
+          {
+            "code": "600458.SH",
+            "name": "时代新材",
+            "date": "20130820",
+            "marketCap": 73.55013663
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600051.SH",
+            "name": "宁波联合",
+            "date": "20130918",
+            "marketCap": 20.29104
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000833.SZ",
+            "name": "粤桂股份",
+            "date": "20140326",
+            "marketCap": 20.36947014
+          },
+          {
+            "code": "002316.SZ",
+            "name": "亚联发展",
+            "date": "20140320",
+            "marketCap": 33.886944
+          },
+          {
+            "code": "000025.SZ",
+            "name": "特力A",
+            "date": "20140328",
+            "marketCap": 22.843201920000002
+          },
+          {
+            "code": "000421.SZ",
+            "name": "南京公用",
+            "date": "20140228",
+            "marketCap": 16.42364747
+          },
+          {
+            "code": "600682.SH",
+            "name": "南京新百",
+            "date": "20140228",
+            "marketCap": 41.70864413
+          },
+          {
+            "code": "002575.SZ",
+            "name": "群兴玩具",
+            "date": "20140221",
+            "marketCap": 41.478
+          },
+          {
+            "code": "600458.SH",
+            "name": "时代新材",
+            "date": "20140328",
+            "marketCap": 59.85869933
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000833.SZ",
+            "name": "粤桂股份",
+            "date": "20140326",
+            "marketCap": 20.36947014
+          },
+          {
+            "code": "600682.SH",
+            "name": "南京新百",
+            "date": "20140228",
+            "marketCap": 41.70864413
+          },
+          {
+            "code": "002575.SZ",
+            "name": "群兴玩具",
+            "date": "20140221",
+            "marketCap": 41.478
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000523.SZ",
+            "name": "红棉股份",
+            "date": "20140929",
+            "marketCap": 43.759580699999994
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600458.SH",
+            "name": "时代新材",
+            "date": "20141024",
+            "marketCap": 80.56121080999999
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002316.SZ",
+            "name": "亚联发展",
+            "date": "20150216",
+            "marketCap": 43.282512
+          },
+          {
+            "code": "600807.SH",
+            "name": "济高发展",
+            "date": "20150330",
+            "marketCap": 69.49274736
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000833.SZ",
+            "name": "粤桂股份",
+            "date": "20150617",
+            "marketCap": 62.70717698
+          },
+          {
+            "code": "600689.SH",
+            "name": "上海三毛",
+            "date": "20150331",
+            "marketCap": 30.570783270000003
+          },
+          {
+            "code": "002316.SZ",
+            "name": "亚联发展",
+            "date": "20150216",
+            "marketCap": 43.282512
+          },
+          {
+            "code": "002575.SZ",
+            "name": "群兴玩具",
+            "date": "20150529",
+            "marketCap": 97.492032
+          },
+          {
+            "code": "600807.SH",
+            "name": "济高发展",
+            "date": "20150629",
+            "marketCap": 150.16829805999998
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600620.SH",
+            "name": "天宸股份",
+            "date": "20150828",
+            "marketCap": 88.21511978
+          },
+          {
+            "code": "002316.SZ",
+            "name": "亚联发展",
+            "date": "20150216",
+            "marketCap": 43.282512
+          },
+          {
+            "code": "000025.SZ",
+            "name": "特力A",
+            "date": "20150924",
+            "marketCap": 149.11645056
+          },
+          {
+            "code": "600682.SH",
+            "name": "南京新百",
+            "date": "20150630",
+            "marketCap": 268.95625676000003
+          },
+          {
+            "code": "002575.SZ",
+            "name": "群兴玩具",
+            "date": "20150529",
+            "marketCap": 97.492032
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000833.SZ",
+            "name": "粤桂股份",
+            "date": "20151016",
+            "marketCap": 68.1769888
+          },
+          {
+            "code": "600682.SH",
+            "name": "南京新百",
+            "date": "20150630",
+            "marketCap": 268.95625676000003
+          },
+          {
+            "code": "002575.SZ",
+            "name": "群兴玩具",
+            "date": "20150529",
+            "marketCap": 97.492032
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600770.SH",
+            "name": "综艺股份",
+            "date": "20160106",
+            "marketCap": 215.28
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002316.SZ",
+            "name": "亚联发展",
+            "date": "20160524",
+            "marketCap": 48.825503999999995
+          },
+          {
+            "code": "000025.SZ",
+            "name": "特力A",
+            "date": "20160628",
+            "marketCap": 219.75055872
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002316.SZ",
+            "name": "亚联发展",
+            "date": "20160524",
+            "marketCap": 48.825503999999995
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002316.SZ",
+            "name": "亚联发展",
+            "date": "20161109",
+            "marketCap": 53.660880000000006
+          },
+          {
+            "code": "600673.SH",
+            "name": "东阳光",
+            "date": "20161114",
+            "marketCap": 179.98090796999998
+          },
+          {
+            "code": "600807.SH",
+            "name": "济高发展",
+            "date": "20161118",
+            "marketCap": 121.46034857000001
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002316.SZ",
+            "name": "亚联发展",
+            "date": "20161109",
+            "marketCap": 53.660880000000006
+          },
+          {
+            "code": "600673.SH",
+            "name": "东阳光",
+            "date": "20161114",
+            "marketCap": 179.98090796999998
+          },
+          {
+            "code": "002575.SZ",
+            "name": "群兴玩具",
+            "date": "20170126",
+            "marketCap": 87.071688
+          },
+          {
+            "code": "600807.SH",
+            "name": "济高发展",
+            "date": "20161118",
+            "marketCap": 121.46034857000001
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600673.SH",
+            "name": "东阳光",
+            "date": "20161114",
+            "marketCap": 179.98090796999998
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600673.SH",
+            "name": "东阳光",
+            "date": "20161114",
+            "marketCap": 179.98090796999998
+          },
+          {
+            "code": "600682.SH",
+            "name": "南京新百",
+            "date": "20170914",
+            "marketCap": 428.66615895999996
+          },
+          {
+            "code": "002575.SZ",
+            "name": "群兴玩具",
+            "date": "20170919",
+            "marketCap": 53.573519999999995
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002575.SZ",
+            "name": "群兴玩具",
+            "date": "20170919",
+            "marketCap": 53.573519999999995
+          },
+          {
+            "code": "600807.SH",
+            "name": "济高发展",
+            "date": "20171222",
+            "marketCap": 88.55193657
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600051.SH",
+            "name": "宁波联合",
+            "date": "20180108",
+            "marketCap": 30.3108
+          },
+          {
+            "code": "600682.SH",
+            "name": "南京新百",
+            "date": "20180201",
+            "marketCap": 370.06510428
+          },
+          {
+            "code": "002575.SZ",
+            "name": "群兴玩具",
+            "date": "20170919",
+            "marketCap": 53.573519999999995
+          },
+          {
+            "code": "600807.SH",
+            "name": "济高发展",
+            "date": "20171222",
+            "marketCap": 88.55193657
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000523.SZ",
+            "name": "红棉股份",
+            "date": "20180412",
+            "marketCap": 41.31259741
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2018Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000421.SZ",
+            "name": "南京公用",
+            "date": "20241226",
+            "marketCap": 37.32875241
+          }
+        ]
+      },
+      {
+        "quarter": "2025Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      }
+    ]
+  },
+  "historicalAuditScope": "旧公司整体法，市值/PE已被sw-alignment-audit.json取代；财务核验仍有效",
+  "valuationAlignment": {
     "industry": "综合",
     "code": "801230.SI",
-    "companies": 20,
-    "quarters": 87,
-    "companyQuarterRows": 1675,
+    "scope": "SW公布市值/PE与财报汇总分离",
+    "project2AsOf": "20261110",
+    "financialAsOf": "2026-11-10",
+    "financialHash": "eabdfb35d6801868fe080d7056c7de21cf257f3725d0ba501f310427331bd045",
+    "sectorFinancialHashes": {
+      "801231.SI": "485dfc4f49d96c28fd8f10149ed7a7537c7e8ad9f3005d3ebe8cd0e95ce18366"
+    },
     "latest": {
       "quarter": "2026Q3",
       "endDate": "20260930",
       "tradeDate": "20260930",
       "companies": 20,
-      "marketCap": 1891.5643310900002,
-      "marketCapObserved": 1891.5643310900002,
-      "pe": null,
-      "peMarketCap": 1891.5643310900002,
-      "peProfit": -24.241768116964682,
-      "peCoverage": 1.0,
-      "peMissingCount": 0,
-      "peRebuiltCount": 6,
+      "marketCap": 1883.7894,
+      "marketCapObserved": 1883.7894,
+      "pe": 78.33,
       "revenue": 201.94389102589997,
       "profit": 2.7823955795000006,
       "reportedCount": 20,
@@ -29,1147 +1202,95 @@
       "estimatedProfit": 0,
       "carriedCount": 0,
       "marketMissingCount": 0,
-      "financialCoverage": 1.0
-    },
-    "financialIncompleteQuarters": 0,
-    "peCoverageMin": 1.0,
-    "carriedCompanyQuarters": 81
-  },
-  "quality": [
-    {
-      "quarter": "2005Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2005Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2005Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600770.SH",
-          "name": "综艺股份",
-          "date": "20050929",
-          "marketCap": 30.591
-        },
-        {
-          "code": "000421.SZ",
-          "name": "南京公用",
-          "date": "20050831",
-          "marketCap": 5.76760289
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000025.SZ",
-          "name": "特力A",
-          "date": "20051205",
-          "marketCap": 7.0049548800000005
-        },
-        {
-          "code": "600673.SH",
-          "name": "东阳光",
-          "date": "20051124",
-          "marketCap": 5.39568723
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2006Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000753.SZ",
-          "name": "漳州发展",
-          "date": "20060628",
-          "marketCap": 15.25998764
-        },
-        {
-          "code": "600881.SH",
-          "name": "亚泰集团",
-          "date": "20060623",
-          "marketCap": 36.56123049
-        },
-        {
-          "code": "600689.SH",
-          "name": "上海三毛",
-          "date": "20060629",
-          "marketCap": 7.83866238
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600805.SH",
-          "name": "悦达投资",
-          "date": "20060809",
-          "marketCap": 18.926948019999998
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000753.SZ",
-          "name": "漳州发展",
-          "date": "20061228",
-          "marketCap": 9.23603645
-        },
-        {
-          "code": "000421.SZ",
-          "name": "南京公用",
-          "date": "20061115",
-          "marketCap": 13.71920472
-        },
-        {
-          "code": "600807.SH",
-          "name": "济高发展",
-          "date": "20061218",
-          "marketCap": 4.67297064
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000833.SZ",
-          "name": "粤桂股份",
-          "date": "20070323",
-          "marketCap": 24.7129353
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000632.SZ",
-          "name": "ST三木",
-          "date": "20070619",
-          "marketCap": 40.77951433
-        },
-        {
-          "code": "000025.SZ",
-          "name": "特力A",
-          "date": "20070524",
-          "marketCap": 36.17023872
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2007Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2008Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600881.SH",
-          "name": "亚泰集团",
-          "date": "20080328",
-          "marketCap": 162.694326
-        },
-        {
-          "code": "600682.SH",
-          "name": "南京新百",
-          "date": "20080313",
-          "marketCap": 55.18090818
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000833.SZ",
-          "name": "粤桂股份",
-          "date": "20080627",
-          "marketCap": 32.30100571
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2008Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000652.SZ",
-          "name": "泰达股份",
-          "date": "20081229",
-          "marketCap": 78.64808631
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2009Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600805.SH",
-          "name": "悦达投资",
-          "date": "20090629",
-          "marketCap": 33.54487906
-        },
-        {
-          "code": "600682.SH",
-          "name": "南京新百",
-          "date": "20090629",
-          "marketCap": 31.42481177
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2009Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2010Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000652.SZ",
-          "name": "泰达股份",
-          "date": "20100330",
-          "marketCap": 124.09576095
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600807.SH",
-          "name": "济高发展",
-          "date": "20100629",
-          "marketCap": 22.641159599999998
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2010Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000652.SZ",
-          "name": "泰达股份",
-          "date": "20101119",
-          "marketCap": 114.79964569
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000652.SZ",
-          "name": "泰达股份",
-          "date": "20101119",
-          "marketCap": 114.79964569
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000652.SZ",
-          "name": "泰达股份",
-          "date": "20101119",
-          "marketCap": 114.79964569
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2011Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2012Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2012Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000523.SZ",
-          "name": "红棉股份",
-          "date": "20120628",
-          "marketCap": 24.61754642
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2012Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2013Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600807.SH",
-          "name": "济高发展",
-          "date": "20130104",
-          "marketCap": 22.57692936
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600807.SH",
-          "name": "济高发展",
-          "date": "20130104",
-          "marketCap": 22.57692936
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600051.SH",
-          "name": "宁波联合",
-          "date": "20130918",
-          "marketCap": 20.29104
-        },
-        {
-          "code": "600458.SH",
-          "name": "时代新材",
-          "date": "20130820",
-          "marketCap": 73.55013663
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600051.SH",
-          "name": "宁波联合",
-          "date": "20130918",
-          "marketCap": 20.29104
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000833.SZ",
-          "name": "粤桂股份",
-          "date": "20140326",
-          "marketCap": 20.36947014
-        },
-        {
-          "code": "002316.SZ",
-          "name": "亚联发展",
-          "date": "20140320",
-          "marketCap": 33.886944
-        },
-        {
-          "code": "000025.SZ",
-          "name": "特力A",
-          "date": "20140328",
-          "marketCap": 22.843201920000002
-        },
-        {
-          "code": "000421.SZ",
-          "name": "南京公用",
-          "date": "20140228",
-          "marketCap": 16.42364747
-        },
-        {
-          "code": "600682.SH",
-          "name": "南京新百",
-          "date": "20140228",
-          "marketCap": 41.70864413
-        },
-        {
-          "code": "002575.SZ",
-          "name": "群兴玩具",
-          "date": "20140221",
-          "marketCap": 41.478
-        },
-        {
-          "code": "600458.SH",
-          "name": "时代新材",
-          "date": "20140328",
-          "marketCap": 59.85869933
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000833.SZ",
-          "name": "粤桂股份",
-          "date": "20140326",
-          "marketCap": 20.36947014
-        },
-        {
-          "code": "600682.SH",
-          "name": "南京新百",
-          "date": "20140228",
-          "marketCap": 41.70864413
-        },
-        {
-          "code": "002575.SZ",
-          "name": "群兴玩具",
-          "date": "20140221",
-          "marketCap": 41.478
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000523.SZ",
-          "name": "红棉股份",
-          "date": "20140929",
-          "marketCap": 43.759580699999994
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600458.SH",
-          "name": "时代新材",
-          "date": "20141024",
-          "marketCap": 80.56121080999999
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002316.SZ",
-          "name": "亚联发展",
-          "date": "20150216",
-          "marketCap": 43.282512
-        },
-        {
-          "code": "600807.SH",
-          "name": "济高发展",
-          "date": "20150330",
-          "marketCap": 69.49274736
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000833.SZ",
-          "name": "粤桂股份",
-          "date": "20150617",
-          "marketCap": 62.70717698
-        },
-        {
-          "code": "600689.SH",
-          "name": "上海三毛",
-          "date": "20150331",
-          "marketCap": 30.570783270000003
-        },
-        {
-          "code": "002316.SZ",
-          "name": "亚联发展",
-          "date": "20150216",
-          "marketCap": 43.282512
-        },
-        {
-          "code": "002575.SZ",
-          "name": "群兴玩具",
-          "date": "20150529",
-          "marketCap": 97.492032
-        },
-        {
-          "code": "600807.SH",
-          "name": "济高发展",
-          "date": "20150629",
-          "marketCap": 150.16829805999998
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600620.SH",
-          "name": "天宸股份",
-          "date": "20150828",
-          "marketCap": 88.21511978
-        },
-        {
-          "code": "002316.SZ",
-          "name": "亚联发展",
-          "date": "20150216",
-          "marketCap": 43.282512
-        },
-        {
-          "code": "000025.SZ",
-          "name": "特力A",
-          "date": "20150924",
-          "marketCap": 149.11645056
-        },
-        {
-          "code": "600682.SH",
-          "name": "南京新百",
-          "date": "20150630",
-          "marketCap": 268.95625676000003
-        },
-        {
-          "code": "002575.SZ",
-          "name": "群兴玩具",
-          "date": "20150529",
-          "marketCap": 97.492032
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000833.SZ",
-          "name": "粤桂股份",
-          "date": "20151016",
-          "marketCap": 68.1769888
-        },
-        {
-          "code": "600682.SH",
-          "name": "南京新百",
-          "date": "20150630",
-          "marketCap": 268.95625676000003
-        },
-        {
-          "code": "002575.SZ",
-          "name": "群兴玩具",
-          "date": "20150529",
-          "marketCap": 97.492032
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600770.SH",
-          "name": "综艺股份",
-          "date": "20160106",
-          "marketCap": 215.28
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002316.SZ",
-          "name": "亚联发展",
-          "date": "20160524",
-          "marketCap": 48.825503999999995
-        },
-        {
-          "code": "000025.SZ",
-          "name": "特力A",
-          "date": "20160628",
-          "marketCap": 219.75055872
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002316.SZ",
-          "name": "亚联发展",
-          "date": "20160524",
-          "marketCap": 48.825503999999995
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002316.SZ",
-          "name": "亚联发展",
-          "date": "20161109",
-          "marketCap": 53.660880000000006
-        },
-        {
-          "code": "600673.SH",
-          "name": "东阳光",
-          "date": "20161114",
-          "marketCap": 179.98090796999998
-        },
-        {
-          "code": "600807.SH",
-          "name": "济高发展",
-          "date": "20161118",
-          "marketCap": 121.46034857000001
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002316.SZ",
-          "name": "亚联发展",
-          "date": "20161109",
-          "marketCap": 53.660880000000006
-        },
-        {
-          "code": "600673.SH",
-          "name": "东阳光",
-          "date": "20161114",
-          "marketCap": 179.98090796999998
-        },
-        {
-          "code": "002575.SZ",
-          "name": "群兴玩具",
-          "date": "20170126",
-          "marketCap": 87.071688
-        },
-        {
-          "code": "600807.SH",
-          "name": "济高发展",
-          "date": "20161118",
-          "marketCap": 121.46034857000001
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600673.SH",
-          "name": "东阳光",
-          "date": "20161114",
-          "marketCap": 179.98090796999998
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600673.SH",
-          "name": "东阳光",
-          "date": "20161114",
-          "marketCap": 179.98090796999998
-        },
-        {
-          "code": "600682.SH",
-          "name": "南京新百",
-          "date": "20170914",
-          "marketCap": 428.66615895999996
-        },
-        {
-          "code": "002575.SZ",
-          "name": "群兴玩具",
-          "date": "20170919",
-          "marketCap": 53.573519999999995
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002575.SZ",
-          "name": "群兴玩具",
-          "date": "20170919",
-          "marketCap": 53.573519999999995
-        },
-        {
-          "code": "600807.SH",
-          "name": "济高发展",
-          "date": "20171222",
-          "marketCap": 88.55193657
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600051.SH",
-          "name": "宁波联合",
-          "date": "20180108",
-          "marketCap": 30.3108
-        },
-        {
-          "code": "600682.SH",
-          "name": "南京新百",
-          "date": "20180201",
-          "marketCap": 370.06510428
-        },
-        {
-          "code": "002575.SZ",
-          "name": "群兴玩具",
-          "date": "20170919",
-          "marketCap": 53.573519999999995
-        },
-        {
-          "code": "600807.SH",
-          "name": "济高发展",
-          "date": "20171222",
-          "marketCap": 88.55193657
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000523.SZ",
-          "name": "红棉股份",
-          "date": "20180412",
-          "marketCap": 41.31259741
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2018Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000421.SZ",
-          "name": "南京公用",
-          "date": "20241226",
-          "marketCap": 37.32875241
-        }
-      ]
-    },
-    {
-      "quarter": "2025Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    }
-  ]
+      "financialCoverage": 1.0,
+      "peRaw": 78.33,
+      "valuationSource": "sw_daily",
+      "valuationCode": "801230.SI",
+      "valuationDate": "20260930",
+      "peStatus": "valid",
+      "peNote": ""
+    },
+    "indices": [
+      {
+        "code": "801230.SI",
+        "name": "综合",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      },
+      {
+        "code": "801231.SI",
+        "name": "综合Ⅱ",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      }
+    ]
+  }
 }

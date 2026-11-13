@@ -1,25 +1,1493 @@
 {
-  "asOf": "2026-11-10",
-  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
-  "summary": {
+  "historicalCompanyAggregateAudit": {
+    "asOf": "2026-11-10",
+    "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+    "summary": {
+      "industry": "轻工制造",
+      "code": "801140.SI",
+      "companies": 168,
+      "quarters": 87,
+      "companyQuarterRows": 6665,
+      "latest": {
+        "quarter": "2026Q3",
+        "endDate": "20260930",
+        "tradeDate": "20260930",
+        "companies": 168,
+        "marketCap": 9618.762929420003,
+        "marketCapObserved": 9618.762929420003,
+        "pe": 67.02992477432018,
+        "peMarketCap": 9618.762929420003,
+        "peProfit": 143.49953340698133,
+        "peCoverage": 1.0,
+        "peMissingCount": 0,
+        "peRebuiltCount": 61,
+        "revenue": 1656.8576664361,
+        "profit": 34.281801157,
+        "reportedCount": 168,
+        "estimatedCount": 0,
+        "missingCount": 0,
+        "estimatedRevenue": 0,
+        "estimatedProfit": 0,
+        "carriedCount": 0,
+        "marketMissingCount": 0,
+        "financialCoverage": 1.0
+      },
+      "financialIncompleteQuarters": 0,
+      "peCoverageMin": 0.9927163410644468,
+      "carriedCompanyQuarters": 127
+    },
+    "quality": [
+      {
+        "quarter": "2005Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2005Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600210.SH",
+            "name": "紫江企业",
+            "date": "20050602",
+            "marketCap": 41.8090222
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600308.SH",
+            "name": "华泰股份",
+            "date": "20050923",
+            "marketCap": 30.836533669999998
+          },
+          {
+            "code": "002012.SZ",
+            "name": "凯恩股份",
+            "date": "20050929",
+            "marketCap": 15.446791329999998
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600337.SH",
+            "name": "ST美克",
+            "date": "20051216",
+            "marketCap": 10.322536320000001
+          },
+          {
+            "code": "600210.SH",
+            "name": "紫江企业",
+            "date": "20051229",
+            "marketCap": 31.033501010000002
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600235.SH",
+            "name": "民丰特纸",
+            "date": "20060310",
+            "marketCap": 10.61502
+          },
+          {
+            "code": "600567.SH",
+            "name": "山鹰国际",
+            "date": "20060324",
+            "marketCap": 9.91197321
+          },
+          {
+            "code": "600433.SH",
+            "name": "冠豪高新",
+            "date": "20060329",
+            "marketCap": 6.944
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000812.SZ",
+            "name": "陕西金叶",
+            "date": "20060608",
+            "marketCap": 13.061491989999999
+          },
+          {
+            "code": "600076.SH",
+            "name": "康欣新材",
+            "date": "20060616",
+            "marketCap": 6.988761599999999
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2006Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2007Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2007Q2",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "600793.SH",
+            "name": "宜宾纸业"
+          }
+        ],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2007Q3",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "600793.SH",
+            "name": "宜宾纸业"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600308.SH",
+            "name": "华泰股份",
+            "date": "20070927",
+            "marketCap": 170.62866746
+          },
+          {
+            "code": "600433.SH",
+            "name": "冠豪高新",
+            "date": "20070927",
+            "marketCap": 13.904
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q4",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "600793.SH",
+            "name": "宜宾纸业"
+          }
+        ],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2008Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002084.SZ",
+            "name": "海鸥住工",
+            "date": "20080328",
+            "marketCap": 27.45328615
+          },
+          {
+            "code": "600076.SH",
+            "name": "康欣新材",
+            "date": "20080327",
+            "marketCap": 22.1880352
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000488.SZ",
+            "name": "ST晨鸣",
+            "date": "20080627",
+            "marketCap": 214.45277786
+          },
+          {
+            "code": "600337.SH",
+            "name": "ST美克",
+            "date": "20080627",
+            "marketCap": 27.47049628
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600433.SH",
+            "name": "冠豪高新",
+            "date": "20080925",
+            "marketCap": 8.896
+          },
+          {
+            "code": "002103.SZ",
+            "name": "广博股份",
+            "date": "20080925",
+            "marketCap": 10.266257000000001
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2009Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600337.SH",
+            "name": "ST美克",
+            "date": "20090330",
+            "marketCap": 29.87033517
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600076.SH",
+            "name": "康欣新材",
+            "date": "20090626",
+            "marketCap": 21.4204096
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2009Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2010Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600235.SH",
+            "name": "民丰特纸",
+            "date": "20100330",
+            "marketCap": 24.2328
+          },
+          {
+            "code": "002078.SZ",
+            "name": "太阳纸业",
+            "date": "20100330",
+            "marketCap": 101.08392563999999
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2010Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2010Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2011Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2011Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2011Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600433.SH",
+            "name": "冠豪高新",
+            "date": "20110927",
+            "marketCap": 30.23592
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600963.SH",
+            "name": "岳阳林纸",
+            "date": "20111226",
+            "marketCap": 39.45984813
+          },
+          {
+            "code": "600966.SH",
+            "name": "博汇纸业",
+            "date": "20111229",
+            "marketCap": 26.591241729999997
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2012Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002565.SZ",
+            "name": "顺灏股份",
+            "date": "20120628",
+            "marketCap": 26.89224
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000488.SZ",
+            "name": "ST晨鸣",
+            "date": "20120920",
+            "marketCap": 76.50190441000001
+          },
+          {
+            "code": "600433.SH",
+            "name": "冠豪高新",
+            "date": "20120713",
+            "marketCap": 47.373144
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2013Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600793.SH",
+            "name": "宜宾纸业",
+            "date": "20130328",
+            "marketCap": 12.09897
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600433.SH",
+            "name": "冠豪高新",
+            "date": "20130607",
+            "marketCap": 187.707156
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600433.SH",
+            "name": "冠豪高新",
+            "date": "20130607",
+            "marketCap": 187.707156
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2014Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002078.SZ",
+            "name": "太阳纸业",
+            "date": "20140328",
+            "marketCap": 85.215
+          },
+          {
+            "code": "002571.SZ",
+            "name": "德力股份",
+            "date": "20140311",
+            "marketCap": 58.98858035000001
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600210.SH",
+            "name": "紫江企业",
+            "date": "20140625",
+            "marketCap": 42.52739028
+          },
+          {
+            "code": "002565.SZ",
+            "name": "顺灏股份",
+            "date": "20140613",
+            "marketCap": 60.198336
+          },
+          {
+            "code": "002571.SZ",
+            "name": "德力股份",
+            "date": "20140311",
+            "marketCap": 58.98858035000001
+          },
+          {
+            "code": "002374.SZ",
+            "name": "中锐股份",
+            "date": "20140507",
+            "marketCap": 15.23617463
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002084.SZ",
+            "name": "海鸥住工",
+            "date": "20140919",
+            "marketCap": 30.86024179
+          },
+          {
+            "code": "002301.SZ",
+            "name": "齐心集团",
+            "date": "20140707",
+            "marketCap": 30.877406809999997
+          },
+          {
+            "code": "002303.SZ",
+            "name": "美盈森",
+            "date": "20140822",
+            "marketCap": 101.84448
+          },
+          {
+            "code": "002103.SZ",
+            "name": "广博股份",
+            "date": "20140822",
+            "marketCap": 22.2362758
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600103.SH",
+            "name": "青山纸业",
+            "date": "20141010",
+            "marketCap": 38.86340256
+          },
+          {
+            "code": "002235.SZ",
+            "name": "安妮股份",
+            "date": "20141114",
+            "marketCap": 30.7515
+          },
+          {
+            "code": "603008.SH",
+            "name": "ST喜临门",
+            "date": "20141114",
+            "marketCap": 45.927
+          },
+          {
+            "code": "600076.SH",
+            "name": "康欣新材",
+            "date": "20141222",
+            "marketCap": 19.2637472
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600337.SH",
+            "name": "ST美克",
+            "date": "20150319",
+            "marketCap": 81.32497230999999
+          },
+          {
+            "code": "002301.SZ",
+            "name": "齐心集团",
+            "date": "20150318",
+            "marketCap": 61.87568471
+          },
+          {
+            "code": "600076.SH",
+            "name": "康欣新材",
+            "date": "20141222",
+            "marketCap": 19.2637472
+          },
+          {
+            "code": "002565.SZ",
+            "name": "顺灏股份",
+            "date": "20150327",
+            "marketCap": 70.08600799999999
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600793.SH",
+            "name": "宜宾纸业",
+            "date": "20150518",
+            "marketCap": 21.03894
+          },
+          {
+            "code": "000812.SZ",
+            "name": "陕西金叶",
+            "date": "20150619",
+            "marketCap": 85.22506152
+          },
+          {
+            "code": "002012.SZ",
+            "name": "凯恩股份",
+            "date": "20150527",
+            "marketCap": 65.4675658
+          },
+          {
+            "code": "002191.SZ",
+            "name": "劲嘉股份",
+            "date": "20150617",
+            "marketCap": 252.8391
+          },
+          {
+            "code": "002348.SZ",
+            "name": "高乐股份",
+            "date": "20150629",
+            "marketCap": 74.02368
+          },
+          {
+            "code": "002303.SZ",
+            "name": "美盈森",
+            "date": "20150608",
+            "marketCap": 341.1504
+          },
+          {
+            "code": "603898.SH",
+            "name": "好莱客",
+            "date": "20150612",
+            "marketCap": 134.7402
+          },
+          {
+            "code": "002571.SZ",
+            "name": "德力股份",
+            "date": "20150430",
+            "marketCap": 72.35409922
+          },
+          {
+            "code": "002374.SZ",
+            "name": "中锐股份",
+            "date": "20150629",
+            "marketCap": 76.94106178
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600793.SH",
+            "name": "宜宾纸业",
+            "date": "20150518",
+            "marketCap": 21.03894
+          },
+          {
+            "code": "000812.SZ",
+            "name": "陕西金叶",
+            "date": "20150619",
+            "marketCap": 85.22506152
+          },
+          {
+            "code": "600356.SH",
+            "name": "恒丰纸业",
+            "date": "20150703",
+            "marketCap": 26.22861499
+          },
+          {
+            "code": "002014.SZ",
+            "name": "永新股份",
+            "date": "20150708",
+            "marketCap": 45.11754533
+          },
+          {
+            "code": "002191.SZ",
+            "name": "劲嘉股份",
+            "date": "20150617",
+            "marketCap": 252.8391
+          },
+          {
+            "code": "002348.SZ",
+            "name": "高乐股份",
+            "date": "20150629",
+            "marketCap": 74.02368
+          },
+          {
+            "code": "002228.SZ",
+            "name": "合兴包装",
+            "date": "20150803",
+            "marketCap": 62.876331920000005
+          },
+          {
+            "code": "002235.SZ",
+            "name": "安妮股份",
+            "date": "20150701",
+            "marketCap": 56.745
+          },
+          {
+            "code": "002301.SZ",
+            "name": "齐心集团",
+            "date": "20150701",
+            "marketCap": 97.49651962
+          },
+          {
+            "code": "002303.SZ",
+            "name": "美盈森",
+            "date": "20150821",
+            "marketCap": 167.07072
+          },
+          {
+            "code": "002571.SZ",
+            "name": "德力股份",
+            "date": "20150430",
+            "marketCap": 72.35409922
+          },
+          {
+            "code": "002103.SZ",
+            "name": "广博股份",
+            "date": "20150902",
+            "marketCap": 53.45672669
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600793.SH",
+            "name": "宜宾纸业",
+            "date": "20150518",
+            "marketCap": 21.03894
+          },
+          {
+            "code": "002084.SZ",
+            "name": "海鸥住工",
+            "date": "20151217",
+            "marketCap": 60.55316346
+          },
+          {
+            "code": "002228.SZ",
+            "name": "合兴包装",
+            "date": "20150803",
+            "marketCap": 62.876331920000005
+          },
+          {
+            "code": "002235.SZ",
+            "name": "安妮股份",
+            "date": "20150701",
+            "marketCap": 56.745
+          },
+          {
+            "code": "601996.SH",
+            "name": "丰林集团",
+            "date": "20151209",
+            "marketCap": 42.7647744
+          },
+          {
+            "code": "002631.SZ",
+            "name": "德尔未来",
+            "date": "20151126",
+            "marketCap": 188.7730218
+          },
+          {
+            "code": "002103.SZ",
+            "name": "广博股份",
+            "date": "20150902",
+            "marketCap": 53.45672669
+          },
+          {
+            "code": "002678.SZ",
+            "name": "珠江钢琴",
+            "date": "20151218",
+            "marketCap": 164.5276
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002012.SZ",
+            "name": "凯恩股份",
+            "date": "20160118",
+            "marketCap": 40.73017844
+          },
+          {
+            "code": "002599.SZ",
+            "name": "盛通股份",
+            "date": "20160126",
+            "marketCap": 39.6765
+          },
+          {
+            "code": "603898.SH",
+            "name": "好莱客",
+            "date": "20160325",
+            "marketCap": 91.1106
+          },
+          {
+            "code": "603838.SH",
+            "name": "四通股份",
+            "date": "20160323",
+            "marketCap": 43.362168
+          },
+          {
+            "code": "002631.SZ",
+            "name": "德尔未来",
+            "date": "20151126",
+            "marketCap": 188.7730218
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600793.SH",
+            "name": "宜宾纸业",
+            "date": "20160621",
+            "marketCap": 26.8515
+          },
+          {
+            "code": "002012.SZ",
+            "name": "凯恩股份",
+            "date": "20160118",
+            "marketCap": 40.73017844
+          },
+          {
+            "code": "603838.SH",
+            "name": "四通股份",
+            "date": "20160323",
+            "marketCap": 43.362168
+          },
+          {
+            "code": "002735.SZ",
+            "name": "王子新材",
+            "date": "20160401",
+            "marketCap": 33.016
+          },
+          {
+            "code": "002631.SZ",
+            "name": "德尔未来",
+            "date": "20160628",
+            "marketCap": 172.859568
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000659.SZ",
+            "name": "珠海中富",
+            "date": "20160818",
+            "marketCap": 78.04214296
+          },
+          {
+            "code": "000812.SZ",
+            "name": "陕西金叶",
+            "date": "20160810",
+            "marketCap": 46.79549309
+          },
+          {
+            "code": "002303.SZ",
+            "name": "美盈森",
+            "date": "20160928",
+            "marketCap": 189.81408000000002
+          },
+          {
+            "code": "603600.SH",
+            "name": "永艺股份",
+            "date": "20160923",
+            "marketCap": 51.95
+          },
+          {
+            "code": "603838.SH",
+            "name": "四通股份",
+            "date": "20160323",
+            "marketCap": 43.362168
+          },
+          {
+            "code": "002571.SZ",
+            "name": "德力股份",
+            "date": "20160801",
+            "marketCap": 60.08604231
+          },
+          {
+            "code": "002735.SZ",
+            "name": "王子新材",
+            "date": "20160401",
+            "marketCap": 33.016
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "603838.SH",
+            "name": "四通股份",
+            "date": "20160323",
+            "marketCap": 43.362168
+          },
+          {
+            "code": "002571.SZ",
+            "name": "德力股份",
+            "date": "20160801",
+            "marketCap": 60.08604231
+          },
+          {
+            "code": "002798.SZ",
+            "name": "帝欧水华",
+            "date": "20161101",
+            "marketCap": 57.872829859999996
+          },
+          {
+            "code": "002162.SZ",
+            "name": "悦心健康",
+            "date": "20161221",
+            "marketCap": 56.327115
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002853.SZ",
+            "name": "皮阿诺",
+            "date": "20170328",
+            "marketCap": 87.15279516
+          },
+          {
+            "code": "002787.SZ",
+            "name": "华源控股",
+            "date": "20170321",
+            "marketCap": 55.20379200000001
+          },
+          {
+            "code": "002735.SZ",
+            "name": "王子新材",
+            "date": "20170124",
+            "marketCap": 38.048
+          },
+          {
+            "code": "002162.SZ",
+            "name": "悦心健康",
+            "date": "20161221",
+            "marketCap": 56.327115
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002012.SZ",
+            "name": "凯恩股份",
+            "date": "20170419",
+            "marketCap": 55.13304290999999
+          },
+          {
+            "code": "002348.SZ",
+            "name": "高乐股份",
+            "date": "20170510",
+            "marketCap": 66.58816
+          },
+          {
+            "code": "002787.SZ",
+            "name": "华源控股",
+            "date": "20170321",
+            "marketCap": 55.20379200000001
+          },
+          {
+            "code": "002162.SZ",
+            "name": "悦心健康",
+            "date": "20161221",
+            "marketCap": 56.327115
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002012.SZ",
+            "name": "凯恩股份",
+            "date": "20170419",
+            "marketCap": 55.13304290999999
+          },
+          {
+            "code": "603165.SH",
+            "name": "荣晟环保",
+            "date": "20170928",
+            "marketCap": 87.7259
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000812.SZ",
+            "name": "陕西金叶",
+            "date": "20171206",
+            "marketCap": 36.74350697
+          },
+          {
+            "code": "002012.SZ",
+            "name": "凯恩股份",
+            "date": "20171227",
+            "marketCap": 48.07189832
+          },
+          {
+            "code": "603021.SH",
+            "name": "*ST华鹏",
+            "date": "20171228",
+            "marketCap": 30.71501472
+          },
+          {
+            "code": "002787.SZ",
+            "name": "华源控股",
+            "date": "20171220",
+            "marketCap": 30.68478
+          },
+          {
+            "code": "002103.SZ",
+            "name": "广博股份",
+            "date": "20171114",
+            "marketCap": 51.90062321
+          },
+          {
+            "code": "603429.SH",
+            "name": "*ST集友",
+            "date": "20171124",
+            "marketCap": 56.916
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000812.SZ",
+            "name": "陕西金叶",
+            "date": "20171206",
+            "marketCap": 36.74350697
+          },
+          {
+            "code": "002301.SZ",
+            "name": "齐心集团",
+            "date": "20180201",
+            "marketCap": 67.6030473
+          },
+          {
+            "code": "002799.SZ",
+            "name": "环球印务",
+            "date": "20180228",
+            "marketCap": 19.995
+          },
+          {
+            "code": "600076.SH",
+            "name": "康欣新材",
+            "date": "20180202",
+            "marketCap": 65.67577219
+          },
+          {
+            "code": "002103.SZ",
+            "name": "广博股份",
+            "date": "20171114",
+            "marketCap": 51.90062321
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002301.SZ",
+            "name": "齐心集团",
+            "date": "20180201",
+            "marketCap": 67.6030473
+          },
+          {
+            "code": "603838.SH",
+            "name": "四通股份",
+            "date": "20180523",
+            "marketCap": 26.748003999999998
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2018Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600966.SH",
+            "name": "博汇纸业",
+            "date": "20191230",
+            "marketCap": 70.98643169
+          }
+        ]
+      },
+      {
+        "quarter": "2020Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "603389.SH",
+            "name": "亚振家居",
+            "date": "20250626",
+            "marketCap": 44.6415648
+          },
+          {
+            "code": "603863.SH",
+            "name": "松炀资源",
+            "date": "20250626",
+            "marketCap": 29.981225
+          }
+        ]
+      },
+      {
+        "quarter": "2025Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600337.SH",
+            "name": "ST美克",
+            "date": "20251217",
+            "marketCap": 41.960345600000004
+          }
+        ]
+      },
+      {
+        "quarter": "2026Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "603389.SH",
+            "name": "亚振家居",
+            "date": "20260629",
+            "marketCap": 157.8351264
+          }
+        ]
+      },
+      {
+        "quarter": "2026Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      }
+    ]
+  },
+  "historicalAuditScope": "旧公司整体法，市值/PE已被sw-alignment-audit.json取代；财务核验仍有效",
+  "valuationAlignment": {
     "industry": "轻工制造",
     "code": "801140.SI",
-    "companies": 168,
-    "quarters": 87,
-    "companyQuarterRows": 6665,
+    "scope": "SW公布市值/PE与财报汇总分离",
+    "project2AsOf": "20261110",
+    "financialAsOf": "2026-11-10",
+    "financialHash": "a15a79e7811688f3717806733284d9b391244161f38891de0265cfaf922c0700",
+    "sectorFinancialHashes": {
+      "801142.SI": "d55fdcfdd2ac0973a43da7249d062fb3f8216b26edd3dc62b294695dd6d9004f",
+      "801141.SI": "f92971cc05d351e4be74d8f8dd26f5245e6d60b10c170b57da76206a69bb2f88",
+      "801143.SI": "35be301c561b6c90794a743e69b7dfd91ec7226aa7dbe71152972a568b9b66eb",
+      "801145.SI": "3c770fe8c88edb4613dce461501d315d2c9b2b1733a26f11ff7e27b1c38b883e"
+    },
     "latest": {
       "quarter": "2026Q3",
       "endDate": "20260930",
       "tradeDate": "20260930",
       "companies": 168,
-      "marketCap": 9618.762929420003,
-      "marketCapObserved": 9618.762929420003,
-      "pe": 67.02992477432018,
-      "peMarketCap": 9618.762929420003,
-      "peProfit": 143.49953340698133,
-      "peCoverage": 1.0,
-      "peMissingCount": 0,
-      "peRebuiltCount": 61,
+      "marketCap": 9388.9619,
+      "marketCapObserved": 9388.9619,
+      "pe": 33.85,
       "revenue": 1656.8576664361,
       "profit": 34.281801157,
       "reportedCount": 168,
@@ -29,1439 +1497,204 @@
       "estimatedProfit": 0,
       "carriedCount": 0,
       "marketMissingCount": 0,
-      "financialCoverage": 1.0
-    },
-    "financialIncompleteQuarters": 0,
-    "peCoverageMin": 0.9927163410644468,
-    "carriedCompanyQuarters": 127
-  },
-  "quality": [
-    {
-      "quarter": "2005Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2005Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600210.SH",
-          "name": "紫江企业",
-          "date": "20050602",
-          "marketCap": 41.8090222
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600308.SH",
-          "name": "华泰股份",
-          "date": "20050923",
-          "marketCap": 30.836533669999998
-        },
-        {
-          "code": "002012.SZ",
-          "name": "凯恩股份",
-          "date": "20050929",
-          "marketCap": 15.446791329999998
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600337.SH",
-          "name": "ST美克",
-          "date": "20051216",
-          "marketCap": 10.322536320000001
-        },
-        {
-          "code": "600210.SH",
-          "name": "紫江企业",
-          "date": "20051229",
-          "marketCap": 31.033501010000002
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600235.SH",
-          "name": "民丰特纸",
-          "date": "20060310",
-          "marketCap": 10.61502
-        },
-        {
-          "code": "600567.SH",
-          "name": "山鹰国际",
-          "date": "20060324",
-          "marketCap": 9.91197321
-        },
-        {
-          "code": "600433.SH",
-          "name": "冠豪高新",
-          "date": "20060329",
-          "marketCap": 6.944
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000812.SZ",
-          "name": "陕西金叶",
-          "date": "20060608",
-          "marketCap": 13.061491989999999
-        },
-        {
-          "code": "600076.SH",
-          "name": "康欣新材",
-          "date": "20060616",
-          "marketCap": 6.988761599999999
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2006Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2007Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2007Q2",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "600793.SH",
-          "name": "宜宾纸业"
-        }
-      ],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2007Q3",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "600793.SH",
-          "name": "宜宾纸业"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600308.SH",
-          "name": "华泰股份",
-          "date": "20070927",
-          "marketCap": 170.62866746
-        },
-        {
-          "code": "600433.SH",
-          "name": "冠豪高新",
-          "date": "20070927",
-          "marketCap": 13.904
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q4",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "600793.SH",
-          "name": "宜宾纸业"
-        }
-      ],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2008Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002084.SZ",
-          "name": "海鸥住工",
-          "date": "20080328",
-          "marketCap": 27.45328615
-        },
-        {
-          "code": "600076.SH",
-          "name": "康欣新材",
-          "date": "20080327",
-          "marketCap": 22.1880352
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000488.SZ",
-          "name": "ST晨鸣",
-          "date": "20080627",
-          "marketCap": 214.45277786
-        },
-        {
-          "code": "600337.SH",
-          "name": "ST美克",
-          "date": "20080627",
-          "marketCap": 27.47049628
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600433.SH",
-          "name": "冠豪高新",
-          "date": "20080925",
-          "marketCap": 8.896
-        },
-        {
-          "code": "002103.SZ",
-          "name": "广博股份",
-          "date": "20080925",
-          "marketCap": 10.266257000000001
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2009Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600337.SH",
-          "name": "ST美克",
-          "date": "20090330",
-          "marketCap": 29.87033517
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600076.SH",
-          "name": "康欣新材",
-          "date": "20090626",
-          "marketCap": 21.4204096
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2009Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2010Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600235.SH",
-          "name": "民丰特纸",
-          "date": "20100330",
-          "marketCap": 24.2328
-        },
-        {
-          "code": "002078.SZ",
-          "name": "太阳纸业",
-          "date": "20100330",
-          "marketCap": 101.08392563999999
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2010Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2010Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2011Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2011Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2011Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600433.SH",
-          "name": "冠豪高新",
-          "date": "20110927",
-          "marketCap": 30.23592
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600963.SH",
-          "name": "岳阳林纸",
-          "date": "20111226",
-          "marketCap": 39.45984813
-        },
-        {
-          "code": "600966.SH",
-          "name": "博汇纸业",
-          "date": "20111229",
-          "marketCap": 26.591241729999997
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2012Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002565.SZ",
-          "name": "顺灏股份",
-          "date": "20120628",
-          "marketCap": 26.89224
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000488.SZ",
-          "name": "ST晨鸣",
-          "date": "20120920",
-          "marketCap": 76.50190441000001
-        },
-        {
-          "code": "600433.SH",
-          "name": "冠豪高新",
-          "date": "20120713",
-          "marketCap": 47.373144
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2013Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600793.SH",
-          "name": "宜宾纸业",
-          "date": "20130328",
-          "marketCap": 12.09897
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600433.SH",
-          "name": "冠豪高新",
-          "date": "20130607",
-          "marketCap": 187.707156
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600433.SH",
-          "name": "冠豪高新",
-          "date": "20130607",
-          "marketCap": 187.707156
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2014Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002078.SZ",
-          "name": "太阳纸业",
-          "date": "20140328",
-          "marketCap": 85.215
-        },
-        {
-          "code": "002571.SZ",
-          "name": "德力股份",
-          "date": "20140311",
-          "marketCap": 58.98858035000001
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600210.SH",
-          "name": "紫江企业",
-          "date": "20140625",
-          "marketCap": 42.52739028
-        },
-        {
-          "code": "002565.SZ",
-          "name": "顺灏股份",
-          "date": "20140613",
-          "marketCap": 60.198336
-        },
-        {
-          "code": "002571.SZ",
-          "name": "德力股份",
-          "date": "20140311",
-          "marketCap": 58.98858035000001
-        },
-        {
-          "code": "002374.SZ",
-          "name": "中锐股份",
-          "date": "20140507",
-          "marketCap": 15.23617463
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002084.SZ",
-          "name": "海鸥住工",
-          "date": "20140919",
-          "marketCap": 30.86024179
-        },
-        {
-          "code": "002301.SZ",
-          "name": "齐心集团",
-          "date": "20140707",
-          "marketCap": 30.877406809999997
-        },
-        {
-          "code": "002303.SZ",
-          "name": "美盈森",
-          "date": "20140822",
-          "marketCap": 101.84448
-        },
-        {
-          "code": "002103.SZ",
-          "name": "广博股份",
-          "date": "20140822",
-          "marketCap": 22.2362758
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600103.SH",
-          "name": "青山纸业",
-          "date": "20141010",
-          "marketCap": 38.86340256
-        },
-        {
-          "code": "002235.SZ",
-          "name": "安妮股份",
-          "date": "20141114",
-          "marketCap": 30.7515
-        },
-        {
-          "code": "603008.SH",
-          "name": "ST喜临门",
-          "date": "20141114",
-          "marketCap": 45.927
-        },
-        {
-          "code": "600076.SH",
-          "name": "康欣新材",
-          "date": "20141222",
-          "marketCap": 19.2637472
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600337.SH",
-          "name": "ST美克",
-          "date": "20150319",
-          "marketCap": 81.32497230999999
-        },
-        {
-          "code": "002301.SZ",
-          "name": "齐心集团",
-          "date": "20150318",
-          "marketCap": 61.87568471
-        },
-        {
-          "code": "600076.SH",
-          "name": "康欣新材",
-          "date": "20141222",
-          "marketCap": 19.2637472
-        },
-        {
-          "code": "002565.SZ",
-          "name": "顺灏股份",
-          "date": "20150327",
-          "marketCap": 70.08600799999999
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600793.SH",
-          "name": "宜宾纸业",
-          "date": "20150518",
-          "marketCap": 21.03894
-        },
-        {
-          "code": "000812.SZ",
-          "name": "陕西金叶",
-          "date": "20150619",
-          "marketCap": 85.22506152
-        },
-        {
-          "code": "002012.SZ",
-          "name": "凯恩股份",
-          "date": "20150527",
-          "marketCap": 65.4675658
-        },
-        {
-          "code": "002191.SZ",
-          "name": "劲嘉股份",
-          "date": "20150617",
-          "marketCap": 252.8391
-        },
-        {
-          "code": "002348.SZ",
-          "name": "高乐股份",
-          "date": "20150629",
-          "marketCap": 74.02368
-        },
-        {
-          "code": "002303.SZ",
-          "name": "美盈森",
-          "date": "20150608",
-          "marketCap": 341.1504
-        },
-        {
-          "code": "603898.SH",
-          "name": "好莱客",
-          "date": "20150612",
-          "marketCap": 134.7402
-        },
-        {
-          "code": "002571.SZ",
-          "name": "德力股份",
-          "date": "20150430",
-          "marketCap": 72.35409922
-        },
-        {
-          "code": "002374.SZ",
-          "name": "中锐股份",
-          "date": "20150629",
-          "marketCap": 76.94106178
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600793.SH",
-          "name": "宜宾纸业",
-          "date": "20150518",
-          "marketCap": 21.03894
-        },
-        {
-          "code": "000812.SZ",
-          "name": "陕西金叶",
-          "date": "20150619",
-          "marketCap": 85.22506152
-        },
-        {
-          "code": "600356.SH",
-          "name": "恒丰纸业",
-          "date": "20150703",
-          "marketCap": 26.22861499
-        },
-        {
-          "code": "002014.SZ",
-          "name": "永新股份",
-          "date": "20150708",
-          "marketCap": 45.11754533
-        },
-        {
-          "code": "002191.SZ",
-          "name": "劲嘉股份",
-          "date": "20150617",
-          "marketCap": 252.8391
-        },
-        {
-          "code": "002348.SZ",
-          "name": "高乐股份",
-          "date": "20150629",
-          "marketCap": 74.02368
-        },
-        {
-          "code": "002228.SZ",
-          "name": "合兴包装",
-          "date": "20150803",
-          "marketCap": 62.876331920000005
-        },
-        {
-          "code": "002235.SZ",
-          "name": "安妮股份",
-          "date": "20150701",
-          "marketCap": 56.745
-        },
-        {
-          "code": "002301.SZ",
-          "name": "齐心集团",
-          "date": "20150701",
-          "marketCap": 97.49651962
-        },
-        {
-          "code": "002303.SZ",
-          "name": "美盈森",
-          "date": "20150821",
-          "marketCap": 167.07072
-        },
-        {
-          "code": "002571.SZ",
-          "name": "德力股份",
-          "date": "20150430",
-          "marketCap": 72.35409922
-        },
-        {
-          "code": "002103.SZ",
-          "name": "广博股份",
-          "date": "20150902",
-          "marketCap": 53.45672669
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600793.SH",
-          "name": "宜宾纸业",
-          "date": "20150518",
-          "marketCap": 21.03894
-        },
-        {
-          "code": "002084.SZ",
-          "name": "海鸥住工",
-          "date": "20151217",
-          "marketCap": 60.55316346
-        },
-        {
-          "code": "002228.SZ",
-          "name": "合兴包装",
-          "date": "20150803",
-          "marketCap": 62.876331920000005
-        },
-        {
-          "code": "002235.SZ",
-          "name": "安妮股份",
-          "date": "20150701",
-          "marketCap": 56.745
-        },
-        {
-          "code": "601996.SH",
-          "name": "丰林集团",
-          "date": "20151209",
-          "marketCap": 42.7647744
-        },
-        {
-          "code": "002631.SZ",
-          "name": "德尔未来",
-          "date": "20151126",
-          "marketCap": 188.7730218
-        },
-        {
-          "code": "002103.SZ",
-          "name": "广博股份",
-          "date": "20150902",
-          "marketCap": 53.45672669
-        },
-        {
-          "code": "002678.SZ",
-          "name": "珠江钢琴",
-          "date": "20151218",
-          "marketCap": 164.5276
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002012.SZ",
-          "name": "凯恩股份",
-          "date": "20160118",
-          "marketCap": 40.73017844
-        },
-        {
-          "code": "002599.SZ",
-          "name": "盛通股份",
-          "date": "20160126",
-          "marketCap": 39.6765
-        },
-        {
-          "code": "603898.SH",
-          "name": "好莱客",
-          "date": "20160325",
-          "marketCap": 91.1106
-        },
-        {
-          "code": "603838.SH",
-          "name": "四通股份",
-          "date": "20160323",
-          "marketCap": 43.362168
-        },
-        {
-          "code": "002631.SZ",
-          "name": "德尔未来",
-          "date": "20151126",
-          "marketCap": 188.7730218
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600793.SH",
-          "name": "宜宾纸业",
-          "date": "20160621",
-          "marketCap": 26.8515
-        },
-        {
-          "code": "002012.SZ",
-          "name": "凯恩股份",
-          "date": "20160118",
-          "marketCap": 40.73017844
-        },
-        {
-          "code": "603838.SH",
-          "name": "四通股份",
-          "date": "20160323",
-          "marketCap": 43.362168
-        },
-        {
-          "code": "002735.SZ",
-          "name": "王子新材",
-          "date": "20160401",
-          "marketCap": 33.016
-        },
-        {
-          "code": "002631.SZ",
-          "name": "德尔未来",
-          "date": "20160628",
-          "marketCap": 172.859568
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000659.SZ",
-          "name": "珠海中富",
-          "date": "20160818",
-          "marketCap": 78.04214296
-        },
-        {
-          "code": "000812.SZ",
-          "name": "陕西金叶",
-          "date": "20160810",
-          "marketCap": 46.79549309
-        },
-        {
-          "code": "002303.SZ",
-          "name": "美盈森",
-          "date": "20160928",
-          "marketCap": 189.81408000000002
-        },
-        {
-          "code": "603600.SH",
-          "name": "永艺股份",
-          "date": "20160923",
-          "marketCap": 51.95
-        },
-        {
-          "code": "603838.SH",
-          "name": "四通股份",
-          "date": "20160323",
-          "marketCap": 43.362168
-        },
-        {
-          "code": "002571.SZ",
-          "name": "德力股份",
-          "date": "20160801",
-          "marketCap": 60.08604231
-        },
-        {
-          "code": "002735.SZ",
-          "name": "王子新材",
-          "date": "20160401",
-          "marketCap": 33.016
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "603838.SH",
-          "name": "四通股份",
-          "date": "20160323",
-          "marketCap": 43.362168
-        },
-        {
-          "code": "002571.SZ",
-          "name": "德力股份",
-          "date": "20160801",
-          "marketCap": 60.08604231
-        },
-        {
-          "code": "002798.SZ",
-          "name": "帝欧水华",
-          "date": "20161101",
-          "marketCap": 57.872829859999996
-        },
-        {
-          "code": "002162.SZ",
-          "name": "悦心健康",
-          "date": "20161221",
-          "marketCap": 56.327115
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002853.SZ",
-          "name": "皮阿诺",
-          "date": "20170328",
-          "marketCap": 87.15279516
-        },
-        {
-          "code": "002787.SZ",
-          "name": "华源控股",
-          "date": "20170321",
-          "marketCap": 55.20379200000001
-        },
-        {
-          "code": "002735.SZ",
-          "name": "王子新材",
-          "date": "20170124",
-          "marketCap": 38.048
-        },
-        {
-          "code": "002162.SZ",
-          "name": "悦心健康",
-          "date": "20161221",
-          "marketCap": 56.327115
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002012.SZ",
-          "name": "凯恩股份",
-          "date": "20170419",
-          "marketCap": 55.13304290999999
-        },
-        {
-          "code": "002348.SZ",
-          "name": "高乐股份",
-          "date": "20170510",
-          "marketCap": 66.58816
-        },
-        {
-          "code": "002787.SZ",
-          "name": "华源控股",
-          "date": "20170321",
-          "marketCap": 55.20379200000001
-        },
-        {
-          "code": "002162.SZ",
-          "name": "悦心健康",
-          "date": "20161221",
-          "marketCap": 56.327115
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002012.SZ",
-          "name": "凯恩股份",
-          "date": "20170419",
-          "marketCap": 55.13304290999999
-        },
-        {
-          "code": "603165.SH",
-          "name": "荣晟环保",
-          "date": "20170928",
-          "marketCap": 87.7259
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000812.SZ",
-          "name": "陕西金叶",
-          "date": "20171206",
-          "marketCap": 36.74350697
-        },
-        {
-          "code": "002012.SZ",
-          "name": "凯恩股份",
-          "date": "20171227",
-          "marketCap": 48.07189832
-        },
-        {
-          "code": "603021.SH",
-          "name": "*ST华鹏",
-          "date": "20171228",
-          "marketCap": 30.71501472
-        },
-        {
-          "code": "002787.SZ",
-          "name": "华源控股",
-          "date": "20171220",
-          "marketCap": 30.68478
-        },
-        {
-          "code": "002103.SZ",
-          "name": "广博股份",
-          "date": "20171114",
-          "marketCap": 51.90062321
-        },
-        {
-          "code": "603429.SH",
-          "name": "*ST集友",
-          "date": "20171124",
-          "marketCap": 56.916
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000812.SZ",
-          "name": "陕西金叶",
-          "date": "20171206",
-          "marketCap": 36.74350697
-        },
-        {
-          "code": "002301.SZ",
-          "name": "齐心集团",
-          "date": "20180201",
-          "marketCap": 67.6030473
-        },
-        {
-          "code": "002799.SZ",
-          "name": "环球印务",
-          "date": "20180228",
-          "marketCap": 19.995
-        },
-        {
-          "code": "600076.SH",
-          "name": "康欣新材",
-          "date": "20180202",
-          "marketCap": 65.67577219
-        },
-        {
-          "code": "002103.SZ",
-          "name": "广博股份",
-          "date": "20171114",
-          "marketCap": 51.90062321
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002301.SZ",
-          "name": "齐心集团",
-          "date": "20180201",
-          "marketCap": 67.6030473
-        },
-        {
-          "code": "603838.SH",
-          "name": "四通股份",
-          "date": "20180523",
-          "marketCap": 26.748003999999998
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2018Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600966.SH",
-          "name": "博汇纸业",
-          "date": "20191230",
-          "marketCap": 70.98643169
-        }
-      ]
-    },
-    {
-      "quarter": "2020Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "603389.SH",
-          "name": "亚振家居",
-          "date": "20250626",
-          "marketCap": 44.6415648
-        },
-        {
-          "code": "603863.SH",
-          "name": "松炀资源",
-          "date": "20250626",
-          "marketCap": 29.981225
-        }
-      ]
-    },
-    {
-      "quarter": "2025Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600337.SH",
-          "name": "ST美克",
-          "date": "20251217",
-          "marketCap": 41.960345600000004
-        }
-      ]
-    },
-    {
-      "quarter": "2026Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "603389.SH",
-          "name": "亚振家居",
-          "date": "20260629",
-          "marketCap": 157.8351264
-        }
-      ]
-    },
-    {
-      "quarter": "2026Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    }
-  ]
+      "financialCoverage": 1.0,
+      "peRaw": 33.85,
+      "valuationSource": "sw_daily",
+      "valuationCode": "801140.SI",
+      "valuationDate": "20260930",
+      "peStatus": "valid",
+      "peNote": ""
+    },
+    "indices": [
+      {
+        "code": "801140.SI",
+        "name": "轻工制造",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      },
+      {
+        "code": "801142.SI",
+        "name": "家居用品",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      },
+      {
+        "code": "801141.SI",
+        "name": "包装印刷",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      },
+      {
+        "code": "801143.SI",
+        "name": "造纸",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      },
+      {
+        "code": "801145.SI",
+        "name": "文娱用品",
+        "dailyCount": 4138,
+        "firstDate": "20091028",
+        "lastDate": "20261110",
+        "quarterQuotes": 68,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3"
+        ]
+      }
+    ]
+  }
 }

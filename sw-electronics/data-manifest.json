@@ -116,6 +116,14 @@
     "project2AsOf": "20261110",
     "financialAsOf": "2026-11-10",
     "financialHash": "e03353d2faaf113edee100758be8500514de1ec82a3b0ba279b65b631257790a",
+    "sectorFinancialHashes": {
+      "801081.SI": "43544a52849ef82c1c7846a73d20d723ead083d0f1b638b3766bc74c61bfc2b8",
+      "801085.SI": "f4a62c5603cd429fb70eba9d90f2321f8b27c855470897c9d7b4359ffd505d21",
+      "801083.SI": "3c8ae00e46d8cc44d5a83c14664535a5c0a554f352f287f611c6b21b278440c0",
+      "801084.SI": "3183a1c3dd1c3ea26efdc05131138c4f642305d88daf1d36c8d8cd83edd69def",
+      "801086.SI": "f50a5c703bdf110a69e0ef6adad70a253a0ffb5232eafaf11376f866e9fe2f5b",
+      "801082.SI": "7a4d080413b491a5a2b732f1b5f05f7273b4b079ca93f431c579291ba18e07aa"
+    },
     "latest": {
       "quarter": "2026Q3",
       "endDate": "20260930",
@@ -147,6 +155,7 @@
         "name": "电子",
         "dailyCount": 3466,
         "firstDate": "20120801",
+        "lastDate": "20261110",
         "quarterQuotes": 57,
         "missingQuarterQuotes": [
           "2005Q1",
@@ -186,6 +195,7 @@
         "name": "半导体",
         "dailyCount": 3466,
         "firstDate": "20120801",
+        "lastDate": "20261110",
         "quarterQuotes": 57,
         "missingQuarterQuotes": [
           "2005Q1",
@@ -225,6 +235,7 @@
         "name": "消费电子",
         "dailyCount": 3466,
         "firstDate": "20120801",
+        "lastDate": "20261110",
         "quarterQuotes": 57,
         "missingQuarterQuotes": [
           "2005Q1",
@@ -264,6 +275,7 @@
         "name": "元件",
         "dailyCount": 3466,
         "firstDate": "20120801",
+        "lastDate": "20261110",
         "quarterQuotes": 57,
         "missingQuarterQuotes": [
           "2005Q1",
@@ -303,6 +315,7 @@
         "name": "光学光电子",
         "dailyCount": 3466,
         "firstDate": "20120801",
+        "lastDate": "20261110",
         "quarterQuotes": 57,
         "missingQuarterQuotes": [
           "2005Q1",
@@ -342,6 +355,7 @@
         "name": "电子化学品",
         "dailyCount": 4058,
         "firstDate": "20100225",
+        "lastDate": "20261110",
         "quarterQuotes": 67,
         "missingQuarterQuotes": [
           "2005Q1",
@@ -371,6 +385,7 @@
         "name": "其他电子",
         "dailyCount": 3466,
         "firstDate": "20120801",
+        "lastDate": "20261110",
         "quarterQuotes": 57,
         "missingQuarterQuotes": [
           "2005Q1",
@@ -417,5 +432,42 @@
       "changedQuarters": 77,
       "financialAndMarketTotalsUnchanged": true
     }
-  }
+  },
+  "collectionScopeNote": "既有财报与daily_basic查询用于财务及公司明细；现行行业行情源为sw-source.json。",
+  "industryValuationCollection": {
+    "api": "sw_daily",
+    "snapshot": "20261110",
+    "sourceFile": "sw-source.json",
+    "classification": [
+      [
+        "电子",
+        "801080.SI"
+      ],
+      [
+        "半导体",
+        "801081.SI"
+      ],
+      [
+        "消费电子",
+        "801085.SI"
+      ],
+      [
+        "元件",
+        "801083.SI"
+      ],
+      [
+        "光学光电子",
+        "801084.SI"
+      ],
+      [
+        "电子化学品",
+        "801086.SI"
+      ],
+      [
+        "其他电子",
+        "801082.SI"
+      ]
+    ]
+  },
+  "validationScopeNote": "既有validation中的market字段仅核验公司报价；申万行情覆盖见valuationAlignment。"
 }

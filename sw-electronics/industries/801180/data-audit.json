@@ -1,25 +1,3132 @@
 {
-  "asOf": "2026-11-10",
-  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
-  "summary": {
+  "historicalCompanyAggregateAudit": {
+    "asOf": "2026-11-10",
+    "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+    "summary": {
+      "industry": "房地产",
+      "code": "801180.SI",
+      "companies": 95,
+      "quarters": 87,
+      "companyQuarterRows": 7822,
+      "latest": {
+        "quarter": "2026Q3",
+        "endDate": "20260930",
+        "tradeDate": "20260930",
+        "companies": 95,
+        "marketCap": 10259.482337579997,
+        "marketCapObserved": 10259.482337579997,
+        "pe": null,
+        "peMarketCap": 10259.482337579997,
+        "peProfit": -1940.1005034621453,
+        "peCoverage": 1.0,
+        "peMissingCount": 0,
+        "peRebuiltCount": 65,
+        "revenue": 2449.7733642183,
+        "profit": -217.06174026160014,
+        "reportedCount": 95,
+        "estimatedCount": 0,
+        "missingCount": 0,
+        "estimatedRevenue": 0,
+        "estimatedProfit": 0,
+        "carriedCount": 0,
+        "marketMissingCount": 0,
+        "financialCoverage": 1.0
+      },
+      "financialIncompleteQuarters": 7,
+      "peCoverageMin": 0.9957910932215295,
+      "carriedCompanyQuarters": 390
+    },
+    "quality": [
+      {
+        "quarter": "2005Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2005Q2",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "600684.SH",
+            "name": "珠江股份"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20050629",
+            "marketCap": 39.555906
+          },
+          {
+            "code": "000718.SZ",
+            "name": "苏宁环球",
+            "date": "20050425",
+            "marketCap": 3.9973908000000002
+          },
+          {
+            "code": "600325.SH",
+            "name": "华发股份",
+            "date": "20050617",
+            "marketCap": 13.82
+          },
+          {
+            "code": "000656.SZ",
+            "name": "金科股份",
+            "date": "20050629",
+            "marketCap": 4.38400534
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20050629",
+            "marketCap": 10.54549877
+          },
+          {
+            "code": "600684.SH",
+            "name": "珠江股份",
+            "date": "20050629",
+            "marketCap": 5.85433281
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20050629",
+            "marketCap": 4.3970924
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q3",
+        "financialMissing": [
+          {
+            "code": "600684.SH",
+            "name": "珠江股份"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600895.SH",
+            "name": "张江高科",
+            "date": "20050929",
+            "marketCap": 61.3912845
+          },
+          {
+            "code": "000718.SZ",
+            "name": "苏宁环球",
+            "date": "20050425",
+            "marketCap": 3.9973908000000002
+          },
+          {
+            "code": "600325.SH",
+            "name": "华发股份",
+            "date": "20050929",
+            "marketCap": 13.84
+          },
+          {
+            "code": "000897.SZ",
+            "name": "津滨发展",
+            "date": "20050916",
+            "marketCap": 22.28758517
+          },
+          {
+            "code": "000926.SZ",
+            "name": "福星股份",
+            "date": "20050929",
+            "marketCap": 21.8956595
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q4",
+        "financialMissing": [
+          {
+            "code": "600684.SH",
+            "name": "珠江股份"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600639.SH",
+            "name": "浦东金桥",
+            "date": "20051208",
+            "marketCap": 51.9297636
+          },
+          {
+            "code": "600648.SH",
+            "name": "外高桥",
+            "date": "20051226",
+            "marketCap": 47.385657
+          },
+          {
+            "code": "600663.SH",
+            "name": "陆家嘴",
+            "date": "20051201",
+            "marketCap": 115.4228712
+          },
+          {
+            "code": "600159.SH",
+            "name": "大龙地产",
+            "date": "20051229",
+            "marketCap": 8.66204589
+          },
+          {
+            "code": "600266.SH",
+            "name": "城建发展",
+            "date": "20051222",
+            "marketCap": 33.24
+          },
+          {
+            "code": "000090.SZ",
+            "name": "天健集团",
+            "date": "20051205",
+            "marketCap": 9.65829682
+          },
+          {
+            "code": "600208.SH",
+            "name": "衢州发展",
+            "date": "20051222",
+            "marketCap": 6.74760388
+          },
+          {
+            "code": "600533.SH",
+            "name": "栖霞建设",
+            "date": "20051226",
+            "marketCap": 17.871
+          },
+          {
+            "code": "600325.SH",
+            "name": "华发股份",
+            "date": "20051229",
+            "marketCap": 15.912
+          },
+          {
+            "code": "000006.SZ",
+            "name": "深振业A",
+            "date": "20051202",
+            "marketCap": 10.82836264
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20051229",
+            "marketCap": 13.375708799999998
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20051031",
+            "marketCap": 6.13598712
+          },
+          {
+            "code": "000909.SZ",
+            "name": "*ST数源",
+            "date": "20051215",
+            "marketCap": 8.9572
+          },
+          {
+            "code": "600463.SH",
+            "name": "空港股份",
+            "date": "20051228",
+            "marketCap": 8.722
+          },
+          {
+            "code": "000056.SZ",
+            "name": "*ST皇庭",
+            "date": "20051123",
+            "marketCap": 8.637236289999999
+          },
+          {
+            "code": "000069.SZ",
+            "name": "华侨城A",
+            "date": "20051216",
+            "marketCap": 143.12323517
+          },
+          {
+            "code": "000608.SZ",
+            "name": "阳光股份",
+            "date": "20051209",
+            "marketCap": 15.18609456
+          },
+          {
+            "code": "600743.SH",
+            "name": "华远控股",
+            "date": "20051229",
+            "marketCap": 5.56784
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q1",
+        "financialMissing": [
+          {
+            "code": "000736.SZ",
+            "name": "中交发展"
+          }
+        ],
+        "peMissing": [
+          {
+            "code": "600684.SH",
+            "name": "珠江股份"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000011.SZ",
+            "name": "深物业A",
+            "date": "20051230",
+            "marketCap": 28.281916940000002
+          },
+          {
+            "code": "600638.SH",
+            "name": "新黄浦",
+            "date": "20060324",
+            "marketCap": 26.43082383
+          },
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20060301",
+            "marketCap": 112.12150333
+          },
+          {
+            "code": "600064.SH",
+            "name": "南京高科",
+            "date": "20060306",
+            "marketCap": 19.85721774
+          },
+          {
+            "code": "000736.SZ",
+            "name": "中交发展",
+            "date": "20060329",
+            "marketCap": 2.2242
+          },
+          {
+            "code": "600383.SH",
+            "name": "金地集团",
+            "date": "20060324",
+            "marketCap": 58.0752
+          },
+          {
+            "code": "600503.SH",
+            "name": "华丽家族",
+            "date": "20060330",
+            "marketCap": 3.465
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "600510.SH",
+            "name": "黑牡丹",
+            "date": "20060310",
+            "marketCap": 18.01703988
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "000402.SZ",
+            "name": "金融街",
+            "date": "20060315",
+            "marketCap": 79.26821439999999
+          },
+          {
+            "code": "600340.SH",
+            "name": "*ST华幸",
+            "date": "20060314",
+            "marketCap": 3.86
+          },
+          {
+            "code": "600246.SH",
+            "name": "万通发展",
+            "date": "20060317",
+            "marketCap": 9.1356
+          },
+          {
+            "code": "001914.SZ",
+            "name": "招商积余",
+            "date": "20060217",
+            "marketCap": 10.22648964
+          },
+          {
+            "code": "600007.SH",
+            "name": "中国国贸",
+            "date": "20060327",
+            "marketCap": 42.32
+          },
+          {
+            "code": "600684.SH",
+            "name": "珠江股份",
+            "date": "20060313",
+            "marketCap": 6.826937630000001
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q2",
+        "financialMissing": [
+          {
+            "code": "000736.SZ",
+            "name": "中交发展"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600683.SH",
+            "name": "京投发展",
+            "date": "20060608",
+            "marketCap": 11.37738793
+          },
+          {
+            "code": "000042.SZ",
+            "name": "中洲控股",
+            "date": "20060616",
+            "marketCap": 25.1436192
+          },
+          {
+            "code": "600716.SH",
+            "name": "凤凰股份",
+            "date": "20060629",
+            "marketCap": 20.11780804
+          },
+          {
+            "code": "000011.SZ",
+            "name": "深物业A",
+            "date": "20060629",
+            "marketCap": 28.44445669
+          },
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20060629",
+            "marketCap": 41.579226
+          },
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20060629",
+            "marketCap": 106.65675778999999
+          },
+          {
+            "code": "600266.SH",
+            "name": "城建发展",
+            "date": "20060629",
+            "marketCap": 34.14
+          },
+          {
+            "code": "600383.SH",
+            "name": "金地集团",
+            "date": "20060324",
+            "marketCap": 58.0752
+          },
+          {
+            "code": "000656.SZ",
+            "name": "金科股份",
+            "date": "20060629",
+            "marketCap": 9.09732564
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "000838.SZ",
+            "name": "*ST发展",
+            "date": "20060623",
+            "marketCap": 5.63286789
+          },
+          {
+            "code": "600848.SH",
+            "name": "上海临港",
+            "date": "20060615",
+            "marketCap": 18.24741087
+          },
+          {
+            "code": "600684.SH",
+            "name": "珠江股份",
+            "date": "20060629",
+            "marketCap": 8.64121968
+          },
+          {
+            "code": "000668.SZ",
+            "name": "荣丰控股",
+            "date": "20060629",
+            "marketCap": 13.06892821
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20060414",
+            "marketCap": 3.6450956
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000797.SZ",
+            "name": "中国武夷",
+            "date": "20060824",
+            "marketCap": 17.992702729999998
+          },
+          {
+            "code": "600162.SH",
+            "name": "香江控股",
+            "date": "20060919",
+            "marketCap": 20.790198
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "600848.SH",
+            "name": "上海临港",
+            "date": "20060615",
+            "marketCap": 18.24741087
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20060914",
+            "marketCap": 4.365759199999999
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000965.SZ",
+            "name": "天保基建",
+            "date": "20061221",
+            "marketCap": 21.07768797
+          },
+          {
+            "code": "000736.SZ",
+            "name": "中交发展",
+            "date": "20061128",
+            "marketCap": 4.1052
+          },
+          {
+            "code": "600173.SH",
+            "name": "卧龙新能",
+            "date": "20061213",
+            "marketCap": 7.36
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20061222",
+            "marketCap": 3.53968884
+          },
+          {
+            "code": "600773.SH",
+            "name": "西藏城投",
+            "date": "20061228",
+            "marketCap": 6.275486020000001
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "600239.SH",
+            "name": "ST云城",
+            "date": "20061227",
+            "marketCap": 9.94867078
+          },
+          {
+            "code": "600515.SH",
+            "name": "海南机场",
+            "date": "20061222",
+            "marketCap": 7.50204224
+          },
+          {
+            "code": "600743.SH",
+            "name": "华远控股",
+            "date": "20061020",
+            "marketCap": 14.60776
+          },
+          {
+            "code": "000668.SZ",
+            "name": "荣丰控股",
+            "date": "20061205",
+            "marketCap": 14.493294539999999
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20061228",
+            "marketCap": 3.2690972
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000736.SZ",
+            "name": "中交发展",
+            "date": "20061128",
+            "marketCap": 4.1052
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "600239.SH",
+            "name": "ST云城",
+            "date": "20061227",
+            "marketCap": 9.94867078
+          },
+          {
+            "code": "600515.SH",
+            "name": "海南机场",
+            "date": "20070117",
+            "marketCap": 8.671191680000002
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000036.SZ",
+            "name": "华联控股",
+            "date": "20070628",
+            "marketCap": 76.42436442
+          },
+          {
+            "code": "600716.SH",
+            "name": "凤凰股份",
+            "date": "20070628",
+            "marketCap": 27.36244805
+          },
+          {
+            "code": "000011.SZ",
+            "name": "深物业A",
+            "date": "20070628",
+            "marketCap": 65.23262067
+          },
+          {
+            "code": "600657.SH",
+            "name": "信达地产",
+            "date": "20070628",
+            "marketCap": 24.1061944
+          },
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20070628",
+            "marketCap": 71.220864
+          },
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20070628",
+            "marketCap": 264.38062046
+          },
+          {
+            "code": "600663.SH",
+            "name": "陆家嘴",
+            "date": "20070628",
+            "marketCap": 474.5785044
+          },
+          {
+            "code": "000965.SZ",
+            "name": "天保基建",
+            "date": "20070517",
+            "marketCap": 46.49981445
+          },
+          {
+            "code": "000718.SZ",
+            "name": "苏宁环球",
+            "date": "20070618",
+            "marketCap": 164.72671119999998
+          },
+          {
+            "code": "000736.SZ",
+            "name": "中交发展",
+            "date": "20061128",
+            "marketCap": 4.1052
+          },
+          {
+            "code": "002016.SZ",
+            "name": "世荣兆业",
+            "date": "20070614",
+            "marketCap": 8.93659982
+          },
+          {
+            "code": "000656.SZ",
+            "name": "金科股份",
+            "date": "20070628",
+            "marketCap": 27.00451948
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "600848.SH",
+            "name": "上海临港",
+            "date": "20070628",
+            "marketCap": 55.740449840000004
+          },
+          {
+            "code": "600239.SH",
+            "name": "ST云城",
+            "date": "20070604",
+            "marketCap": 14.683599650000001
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600716.SH",
+            "name": "凤凰股份",
+            "date": "20070921",
+            "marketCap": 54.5019841
+          },
+          {
+            "code": "600657.SH",
+            "name": "信达地产",
+            "date": "20070803",
+            "marketCap": 33.052823239999995
+          },
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20070828",
+            "marketCap": 314.69396734000003
+          },
+          {
+            "code": "000736.SZ",
+            "name": "中交发展",
+            "date": "20061128",
+            "marketCap": 4.1052
+          },
+          {
+            "code": "600173.SH",
+            "name": "卧龙新能",
+            "date": "20070706",
+            "marketCap": 43.562
+          },
+          {
+            "code": "600503.SH",
+            "name": "华丽家族",
+            "date": "20070726",
+            "marketCap": 11.11
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "000838.SZ",
+            "name": "*ST发展",
+            "date": "20070720",
+            "marketCap": 43.50006648
+          },
+          {
+            "code": "600239.SH",
+            "name": "ST云城",
+            "date": "20070604",
+            "marketCap": 14.683599650000001
+          },
+          {
+            "code": "600743.SH",
+            "name": "华远控股",
+            "date": "20070927",
+            "marketCap": 80.76496
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600716.SH",
+            "name": "凤凰股份",
+            "date": "20070921",
+            "marketCap": 54.5019841
+          },
+          {
+            "code": "000014.SZ",
+            "name": "沙河股份",
+            "date": "20071017",
+            "marketCap": 25.89894608
+          },
+          {
+            "code": "600657.SH",
+            "name": "信达地产",
+            "date": "20070803",
+            "marketCap": 33.052823239999995
+          },
+          {
+            "code": "600648.SH",
+            "name": "外高桥",
+            "date": "20071024",
+            "marketCap": 110.566533
+          },
+          {
+            "code": "000736.SZ",
+            "name": "中交发展",
+            "date": "20071019",
+            "marketCap": 5.2404
+          },
+          {
+            "code": "600503.SH",
+            "name": "华丽家族",
+            "date": "20071227",
+            "marketCap": 23.881
+          },
+          {
+            "code": "000656.SZ",
+            "name": "金科股份",
+            "date": "20071102",
+            "marketCap": 25.204218179999998
+          },
+          {
+            "code": "600708.SH",
+            "name": "光明地产",
+            "date": "20071227",
+            "marketCap": 44.031033519999994
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "600773.SH",
+            "name": "西藏城投",
+            "date": "20071120",
+            "marketCap": 16.546819699999997
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "600463.SH",
+            "name": "空港股份",
+            "date": "20071227",
+            "marketCap": 20.72
+          },
+          {
+            "code": "600515.SH",
+            "name": "海南机场",
+            "date": "20071226",
+            "marketCap": 27.30974086
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20071128",
+            "marketCap": 9.358182399999999
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600716.SH",
+            "name": "凤凰股份",
+            "date": "20070921",
+            "marketCap": 54.5019841
+          },
+          {
+            "code": "600657.SH",
+            "name": "信达地产",
+            "date": "20070803",
+            "marketCap": 33.052823239999995
+          },
+          {
+            "code": "000965.SZ",
+            "name": "天保基建",
+            "date": "20080304",
+            "marketCap": 36.09225845
+          },
+          {
+            "code": "000736.SZ",
+            "name": "中交发展",
+            "date": "20071019",
+            "marketCap": 5.2404
+          },
+          {
+            "code": "600503.SH",
+            "name": "华丽家族",
+            "date": "20080218",
+            "marketCap": 22.814
+          },
+          {
+            "code": "000656.SZ",
+            "name": "金科股份",
+            "date": "20071102",
+            "marketCap": 25.204218179999998
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "600743.SH",
+            "name": "华远控股",
+            "date": "20080213",
+            "marketCap": 70.12976
+          },
+          {
+            "code": "600724.SH",
+            "name": "宁波富达",
+            "date": "20080321",
+            "marketCap": 31.216640950000002
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20071128",
+            "marketCap": 9.358182399999999
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600716.SH",
+            "name": "凤凰股份",
+            "date": "20080627",
+            "marketCap": 27.80827205
+          },
+          {
+            "code": "600638.SH",
+            "name": "新黄浦",
+            "date": "20080627",
+            "marketCap": 90.23516927
+          },
+          {
+            "code": "000736.SZ",
+            "name": "中交发展",
+            "date": "20071019",
+            "marketCap": 5.2404
+          },
+          {
+            "code": "600503.SH",
+            "name": "华丽家族",
+            "date": "20080218",
+            "marketCap": 22.814
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "000897.SZ",
+            "name": "津滨发展",
+            "date": "20080627",
+            "marketCap": 77.62906723
+          },
+          {
+            "code": "600515.SH",
+            "name": "海南机场",
+            "date": "20080627",
+            "marketCap": 10.52193479
+          },
+          {
+            "code": "600340.SH",
+            "name": "*ST华幸",
+            "date": "20080625",
+            "marketCap": 12.96296101
+          },
+          {
+            "code": "600743.SH",
+            "name": "华远控股",
+            "date": "20080213",
+            "marketCap": 70.12976
+          },
+          {
+            "code": "000668.SZ",
+            "name": "荣丰控股",
+            "date": "20080429",
+            "marketCap": 26.44622439
+          },
+          {
+            "code": "600724.SH",
+            "name": "宁波富达",
+            "date": "20080627",
+            "marketCap": 23.43471479
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600648.SH",
+            "name": "外高桥",
+            "date": "20080924",
+            "marketCap": 60.87119775
+          },
+          {
+            "code": "000965.SZ",
+            "name": "天保基建",
+            "date": "20080925",
+            "marketCap": 14.465548029999999
+          },
+          {
+            "code": "600322.SH",
+            "name": "津投城开",
+            "date": "20080925",
+            "marketCap": 39.69463
+          },
+          {
+            "code": "000736.SZ",
+            "name": "中交发展",
+            "date": "20071019",
+            "marketCap": 5.2404
+          },
+          {
+            "code": "000006.SZ",
+            "name": "深振业A",
+            "date": "20080925",
+            "marketCap": 25.308444769999998
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "600515.SH",
+            "name": "海南机场",
+            "date": "20080923",
+            "marketCap": 7.27077516
+          },
+          {
+            "code": "000668.SZ",
+            "name": "荣丰控股",
+            "date": "20080429",
+            "marketCap": 26.44622439
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000656.SZ",
+            "name": "金科股份",
+            "date": "20081230",
+            "marketCap": 9.82664459
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "600773.SH",
+            "name": "西藏城投",
+            "date": "20081226",
+            "marketCap": 7.1405363
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "000668.SZ",
+            "name": "荣丰控股",
+            "date": "20080429",
+            "marketCap": 26.44622439
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q1",
+        "financialMissing": [
+          {
+            "code": "600094.SH",
+            "name": "大名城"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600736.SH",
+            "name": "苏州高新",
+            "date": "20090330",
+            "marketCap": 41.5218528
+          },
+          {
+            "code": "000656.SZ",
+            "name": "金科股份",
+            "date": "20090320",
+            "marketCap": 13.35223463
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q2",
+        "financialMissing": [
+          {
+            "code": "600094.SH",
+            "name": "大名城"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000609.SZ",
+            "name": "*ST中迪",
+            "date": "20090629",
+            "marketCap": 36.96384473
+          },
+          {
+            "code": "600716.SH",
+            "name": "凤凰股份",
+            "date": "20090626",
+            "marketCap": 46.70006408
+          },
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20090629",
+            "marketCap": 316.90730243
+          },
+          {
+            "code": "600266.SH",
+            "name": "城建发展",
+            "date": "20090629",
+            "marketCap": 126.1182
+          },
+          {
+            "code": "600208.SH",
+            "name": "衢州发展",
+            "date": "20090629",
+            "marketCap": 314.63628782
+          },
+          {
+            "code": "600376.SH",
+            "name": "首开股份",
+            "date": "20090626",
+            "marketCap": 171.35368
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20060303",
+            "marketCap": 4.666149900000001
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "600463.SH",
+            "name": "空港股份",
+            "date": "20090629",
+            "marketCap": 18.1692
+          },
+          {
+            "code": "600340.SH",
+            "name": "*ST华幸",
+            "date": "20090608",
+            "marketCap": 10.230857120000001
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q3",
+        "financialMissing": [
+          {
+            "code": "600094.SH",
+            "name": "大名城"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600064.SH",
+            "name": "南京高科",
+            "date": "20090929",
+            "marketCap": 67.55583781
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "600622.SH",
+            "name": "光大嘉宝",
+            "date": "20090929",
+            "marketCap": 50.45320298
+          },
+          {
+            "code": "000069.SZ",
+            "name": "华侨城A",
+            "date": "20090929",
+            "marketCap": 484.90130330999995
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "600692.SH",
+            "name": "亚通股份",
+            "date": "20091201",
+            "marketCap": 34.0859378
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20091223",
+            "marketCap": 11.2172856
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002188.SZ",
+            "name": "中天服务",
+            "date": "20100330",
+            "marketCap": 19.032
+          },
+          {
+            "code": "600322.SH",
+            "name": "津投城开",
+            "date": "20100330",
+            "marketCap": 74.52418
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "000056.SZ",
+            "name": "*ST皇庭",
+            "date": "20100330",
+            "marketCap": 24.74093261
+          },
+          {
+            "code": "600515.SH",
+            "name": "海南机场",
+            "date": "20100226",
+            "marketCap": 36.08787185
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q2",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "600094.SH",
+            "name": "大名城"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000036.SZ",
+            "name": "华联控股",
+            "date": "20100629",
+            "marketCap": 42.707733059999995
+          },
+          {
+            "code": "000011.SZ",
+            "name": "深物业A",
+            "date": "20100621",
+            "marketCap": 48.27430645
+          },
+          {
+            "code": "600606.SH",
+            "name": "绿地控股",
+            "date": "20100514",
+            "marketCap": 30.519717019999998
+          },
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20100629",
+            "marketCap": 196.9467427
+          },
+          {
+            "code": "600675.SH",
+            "name": "中华企业",
+            "date": "20100514",
+            "marketCap": 101.55671575
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "000909.SZ",
+            "name": "*ST数源",
+            "date": "20100629",
+            "marketCap": 19.5216
+          },
+          {
+            "code": "600340.SH",
+            "name": "*ST华幸",
+            "date": "20100628",
+            "marketCap": 14.67779218
+          },
+          {
+            "code": "001914.SZ",
+            "name": "招商积余",
+            "date": "20100629",
+            "marketCap": 21.45392555
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q3",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "600094.SH",
+            "name": "大名城"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600606.SH",
+            "name": "绿地控股",
+            "date": "20100514",
+            "marketCap": 30.519717019999998
+          },
+          {
+            "code": "600675.SH",
+            "name": "中华企业",
+            "date": "20100514",
+            "marketCap": 101.55671575
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "000560.SZ",
+            "name": "我爱我家",
+            "date": "20100916",
+            "marketCap": 14.3136
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          },
+          {
+            "code": "000056.SZ",
+            "name": "*ST皇庭",
+            "date": "20101230",
+            "marketCap": 25.60244723
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000002.SZ",
+            "name": "万科A",
+            "date": "20110330",
+            "marketCap": 955.4837679400001
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000609.SZ",
+            "name": "*ST中迪",
+            "date": "20110629",
+            "marketCap": 31.985649510000002
+          },
+          {
+            "code": "600895.SH",
+            "name": "张江高科",
+            "date": "20110629",
+            "marketCap": 146.19629351999998
+          },
+          {
+            "code": "000656.SZ",
+            "name": "金科股份",
+            "date": "20110629",
+            "marketCap": 34.255733039999996
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000620.SZ",
+            "name": "盈新发展",
+            "date": "20060317",
+            "marketCap": 3.64603637
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600208.SH",
+            "name": "衢州发展",
+            "date": "20110929",
+            "marketCap": 234.14398291000003
+          },
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20080429",
+            "marketCap": 27.506751740000002
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "001914.SZ",
+            "name": "招商积余",
+            "date": "20110929",
+            "marketCap": 23.577086060000003
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600604.SH",
+            "name": "市北高新",
+            "date": "20120329",
+            "marketCap": 38.29196524
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          },
+          {
+            "code": "000838.SZ",
+            "name": "*ST发展",
+            "date": "20120329",
+            "marketCap": 10.15408429
+          },
+          {
+            "code": "600246.SH",
+            "name": "万通发展",
+            "date": "20120329",
+            "marketCap": 43.8048
+          },
+          {
+            "code": "001914.SZ",
+            "name": "招商积余",
+            "date": "20120329",
+            "marketCap": 39.45076776
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600639.SH",
+            "name": "浦东金桥",
+            "date": "20120628",
+            "marketCap": 65.85369534
+          },
+          {
+            "code": "600648.SH",
+            "name": "外高桥",
+            "date": "20120628",
+            "marketCap": 85.41098968
+          },
+          {
+            "code": "000797.SZ",
+            "name": "中国武夷",
+            "date": "20120628",
+            "marketCap": 18.615826629999997
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20070420",
+            "marketCap": 6.11170924
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2012Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000042.SZ",
+            "name": "中洲控股",
+            "date": "20121217",
+            "marketCap": 48.13207104
+          },
+          {
+            "code": "000002.SZ",
+            "name": "万科A",
+            "date": "20121225",
+            "marketCap": 1112.71527406
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20121122",
+            "marketCap": 7.8437444
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20130218",
+            "marketCap": 182.2389346
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000056.SZ",
+            "name": "*ST皇庭",
+            "date": "20130626",
+            "marketCap": 52.57448179
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000036.SZ",
+            "name": "华联控股",
+            "date": "20130830",
+            "marketCap": 36.75112818
+          },
+          {
+            "code": "600606.SH",
+            "name": "绿地控股",
+            "date": "20130628",
+            "marketCap": 27.41913271
+          },
+          {
+            "code": "000090.SZ",
+            "name": "天健集团",
+            "date": "20130927",
+            "marketCap": 41.32930339
+          },
+          {
+            "code": "002314.SZ",
+            "name": "南山控股",
+            "date": "20130813",
+            "marketCap": 22.301
+          },
+          {
+            "code": "000560.SZ",
+            "name": "我爱我家",
+            "date": "20130918",
+            "marketCap": 15.808470199999999
+          },
+          {
+            "code": "000668.SZ",
+            "name": "荣丰控股",
+            "date": "20130705",
+            "marketCap": 13.803137659999999
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600606.SH",
+            "name": "绿地控股",
+            "date": "20130628",
+            "marketCap": 27.41913271
+          },
+          {
+            "code": "600639.SH",
+            "name": "浦东金桥",
+            "date": "20131204",
+            "marketCap": 109.2298247
+          },
+          {
+            "code": "000668.SZ",
+            "name": "荣丰控股",
+            "date": "20130705",
+            "marketCap": 13.803137659999999
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002016.SZ",
+            "name": "世荣兆业",
+            "date": "20140327",
+            "marketCap": 42.383873460000004
+          },
+          {
+            "code": "600708.SH",
+            "name": "光明地产",
+            "date": "20140321",
+            "marketCap": 47.362359389999995
+          },
+          {
+            "code": "002305.SZ",
+            "name": "*ST南置",
+            "date": "20140207",
+            "marketCap": 60.98272246
+          },
+          {
+            "code": "000668.SZ",
+            "name": "荣丰控股",
+            "date": "20130705",
+            "marketCap": 13.803137659999999
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600604.SH",
+            "name": "市北高新",
+            "date": "20140409",
+            "marketCap": 59.024005599999995
+          },
+          {
+            "code": "600848.SH",
+            "name": "上海临港",
+            "date": "20140430",
+            "marketCap": 31.62352169
+          },
+          {
+            "code": "000560.SZ",
+            "name": "我爱我家",
+            "date": "20140404",
+            "marketCap": 14.625406810000001
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000090.SZ",
+            "name": "天健集团",
+            "date": "20140912",
+            "marketCap": 46.63359901
+          },
+          {
+            "code": "600848.SH",
+            "name": "上海临港",
+            "date": "20140430",
+            "marketCap": 31.62352169
+          },
+          {
+            "code": "600246.SH",
+            "name": "万通发展",
+            "date": "20140811",
+            "marketCap": 41.3712
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002188.SZ",
+            "name": "中天服务",
+            "date": "20141226",
+            "marketCap": 17.472
+          },
+          {
+            "code": "000609.SZ",
+            "name": "*ST中迪",
+            "date": "20141201",
+            "marketCap": 41.3458489
+          },
+          {
+            "code": "600716.SH",
+            "name": "凤凰股份",
+            "date": "20141211",
+            "marketCap": 70.94954074
+          },
+          {
+            "code": "000514.SZ",
+            "name": "渝开发",
+            "date": "20141126",
+            "marketCap": 59.73898432
+          },
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20141031",
+            "marketCap": 215.99795035000002
+          },
+          {
+            "code": "000897.SZ",
+            "name": "津滨发展",
+            "date": "20141225",
+            "marketCap": 122.10405367
+          },
+          {
+            "code": "000668.SZ",
+            "name": "荣丰控股",
+            "date": "20141222",
+            "marketCap": 16.798712220000002
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002188.SZ",
+            "name": "中天服务",
+            "date": "20141226",
+            "marketCap": 17.472
+          },
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20141031",
+            "marketCap": 215.99795035000002
+          },
+          {
+            "code": "600748.SH",
+            "name": "上实发展",
+            "date": "20150318",
+            "marketCap": 163.805676
+          },
+          {
+            "code": "600503.SH",
+            "name": "华丽家族",
+            "date": "20150120",
+            "marketCap": 106.55228500000001
+          },
+          {
+            "code": "601588.SH",
+            "name": "北辰实业",
+            "date": "20150325",
+            "marketCap": 190.573332
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20150212",
+            "marketCap": 69.82183963
+          },
+          {
+            "code": "600246.SH",
+            "name": "万通发展",
+            "date": "20150105",
+            "marketCap": 64.73376
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20150323",
+            "marketCap": 41.39825956
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600094.SH",
+            "name": "大名城",
+            "date": "20150625",
+            "marketCap": 407.34028076
+          },
+          {
+            "code": "000863.SZ",
+            "name": "三湘印象",
+            "date": "20150212",
+            "marketCap": 69.82183963
+          },
+          {
+            "code": "600622.SH",
+            "name": "光大嘉宝",
+            "date": "20150525",
+            "marketCap": 71.28250696
+          },
+          {
+            "code": "000608.SZ",
+            "name": "阳光股份",
+            "date": "20150522",
+            "marketCap": 61.71786533
+          },
+          {
+            "code": "600515.SH",
+            "name": "海南机场",
+            "date": "20150601",
+            "marketCap": 68.86990675
+          },
+          {
+            "code": "600246.SH",
+            "name": "万通发展",
+            "date": "20150105",
+            "marketCap": 64.73376
+          },
+          {
+            "code": "000668.SZ",
+            "name": "荣丰控股",
+            "date": "20150522",
+            "marketCap": 51.08629353
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20150323",
+            "marketCap": 41.39825956
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600736.SH",
+            "name": "苏州高新",
+            "date": "20150824",
+            "marketCap": 97.33487396
+          },
+          {
+            "code": "600604.SH",
+            "name": "市北高新",
+            "date": "20150922",
+            "marketCap": 156.54516857000002
+          },
+          {
+            "code": "600533.SH",
+            "name": "栖霞建设",
+            "date": "20150731",
+            "marketCap": 55.335
+          },
+          {
+            "code": "600515.SH",
+            "name": "海南机场",
+            "date": "20150601",
+            "marketCap": 68.86990675
+          },
+          {
+            "code": "000668.SZ",
+            "name": "荣丰控股",
+            "date": "20150522",
+            "marketCap": 51.08629353
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000002.SZ",
+            "name": "万科A",
+            "date": "20151218",
+            "marketCap": 2699.6432575
+          },
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20151229",
+            "marketCap": 691.91044677
+          },
+          {
+            "code": "000909.SZ",
+            "name": "*ST数源",
+            "date": "20151225",
+            "marketCap": 54.9192
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000002.SZ",
+            "name": "万科A",
+            "date": "20151218",
+            "marketCap": 2699.6432575
+          },
+          {
+            "code": "600663.SH",
+            "name": "陆家嘴",
+            "date": "20160121",
+            "marketCap": 721.1127924
+          },
+          {
+            "code": "000718.SZ",
+            "name": "苏宁环球",
+            "date": "20151231",
+            "marketCap": 400.26853905
+          },
+          {
+            "code": "000736.SZ",
+            "name": "中交发展",
+            "date": "20160219",
+            "marketCap": 41.69630207
+          },
+          {
+            "code": "002314.SZ",
+            "name": "南山控股",
+            "date": "20160304",
+            "marketCap": 131.80262516000002
+          },
+          {
+            "code": "000608.SZ",
+            "name": "阳光股份",
+            "date": "20160307",
+            "marketCap": 39.74540538
+          },
+          {
+            "code": "600848.SH",
+            "name": "上海临港",
+            "date": "20160315",
+            "marketCap": 138.03553551000002
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000002.SZ",
+            "name": "万科A",
+            "date": "20151218",
+            "marketCap": 2699.6432575
+          },
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20160617",
+            "marketCap": 429.00837718
+          },
+          {
+            "code": "600675.SH",
+            "name": "中华企业",
+            "date": "20160623",
+            "marketCap": 94.2864996
+          },
+          {
+            "code": "000718.SZ",
+            "name": "苏宁环球",
+            "date": "20151231",
+            "marketCap": 400.26853905
+          },
+          {
+            "code": "600173.SH",
+            "name": "卧龙新能",
+            "date": "20160422",
+            "marketCap": 60.40478342
+          },
+          {
+            "code": "000517.SZ",
+            "name": "荣安地产",
+            "date": "20160613",
+            "marketCap": 154.10184827
+          },
+          {
+            "code": "002314.SZ",
+            "name": "南山控股",
+            "date": "20160304",
+            "marketCap": 131.80262516000002
+          },
+          {
+            "code": "600773.SH",
+            "name": "西藏城投",
+            "date": "20160629",
+            "marketCap": 114.26778099
+          },
+          {
+            "code": "000608.SZ",
+            "name": "阳光股份",
+            "date": "20160307",
+            "marketCap": 39.74540538
+          },
+          {
+            "code": "600848.SH",
+            "name": "上海临港",
+            "date": "20160315",
+            "marketCap": 138.03553551000002
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000609.SZ",
+            "name": "*ST中迪",
+            "date": "20160923",
+            "marketCap": 42.6574692
+          },
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          },
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20160617",
+            "marketCap": 429.00837718
+          },
+          {
+            "code": "600675.SH",
+            "name": "中华企业",
+            "date": "20160623",
+            "marketCap": 94.2864996
+          },
+          {
+            "code": "000656.SZ",
+            "name": "金科股份",
+            "date": "20160926",
+            "marketCap": 235.78117834
+          },
+          {
+            "code": "600773.SH",
+            "name": "西藏城投",
+            "date": "20160629",
+            "marketCap": 114.26778099
+          },
+          {
+            "code": "000560.SZ",
+            "name": "我爱我家",
+            "date": "20160901",
+            "marketCap": 121.70453714
+          },
+          {
+            "code": "600246.SH",
+            "name": "万通发展",
+            "date": "20160927",
+            "marketCap": 120.57034603
+          },
+          {
+            "code": "001914.SZ",
+            "name": "招商积余",
+            "date": "20160706",
+            "marketCap": 57.09189721
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20160919",
+            "marketCap": 91.54153275
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000042.SZ",
+            "name": "中洲控股",
+            "date": "20161026",
+            "marketCap": 134.56182253
+          },
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          },
+          {
+            "code": "600649.SH",
+            "name": "城投控股",
+            "date": "20161205",
+            "marketCap": 607.66228356
+          },
+          {
+            "code": "600173.SH",
+            "name": "卧龙新能",
+            "date": "20161221",
+            "marketCap": 83.24692841000001
+          },
+          {
+            "code": "600239.SH",
+            "name": "ST云城",
+            "date": "20161229",
+            "marketCap": 60.58791935000001
+          },
+          {
+            "code": "000560.SZ",
+            "name": "我爱我家",
+            "date": "20160901",
+            "marketCap": 121.70453714
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000042.SZ",
+            "name": "中洲控股",
+            "date": "20161026",
+            "marketCap": 134.56182253
+          },
+          {
+            "code": "600657.SH",
+            "name": "信达地产",
+            "date": "20170217",
+            "marketCap": 89.62651398999999
+          },
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          },
+          {
+            "code": "600173.SH",
+            "name": "卧龙新能",
+            "date": "20161221",
+            "marketCap": 83.24692841000001
+          },
+          {
+            "code": "600239.SH",
+            "name": "ST云城",
+            "date": "20170117",
+            "marketCap": 70.114995
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20170210",
+            "marketCap": 81.79788903
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600657.SH",
+            "name": "信达地产",
+            "date": "20170217",
+            "marketCap": 89.62651398999999
+          },
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          },
+          {
+            "code": "000656.SZ",
+            "name": "金科股份",
+            "date": "20170504",
+            "marketCap": 360.1430245
+          },
+          {
+            "code": "000838.SZ",
+            "name": "*ST发展",
+            "date": "20170428",
+            "marketCap": 72.520457
+          },
+          {
+            "code": "600239.SH",
+            "name": "ST云城",
+            "date": "20170623",
+            "marketCap": 83.81685664999999
+          },
+          {
+            "code": "600136.SH",
+            "name": "ST明诚",
+            "date": "20170210",
+            "marketCap": 81.79788903
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          },
+          {
+            "code": "000006.SZ",
+            "name": "深振业A",
+            "date": "20170908",
+            "marketCap": 132.97451203
+          },
+          {
+            "code": "000608.SZ",
+            "name": "阳光股份",
+            "date": "20170926",
+            "marketCap": 60.967952020000006
+          },
+          {
+            "code": "600239.SH",
+            "name": "ST云城",
+            "date": "20170623",
+            "marketCap": 83.81685664999999
+          },
+          {
+            "code": "000560.SZ",
+            "name": "我爱我家",
+            "date": "20170928",
+            "marketCap": 127.32166962
+          },
+          {
+            "code": "000031.SZ",
+            "name": "大悦城",
+            "date": "20170721",
+            "marketCap": 145.09852768000002
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          },
+          {
+            "code": "600162.SH",
+            "name": "香江控股",
+            "date": "20171109",
+            "marketCap": 114.60262698999999
+          },
+          {
+            "code": "000006.SZ",
+            "name": "深振业A",
+            "date": "20170908",
+            "marketCap": 132.97451203
+          },
+          {
+            "code": "000926.SZ",
+            "name": "福星股份",
+            "date": "20171225",
+            "marketCap": 105.79879742
+          },
+          {
+            "code": "000056.SZ",
+            "name": "*ST皇庭",
+            "date": "20171031",
+            "marketCap": 155.96833033000001
+          },
+          {
+            "code": "600239.SH",
+            "name": "ST云城",
+            "date": "20170623",
+            "marketCap": 83.81685664999999
+          },
+          {
+            "code": "000031.SZ",
+            "name": "大悦城",
+            "date": "20170721",
+            "marketCap": 145.09852768000002
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          },
+          {
+            "code": "000056.SZ",
+            "name": "*ST皇庭",
+            "date": "20171031",
+            "marketCap": 155.96833033000001
+          },
+          {
+            "code": "600515.SH",
+            "name": "海南机场",
+            "date": "20180122",
+            "marketCap": 436.08731854
+          },
+          {
+            "code": "000031.SZ",
+            "name": "大悦城",
+            "date": "20170721",
+            "marketCap": 145.09852768000002
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          },
+          {
+            "code": "600848.SH",
+            "name": "上海临港",
+            "date": "20180614",
+            "marketCap": 242.68650732999998
+          },
+          {
+            "code": "600515.SH",
+            "name": "海南机场",
+            "date": "20180122",
+            "marketCap": 436.08731854
+          },
+          {
+            "code": "600724.SH",
+            "name": "宁波富达",
+            "date": "20180502",
+            "marketCap": 47.54843124
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          },
+          {
+            "code": "600848.SH",
+            "name": "上海临港",
+            "date": "20180614",
+            "marketCap": 242.68650732999998
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          },
+          {
+            "code": "000608.SZ",
+            "name": "阳光股份",
+            "date": "20190325",
+            "marketCap": 52.11897498
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          },
+          {
+            "code": "600510.SH",
+            "name": "黑牡丹",
+            "date": "20190618",
+            "marketCap": 66.17640558
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          }
+        ]
+      },
+      {
+        "quarter": "2020Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          }
+        ]
+      },
+      {
+        "quarter": "2020Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          }
+        ]
+      },
+      {
+        "quarter": "2020Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000029.SZ",
+            "name": "深深房A",
+            "date": "20160913",
+            "marketCap": 113.002422
+          }
+        ]
+      },
+      {
+        "quarter": "2020Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600340.SH",
+            "name": "*ST华幸",
+            "date": "20210923",
+            "marketCap": 156.94018570999998
+          }
+        ]
+      },
+      {
+        "quarter": "2021Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600322.SH",
+            "name": "津投城开",
+            "date": "20241217",
+            "marketCap": 30.07504
+          }
+        ]
+      },
+      {
+        "quarter": "2025Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000909.SZ",
+            "name": "*ST数源",
+            "date": "20260330",
+            "marketCap": 26.6130261
+          }
+        ]
+      },
+      {
+        "quarter": "2026Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      }
+    ]
+  },
+  "historicalAuditScope": "旧公司整体法，市值/PE已被sw-alignment-audit.json取代；财务核验仍有效",
+  "valuationAlignment": {
     "industry": "房地产",
     "code": "801180.SI",
-    "companies": 95,
-    "quarters": 87,
-    "companyQuarterRows": 7822,
+    "scope": "SW公布市值/PE与财报汇总分离",
+    "project2AsOf": "20261110",
+    "financialAsOf": "2026-11-10",
+    "financialHash": "a1665e9d4020e19082eef3ff207d3938c0ce212fb7b225ce8634784748837bdd",
+    "sectorFinancialHashes": {
+      "801181.SI": "bbdf4f711ad62e859a6d6b3066d7bb93b318a5ac25bc53c2fa36e204d2297403",
+      "801183.SI": "2404121722376d58070889ea71963b4db41ebba2ab552b2b1ae4c343e4ef1841"
+    },
     "latest": {
       "quarter": "2026Q3",
       "endDate": "20260930",
       "tradeDate": "20260930",
       "companies": 95,
-      "marketCap": 10259.482337579997,
-      "marketCapObserved": 10259.482337579997,
-      "pe": null,
-      "peMarketCap": 10259.482337579997,
-      "peProfit": -1940.1005034621453,
-      "peCoverage": 1.0,
-      "peMissingCount": 0,
-      "peRebuiltCount": 65,
+      "marketCap": 9982.4279,
+      "marketCapObserved": 9982.4279,
+      "pe": 17.57,
       "revenue": 2449.7733642183,
       "profit": -217.06174026160014,
       "reportedCount": 95,
@@ -29,3080 +3136,104 @@
       "estimatedProfit": 0,
       "carriedCount": 0,
       "marketMissingCount": 0,
-      "financialCoverage": 1.0
-    },
-    "financialIncompleteQuarters": 7,
-    "peCoverageMin": 0.9957910932215295,
-    "carriedCompanyQuarters": 390
-  },
-  "quality": [
-    {
-      "quarter": "2005Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2005Q2",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "600684.SH",
-          "name": "珠江股份"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20050629",
-          "marketCap": 39.555906
-        },
-        {
-          "code": "000718.SZ",
-          "name": "苏宁环球",
-          "date": "20050425",
-          "marketCap": 3.9973908000000002
-        },
-        {
-          "code": "600325.SH",
-          "name": "华发股份",
-          "date": "20050617",
-          "marketCap": 13.82
-        },
-        {
-          "code": "000656.SZ",
-          "name": "金科股份",
-          "date": "20050629",
-          "marketCap": 4.38400534
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20050629",
-          "marketCap": 10.54549877
-        },
-        {
-          "code": "600684.SH",
-          "name": "珠江股份",
-          "date": "20050629",
-          "marketCap": 5.85433281
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20050629",
-          "marketCap": 4.3970924
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q3",
-      "financialMissing": [
-        {
-          "code": "600684.SH",
-          "name": "珠江股份"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600895.SH",
-          "name": "张江高科",
-          "date": "20050929",
-          "marketCap": 61.3912845
-        },
-        {
-          "code": "000718.SZ",
-          "name": "苏宁环球",
-          "date": "20050425",
-          "marketCap": 3.9973908000000002
-        },
-        {
-          "code": "600325.SH",
-          "name": "华发股份",
-          "date": "20050929",
-          "marketCap": 13.84
-        },
-        {
-          "code": "000897.SZ",
-          "name": "津滨发展",
-          "date": "20050916",
-          "marketCap": 22.28758517
-        },
-        {
-          "code": "000926.SZ",
-          "name": "福星股份",
-          "date": "20050929",
-          "marketCap": 21.8956595
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q4",
-      "financialMissing": [
-        {
-          "code": "600684.SH",
-          "name": "珠江股份"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600639.SH",
-          "name": "浦东金桥",
-          "date": "20051208",
-          "marketCap": 51.9297636
-        },
-        {
-          "code": "600648.SH",
-          "name": "外高桥",
-          "date": "20051226",
-          "marketCap": 47.385657
-        },
-        {
-          "code": "600663.SH",
-          "name": "陆家嘴",
-          "date": "20051201",
-          "marketCap": 115.4228712
-        },
-        {
-          "code": "600159.SH",
-          "name": "大龙地产",
-          "date": "20051229",
-          "marketCap": 8.66204589
-        },
-        {
-          "code": "600266.SH",
-          "name": "城建发展",
-          "date": "20051222",
-          "marketCap": 33.24
-        },
-        {
-          "code": "000090.SZ",
-          "name": "天健集团",
-          "date": "20051205",
-          "marketCap": 9.65829682
-        },
-        {
-          "code": "600208.SH",
-          "name": "衢州发展",
-          "date": "20051222",
-          "marketCap": 6.74760388
-        },
-        {
-          "code": "600533.SH",
-          "name": "栖霞建设",
-          "date": "20051226",
-          "marketCap": 17.871
-        },
-        {
-          "code": "600325.SH",
-          "name": "华发股份",
-          "date": "20051229",
-          "marketCap": 15.912
-        },
-        {
-          "code": "000006.SZ",
-          "name": "深振业A",
-          "date": "20051202",
-          "marketCap": 10.82836264
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20051229",
-          "marketCap": 13.375708799999998
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20051031",
-          "marketCap": 6.13598712
-        },
-        {
-          "code": "000909.SZ",
-          "name": "*ST数源",
-          "date": "20051215",
-          "marketCap": 8.9572
-        },
-        {
-          "code": "600463.SH",
-          "name": "空港股份",
-          "date": "20051228",
-          "marketCap": 8.722
-        },
-        {
-          "code": "000056.SZ",
-          "name": "*ST皇庭",
-          "date": "20051123",
-          "marketCap": 8.637236289999999
-        },
-        {
-          "code": "000069.SZ",
-          "name": "华侨城A",
-          "date": "20051216",
-          "marketCap": 143.12323517
-        },
-        {
-          "code": "000608.SZ",
-          "name": "阳光股份",
-          "date": "20051209",
-          "marketCap": 15.18609456
-        },
-        {
-          "code": "600743.SH",
-          "name": "华远控股",
-          "date": "20051229",
-          "marketCap": 5.56784
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q1",
-      "financialMissing": [
-        {
-          "code": "000736.SZ",
-          "name": "中交发展"
-        }
-      ],
-      "peMissing": [
-        {
-          "code": "600684.SH",
-          "name": "珠江股份"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000011.SZ",
-          "name": "深物业A",
-          "date": "20051230",
-          "marketCap": 28.281916940000002
-        },
-        {
-          "code": "600638.SH",
-          "name": "新黄浦",
-          "date": "20060324",
-          "marketCap": 26.43082383
-        },
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20060301",
-          "marketCap": 112.12150333
-        },
-        {
-          "code": "600064.SH",
-          "name": "南京高科",
-          "date": "20060306",
-          "marketCap": 19.85721774
-        },
-        {
-          "code": "000736.SZ",
-          "name": "中交发展",
-          "date": "20060329",
-          "marketCap": 2.2242
-        },
-        {
-          "code": "600383.SH",
-          "name": "金地集团",
-          "date": "20060324",
-          "marketCap": 58.0752
-        },
-        {
-          "code": "600503.SH",
-          "name": "华丽家族",
-          "date": "20060330",
-          "marketCap": 3.465
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "600510.SH",
-          "name": "黑牡丹",
-          "date": "20060310",
-          "marketCap": 18.01703988
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "000402.SZ",
-          "name": "金融街",
-          "date": "20060315",
-          "marketCap": 79.26821439999999
-        },
-        {
-          "code": "600340.SH",
-          "name": "*ST华幸",
-          "date": "20060314",
-          "marketCap": 3.86
-        },
-        {
-          "code": "600246.SH",
-          "name": "万通发展",
-          "date": "20060317",
-          "marketCap": 9.1356
-        },
-        {
-          "code": "001914.SZ",
-          "name": "招商积余",
-          "date": "20060217",
-          "marketCap": 10.22648964
-        },
-        {
-          "code": "600007.SH",
-          "name": "中国国贸",
-          "date": "20060327",
-          "marketCap": 42.32
-        },
-        {
-          "code": "600684.SH",
-          "name": "珠江股份",
-          "date": "20060313",
-          "marketCap": 6.826937630000001
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q2",
-      "financialMissing": [
-        {
-          "code": "000736.SZ",
-          "name": "中交发展"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600683.SH",
-          "name": "京投发展",
-          "date": "20060608",
-          "marketCap": 11.37738793
-        },
-        {
-          "code": "000042.SZ",
-          "name": "中洲控股",
-          "date": "20060616",
-          "marketCap": 25.1436192
-        },
-        {
-          "code": "600716.SH",
-          "name": "凤凰股份",
-          "date": "20060629",
-          "marketCap": 20.11780804
-        },
-        {
-          "code": "000011.SZ",
-          "name": "深物业A",
-          "date": "20060629",
-          "marketCap": 28.44445669
-        },
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20060629",
-          "marketCap": 41.579226
-        },
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20060629",
-          "marketCap": 106.65675778999999
-        },
-        {
-          "code": "600266.SH",
-          "name": "城建发展",
-          "date": "20060629",
-          "marketCap": 34.14
-        },
-        {
-          "code": "600383.SH",
-          "name": "金地集团",
-          "date": "20060324",
-          "marketCap": 58.0752
-        },
-        {
-          "code": "000656.SZ",
-          "name": "金科股份",
-          "date": "20060629",
-          "marketCap": 9.09732564
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "000838.SZ",
-          "name": "*ST发展",
-          "date": "20060623",
-          "marketCap": 5.63286789
-        },
-        {
-          "code": "600848.SH",
-          "name": "上海临港",
-          "date": "20060615",
-          "marketCap": 18.24741087
-        },
-        {
-          "code": "600684.SH",
-          "name": "珠江股份",
-          "date": "20060629",
-          "marketCap": 8.64121968
-        },
-        {
-          "code": "000668.SZ",
-          "name": "荣丰控股",
-          "date": "20060629",
-          "marketCap": 13.06892821
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20060414",
-          "marketCap": 3.6450956
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000797.SZ",
-          "name": "中国武夷",
-          "date": "20060824",
-          "marketCap": 17.992702729999998
-        },
-        {
-          "code": "600162.SH",
-          "name": "香江控股",
-          "date": "20060919",
-          "marketCap": 20.790198
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "600848.SH",
-          "name": "上海临港",
-          "date": "20060615",
-          "marketCap": 18.24741087
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20060914",
-          "marketCap": 4.365759199999999
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000965.SZ",
-          "name": "天保基建",
-          "date": "20061221",
-          "marketCap": 21.07768797
-        },
-        {
-          "code": "000736.SZ",
-          "name": "中交发展",
-          "date": "20061128",
-          "marketCap": 4.1052
-        },
-        {
-          "code": "600173.SH",
-          "name": "卧龙新能",
-          "date": "20061213",
-          "marketCap": 7.36
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20061222",
-          "marketCap": 3.53968884
-        },
-        {
-          "code": "600773.SH",
-          "name": "西藏城投",
-          "date": "20061228",
-          "marketCap": 6.275486020000001
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "600239.SH",
-          "name": "ST云城",
-          "date": "20061227",
-          "marketCap": 9.94867078
-        },
-        {
-          "code": "600515.SH",
-          "name": "海南机场",
-          "date": "20061222",
-          "marketCap": 7.50204224
-        },
-        {
-          "code": "600743.SH",
-          "name": "华远控股",
-          "date": "20061020",
-          "marketCap": 14.60776
-        },
-        {
-          "code": "000668.SZ",
-          "name": "荣丰控股",
-          "date": "20061205",
-          "marketCap": 14.493294539999999
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20061228",
-          "marketCap": 3.2690972
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000736.SZ",
-          "name": "中交发展",
-          "date": "20061128",
-          "marketCap": 4.1052
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "600239.SH",
-          "name": "ST云城",
-          "date": "20061227",
-          "marketCap": 9.94867078
-        },
-        {
-          "code": "600515.SH",
-          "name": "海南机场",
-          "date": "20070117",
-          "marketCap": 8.671191680000002
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000036.SZ",
-          "name": "华联控股",
-          "date": "20070628",
-          "marketCap": 76.42436442
-        },
-        {
-          "code": "600716.SH",
-          "name": "凤凰股份",
-          "date": "20070628",
-          "marketCap": 27.36244805
-        },
-        {
-          "code": "000011.SZ",
-          "name": "深物业A",
-          "date": "20070628",
-          "marketCap": 65.23262067
-        },
-        {
-          "code": "600657.SH",
-          "name": "信达地产",
-          "date": "20070628",
-          "marketCap": 24.1061944
-        },
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20070628",
-          "marketCap": 71.220864
-        },
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20070628",
-          "marketCap": 264.38062046
-        },
-        {
-          "code": "600663.SH",
-          "name": "陆家嘴",
-          "date": "20070628",
-          "marketCap": 474.5785044
-        },
-        {
-          "code": "000965.SZ",
-          "name": "天保基建",
-          "date": "20070517",
-          "marketCap": 46.49981445
-        },
-        {
-          "code": "000718.SZ",
-          "name": "苏宁环球",
-          "date": "20070618",
-          "marketCap": 164.72671119999998
-        },
-        {
-          "code": "000736.SZ",
-          "name": "中交发展",
-          "date": "20061128",
-          "marketCap": 4.1052
-        },
-        {
-          "code": "002016.SZ",
-          "name": "世荣兆业",
-          "date": "20070614",
-          "marketCap": 8.93659982
-        },
-        {
-          "code": "000656.SZ",
-          "name": "金科股份",
-          "date": "20070628",
-          "marketCap": 27.00451948
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "600848.SH",
-          "name": "上海临港",
-          "date": "20070628",
-          "marketCap": 55.740449840000004
-        },
-        {
-          "code": "600239.SH",
-          "name": "ST云城",
-          "date": "20070604",
-          "marketCap": 14.683599650000001
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600716.SH",
-          "name": "凤凰股份",
-          "date": "20070921",
-          "marketCap": 54.5019841
-        },
-        {
-          "code": "600657.SH",
-          "name": "信达地产",
-          "date": "20070803",
-          "marketCap": 33.052823239999995
-        },
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20070828",
-          "marketCap": 314.69396734000003
-        },
-        {
-          "code": "000736.SZ",
-          "name": "中交发展",
-          "date": "20061128",
-          "marketCap": 4.1052
-        },
-        {
-          "code": "600173.SH",
-          "name": "卧龙新能",
-          "date": "20070706",
-          "marketCap": 43.562
-        },
-        {
-          "code": "600503.SH",
-          "name": "华丽家族",
-          "date": "20070726",
-          "marketCap": 11.11
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "000838.SZ",
-          "name": "*ST发展",
-          "date": "20070720",
-          "marketCap": 43.50006648
-        },
-        {
-          "code": "600239.SH",
-          "name": "ST云城",
-          "date": "20070604",
-          "marketCap": 14.683599650000001
-        },
-        {
-          "code": "600743.SH",
-          "name": "华远控股",
-          "date": "20070927",
-          "marketCap": 80.76496
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600716.SH",
-          "name": "凤凰股份",
-          "date": "20070921",
-          "marketCap": 54.5019841
-        },
-        {
-          "code": "000014.SZ",
-          "name": "沙河股份",
-          "date": "20071017",
-          "marketCap": 25.89894608
-        },
-        {
-          "code": "600657.SH",
-          "name": "信达地产",
-          "date": "20070803",
-          "marketCap": 33.052823239999995
-        },
-        {
-          "code": "600648.SH",
-          "name": "外高桥",
-          "date": "20071024",
-          "marketCap": 110.566533
-        },
-        {
-          "code": "000736.SZ",
-          "name": "中交发展",
-          "date": "20071019",
-          "marketCap": 5.2404
-        },
-        {
-          "code": "600503.SH",
-          "name": "华丽家族",
-          "date": "20071227",
-          "marketCap": 23.881
-        },
-        {
-          "code": "000656.SZ",
-          "name": "金科股份",
-          "date": "20071102",
-          "marketCap": 25.204218179999998
-        },
-        {
-          "code": "600708.SH",
-          "name": "光明地产",
-          "date": "20071227",
-          "marketCap": 44.031033519999994
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "600773.SH",
-          "name": "西藏城投",
-          "date": "20071120",
-          "marketCap": 16.546819699999997
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "600463.SH",
-          "name": "空港股份",
-          "date": "20071227",
-          "marketCap": 20.72
-        },
-        {
-          "code": "600515.SH",
-          "name": "海南机场",
-          "date": "20071226",
-          "marketCap": 27.30974086
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20071128",
-          "marketCap": 9.358182399999999
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600716.SH",
-          "name": "凤凰股份",
-          "date": "20070921",
-          "marketCap": 54.5019841
-        },
-        {
-          "code": "600657.SH",
-          "name": "信达地产",
-          "date": "20070803",
-          "marketCap": 33.052823239999995
-        },
-        {
-          "code": "000965.SZ",
-          "name": "天保基建",
-          "date": "20080304",
-          "marketCap": 36.09225845
-        },
-        {
-          "code": "000736.SZ",
-          "name": "中交发展",
-          "date": "20071019",
-          "marketCap": 5.2404
-        },
-        {
-          "code": "600503.SH",
-          "name": "华丽家族",
-          "date": "20080218",
-          "marketCap": 22.814
-        },
-        {
-          "code": "000656.SZ",
-          "name": "金科股份",
-          "date": "20071102",
-          "marketCap": 25.204218179999998
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "600743.SH",
-          "name": "华远控股",
-          "date": "20080213",
-          "marketCap": 70.12976
-        },
-        {
-          "code": "600724.SH",
-          "name": "宁波富达",
-          "date": "20080321",
-          "marketCap": 31.216640950000002
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20071128",
-          "marketCap": 9.358182399999999
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600716.SH",
-          "name": "凤凰股份",
-          "date": "20080627",
-          "marketCap": 27.80827205
-        },
-        {
-          "code": "600638.SH",
-          "name": "新黄浦",
-          "date": "20080627",
-          "marketCap": 90.23516927
-        },
-        {
-          "code": "000736.SZ",
-          "name": "中交发展",
-          "date": "20071019",
-          "marketCap": 5.2404
-        },
-        {
-          "code": "600503.SH",
-          "name": "华丽家族",
-          "date": "20080218",
-          "marketCap": 22.814
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "000897.SZ",
-          "name": "津滨发展",
-          "date": "20080627",
-          "marketCap": 77.62906723
-        },
-        {
-          "code": "600515.SH",
-          "name": "海南机场",
-          "date": "20080627",
-          "marketCap": 10.52193479
-        },
-        {
-          "code": "600340.SH",
-          "name": "*ST华幸",
-          "date": "20080625",
-          "marketCap": 12.96296101
-        },
-        {
-          "code": "600743.SH",
-          "name": "华远控股",
-          "date": "20080213",
-          "marketCap": 70.12976
-        },
-        {
-          "code": "000668.SZ",
-          "name": "荣丰控股",
-          "date": "20080429",
-          "marketCap": 26.44622439
-        },
-        {
-          "code": "600724.SH",
-          "name": "宁波富达",
-          "date": "20080627",
-          "marketCap": 23.43471479
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600648.SH",
-          "name": "外高桥",
-          "date": "20080924",
-          "marketCap": 60.87119775
-        },
-        {
-          "code": "000965.SZ",
-          "name": "天保基建",
-          "date": "20080925",
-          "marketCap": 14.465548029999999
-        },
-        {
-          "code": "600322.SH",
-          "name": "津投城开",
-          "date": "20080925",
-          "marketCap": 39.69463
-        },
-        {
-          "code": "000736.SZ",
-          "name": "中交发展",
-          "date": "20071019",
-          "marketCap": 5.2404
-        },
-        {
-          "code": "000006.SZ",
-          "name": "深振业A",
-          "date": "20080925",
-          "marketCap": 25.308444769999998
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "600515.SH",
-          "name": "海南机场",
-          "date": "20080923",
-          "marketCap": 7.27077516
-        },
-        {
-          "code": "000668.SZ",
-          "name": "荣丰控股",
-          "date": "20080429",
-          "marketCap": 26.44622439
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000656.SZ",
-          "name": "金科股份",
-          "date": "20081230",
-          "marketCap": 9.82664459
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "600773.SH",
-          "name": "西藏城投",
-          "date": "20081226",
-          "marketCap": 7.1405363
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "000668.SZ",
-          "name": "荣丰控股",
-          "date": "20080429",
-          "marketCap": 26.44622439
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q1",
-      "financialMissing": [
-        {
-          "code": "600094.SH",
-          "name": "大名城"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600736.SH",
-          "name": "苏州高新",
-          "date": "20090330",
-          "marketCap": 41.5218528
-        },
-        {
-          "code": "000656.SZ",
-          "name": "金科股份",
-          "date": "20090320",
-          "marketCap": 13.35223463
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q2",
-      "financialMissing": [
-        {
-          "code": "600094.SH",
-          "name": "大名城"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000609.SZ",
-          "name": "*ST中迪",
-          "date": "20090629",
-          "marketCap": 36.96384473
-        },
-        {
-          "code": "600716.SH",
-          "name": "凤凰股份",
-          "date": "20090626",
-          "marketCap": 46.70006408
-        },
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20090629",
-          "marketCap": 316.90730243
-        },
-        {
-          "code": "600266.SH",
-          "name": "城建发展",
-          "date": "20090629",
-          "marketCap": 126.1182
-        },
-        {
-          "code": "600208.SH",
-          "name": "衢州发展",
-          "date": "20090629",
-          "marketCap": 314.63628782
-        },
-        {
-          "code": "600376.SH",
-          "name": "首开股份",
-          "date": "20090626",
-          "marketCap": 171.35368
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20060303",
-          "marketCap": 4.666149900000001
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "600463.SH",
-          "name": "空港股份",
-          "date": "20090629",
-          "marketCap": 18.1692
-        },
-        {
-          "code": "600340.SH",
-          "name": "*ST华幸",
-          "date": "20090608",
-          "marketCap": 10.230857120000001
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q3",
-      "financialMissing": [
-        {
-          "code": "600094.SH",
-          "name": "大名城"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600064.SH",
-          "name": "南京高科",
-          "date": "20090929",
-          "marketCap": 67.55583781
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "600622.SH",
-          "name": "光大嘉宝",
-          "date": "20090929",
-          "marketCap": 50.45320298
-        },
-        {
-          "code": "000069.SZ",
-          "name": "华侨城A",
-          "date": "20090929",
-          "marketCap": 484.90130330999995
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "600692.SH",
-          "name": "亚通股份",
-          "date": "20091201",
-          "marketCap": 34.0859378
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20091223",
-          "marketCap": 11.2172856
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002188.SZ",
-          "name": "中天服务",
-          "date": "20100330",
-          "marketCap": 19.032
-        },
-        {
-          "code": "600322.SH",
-          "name": "津投城开",
-          "date": "20100330",
-          "marketCap": 74.52418
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "000056.SZ",
-          "name": "*ST皇庭",
-          "date": "20100330",
-          "marketCap": 24.74093261
-        },
-        {
-          "code": "600515.SH",
-          "name": "海南机场",
-          "date": "20100226",
-          "marketCap": 36.08787185
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q2",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "600094.SH",
-          "name": "大名城"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000036.SZ",
-          "name": "华联控股",
-          "date": "20100629",
-          "marketCap": 42.707733059999995
-        },
-        {
-          "code": "000011.SZ",
-          "name": "深物业A",
-          "date": "20100621",
-          "marketCap": 48.27430645
-        },
-        {
-          "code": "600606.SH",
-          "name": "绿地控股",
-          "date": "20100514",
-          "marketCap": 30.519717019999998
-        },
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20100629",
-          "marketCap": 196.9467427
-        },
-        {
-          "code": "600675.SH",
-          "name": "中华企业",
-          "date": "20100514",
-          "marketCap": 101.55671575
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "000909.SZ",
-          "name": "*ST数源",
-          "date": "20100629",
-          "marketCap": 19.5216
-        },
-        {
-          "code": "600340.SH",
-          "name": "*ST华幸",
-          "date": "20100628",
-          "marketCap": 14.67779218
-        },
-        {
-          "code": "001914.SZ",
-          "name": "招商积余",
-          "date": "20100629",
-          "marketCap": 21.45392555
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q3",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "600094.SH",
-          "name": "大名城"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600606.SH",
-          "name": "绿地控股",
-          "date": "20100514",
-          "marketCap": 30.519717019999998
-        },
-        {
-          "code": "600675.SH",
-          "name": "中华企业",
-          "date": "20100514",
-          "marketCap": 101.55671575
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "000560.SZ",
-          "name": "我爱我家",
-          "date": "20100916",
-          "marketCap": 14.3136
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        },
-        {
-          "code": "000056.SZ",
-          "name": "*ST皇庭",
-          "date": "20101230",
-          "marketCap": 25.60244723
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000002.SZ",
-          "name": "万科A",
-          "date": "20110330",
-          "marketCap": 955.4837679400001
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000609.SZ",
-          "name": "*ST中迪",
-          "date": "20110629",
-          "marketCap": 31.985649510000002
-        },
-        {
-          "code": "600895.SH",
-          "name": "张江高科",
-          "date": "20110629",
-          "marketCap": 146.19629351999998
-        },
-        {
-          "code": "000656.SZ",
-          "name": "金科股份",
-          "date": "20110629",
-          "marketCap": 34.255733039999996
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000620.SZ",
-          "name": "盈新发展",
-          "date": "20060317",
-          "marketCap": 3.64603637
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600208.SH",
-          "name": "衢州发展",
-          "date": "20110929",
-          "marketCap": 234.14398291000003
-        },
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20080429",
-          "marketCap": 27.506751740000002
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "001914.SZ",
-          "name": "招商积余",
-          "date": "20110929",
-          "marketCap": 23.577086060000003
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600604.SH",
-          "name": "市北高新",
-          "date": "20120329",
-          "marketCap": 38.29196524
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        },
-        {
-          "code": "000838.SZ",
-          "name": "*ST发展",
-          "date": "20120329",
-          "marketCap": 10.15408429
-        },
-        {
-          "code": "600246.SH",
-          "name": "万通发展",
-          "date": "20120329",
-          "marketCap": 43.8048
-        },
-        {
-          "code": "001914.SZ",
-          "name": "招商积余",
-          "date": "20120329",
-          "marketCap": 39.45076776
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600639.SH",
-          "name": "浦东金桥",
-          "date": "20120628",
-          "marketCap": 65.85369534
-        },
-        {
-          "code": "600648.SH",
-          "name": "外高桥",
-          "date": "20120628",
-          "marketCap": 85.41098968
-        },
-        {
-          "code": "000797.SZ",
-          "name": "中国武夷",
-          "date": "20120628",
-          "marketCap": 18.615826629999997
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20070420",
-          "marketCap": 6.11170924
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2012Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000042.SZ",
-          "name": "中洲控股",
-          "date": "20121217",
-          "marketCap": 48.13207104
-        },
-        {
-          "code": "000002.SZ",
-          "name": "万科A",
-          "date": "20121225",
-          "marketCap": 1112.71527406
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20121122",
-          "marketCap": 7.8437444
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20130218",
-          "marketCap": 182.2389346
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000056.SZ",
-          "name": "*ST皇庭",
-          "date": "20130626",
-          "marketCap": 52.57448179
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000036.SZ",
-          "name": "华联控股",
-          "date": "20130830",
-          "marketCap": 36.75112818
-        },
-        {
-          "code": "600606.SH",
-          "name": "绿地控股",
-          "date": "20130628",
-          "marketCap": 27.41913271
-        },
-        {
-          "code": "000090.SZ",
-          "name": "天健集团",
-          "date": "20130927",
-          "marketCap": 41.32930339
-        },
-        {
-          "code": "002314.SZ",
-          "name": "南山控股",
-          "date": "20130813",
-          "marketCap": 22.301
-        },
-        {
-          "code": "000560.SZ",
-          "name": "我爱我家",
-          "date": "20130918",
-          "marketCap": 15.808470199999999
-        },
-        {
-          "code": "000668.SZ",
-          "name": "荣丰控股",
-          "date": "20130705",
-          "marketCap": 13.803137659999999
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600606.SH",
-          "name": "绿地控股",
-          "date": "20130628",
-          "marketCap": 27.41913271
-        },
-        {
-          "code": "600639.SH",
-          "name": "浦东金桥",
-          "date": "20131204",
-          "marketCap": 109.2298247
-        },
-        {
-          "code": "000668.SZ",
-          "name": "荣丰控股",
-          "date": "20130705",
-          "marketCap": 13.803137659999999
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002016.SZ",
-          "name": "世荣兆业",
-          "date": "20140327",
-          "marketCap": 42.383873460000004
-        },
-        {
-          "code": "600708.SH",
-          "name": "光明地产",
-          "date": "20140321",
-          "marketCap": 47.362359389999995
-        },
-        {
-          "code": "002305.SZ",
-          "name": "*ST南置",
-          "date": "20140207",
-          "marketCap": 60.98272246
-        },
-        {
-          "code": "000668.SZ",
-          "name": "荣丰控股",
-          "date": "20130705",
-          "marketCap": 13.803137659999999
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600604.SH",
-          "name": "市北高新",
-          "date": "20140409",
-          "marketCap": 59.024005599999995
-        },
-        {
-          "code": "600848.SH",
-          "name": "上海临港",
-          "date": "20140430",
-          "marketCap": 31.62352169
-        },
-        {
-          "code": "000560.SZ",
-          "name": "我爱我家",
-          "date": "20140404",
-          "marketCap": 14.625406810000001
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000090.SZ",
-          "name": "天健集团",
-          "date": "20140912",
-          "marketCap": 46.63359901
-        },
-        {
-          "code": "600848.SH",
-          "name": "上海临港",
-          "date": "20140430",
-          "marketCap": 31.62352169
-        },
-        {
-          "code": "600246.SH",
-          "name": "万通发展",
-          "date": "20140811",
-          "marketCap": 41.3712
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002188.SZ",
-          "name": "中天服务",
-          "date": "20141226",
-          "marketCap": 17.472
-        },
-        {
-          "code": "000609.SZ",
-          "name": "*ST中迪",
-          "date": "20141201",
-          "marketCap": 41.3458489
-        },
-        {
-          "code": "600716.SH",
-          "name": "凤凰股份",
-          "date": "20141211",
-          "marketCap": 70.94954074
-        },
-        {
-          "code": "000514.SZ",
-          "name": "渝开发",
-          "date": "20141126",
-          "marketCap": 59.73898432
-        },
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20141031",
-          "marketCap": 215.99795035000002
-        },
-        {
-          "code": "000897.SZ",
-          "name": "津滨发展",
-          "date": "20141225",
-          "marketCap": 122.10405367
-        },
-        {
-          "code": "000668.SZ",
-          "name": "荣丰控股",
-          "date": "20141222",
-          "marketCap": 16.798712220000002
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002188.SZ",
-          "name": "中天服务",
-          "date": "20141226",
-          "marketCap": 17.472
-        },
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20141031",
-          "marketCap": 215.99795035000002
-        },
-        {
-          "code": "600748.SH",
-          "name": "上实发展",
-          "date": "20150318",
-          "marketCap": 163.805676
-        },
-        {
-          "code": "600503.SH",
-          "name": "华丽家族",
-          "date": "20150120",
-          "marketCap": 106.55228500000001
-        },
-        {
-          "code": "601588.SH",
-          "name": "北辰实业",
-          "date": "20150325",
-          "marketCap": 190.573332
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20150212",
-          "marketCap": 69.82183963
-        },
-        {
-          "code": "600246.SH",
-          "name": "万通发展",
-          "date": "20150105",
-          "marketCap": 64.73376
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20150323",
-          "marketCap": 41.39825956
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600094.SH",
-          "name": "大名城",
-          "date": "20150625",
-          "marketCap": 407.34028076
-        },
-        {
-          "code": "000863.SZ",
-          "name": "三湘印象",
-          "date": "20150212",
-          "marketCap": 69.82183963
-        },
-        {
-          "code": "600622.SH",
-          "name": "光大嘉宝",
-          "date": "20150525",
-          "marketCap": 71.28250696
-        },
-        {
-          "code": "000608.SZ",
-          "name": "阳光股份",
-          "date": "20150522",
-          "marketCap": 61.71786533
-        },
-        {
-          "code": "600515.SH",
-          "name": "海南机场",
-          "date": "20150601",
-          "marketCap": 68.86990675
-        },
-        {
-          "code": "600246.SH",
-          "name": "万通发展",
-          "date": "20150105",
-          "marketCap": 64.73376
-        },
-        {
-          "code": "000668.SZ",
-          "name": "荣丰控股",
-          "date": "20150522",
-          "marketCap": 51.08629353
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20150323",
-          "marketCap": 41.39825956
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600736.SH",
-          "name": "苏州高新",
-          "date": "20150824",
-          "marketCap": 97.33487396
-        },
-        {
-          "code": "600604.SH",
-          "name": "市北高新",
-          "date": "20150922",
-          "marketCap": 156.54516857000002
-        },
-        {
-          "code": "600533.SH",
-          "name": "栖霞建设",
-          "date": "20150731",
-          "marketCap": 55.335
-        },
-        {
-          "code": "600515.SH",
-          "name": "海南机场",
-          "date": "20150601",
-          "marketCap": 68.86990675
-        },
-        {
-          "code": "000668.SZ",
-          "name": "荣丰控股",
-          "date": "20150522",
-          "marketCap": 51.08629353
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000002.SZ",
-          "name": "万科A",
-          "date": "20151218",
-          "marketCap": 2699.6432575
-        },
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20151229",
-          "marketCap": 691.91044677
-        },
-        {
-          "code": "000909.SZ",
-          "name": "*ST数源",
-          "date": "20151225",
-          "marketCap": 54.9192
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000002.SZ",
-          "name": "万科A",
-          "date": "20151218",
-          "marketCap": 2699.6432575
-        },
-        {
-          "code": "600663.SH",
-          "name": "陆家嘴",
-          "date": "20160121",
-          "marketCap": 721.1127924
-        },
-        {
-          "code": "000718.SZ",
-          "name": "苏宁环球",
-          "date": "20151231",
-          "marketCap": 400.26853905
-        },
-        {
-          "code": "000736.SZ",
-          "name": "中交发展",
-          "date": "20160219",
-          "marketCap": 41.69630207
-        },
-        {
-          "code": "002314.SZ",
-          "name": "南山控股",
-          "date": "20160304",
-          "marketCap": 131.80262516000002
-        },
-        {
-          "code": "000608.SZ",
-          "name": "阳光股份",
-          "date": "20160307",
-          "marketCap": 39.74540538
-        },
-        {
-          "code": "600848.SH",
-          "name": "上海临港",
-          "date": "20160315",
-          "marketCap": 138.03553551000002
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000002.SZ",
-          "name": "万科A",
-          "date": "20151218",
-          "marketCap": 2699.6432575
-        },
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20160617",
-          "marketCap": 429.00837718
-        },
-        {
-          "code": "600675.SH",
-          "name": "中华企业",
-          "date": "20160623",
-          "marketCap": 94.2864996
-        },
-        {
-          "code": "000718.SZ",
-          "name": "苏宁环球",
-          "date": "20151231",
-          "marketCap": 400.26853905
-        },
-        {
-          "code": "600173.SH",
-          "name": "卧龙新能",
-          "date": "20160422",
-          "marketCap": 60.40478342
-        },
-        {
-          "code": "000517.SZ",
-          "name": "荣安地产",
-          "date": "20160613",
-          "marketCap": 154.10184827
-        },
-        {
-          "code": "002314.SZ",
-          "name": "南山控股",
-          "date": "20160304",
-          "marketCap": 131.80262516000002
-        },
-        {
-          "code": "600773.SH",
-          "name": "西藏城投",
-          "date": "20160629",
-          "marketCap": 114.26778099
-        },
-        {
-          "code": "000608.SZ",
-          "name": "阳光股份",
-          "date": "20160307",
-          "marketCap": 39.74540538
-        },
-        {
-          "code": "600848.SH",
-          "name": "上海临港",
-          "date": "20160315",
-          "marketCap": 138.03553551000002
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000609.SZ",
-          "name": "*ST中迪",
-          "date": "20160923",
-          "marketCap": 42.6574692
-        },
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        },
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20160617",
-          "marketCap": 429.00837718
-        },
-        {
-          "code": "600675.SH",
-          "name": "中华企业",
-          "date": "20160623",
-          "marketCap": 94.2864996
-        },
-        {
-          "code": "000656.SZ",
-          "name": "金科股份",
-          "date": "20160926",
-          "marketCap": 235.78117834
-        },
-        {
-          "code": "600773.SH",
-          "name": "西藏城投",
-          "date": "20160629",
-          "marketCap": 114.26778099
-        },
-        {
-          "code": "000560.SZ",
-          "name": "我爱我家",
-          "date": "20160901",
-          "marketCap": 121.70453714
-        },
-        {
-          "code": "600246.SH",
-          "name": "万通发展",
-          "date": "20160927",
-          "marketCap": 120.57034603
-        },
-        {
-          "code": "001914.SZ",
-          "name": "招商积余",
-          "date": "20160706",
-          "marketCap": 57.09189721
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20160919",
-          "marketCap": 91.54153275
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000042.SZ",
-          "name": "中洲控股",
-          "date": "20161026",
-          "marketCap": 134.56182253
-        },
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        },
-        {
-          "code": "600649.SH",
-          "name": "城投控股",
-          "date": "20161205",
-          "marketCap": 607.66228356
-        },
-        {
-          "code": "600173.SH",
-          "name": "卧龙新能",
-          "date": "20161221",
-          "marketCap": 83.24692841000001
-        },
-        {
-          "code": "600239.SH",
-          "name": "ST云城",
-          "date": "20161229",
-          "marketCap": 60.58791935000001
-        },
-        {
-          "code": "000560.SZ",
-          "name": "我爱我家",
-          "date": "20160901",
-          "marketCap": 121.70453714
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000042.SZ",
-          "name": "中洲控股",
-          "date": "20161026",
-          "marketCap": 134.56182253
-        },
-        {
-          "code": "600657.SH",
-          "name": "信达地产",
-          "date": "20170217",
-          "marketCap": 89.62651398999999
-        },
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        },
-        {
-          "code": "600173.SH",
-          "name": "卧龙新能",
-          "date": "20161221",
-          "marketCap": 83.24692841000001
-        },
-        {
-          "code": "600239.SH",
-          "name": "ST云城",
-          "date": "20170117",
-          "marketCap": 70.114995
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20170210",
-          "marketCap": 81.79788903
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600657.SH",
-          "name": "信达地产",
-          "date": "20170217",
-          "marketCap": 89.62651398999999
-        },
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        },
-        {
-          "code": "000656.SZ",
-          "name": "金科股份",
-          "date": "20170504",
-          "marketCap": 360.1430245
-        },
-        {
-          "code": "000838.SZ",
-          "name": "*ST发展",
-          "date": "20170428",
-          "marketCap": 72.520457
-        },
-        {
-          "code": "600239.SH",
-          "name": "ST云城",
-          "date": "20170623",
-          "marketCap": 83.81685664999999
-        },
-        {
-          "code": "600136.SH",
-          "name": "ST明诚",
-          "date": "20170210",
-          "marketCap": 81.79788903
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        },
-        {
-          "code": "000006.SZ",
-          "name": "深振业A",
-          "date": "20170908",
-          "marketCap": 132.97451203
-        },
-        {
-          "code": "000608.SZ",
-          "name": "阳光股份",
-          "date": "20170926",
-          "marketCap": 60.967952020000006
-        },
-        {
-          "code": "600239.SH",
-          "name": "ST云城",
-          "date": "20170623",
-          "marketCap": 83.81685664999999
-        },
-        {
-          "code": "000560.SZ",
-          "name": "我爱我家",
-          "date": "20170928",
-          "marketCap": 127.32166962
-        },
-        {
-          "code": "000031.SZ",
-          "name": "大悦城",
-          "date": "20170721",
-          "marketCap": 145.09852768000002
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        },
-        {
-          "code": "600162.SH",
-          "name": "香江控股",
-          "date": "20171109",
-          "marketCap": 114.60262698999999
-        },
-        {
-          "code": "000006.SZ",
-          "name": "深振业A",
-          "date": "20170908",
-          "marketCap": 132.97451203
-        },
-        {
-          "code": "000926.SZ",
-          "name": "福星股份",
-          "date": "20171225",
-          "marketCap": 105.79879742
-        },
-        {
-          "code": "000056.SZ",
-          "name": "*ST皇庭",
-          "date": "20171031",
-          "marketCap": 155.96833033000001
-        },
-        {
-          "code": "600239.SH",
-          "name": "ST云城",
-          "date": "20170623",
-          "marketCap": 83.81685664999999
-        },
-        {
-          "code": "000031.SZ",
-          "name": "大悦城",
-          "date": "20170721",
-          "marketCap": 145.09852768000002
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        },
-        {
-          "code": "000056.SZ",
-          "name": "*ST皇庭",
-          "date": "20171031",
-          "marketCap": 155.96833033000001
-        },
-        {
-          "code": "600515.SH",
-          "name": "海南机场",
-          "date": "20180122",
-          "marketCap": 436.08731854
-        },
-        {
-          "code": "000031.SZ",
-          "name": "大悦城",
-          "date": "20170721",
-          "marketCap": 145.09852768000002
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        },
-        {
-          "code": "600848.SH",
-          "name": "上海临港",
-          "date": "20180614",
-          "marketCap": 242.68650732999998
-        },
-        {
-          "code": "600515.SH",
-          "name": "海南机场",
-          "date": "20180122",
-          "marketCap": 436.08731854
-        },
-        {
-          "code": "600724.SH",
-          "name": "宁波富达",
-          "date": "20180502",
-          "marketCap": 47.54843124
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        },
-        {
-          "code": "600848.SH",
-          "name": "上海临港",
-          "date": "20180614",
-          "marketCap": 242.68650732999998
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        },
-        {
-          "code": "000608.SZ",
-          "name": "阳光股份",
-          "date": "20190325",
-          "marketCap": 52.11897498
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        },
-        {
-          "code": "600510.SH",
-          "name": "黑牡丹",
-          "date": "20190618",
-          "marketCap": 66.17640558
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        }
-      ]
-    },
-    {
-      "quarter": "2020Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        }
-      ]
-    },
-    {
-      "quarter": "2020Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        }
-      ]
-    },
-    {
-      "quarter": "2020Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000029.SZ",
-          "name": "深深房A",
-          "date": "20160913",
-          "marketCap": 113.002422
-        }
-      ]
-    },
-    {
-      "quarter": "2020Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600340.SH",
-          "name": "*ST华幸",
-          "date": "20210923",
-          "marketCap": 156.94018570999998
-        }
-      ]
-    },
-    {
-      "quarter": "2021Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600322.SH",
-          "name": "津投城开",
-          "date": "20241217",
-          "marketCap": 30.07504
-        }
-      ]
-    },
-    {
-      "quarter": "2025Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000909.SZ",
-          "name": "*ST数源",
-          "date": "20260330",
-          "marketCap": 26.6130261
-        }
-      ]
-    },
-    {
-      "quarter": "2026Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    }
-  ]
+      "financialCoverage": 1.0,
+      "peRaw": 17.57,
+      "valuationSource": "sw_daily",
+      "valuationCode": "801180.SI",
+      "valuationDate": "20260930",
+      "peStatus": "valid",
+      "peNote": ""
+    },
+    "indices": [
+      {
+        "code": "801180.SI",
+        "name": "房地产",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      },
+      {
+        "code": "801181.SI",
+        "name": "房地产开发",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      },
+      {
+        "code": "801183.SI",
+        "name": "房地产服务",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      }
+    ]
+  }
 }

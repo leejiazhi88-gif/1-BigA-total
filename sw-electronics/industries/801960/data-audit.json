@@ -1,25 +1,1377 @@
 {
-  "asOf": "2026-11-10",
-  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
-  "summary": {
+  "historicalCompanyAggregateAudit": {
+    "asOf": "2026-11-10",
+    "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+    "summary": {
+      "industry": "石油石化",
+      "code": "801960.SI",
+      "companies": 48,
+      "quarters": 87,
+      "companyQuarterRows": 3190,
+      "latest": {
+        "quarter": "2026Q3",
+        "endDate": "20260930",
+        "tradeDate": "20260930",
+        "companies": 48,
+        "marketCap": 51722.50929837999,
+        "marketCapObserved": 51722.50929837999,
+        "pe": 13.136141533339448,
+        "peMarketCap": 51722.50929837999,
+        "peProfit": 3937.4202209308246,
+        "peCoverage": 1.0,
+        "peMissingCount": 0,
+        "peRebuiltCount": 14,
+        "revenue": 20373.722211493598,
+        "profit": 1153.5499804545,
+        "reportedCount": 48,
+        "estimatedCount": 0,
+        "missingCount": 0,
+        "estimatedRevenue": 0,
+        "estimatedProfit": 0,
+        "carriedCount": 0,
+        "marketMissingCount": 0,
+        "financialCoverage": 1.0
+      },
+      "financialIncompleteQuarters": 0,
+      "peCoverageMin": 0.9972253465653024,
+      "carriedCompanyQuarters": 107
+    },
+    "quality": [
+      {
+        "quarter": "2005Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2005Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000698.SZ",
+            "name": "ST沈化",
+            "date": "20050629",
+            "marketCap": 13.3480473
+          },
+          {
+            "code": "600777.SH",
+            "name": "新潮能源",
+            "date": "20050629",
+            "marketCap": 11.43176762
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000059.SZ",
+            "name": "华锦股份",
+            "date": "20050928",
+            "marketCap": 35.88048408
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600688.SH",
+            "name": "上海石化",
+            "date": "20051229",
+            "marketCap": 300.96
+          },
+          {
+            "code": "000698.SZ",
+            "name": "ST沈化",
+            "date": "20051222",
+            "marketCap": 17.61435355
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q1",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "600339.SH",
+            "name": "中油工程"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600256.SH",
+            "name": "广汇能源",
+            "date": "20060324",
+            "marketCap": 50.49137058
+          },
+          {
+            "code": "600339.SH",
+            "name": "中油工程",
+            "date": "20060228",
+            "marketCap": 14.7798
+          },
+          {
+            "code": "600777.SH",
+            "name": "新潮能源",
+            "date": "20060324",
+            "marketCap": 11.22516941
+          },
+          {
+            "code": "000301.SZ",
+            "name": "东方盛虹",
+            "date": "20060324",
+            "marketCap": 14.83336188
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600800.SH",
+            "name": "渤海化学",
+            "date": "20060428",
+            "marketCap": 15.280959919999999
+          },
+          {
+            "code": "600346.SH",
+            "name": "恒力石化",
+            "date": "20060616",
+            "marketCap": 5.7645
+          },
+          {
+            "code": "600506.SH",
+            "name": "统一股份",
+            "date": "20060608",
+            "marketCap": 6.741
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600256.SH",
+            "name": "广汇能源",
+            "date": "20060928",
+            "marketCap": 44.77536637
+          },
+          {
+            "code": "600028.SH",
+            "name": "中国石化",
+            "date": "20060914",
+            "marketCap": 5887.0956081
+          },
+          {
+            "code": "000985.SZ",
+            "name": "大庆华科",
+            "date": "20060915",
+            "marketCap": 11.247
+          },
+          {
+            "code": "000703.SZ",
+            "name": "恒逸石化",
+            "date": "20060922",
+            "marketCap": 4.882280000000001
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000554.SZ",
+            "name": "泰山石油",
+            "date": "20061205",
+            "marketCap": 27.93409178
+          },
+          {
+            "code": "000819.SZ",
+            "name": "岳阳兴长",
+            "date": "20061205",
+            "marketCap": 29.39382708
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20061228",
+            "marketCap": 4.0459083
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000059.SZ",
+            "name": "华锦股份",
+            "date": "20070323",
+            "marketCap": 57.6342711
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20061228",
+            "marketCap": 4.0459083
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q2",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "600759.SH",
+            "name": "ST洲际"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600871.SH",
+            "name": "石化油服",
+            "date": "20070628",
+            "marketCap": 465.2
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20070523",
+            "marketCap": 4.69241942
+          },
+          {
+            "code": "000301.SZ",
+            "name": "东方盛虹",
+            "date": "20070523",
+            "marketCap": 158.85803243
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q3",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "600759.SH",
+            "name": "ST洲际"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20070523",
+            "marketCap": 4.69241942
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2008Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600583.SH",
+            "name": "海油工程",
+            "date": "20080328",
+            "marketCap": 432.432
+          },
+          {
+            "code": "000698.SZ",
+            "name": "ST沈化",
+            "date": "20080328",
+            "marketCap": 48.15434784
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600777.SH",
+            "name": "新潮能源",
+            "date": "20080627",
+            "marketCap": 23.14066132
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2008Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000819.SZ",
+            "name": "岳阳兴长",
+            "date": "20081230",
+            "marketCap": 29.444291340000003
+          },
+          {
+            "code": "600800.SH",
+            "name": "渤海化学",
+            "date": "20081219",
+            "marketCap": 21.459543
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2009Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600506.SH",
+            "name": "统一股份",
+            "date": "20090605",
+            "marketCap": 10.67920692
+          },
+          {
+            "code": "600777.SH",
+            "name": "新潮能源",
+            "date": "20090629",
+            "marketCap": 39.401666580000004
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2009Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600583.SH",
+            "name": "海油工程",
+            "date": "20091230",
+            "marketCap": 369.4968
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2010Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2010Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600777.SH",
+            "name": "新潮能源",
+            "date": "20100823",
+            "marketCap": 55.22487554
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000059.SZ",
+            "name": "华锦股份",
+            "date": "20101201",
+            "marketCap": 139.13868794
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000059.SZ",
+            "name": "华锦股份",
+            "date": "20101201",
+            "marketCap": 139.13868794
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600777.SH",
+            "name": "新潮能源",
+            "date": "20110629",
+            "marketCap": 35.21133061
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2011Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2012Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2012Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000059.SZ",
+            "name": "华锦股份",
+            "date": "20120625",
+            "marketCap": 94.96005363
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2012Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000698.SZ",
+            "name": "ST沈化",
+            "date": "20121221",
+            "marketCap": 27.891183880000003
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300164.SZ",
+            "name": "通源石油",
+            "date": "20130201",
+            "marketCap": 27.19728
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600688.SH",
+            "name": "上海石化",
+            "date": "20130627",
+            "marketCap": 589.68
+          },
+          {
+            "code": "600871.SH",
+            "name": "石化油服",
+            "date": "20130627",
+            "marketCap": 338.8
+          },
+          {
+            "code": "600506.SH",
+            "name": "统一股份",
+            "date": "20130417",
+            "marketCap": 12.96866345
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000698.SZ",
+            "name": "ST沈化",
+            "date": "20130702",
+            "marketCap": 26.437141119999996
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20130923",
+            "marketCap": 56.24741882
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002476.SZ",
+            "name": "新叶股份",
+            "date": "20131206",
+            "marketCap": 56.4876
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300135.SZ",
+            "name": "宝利国际",
+            "date": "20140109",
+            "marketCap": 38.144
+          },
+          {
+            "code": "002629.SZ",
+            "name": "仁智股份",
+            "date": "20140107",
+            "marketCap": 20.975019
+          },
+          {
+            "code": "600506.SH",
+            "name": "统一股份",
+            "date": "20140113",
+            "marketCap": 12.61416695
+          },
+          {
+            "code": "300055.SZ",
+            "name": "万邦达",
+            "date": "20140311",
+            "marketCap": 77.95215999999999
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002629.SZ",
+            "name": "仁智股份",
+            "date": "20140107",
+            "marketCap": 20.975019
+          },
+          {
+            "code": "002554.SZ",
+            "name": "惠博普",
+            "date": "20140627",
+            "marketCap": 49.02525
+          },
+          {
+            "code": "600871.SH",
+            "name": "石化油服",
+            "date": "20140527",
+            "marketCap": 166.8
+          },
+          {
+            "code": "600346.SH",
+            "name": "恒力石化",
+            "date": "20140411",
+            "marketCap": 22.44344472
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002377.SZ",
+            "name": "国创高新",
+            "date": "20140915",
+            "marketCap": 37.646534
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000968.SZ",
+            "name": "蓝焰控股",
+            "date": "20141229",
+            "marketCap": 46.596852899999995
+          },
+          {
+            "code": "002207.SZ",
+            "name": "*ST准油",
+            "date": "20141009",
+            "marketCap": 42.57357328
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20141223",
+            "marketCap": 172.37480327
+          },
+          {
+            "code": "600777.SH",
+            "name": "新潮能源",
+            "date": "20141124",
+            "marketCap": 74.55045486
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000968.SZ",
+            "name": "蓝焰控股",
+            "date": "20141229",
+            "marketCap": 46.596852899999995
+          },
+          {
+            "code": "002476.SZ",
+            "name": "新叶股份",
+            "date": "20150105",
+            "marketCap": 48.8988
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20141223",
+            "marketCap": 172.37480327
+          },
+          {
+            "code": "600777.SH",
+            "name": "新潮能源",
+            "date": "20141124",
+            "marketCap": 74.55045486
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300135.SZ",
+            "name": "宝利国际",
+            "date": "20150626",
+            "marketCap": 116.5824
+          },
+          {
+            "code": "300164.SZ",
+            "name": "通源石油",
+            "date": "20150527",
+            "marketCap": 69.47381256999999
+          },
+          {
+            "code": "600346.SH",
+            "name": "恒力石化",
+            "date": "20150504",
+            "marketCap": 48.57423417
+          },
+          {
+            "code": "002377.SZ",
+            "name": "国创高新",
+            "date": "20150625",
+            "marketCap": 58.360248
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300135.SZ",
+            "name": "宝利国际",
+            "date": "20150626",
+            "marketCap": 116.5824
+          },
+          {
+            "code": "002629.SZ",
+            "name": "仁智股份",
+            "date": "20150710",
+            "marketCap": 31.4316324
+          },
+          {
+            "code": "300164.SZ",
+            "name": "通源石油",
+            "date": "20150527",
+            "marketCap": 69.47381256999999
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20150918",
+            "marketCap": 177.68534016
+          },
+          {
+            "code": "600777.SH",
+            "name": "新潮能源",
+            "date": "20150706",
+            "marketCap": 73.79994692000001
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000968.SZ",
+            "name": "蓝焰控股",
+            "date": "20151223",
+            "marketCap": 44.7473637
+          },
+          {
+            "code": "002207.SZ",
+            "name": "*ST准油",
+            "date": "20151215",
+            "marketCap": 51.23179437
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20150918",
+            "marketCap": 177.68534016
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000968.SZ",
+            "name": "蓝焰控股",
+            "date": "20151223",
+            "marketCap": 44.7473637
+          },
+          {
+            "code": "002207.SZ",
+            "name": "*ST准油",
+            "date": "20151215",
+            "marketCap": 51.23179437
+          },
+          {
+            "code": "600339.SH",
+            "name": "中油工程",
+            "date": "20160219",
+            "marketCap": 31.104722210000002
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20150918",
+            "marketCap": 177.68534016
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000968.SZ",
+            "name": "蓝焰控股",
+            "date": "20151223",
+            "marketCap": 44.7473637
+          },
+          {
+            "code": "002207.SZ",
+            "name": "*ST准油",
+            "date": "20151215",
+            "marketCap": 51.23179437
+          },
+          {
+            "code": "600339.SH",
+            "name": "中油工程",
+            "date": "20160219",
+            "marketCap": 31.104722210000002
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20160624",
+            "marketCap": 171.57386986
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002207.SZ",
+            "name": "*ST准油",
+            "date": "20151215",
+            "marketCap": 51.23179437
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20160902",
+            "marketCap": 180.85425069
+          },
+          {
+            "code": "002377.SZ",
+            "name": "国创高新",
+            "date": "20160715",
+            "marketCap": 40.221252
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002629.SZ",
+            "name": "仁智股份",
+            "date": "20160930",
+            "marketCap": 54.0063828
+          },
+          {
+            "code": "600346.SH",
+            "name": "恒力石化",
+            "date": "20161101",
+            "marketCap": 235.37972226999997
+          },
+          {
+            "code": "002377.SZ",
+            "name": "国创高新",
+            "date": "20160715",
+            "marketCap": 40.221252
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000301.SZ",
+            "name": "东方盛虹",
+            "date": "20170310",
+            "marketCap": 62.130058700000006
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000301.SZ",
+            "name": "东方盛虹",
+            "date": "20170310",
+            "marketCap": 62.130058700000006
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300164.SZ",
+            "name": "通源石油",
+            "date": "20170719",
+            "marketCap": 27.22528684
+          },
+          {
+            "code": "000301.SZ",
+            "name": "东方盛虹",
+            "date": "20170310",
+            "marketCap": 62.130058700000006
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2018Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600256.SH",
+            "name": "广汇能源",
+            "date": "20180319",
+            "marketCap": 218.77769426000003
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20180326",
+            "marketCap": 89.18219621
+          },
+          {
+            "code": "600777.SH",
+            "name": "新潮能源",
+            "date": "20180302",
+            "marketCap": 221.01611431
+          },
+          {
+            "code": "000703.SZ",
+            "name": "恒逸石化",
+            "date": "20180104",
+            "marketCap": 428.75517655999994
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600800.SH",
+            "name": "渤海化学",
+            "date": "20180518",
+            "marketCap": 33.43652627
+          },
+          {
+            "code": "600506.SH",
+            "name": "统一股份",
+            "date": "20180522",
+            "marketCap": 19.45299517
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20180326",
+            "marketCap": 89.18219621
+          },
+          {
+            "code": "002408.SZ",
+            "name": "齐翔腾达",
+            "date": "20180615",
+            "marketCap": 220.12594737
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600800.SH",
+            "name": "渤海化学",
+            "date": "20180518",
+            "marketCap": 33.43652627
+          },
+          {
+            "code": "600759.SH",
+            "name": "ST洲际",
+            "date": "20180326",
+            "marketCap": 89.18219621
+          },
+          {
+            "code": "002408.SZ",
+            "name": "齐翔腾达",
+            "date": "20180615",
+            "marketCap": 220.12594737
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002629.SZ",
+            "name": "仁智股份",
+            "date": "20190322",
+            "marketCap": 18.661244399999998
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002207.SZ",
+            "name": "*ST准油",
+            "date": "20200629",
+            "marketCap": 14.01579435
+          }
+        ]
+      },
+      {
+        "quarter": "2020Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600777.SH",
+            "name": "新潮能源",
+            "date": "20250430",
+            "marketCap": 218.29591598
+          }
+        ]
+      },
+      {
+        "quarter": "2025Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      }
+    ]
+  },
+  "historicalAuditScope": "旧公司整体法，市值/PE已被sw-alignment-audit.json取代；财务核验仍有效",
+  "valuationAlignment": {
     "industry": "石油石化",
     "code": "801960.SI",
-    "companies": 48,
-    "quarters": 87,
-    "companyQuarterRows": 3190,
+    "scope": "SW公布市值/PE与财报汇总分离",
+    "project2AsOf": "20261110",
+    "financialAsOf": "2026-11-10",
+    "financialHash": "f91e54312222b29962555af6a4a2e197fa86ac95500b52d95eeb85a862961684",
+    "sectorFinancialHashes": {
+      "801963.SI": "f227faeadd38fcff80204c2d36fceb33570154563e9cbf506b44779071b1ec27",
+      "801962.SI": "40ef67a9a864c4958e0880fc81e32259e7d71b916d77cfb2698aaa83b2c04dd4",
+      "801961.SI": "e1c55436dc409c9ac72ed20a6bece4330e79dd679b739cdc90065cd1a1f5bcde"
+    },
     "latest": {
       "quarter": "2026Q3",
       "endDate": "20260930",
       "tradeDate": "20260930",
       "companies": 48,
-      "marketCap": 51722.50929837999,
-      "marketCapObserved": 51722.50929837999,
-      "pe": 13.136141533339448,
-      "peMarketCap": 51722.50929837999,
-      "peProfit": 3937.4202209308246,
-      "peCoverage": 1.0,
-      "peMissingCount": 0,
-      "peRebuiltCount": 14,
+      "marketCap": 32764.875,
+      "marketCapObserved": 32764.875,
+      "pe": 16.34,
       "revenue": 20373.722211493598,
       "profit": 1153.5499804545,
       "reportedCount": 48,
@@ -29,1324 +1381,139 @@
       "estimatedProfit": 0,
       "carriedCount": 0,
       "marketMissingCount": 0,
-      "financialCoverage": 1.0
-    },
-    "financialIncompleteQuarters": 0,
-    "peCoverageMin": 0.9972253465653024,
-    "carriedCompanyQuarters": 107
-  },
-  "quality": [
-    {
-      "quarter": "2005Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2005Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000698.SZ",
-          "name": "ST沈化",
-          "date": "20050629",
-          "marketCap": 13.3480473
-        },
-        {
-          "code": "600777.SH",
-          "name": "新潮能源",
-          "date": "20050629",
-          "marketCap": 11.43176762
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000059.SZ",
-          "name": "华锦股份",
-          "date": "20050928",
-          "marketCap": 35.88048408
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600688.SH",
-          "name": "上海石化",
-          "date": "20051229",
-          "marketCap": 300.96
-        },
-        {
-          "code": "000698.SZ",
-          "name": "ST沈化",
-          "date": "20051222",
-          "marketCap": 17.61435355
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q1",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "600339.SH",
-          "name": "中油工程"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600256.SH",
-          "name": "广汇能源",
-          "date": "20060324",
-          "marketCap": 50.49137058
-        },
-        {
-          "code": "600339.SH",
-          "name": "中油工程",
-          "date": "20060228",
-          "marketCap": 14.7798
-        },
-        {
-          "code": "600777.SH",
-          "name": "新潮能源",
-          "date": "20060324",
-          "marketCap": 11.22516941
-        },
-        {
-          "code": "000301.SZ",
-          "name": "东方盛虹",
-          "date": "20060324",
-          "marketCap": 14.83336188
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600800.SH",
-          "name": "渤海化学",
-          "date": "20060428",
-          "marketCap": 15.280959919999999
-        },
-        {
-          "code": "600346.SH",
-          "name": "恒力石化",
-          "date": "20060616",
-          "marketCap": 5.7645
-        },
-        {
-          "code": "600506.SH",
-          "name": "统一股份",
-          "date": "20060608",
-          "marketCap": 6.741
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600256.SH",
-          "name": "广汇能源",
-          "date": "20060928",
-          "marketCap": 44.77536637
-        },
-        {
-          "code": "600028.SH",
-          "name": "中国石化",
-          "date": "20060914",
-          "marketCap": 5887.0956081
-        },
-        {
-          "code": "000985.SZ",
-          "name": "大庆华科",
-          "date": "20060915",
-          "marketCap": 11.247
-        },
-        {
-          "code": "000703.SZ",
-          "name": "恒逸石化",
-          "date": "20060922",
-          "marketCap": 4.882280000000001
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000554.SZ",
-          "name": "泰山石油",
-          "date": "20061205",
-          "marketCap": 27.93409178
-        },
-        {
-          "code": "000819.SZ",
-          "name": "岳阳兴长",
-          "date": "20061205",
-          "marketCap": 29.39382708
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20061228",
-          "marketCap": 4.0459083
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000059.SZ",
-          "name": "华锦股份",
-          "date": "20070323",
-          "marketCap": 57.6342711
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20061228",
-          "marketCap": 4.0459083
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q2",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "600759.SH",
-          "name": "ST洲际"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600871.SH",
-          "name": "石化油服",
-          "date": "20070628",
-          "marketCap": 465.2
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20070523",
-          "marketCap": 4.69241942
-        },
-        {
-          "code": "000301.SZ",
-          "name": "东方盛虹",
-          "date": "20070523",
-          "marketCap": 158.85803243
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q3",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "600759.SH",
-          "name": "ST洲际"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20070523",
-          "marketCap": 4.69241942
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2008Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600583.SH",
-          "name": "海油工程",
-          "date": "20080328",
-          "marketCap": 432.432
-        },
-        {
-          "code": "000698.SZ",
-          "name": "ST沈化",
-          "date": "20080328",
-          "marketCap": 48.15434784
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600777.SH",
-          "name": "新潮能源",
-          "date": "20080627",
-          "marketCap": 23.14066132
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2008Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000819.SZ",
-          "name": "岳阳兴长",
-          "date": "20081230",
-          "marketCap": 29.444291340000003
-        },
-        {
-          "code": "600800.SH",
-          "name": "渤海化学",
-          "date": "20081219",
-          "marketCap": 21.459543
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2009Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600506.SH",
-          "name": "统一股份",
-          "date": "20090605",
-          "marketCap": 10.67920692
-        },
-        {
-          "code": "600777.SH",
-          "name": "新潮能源",
-          "date": "20090629",
-          "marketCap": 39.401666580000004
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2009Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600583.SH",
-          "name": "海油工程",
-          "date": "20091230",
-          "marketCap": 369.4968
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2010Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2010Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600777.SH",
-          "name": "新潮能源",
-          "date": "20100823",
-          "marketCap": 55.22487554
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000059.SZ",
-          "name": "华锦股份",
-          "date": "20101201",
-          "marketCap": 139.13868794
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000059.SZ",
-          "name": "华锦股份",
-          "date": "20101201",
-          "marketCap": 139.13868794
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600777.SH",
-          "name": "新潮能源",
-          "date": "20110629",
-          "marketCap": 35.21133061
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2011Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2012Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2012Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000059.SZ",
-          "name": "华锦股份",
-          "date": "20120625",
-          "marketCap": 94.96005363
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2012Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000698.SZ",
-          "name": "ST沈化",
-          "date": "20121221",
-          "marketCap": 27.891183880000003
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300164.SZ",
-          "name": "通源石油",
-          "date": "20130201",
-          "marketCap": 27.19728
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600688.SH",
-          "name": "上海石化",
-          "date": "20130627",
-          "marketCap": 589.68
-        },
-        {
-          "code": "600871.SH",
-          "name": "石化油服",
-          "date": "20130627",
-          "marketCap": 338.8
-        },
-        {
-          "code": "600506.SH",
-          "name": "统一股份",
-          "date": "20130417",
-          "marketCap": 12.96866345
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000698.SZ",
-          "name": "ST沈化",
-          "date": "20130702",
-          "marketCap": 26.437141119999996
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20130923",
-          "marketCap": 56.24741882
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002476.SZ",
-          "name": "新叶股份",
-          "date": "20131206",
-          "marketCap": 56.4876
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300135.SZ",
-          "name": "宝利国际",
-          "date": "20140109",
-          "marketCap": 38.144
-        },
-        {
-          "code": "002629.SZ",
-          "name": "仁智股份",
-          "date": "20140107",
-          "marketCap": 20.975019
-        },
-        {
-          "code": "600506.SH",
-          "name": "统一股份",
-          "date": "20140113",
-          "marketCap": 12.61416695
-        },
-        {
-          "code": "300055.SZ",
-          "name": "万邦达",
-          "date": "20140311",
-          "marketCap": 77.95215999999999
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002629.SZ",
-          "name": "仁智股份",
-          "date": "20140107",
-          "marketCap": 20.975019
-        },
-        {
-          "code": "002554.SZ",
-          "name": "惠博普",
-          "date": "20140627",
-          "marketCap": 49.02525
-        },
-        {
-          "code": "600871.SH",
-          "name": "石化油服",
-          "date": "20140527",
-          "marketCap": 166.8
-        },
-        {
-          "code": "600346.SH",
-          "name": "恒力石化",
-          "date": "20140411",
-          "marketCap": 22.44344472
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002377.SZ",
-          "name": "国创高新",
-          "date": "20140915",
-          "marketCap": 37.646534
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000968.SZ",
-          "name": "蓝焰控股",
-          "date": "20141229",
-          "marketCap": 46.596852899999995
-        },
-        {
-          "code": "002207.SZ",
-          "name": "*ST准油",
-          "date": "20141009",
-          "marketCap": 42.57357328
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20141223",
-          "marketCap": 172.37480327
-        },
-        {
-          "code": "600777.SH",
-          "name": "新潮能源",
-          "date": "20141124",
-          "marketCap": 74.55045486
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000968.SZ",
-          "name": "蓝焰控股",
-          "date": "20141229",
-          "marketCap": 46.596852899999995
-        },
-        {
-          "code": "002476.SZ",
-          "name": "新叶股份",
-          "date": "20150105",
-          "marketCap": 48.8988
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20141223",
-          "marketCap": 172.37480327
-        },
-        {
-          "code": "600777.SH",
-          "name": "新潮能源",
-          "date": "20141124",
-          "marketCap": 74.55045486
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300135.SZ",
-          "name": "宝利国际",
-          "date": "20150626",
-          "marketCap": 116.5824
-        },
-        {
-          "code": "300164.SZ",
-          "name": "通源石油",
-          "date": "20150527",
-          "marketCap": 69.47381256999999
-        },
-        {
-          "code": "600346.SH",
-          "name": "恒力石化",
-          "date": "20150504",
-          "marketCap": 48.57423417
-        },
-        {
-          "code": "002377.SZ",
-          "name": "国创高新",
-          "date": "20150625",
-          "marketCap": 58.360248
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300135.SZ",
-          "name": "宝利国际",
-          "date": "20150626",
-          "marketCap": 116.5824
-        },
-        {
-          "code": "002629.SZ",
-          "name": "仁智股份",
-          "date": "20150710",
-          "marketCap": 31.4316324
-        },
-        {
-          "code": "300164.SZ",
-          "name": "通源石油",
-          "date": "20150527",
-          "marketCap": 69.47381256999999
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20150918",
-          "marketCap": 177.68534016
-        },
-        {
-          "code": "600777.SH",
-          "name": "新潮能源",
-          "date": "20150706",
-          "marketCap": 73.79994692000001
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000968.SZ",
-          "name": "蓝焰控股",
-          "date": "20151223",
-          "marketCap": 44.7473637
-        },
-        {
-          "code": "002207.SZ",
-          "name": "*ST准油",
-          "date": "20151215",
-          "marketCap": 51.23179437
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20150918",
-          "marketCap": 177.68534016
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000968.SZ",
-          "name": "蓝焰控股",
-          "date": "20151223",
-          "marketCap": 44.7473637
-        },
-        {
-          "code": "002207.SZ",
-          "name": "*ST准油",
-          "date": "20151215",
-          "marketCap": 51.23179437
-        },
-        {
-          "code": "600339.SH",
-          "name": "中油工程",
-          "date": "20160219",
-          "marketCap": 31.104722210000002
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20150918",
-          "marketCap": 177.68534016
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000968.SZ",
-          "name": "蓝焰控股",
-          "date": "20151223",
-          "marketCap": 44.7473637
-        },
-        {
-          "code": "002207.SZ",
-          "name": "*ST准油",
-          "date": "20151215",
-          "marketCap": 51.23179437
-        },
-        {
-          "code": "600339.SH",
-          "name": "中油工程",
-          "date": "20160219",
-          "marketCap": 31.104722210000002
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20160624",
-          "marketCap": 171.57386986
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002207.SZ",
-          "name": "*ST准油",
-          "date": "20151215",
-          "marketCap": 51.23179437
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20160902",
-          "marketCap": 180.85425069
-        },
-        {
-          "code": "002377.SZ",
-          "name": "国创高新",
-          "date": "20160715",
-          "marketCap": 40.221252
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002629.SZ",
-          "name": "仁智股份",
-          "date": "20160930",
-          "marketCap": 54.0063828
-        },
-        {
-          "code": "600346.SH",
-          "name": "恒力石化",
-          "date": "20161101",
-          "marketCap": 235.37972226999997
-        },
-        {
-          "code": "002377.SZ",
-          "name": "国创高新",
-          "date": "20160715",
-          "marketCap": 40.221252
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000301.SZ",
-          "name": "东方盛虹",
-          "date": "20170310",
-          "marketCap": 62.130058700000006
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000301.SZ",
-          "name": "东方盛虹",
-          "date": "20170310",
-          "marketCap": 62.130058700000006
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300164.SZ",
-          "name": "通源石油",
-          "date": "20170719",
-          "marketCap": 27.22528684
-        },
-        {
-          "code": "000301.SZ",
-          "name": "东方盛虹",
-          "date": "20170310",
-          "marketCap": 62.130058700000006
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2018Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600256.SH",
-          "name": "广汇能源",
-          "date": "20180319",
-          "marketCap": 218.77769426000003
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20180326",
-          "marketCap": 89.18219621
-        },
-        {
-          "code": "600777.SH",
-          "name": "新潮能源",
-          "date": "20180302",
-          "marketCap": 221.01611431
-        },
-        {
-          "code": "000703.SZ",
-          "name": "恒逸石化",
-          "date": "20180104",
-          "marketCap": 428.75517655999994
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600800.SH",
-          "name": "渤海化学",
-          "date": "20180518",
-          "marketCap": 33.43652627
-        },
-        {
-          "code": "600506.SH",
-          "name": "统一股份",
-          "date": "20180522",
-          "marketCap": 19.45299517
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20180326",
-          "marketCap": 89.18219621
-        },
-        {
-          "code": "002408.SZ",
-          "name": "齐翔腾达",
-          "date": "20180615",
-          "marketCap": 220.12594737
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600800.SH",
-          "name": "渤海化学",
-          "date": "20180518",
-          "marketCap": 33.43652627
-        },
-        {
-          "code": "600759.SH",
-          "name": "ST洲际",
-          "date": "20180326",
-          "marketCap": 89.18219621
-        },
-        {
-          "code": "002408.SZ",
-          "name": "齐翔腾达",
-          "date": "20180615",
-          "marketCap": 220.12594737
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002629.SZ",
-          "name": "仁智股份",
-          "date": "20190322",
-          "marketCap": 18.661244399999998
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002207.SZ",
-          "name": "*ST准油",
-          "date": "20200629",
-          "marketCap": 14.01579435
-        }
-      ]
-    },
-    {
-      "quarter": "2020Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600777.SH",
-          "name": "新潮能源",
-          "date": "20250430",
-          "marketCap": 218.29591598
-        }
-      ]
-    },
-    {
-      "quarter": "2025Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    }
-  ]
+      "financialCoverage": 1.0,
+      "peRaw": 16.34,
+      "valuationSource": "sw_daily",
+      "valuationCode": "801960.SI",
+      "valuationDate": "20260930",
+      "peStatus": "valid",
+      "peNote": ""
+    },
+    "indices": [
+      {
+        "code": "801960.SI",
+        "name": "石油石化",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801963.SI",
+        "name": "炼化及贸易",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801962.SI",
+        "name": "油服工程",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801961.SI",
+        "name": "油气开采",
+        "dailyCount": 0,
+        "firstDate": null,
+        "lastDate": null,
+        "quarterQuotes": 0,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2",
+          "2012Q3",
+          "2012Q4",
+          "2013Q1",
+          "2013Q2",
+          "2013Q3",
+          "2013Q4",
+          "2014Q1",
+          "2014Q2",
+          "2014Q3",
+          "2014Q4",
+          "2015Q1",
+          "2015Q2",
+          "2015Q3",
+          "2015Q4",
+          "2016Q1",
+          "2016Q2",
+          "2016Q3",
+          "2016Q4",
+          "2017Q1",
+          "2017Q2",
+          "2017Q3",
+          "2017Q4",
+          "2018Q1",
+          "2018Q2",
+          "2018Q3",
+          "2018Q4",
+          "2019Q1",
+          "2019Q2",
+          "2019Q3",
+          "2019Q4",
+          "2020Q1",
+          "2020Q2",
+          "2020Q3",
+          "2020Q4",
+          "2021Q1",
+          "2021Q2",
+          "2021Q3",
+          "2021Q4",
+          "2022Q1",
+          "2022Q2",
+          "2022Q3",
+          "2022Q4",
+          "2023Q1",
+          "2023Q2",
+          "2023Q3",
+          "2023Q4",
+          "2024Q1",
+          "2024Q2",
+          "2024Q3",
+          "2024Q4",
+          "2025Q1",
+          "2025Q2",
+          "2025Q3",
+          "2025Q4",
+          "2026Q1",
+          "2026Q2",
+          "2026Q3"
+        ]
+      }
+    ]
+  }
 }

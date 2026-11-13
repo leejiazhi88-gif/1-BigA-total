@@ -1,25 +1,3180 @@
 {
-  "asOf": "2026-11-10",
-  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
-  "summary": {
+  "historicalCompanyAggregateAudit": {
+    "asOf": "2026-11-10",
+    "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+    "summary": {
+      "industry": "传媒",
+      "code": "801760.SI",
+      "companies": 131,
+      "quarters": 87,
+      "companyQuarterRows": 7272,
+      "latest": {
+        "quarter": "2026Q3",
+        "endDate": "20260930",
+        "tradeDate": "20260930",
+        "companies": 131,
+        "marketCap": 14487.261612319991,
+        "marketCapObserved": 14487.261612319991,
+        "pe": 49.60956516453553,
+        "peMarketCap": 14487.261612319991,
+        "peProfit": 292.0255713645425,
+        "peCoverage": 1.0,
+        "peMissingCount": 0,
+        "peRebuiltCount": 59,
+        "revenue": 1357.0723690448997,
+        "profit": 65.55683262210002,
+        "reportedCount": 131,
+        "estimatedCount": 0,
+        "missingCount": 0,
+        "estimatedRevenue": 0,
+        "estimatedProfit": 0,
+        "carriedCount": 0,
+        "marketMissingCount": 0,
+        "financialCoverage": 1.0
+      },
+      "financialIncompleteQuarters": 8,
+      "peCoverageMin": 0.998213779124332,
+      "carriedCompanyQuarters": 400
+    },
+    "quality": [
+      {
+        "quarter": "2005Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2005Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600373.SH",
+            "name": "中文传媒",
+            "date": "20050629",
+            "marketCap": 4.375
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20050629",
+            "marketCap": 3.37670546
+          },
+          {
+            "code": "600892.SH",
+            "name": "大晟文化",
+            "date": "20050418",
+            "marketCap": 1.1413
+          },
+          {
+            "code": "600640.SH",
+            "name": "国脉文化",
+            "date": "20050629",
+            "marketCap": 16.215396
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600892.SH",
+            "name": "大晟文化",
+            "date": "20050418",
+            "marketCap": 1.1413
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600831.SH",
+            "name": "广电网络",
+            "date": "20051219",
+            "marketCap": 10.66498971
+          },
+          {
+            "code": "000917.SZ",
+            "name": "电广传媒",
+            "date": "20051229",
+            "marketCap": 14.223244200000002
+          },
+          {
+            "code": "600373.SH",
+            "name": "中文传媒",
+            "date": "20051222",
+            "marketCap": 4.5375
+          },
+          {
+            "code": "000793.SZ",
+            "name": "ST华闻",
+            "date": "20051222",
+            "marketCap": 45.5644413
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600986.SH",
+            "name": "浙文互联",
+            "date": "20060317",
+            "marketCap": 6.57966804
+          },
+          {
+            "code": "000802.SZ",
+            "name": "北京文化",
+            "date": "20060324",
+            "marketCap": 4.847625
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600088.SH",
+            "name": "中视传媒",
+            "date": "20060608",
+            "marketCap": 34.32585
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20060629",
+            "marketCap": 4.76102532
+          },
+          {
+            "code": "000665.SZ",
+            "name": "湖北广电",
+            "date": "20060629",
+            "marketCap": 4.96212598
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20060621",
+            "marketCap": 6.87675
+          },
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪",
+            "date": "20060629",
+            "marketCap": 11.75410339
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600892.SH",
+            "name": "大晟文化",
+            "date": "20060629",
+            "marketCap": 3.939
+          },
+          {
+            "code": "600229.SH",
+            "name": "城市传媒",
+            "date": "20060627",
+            "marketCap": 13.546293040000002
+          },
+          {
+            "code": "600551.SH",
+            "name": "时代出版",
+            "date": "20060612",
+            "marketCap": 5.3325
+          },
+          {
+            "code": "600228.SH",
+            "name": "返利科技",
+            "date": "20060629",
+            "marketCap": 8.928
+          },
+          {
+            "code": "600358.SH",
+            "name": "国旅联合",
+            "date": "20060609",
+            "marketCap": 17.9712
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600825.SH",
+            "name": "新华传媒",
+            "date": "20060816",
+            "marketCap": 31.72549043
+          },
+          {
+            "code": "600715.SH",
+            "name": "文投控股",
+            "date": "20060922",
+            "marketCap": 5.3372928
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600757.SH",
+            "name": "长江传媒",
+            "date": "20061215",
+            "marketCap": 14.11711239
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600825.SH",
+            "name": "新华传媒",
+            "date": "20070302",
+            "marketCap": 47.82460105
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600892.SH",
+            "name": "大晟文化",
+            "date": "20070323",
+            "marketCap": 5.96405
+          },
+          {
+            "code": "600757.SH",
+            "name": "长江传媒",
+            "date": "20070112",
+            "marketCap": 15.533545069999999
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪",
+            "date": "20070628",
+            "marketCap": 20.52829325
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20070418",
+            "marketCap": 19.58784169
+          },
+          {
+            "code": "600228.SH",
+            "name": "返利科技",
+            "date": "20070628",
+            "marketCap": 14.093088
+          },
+          {
+            "code": "600757.SH",
+            "name": "长江传媒",
+            "date": "20070628",
+            "marketCap": 21.203413519999998
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪",
+            "date": "20070718",
+            "marketCap": 22.0596377
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20070418",
+            "marketCap": 19.58784169
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600373.SH",
+            "name": "中文传媒",
+            "date": "20071214",
+            "marketCap": 10.3625
+          },
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪",
+            "date": "20070718",
+            "marketCap": 22.0596377
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20070418",
+            "marketCap": 19.58784169
+          },
+          {
+            "code": "600757.SH",
+            "name": "长江传媒",
+            "date": "20071012",
+            "marketCap": 34.45554696
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600831.SH",
+            "name": "广电网络",
+            "date": "20080328",
+            "marketCap": 37.96542213
+          },
+          {
+            "code": "600373.SH",
+            "name": "中文传媒",
+            "date": "20071214",
+            "marketCap": 10.3625
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪",
+            "date": "20070718",
+            "marketCap": 22.0596377
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600637.SH",
+            "name": "东方明珠",
+            "date": "20080111",
+            "marketCap": 72.80038959
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪",
+            "date": "20080429",
+            "marketCap": 26.81922182
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600229.SH",
+            "name": "城市传媒",
+            "date": "20080627",
+            "marketCap": 19.44881724
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000917.SZ",
+            "name": "电广传媒",
+            "date": "20080919",
+            "marketCap": 53.76386298
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪",
+            "date": "20080429",
+            "marketCap": 26.81922182
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600373.SH",
+            "name": "中文传媒",
+            "date": "20081230",
+            "marketCap": 5.25
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20081128",
+            "marketCap": 4.57125
+          },
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪",
+            "date": "20081021",
+            "marketCap": 20.77661938
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "002264.SZ",
+            "name": "新华都",
+            "date": "20081230",
+            "marketCap": 19.377344
+          },
+          {
+            "code": "600892.SH",
+            "name": "大晟文化",
+            "date": "20081210",
+            "marketCap": 3.43905
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20081226",
+            "marketCap": 9.29283652
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q1",
+        "financialMissing": [
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪",
+            "date": "20081021",
+            "marketCap": 20.77661938
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600637.SH",
+            "name": "东方明珠",
+            "date": "20090330",
+            "marketCap": 30.552062229999997
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q2",
+        "financialMissing": [
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q3",
+        "financialMissing": [
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q4",
+        "financialMissing": [
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600715.SH",
+            "name": "文投控股",
+            "date": "20100330",
+            "marketCap": 20.4745728
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000665.SZ",
+            "name": "湖北广电",
+            "date": "20100317",
+            "marketCap": 20.96140201
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600892.SH",
+            "name": "大晟文化",
+            "date": "20100329",
+            "marketCap": 15.6739375
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600715.SH",
+            "name": "文投控股",
+            "date": "20100629",
+            "marketCap": 17.8059264
+          },
+          {
+            "code": "600633.SH",
+            "name": "浙数文化",
+            "date": "20100429",
+            "marketCap": 11.06929911
+          },
+          {
+            "code": "002181.SZ",
+            "name": "粤传媒",
+            "date": "20100525",
+            "marketCap": 36.73197953
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          },
+          {
+            "code": "600757.SH",
+            "name": "长江传媒",
+            "date": "20100629",
+            "marketCap": 32.633378619999995
+          },
+          {
+            "code": "002354.SZ",
+            "name": "天娱数科",
+            "date": "20100629",
+            "marketCap": 17.02635
+          },
+          {
+            "code": "300002.SZ",
+            "name": "神州泰岳",
+            "date": "20100629",
+            "marketCap": 171.272
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600633.SH",
+            "name": "浙数文化",
+            "date": "20100429",
+            "marketCap": 11.06929911
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          },
+          {
+            "code": "600637.SH",
+            "name": "东方明珠",
+            "date": "20100901",
+            "marketCap": 59.40284954
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600633.SH",
+            "name": "浙数文化",
+            "date": "20100429",
+            "marketCap": 11.06929911
+          },
+          {
+            "code": "000917.SZ",
+            "name": "电广传媒",
+            "date": "20101224",
+            "marketCap": 99.15633082
+          },
+          {
+            "code": "300113.SZ",
+            "name": "顺网科技",
+            "date": "20101210",
+            "marketCap": 41.64
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          },
+          {
+            "code": "600637.SH",
+            "name": "东方明珠",
+            "date": "20100901",
+            "marketCap": 59.40284954
+          },
+          {
+            "code": "600757.SH",
+            "name": "长江传媒",
+            "date": "20101008",
+            "marketCap": 40.58465868
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q1",
+        "financialMissing": [
+          {
+            "code": "600715.SH",
+            "name": "文投控股"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600633.SH",
+            "name": "浙数文化",
+            "date": "20100429",
+            "marketCap": 11.06929911
+          },
+          {
+            "code": "000917.SZ",
+            "name": "电广传媒",
+            "date": "20101224",
+            "marketCap": 99.15633082
+          },
+          {
+            "code": "300027.SZ",
+            "name": "ST华谊",
+            "date": "20110330",
+            "marketCap": 87.864
+          },
+          {
+            "code": "300133.SZ",
+            "name": "华策影视",
+            "date": "20110330",
+            "marketCap": 52.181872
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "000793.SZ",
+            "name": "ST华闻",
+            "date": "20110225",
+            "marketCap": 77.25553031999999
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q2",
+        "financialMissing": [
+          {
+            "code": "600715.SH",
+            "name": "文投控股"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600633.SH",
+            "name": "浙数文化",
+            "date": "20100429",
+            "marketCap": 11.06929911
+          },
+          {
+            "code": "000917.SZ",
+            "name": "电广传媒",
+            "date": "20101224",
+            "marketCap": 99.15633082
+          },
+          {
+            "code": "300058.SZ",
+            "name": "蓝色光标",
+            "date": "20110520",
+            "marketCap": 37.62
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "000793.SZ",
+            "name": "ST华闻",
+            "date": "20110225",
+            "marketCap": 77.25553031999999
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20080121",
+            "marketCap": 11.99312628
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "000802.SZ",
+            "name": "北京文化",
+            "date": "20110928",
+            "marketCap": 23.08004116
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002027.SZ",
+            "name": "分众传媒",
+            "date": "20111229",
+            "marketCap": 12.66784136
+          },
+          {
+            "code": "300027.SZ",
+            "name": "ST华谊",
+            "date": "20111229",
+            "marketCap": 95.61888
+          },
+          {
+            "code": "300061.SZ",
+            "name": "旗天科技",
+            "date": "20111122",
+            "marketCap": 9.684
+          },
+          {
+            "code": "300043.SZ",
+            "name": "星辉娱乐",
+            "date": "20111025",
+            "marketCap": 28.2744
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q1",
+        "financialMissing": [
+          {
+            "code": "600556.SH",
+            "name": "天下秀"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600633.SH",
+            "name": "浙数文化",
+            "date": "20120305",
+            "marketCap": 70.86309191000001
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q2",
+        "financialMissing": [
+          {
+            "code": "600556.SH",
+            "name": "天下秀"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000917.SZ",
+            "name": "电广传媒",
+            "date": "20120628",
+            "marketCap": 100.49737956
+          },
+          {
+            "code": "600373.SH",
+            "name": "中文传媒",
+            "date": "20120628",
+            "marketCap": 81.45638458
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000917.SZ",
+            "name": "电广传媒",
+            "date": "20120921",
+            "marketCap": 120.89803559999999
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20060331",
+            "marketCap": 1.20625
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300315.SZ",
+            "name": "掌趣科技",
+            "date": "20121203",
+            "marketCap": 37.412676
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20090306",
+            "marketCap": 6.55875
+          },
+          {
+            "code": "000793.SZ",
+            "name": "ST华闻",
+            "date": "20121122",
+            "marketCap": 90.17678979
+          },
+          {
+            "code": "600229.SH",
+            "name": "城市传媒",
+            "date": "20121221",
+            "marketCap": 23.311807769999998
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20090429",
+            "marketCap": 12.42081744
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300071.SZ",
+            "name": "福石控股",
+            "date": "20130306",
+            "marketCap": 15.96132588
+          },
+          {
+            "code": "300058.SZ",
+            "name": "蓝色光标",
+            "date": "20130301",
+            "marketCap": 124.17406143
+          },
+          {
+            "code": "300182.SZ",
+            "name": "捷成股份",
+            "date": "20130322",
+            "marketCap": 55.3093233
+          },
+          {
+            "code": "000665.SZ",
+            "name": "湖北广电",
+            "date": "20130325",
+            "marketCap": 40.93657237
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20130225",
+            "marketCap": 13.95225
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20130319",
+            "marketCap": 17.01560881
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600715.SH",
+            "name": "文投控股",
+            "date": "20130524",
+            "marketCap": 15.787622399999998
+          },
+          {
+            "code": "600088.SH",
+            "name": "中视传媒",
+            "date": "20130529",
+            "marketCap": 47.3602038
+          },
+          {
+            "code": "300027.SZ",
+            "name": "ST华谊",
+            "date": "20130604",
+            "marketCap": 172.6704
+          },
+          {
+            "code": "300133.SZ",
+            "name": "华策影视",
+            "date": "20130527",
+            "marketCap": 141.45302003999998
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20130516",
+            "marketCap": 42.256888079999996
+          },
+          {
+            "code": "000665.SZ",
+            "name": "湖北广电",
+            "date": "20130325",
+            "marketCap": 40.93657237
+          },
+          {
+            "code": "000681.SZ",
+            "name": "视觉中国",
+            "date": "20130225",
+            "marketCap": 13.95225
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002181.SZ",
+            "name": "粤传媒",
+            "date": "20130904",
+            "marketCap": 76.1202904
+          },
+          {
+            "code": "002174.SZ",
+            "name": "游族网络",
+            "date": "20130826",
+            "marketCap": 16.5879842
+          },
+          {
+            "code": "002400.SZ",
+            "name": "省广集团",
+            "date": "20130830",
+            "marketCap": 141.2856811
+          },
+          {
+            "code": "002292.SZ",
+            "name": "奥飞娱乐",
+            "date": "20130722",
+            "marketCap": 173.01504
+          },
+          {
+            "code": "300043.SZ",
+            "name": "星辉娱乐",
+            "date": "20130816",
+            "marketCap": 30.29525879
+          },
+          {
+            "code": "300315.SZ",
+            "name": "掌趣科技",
+            "date": "20130716",
+            "marketCap": 147.4772992
+          },
+          {
+            "code": "002555.SZ",
+            "name": "三七互娱",
+            "date": "20130726",
+            "marketCap": 14.1906
+          },
+          {
+            "code": "000607.SZ",
+            "name": "华媒控股",
+            "date": "20130926",
+            "marketCap": 20.72860979
+          },
+          {
+            "code": "600358.SH",
+            "name": "国旅联合",
+            "date": "20130827",
+            "marketCap": 20.4336
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300071.SZ",
+            "name": "福石控股",
+            "date": "20131122",
+            "marketCap": 49.84582959
+          },
+          {
+            "code": "002602.SZ",
+            "name": "世纪华通",
+            "date": "20131017",
+            "marketCap": 19.1625
+          },
+          {
+            "code": "300291.SZ",
+            "name": "百纳千成",
+            "date": "20131206",
+            "marketCap": 46.1868
+          },
+          {
+            "code": "000607.SZ",
+            "name": "华媒控股",
+            "date": "20130926",
+            "marketCap": 20.72860979
+          },
+          {
+            "code": "002354.SZ",
+            "name": "天娱数科",
+            "date": "20131011",
+            "marketCap": 14.74495
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600373.SH",
+            "name": "中文传媒",
+            "date": "20140314",
+            "marketCap": 139.58106284000002
+          },
+          {
+            "code": "300071.SZ",
+            "name": "福石控股",
+            "date": "20131122",
+            "marketCap": 49.84582959
+          },
+          {
+            "code": "300052.SZ",
+            "name": "中青宝",
+            "date": "20140110",
+            "marketCap": 76.752
+          },
+          {
+            "code": "002425.SZ",
+            "name": "凯撒文化",
+            "date": "20140321",
+            "marketCap": 36.035076000000004
+          },
+          {
+            "code": "300043.SZ",
+            "name": "星辉娱乐",
+            "date": "20140314",
+            "marketCap": 92.98927796999999
+          },
+          {
+            "code": "300251.SZ",
+            "name": "光线传媒",
+            "date": "20140228",
+            "marketCap": 206.085264
+          },
+          {
+            "code": "002555.SZ",
+            "name": "三七互娱",
+            "date": "20140328",
+            "marketCap": 54.1092
+          },
+          {
+            "code": "300291.SZ",
+            "name": "百纳千成",
+            "date": "20131206",
+            "marketCap": 46.1868
+          },
+          {
+            "code": "000607.SZ",
+            "name": "华媒控股",
+            "date": "20130926",
+            "marketCap": 20.72860979
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20140224",
+            "marketCap": 292.86230236999995
+          },
+          {
+            "code": "000793.SZ",
+            "name": "ST华闻",
+            "date": "20140311",
+            "marketCap": 244.81447075
+          },
+          {
+            "code": "002517.SZ",
+            "name": "恺英网络",
+            "date": "20140113",
+            "marketCap": 12.67656
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20140328",
+            "marketCap": 17.13404693
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600715.SH",
+            "name": "文投控股",
+            "date": "20140617",
+            "marketCap": 16.3931136
+          },
+          {
+            "code": "300242.SZ",
+            "name": "佳云科技",
+            "date": "20140604",
+            "marketCap": 14.1225
+          },
+          {
+            "code": "002624.SZ",
+            "name": "完美世界",
+            "date": "20140404",
+            "marketCap": 16.2
+          },
+          {
+            "code": "002602.SZ",
+            "name": "世纪华通",
+            "date": "20140624",
+            "marketCap": 64.785
+          },
+          {
+            "code": "300295.SZ",
+            "name": "*ST三六五",
+            "date": "20140410",
+            "marketCap": 52.181635
+          },
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪",
+            "date": "20140404",
+            "marketCap": 25.82591731
+          },
+          {
+            "code": "000802.SZ",
+            "name": "北京文化",
+            "date": "20140509",
+            "marketCap": 38.62297708
+          },
+          {
+            "code": "002517.SZ",
+            "name": "恺英网络",
+            "date": "20140113",
+            "marketCap": 12.67656
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20140328",
+            "marketCap": 17.13404693
+          },
+          {
+            "code": "600637.SH",
+            "name": "东方明珠",
+            "date": "20140528",
+            "marketCap": 356.72966482000004
+          },
+          {
+            "code": "600228.SH",
+            "name": "返利科技",
+            "date": "20140410",
+            "marketCap": 24.349188
+          },
+          {
+            "code": "600757.SH",
+            "name": "长江传媒",
+            "date": "20140616",
+            "marketCap": 107.40804916
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600986.SH",
+            "name": "浙文互联",
+            "date": "20140825",
+            "marketCap": 23.63651441
+          },
+          {
+            "code": "300027.SZ",
+            "name": "ST华谊",
+            "date": "20140917",
+            "marketCap": 290.84615293999997
+          },
+          {
+            "code": "300133.SZ",
+            "name": "华策影视",
+            "date": "20140709",
+            "marketCap": 188.62096953
+          },
+          {
+            "code": "300043.SZ",
+            "name": "星辉娱乐",
+            "date": "20140815",
+            "marketCap": 86.47178891
+          },
+          {
+            "code": "601928.SH",
+            "name": "凤凰传媒",
+            "date": "20140919",
+            "marketCap": 272.55879
+          },
+          {
+            "code": "300299.SZ",
+            "name": "富春股份",
+            "date": "20140716",
+            "marketCap": 20.09799
+          },
+          {
+            "code": "300315.SZ",
+            "name": "掌趣科技",
+            "date": "20140711",
+            "marketCap": 205.41140877
+          },
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪",
+            "date": "20140404",
+            "marketCap": 25.82591731
+          },
+          {
+            "code": "002343.SZ",
+            "name": "慈文传媒",
+            "date": "20140805",
+            "marketCap": 18.207228
+          },
+          {
+            "code": "600892.SH",
+            "name": "大晟文化",
+            "date": "20140918",
+            "marketCap": 15.339375
+          },
+          {
+            "code": "600229.SH",
+            "name": "城市传媒",
+            "date": "20140822",
+            "marketCap": 23.94506571
+          },
+          {
+            "code": "600637.SH",
+            "name": "东方明珠",
+            "date": "20140528",
+            "marketCap": 356.72966482000004
+          },
+          {
+            "code": "300002.SZ",
+            "name": "神州泰岳",
+            "date": "20140728",
+            "marketCap": 185.77572872
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600986.SH",
+            "name": "浙文互联",
+            "date": "20140825",
+            "marketCap": 23.63651441
+          },
+          {
+            "code": "300071.SZ",
+            "name": "福石控股",
+            "date": "20141226",
+            "marketCap": 57.13505964
+          },
+          {
+            "code": "002425.SZ",
+            "name": "凯撒文化",
+            "date": "20141230",
+            "marketCap": 42.11892
+          },
+          {
+            "code": "002602.SZ",
+            "name": "世纪华通",
+            "date": "20141204",
+            "marketCap": 136.50053212
+          },
+          {
+            "code": "300315.SZ",
+            "name": "掌趣科技",
+            "date": "20140711",
+            "marketCap": 205.41140877
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20141225",
+            "marketCap": 130.26170806
+          },
+          {
+            "code": "000676.SZ",
+            "name": "智度股份",
+            "date": "20141107",
+            "marketCap": 25.67027464
+          },
+          {
+            "code": "002558.SZ",
+            "name": "巨人网络",
+            "date": "20141024",
+            "marketCap": 20.714925
+          },
+          {
+            "code": "300063.SZ",
+            "name": "天龙集团",
+            "date": "20141128",
+            "marketCap": 35.6775
+          },
+          {
+            "code": "600892.SH",
+            "name": "大晟文化",
+            "date": "20140918",
+            "marketCap": 15.339375
+          },
+          {
+            "code": "002354.SZ",
+            "name": "天娱数科",
+            "date": "20141030",
+            "marketCap": 128.18400652999998
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002174.SZ",
+            "name": "游族网络",
+            "date": "20150107",
+            "marketCap": 136.11801318000002
+          },
+          {
+            "code": "300242.SZ",
+            "name": "佳云科技",
+            "date": "20150306",
+            "marketCap": 37.20366946
+          },
+          {
+            "code": "002624.SZ",
+            "name": "完美世界",
+            "date": "20150323",
+            "marketCap": 142.31290142999998
+          },
+          {
+            "code": "002602.SZ",
+            "name": "世纪华通",
+            "date": "20141204",
+            "marketCap": 136.50053212
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20141225",
+            "marketCap": 130.26170806
+          },
+          {
+            "code": "002712.SZ",
+            "name": "思美传媒",
+            "date": "20150318",
+            "marketCap": 64.10915625999999
+          },
+          {
+            "code": "002555.SZ",
+            "name": "三七互娱",
+            "date": "20150217",
+            "marketCap": 191.66437212
+          },
+          {
+            "code": "000607.SZ",
+            "name": "华媒控股",
+            "date": "20150116",
+            "marketCap": 103.60169814000001
+          },
+          {
+            "code": "000676.SZ",
+            "name": "智度股份",
+            "date": "20141107",
+            "marketCap": 25.67027464
+          },
+          {
+            "code": "002558.SZ",
+            "name": "巨人网络",
+            "date": "20141024",
+            "marketCap": 20.714925
+          },
+          {
+            "code": "002517.SZ",
+            "name": "恺英网络",
+            "date": "20141231",
+            "marketCap": 25.476879999999998
+          },
+          {
+            "code": "002264.SZ",
+            "name": "新华都",
+            "date": "20150310",
+            "marketCap": 46.02766788
+          },
+          {
+            "code": "300063.SZ",
+            "name": "天龙集团",
+            "date": "20141128",
+            "marketCap": 35.6775
+          },
+          {
+            "code": "600637.SH",
+            "name": "东方明珠",
+            "date": "20150325",
+            "marketCap": 555.4201806
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000917.SZ",
+            "name": "电广传媒",
+            "date": "20150527",
+            "marketCap": 607.9899133700001
+          },
+          {
+            "code": "002027.SZ",
+            "name": "分众传媒",
+            "date": "20150430",
+            "marketCap": 41.35944387
+          },
+          {
+            "code": "300071.SZ",
+            "name": "福石控股",
+            "date": "20150520",
+            "marketCap": 93.77115004
+          },
+          {
+            "code": "002238.SZ",
+            "name": "天威视讯",
+            "date": "20150626",
+            "marketCap": 122.2359336
+          },
+          {
+            "code": "002292.SZ",
+            "name": "奥飞娱乐",
+            "date": "20150515",
+            "marketCap": 478.88425476000003
+          },
+          {
+            "code": "002624.SZ",
+            "name": "完美世界",
+            "date": "20150323",
+            "marketCap": 142.31290142999998
+          },
+          {
+            "code": "300113.SZ",
+            "name": "顺网科技",
+            "date": "20150504",
+            "marketCap": 167.8512
+          },
+          {
+            "code": "002425.SZ",
+            "name": "凯撒文化",
+            "date": "20150422",
+            "marketCap": 91.45265500000001
+          },
+          {
+            "code": "002602.SZ",
+            "name": "世纪华通",
+            "date": "20141204",
+            "marketCap": 136.50053212
+          },
+          {
+            "code": "002712.SZ",
+            "name": "思美传媒",
+            "date": "20150318",
+            "marketCap": 64.10915625999999
+          },
+          {
+            "code": "300291.SZ",
+            "name": "百纳千成",
+            "date": "20150629",
+            "marketCap": 267.54420595
+          },
+          {
+            "code": "000607.SZ",
+            "name": "华媒控股",
+            "date": "20150626",
+            "marketCap": 148.1768885
+          },
+          {
+            "code": "002739.SZ",
+            "name": "儒意电影",
+            "date": "20150513",
+            "marketCap": 1371.384
+          },
+          {
+            "code": "000665.SZ",
+            "name": "湖北广电",
+            "date": "20150522",
+            "marketCap": 177.50466799
+          },
+          {
+            "code": "300418.SZ",
+            "name": "昆仑万维",
+            "date": "20150504",
+            "marketCap": 436.548
+          },
+          {
+            "code": "300467.SZ",
+            "name": "迅游科技",
+            "date": "20150624",
+            "marketCap": 118.92
+          },
+          {
+            "code": "000892.SZ",
+            "name": "欢瑞世纪",
+            "date": "20150416",
+            "marketCap": 46.850862819999996
+          },
+          {
+            "code": "000676.SZ",
+            "name": "智度股份",
+            "date": "20141107",
+            "marketCap": 25.67027464
+          },
+          {
+            "code": "000793.SZ",
+            "name": "ST华闻",
+            "date": "20150525",
+            "marketCap": 426.65556606
+          },
+          {
+            "code": "002558.SZ",
+            "name": "巨人网络",
+            "date": "20141024",
+            "marketCap": 20.714925
+          },
+          {
+            "code": "300031.SZ",
+            "name": "宝通科技",
+            "date": "20150610",
+            "marketCap": 68.46
+          },
+          {
+            "code": "002605.SZ",
+            "name": "姚记科技",
+            "date": "20150615",
+            "marketCap": 108.4974
+          },
+          {
+            "code": "002354.SZ",
+            "name": "天娱数科",
+            "date": "20150527",
+            "marketCap": 216.17396718
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600633.SH",
+            "name": "浙数文化",
+            "date": "20150807",
+            "marketCap": 214.12942371999998
+          },
+          {
+            "code": "000917.SZ",
+            "name": "电广传媒",
+            "date": "20150527",
+            "marketCap": 607.9899133700001
+          },
+          {
+            "code": "002174.SZ",
+            "name": "游族网络",
+            "date": "20150722",
+            "marketCap": 246.84313793
+          },
+          {
+            "code": "300071.SZ",
+            "name": "福石控股",
+            "date": "20150520",
+            "marketCap": 93.77115004
+          },
+          {
+            "code": "300052.SZ",
+            "name": "中青宝",
+            "date": "20150706",
+            "marketCap": 57.2
+          },
+          {
+            "code": "002238.SZ",
+            "name": "天威视讯",
+            "date": "20150626",
+            "marketCap": 122.2359336
+          },
+          {
+            "code": "300027.SZ",
+            "name": "ST华谊",
+            "date": "20150727",
+            "marketCap": 491.95062692
+          },
+          {
+            "code": "002624.SZ",
+            "name": "完美世界",
+            "date": "20150707",
+            "marketCap": 102.56478125999999
+          },
+          {
+            "code": "300058.SZ",
+            "name": "蓝色光标",
+            "date": "20150804",
+            "marketCap": 276.15723464
+          },
+          {
+            "code": "002602.SZ",
+            "name": "世纪华通",
+            "date": "20141204",
+            "marketCap": 136.50053212
+          },
+          {
+            "code": "300299.SZ",
+            "name": "富春股份",
+            "date": "20150701",
+            "marketCap": 90.89663077
+          },
+          {
+            "code": "002739.SZ",
+            "name": "儒意电影",
+            "date": "20150922",
+            "marketCap": 912.8
+          },
+          {
+            "code": "300459.SZ",
+            "name": "汤姆猫",
+            "date": "20150911",
+            "marketCap": 49.29
+          },
+          {
+            "code": "300467.SZ",
+            "name": "迅游科技",
+            "date": "20150721",
+            "marketCap": 87.556
+          },
+          {
+            "code": "000676.SZ",
+            "name": "智度股份",
+            "date": "20141107",
+            "marketCap": 25.67027464
+          },
+          {
+            "code": "002558.SZ",
+            "name": "巨人网络",
+            "date": "20141024",
+            "marketCap": 20.714925
+          },
+          {
+            "code": "002343.SZ",
+            "name": "慈文传媒",
+            "date": "20150723",
+            "marketCap": 81.744312
+          },
+          {
+            "code": "300031.SZ",
+            "name": "宝通科技",
+            "date": "20150610",
+            "marketCap": 68.46
+          },
+          {
+            "code": "002605.SZ",
+            "name": "姚记科技",
+            "date": "20150615",
+            "marketCap": 108.4974
+          },
+          {
+            "code": "300148.SZ",
+            "name": "天舟文化",
+            "date": "20150831",
+            "marketCap": 67.57624144
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600986.SH",
+            "name": "浙文互联",
+            "date": "20151211",
+            "marketCap": 182.46614883
+          },
+          {
+            "code": "002174.SZ",
+            "name": "游族网络",
+            "date": "20150722",
+            "marketCap": 246.84313793
+          },
+          {
+            "code": "300242.SZ",
+            "name": "佳云科技",
+            "date": "20151217",
+            "marketCap": 108.84840256000001
+          },
+          {
+            "code": "002624.SZ",
+            "name": "完美世界",
+            "date": "20150707",
+            "marketCap": 102.56478125999999
+          },
+          {
+            "code": "300043.SZ",
+            "name": "星辉娱乐",
+            "date": "20151216",
+            "marketCap": 196.58334736
+          },
+          {
+            "code": "300459.SZ",
+            "name": "汤姆猫",
+            "date": "20150911",
+            "marketCap": 49.29
+          },
+          {
+            "code": "000676.SZ",
+            "name": "智度股份",
+            "date": "20151223",
+            "marketCap": 104.63153609
+          },
+          {
+            "code": "300063.SZ",
+            "name": "天龙集团",
+            "date": "20151221",
+            "marketCap": 125.90431897
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600986.SH",
+            "name": "浙文互联",
+            "date": "20151211",
+            "marketCap": 182.46614883
+          },
+          {
+            "code": "300071.SZ",
+            "name": "福石控股",
+            "date": "20160114",
+            "marketCap": 61.67651769
+          },
+          {
+            "code": "300043.SZ",
+            "name": "星辉娱乐",
+            "date": "20151216",
+            "marketCap": 196.58334736
+          },
+          {
+            "code": "300299.SZ",
+            "name": "富春股份",
+            "date": "20160226",
+            "marketCap": 104.72872676
+          },
+          {
+            "code": "002555.SZ",
+            "name": "三七互娱",
+            "date": "20160309",
+            "marketCap": 378.28601428
+          },
+          {
+            "code": "002739.SZ",
+            "name": "儒意电影",
+            "date": "20160223",
+            "marketCap": 942.95886412
+          },
+          {
+            "code": "300063.SZ",
+            "name": "天龙集团",
+            "date": "20151221",
+            "marketCap": 125.90431897
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20160119",
+            "marketCap": 62.377405859999996
+          },
+          {
+            "code": "002605.SZ",
+            "name": "姚记科技",
+            "date": "20160314",
+            "marketCap": 59.5034
+          },
+          {
+            "code": "600228.SH",
+            "name": "返利科技",
+            "date": "20160311",
+            "marketCap": 25.990164
+          },
+          {
+            "code": "002354.SZ",
+            "name": "天娱数科",
+            "date": "20160202",
+            "marketCap": 230.95280424999999
+          },
+          {
+            "code": "300426.SZ",
+            "name": "华智数媒",
+            "date": "20160325",
+            "marketCap": 103.968
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600986.SH",
+            "name": "浙文互联",
+            "date": "20160624",
+            "marketCap": 138.8480504
+          },
+          {
+            "code": "300052.SZ",
+            "name": "中青宝",
+            "date": "20160607",
+            "marketCap": 57.506803579999996
+          },
+          {
+            "code": "300242.SZ",
+            "name": "佳云科技",
+            "date": "20160506",
+            "marketCap": 111.59105325
+          },
+          {
+            "code": "300061.SZ",
+            "name": "旗天科技",
+            "date": "20160504",
+            "marketCap": 71.92724697999999
+          },
+          {
+            "code": "300299.SZ",
+            "name": "富春股份",
+            "date": "20160226",
+            "marketCap": 104.72872676
+          },
+          {
+            "code": "002712.SZ",
+            "name": "思美传媒",
+            "date": "20160408",
+            "marketCap": 100.82661928
+          },
+          {
+            "code": "002555.SZ",
+            "name": "三七互娱",
+            "date": "20160309",
+            "marketCap": 378.28601428
+          },
+          {
+            "code": "601900.SH",
+            "name": "南方传媒",
+            "date": "20160603",
+            "marketCap": 144.73497
+          },
+          {
+            "code": "000802.SZ",
+            "name": "北京文化",
+            "date": "20160531",
+            "marketCap": 167.71177198
+          },
+          {
+            "code": "300413.SZ",
+            "name": "芒果超媒",
+            "date": "20160617",
+            "marketCap": 97.6435
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20160119",
+            "marketCap": 62.377405859999996
+          },
+          {
+            "code": "600228.SH",
+            "name": "返利科技",
+            "date": "20160311",
+            "marketCap": 25.990164
+          },
+          {
+            "code": "600640.SH",
+            "name": "国脉文化",
+            "date": "20160415",
+            "marketCap": 89.88770694
+          },
+          {
+            "code": "600358.SH",
+            "name": "国旅联合",
+            "date": "20160401",
+            "marketCap": 68.16644910000001
+          },
+          {
+            "code": "002291.SZ",
+            "name": "遥望科技",
+            "date": "20160401",
+            "marketCap": 55.41025122
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300027.SZ",
+            "name": "ST华谊",
+            "date": "20160923",
+            "marketCap": 344.82474239
+          },
+          {
+            "code": "002624.SZ",
+            "name": "完美世界",
+            "date": "20160704",
+            "marketCap": 486.1427229
+          },
+          {
+            "code": "002602.SZ",
+            "name": "世纪华通",
+            "date": "20160825",
+            "marketCap": 271.25500776
+          },
+          {
+            "code": "000719.SZ",
+            "name": "中原传媒",
+            "date": "20160920",
+            "marketCap": 113.16633463999999
+          },
+          {
+            "code": "002555.SZ",
+            "name": "三七互娱",
+            "date": "20160929",
+            "marketCap": 385.89551526
+          },
+          {
+            "code": "300295.SZ",
+            "name": "*ST三六五",
+            "date": "20160906",
+            "marketCap": 59.615424
+          },
+          {
+            "code": "601900.SH",
+            "name": "南方传媒",
+            "date": "20160603",
+            "marketCap": 144.73497
+          },
+          {
+            "code": "002558.SZ",
+            "name": "巨人网络",
+            "date": "20160712",
+            "marketCap": 838.76808532
+          },
+          {
+            "code": "300413.SZ",
+            "name": "芒果超媒",
+            "date": "20160617",
+            "marketCap": 97.6435
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002400.SZ",
+            "name": "省广集团",
+            "date": "20161125",
+            "marketCap": 184.92783842
+          },
+          {
+            "code": "002602.SZ",
+            "name": "世纪华通",
+            "date": "20161214",
+            "marketCap": 481.60345756000004
+          },
+          {
+            "code": "300459.SZ",
+            "name": "汤姆猫",
+            "date": "20161024",
+            "marketCap": 272.13499279999996
+          },
+          {
+            "code": "000676.SZ",
+            "name": "智度股份",
+            "date": "20161116",
+            "marketCap": 190.53473729
+          },
+          {
+            "code": "600892.SH",
+            "name": "大晟文化",
+            "date": "20161115",
+            "marketCap": 109.52910141000001
+          },
+          {
+            "code": "600551.SH",
+            "name": "时代出版",
+            "date": "20161125",
+            "marketCap": 102.78370015
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002400.SZ",
+            "name": "省广集团",
+            "date": "20161125",
+            "marketCap": 184.92783842
+          },
+          {
+            "code": "300315.SZ",
+            "name": "掌趣科技",
+            "date": "20170118",
+            "marketCap": 244.94533709
+          },
+          {
+            "code": "300364.SZ",
+            "name": "中文在线",
+            "date": "20170210",
+            "marketCap": 106.21035427999999
+          },
+          {
+            "code": "300467.SZ",
+            "name": "迅游科技",
+            "date": "20170106",
+            "marketCap": 77.7429664
+          },
+          {
+            "code": "600551.SH",
+            "name": "时代出版",
+            "date": "20161125",
+            "marketCap": 102.78370015
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20170105",
+            "marketCap": 47.09888936
+          },
+          {
+            "code": "600228.SH",
+            "name": "返利科技",
+            "date": "20170314",
+            "marketCap": 36.125603999999996
+          },
+          {
+            "code": "300148.SZ",
+            "name": "天舟文化",
+            "date": "20170124",
+            "marketCap": 131.87476856
+          },
+          {
+            "code": "600358.SH",
+            "name": "国旅联合",
+            "date": "20170210",
+            "marketCap": 53.169830299999994
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300291.SZ",
+            "name": "百纳千成",
+            "date": "20170418",
+            "marketCap": 162.65472744
+          },
+          {
+            "code": "300364.SZ",
+            "name": "中文在线",
+            "date": "20170210",
+            "marketCap": 106.21035427999999
+          },
+          {
+            "code": "300459.SZ",
+            "name": "汤姆猫",
+            "date": "20170629",
+            "marketCap": 196.07634577
+          },
+          {
+            "code": "600959.SH",
+            "name": "江苏有线",
+            "date": "20170616",
+            "marketCap": 410.59479975
+          },
+          {
+            "code": "300612.SZ",
+            "name": "宣亚国际",
+            "date": "20170410",
+            "marketCap": 72.0
+          },
+          {
+            "code": "002264.SZ",
+            "name": "新华都",
+            "date": "20170509",
+            "marketCap": 57.50336592
+          },
+          {
+            "code": "603598.SH",
+            "name": "引力传媒",
+            "date": "20170509",
+            "marketCap": 44.0558625
+          },
+          {
+            "code": "300413.SZ",
+            "name": "芒果超媒",
+            "date": "20170331",
+            "marketCap": 81.3629
+          },
+          {
+            "code": "600556.SH",
+            "name": "天下秀",
+            "date": "20170105",
+            "marketCap": 47.09888936
+          },
+          {
+            "code": "300148.SZ",
+            "name": "天舟文化",
+            "date": "20170124",
+            "marketCap": 131.87476856
+          },
+          {
+            "code": "600358.SH",
+            "name": "国旅联合",
+            "date": "20170602",
+            "marketCap": 35.3455662
+          },
+          {
+            "code": "002291.SZ",
+            "name": "遥望科技",
+            "date": "20170602",
+            "marketCap": 60.316990520000004
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600825.SH",
+            "name": "新华传媒",
+            "date": "20170725",
+            "marketCap": 76.17232426999999
+          },
+          {
+            "code": "600715.SH",
+            "name": "文投控股",
+            "date": "20170704",
+            "marketCap": 416.78558145
+          },
+          {
+            "code": "601999.SH",
+            "name": "出版传媒",
+            "date": "20170630",
+            "marketCap": 50.243420640000004
+          },
+          {
+            "code": "002739.SZ",
+            "name": "儒意电影",
+            "date": "20170703",
+            "marketCap": 611.1031044700001
+          },
+          {
+            "code": "603729.SH",
+            "name": "ST龙韵",
+            "date": "20170717",
+            "marketCap": 42.748804
+          },
+          {
+            "code": "600959.SH",
+            "name": "江苏有线",
+            "date": "20170616",
+            "marketCap": 410.59479975
+          },
+          {
+            "code": "300612.SZ",
+            "name": "宣亚国际",
+            "date": "20170410",
+            "marketCap": 72.0
+          },
+          {
+            "code": "300413.SZ",
+            "name": "芒果超媒",
+            "date": "20170331",
+            "marketCap": 81.3629
+          },
+          {
+            "code": "600551.SH",
+            "name": "时代出版",
+            "date": "20170926",
+            "marketCap": 72.18126973999999
+          },
+          {
+            "code": "600358.SH",
+            "name": "国旅联合",
+            "date": "20170602",
+            "marketCap": 35.3455662
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q4",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "002919.SZ",
+            "name": "名臣健康"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600715.SH",
+            "name": "文投控股",
+            "date": "20170704",
+            "marketCap": 416.78558145
+          },
+          {
+            "code": "300071.SZ",
+            "name": "福石控股",
+            "date": "20171129",
+            "marketCap": 52.92233606
+          },
+          {
+            "code": "002425.SZ",
+            "name": "凯撒文化",
+            "date": "20171227",
+            "marketCap": 58.67097354999999
+          },
+          {
+            "code": "002739.SZ",
+            "name": "儒意电影",
+            "date": "20170703",
+            "marketCap": 611.1031044700001
+          },
+          {
+            "code": "300364.SZ",
+            "name": "中文在线",
+            "date": "20171227",
+            "marketCap": 65.68567168
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20171225",
+            "marketCap": 163.40211683
+          },
+          {
+            "code": "603598.SH",
+            "name": "引力传媒",
+            "date": "20171107",
+            "marketCap": 40.2331692
+          },
+          {
+            "code": "002919.SZ",
+            "name": "名臣健康",
+            "date": "20171227",
+            "marketCap": 28.710031880000003
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300071.SZ",
+            "name": "福石控股",
+            "date": "20171129",
+            "marketCap": 52.92233606
+          },
+          {
+            "code": "002739.SZ",
+            "name": "儒意电影",
+            "date": "20170703",
+            "marketCap": 611.1031044700001
+          },
+          {
+            "code": "000156.SZ",
+            "name": "华数传媒",
+            "date": "20171225",
+            "marketCap": 163.40211683
+          },
+          {
+            "code": "000793.SZ",
+            "name": "ST华闻",
+            "date": "20180131",
+            "marketCap": 168.10875815999998
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002602.SZ",
+            "name": "世纪华通",
+            "date": "20180611",
+            "marketCap": 474.24736222999996
+          },
+          {
+            "code": "300299.SZ",
+            "name": "富春股份",
+            "date": "20180615",
+            "marketCap": 34.60494008
+          },
+          {
+            "code": "002739.SZ",
+            "name": "儒意电影",
+            "date": "20170703",
+            "marketCap": 611.1031044700001
+          },
+          {
+            "code": "000793.SZ",
+            "name": "ST华闻",
+            "date": "20180131",
+            "marketCap": 168.10875815999998
+          },
+          {
+            "code": "603825.SH",
+            "name": "ST华扬",
+            "date": "20180413",
+            "marketCap": 58.117360080000005
+          },
+          {
+            "code": "603602.SH",
+            "name": "纵横通信",
+            "date": "20180404",
+            "marketCap": 39.936
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002602.SZ",
+            "name": "世纪华通",
+            "date": "20180611",
+            "marketCap": 474.24736222999996
+          },
+          {
+            "code": "002739.SZ",
+            "name": "儒意电影",
+            "date": "20170703",
+            "marketCap": 611.1031044700001
+          },
+          {
+            "code": "002558.SZ",
+            "name": "巨人网络",
+            "date": "20180914",
+            "marketCap": 384.22731109
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300071.SZ",
+            "name": "福石控股",
+            "date": "20200925",
+            "marketCap": 22.42430643
+          }
+        ]
+      },
+      {
+        "quarter": "2020Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300182.SZ",
+            "name": "捷成股份",
+            "date": "20201229",
+            "marketCap": 83.17123407
+          }
+        ]
+      },
+      {
+        "quarter": "2021Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600892.SH",
+            "name": "大晟文化",
+            "date": "20260629",
+            "marketCap": 20.02881836
+          }
+        ]
+      },
+      {
+        "quarter": "2026Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      }
+    ]
+  },
+  "historicalAuditScope": "旧公司整体法，市值/PE已被sw-alignment-audit.json取代；财务核验仍有效",
+  "valuationAlignment": {
     "industry": "传媒",
     "code": "801760.SI",
-    "companies": 131,
-    "quarters": 87,
-    "companyQuarterRows": 7272,
+    "scope": "SW公布市值/PE与财报汇总分离",
+    "project2AsOf": "20261110",
+    "financialAsOf": "2026-11-10",
+    "financialHash": "6f8fe8a8651603f87cd3a7e7cd020cb7727329e2f4861af4782f833529088772",
+    "sectorFinancialHashes": {
+      "801764.SI": "fda3f61043cd0962a559b11623d4fa9730f768a9502ce9f0a00273b4c325c0f1",
+      "801769.SI": "6733fb95cd9428324cdfdb7b0a91133274d4ac958ae5c71c3459cc51580b2b74",
+      "801765.SI": "7173ff29c3cc0d5e86b505e2e97e4bb6765a0862be1dc3c6ed8c36d5a03387a4",
+      "801766.SI": "67e5e96c2b7cc2ad8f3ae03bc7f85050274eb2892b25456dd1a6496bc348ac44",
+      "801995.SI": "756ba0fad04f1d84d63f44ec0625ad6147bdb0b36e5e182d6296172f5cbdef65",
+      "801767.SI": "692142dbe83d7856e5132f0c1e9770645e6fdf528f335b41baf1ea570caeac3a",
+      "801768.SI": "5e1e5c4f1451cb2a0c37c1509940c4ddc82b434742241766029f41918242461a"
+    },
     "latest": {
       "quarter": "2026Q3",
       "endDate": "20260930",
       "tradeDate": "20260930",
       "companies": 131,
-      "marketCap": 14487.261612319991,
-      "marketCapObserved": 14487.261612319991,
-      "pe": 49.60956516453553,
-      "peMarketCap": 14487.261612319991,
-      "peProfit": 292.0255713645425,
-      "peCoverage": 1.0,
-      "peMissingCount": 0,
-      "peRebuiltCount": 59,
+      "marketCap": 14370.2582,
+      "marketCapObserved": 14370.2582,
+      "pe": 34.1,
       "revenue": 1357.0723690448997,
       "profit": 65.55683262210002,
       "reportedCount": 131,
@@ -29,3123 +3184,212 @@
       "estimatedProfit": 0,
       "carriedCount": 0,
       "marketMissingCount": 0,
-      "financialCoverage": 1.0
-    },
-    "financialIncompleteQuarters": 8,
-    "peCoverageMin": 0.998213779124332,
-    "carriedCompanyQuarters": 400
-  },
-  "quality": [
-    {
-      "quarter": "2005Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2005Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600373.SH",
-          "name": "中文传媒",
-          "date": "20050629",
-          "marketCap": 4.375
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20050629",
-          "marketCap": 3.37670546
-        },
-        {
-          "code": "600892.SH",
-          "name": "大晟文化",
-          "date": "20050418",
-          "marketCap": 1.1413
-        },
-        {
-          "code": "600640.SH",
-          "name": "国脉文化",
-          "date": "20050629",
-          "marketCap": 16.215396
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600892.SH",
-          "name": "大晟文化",
-          "date": "20050418",
-          "marketCap": 1.1413
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600831.SH",
-          "name": "广电网络",
-          "date": "20051219",
-          "marketCap": 10.66498971
-        },
-        {
-          "code": "000917.SZ",
-          "name": "电广传媒",
-          "date": "20051229",
-          "marketCap": 14.223244200000002
-        },
-        {
-          "code": "600373.SH",
-          "name": "中文传媒",
-          "date": "20051222",
-          "marketCap": 4.5375
-        },
-        {
-          "code": "000793.SZ",
-          "name": "ST华闻",
-          "date": "20051222",
-          "marketCap": 45.5644413
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600986.SH",
-          "name": "浙文互联",
-          "date": "20060317",
-          "marketCap": 6.57966804
-        },
-        {
-          "code": "000802.SZ",
-          "name": "北京文化",
-          "date": "20060324",
-          "marketCap": 4.847625
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600088.SH",
-          "name": "中视传媒",
-          "date": "20060608",
-          "marketCap": 34.32585
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20060629",
-          "marketCap": 4.76102532
-        },
-        {
-          "code": "000665.SZ",
-          "name": "湖北广电",
-          "date": "20060629",
-          "marketCap": 4.96212598
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20060621",
-          "marketCap": 6.87675
-        },
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪",
-          "date": "20060629",
-          "marketCap": 11.75410339
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600892.SH",
-          "name": "大晟文化",
-          "date": "20060629",
-          "marketCap": 3.939
-        },
-        {
-          "code": "600229.SH",
-          "name": "城市传媒",
-          "date": "20060627",
-          "marketCap": 13.546293040000002
-        },
-        {
-          "code": "600551.SH",
-          "name": "时代出版",
-          "date": "20060612",
-          "marketCap": 5.3325
-        },
-        {
-          "code": "600228.SH",
-          "name": "返利科技",
-          "date": "20060629",
-          "marketCap": 8.928
-        },
-        {
-          "code": "600358.SH",
-          "name": "国旅联合",
-          "date": "20060609",
-          "marketCap": 17.9712
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600825.SH",
-          "name": "新华传媒",
-          "date": "20060816",
-          "marketCap": 31.72549043
-        },
-        {
-          "code": "600715.SH",
-          "name": "文投控股",
-          "date": "20060922",
-          "marketCap": 5.3372928
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600757.SH",
-          "name": "长江传媒",
-          "date": "20061215",
-          "marketCap": 14.11711239
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600825.SH",
-          "name": "新华传媒",
-          "date": "20070302",
-          "marketCap": 47.82460105
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600892.SH",
-          "name": "大晟文化",
-          "date": "20070323",
-          "marketCap": 5.96405
-        },
-        {
-          "code": "600757.SH",
-          "name": "长江传媒",
-          "date": "20070112",
-          "marketCap": 15.533545069999999
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪",
-          "date": "20070628",
-          "marketCap": 20.52829325
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20070418",
-          "marketCap": 19.58784169
-        },
-        {
-          "code": "600228.SH",
-          "name": "返利科技",
-          "date": "20070628",
-          "marketCap": 14.093088
-        },
-        {
-          "code": "600757.SH",
-          "name": "长江传媒",
-          "date": "20070628",
-          "marketCap": 21.203413519999998
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪",
-          "date": "20070718",
-          "marketCap": 22.0596377
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20070418",
-          "marketCap": 19.58784169
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600373.SH",
-          "name": "中文传媒",
-          "date": "20071214",
-          "marketCap": 10.3625
-        },
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪",
-          "date": "20070718",
-          "marketCap": 22.0596377
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20070418",
-          "marketCap": 19.58784169
-        },
-        {
-          "code": "600757.SH",
-          "name": "长江传媒",
-          "date": "20071012",
-          "marketCap": 34.45554696
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600831.SH",
-          "name": "广电网络",
-          "date": "20080328",
-          "marketCap": 37.96542213
-        },
-        {
-          "code": "600373.SH",
-          "name": "中文传媒",
-          "date": "20071214",
-          "marketCap": 10.3625
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪",
-          "date": "20070718",
-          "marketCap": 22.0596377
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600637.SH",
-          "name": "东方明珠",
-          "date": "20080111",
-          "marketCap": 72.80038959
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪",
-          "date": "20080429",
-          "marketCap": 26.81922182
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600229.SH",
-          "name": "城市传媒",
-          "date": "20080627",
-          "marketCap": 19.44881724
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000917.SZ",
-          "name": "电广传媒",
-          "date": "20080919",
-          "marketCap": 53.76386298
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪",
-          "date": "20080429",
-          "marketCap": 26.81922182
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600373.SH",
-          "name": "中文传媒",
-          "date": "20081230",
-          "marketCap": 5.25
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20081128",
-          "marketCap": 4.57125
-        },
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪",
-          "date": "20081021",
-          "marketCap": 20.77661938
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "002264.SZ",
-          "name": "新华都",
-          "date": "20081230",
-          "marketCap": 19.377344
-        },
-        {
-          "code": "600892.SH",
-          "name": "大晟文化",
-          "date": "20081210",
-          "marketCap": 3.43905
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20081226",
-          "marketCap": 9.29283652
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q1",
-      "financialMissing": [
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪",
-          "date": "20081021",
-          "marketCap": 20.77661938
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600637.SH",
-          "name": "东方明珠",
-          "date": "20090330",
-          "marketCap": 30.552062229999997
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q2",
-      "financialMissing": [
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q3",
-      "financialMissing": [
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q4",
-      "financialMissing": [
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600715.SH",
-          "name": "文投控股",
-          "date": "20100330",
-          "marketCap": 20.4745728
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000665.SZ",
-          "name": "湖北广电",
-          "date": "20100317",
-          "marketCap": 20.96140201
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600892.SH",
-          "name": "大晟文化",
-          "date": "20100329",
-          "marketCap": 15.6739375
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600715.SH",
-          "name": "文投控股",
-          "date": "20100629",
-          "marketCap": 17.8059264
-        },
-        {
-          "code": "600633.SH",
-          "name": "浙数文化",
-          "date": "20100429",
-          "marketCap": 11.06929911
-        },
-        {
-          "code": "002181.SZ",
-          "name": "粤传媒",
-          "date": "20100525",
-          "marketCap": 36.73197953
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        },
-        {
-          "code": "600757.SH",
-          "name": "长江传媒",
-          "date": "20100629",
-          "marketCap": 32.633378619999995
-        },
-        {
-          "code": "002354.SZ",
-          "name": "天娱数科",
-          "date": "20100629",
-          "marketCap": 17.02635
-        },
-        {
-          "code": "300002.SZ",
-          "name": "神州泰岳",
-          "date": "20100629",
-          "marketCap": 171.272
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600633.SH",
-          "name": "浙数文化",
-          "date": "20100429",
-          "marketCap": 11.06929911
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        },
-        {
-          "code": "600637.SH",
-          "name": "东方明珠",
-          "date": "20100901",
-          "marketCap": 59.40284954
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600633.SH",
-          "name": "浙数文化",
-          "date": "20100429",
-          "marketCap": 11.06929911
-        },
-        {
-          "code": "000917.SZ",
-          "name": "电广传媒",
-          "date": "20101224",
-          "marketCap": 99.15633082
-        },
-        {
-          "code": "300113.SZ",
-          "name": "顺网科技",
-          "date": "20101210",
-          "marketCap": 41.64
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        },
-        {
-          "code": "600637.SH",
-          "name": "东方明珠",
-          "date": "20100901",
-          "marketCap": 59.40284954
-        },
-        {
-          "code": "600757.SH",
-          "name": "长江传媒",
-          "date": "20101008",
-          "marketCap": 40.58465868
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q1",
-      "financialMissing": [
-        {
-          "code": "600715.SH",
-          "name": "文投控股"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600633.SH",
-          "name": "浙数文化",
-          "date": "20100429",
-          "marketCap": 11.06929911
-        },
-        {
-          "code": "000917.SZ",
-          "name": "电广传媒",
-          "date": "20101224",
-          "marketCap": 99.15633082
-        },
-        {
-          "code": "300027.SZ",
-          "name": "ST华谊",
-          "date": "20110330",
-          "marketCap": 87.864
-        },
-        {
-          "code": "300133.SZ",
-          "name": "华策影视",
-          "date": "20110330",
-          "marketCap": 52.181872
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "000793.SZ",
-          "name": "ST华闻",
-          "date": "20110225",
-          "marketCap": 77.25553031999999
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q2",
-      "financialMissing": [
-        {
-          "code": "600715.SH",
-          "name": "文投控股"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600633.SH",
-          "name": "浙数文化",
-          "date": "20100429",
-          "marketCap": 11.06929911
-        },
-        {
-          "code": "000917.SZ",
-          "name": "电广传媒",
-          "date": "20101224",
-          "marketCap": 99.15633082
-        },
-        {
-          "code": "300058.SZ",
-          "name": "蓝色光标",
-          "date": "20110520",
-          "marketCap": 37.62
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "000793.SZ",
-          "name": "ST华闻",
-          "date": "20110225",
-          "marketCap": 77.25553031999999
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20080121",
-          "marketCap": 11.99312628
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "000802.SZ",
-          "name": "北京文化",
-          "date": "20110928",
-          "marketCap": 23.08004116
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002027.SZ",
-          "name": "分众传媒",
-          "date": "20111229",
-          "marketCap": 12.66784136
-        },
-        {
-          "code": "300027.SZ",
-          "name": "ST华谊",
-          "date": "20111229",
-          "marketCap": 95.61888
-        },
-        {
-          "code": "300061.SZ",
-          "name": "旗天科技",
-          "date": "20111122",
-          "marketCap": 9.684
-        },
-        {
-          "code": "300043.SZ",
-          "name": "星辉娱乐",
-          "date": "20111025",
-          "marketCap": 28.2744
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q1",
-      "financialMissing": [
-        {
-          "code": "600556.SH",
-          "name": "天下秀"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600633.SH",
-          "name": "浙数文化",
-          "date": "20120305",
-          "marketCap": 70.86309191000001
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q2",
-      "financialMissing": [
-        {
-          "code": "600556.SH",
-          "name": "天下秀"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000917.SZ",
-          "name": "电广传媒",
-          "date": "20120628",
-          "marketCap": 100.49737956
-        },
-        {
-          "code": "600373.SH",
-          "name": "中文传媒",
-          "date": "20120628",
-          "marketCap": 81.45638458
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000917.SZ",
-          "name": "电广传媒",
-          "date": "20120921",
-          "marketCap": 120.89803559999999
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20060331",
-          "marketCap": 1.20625
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300315.SZ",
-          "name": "掌趣科技",
-          "date": "20121203",
-          "marketCap": 37.412676
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20090306",
-          "marketCap": 6.55875
-        },
-        {
-          "code": "000793.SZ",
-          "name": "ST华闻",
-          "date": "20121122",
-          "marketCap": 90.17678979
-        },
-        {
-          "code": "600229.SH",
-          "name": "城市传媒",
-          "date": "20121221",
-          "marketCap": 23.311807769999998
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20090429",
-          "marketCap": 12.42081744
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300071.SZ",
-          "name": "福石控股",
-          "date": "20130306",
-          "marketCap": 15.96132588
-        },
-        {
-          "code": "300058.SZ",
-          "name": "蓝色光标",
-          "date": "20130301",
-          "marketCap": 124.17406143
-        },
-        {
-          "code": "300182.SZ",
-          "name": "捷成股份",
-          "date": "20130322",
-          "marketCap": 55.3093233
-        },
-        {
-          "code": "000665.SZ",
-          "name": "湖北广电",
-          "date": "20130325",
-          "marketCap": 40.93657237
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20130225",
-          "marketCap": 13.95225
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20130319",
-          "marketCap": 17.01560881
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600715.SH",
-          "name": "文投控股",
-          "date": "20130524",
-          "marketCap": 15.787622399999998
-        },
-        {
-          "code": "600088.SH",
-          "name": "中视传媒",
-          "date": "20130529",
-          "marketCap": 47.3602038
-        },
-        {
-          "code": "300027.SZ",
-          "name": "ST华谊",
-          "date": "20130604",
-          "marketCap": 172.6704
-        },
-        {
-          "code": "300133.SZ",
-          "name": "华策影视",
-          "date": "20130527",
-          "marketCap": 141.45302003999998
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20130516",
-          "marketCap": 42.256888079999996
-        },
-        {
-          "code": "000665.SZ",
-          "name": "湖北广电",
-          "date": "20130325",
-          "marketCap": 40.93657237
-        },
-        {
-          "code": "000681.SZ",
-          "name": "视觉中国",
-          "date": "20130225",
-          "marketCap": 13.95225
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002181.SZ",
-          "name": "粤传媒",
-          "date": "20130904",
-          "marketCap": 76.1202904
-        },
-        {
-          "code": "002174.SZ",
-          "name": "游族网络",
-          "date": "20130826",
-          "marketCap": 16.5879842
-        },
-        {
-          "code": "002400.SZ",
-          "name": "省广集团",
-          "date": "20130830",
-          "marketCap": 141.2856811
-        },
-        {
-          "code": "002292.SZ",
-          "name": "奥飞娱乐",
-          "date": "20130722",
-          "marketCap": 173.01504
-        },
-        {
-          "code": "300043.SZ",
-          "name": "星辉娱乐",
-          "date": "20130816",
-          "marketCap": 30.29525879
-        },
-        {
-          "code": "300315.SZ",
-          "name": "掌趣科技",
-          "date": "20130716",
-          "marketCap": 147.4772992
-        },
-        {
-          "code": "002555.SZ",
-          "name": "三七互娱",
-          "date": "20130726",
-          "marketCap": 14.1906
-        },
-        {
-          "code": "000607.SZ",
-          "name": "华媒控股",
-          "date": "20130926",
-          "marketCap": 20.72860979
-        },
-        {
-          "code": "600358.SH",
-          "name": "国旅联合",
-          "date": "20130827",
-          "marketCap": 20.4336
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300071.SZ",
-          "name": "福石控股",
-          "date": "20131122",
-          "marketCap": 49.84582959
-        },
-        {
-          "code": "002602.SZ",
-          "name": "世纪华通",
-          "date": "20131017",
-          "marketCap": 19.1625
-        },
-        {
-          "code": "300291.SZ",
-          "name": "百纳千成",
-          "date": "20131206",
-          "marketCap": 46.1868
-        },
-        {
-          "code": "000607.SZ",
-          "name": "华媒控股",
-          "date": "20130926",
-          "marketCap": 20.72860979
-        },
-        {
-          "code": "002354.SZ",
-          "name": "天娱数科",
-          "date": "20131011",
-          "marketCap": 14.74495
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600373.SH",
-          "name": "中文传媒",
-          "date": "20140314",
-          "marketCap": 139.58106284000002
-        },
-        {
-          "code": "300071.SZ",
-          "name": "福石控股",
-          "date": "20131122",
-          "marketCap": 49.84582959
-        },
-        {
-          "code": "300052.SZ",
-          "name": "中青宝",
-          "date": "20140110",
-          "marketCap": 76.752
-        },
-        {
-          "code": "002425.SZ",
-          "name": "凯撒文化",
-          "date": "20140321",
-          "marketCap": 36.035076000000004
-        },
-        {
-          "code": "300043.SZ",
-          "name": "星辉娱乐",
-          "date": "20140314",
-          "marketCap": 92.98927796999999
-        },
-        {
-          "code": "300251.SZ",
-          "name": "光线传媒",
-          "date": "20140228",
-          "marketCap": 206.085264
-        },
-        {
-          "code": "002555.SZ",
-          "name": "三七互娱",
-          "date": "20140328",
-          "marketCap": 54.1092
-        },
-        {
-          "code": "300291.SZ",
-          "name": "百纳千成",
-          "date": "20131206",
-          "marketCap": 46.1868
-        },
-        {
-          "code": "000607.SZ",
-          "name": "华媒控股",
-          "date": "20130926",
-          "marketCap": 20.72860979
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20140224",
-          "marketCap": 292.86230236999995
-        },
-        {
-          "code": "000793.SZ",
-          "name": "ST华闻",
-          "date": "20140311",
-          "marketCap": 244.81447075
-        },
-        {
-          "code": "002517.SZ",
-          "name": "恺英网络",
-          "date": "20140113",
-          "marketCap": 12.67656
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20140328",
-          "marketCap": 17.13404693
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600715.SH",
-          "name": "文投控股",
-          "date": "20140617",
-          "marketCap": 16.3931136
-        },
-        {
-          "code": "300242.SZ",
-          "name": "佳云科技",
-          "date": "20140604",
-          "marketCap": 14.1225
-        },
-        {
-          "code": "002624.SZ",
-          "name": "完美世界",
-          "date": "20140404",
-          "marketCap": 16.2
-        },
-        {
-          "code": "002602.SZ",
-          "name": "世纪华通",
-          "date": "20140624",
-          "marketCap": 64.785
-        },
-        {
-          "code": "300295.SZ",
-          "name": "*ST三六五",
-          "date": "20140410",
-          "marketCap": 52.181635
-        },
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪",
-          "date": "20140404",
-          "marketCap": 25.82591731
-        },
-        {
-          "code": "000802.SZ",
-          "name": "北京文化",
-          "date": "20140509",
-          "marketCap": 38.62297708
-        },
-        {
-          "code": "002517.SZ",
-          "name": "恺英网络",
-          "date": "20140113",
-          "marketCap": 12.67656
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20140328",
-          "marketCap": 17.13404693
-        },
-        {
-          "code": "600637.SH",
-          "name": "东方明珠",
-          "date": "20140528",
-          "marketCap": 356.72966482000004
-        },
-        {
-          "code": "600228.SH",
-          "name": "返利科技",
-          "date": "20140410",
-          "marketCap": 24.349188
-        },
-        {
-          "code": "600757.SH",
-          "name": "长江传媒",
-          "date": "20140616",
-          "marketCap": 107.40804916
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600986.SH",
-          "name": "浙文互联",
-          "date": "20140825",
-          "marketCap": 23.63651441
-        },
-        {
-          "code": "300027.SZ",
-          "name": "ST华谊",
-          "date": "20140917",
-          "marketCap": 290.84615293999997
-        },
-        {
-          "code": "300133.SZ",
-          "name": "华策影视",
-          "date": "20140709",
-          "marketCap": 188.62096953
-        },
-        {
-          "code": "300043.SZ",
-          "name": "星辉娱乐",
-          "date": "20140815",
-          "marketCap": 86.47178891
-        },
-        {
-          "code": "601928.SH",
-          "name": "凤凰传媒",
-          "date": "20140919",
-          "marketCap": 272.55879
-        },
-        {
-          "code": "300299.SZ",
-          "name": "富春股份",
-          "date": "20140716",
-          "marketCap": 20.09799
-        },
-        {
-          "code": "300315.SZ",
-          "name": "掌趣科技",
-          "date": "20140711",
-          "marketCap": 205.41140877
-        },
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪",
-          "date": "20140404",
-          "marketCap": 25.82591731
-        },
-        {
-          "code": "002343.SZ",
-          "name": "慈文传媒",
-          "date": "20140805",
-          "marketCap": 18.207228
-        },
-        {
-          "code": "600892.SH",
-          "name": "大晟文化",
-          "date": "20140918",
-          "marketCap": 15.339375
-        },
-        {
-          "code": "600229.SH",
-          "name": "城市传媒",
-          "date": "20140822",
-          "marketCap": 23.94506571
-        },
-        {
-          "code": "600637.SH",
-          "name": "东方明珠",
-          "date": "20140528",
-          "marketCap": 356.72966482000004
-        },
-        {
-          "code": "300002.SZ",
-          "name": "神州泰岳",
-          "date": "20140728",
-          "marketCap": 185.77572872
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600986.SH",
-          "name": "浙文互联",
-          "date": "20140825",
-          "marketCap": 23.63651441
-        },
-        {
-          "code": "300071.SZ",
-          "name": "福石控股",
-          "date": "20141226",
-          "marketCap": 57.13505964
-        },
-        {
-          "code": "002425.SZ",
-          "name": "凯撒文化",
-          "date": "20141230",
-          "marketCap": 42.11892
-        },
-        {
-          "code": "002602.SZ",
-          "name": "世纪华通",
-          "date": "20141204",
-          "marketCap": 136.50053212
-        },
-        {
-          "code": "300315.SZ",
-          "name": "掌趣科技",
-          "date": "20140711",
-          "marketCap": 205.41140877
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20141225",
-          "marketCap": 130.26170806
-        },
-        {
-          "code": "000676.SZ",
-          "name": "智度股份",
-          "date": "20141107",
-          "marketCap": 25.67027464
-        },
-        {
-          "code": "002558.SZ",
-          "name": "巨人网络",
-          "date": "20141024",
-          "marketCap": 20.714925
-        },
-        {
-          "code": "300063.SZ",
-          "name": "天龙集团",
-          "date": "20141128",
-          "marketCap": 35.6775
-        },
-        {
-          "code": "600892.SH",
-          "name": "大晟文化",
-          "date": "20140918",
-          "marketCap": 15.339375
-        },
-        {
-          "code": "002354.SZ",
-          "name": "天娱数科",
-          "date": "20141030",
-          "marketCap": 128.18400652999998
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002174.SZ",
-          "name": "游族网络",
-          "date": "20150107",
-          "marketCap": 136.11801318000002
-        },
-        {
-          "code": "300242.SZ",
-          "name": "佳云科技",
-          "date": "20150306",
-          "marketCap": 37.20366946
-        },
-        {
-          "code": "002624.SZ",
-          "name": "完美世界",
-          "date": "20150323",
-          "marketCap": 142.31290142999998
-        },
-        {
-          "code": "002602.SZ",
-          "name": "世纪华通",
-          "date": "20141204",
-          "marketCap": 136.50053212
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20141225",
-          "marketCap": 130.26170806
-        },
-        {
-          "code": "002712.SZ",
-          "name": "思美传媒",
-          "date": "20150318",
-          "marketCap": 64.10915625999999
-        },
-        {
-          "code": "002555.SZ",
-          "name": "三七互娱",
-          "date": "20150217",
-          "marketCap": 191.66437212
-        },
-        {
-          "code": "000607.SZ",
-          "name": "华媒控股",
-          "date": "20150116",
-          "marketCap": 103.60169814000001
-        },
-        {
-          "code": "000676.SZ",
-          "name": "智度股份",
-          "date": "20141107",
-          "marketCap": 25.67027464
-        },
-        {
-          "code": "002558.SZ",
-          "name": "巨人网络",
-          "date": "20141024",
-          "marketCap": 20.714925
-        },
-        {
-          "code": "002517.SZ",
-          "name": "恺英网络",
-          "date": "20141231",
-          "marketCap": 25.476879999999998
-        },
-        {
-          "code": "002264.SZ",
-          "name": "新华都",
-          "date": "20150310",
-          "marketCap": 46.02766788
-        },
-        {
-          "code": "300063.SZ",
-          "name": "天龙集团",
-          "date": "20141128",
-          "marketCap": 35.6775
-        },
-        {
-          "code": "600637.SH",
-          "name": "东方明珠",
-          "date": "20150325",
-          "marketCap": 555.4201806
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000917.SZ",
-          "name": "电广传媒",
-          "date": "20150527",
-          "marketCap": 607.9899133700001
-        },
-        {
-          "code": "002027.SZ",
-          "name": "分众传媒",
-          "date": "20150430",
-          "marketCap": 41.35944387
-        },
-        {
-          "code": "300071.SZ",
-          "name": "福石控股",
-          "date": "20150520",
-          "marketCap": 93.77115004
-        },
-        {
-          "code": "002238.SZ",
-          "name": "天威视讯",
-          "date": "20150626",
-          "marketCap": 122.2359336
-        },
-        {
-          "code": "002292.SZ",
-          "name": "奥飞娱乐",
-          "date": "20150515",
-          "marketCap": 478.88425476000003
-        },
-        {
-          "code": "002624.SZ",
-          "name": "完美世界",
-          "date": "20150323",
-          "marketCap": 142.31290142999998
-        },
-        {
-          "code": "300113.SZ",
-          "name": "顺网科技",
-          "date": "20150504",
-          "marketCap": 167.8512
-        },
-        {
-          "code": "002425.SZ",
-          "name": "凯撒文化",
-          "date": "20150422",
-          "marketCap": 91.45265500000001
-        },
-        {
-          "code": "002602.SZ",
-          "name": "世纪华通",
-          "date": "20141204",
-          "marketCap": 136.50053212
-        },
-        {
-          "code": "002712.SZ",
-          "name": "思美传媒",
-          "date": "20150318",
-          "marketCap": 64.10915625999999
-        },
-        {
-          "code": "300291.SZ",
-          "name": "百纳千成",
-          "date": "20150629",
-          "marketCap": 267.54420595
-        },
-        {
-          "code": "000607.SZ",
-          "name": "华媒控股",
-          "date": "20150626",
-          "marketCap": 148.1768885
-        },
-        {
-          "code": "002739.SZ",
-          "name": "儒意电影",
-          "date": "20150513",
-          "marketCap": 1371.384
-        },
-        {
-          "code": "000665.SZ",
-          "name": "湖北广电",
-          "date": "20150522",
-          "marketCap": 177.50466799
-        },
-        {
-          "code": "300418.SZ",
-          "name": "昆仑万维",
-          "date": "20150504",
-          "marketCap": 436.548
-        },
-        {
-          "code": "300467.SZ",
-          "name": "迅游科技",
-          "date": "20150624",
-          "marketCap": 118.92
-        },
-        {
-          "code": "000892.SZ",
-          "name": "欢瑞世纪",
-          "date": "20150416",
-          "marketCap": 46.850862819999996
-        },
-        {
-          "code": "000676.SZ",
-          "name": "智度股份",
-          "date": "20141107",
-          "marketCap": 25.67027464
-        },
-        {
-          "code": "000793.SZ",
-          "name": "ST华闻",
-          "date": "20150525",
-          "marketCap": 426.65556606
-        },
-        {
-          "code": "002558.SZ",
-          "name": "巨人网络",
-          "date": "20141024",
-          "marketCap": 20.714925
-        },
-        {
-          "code": "300031.SZ",
-          "name": "宝通科技",
-          "date": "20150610",
-          "marketCap": 68.46
-        },
-        {
-          "code": "002605.SZ",
-          "name": "姚记科技",
-          "date": "20150615",
-          "marketCap": 108.4974
-        },
-        {
-          "code": "002354.SZ",
-          "name": "天娱数科",
-          "date": "20150527",
-          "marketCap": 216.17396718
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600633.SH",
-          "name": "浙数文化",
-          "date": "20150807",
-          "marketCap": 214.12942371999998
-        },
-        {
-          "code": "000917.SZ",
-          "name": "电广传媒",
-          "date": "20150527",
-          "marketCap": 607.9899133700001
-        },
-        {
-          "code": "002174.SZ",
-          "name": "游族网络",
-          "date": "20150722",
-          "marketCap": 246.84313793
-        },
-        {
-          "code": "300071.SZ",
-          "name": "福石控股",
-          "date": "20150520",
-          "marketCap": 93.77115004
-        },
-        {
-          "code": "300052.SZ",
-          "name": "中青宝",
-          "date": "20150706",
-          "marketCap": 57.2
-        },
-        {
-          "code": "002238.SZ",
-          "name": "天威视讯",
-          "date": "20150626",
-          "marketCap": 122.2359336
-        },
-        {
-          "code": "300027.SZ",
-          "name": "ST华谊",
-          "date": "20150727",
-          "marketCap": 491.95062692
-        },
-        {
-          "code": "002624.SZ",
-          "name": "完美世界",
-          "date": "20150707",
-          "marketCap": 102.56478125999999
-        },
-        {
-          "code": "300058.SZ",
-          "name": "蓝色光标",
-          "date": "20150804",
-          "marketCap": 276.15723464
-        },
-        {
-          "code": "002602.SZ",
-          "name": "世纪华通",
-          "date": "20141204",
-          "marketCap": 136.50053212
-        },
-        {
-          "code": "300299.SZ",
-          "name": "富春股份",
-          "date": "20150701",
-          "marketCap": 90.89663077
-        },
-        {
-          "code": "002739.SZ",
-          "name": "儒意电影",
-          "date": "20150922",
-          "marketCap": 912.8
-        },
-        {
-          "code": "300459.SZ",
-          "name": "汤姆猫",
-          "date": "20150911",
-          "marketCap": 49.29
-        },
-        {
-          "code": "300467.SZ",
-          "name": "迅游科技",
-          "date": "20150721",
-          "marketCap": 87.556
-        },
-        {
-          "code": "000676.SZ",
-          "name": "智度股份",
-          "date": "20141107",
-          "marketCap": 25.67027464
-        },
-        {
-          "code": "002558.SZ",
-          "name": "巨人网络",
-          "date": "20141024",
-          "marketCap": 20.714925
-        },
-        {
-          "code": "002343.SZ",
-          "name": "慈文传媒",
-          "date": "20150723",
-          "marketCap": 81.744312
-        },
-        {
-          "code": "300031.SZ",
-          "name": "宝通科技",
-          "date": "20150610",
-          "marketCap": 68.46
-        },
-        {
-          "code": "002605.SZ",
-          "name": "姚记科技",
-          "date": "20150615",
-          "marketCap": 108.4974
-        },
-        {
-          "code": "300148.SZ",
-          "name": "天舟文化",
-          "date": "20150831",
-          "marketCap": 67.57624144
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600986.SH",
-          "name": "浙文互联",
-          "date": "20151211",
-          "marketCap": 182.46614883
-        },
-        {
-          "code": "002174.SZ",
-          "name": "游族网络",
-          "date": "20150722",
-          "marketCap": 246.84313793
-        },
-        {
-          "code": "300242.SZ",
-          "name": "佳云科技",
-          "date": "20151217",
-          "marketCap": 108.84840256000001
-        },
-        {
-          "code": "002624.SZ",
-          "name": "完美世界",
-          "date": "20150707",
-          "marketCap": 102.56478125999999
-        },
-        {
-          "code": "300043.SZ",
-          "name": "星辉娱乐",
-          "date": "20151216",
-          "marketCap": 196.58334736
-        },
-        {
-          "code": "300459.SZ",
-          "name": "汤姆猫",
-          "date": "20150911",
-          "marketCap": 49.29
-        },
-        {
-          "code": "000676.SZ",
-          "name": "智度股份",
-          "date": "20151223",
-          "marketCap": 104.63153609
-        },
-        {
-          "code": "300063.SZ",
-          "name": "天龙集团",
-          "date": "20151221",
-          "marketCap": 125.90431897
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600986.SH",
-          "name": "浙文互联",
-          "date": "20151211",
-          "marketCap": 182.46614883
-        },
-        {
-          "code": "300071.SZ",
-          "name": "福石控股",
-          "date": "20160114",
-          "marketCap": 61.67651769
-        },
-        {
-          "code": "300043.SZ",
-          "name": "星辉娱乐",
-          "date": "20151216",
-          "marketCap": 196.58334736
-        },
-        {
-          "code": "300299.SZ",
-          "name": "富春股份",
-          "date": "20160226",
-          "marketCap": 104.72872676
-        },
-        {
-          "code": "002555.SZ",
-          "name": "三七互娱",
-          "date": "20160309",
-          "marketCap": 378.28601428
-        },
-        {
-          "code": "002739.SZ",
-          "name": "儒意电影",
-          "date": "20160223",
-          "marketCap": 942.95886412
-        },
-        {
-          "code": "300063.SZ",
-          "name": "天龙集团",
-          "date": "20151221",
-          "marketCap": 125.90431897
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20160119",
-          "marketCap": 62.377405859999996
-        },
-        {
-          "code": "002605.SZ",
-          "name": "姚记科技",
-          "date": "20160314",
-          "marketCap": 59.5034
-        },
-        {
-          "code": "600228.SH",
-          "name": "返利科技",
-          "date": "20160311",
-          "marketCap": 25.990164
-        },
-        {
-          "code": "002354.SZ",
-          "name": "天娱数科",
-          "date": "20160202",
-          "marketCap": 230.95280424999999
-        },
-        {
-          "code": "300426.SZ",
-          "name": "华智数媒",
-          "date": "20160325",
-          "marketCap": 103.968
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600986.SH",
-          "name": "浙文互联",
-          "date": "20160624",
-          "marketCap": 138.8480504
-        },
-        {
-          "code": "300052.SZ",
-          "name": "中青宝",
-          "date": "20160607",
-          "marketCap": 57.506803579999996
-        },
-        {
-          "code": "300242.SZ",
-          "name": "佳云科技",
-          "date": "20160506",
-          "marketCap": 111.59105325
-        },
-        {
-          "code": "300061.SZ",
-          "name": "旗天科技",
-          "date": "20160504",
-          "marketCap": 71.92724697999999
-        },
-        {
-          "code": "300299.SZ",
-          "name": "富春股份",
-          "date": "20160226",
-          "marketCap": 104.72872676
-        },
-        {
-          "code": "002712.SZ",
-          "name": "思美传媒",
-          "date": "20160408",
-          "marketCap": 100.82661928
-        },
-        {
-          "code": "002555.SZ",
-          "name": "三七互娱",
-          "date": "20160309",
-          "marketCap": 378.28601428
-        },
-        {
-          "code": "601900.SH",
-          "name": "南方传媒",
-          "date": "20160603",
-          "marketCap": 144.73497
-        },
-        {
-          "code": "000802.SZ",
-          "name": "北京文化",
-          "date": "20160531",
-          "marketCap": 167.71177198
-        },
-        {
-          "code": "300413.SZ",
-          "name": "芒果超媒",
-          "date": "20160617",
-          "marketCap": 97.6435
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20160119",
-          "marketCap": 62.377405859999996
-        },
-        {
-          "code": "600228.SH",
-          "name": "返利科技",
-          "date": "20160311",
-          "marketCap": 25.990164
-        },
-        {
-          "code": "600640.SH",
-          "name": "国脉文化",
-          "date": "20160415",
-          "marketCap": 89.88770694
-        },
-        {
-          "code": "600358.SH",
-          "name": "国旅联合",
-          "date": "20160401",
-          "marketCap": 68.16644910000001
-        },
-        {
-          "code": "002291.SZ",
-          "name": "遥望科技",
-          "date": "20160401",
-          "marketCap": 55.41025122
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300027.SZ",
-          "name": "ST华谊",
-          "date": "20160923",
-          "marketCap": 344.82474239
-        },
-        {
-          "code": "002624.SZ",
-          "name": "完美世界",
-          "date": "20160704",
-          "marketCap": 486.1427229
-        },
-        {
-          "code": "002602.SZ",
-          "name": "世纪华通",
-          "date": "20160825",
-          "marketCap": 271.25500776
-        },
-        {
-          "code": "000719.SZ",
-          "name": "中原传媒",
-          "date": "20160920",
-          "marketCap": 113.16633463999999
-        },
-        {
-          "code": "002555.SZ",
-          "name": "三七互娱",
-          "date": "20160929",
-          "marketCap": 385.89551526
-        },
-        {
-          "code": "300295.SZ",
-          "name": "*ST三六五",
-          "date": "20160906",
-          "marketCap": 59.615424
-        },
-        {
-          "code": "601900.SH",
-          "name": "南方传媒",
-          "date": "20160603",
-          "marketCap": 144.73497
-        },
-        {
-          "code": "002558.SZ",
-          "name": "巨人网络",
-          "date": "20160712",
-          "marketCap": 838.76808532
-        },
-        {
-          "code": "300413.SZ",
-          "name": "芒果超媒",
-          "date": "20160617",
-          "marketCap": 97.6435
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002400.SZ",
-          "name": "省广集团",
-          "date": "20161125",
-          "marketCap": 184.92783842
-        },
-        {
-          "code": "002602.SZ",
-          "name": "世纪华通",
-          "date": "20161214",
-          "marketCap": 481.60345756000004
-        },
-        {
-          "code": "300459.SZ",
-          "name": "汤姆猫",
-          "date": "20161024",
-          "marketCap": 272.13499279999996
-        },
-        {
-          "code": "000676.SZ",
-          "name": "智度股份",
-          "date": "20161116",
-          "marketCap": 190.53473729
-        },
-        {
-          "code": "600892.SH",
-          "name": "大晟文化",
-          "date": "20161115",
-          "marketCap": 109.52910141000001
-        },
-        {
-          "code": "600551.SH",
-          "name": "时代出版",
-          "date": "20161125",
-          "marketCap": 102.78370015
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002400.SZ",
-          "name": "省广集团",
-          "date": "20161125",
-          "marketCap": 184.92783842
-        },
-        {
-          "code": "300315.SZ",
-          "name": "掌趣科技",
-          "date": "20170118",
-          "marketCap": 244.94533709
-        },
-        {
-          "code": "300364.SZ",
-          "name": "中文在线",
-          "date": "20170210",
-          "marketCap": 106.21035427999999
-        },
-        {
-          "code": "300467.SZ",
-          "name": "迅游科技",
-          "date": "20170106",
-          "marketCap": 77.7429664
-        },
-        {
-          "code": "600551.SH",
-          "name": "时代出版",
-          "date": "20161125",
-          "marketCap": 102.78370015
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20170105",
-          "marketCap": 47.09888936
-        },
-        {
-          "code": "600228.SH",
-          "name": "返利科技",
-          "date": "20170314",
-          "marketCap": 36.125603999999996
-        },
-        {
-          "code": "300148.SZ",
-          "name": "天舟文化",
-          "date": "20170124",
-          "marketCap": 131.87476856
-        },
-        {
-          "code": "600358.SH",
-          "name": "国旅联合",
-          "date": "20170210",
-          "marketCap": 53.169830299999994
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300291.SZ",
-          "name": "百纳千成",
-          "date": "20170418",
-          "marketCap": 162.65472744
-        },
-        {
-          "code": "300364.SZ",
-          "name": "中文在线",
-          "date": "20170210",
-          "marketCap": 106.21035427999999
-        },
-        {
-          "code": "300459.SZ",
-          "name": "汤姆猫",
-          "date": "20170629",
-          "marketCap": 196.07634577
-        },
-        {
-          "code": "600959.SH",
-          "name": "江苏有线",
-          "date": "20170616",
-          "marketCap": 410.59479975
-        },
-        {
-          "code": "300612.SZ",
-          "name": "宣亚国际",
-          "date": "20170410",
-          "marketCap": 72.0
-        },
-        {
-          "code": "002264.SZ",
-          "name": "新华都",
-          "date": "20170509",
-          "marketCap": 57.50336592
-        },
-        {
-          "code": "603598.SH",
-          "name": "引力传媒",
-          "date": "20170509",
-          "marketCap": 44.0558625
-        },
-        {
-          "code": "300413.SZ",
-          "name": "芒果超媒",
-          "date": "20170331",
-          "marketCap": 81.3629
-        },
-        {
-          "code": "600556.SH",
-          "name": "天下秀",
-          "date": "20170105",
-          "marketCap": 47.09888936
-        },
-        {
-          "code": "300148.SZ",
-          "name": "天舟文化",
-          "date": "20170124",
-          "marketCap": 131.87476856
-        },
-        {
-          "code": "600358.SH",
-          "name": "国旅联合",
-          "date": "20170602",
-          "marketCap": 35.3455662
-        },
-        {
-          "code": "002291.SZ",
-          "name": "遥望科技",
-          "date": "20170602",
-          "marketCap": 60.316990520000004
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600825.SH",
-          "name": "新华传媒",
-          "date": "20170725",
-          "marketCap": 76.17232426999999
-        },
-        {
-          "code": "600715.SH",
-          "name": "文投控股",
-          "date": "20170704",
-          "marketCap": 416.78558145
-        },
-        {
-          "code": "601999.SH",
-          "name": "出版传媒",
-          "date": "20170630",
-          "marketCap": 50.243420640000004
-        },
-        {
-          "code": "002739.SZ",
-          "name": "儒意电影",
-          "date": "20170703",
-          "marketCap": 611.1031044700001
-        },
-        {
-          "code": "603729.SH",
-          "name": "ST龙韵",
-          "date": "20170717",
-          "marketCap": 42.748804
-        },
-        {
-          "code": "600959.SH",
-          "name": "江苏有线",
-          "date": "20170616",
-          "marketCap": 410.59479975
-        },
-        {
-          "code": "300612.SZ",
-          "name": "宣亚国际",
-          "date": "20170410",
-          "marketCap": 72.0
-        },
-        {
-          "code": "300413.SZ",
-          "name": "芒果超媒",
-          "date": "20170331",
-          "marketCap": 81.3629
-        },
-        {
-          "code": "600551.SH",
-          "name": "时代出版",
-          "date": "20170926",
-          "marketCap": 72.18126973999999
-        },
-        {
-          "code": "600358.SH",
-          "name": "国旅联合",
-          "date": "20170602",
-          "marketCap": 35.3455662
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q4",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "002919.SZ",
-          "name": "名臣健康"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600715.SH",
-          "name": "文投控股",
-          "date": "20170704",
-          "marketCap": 416.78558145
-        },
-        {
-          "code": "300071.SZ",
-          "name": "福石控股",
-          "date": "20171129",
-          "marketCap": 52.92233606
-        },
-        {
-          "code": "002425.SZ",
-          "name": "凯撒文化",
-          "date": "20171227",
-          "marketCap": 58.67097354999999
-        },
-        {
-          "code": "002739.SZ",
-          "name": "儒意电影",
-          "date": "20170703",
-          "marketCap": 611.1031044700001
-        },
-        {
-          "code": "300364.SZ",
-          "name": "中文在线",
-          "date": "20171227",
-          "marketCap": 65.68567168
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20171225",
-          "marketCap": 163.40211683
-        },
-        {
-          "code": "603598.SH",
-          "name": "引力传媒",
-          "date": "20171107",
-          "marketCap": 40.2331692
-        },
-        {
-          "code": "002919.SZ",
-          "name": "名臣健康",
-          "date": "20171227",
-          "marketCap": 28.710031880000003
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300071.SZ",
-          "name": "福石控股",
-          "date": "20171129",
-          "marketCap": 52.92233606
-        },
-        {
-          "code": "002739.SZ",
-          "name": "儒意电影",
-          "date": "20170703",
-          "marketCap": 611.1031044700001
-        },
-        {
-          "code": "000156.SZ",
-          "name": "华数传媒",
-          "date": "20171225",
-          "marketCap": 163.40211683
-        },
-        {
-          "code": "000793.SZ",
-          "name": "ST华闻",
-          "date": "20180131",
-          "marketCap": 168.10875815999998
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002602.SZ",
-          "name": "世纪华通",
-          "date": "20180611",
-          "marketCap": 474.24736222999996
-        },
-        {
-          "code": "300299.SZ",
-          "name": "富春股份",
-          "date": "20180615",
-          "marketCap": 34.60494008
-        },
-        {
-          "code": "002739.SZ",
-          "name": "儒意电影",
-          "date": "20170703",
-          "marketCap": 611.1031044700001
-        },
-        {
-          "code": "000793.SZ",
-          "name": "ST华闻",
-          "date": "20180131",
-          "marketCap": 168.10875815999998
-        },
-        {
-          "code": "603825.SH",
-          "name": "ST华扬",
-          "date": "20180413",
-          "marketCap": 58.117360080000005
-        },
-        {
-          "code": "603602.SH",
-          "name": "纵横通信",
-          "date": "20180404",
-          "marketCap": 39.936
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002602.SZ",
-          "name": "世纪华通",
-          "date": "20180611",
-          "marketCap": 474.24736222999996
-        },
-        {
-          "code": "002739.SZ",
-          "name": "儒意电影",
-          "date": "20170703",
-          "marketCap": 611.1031044700001
-        },
-        {
-          "code": "002558.SZ",
-          "name": "巨人网络",
-          "date": "20180914",
-          "marketCap": 384.22731109
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300071.SZ",
-          "name": "福石控股",
-          "date": "20200925",
-          "marketCap": 22.42430643
-        }
-      ]
-    },
-    {
-      "quarter": "2020Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300182.SZ",
-          "name": "捷成股份",
-          "date": "20201229",
-          "marketCap": 83.17123407
-        }
-      ]
-    },
-    {
-      "quarter": "2021Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600892.SH",
-          "name": "大晟文化",
-          "date": "20260629",
-          "marketCap": 20.02881836
-        }
-      ]
-    },
-    {
-      "quarter": "2026Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    }
-  ]
+      "financialCoverage": 1.0,
+      "peRaw": 34.1,
+      "valuationSource": "sw_daily",
+      "valuationCode": "801760.SI",
+      "valuationDate": "20260930",
+      "peStatus": "valid",
+      "peNote": ""
+    },
+    "indices": [
+      {
+        "code": "801760.SI",
+        "name": "传媒",
+        "dailyCount": 3093,
+        "firstDate": "20140221",
+        "lastDate": "20261110",
+        "quarterQuotes": 51,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2",
+          "2012Q3",
+          "2012Q4",
+          "2013Q1",
+          "2013Q2",
+          "2013Q3",
+          "2013Q4"
+        ]
+      },
+      {
+        "code": "801764.SI",
+        "name": "游戏",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801769.SI",
+        "name": "出版",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801765.SI",
+        "name": "广告营销",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801766.SI",
+        "name": "影视院线",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801995.SI",
+        "name": "电视广播",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801767.SI",
+        "name": "数字媒体",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801768.SI",
+        "name": "社交",
+        "dailyCount": 0,
+        "firstDate": null,
+        "lastDate": null,
+        "quarterQuotes": 0,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2",
+          "2012Q3",
+          "2012Q4",
+          "2013Q1",
+          "2013Q2",
+          "2013Q3",
+          "2013Q4",
+          "2014Q1",
+          "2014Q2",
+          "2014Q3",
+          "2014Q4",
+          "2015Q1",
+          "2015Q2",
+          "2015Q3",
+          "2015Q4",
+          "2016Q1",
+          "2016Q2",
+          "2016Q3",
+          "2016Q4",
+          "2017Q1",
+          "2017Q2",
+          "2017Q3",
+          "2017Q4",
+          "2018Q1",
+          "2018Q2",
+          "2018Q3",
+          "2018Q4",
+          "2019Q1",
+          "2019Q2",
+          "2019Q3",
+          "2019Q4",
+          "2020Q1",
+          "2020Q2",
+          "2020Q3",
+          "2020Q4",
+          "2021Q1",
+          "2021Q2",
+          "2021Q3",
+          "2021Q4",
+          "2022Q1",
+          "2022Q2",
+          "2022Q3",
+          "2022Q4",
+          "2023Q1",
+          "2023Q2",
+          "2023Q3",
+          "2023Q4",
+          "2024Q1",
+          "2024Q2",
+          "2024Q3",
+          "2024Q4",
+          "2025Q1",
+          "2025Q2",
+          "2025Q3",
+          "2025Q4",
+          "2026Q1",
+          "2026Q2",
+          "2026Q3"
+        ]
+      }
+    ]
+  }
 }

@@ -1,25 +1,1976 @@
 {
-  "asOf": "2026-11-10",
-  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
-  "summary": {
+  "historicalCompanyAggregateAudit": {
+    "asOf": "2026-11-10",
+    "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+    "summary": {
+      "industry": "非银金融",
+      "code": "801790.SI",
+      "companies": 77,
+      "quarters": 87,
+      "companyQuarterRows": 4682,
+      "latest": {
+        "quarter": "2026Q3",
+        "endDate": "20260930",
+        "tradeDate": "20260930",
+        "companies": 77,
+        "marketCap": 65723.48843225,
+        "marketCapObserved": 65723.48843225,
+        "pe": 7.50572855259065,
+        "peMarketCap": 65723.48843225,
+        "peProfit": 8756.443557976143,
+        "peCoverage": 1.0,
+        "peMissingCount": 0,
+        "peRebuiltCount": 2,
+        "revenue": 5059.3294445044,
+        "profit": 212.43426493800004,
+        "reportedCount": 77,
+        "estimatedCount": 0,
+        "missingCount": 0,
+        "estimatedRevenue": 0,
+        "estimatedProfit": 0,
+        "carriedCount": 0,
+        "marketMissingCount": 0,
+        "financialCoverage": 1.0
+      },
+      "financialIncompleteQuarters": 2,
+      "peCoverageMin": 0.981522550437179,
+      "carriedCompanyQuarters": 203
+    },
+    "quality": [
+      {
+        "quarter": "2005Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2005Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000563.SZ",
+            "name": "陕国投A",
+            "date": "20050629",
+            "marketCap": 13.47862342
+          },
+          {
+            "code": "600643.SH",
+            "name": "爱建集团",
+            "date": "20050629",
+            "marketCap": 26.121007560000002
+          },
+          {
+            "code": "600030.SH",
+            "name": "中信证券",
+            "date": "20050617",
+            "marketCap": 146.9048
+          },
+          {
+            "code": "000415.SZ",
+            "name": "渤海租赁",
+            "date": "20050629",
+            "marketCap": 8.37116186
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q3",
+        "financialMissing": [
+          {
+            "code": "000532.SZ",
+            "name": "华金资本"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600621.SH",
+            "name": "华鑫股份",
+            "date": "20050929",
+            "marketCap": 25.05113638
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q4",
+        "financialMissing": [
+          {
+            "code": "000532.SZ",
+            "name": "华金资本"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600816.SH",
+            "name": "建元信托",
+            "date": "20051223",
+            "marketCap": 11.12568956
+          },
+          {
+            "code": "600390.SH",
+            "name": "五矿资本",
+            "date": "20051229",
+            "marketCap": 4.8335099999999995
+          },
+          {
+            "code": "000987.SZ",
+            "name": "越秀资本",
+            "date": "20051229",
+            "marketCap": 19.69483483
+          },
+          {
+            "code": "000415.SZ",
+            "name": "渤海租赁",
+            "date": "20051229",
+            "marketCap": 6.85549188
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600816.SH",
+            "name": "建元信托",
+            "date": "20051223",
+            "marketCap": 11.12568956
+          },
+          {
+            "code": "600864.SH",
+            "name": "哈投股份",
+            "date": "20060324",
+            "marketCap": 10.36752627
+          },
+          {
+            "code": "600155.SH",
+            "name": "华创云信",
+            "date": "20060324",
+            "marketCap": 11.6325
+          },
+          {
+            "code": "600390.SH",
+            "name": "五矿资本",
+            "date": "20060330",
+            "marketCap": 6.1886
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000712.SZ",
+            "name": "锦龙股份",
+            "date": "20060629",
+            "marketCap": 6.27523479
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20060602",
+            "marketCap": 14.83926495
+          },
+          {
+            "code": "600095.SH",
+            "name": "湘财股份",
+            "date": "20060608",
+            "marketCap": 12.711816
+          },
+          {
+            "code": "600053.SH",
+            "name": "*ST九鼎",
+            "date": "20060626",
+            "marketCap": 6.813261
+          },
+          {
+            "code": "600369.SH",
+            "name": "西南证券",
+            "date": "20060629",
+            "marketCap": 6.16834
+          },
+          {
+            "code": "000935.SZ",
+            "name": "四川双马",
+            "date": "20060616",
+            "marketCap": 18.302193
+          },
+          {
+            "code": "000532.SZ",
+            "name": "华金资本",
+            "date": "20060621",
+            "marketCap": 12.520424779999999
+          },
+          {
+            "code": "600061.SH",
+            "name": "国投资本",
+            "date": "20060622",
+            "marketCap": 15.484297399999999
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600830.SH",
+            "name": "香溢融通",
+            "date": "20060920",
+            "marketCap": 13.89789974
+          },
+          {
+            "code": "600109.SH",
+            "name": "国金证券",
+            "date": "20060821",
+            "marketCap": 5.24562123
+          },
+          {
+            "code": "000686.SZ",
+            "name": "东北证券",
+            "date": "20060928",
+            "marketCap": 15.48365528
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20060602",
+            "marketCap": 14.83926495
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600816.SH",
+            "name": "建元信托",
+            "date": "20061122",
+            "marketCap": 21.751858369999997
+          },
+          {
+            "code": "000783.SZ",
+            "name": "长江证券",
+            "date": "20061205",
+            "marketCap": 89.46943581
+          },
+          {
+            "code": "600109.SH",
+            "name": "国金证券",
+            "date": "20061222",
+            "marketCap": 12.748492200000001
+          },
+          {
+            "code": "000686.SZ",
+            "name": "东北证券",
+            "date": "20060928",
+            "marketCap": 15.48365528
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20061122",
+            "marketCap": 7.39797456
+          },
+          {
+            "code": "000728.SZ",
+            "name": "国元证券",
+            "date": "20061011",
+            "marketCap": 34.382915999999994
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          },
+          {
+            "code": "600155.SH",
+            "name": "华创云信",
+            "date": "20061023",
+            "marketCap": 9.77625
+          },
+          {
+            "code": "600369.SH",
+            "name": "西南证券",
+            "date": "20061124",
+            "marketCap": 6.880495750000001
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000783.SZ",
+            "name": "长江证券",
+            "date": "20070208",
+            "marketCap": 114.28998897
+          },
+          {
+            "code": "000686.SZ",
+            "name": "东北证券",
+            "date": "20070124",
+            "marketCap": 26.492453110000003
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20061122",
+            "marketCap": 7.39797456
+          },
+          {
+            "code": "000728.SZ",
+            "name": "国元证券",
+            "date": "20070326",
+            "marketCap": 46.120056
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          },
+          {
+            "code": "600369.SH",
+            "name": "西南证券",
+            "date": "20061124",
+            "marketCap": 6.880495750000001
+          },
+          {
+            "code": "000935.SZ",
+            "name": "四川双马",
+            "date": "20070112",
+            "marketCap": 29.800953000000003
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q2",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "000783.SZ",
+            "name": "长江证券"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600643.SH",
+            "name": "爱建集团",
+            "date": "20070628",
+            "marketCap": 96.37592207
+          },
+          {
+            "code": "000783.SZ",
+            "name": "长江证券",
+            "date": "20070208",
+            "marketCap": 114.28998897
+          },
+          {
+            "code": "000686.SZ",
+            "name": "东北证券",
+            "date": "20070124",
+            "marketCap": 26.492453110000003
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20061122",
+            "marketCap": 7.39797456
+          },
+          {
+            "code": "000712.SZ",
+            "name": "锦龙股份",
+            "date": "20070622",
+            "marketCap": 57.92407258
+          },
+          {
+            "code": "000728.SZ",
+            "name": "国元证券",
+            "date": "20070326",
+            "marketCap": 46.120056
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          },
+          {
+            "code": "600318.SH",
+            "name": "新力金融",
+            "date": "20070420",
+            "marketCap": 35.26
+          },
+          {
+            "code": "600369.SH",
+            "name": "西南证券",
+            "date": "20061124",
+            "marketCap": 6.880495750000001
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q3",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "000783.SZ",
+            "name": "长江证券"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600816.SH",
+            "name": "建元信托",
+            "date": "20070822",
+            "marketCap": 158.62054546000002
+          },
+          {
+            "code": "000783.SZ",
+            "name": "长江证券",
+            "date": "20070208",
+            "marketCap": 114.28998897
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20061122",
+            "marketCap": 7.39797456
+          },
+          {
+            "code": "000728.SZ",
+            "name": "国元证券",
+            "date": "20070326",
+            "marketCap": 46.120056
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          },
+          {
+            "code": "600369.SH",
+            "name": "西南证券",
+            "date": "20061124",
+            "marketCap": 6.880495750000001
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q4",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "000783.SZ",
+            "name": "长江证券"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600643.SH",
+            "name": "爱建集团",
+            "date": "20071219",
+            "marketCap": 130.78931298
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20061122",
+            "marketCap": 7.39797456
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20061122",
+            "marketCap": 7.39797456
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          },
+          {
+            "code": "600155.SH",
+            "name": "华创云信",
+            "date": "20071228",
+            "marketCap": 27.34875
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600643.SH",
+            "name": "爱建集团",
+            "date": "20080620",
+            "marketCap": 62.54006516
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20061122",
+            "marketCap": 7.39797456
+          },
+          {
+            "code": "000712.SZ",
+            "name": "锦龙股份",
+            "date": "20080627",
+            "marketCap": 20.226970389999998
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          },
+          {
+            "code": "600155.SH",
+            "name": "华创云信",
+            "date": "20071228",
+            "marketCap": 27.34875
+          },
+          {
+            "code": "600369.SH",
+            "name": "西南证券",
+            "date": "20080627",
+            "marketCap": 31.709046250000004
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20061122",
+            "marketCap": 7.39797456
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          },
+          {
+            "code": "000415.SZ",
+            "name": "渤海租赁",
+            "date": "20080708",
+            "marketCap": 20.66310538
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20061122",
+            "marketCap": 7.39797456
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20090123",
+            "marketCap": 9.44101986
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20090123",
+            "marketCap": 9.44101986
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          },
+          {
+            "code": "000935.SZ",
+            "name": "四川双马",
+            "date": "20090629",
+            "marketCap": 27.46926
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000563.SZ",
+            "name": "陕国投A",
+            "date": "20090929",
+            "marketCap": 35.984667810000005
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20090123",
+            "marketCap": 9.44101986
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20090123",
+            "marketCap": 9.44101986
+          },
+          {
+            "code": "000712.SZ",
+            "name": "锦龙股份",
+            "date": "20091230",
+            "marketCap": 65.18933227000001
+          },
+          {
+            "code": "000776.SZ",
+            "name": "广发证券",
+            "date": "20061019",
+            "marketCap": 19.423603630000002
+          },
+          {
+            "code": "000415.SZ",
+            "name": "渤海租赁",
+            "date": "20091230",
+            "marketCap": 26.78995639
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000783.SZ",
+            "name": "长江证券",
+            "date": "20100330",
+            "marketCap": 362.16180435
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20090123",
+            "marketCap": 9.44101986
+          },
+          {
+            "code": "000728.SZ",
+            "name": "国元证券",
+            "date": "20100330",
+            "marketCap": 352.35954
+          },
+          {
+            "code": "000415.SZ",
+            "name": "渤海租赁",
+            "date": "20100121",
+            "marketCap": 27.330560889999997
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600816.SH",
+            "name": "建元信托",
+            "date": "20100601",
+            "marketCap": 61.75892981
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20090123",
+            "marketCap": 9.44101986
+          },
+          {
+            "code": "601318.SH",
+            "name": "中国平安",
+            "date": "20100628",
+            "marketCap": 3578.2229132700004
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600816.SH",
+            "name": "建元信托",
+            "date": "20100601",
+            "marketCap": 61.75892981
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20090123",
+            "marketCap": 9.44101986
+          },
+          {
+            "code": "600155.SH",
+            "name": "华创云信",
+            "date": "20100723",
+            "marketCap": 17.44875
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600816.SH",
+            "name": "建元信托",
+            "date": "20100601",
+            "marketCap": 61.75892981
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20090123",
+            "marketCap": 9.44101986
+          },
+          {
+            "code": "600155.SH",
+            "name": "华创云信",
+            "date": "20100723",
+            "marketCap": 17.44875
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600816.SH",
+            "name": "建元信托",
+            "date": "20100601",
+            "marketCap": 61.75892981
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20090123",
+            "marketCap": 9.44101986
+          },
+          {
+            "code": "600369.SH",
+            "name": "西南证券",
+            "date": "20110228",
+            "marketCap": 275.68722651
+          },
+          {
+            "code": "000532.SZ",
+            "name": "华金资本",
+            "date": "20110330",
+            "marketCap": 41.778650809999995
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000563.SZ",
+            "name": "陕国投A",
+            "date": "20110627",
+            "marketCap": 39.78384589
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20090123",
+            "marketCap": 9.44101986
+          },
+          {
+            "code": "600369.SH",
+            "name": "西南证券",
+            "date": "20110228",
+            "marketCap": 275.68722651
+          },
+          {
+            "code": "000987.SZ",
+            "name": "越秀资本",
+            "date": "20110629",
+            "marketCap": 75.34530666
+          },
+          {
+            "code": "000935.SZ",
+            "name": "四川双马",
+            "date": "20110623",
+            "marketCap": 81.4785426
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000712.SZ",
+            "name": "锦龙股份",
+            "date": "20110926",
+            "marketCap": 41.06318687
+          },
+          {
+            "code": "600517.SH",
+            "name": "国网英大",
+            "date": "20110830",
+            "marketCap": 75.48201
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600155.SH",
+            "name": "华创云信",
+            "date": "20111229",
+            "marketCap": 15.63375
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600517.SH",
+            "name": "国网英大",
+            "date": "20120329",
+            "marketCap": 85.3194195
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002500.SZ",
+            "name": "山西证券",
+            "date": "20120514",
+            "marketCap": 197.74352
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002500.SZ",
+            "name": "山西证券",
+            "date": "20120514",
+            "marketCap": 197.74352
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000712.SZ",
+            "name": "锦龙股份",
+            "date": "20121207",
+            "marketCap": 49.728
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000617.SZ",
+            "name": "中油资本",
+            "date": "20130328",
+            "marketCap": 21.07662336
+          },
+          {
+            "code": "600053.SH",
+            "name": "*ST九鼎",
+            "date": "20130308",
+            "marketCap": 35.59369968
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2013Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "601901.SH",
+            "name": "方正证券",
+            "date": "20130823",
+            "marketCap": 360.51
+          },
+          {
+            "code": "000532.SZ",
+            "name": "华金资本",
+            "date": "20130916",
+            "marketCap": 58.11782612
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "601901.SH",
+            "name": "方正证券",
+            "date": "20130823",
+            "marketCap": 360.51
+          },
+          {
+            "code": "600053.SH",
+            "name": "*ST九鼎",
+            "date": "20131226",
+            "marketCap": 26.83617552
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000712.SZ",
+            "name": "锦龙股份",
+            "date": "20140328",
+            "marketCap": 120.0192
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002647.SZ",
+            "name": "仁东控股",
+            "date": "20140605",
+            "marketCap": 18.613882
+          },
+          {
+            "code": "600864.SH",
+            "name": "哈投股份",
+            "date": "20140410",
+            "marketCap": 47.42562741
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002647.SZ",
+            "name": "仁东控股",
+            "date": "20140605",
+            "marketCap": 18.613882
+          },
+          {
+            "code": "600517.SH",
+            "name": "国网英大",
+            "date": "20140911",
+            "marketCap": 154.94302511
+          },
+          {
+            "code": "600318.SH",
+            "name": "新力金融",
+            "date": "20140926",
+            "marketCap": 27.104
+          },
+          {
+            "code": "600369.SH",
+            "name": "西南证券",
+            "date": "20140926",
+            "marketCap": 297.49725083
+          },
+          {
+            "code": "000987.SZ",
+            "name": "越秀资本",
+            "date": "20140829",
+            "marketCap": 33.49079138
+          },
+          {
+            "code": "600061.SH",
+            "name": "国投资本",
+            "date": "20140711",
+            "marketCap": 27.632941340000002
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002647.SZ",
+            "name": "仁东控股",
+            "date": "20140605",
+            "marketCap": 18.613882
+          },
+          {
+            "code": "600318.SH",
+            "name": "新力金融",
+            "date": "20140926",
+            "marketCap": 27.104
+          },
+          {
+            "code": "600061.SH",
+            "name": "国投资本",
+            "date": "20141229",
+            "marketCap": 98.86070938
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "300059.SZ",
+            "name": "东方财富",
+            "date": "20150206",
+            "marketCap": 498.96
+          },
+          {
+            "code": "000728.SZ",
+            "name": "国元证券",
+            "date": "20150327",
+            "marketCap": 673.09707
+          },
+          {
+            "code": "600155.SH",
+            "name": "华创云信",
+            "date": "20150306",
+            "marketCap": 71.39506409
+          },
+          {
+            "code": "600053.SH",
+            "name": "*ST九鼎",
+            "date": "20150320",
+            "marketCap": 57.227385600000005
+          },
+          {
+            "code": "000415.SZ",
+            "name": "渤海租赁",
+            "date": "20150116",
+            "marketCap": 233.85319814
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600643.SH",
+            "name": "爱建集团",
+            "date": "20150629",
+            "marketCap": 240.43349589999997
+          },
+          {
+            "code": "002670.SZ",
+            "name": "国盛证券",
+            "date": "20150410",
+            "marketCap": 37.4
+          },
+          {
+            "code": "000567.SZ",
+            "name": "海德股份",
+            "date": "20150616",
+            "marketCap": 50.96952
+          },
+          {
+            "code": "002647.SZ",
+            "name": "仁东控股",
+            "date": "20150604",
+            "marketCap": 77.732382
+          },
+          {
+            "code": "600155.SH",
+            "name": "华创云信",
+            "date": "20150306",
+            "marketCap": 71.39506409
+          },
+          {
+            "code": "600053.SH",
+            "name": "*ST九鼎",
+            "date": "20150320",
+            "marketCap": 57.227385600000005
+          },
+          {
+            "code": "600061.SH",
+            "name": "国投资本",
+            "date": "20150605",
+            "marketCap": 1397.12817786
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600643.SH",
+            "name": "爱建集团",
+            "date": "20150629",
+            "marketCap": 240.43349589999997
+          },
+          {
+            "code": "002670.SZ",
+            "name": "国盛证券",
+            "date": "20150410",
+            "marketCap": 37.4
+          },
+          {
+            "code": "000712.SZ",
+            "name": "锦龙股份",
+            "date": "20150707",
+            "marketCap": 195.776
+          },
+          {
+            "code": "002647.SZ",
+            "name": "仁东控股",
+            "date": "20150604",
+            "marketCap": 77.732382
+          },
+          {
+            "code": "600155.SH",
+            "name": "华创云信",
+            "date": "20150306",
+            "marketCap": 71.39506409
+          },
+          {
+            "code": "603300.SH",
+            "name": "海南华铁",
+            "date": "20150923",
+            "marketCap": 53.444079
+          },
+          {
+            "code": "600053.SH",
+            "name": "*ST九鼎",
+            "date": "20150320",
+            "marketCap": 57.227385600000005
+          },
+          {
+            "code": "600318.SH",
+            "name": "新力金融",
+            "date": "20150729",
+            "marketCap": 49.9488
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "601377.SH",
+            "name": "兴业证券",
+            "date": "20151228",
+            "marketCap": 572.0
+          },
+          {
+            "code": "000712.SZ",
+            "name": "锦龙股份",
+            "date": "20151224",
+            "marketCap": 260.9152
+          },
+          {
+            "code": "002647.SZ",
+            "name": "仁东控股",
+            "date": "20151116",
+            "marketCap": 52.3485872
+          },
+          {
+            "code": "600864.SH",
+            "name": "哈投股份",
+            "date": "20151008",
+            "marketCap": 59.44594772
+          },
+          {
+            "code": "600155.SH",
+            "name": "华创云信",
+            "date": "20150306",
+            "marketCap": 71.39506409
+          },
+          {
+            "code": "600120.SH",
+            "name": "浙江东方",
+            "date": "20151009",
+            "marketCap": 100.38702796
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000617.SZ",
+            "name": "中油资本",
+            "date": "20160330",
+            "marketCap": 32.779468800000004
+          },
+          {
+            "code": "600643.SH",
+            "name": "爱建集团",
+            "date": "20160317",
+            "marketCap": 142.85170049
+          },
+          {
+            "code": "002647.SZ",
+            "name": "仁东控股",
+            "date": "20151116",
+            "marketCap": 52.3485872
+          },
+          {
+            "code": "600120.SH",
+            "name": "浙江东方",
+            "date": "20151009",
+            "marketCap": 100.38702796
+          },
+          {
+            "code": "600318.SH",
+            "name": "新力金融",
+            "date": "20160323",
+            "marketCap": 64.9528
+          },
+          {
+            "code": "600390.SH",
+            "name": "五矿资本",
+            "date": "20160203",
+            "marketCap": 57.851070609999994
+          },
+          {
+            "code": "000415.SZ",
+            "name": "渤海租赁",
+            "date": "20160129",
+            "marketCap": 421.78435143
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000617.SZ",
+            "name": "中油资本",
+            "date": "20160419",
+            "marketCap": 37.121310720000004
+          },
+          {
+            "code": "000728.SZ",
+            "name": "国元证券",
+            "date": "20160607",
+            "marketCap": 328.39752000000004
+          },
+          {
+            "code": "002647.SZ",
+            "name": "仁东控股",
+            "date": "20151116",
+            "marketCap": 52.3485872
+          },
+          {
+            "code": "600318.SH",
+            "name": "新力金融",
+            "date": "20160323",
+            "marketCap": 64.9528
+          },
+          {
+            "code": "000415.SZ",
+            "name": "渤海租赁",
+            "date": "20160129",
+            "marketCap": 421.78435143
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600621.SH",
+            "name": "华鑫股份",
+            "date": "20160824",
+            "marketCap": 62.52302447
+          },
+          {
+            "code": "600390.SH",
+            "name": "五矿资本",
+            "date": "20160928",
+            "marketCap": 67.46283195
+          },
+          {
+            "code": "000987.SZ",
+            "name": "越秀资本",
+            "date": "20160826",
+            "marketCap": 322.23302684
+          },
+          {
+            "code": "000415.SZ",
+            "name": "渤海租赁",
+            "date": "20160922",
+            "marketCap": 444.04862805000005
+          },
+          {
+            "code": "600061.SH",
+            "name": "国投资本",
+            "date": "20160914",
+            "marketCap": 577.0264975700001
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000563.SZ",
+            "name": "陕国投A",
+            "date": "20161013",
+            "marketCap": 231.16878155
+          },
+          {
+            "code": "000750.SZ",
+            "name": "国海证券",
+            "date": "20161214",
+            "marketCap": 293.82327545
+          },
+          {
+            "code": "000987.SZ",
+            "name": "越秀资本",
+            "date": "20160826",
+            "marketCap": 322.23302684
+          },
+          {
+            "code": "000166.SZ",
+            "name": "申万宏源",
+            "date": "20161220",
+            "marketCap": 1253.5378573799999
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002673.SZ",
+            "name": "西部证券",
+            "date": "20170329",
+            "marketCap": 511.03012653999997
+          },
+          {
+            "code": "600318.SH",
+            "name": "新力金融",
+            "date": "20170330",
+            "marketCap": 69.333
+          },
+          {
+            "code": "000935.SZ",
+            "name": "四川双马",
+            "date": "20170116",
+            "marketCap": 176.04934079
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600643.SH",
+            "name": "爱建集团",
+            "date": "20170414",
+            "marketCap": 215.28354863
+          },
+          {
+            "code": "600318.SH",
+            "name": "新力金融",
+            "date": "20170426",
+            "marketCap": 52.1752
+          },
+          {
+            "code": "000935.SZ",
+            "name": "四川双马",
+            "date": "20170116",
+            "marketCap": 176.04934079
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2017Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002423.SZ",
+            "name": "中粮资本",
+            "date": "20171025",
+            "marketCap": 72.37976843
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002423.SZ",
+            "name": "中粮资本",
+            "date": "20171025",
+            "marketCap": 72.37976843
+          },
+          {
+            "code": "002647.SZ",
+            "name": "仁东控股",
+            "date": "20180118",
+            "marketCap": 121.05830372999999
+          },
+          {
+            "code": "600318.SH",
+            "name": "新力金融",
+            "date": "20180322",
+            "marketCap": 53.4336
+          },
+          {
+            "code": "000415.SZ",
+            "name": "渤海租赁",
+            "date": "20180116",
+            "marketCap": 361.17604287
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600318.SH",
+            "name": "新力金融",
+            "date": "20180322",
+            "marketCap": 53.4336
+          },
+          {
+            "code": "000415.SZ",
+            "name": "渤海租赁",
+            "date": "20180116",
+            "marketCap": 361.17604287
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2018Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600030.SH",
+            "name": "中信证券",
+            "date": "20181224",
+            "marketCap": 1939.91703484
+          },
+          {
+            "code": "000987.SZ",
+            "name": "越秀资本",
+            "date": "20181224",
+            "marketCap": 219.40491489
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600517.SH",
+            "name": "国网英大",
+            "date": "20190315",
+            "marketCap": 65.23167229
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600095.SH",
+            "name": "湘财股份",
+            "date": "20190617",
+            "marketCap": 20.30301235
+          }
+        ]
+      },
+      {
+        "quarter": "2019Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600816.SH",
+            "name": "建元信托",
+            "date": "20200323",
+            "marketCap": 136.72844798
+          }
+        ]
+      },
+      {
+        "quarter": "2020Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600109.SH",
+            "name": "国金证券",
+            "date": "20200918",
+            "marketCap": 462.4245385
+          },
+          {
+            "code": "601456.SH",
+            "name": "国联民生",
+            "date": "20200918",
+            "marketCap": 467.0625716
+          }
+        ]
+      },
+      {
+        "quarter": "2020Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "601108.SH",
+            "name": "财通证券",
+            "date": "20220330",
+            "marketCap": 304.34861217
+          },
+          {
+            "code": "600053.SH",
+            "name": "*ST九鼎",
+            "date": "20220328",
+            "marketCap": 76.953492
+          }
+        ]
+      },
+      {
+        "quarter": "2022Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002670.SZ",
+            "name": "国盛证券",
+            "date": "20220531",
+            "marketCap": 185.76812669
+          }
+        ]
+      },
+      {
+        "quarter": "2022Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "601211.SH",
+            "name": "国泰海通",
+            "date": "20240905",
+            "marketCap": 1308.8484011399999
+          }
+        ]
+      },
+      {
+        "quarter": "2024Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      }
+    ]
+  },
+  "historicalAuditScope": "旧公司整体法，市值/PE已被sw-alignment-audit.json取代；财务核验仍有效",
+  "valuationAlignment": {
     "industry": "非银金融",
     "code": "801790.SI",
-    "companies": 77,
-    "quarters": 87,
-    "companyQuarterRows": 4682,
+    "scope": "SW公布市值/PE与财报汇总分离",
+    "project2AsOf": "20261110",
+    "financialAsOf": "2026-11-10",
+    "financialHash": "3cd51ace4147c32c51da99018a1601c7b3679000aec57fc347a2cb570fa18b19",
+    "sectorFinancialHashes": {
+      "801193.SI": "b955964f749bc68ef1c4fd46eb2272ad981f385ac6f66fd50398ece6e365f9e1",
+      "801194.SI": "9bcdf2ea10aa5397e77035754c0f586228e42d14f1da43892ec33ccc34424864",
+      "801191.SI": "5d11c7665b26e8fc6029a4293352424e2f51f7cd6d925d3f2be9729f1775d49c"
+    },
     "latest": {
       "quarter": "2026Q3",
       "endDate": "20260930",
       "tradeDate": "20260930",
       "companies": 77,
-      "marketCap": 65723.48843225,
-      "marketCapObserved": 65723.48843225,
-      "pe": 7.50572855259065,
-      "peMarketCap": 65723.48843225,
-      "peProfit": 8756.443557976143,
-      "peCoverage": 1.0,
-      "peMissingCount": 0,
-      "peRebuiltCount": 2,
+      "marketCap": 53914.0317,
+      "marketCapObserved": 53914.0317,
+      "pe": 8.98,
       "revenue": 5059.3294445044,
       "profit": 212.43426493800004,
       "reportedCount": 77,
@@ -29,1923 +1980,182 @@
       "estimatedProfit": 0,
       "carriedCount": 0,
       "marketMissingCount": 0,
-      "financialCoverage": 1.0
-    },
-    "financialIncompleteQuarters": 2,
-    "peCoverageMin": 0.981522550437179,
-    "carriedCompanyQuarters": 203
-  },
-  "quality": [
-    {
-      "quarter": "2005Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2005Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000563.SZ",
-          "name": "陕国投A",
-          "date": "20050629",
-          "marketCap": 13.47862342
-        },
-        {
-          "code": "600643.SH",
-          "name": "爱建集团",
-          "date": "20050629",
-          "marketCap": 26.121007560000002
-        },
-        {
-          "code": "600030.SH",
-          "name": "中信证券",
-          "date": "20050617",
-          "marketCap": 146.9048
-        },
-        {
-          "code": "000415.SZ",
-          "name": "渤海租赁",
-          "date": "20050629",
-          "marketCap": 8.37116186
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q3",
-      "financialMissing": [
-        {
-          "code": "000532.SZ",
-          "name": "华金资本"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600621.SH",
-          "name": "华鑫股份",
-          "date": "20050929",
-          "marketCap": 25.05113638
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q4",
-      "financialMissing": [
-        {
-          "code": "000532.SZ",
-          "name": "华金资本"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600816.SH",
-          "name": "建元信托",
-          "date": "20051223",
-          "marketCap": 11.12568956
-        },
-        {
-          "code": "600390.SH",
-          "name": "五矿资本",
-          "date": "20051229",
-          "marketCap": 4.8335099999999995
-        },
-        {
-          "code": "000987.SZ",
-          "name": "越秀资本",
-          "date": "20051229",
-          "marketCap": 19.69483483
-        },
-        {
-          "code": "000415.SZ",
-          "name": "渤海租赁",
-          "date": "20051229",
-          "marketCap": 6.85549188
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600816.SH",
-          "name": "建元信托",
-          "date": "20051223",
-          "marketCap": 11.12568956
-        },
-        {
-          "code": "600864.SH",
-          "name": "哈投股份",
-          "date": "20060324",
-          "marketCap": 10.36752627
-        },
-        {
-          "code": "600155.SH",
-          "name": "华创云信",
-          "date": "20060324",
-          "marketCap": 11.6325
-        },
-        {
-          "code": "600390.SH",
-          "name": "五矿资本",
-          "date": "20060330",
-          "marketCap": 6.1886
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000712.SZ",
-          "name": "锦龙股份",
-          "date": "20060629",
-          "marketCap": 6.27523479
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20060602",
-          "marketCap": 14.83926495
-        },
-        {
-          "code": "600095.SH",
-          "name": "湘财股份",
-          "date": "20060608",
-          "marketCap": 12.711816
-        },
-        {
-          "code": "600053.SH",
-          "name": "*ST九鼎",
-          "date": "20060626",
-          "marketCap": 6.813261
-        },
-        {
-          "code": "600369.SH",
-          "name": "西南证券",
-          "date": "20060629",
-          "marketCap": 6.16834
-        },
-        {
-          "code": "000935.SZ",
-          "name": "四川双马",
-          "date": "20060616",
-          "marketCap": 18.302193
-        },
-        {
-          "code": "000532.SZ",
-          "name": "华金资本",
-          "date": "20060621",
-          "marketCap": 12.520424779999999
-        },
-        {
-          "code": "600061.SH",
-          "name": "国投资本",
-          "date": "20060622",
-          "marketCap": 15.484297399999999
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600830.SH",
-          "name": "香溢融通",
-          "date": "20060920",
-          "marketCap": 13.89789974
-        },
-        {
-          "code": "600109.SH",
-          "name": "国金证券",
-          "date": "20060821",
-          "marketCap": 5.24562123
-        },
-        {
-          "code": "000686.SZ",
-          "name": "东北证券",
-          "date": "20060928",
-          "marketCap": 15.48365528
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20060602",
-          "marketCap": 14.83926495
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600816.SH",
-          "name": "建元信托",
-          "date": "20061122",
-          "marketCap": 21.751858369999997
-        },
-        {
-          "code": "000783.SZ",
-          "name": "长江证券",
-          "date": "20061205",
-          "marketCap": 89.46943581
-        },
-        {
-          "code": "600109.SH",
-          "name": "国金证券",
-          "date": "20061222",
-          "marketCap": 12.748492200000001
-        },
-        {
-          "code": "000686.SZ",
-          "name": "东北证券",
-          "date": "20060928",
-          "marketCap": 15.48365528
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20061122",
-          "marketCap": 7.39797456
-        },
-        {
-          "code": "000728.SZ",
-          "name": "国元证券",
-          "date": "20061011",
-          "marketCap": 34.382915999999994
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        },
-        {
-          "code": "600155.SH",
-          "name": "华创云信",
-          "date": "20061023",
-          "marketCap": 9.77625
-        },
-        {
-          "code": "600369.SH",
-          "name": "西南证券",
-          "date": "20061124",
-          "marketCap": 6.880495750000001
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000783.SZ",
-          "name": "长江证券",
-          "date": "20070208",
-          "marketCap": 114.28998897
-        },
-        {
-          "code": "000686.SZ",
-          "name": "东北证券",
-          "date": "20070124",
-          "marketCap": 26.492453110000003
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20061122",
-          "marketCap": 7.39797456
-        },
-        {
-          "code": "000728.SZ",
-          "name": "国元证券",
-          "date": "20070326",
-          "marketCap": 46.120056
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        },
-        {
-          "code": "600369.SH",
-          "name": "西南证券",
-          "date": "20061124",
-          "marketCap": 6.880495750000001
-        },
-        {
-          "code": "000935.SZ",
-          "name": "四川双马",
-          "date": "20070112",
-          "marketCap": 29.800953000000003
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q2",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "000783.SZ",
-          "name": "长江证券"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600643.SH",
-          "name": "爱建集团",
-          "date": "20070628",
-          "marketCap": 96.37592207
-        },
-        {
-          "code": "000783.SZ",
-          "name": "长江证券",
-          "date": "20070208",
-          "marketCap": 114.28998897
-        },
-        {
-          "code": "000686.SZ",
-          "name": "东北证券",
-          "date": "20070124",
-          "marketCap": 26.492453110000003
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20061122",
-          "marketCap": 7.39797456
-        },
-        {
-          "code": "000712.SZ",
-          "name": "锦龙股份",
-          "date": "20070622",
-          "marketCap": 57.92407258
-        },
-        {
-          "code": "000728.SZ",
-          "name": "国元证券",
-          "date": "20070326",
-          "marketCap": 46.120056
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        },
-        {
-          "code": "600318.SH",
-          "name": "新力金融",
-          "date": "20070420",
-          "marketCap": 35.26
-        },
-        {
-          "code": "600369.SH",
-          "name": "西南证券",
-          "date": "20061124",
-          "marketCap": 6.880495750000001
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q3",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "000783.SZ",
-          "name": "长江证券"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600816.SH",
-          "name": "建元信托",
-          "date": "20070822",
-          "marketCap": 158.62054546000002
-        },
-        {
-          "code": "000783.SZ",
-          "name": "长江证券",
-          "date": "20070208",
-          "marketCap": 114.28998897
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20061122",
-          "marketCap": 7.39797456
-        },
-        {
-          "code": "000728.SZ",
-          "name": "国元证券",
-          "date": "20070326",
-          "marketCap": 46.120056
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        },
-        {
-          "code": "600369.SH",
-          "name": "西南证券",
-          "date": "20061124",
-          "marketCap": 6.880495750000001
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q4",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "000783.SZ",
-          "name": "长江证券"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600643.SH",
-          "name": "爱建集团",
-          "date": "20071219",
-          "marketCap": 130.78931298
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20061122",
-          "marketCap": 7.39797456
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20061122",
-          "marketCap": 7.39797456
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        },
-        {
-          "code": "600155.SH",
-          "name": "华创云信",
-          "date": "20071228",
-          "marketCap": 27.34875
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600643.SH",
-          "name": "爱建集团",
-          "date": "20080620",
-          "marketCap": 62.54006516
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20061122",
-          "marketCap": 7.39797456
-        },
-        {
-          "code": "000712.SZ",
-          "name": "锦龙股份",
-          "date": "20080627",
-          "marketCap": 20.226970389999998
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        },
-        {
-          "code": "600155.SH",
-          "name": "华创云信",
-          "date": "20071228",
-          "marketCap": 27.34875
-        },
-        {
-          "code": "600369.SH",
-          "name": "西南证券",
-          "date": "20080627",
-          "marketCap": 31.709046250000004
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20061122",
-          "marketCap": 7.39797456
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        },
-        {
-          "code": "000415.SZ",
-          "name": "渤海租赁",
-          "date": "20080708",
-          "marketCap": 20.66310538
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20061122",
-          "marketCap": 7.39797456
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20090123",
-          "marketCap": 9.44101986
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20090123",
-          "marketCap": 9.44101986
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        },
-        {
-          "code": "000935.SZ",
-          "name": "四川双马",
-          "date": "20090629",
-          "marketCap": 27.46926
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000563.SZ",
-          "name": "陕国投A",
-          "date": "20090929",
-          "marketCap": 35.984667810000005
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20090123",
-          "marketCap": 9.44101986
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20090123",
-          "marketCap": 9.44101986
-        },
-        {
-          "code": "000712.SZ",
-          "name": "锦龙股份",
-          "date": "20091230",
-          "marketCap": 65.18933227000001
-        },
-        {
-          "code": "000776.SZ",
-          "name": "广发证券",
-          "date": "20061019",
-          "marketCap": 19.423603630000002
-        },
-        {
-          "code": "000415.SZ",
-          "name": "渤海租赁",
-          "date": "20091230",
-          "marketCap": 26.78995639
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000783.SZ",
-          "name": "长江证券",
-          "date": "20100330",
-          "marketCap": 362.16180435
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20090123",
-          "marketCap": 9.44101986
-        },
-        {
-          "code": "000728.SZ",
-          "name": "国元证券",
-          "date": "20100330",
-          "marketCap": 352.35954
-        },
-        {
-          "code": "000415.SZ",
-          "name": "渤海租赁",
-          "date": "20100121",
-          "marketCap": 27.330560889999997
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600816.SH",
-          "name": "建元信托",
-          "date": "20100601",
-          "marketCap": 61.75892981
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20090123",
-          "marketCap": 9.44101986
-        },
-        {
-          "code": "601318.SH",
-          "name": "中国平安",
-          "date": "20100628",
-          "marketCap": 3578.2229132700004
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600816.SH",
-          "name": "建元信托",
-          "date": "20100601",
-          "marketCap": 61.75892981
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20090123",
-          "marketCap": 9.44101986
-        },
-        {
-          "code": "600155.SH",
-          "name": "华创云信",
-          "date": "20100723",
-          "marketCap": 17.44875
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600816.SH",
-          "name": "建元信托",
-          "date": "20100601",
-          "marketCap": 61.75892981
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20090123",
-          "marketCap": 9.44101986
-        },
-        {
-          "code": "600155.SH",
-          "name": "华创云信",
-          "date": "20100723",
-          "marketCap": 17.44875
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600816.SH",
-          "name": "建元信托",
-          "date": "20100601",
-          "marketCap": 61.75892981
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20090123",
-          "marketCap": 9.44101986
-        },
-        {
-          "code": "600369.SH",
-          "name": "西南证券",
-          "date": "20110228",
-          "marketCap": 275.68722651
-        },
-        {
-          "code": "000532.SZ",
-          "name": "华金资本",
-          "date": "20110330",
-          "marketCap": 41.778650809999995
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000563.SZ",
-          "name": "陕国投A",
-          "date": "20110627",
-          "marketCap": 39.78384589
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20090123",
-          "marketCap": 9.44101986
-        },
-        {
-          "code": "600369.SH",
-          "name": "西南证券",
-          "date": "20110228",
-          "marketCap": 275.68722651
-        },
-        {
-          "code": "000987.SZ",
-          "name": "越秀资本",
-          "date": "20110629",
-          "marketCap": 75.34530666
-        },
-        {
-          "code": "000935.SZ",
-          "name": "四川双马",
-          "date": "20110623",
-          "marketCap": 81.4785426
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000712.SZ",
-          "name": "锦龙股份",
-          "date": "20110926",
-          "marketCap": 41.06318687
-        },
-        {
-          "code": "600517.SH",
-          "name": "国网英大",
-          "date": "20110830",
-          "marketCap": 75.48201
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600155.SH",
-          "name": "华创云信",
-          "date": "20111229",
-          "marketCap": 15.63375
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600517.SH",
-          "name": "国网英大",
-          "date": "20120329",
-          "marketCap": 85.3194195
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002500.SZ",
-          "name": "山西证券",
-          "date": "20120514",
-          "marketCap": 197.74352
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002500.SZ",
-          "name": "山西证券",
-          "date": "20120514",
-          "marketCap": 197.74352
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000712.SZ",
-          "name": "锦龙股份",
-          "date": "20121207",
-          "marketCap": 49.728
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000617.SZ",
-          "name": "中油资本",
-          "date": "20130328",
-          "marketCap": 21.07662336
-        },
-        {
-          "code": "600053.SH",
-          "name": "*ST九鼎",
-          "date": "20130308",
-          "marketCap": 35.59369968
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2013Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "601901.SH",
-          "name": "方正证券",
-          "date": "20130823",
-          "marketCap": 360.51
-        },
-        {
-          "code": "000532.SZ",
-          "name": "华金资本",
-          "date": "20130916",
-          "marketCap": 58.11782612
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "601901.SH",
-          "name": "方正证券",
-          "date": "20130823",
-          "marketCap": 360.51
-        },
-        {
-          "code": "600053.SH",
-          "name": "*ST九鼎",
-          "date": "20131226",
-          "marketCap": 26.83617552
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000712.SZ",
-          "name": "锦龙股份",
-          "date": "20140328",
-          "marketCap": 120.0192
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002647.SZ",
-          "name": "仁东控股",
-          "date": "20140605",
-          "marketCap": 18.613882
-        },
-        {
-          "code": "600864.SH",
-          "name": "哈投股份",
-          "date": "20140410",
-          "marketCap": 47.42562741
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002647.SZ",
-          "name": "仁东控股",
-          "date": "20140605",
-          "marketCap": 18.613882
-        },
-        {
-          "code": "600517.SH",
-          "name": "国网英大",
-          "date": "20140911",
-          "marketCap": 154.94302511
-        },
-        {
-          "code": "600318.SH",
-          "name": "新力金融",
-          "date": "20140926",
-          "marketCap": 27.104
-        },
-        {
-          "code": "600369.SH",
-          "name": "西南证券",
-          "date": "20140926",
-          "marketCap": 297.49725083
-        },
-        {
-          "code": "000987.SZ",
-          "name": "越秀资本",
-          "date": "20140829",
-          "marketCap": 33.49079138
-        },
-        {
-          "code": "600061.SH",
-          "name": "国投资本",
-          "date": "20140711",
-          "marketCap": 27.632941340000002
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002647.SZ",
-          "name": "仁东控股",
-          "date": "20140605",
-          "marketCap": 18.613882
-        },
-        {
-          "code": "600318.SH",
-          "name": "新力金融",
-          "date": "20140926",
-          "marketCap": 27.104
-        },
-        {
-          "code": "600061.SH",
-          "name": "国投资本",
-          "date": "20141229",
-          "marketCap": 98.86070938
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "300059.SZ",
-          "name": "东方财富",
-          "date": "20150206",
-          "marketCap": 498.96
-        },
-        {
-          "code": "000728.SZ",
-          "name": "国元证券",
-          "date": "20150327",
-          "marketCap": 673.09707
-        },
-        {
-          "code": "600155.SH",
-          "name": "华创云信",
-          "date": "20150306",
-          "marketCap": 71.39506409
-        },
-        {
-          "code": "600053.SH",
-          "name": "*ST九鼎",
-          "date": "20150320",
-          "marketCap": 57.227385600000005
-        },
-        {
-          "code": "000415.SZ",
-          "name": "渤海租赁",
-          "date": "20150116",
-          "marketCap": 233.85319814
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600643.SH",
-          "name": "爱建集团",
-          "date": "20150629",
-          "marketCap": 240.43349589999997
-        },
-        {
-          "code": "002670.SZ",
-          "name": "国盛证券",
-          "date": "20150410",
-          "marketCap": 37.4
-        },
-        {
-          "code": "000567.SZ",
-          "name": "海德股份",
-          "date": "20150616",
-          "marketCap": 50.96952
-        },
-        {
-          "code": "002647.SZ",
-          "name": "仁东控股",
-          "date": "20150604",
-          "marketCap": 77.732382
-        },
-        {
-          "code": "600155.SH",
-          "name": "华创云信",
-          "date": "20150306",
-          "marketCap": 71.39506409
-        },
-        {
-          "code": "600053.SH",
-          "name": "*ST九鼎",
-          "date": "20150320",
-          "marketCap": 57.227385600000005
-        },
-        {
-          "code": "600061.SH",
-          "name": "国投资本",
-          "date": "20150605",
-          "marketCap": 1397.12817786
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600643.SH",
-          "name": "爱建集团",
-          "date": "20150629",
-          "marketCap": 240.43349589999997
-        },
-        {
-          "code": "002670.SZ",
-          "name": "国盛证券",
-          "date": "20150410",
-          "marketCap": 37.4
-        },
-        {
-          "code": "000712.SZ",
-          "name": "锦龙股份",
-          "date": "20150707",
-          "marketCap": 195.776
-        },
-        {
-          "code": "002647.SZ",
-          "name": "仁东控股",
-          "date": "20150604",
-          "marketCap": 77.732382
-        },
-        {
-          "code": "600155.SH",
-          "name": "华创云信",
-          "date": "20150306",
-          "marketCap": 71.39506409
-        },
-        {
-          "code": "603300.SH",
-          "name": "海南华铁",
-          "date": "20150923",
-          "marketCap": 53.444079
-        },
-        {
-          "code": "600053.SH",
-          "name": "*ST九鼎",
-          "date": "20150320",
-          "marketCap": 57.227385600000005
-        },
-        {
-          "code": "600318.SH",
-          "name": "新力金融",
-          "date": "20150729",
-          "marketCap": 49.9488
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "601377.SH",
-          "name": "兴业证券",
-          "date": "20151228",
-          "marketCap": 572.0
-        },
-        {
-          "code": "000712.SZ",
-          "name": "锦龙股份",
-          "date": "20151224",
-          "marketCap": 260.9152
-        },
-        {
-          "code": "002647.SZ",
-          "name": "仁东控股",
-          "date": "20151116",
-          "marketCap": 52.3485872
-        },
-        {
-          "code": "600864.SH",
-          "name": "哈投股份",
-          "date": "20151008",
-          "marketCap": 59.44594772
-        },
-        {
-          "code": "600155.SH",
-          "name": "华创云信",
-          "date": "20150306",
-          "marketCap": 71.39506409
-        },
-        {
-          "code": "600120.SH",
-          "name": "浙江东方",
-          "date": "20151009",
-          "marketCap": 100.38702796
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000617.SZ",
-          "name": "中油资本",
-          "date": "20160330",
-          "marketCap": 32.779468800000004
-        },
-        {
-          "code": "600643.SH",
-          "name": "爱建集团",
-          "date": "20160317",
-          "marketCap": 142.85170049
-        },
-        {
-          "code": "002647.SZ",
-          "name": "仁东控股",
-          "date": "20151116",
-          "marketCap": 52.3485872
-        },
-        {
-          "code": "600120.SH",
-          "name": "浙江东方",
-          "date": "20151009",
-          "marketCap": 100.38702796
-        },
-        {
-          "code": "600318.SH",
-          "name": "新力金融",
-          "date": "20160323",
-          "marketCap": 64.9528
-        },
-        {
-          "code": "600390.SH",
-          "name": "五矿资本",
-          "date": "20160203",
-          "marketCap": 57.851070609999994
-        },
-        {
-          "code": "000415.SZ",
-          "name": "渤海租赁",
-          "date": "20160129",
-          "marketCap": 421.78435143
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000617.SZ",
-          "name": "中油资本",
-          "date": "20160419",
-          "marketCap": 37.121310720000004
-        },
-        {
-          "code": "000728.SZ",
-          "name": "国元证券",
-          "date": "20160607",
-          "marketCap": 328.39752000000004
-        },
-        {
-          "code": "002647.SZ",
-          "name": "仁东控股",
-          "date": "20151116",
-          "marketCap": 52.3485872
-        },
-        {
-          "code": "600318.SH",
-          "name": "新力金融",
-          "date": "20160323",
-          "marketCap": 64.9528
-        },
-        {
-          "code": "000415.SZ",
-          "name": "渤海租赁",
-          "date": "20160129",
-          "marketCap": 421.78435143
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600621.SH",
-          "name": "华鑫股份",
-          "date": "20160824",
-          "marketCap": 62.52302447
-        },
-        {
-          "code": "600390.SH",
-          "name": "五矿资本",
-          "date": "20160928",
-          "marketCap": 67.46283195
-        },
-        {
-          "code": "000987.SZ",
-          "name": "越秀资本",
-          "date": "20160826",
-          "marketCap": 322.23302684
-        },
-        {
-          "code": "000415.SZ",
-          "name": "渤海租赁",
-          "date": "20160922",
-          "marketCap": 444.04862805000005
-        },
-        {
-          "code": "600061.SH",
-          "name": "国投资本",
-          "date": "20160914",
-          "marketCap": 577.0264975700001
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000563.SZ",
-          "name": "陕国投A",
-          "date": "20161013",
-          "marketCap": 231.16878155
-        },
-        {
-          "code": "000750.SZ",
-          "name": "国海证券",
-          "date": "20161214",
-          "marketCap": 293.82327545
-        },
-        {
-          "code": "000987.SZ",
-          "name": "越秀资本",
-          "date": "20160826",
-          "marketCap": 322.23302684
-        },
-        {
-          "code": "000166.SZ",
-          "name": "申万宏源",
-          "date": "20161220",
-          "marketCap": 1253.5378573799999
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002673.SZ",
-          "name": "西部证券",
-          "date": "20170329",
-          "marketCap": 511.03012653999997
-        },
-        {
-          "code": "600318.SH",
-          "name": "新力金融",
-          "date": "20170330",
-          "marketCap": 69.333
-        },
-        {
-          "code": "000935.SZ",
-          "name": "四川双马",
-          "date": "20170116",
-          "marketCap": 176.04934079
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600643.SH",
-          "name": "爱建集团",
-          "date": "20170414",
-          "marketCap": 215.28354863
-        },
-        {
-          "code": "600318.SH",
-          "name": "新力金融",
-          "date": "20170426",
-          "marketCap": 52.1752
-        },
-        {
-          "code": "000935.SZ",
-          "name": "四川双马",
-          "date": "20170116",
-          "marketCap": 176.04934079
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2017Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002423.SZ",
-          "name": "中粮资本",
-          "date": "20171025",
-          "marketCap": 72.37976843
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002423.SZ",
-          "name": "中粮资本",
-          "date": "20171025",
-          "marketCap": 72.37976843
-        },
-        {
-          "code": "002647.SZ",
-          "name": "仁东控股",
-          "date": "20180118",
-          "marketCap": 121.05830372999999
-        },
-        {
-          "code": "600318.SH",
-          "name": "新力金融",
-          "date": "20180322",
-          "marketCap": 53.4336
-        },
-        {
-          "code": "000415.SZ",
-          "name": "渤海租赁",
-          "date": "20180116",
-          "marketCap": 361.17604287
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600318.SH",
-          "name": "新力金融",
-          "date": "20180322",
-          "marketCap": 53.4336
-        },
-        {
-          "code": "000415.SZ",
-          "name": "渤海租赁",
-          "date": "20180116",
-          "marketCap": 361.17604287
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2018Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600030.SH",
-          "name": "中信证券",
-          "date": "20181224",
-          "marketCap": 1939.91703484
-        },
-        {
-          "code": "000987.SZ",
-          "name": "越秀资本",
-          "date": "20181224",
-          "marketCap": 219.40491489
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600517.SH",
-          "name": "国网英大",
-          "date": "20190315",
-          "marketCap": 65.23167229
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600095.SH",
-          "name": "湘财股份",
-          "date": "20190617",
-          "marketCap": 20.30301235
-        }
-      ]
-    },
-    {
-      "quarter": "2019Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600816.SH",
-          "name": "建元信托",
-          "date": "20200323",
-          "marketCap": 136.72844798
-        }
-      ]
-    },
-    {
-      "quarter": "2020Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600109.SH",
-          "name": "国金证券",
-          "date": "20200918",
-          "marketCap": 462.4245385
-        },
-        {
-          "code": "601456.SH",
-          "name": "国联民生",
-          "date": "20200918",
-          "marketCap": 467.0625716
-        }
-      ]
-    },
-    {
-      "quarter": "2020Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "601108.SH",
-          "name": "财通证券",
-          "date": "20220330",
-          "marketCap": 304.34861217
-        },
-        {
-          "code": "600053.SH",
-          "name": "*ST九鼎",
-          "date": "20220328",
-          "marketCap": 76.953492
-        }
-      ]
-    },
-    {
-      "quarter": "2022Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002670.SZ",
-          "name": "国盛证券",
-          "date": "20220531",
-          "marketCap": 185.76812669
-        }
-      ]
-    },
-    {
-      "quarter": "2022Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "601211.SH",
-          "name": "国泰海通",
-          "date": "20240905",
-          "marketCap": 1308.8484011399999
-        }
-      ]
-    },
-    {
-      "quarter": "2024Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    }
-  ]
+      "financialCoverage": 1.0,
+      "peRaw": 8.98,
+      "valuationSource": "sw_daily",
+      "valuationCode": "801790.SI",
+      "valuationDate": "20260930",
+      "peStatus": "valid",
+      "peNote": ""
+    },
+    "indices": [
+      {
+        "code": "801790.SI",
+        "name": "非银金融",
+        "dailyCount": 3093,
+        "firstDate": "20140221",
+        "lastDate": "20261110",
+        "quarterQuotes": 51,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2",
+          "2012Q3",
+          "2012Q4",
+          "2013Q1",
+          "2013Q2",
+          "2013Q3",
+          "2013Q4"
+        ]
+      },
+      {
+        "code": "801193.SI",
+        "name": "证券",
+        "dailyCount": 3404,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 56,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2",
+          "2015Q2"
+        ]
+      },
+      {
+        "code": "801194.SI",
+        "name": "保险",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      },
+      {
+        "code": "801191.SI",
+        "name": "多元金融",
+        "dailyCount": 3466,
+        "firstDate": "20120801",
+        "lastDate": "20261110",
+        "quarterQuotes": 57,
+        "missingQuarterQuotes": [
+          "2005Q1",
+          "2005Q2",
+          "2005Q3",
+          "2005Q4",
+          "2006Q1",
+          "2006Q2",
+          "2006Q3",
+          "2006Q4",
+          "2007Q1",
+          "2007Q2",
+          "2007Q3",
+          "2007Q4",
+          "2008Q1",
+          "2008Q2",
+          "2008Q3",
+          "2008Q4",
+          "2009Q1",
+          "2009Q2",
+          "2009Q3",
+          "2009Q4",
+          "2010Q1",
+          "2010Q2",
+          "2010Q3",
+          "2010Q4",
+          "2011Q1",
+          "2011Q2",
+          "2011Q3",
+          "2011Q4",
+          "2012Q1",
+          "2012Q2"
+        ]
+      }
+    ]
+  }
 }

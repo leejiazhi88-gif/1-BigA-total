@@ -1,25 +1,1254 @@
 {
-  "asOf": "2026-11-10",
-  "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
-  "summary": {
+  "historicalCompanyAggregateAudit": {
+    "asOf": "2026-11-10",
+    "validation": "PASS: unique quarters/company-quarter keys; listing and quote date boundaries; company and subindustry sums reconcile; PE numerator and denominator reconcile",
+    "summary": {
+      "industry": "煤炭",
+      "code": "801950.SI",
+      "companies": 33,
+      "quarters": 87,
+      "companyQuarterRows": 2619,
+      "latest": {
+        "quarter": "2026Q3",
+        "endDate": "20260930",
+        "tradeDate": "20260930",
+        "companies": 33,
+        "marketCap": 22286.33734977,
+        "marketCapObserved": 22286.33734977,
+        "pe": 18.975882655448814,
+        "peMarketCap": 22286.33734977,
+        "peProfit": 1174.4559003884128,
+        "peCoverage": 1.0,
+        "peMissingCount": 0,
+        "peRebuiltCount": 12,
+        "revenue": 3472.5752682507996,
+        "profit": 374.1849820405,
+        "reportedCount": 33,
+        "estimatedCount": 0,
+        "missingCount": 0,
+        "estimatedRevenue": 0,
+        "estimatedProfit": 0,
+        "carriedCount": 0,
+        "marketMissingCount": 0,
+        "financialCoverage": 1.0
+      },
+      "financialIncompleteQuarters": 2,
+      "peCoverageMin": 0.9722440347200968,
+      "carriedCompanyQuarters": 85
+    },
+    "quality": [
+      {
+        "quarter": "2005Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2005Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000552.SZ",
+            "name": "甘肃能化",
+            "date": "20050421",
+            "marketCap": 6.314385
+          },
+          {
+            "code": "600121.SH",
+            "name": "郑州煤电",
+            "date": "20050617",
+            "marketCap": 30.456
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000552.SZ",
+            "name": "甘肃能化",
+            "date": "20050421",
+            "marketCap": 6.314385
+          }
+        ]
+      },
+      {
+        "quarter": "2005Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000552.SZ",
+            "name": "甘肃能化",
+            "date": "20050421",
+            "marketCap": 6.314385
+          },
+          {
+            "code": "600725.SH",
+            "name": "云维股份",
+            "date": "20051222",
+            "marketCap": 7.293
+          },
+          {
+            "code": "600997.SH",
+            "name": "开滦股份",
+            "date": "20051216",
+            "marketCap": 33.5744
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600740.SH",
+            "name": "山西焦化",
+            "date": "20060324",
+            "marketCap": 14.158929999999998
+          },
+          {
+            "code": "600188.SH",
+            "name": "兖矿能源",
+            "date": "20060224",
+            "marketCap": 357.56768
+          },
+          {
+            "code": "000937.SZ",
+            "name": "冀中能源",
+            "date": "20060330",
+            "marketCap": 42.69335964
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q2",
+        "financialMissing": [
+          {
+            "code": "601001.SH",
+            "name": "晋控煤业"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000571.SZ",
+            "name": "新大洲A",
+            "date": "20060623",
+            "marketCap": 22.1555264
+          },
+          {
+            "code": "600403.SH",
+            "name": "大有能源",
+            "date": "20060621",
+            "marketCap": 8.8717032
+          },
+          {
+            "code": "600792.SH",
+            "name": "云煤能源",
+            "date": "20060620",
+            "marketCap": 7.560877499999999
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000571.SZ",
+            "name": "新大洲A",
+            "date": "20060825",
+            "marketCap": 24.658144
+          }
+        ]
+      },
+      {
+        "quarter": "2006Q4",
+        "financialMissing": [
+          {
+            "code": "601666.SH",
+            "name": "平煤股份"
+          }
+        ],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000571.SZ",
+            "name": "新大洲A",
+            "date": "20061228",
+            "marketCap": 20.977824
+          },
+          {
+            "code": "600758.SH",
+            "name": "辽宁能源",
+            "date": "20061208",
+            "marketCap": 7.14105744
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000723.SZ",
+            "name": "美锦能源",
+            "date": "20070125",
+            "marketCap": 13.63884135
+          },
+          {
+            "code": "600508.SH",
+            "name": "上海能源",
+            "date": "20070329",
+            "marketCap": 72.4163436
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q2",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "600792.SH",
+            "name": "云煤能源"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000571.SZ",
+            "name": "新大洲A",
+            "date": "20070619",
+            "marketCap": 58.7379072
+          },
+          {
+            "code": "000723.SZ",
+            "name": "美锦能源",
+            "date": "20070125",
+            "marketCap": 13.63884135
+          },
+          {
+            "code": "600403.SH",
+            "name": "大有能源",
+            "date": "20070612",
+            "marketCap": 17.84538
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q3",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "600792.SH",
+            "name": "云煤能源"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600403.SH",
+            "name": "大有能源",
+            "date": "20070612",
+            "marketCap": 17.84538
+          }
+        ]
+      },
+      {
+        "quarter": "2007Q4",
+        "financialMissing": [],
+        "peMissing": [
+          {
+            "code": "601666.SH",
+            "name": "平煤股份"
+          },
+          {
+            "code": "600792.SH",
+            "name": "云煤能源"
+          }
+        ],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000723.SZ",
+            "name": "美锦能源",
+            "date": "20071109",
+            "marketCap": 55.825718079999994
+          },
+          {
+            "code": "000937.SZ",
+            "name": "冀中能源",
+            "date": "20071220",
+            "marketCap": 221.48086628000001
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600121.SH",
+            "name": "郑州煤电",
+            "date": "20080227",
+            "marketCap": 103.682272
+          },
+          {
+            "code": "601001.SH",
+            "name": "晋控煤业",
+            "date": "20080116",
+            "marketCap": 333.65209500000003
+          },
+          {
+            "code": "600792.SH",
+            "name": "云煤能源",
+            "date": "20080321",
+            "marketCap": 23.856525
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600395.SH",
+            "name": "盘江股份",
+            "date": "20080506",
+            "marketCap": 99.91683
+          },
+          {
+            "code": "600348.SH",
+            "name": "华阳股份",
+            "date": "20080627",
+            "marketCap": 216.9791
+          },
+          {
+            "code": "600792.SH",
+            "name": "云煤能源",
+            "date": "20080321",
+            "marketCap": 23.856525
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600971.SH",
+            "name": "恒源煤电",
+            "date": "20080923",
+            "marketCap": 26.22529601
+          },
+          {
+            "code": "600792.SH",
+            "name": "云煤能源",
+            "date": "20080321",
+            "marketCap": 23.856525
+          }
+        ]
+      },
+      {
+        "quarter": "2008Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "601918.SH",
+            "name": "新集能源",
+            "date": "20081208",
+            "marketCap": 139.7042185
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600740.SH",
+            "name": "山西焦化",
+            "date": "20090330",
+            "marketCap": 35.75224
+          },
+          {
+            "code": "000983.SZ",
+            "name": "山西焦煤",
+            "date": "20090330",
+            "marketCap": 402.8688
+          },
+          {
+            "code": "600971.SH",
+            "name": "恒源煤电",
+            "date": "20090330",
+            "marketCap": 39.99740216
+          },
+          {
+            "code": "002128.SZ",
+            "name": "电投能源",
+            "date": "20090330",
+            "marketCap": 129.8621651
+          }
+        ]
+      },
+      {
+        "quarter": "2009Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2009Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2009Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600348.SH",
+            "name": "华阳股份",
+            "date": "20091230",
+            "marketCap": 465.3194
+          }
+        ]
+      },
+      {
+        "quarter": "2010Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2010Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2010Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2010Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2011Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2011Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000571.SZ",
+            "name": "新大洲A",
+            "date": "20110629",
+            "marketCap": 54.763161600000004
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000552.SZ",
+            "name": "甘肃能化",
+            "date": "20110908",
+            "marketCap": 29.508633000000003
+          }
+        ]
+      },
+      {
+        "quarter": "2011Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000723.SZ",
+            "name": "美锦能源",
+            "date": "20111011",
+            "marketCap": 24.47173888
+          },
+          {
+            "code": "600121.SH",
+            "name": "郑州煤电",
+            "date": "20110930",
+            "marketCap": 65.619302
+          },
+          {
+            "code": "600348.SH",
+            "name": "华阳股份",
+            "date": "20111229",
+            "marketCap": 365.079
+          },
+          {
+            "code": "600985.SH",
+            "name": "淮北矿业",
+            "date": "20110930",
+            "marketCap": 15.60384
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600121.SH",
+            "name": "郑州煤电",
+            "date": "20120329",
+            "marketCap": 56.685514000000005
+          }
+        ]
+      },
+      {
+        "quarter": "2012Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2012Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2012Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000723.SZ",
+            "name": "美锦能源",
+            "date": "20121217",
+            "marketCap": 14.560196040000001
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "002128.SZ",
+            "name": "电投能源",
+            "date": "20130319",
+            "marketCap": 170.34650371
+          },
+          {
+            "code": "600997.SH",
+            "name": "开滦股份",
+            "date": "20130118",
+            "marketCap": 133.34112
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600725.SH",
+            "name": "云维股份",
+            "date": "20130621",
+            "marketCap": 23.232059500000002
+          },
+          {
+            "code": "601918.SH",
+            "name": "新集能源",
+            "date": "20130515",
+            "marketCap": 139.7042185
+          }
+        ]
+      },
+      {
+        "quarter": "2013Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2013Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2014Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600758.SH",
+            "name": "辽宁能源",
+            "date": "20140128",
+            "marketCap": 15.01539125
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600758.SH",
+            "name": "辽宁能源",
+            "date": "20140128",
+            "marketCap": 15.01539125
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600740.SH",
+            "name": "山西焦化",
+            "date": "20140725",
+            "marketCap": 44.48717
+          }
+        ]
+      },
+      {
+        "quarter": "2014Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600725.SH",
+            "name": "云维股份",
+            "date": "20141217",
+            "marketCap": 30.934996999999996
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600725.SH",
+            "name": "云维股份",
+            "date": "20141217",
+            "marketCap": 30.934996999999996
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600395.SH",
+            "name": "盘江股份",
+            "date": "20150608",
+            "marketCap": 260.00864736
+          },
+          {
+            "code": "600408.SH",
+            "name": "安泰集团",
+            "date": "20150423",
+            "marketCap": 62.01888
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000571.SZ",
+            "name": "新大洲A",
+            "date": "20150902",
+            "marketCap": 40.9474192
+          }
+        ]
+      },
+      {
+        "quarter": "2015Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600740.SH",
+            "name": "山西焦化",
+            "date": "20151229",
+            "marketCap": 49.69393
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000571.SZ",
+            "name": "新大洲A",
+            "date": "20160115",
+            "marketCap": 46.4830544
+          },
+          {
+            "code": "600740.SH",
+            "name": "山西焦化",
+            "date": "20151229",
+            "marketCap": 49.69393
+          },
+          {
+            "code": "601001.SH",
+            "name": "晋控煤业",
+            "date": "20160225",
+            "marketCap": 81.17445
+          },
+          {
+            "code": "601699.SH",
+            "name": "潞安环能",
+            "date": "20160317",
+            "marketCap": 218.07373067999998
+          },
+          {
+            "code": "600985.SH",
+            "name": "淮北矿业",
+            "date": "20160325",
+            "marketCap": 27.862602860000003
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000571.SZ",
+            "name": "新大洲A",
+            "date": "20160115",
+            "marketCap": 46.4830544
+          },
+          {
+            "code": "600121.SH",
+            "name": "郑州煤电",
+            "date": "20160616",
+            "marketCap": 48.73648152
+          },
+          {
+            "code": "600408.SH",
+            "name": "安泰集团",
+            "date": "20160413",
+            "marketCap": 59.19984
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600725.SH",
+            "name": "云维股份",
+            "date": "20160922",
+            "marketCap": 35.125395000000005
+          },
+          {
+            "code": "600408.SH",
+            "name": "安泰集团",
+            "date": "20160413",
+            "marketCap": 59.19984
+          },
+          {
+            "code": "601101.SH",
+            "name": "昊华能源",
+            "date": "20160708",
+            "marketCap": 78.59988682000001
+          }
+        ]
+      },
+      {
+        "quarter": "2016Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600725.SH",
+            "name": "云维股份",
+            "date": "20160922",
+            "marketCap": 35.125395000000005
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600725.SH",
+            "name": "云维股份",
+            "date": "20160922",
+            "marketCap": 35.125395000000005
+          },
+          {
+            "code": "000723.SZ",
+            "name": "美锦能源",
+            "date": "20170217",
+            "marketCap": 278.97527560000003
+          },
+          {
+            "code": "002128.SZ",
+            "name": "电投能源",
+            "date": "20170316",
+            "marketCap": 147.09406257
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000571.SZ",
+            "name": "新大洲A",
+            "date": "20170512",
+            "marketCap": 66.0205904
+          },
+          {
+            "code": "600725.SH",
+            "name": "云维股份",
+            "date": "20160922",
+            "marketCap": 35.125395000000005
+          },
+          {
+            "code": "601001.SH",
+            "name": "晋控煤业",
+            "date": "20170621",
+            "marketCap": 87.86925
+          },
+          {
+            "code": "601088.SH",
+            "name": "中国神华",
+            "date": "20170602",
+            "marketCap": 4433.39639942
+          },
+          {
+            "code": "002128.SZ",
+            "name": "电投能源",
+            "date": "20170316",
+            "marketCap": 147.09406257
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "600725.SH",
+            "name": "云维股份",
+            "date": "20160922",
+            "marketCap": 35.125395000000005
+          },
+          {
+            "code": "600985.SH",
+            "name": "淮北矿业",
+            "date": "20170731",
+            "marketCap": 37.09932239
+          }
+        ]
+      },
+      {
+        "quarter": "2017Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2018Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000723.SZ",
+            "name": "美锦能源",
+            "date": "20180326",
+            "marketCap": 222.95211314
+          },
+          {
+            "code": "600546.SH",
+            "name": "山煤国际",
+            "date": "20180327",
+            "marketCap": 90.20175437
+          },
+          {
+            "code": "002128.SZ",
+            "name": "电投能源",
+            "date": "20180316",
+            "marketCap": 164.90878793
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "000723.SZ",
+            "name": "美锦能源",
+            "date": "20180326",
+            "marketCap": 222.95211314
+          }
+        ]
+      },
+      {
+        "quarter": "2018Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2018Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2019Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2020Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": [
+          {
+            "code": "601015.SH",
+            "name": "陕西黑猫",
+            "date": "20210629",
+            "marketCap": 145.86615783
+          }
+        ]
+      },
+      {
+        "quarter": "2021Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2021Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2022Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2023Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2024Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2025Q4",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q1",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q2",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      },
+      {
+        "quarter": "2026Q3",
+        "financialMissing": [],
+        "peMissing": [],
+        "marketMissing": [],
+        "carried": []
+      }
+    ]
+  },
+  "historicalAuditScope": "旧公司整体法，市值/PE已被sw-alignment-audit.json取代；财务核验仍有效",
+  "valuationAlignment": {
     "industry": "煤炭",
     "code": "801950.SI",
-    "companies": 33,
-    "quarters": 87,
-    "companyQuarterRows": 2619,
+    "scope": "SW公布市值/PE与财报汇总分离",
+    "project2AsOf": "20261110",
+    "financialAsOf": "2026-11-10",
+    "financialHash": "2b106b653b4d7b0f75c0ee2693389f88f3372f0e42d081c95d8fed6a51be738e",
+    "sectorFinancialHashes": {
+      "801951.SI": "fc7681c4bcfe26bc24f8a39958242781cbc3a6a02ffeff1c9f5131df3e529210",
+      "801952.SI": "aec1a9622093297f09ac9a42ad9f71f7bf7513e4b346b42ab7965c800c8dc90c"
+    },
     "latest": {
       "quarter": "2026Q3",
       "endDate": "20260930",
       "tradeDate": "20260930",
       "companies": 33,
-      "marketCap": 22286.33734977,
-      "marketCapObserved": 22286.33734977,
-      "pe": 18.975882655448814,
-      "peMarketCap": 22286.33734977,
-      "peProfit": 1174.4559003884128,
-      "peCoverage": 1.0,
-      "peMissingCount": 0,
-      "peRebuiltCount": 12,
+      "marketCap": 19150.0404,
+      "marketCapObserved": 19150.0404,
+      "pe": 18.37,
       "revenue": 3472.5752682507996,
       "profit": 374.1849820405,
       "reportedCount": 33,
@@ -29,1202 +1258,42 @@
       "estimatedProfit": 0,
       "carriedCount": 0,
       "marketMissingCount": 0,
-      "financialCoverage": 1.0
-    },
-    "financialIncompleteQuarters": 2,
-    "peCoverageMin": 0.9722440347200968,
-    "carriedCompanyQuarters": 85
-  },
-  "quality": [
-    {
-      "quarter": "2005Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2005Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000552.SZ",
-          "name": "甘肃能化",
-          "date": "20050421",
-          "marketCap": 6.314385
-        },
-        {
-          "code": "600121.SH",
-          "name": "郑州煤电",
-          "date": "20050617",
-          "marketCap": 30.456
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000552.SZ",
-          "name": "甘肃能化",
-          "date": "20050421",
-          "marketCap": 6.314385
-        }
-      ]
-    },
-    {
-      "quarter": "2005Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000552.SZ",
-          "name": "甘肃能化",
-          "date": "20050421",
-          "marketCap": 6.314385
-        },
-        {
-          "code": "600725.SH",
-          "name": "云维股份",
-          "date": "20051222",
-          "marketCap": 7.293
-        },
-        {
-          "code": "600997.SH",
-          "name": "开滦股份",
-          "date": "20051216",
-          "marketCap": 33.5744
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600740.SH",
-          "name": "山西焦化",
-          "date": "20060324",
-          "marketCap": 14.158929999999998
-        },
-        {
-          "code": "600188.SH",
-          "name": "兖矿能源",
-          "date": "20060224",
-          "marketCap": 357.56768
-        },
-        {
-          "code": "000937.SZ",
-          "name": "冀中能源",
-          "date": "20060330",
-          "marketCap": 42.69335964
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q2",
-      "financialMissing": [
-        {
-          "code": "601001.SH",
-          "name": "晋控煤业"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000571.SZ",
-          "name": "新大洲A",
-          "date": "20060623",
-          "marketCap": 22.1555264
-        },
-        {
-          "code": "600403.SH",
-          "name": "大有能源",
-          "date": "20060621",
-          "marketCap": 8.8717032
-        },
-        {
-          "code": "600792.SH",
-          "name": "云煤能源",
-          "date": "20060620",
-          "marketCap": 7.560877499999999
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000571.SZ",
-          "name": "新大洲A",
-          "date": "20060825",
-          "marketCap": 24.658144
-        }
-      ]
-    },
-    {
-      "quarter": "2006Q4",
-      "financialMissing": [
-        {
-          "code": "601666.SH",
-          "name": "平煤股份"
-        }
-      ],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000571.SZ",
-          "name": "新大洲A",
-          "date": "20061228",
-          "marketCap": 20.977824
-        },
-        {
-          "code": "600758.SH",
-          "name": "辽宁能源",
-          "date": "20061208",
-          "marketCap": 7.14105744
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000723.SZ",
-          "name": "美锦能源",
-          "date": "20070125",
-          "marketCap": 13.63884135
-        },
-        {
-          "code": "600508.SH",
-          "name": "上海能源",
-          "date": "20070329",
-          "marketCap": 72.4163436
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q2",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "600792.SH",
-          "name": "云煤能源"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000571.SZ",
-          "name": "新大洲A",
-          "date": "20070619",
-          "marketCap": 58.7379072
-        },
-        {
-          "code": "000723.SZ",
-          "name": "美锦能源",
-          "date": "20070125",
-          "marketCap": 13.63884135
-        },
-        {
-          "code": "600403.SH",
-          "name": "大有能源",
-          "date": "20070612",
-          "marketCap": 17.84538
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q3",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "600792.SH",
-          "name": "云煤能源"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600403.SH",
-          "name": "大有能源",
-          "date": "20070612",
-          "marketCap": 17.84538
-        }
-      ]
-    },
-    {
-      "quarter": "2007Q4",
-      "financialMissing": [],
-      "peMissing": [
-        {
-          "code": "601666.SH",
-          "name": "平煤股份"
-        },
-        {
-          "code": "600792.SH",
-          "name": "云煤能源"
-        }
-      ],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000723.SZ",
-          "name": "美锦能源",
-          "date": "20071109",
-          "marketCap": 55.825718079999994
-        },
-        {
-          "code": "000937.SZ",
-          "name": "冀中能源",
-          "date": "20071220",
-          "marketCap": 221.48086628000001
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600121.SH",
-          "name": "郑州煤电",
-          "date": "20080227",
-          "marketCap": 103.682272
-        },
-        {
-          "code": "601001.SH",
-          "name": "晋控煤业",
-          "date": "20080116",
-          "marketCap": 333.65209500000003
-        },
-        {
-          "code": "600792.SH",
-          "name": "云煤能源",
-          "date": "20080321",
-          "marketCap": 23.856525
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600395.SH",
-          "name": "盘江股份",
-          "date": "20080506",
-          "marketCap": 99.91683
-        },
-        {
-          "code": "600348.SH",
-          "name": "华阳股份",
-          "date": "20080627",
-          "marketCap": 216.9791
-        },
-        {
-          "code": "600792.SH",
-          "name": "云煤能源",
-          "date": "20080321",
-          "marketCap": 23.856525
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600971.SH",
-          "name": "恒源煤电",
-          "date": "20080923",
-          "marketCap": 26.22529601
-        },
-        {
-          "code": "600792.SH",
-          "name": "云煤能源",
-          "date": "20080321",
-          "marketCap": 23.856525
-        }
-      ]
-    },
-    {
-      "quarter": "2008Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "601918.SH",
-          "name": "新集能源",
-          "date": "20081208",
-          "marketCap": 139.7042185
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600740.SH",
-          "name": "山西焦化",
-          "date": "20090330",
-          "marketCap": 35.75224
-        },
-        {
-          "code": "000983.SZ",
-          "name": "山西焦煤",
-          "date": "20090330",
-          "marketCap": 402.8688
-        },
-        {
-          "code": "600971.SH",
-          "name": "恒源煤电",
-          "date": "20090330",
-          "marketCap": 39.99740216
-        },
-        {
-          "code": "002128.SZ",
-          "name": "电投能源",
-          "date": "20090330",
-          "marketCap": 129.8621651
-        }
-      ]
-    },
-    {
-      "quarter": "2009Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2009Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2009Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600348.SH",
-          "name": "华阳股份",
-          "date": "20091230",
-          "marketCap": 465.3194
-        }
-      ]
-    },
-    {
-      "quarter": "2010Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2010Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2010Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2010Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2011Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2011Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000571.SZ",
-          "name": "新大洲A",
-          "date": "20110629",
-          "marketCap": 54.763161600000004
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000552.SZ",
-          "name": "甘肃能化",
-          "date": "20110908",
-          "marketCap": 29.508633000000003
-        }
-      ]
-    },
-    {
-      "quarter": "2011Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000723.SZ",
-          "name": "美锦能源",
-          "date": "20111011",
-          "marketCap": 24.47173888
-        },
-        {
-          "code": "600121.SH",
-          "name": "郑州煤电",
-          "date": "20110930",
-          "marketCap": 65.619302
-        },
-        {
-          "code": "600348.SH",
-          "name": "华阳股份",
-          "date": "20111229",
-          "marketCap": 365.079
-        },
-        {
-          "code": "600985.SH",
-          "name": "淮北矿业",
-          "date": "20110930",
-          "marketCap": 15.60384
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600121.SH",
-          "name": "郑州煤电",
-          "date": "20120329",
-          "marketCap": 56.685514000000005
-        }
-      ]
-    },
-    {
-      "quarter": "2012Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2012Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2012Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000723.SZ",
-          "name": "美锦能源",
-          "date": "20121217",
-          "marketCap": 14.560196040000001
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "002128.SZ",
-          "name": "电投能源",
-          "date": "20130319",
-          "marketCap": 170.34650371
-        },
-        {
-          "code": "600997.SH",
-          "name": "开滦股份",
-          "date": "20130118",
-          "marketCap": 133.34112
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600725.SH",
-          "name": "云维股份",
-          "date": "20130621",
-          "marketCap": 23.232059500000002
-        },
-        {
-          "code": "601918.SH",
-          "name": "新集能源",
-          "date": "20130515",
-          "marketCap": 139.7042185
-        }
-      ]
-    },
-    {
-      "quarter": "2013Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2013Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2014Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600758.SH",
-          "name": "辽宁能源",
-          "date": "20140128",
-          "marketCap": 15.01539125
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600758.SH",
-          "name": "辽宁能源",
-          "date": "20140128",
-          "marketCap": 15.01539125
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600740.SH",
-          "name": "山西焦化",
-          "date": "20140725",
-          "marketCap": 44.48717
-        }
-      ]
-    },
-    {
-      "quarter": "2014Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600725.SH",
-          "name": "云维股份",
-          "date": "20141217",
-          "marketCap": 30.934996999999996
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600725.SH",
-          "name": "云维股份",
-          "date": "20141217",
-          "marketCap": 30.934996999999996
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600395.SH",
-          "name": "盘江股份",
-          "date": "20150608",
-          "marketCap": 260.00864736
-        },
-        {
-          "code": "600408.SH",
-          "name": "安泰集团",
-          "date": "20150423",
-          "marketCap": 62.01888
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000571.SZ",
-          "name": "新大洲A",
-          "date": "20150902",
-          "marketCap": 40.9474192
-        }
-      ]
-    },
-    {
-      "quarter": "2015Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600740.SH",
-          "name": "山西焦化",
-          "date": "20151229",
-          "marketCap": 49.69393
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000571.SZ",
-          "name": "新大洲A",
-          "date": "20160115",
-          "marketCap": 46.4830544
-        },
-        {
-          "code": "600740.SH",
-          "name": "山西焦化",
-          "date": "20151229",
-          "marketCap": 49.69393
-        },
-        {
-          "code": "601001.SH",
-          "name": "晋控煤业",
-          "date": "20160225",
-          "marketCap": 81.17445
-        },
-        {
-          "code": "601699.SH",
-          "name": "潞安环能",
-          "date": "20160317",
-          "marketCap": 218.07373067999998
-        },
-        {
-          "code": "600985.SH",
-          "name": "淮北矿业",
-          "date": "20160325",
-          "marketCap": 27.862602860000003
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000571.SZ",
-          "name": "新大洲A",
-          "date": "20160115",
-          "marketCap": 46.4830544
-        },
-        {
-          "code": "600121.SH",
-          "name": "郑州煤电",
-          "date": "20160616",
-          "marketCap": 48.73648152
-        },
-        {
-          "code": "600408.SH",
-          "name": "安泰集团",
-          "date": "20160413",
-          "marketCap": 59.19984
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600725.SH",
-          "name": "云维股份",
-          "date": "20160922",
-          "marketCap": 35.125395000000005
-        },
-        {
-          "code": "600408.SH",
-          "name": "安泰集团",
-          "date": "20160413",
-          "marketCap": 59.19984
-        },
-        {
-          "code": "601101.SH",
-          "name": "昊华能源",
-          "date": "20160708",
-          "marketCap": 78.59988682000001
-        }
-      ]
-    },
-    {
-      "quarter": "2016Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600725.SH",
-          "name": "云维股份",
-          "date": "20160922",
-          "marketCap": 35.125395000000005
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600725.SH",
-          "name": "云维股份",
-          "date": "20160922",
-          "marketCap": 35.125395000000005
-        },
-        {
-          "code": "000723.SZ",
-          "name": "美锦能源",
-          "date": "20170217",
-          "marketCap": 278.97527560000003
-        },
-        {
-          "code": "002128.SZ",
-          "name": "电投能源",
-          "date": "20170316",
-          "marketCap": 147.09406257
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000571.SZ",
-          "name": "新大洲A",
-          "date": "20170512",
-          "marketCap": 66.0205904
-        },
-        {
-          "code": "600725.SH",
-          "name": "云维股份",
-          "date": "20160922",
-          "marketCap": 35.125395000000005
-        },
-        {
-          "code": "601001.SH",
-          "name": "晋控煤业",
-          "date": "20170621",
-          "marketCap": 87.86925
-        },
-        {
-          "code": "601088.SH",
-          "name": "中国神华",
-          "date": "20170602",
-          "marketCap": 4433.39639942
-        },
-        {
-          "code": "002128.SZ",
-          "name": "电投能源",
-          "date": "20170316",
-          "marketCap": 147.09406257
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "600725.SH",
-          "name": "云维股份",
-          "date": "20160922",
-          "marketCap": 35.125395000000005
-        },
-        {
-          "code": "600985.SH",
-          "name": "淮北矿业",
-          "date": "20170731",
-          "marketCap": 37.09932239
-        }
-      ]
-    },
-    {
-      "quarter": "2017Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2018Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000723.SZ",
-          "name": "美锦能源",
-          "date": "20180326",
-          "marketCap": 222.95211314
-        },
-        {
-          "code": "600546.SH",
-          "name": "山煤国际",
-          "date": "20180327",
-          "marketCap": 90.20175437
-        },
-        {
-          "code": "002128.SZ",
-          "name": "电投能源",
-          "date": "20180316",
-          "marketCap": 164.90878793
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "000723.SZ",
-          "name": "美锦能源",
-          "date": "20180326",
-          "marketCap": 222.95211314
-        }
-      ]
-    },
-    {
-      "quarter": "2018Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2018Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2019Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2020Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": [
-        {
-          "code": "601015.SH",
-          "name": "陕西黑猫",
-          "date": "20210629",
-          "marketCap": 145.86615783
-        }
-      ]
-    },
-    {
-      "quarter": "2021Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2021Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2022Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2023Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2024Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2025Q4",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q1",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q2",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    },
-    {
-      "quarter": "2026Q3",
-      "financialMissing": [],
-      "peMissing": [],
-      "marketMissing": [],
-      "carried": []
-    }
-  ]
+      "financialCoverage": 1.0,
+      "peRaw": 18.37,
+      "valuationSource": "sw_daily",
+      "valuationCode": "801950.SI",
+      "valuationDate": "20260930",
+      "peStatus": "valid",
+      "peNote": ""
+    },
+    "indices": [
+      {
+        "code": "801950.SI",
+        "name": "煤炭",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801951.SI",
+        "name": "煤炭开采",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      },
+      {
+        "code": "801952.SI",
+        "name": "焦炭",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
+      }
+    ]
+  }
 }

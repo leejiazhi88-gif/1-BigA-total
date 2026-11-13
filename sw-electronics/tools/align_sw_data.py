@@ -1,7 +1,7 @@
-"""Align electronics/bank valuation with project 2's exact SW2021 snapshot.
+"""Align every industry valuation with project 2's exact SW2021 snapshot.
 
 Usage: python3 tools/align_sw_data.py --project2 PATH --early-source PATH
-Reads only project 2; writes this site's two modules, catalog and audit metadata.
+Reads only project 2; writes this site's 31 modules, catalog and audit metadata.
 No credentials are read or persisted. 2005 supplement is an API response by code.
 Subsequent runs may reuse the published sw-source.json without --project2.
 """
@@ -104,13 +104,20 @@ def main():
     early = read(args.early_source) if args.early_source else {}
     catalog = read(SITE / 'catalog.json')
     audits = []
-    for folder, name, code, key in [('', '电子', '801080.SI', 'electronics'), ('bank', '银行', '801780.SI', 'bank')]:
+    for item in catalog['industries']:
+        folder, name, code = item['path'], item['name'], item['code']
         root = SITE / folder
         data, sectors = read(root / 'data.json'), read(root / 'sectors.json')
         before = finance_hash(data['series'])
+        sector_before = {g['code']: finance_hash(g['series']) for g in sectors['groups']}
         if project:
             definitions = [(name, code)] + [(n, project['codes'][n]) for n in project['industries'][name]]
-            sources = {c: source_for(args.project2, c, project['asOf'], early) for n, c in definitions}
+            # A later import must not silently discard the earlier 2005 supplement.
+            supplement = dict(early)
+            if (root / 'sw-source.json').exists():
+                for c, previous in read(root / 'sw-source.json')['indices'].items():
+                    supplement.setdefault(c, [r for r in previous['rows'] if r['trade_date'] < '20060101'])
+            sources = {c: source_for(args.project2, c, project['asOf'], supplement) for n, c in definitions}
             for n, c in definitions:
                 sources[c]['name'] = n
             source = {'source': 'Tushare sw_daily / SW2021', 'project2AsOf': project['asOf'],
@@ -121,15 +128,22 @@ def main():
                 rows, latest = sources[c]['rows'], project['metrics'][n]['latest']
                 if rows:
                     assert rows[-1]['trade_date'] == latest['date']
-                    assert round(rows[-1]['pe'], 2) == latest['pe']
-                    assert round(rows[-1]['total_mv'], 2) == latest['totalMv']
+                    for field, published in [('pe', 'pe'), ('total_mv', 'totalMv')]:
+                        value = rows[-1].get(field)
+                        assert (round(value, 2) if value is not None else None) == latest[published]
+                else:
+                    assert latest['date'] is None and latest['pe'] is None and latest['totalMv'] is None
             write(root / 'sw-source.json', source)
         else:
             source = read(root / 'sw-source.json')
             definitions, sources = source['classification'], source['indices']
         for n, c in definitions[1:]:
-            if not any(g['code'] == c for g in sectors['groups']):
+            group = next((g for g in sectors['groups'] if g['code'] == c), None)
+            if group is None:
                 sectors['groups'].append(empty_group(n, c, data['series']))
+            else:
+                group['name'] = n
+        assert {g['code'] for g in sectors['groups']} == {c for _, c in definitions[1:]}
         objects = [(data, code)] + [(g, g['code']) for g in sectors['groups']]
         for obj, c in objects:
             obj['valuationDaily'] = align_series(obj['series'], sources[c])
@@ -157,15 +171,20 @@ def main():
         sectors.update(valuationSource='sw_daily', valuationAsOf=source['project2AsOf'])
         sectors['groups'].sort(key=lambda g: g['series'][-1]['marketCap'] or 0, reverse=True)
         assert finance_hash(data['series']) == before, 'Financial totals changed unexpectedly'
+        assert all(finance_hash(g['series']) == sector_before[g['code']]
+                   for g in sectors['groups'] if g['code'] in sector_before), 'Subindustry financials changed'
         for metric in ['revenue', 'profit']:
             for i, row in enumerate(data['series']):
                 assert math.isclose(sum(g['series'][i][metric] or 0 for g in sectors['groups']), row[metric] or 0, abs_tol=1e-6)
         audit = {'industry': name, 'code': code, 'scope': 'SW公布市值/PE与财报汇总分离',
                  'project2AsOf': source['project2AsOf'], 'financialAsOf': data['meta']['asOf'],
-                 'financialHash': before, 'latest': data['series'][-1], 'indices': []}
+                 'financialHash': before,
+                 'sectorFinancialHashes': {g['code']: finance_hash(g['series']) for g in sectors['groups']},
+                 'latest': data['series'][-1], 'indices': []}
         for obj, c in objects:
             audit['indices'].append({'code': c, 'name': sources[c]['name'], 'dailyCount': len(sources[c]['rows']),
                  'firstDate': sources[c]['rows'][0]['trade_date'] if sources[c]['rows'] else None,
+                 'lastDate': sources[c]['rows'][-1]['trade_date'] if sources[c]['rows'] else None,
                  'quarterQuotes': sum(r['valuationDate'] is not None for r in obj['series']),
                  'missingQuarterQuotes': [r['quarter'] for r in obj['series'] if r['valuationDate'] is None]})
         write(root / 'sw-alignment-audit.json', audit)
@@ -184,8 +203,12 @@ def main():
         manifest = read(root / 'data-manifest.json')
         manifest['meta'] = data['meta']
         manifest['valuationAlignment'] = audit
+        manifest['collectionScopeNote'] = '既有财报与daily_basic查询用于财务及公司明细；现行行业行情源为sw-source.json。'
+        manifest['industryValuationCollection'] = {'api': 'sw_daily', 'snapshot': source['project2AsOf'],
+            'sourceFile': 'sw-source.json', 'classification': source['classification']}
         if 'validation' in manifest:
             manifest['validation'].pop('peCoverageMinimum', None)
+            manifest['validationScopeNote'] = '既有validation中的market字段仅核验公司报价；申万行情覆盖见valuationAlignment。'
         if 'peAudit' in manifest:
             manifest['historicalCompanyPEAudit'] = {'scope': '旧公司整体法审计，已不用于图表PE', 'details': manifest.pop('peAudit')}
         write(root / 'data-manifest.json', manifest)
@@ -200,15 +223,15 @@ def main():
                             'historicalAuditScope': '旧公司整体法，市值/PE已被sw-alignment-audit.json取代；财务核验仍有效'}
             previous['valuationAlignment'] = audit
             write(root / 'data-audit.json', previous)
-        item = next(x for x in catalog['industries'] if x['key'] == key)
         item.update(latest=data['series'][-1], subIndustryCount=len(sectors['groups']), valuationSource='sw_daily')
     catalog['industries'].sort(key=lambda x: x['latest']['marketCap'] or 0, reverse=True)
-    catalog['valuationSources'] = {'sw_daily': ['electronics', 'bank'], 'otherIndustries': 'company_aggregate'}
+    catalog['valuationSources'] = {'sw_daily': [x['key'] for x in catalog['industries']]}
     write(SITE / 'catalog.json', catalog)
     (SITE / 'catalog.js').write_text('window.INDUSTRY_CATALOG=' + json.dumps(catalog, ensure_ascii=False, separators=(',', ':')) + ';')
     audit = read(SITE / 'all-industries-audit.json')
     audit['valuationAlignment'] = audits
-    audit['auditScopeNote'] = '既有公司汇总核验保留作历史财务/公司数据审计；电子、银行现行行业市值/PE参见valuationAlignment，不与公司合计强制对账。'
+    audit['valuationCounts'] = {'level1': len(audits), 'level2': sum(len(a['indices']) - 1 for a in audits)}
+    audit['auditScopeNote'] = '既有公司汇总核验保留作历史财务/公司数据审计；全部31个一级、134个二级行业的现行申万市值/PE参见valuationAlignment，不与公司合计强制对账。'
     write(SITE / 'all-industries-audit.json', audit)
     print(json.dumps([{'industry': a['industry'], 'marketCap': a['latest']['marketCap'],
                        'pe': a['latest']['pe'], 'indices': len(a['indices'])} for a in audits], ensure_ascii=False))
