@@ -10,7 +10,7 @@ function rollingFinancialRows(rows){return rows.map((s,i)=>{
 });}
 
 function mountIndustry(root,BASE,sectorData,prefix=''){
-const D=BASE,Q=BASE.series,L=Q.at(-1),official=D.meta.valuationMethod==='sw_daily';
+const D=BASE,Q=BASE.series,L=Q.at(-1),official=D.meta.valuationMethod==='sw_daily',isElectronics=D.meta.indexCode==='801080.SI';
 function withLatest(obj){return obj.latestQuote?[...obj.series,{...obj.series.at(-1),...obj.latestQuote,quarter:'最新',endDate:obj.latestQuote.date,tradeDate:obj.latestQuote.date,isLatest:true}]:obj.series;}
 const S=withLatest(D),LATEST=S.at(-1);
 const GROUPS=sectorData.groups.map(g=>({...g,quarterSeries:g.series,series:withLatest(g)})).sort((a,b)=>(b.series.at(-1).marketCap||0)-(a.series.at(-1).marketCap||0)),$=id=>root.querySelector('#'+CSS.escape(id))||root.querySelector('#'+CSS.escape(prefix+id));
@@ -59,7 +59,12 @@ function pePercentileMarkup(rows,s,extraClass=''){
 function pePercentileHint(rows,s){const count=percentileValues(rows).length,{start,end}=percentileBounds();return `${pointLabel(s)} PE；区间 ${date(start)}—${date(end)}，${count} 个有效${official?'日度':'季度'}样本；不高于该 PE 的样本占比`;}
 function peReason(s){if(official)return s.peNote||'';return !s.companies?'无已上市样本':s.peProfit<=0?'TTM利润合计非正，PE不适用':s.pe>500?'TTM净利润相对市值接近零，PE对利润变化高度敏感':'';}
 let first=GLOBAL_VIEW.first,last=Math.min(GLOBAL_VIEW.last,S.length-1),showLabels=GLOBAL_VIEW.showLabels,reverseTable=true,focusedQuarter=LATEST;
-function focus(s){focusedQuarter=S.find(r=>r.quarter===s.quarter)||s;s=displayRows(S)[S.indexOf(focusedQuarter)]||s;$('focus-row').innerHTML=`<strong class="focus-quarter">${esc(D.meta.industry)} · ${pointLabel(s)}</strong><div><span>总市值</span><strong>${fmt(s.marketCap==null?null:s.marketCap/10000,2)}<small> 万亿</small></strong></div><div><span>${official?'申万PE':'PE'}</span><strong>${peText(s)}<small>${s.pe==null?'':' 倍'}</small></strong></div><div><span>${financeLabel('营收')}</span><strong>${fmt(s.revenue)}<small> 亿${financeTag(s)}</small></strong></div><div><span>${financeLabel('归母净利')}</span><strong>${fmt(s.profit)}<small> 亿${financeTag(s)}</small></strong></div>${pePercentileMarkup(S,s,'focus-pe-percentile')}<small class="focus-coverage">${s.isLatest?'财报 '+short(s.financialQuarter)+' · ':''}${s.reportedCount} 家实报${s.estimatedCount?' / '+s.estimatedCount+' 家估算':''}</small>`;}
+function focus(s){
+ focusedQuarter=S.find(r=>r.quarter===s.quarter)||s;s=displayRows(S)[S.indexOf(focusedQuarter)]||s;
+ const pe=`<div class="summary-pe"><span>${official?'申万PE':'PE'}</span><strong>${peText(s)}<small>${s.pe==null?'':' 倍'}</small></strong></div>`;
+ const percentile=pePercentileMarkup(S,s,'focus-pe-percentile');
+ $('focus-row').innerHTML=`<strong class="focus-quarter">${esc(D.meta.industry)} · ${pointLabel(s)}</strong><div><span>总市值</span><strong>${fmt(s.marketCap==null?null:s.marketCap/10000,2)}<small> 万亿</small></strong></div>${isElectronics?'':pe}<div><span>${financeLabel('营收')}</span><strong>${fmt(s.revenue)}<small> 亿${financeTag(s)}</small></strong></div><div><span>${financeLabel('归母净利')}</span><strong>${fmt(s.profit)}<small> 亿${financeTag(s)}</small></strong></div>${isElectronics?`<div class="valuation-summary">${pe}${percentile}</div>`:percentile}<small class="focus-coverage">${s.isLatest?'财报 '+short(s.financialQuarter)+' · ':''}${s.reportedCount} 家实报${s.estimatedCount?' / '+s.estimatedCount+' 家估算':''}</small>`;
+}
 focus(LATEST);
 const C={mv:'#147b76',pe:'#c47a36',rev:'#ccdde4',profit:'#427f93',loss:'#c47b6c'};
 const chart=echarts.init($('chart'),null,{renderer:'canvas'});if(!prefix)window.researchChart=chart;
@@ -82,7 +87,7 @@ function chartAxes(rows,mini,view){
  const financial=visibleMetrics.revenue||visibleMetrics.profit;
  const finmax=nice(Math.max(0,...visible.map(s=>visibleMetrics.revenue?(s.revenue||0):visibleMetrics.profit?Math.max(0,s.profit||0):0)))*1.17;
  const negative=visibleMetrics.profit?Math.min(0,...visible.map(s=>s.profit||0)):0;
- const labelSpace=visibleMetrics.profit&&showLabels?(mini?.18:.12):0;
+ const labelSpace=visibleMetrics.profit&&showLabels?(isElectronics?(mini?.24:.17):(mini?.18:.12)):0;
  const negRatio=negative<0?Math.max(.08,-negative/finmax*1.25,-negative/finmax+labelSpace):labelSpace;
  const scale=financial?`${visibleMetrics.revenue?'柱':'利润'}：${negRatio?fmt(-finmax*negRatio,0):'0'}—${fmt(finmax,0)}亿元`:'';
  return {scale,finmax,axes:[
@@ -97,7 +102,9 @@ function bars(rows,key,mini,finmax){return rows.map(s=>{
  const color=key==='revenue'?C.rev:key==='profit'?C.profit:C.loss;
  const metric=key==='loss'?'profit':key;
  const label={show:showLabels,position:key==='revenue'?'insideTop':'inside',rotate:last-first>(mini?10:38)?90:0,distance:mini?2:5,color:key==='revenue'?'#4f6e7b':'#fff',fontSize:mini?8:last-first>38?8:10,formatter:fmt(s[metric],0)+financeTag(s)};
- if(key!=='revenue'){label.position='bottom';label.color=key==='loss'?C.loss:C.profit;label.distance=4;}
+ if(key!=='revenue'){label.position='bottom';label.color=key==='loss'?C.loss:C.profit;label.distance=4;
+  if(isElectronics){label.color=key==='loss'?'#8f4435':'#244c60';label.distance=8;label.align=label.rotate?'right':'center';label.verticalAlign=label.rotate?'middle':'top';}
+ }
  if((key==='profit'&&s.profit<=0)||(key==='loss'&&s.profit>=0))label.show=false;
  if(key==='revenue'&&s.revenue<finmax*.1){label.position='top';label.distance=4;}
  return {value:v,itemStyle:{color,opacity:s.missingCount?.65:1,borderColor:financeTag(s)==='*'?'#aa884f':color,borderWidth:financeTag(s)==='*'?1:0,decal:financeTag(s)==='*'?{symbol:'rect',dashArrayX:[1,0],dashArrayY:[2,4],rotation:Math.PI/4,color:'rgba(137,99,38,.18)'}:undefined},label};
@@ -143,7 +150,10 @@ function tooltipFor(rows,name,main,view){return params=>{
  if(financeTag(s)==='*'&&visibleMetrics.profit)body+=`<br>估算利润 ${fmt(s.estimatedProfit,2)} 亿`;
  return body+'</div></div>';
 };}
-function miniSummary(group){const s=displayRows(group.series).at(-1);return `<span>${official?'申万PE':'PE'} ${esc(peText(s))}</span><span>${esc(financeLabel('营收')+' '+fmt(s.revenue,0)+'亿'+financeTag(s))}</span><span>${esc(financeLabel('净利')+' '+fmt(s.profit,1)+'亿'+financeTag(s))}</span>${pePercentileMarkup(group.series,s,'mini-pe-percentile')}`;}
+function miniSummary(group){
+ const s=displayRows(group.series).at(-1),pe=`<span class="summary-pe">${official?'申万PE':'PE'} ${esc(peText(s))}</span>`,percentile=pePercentileMarkup(group.series,s,'mini-pe-percentile');
+ return `${isElectronics?'':pe}<span>${esc(financeLabel('营收')+' '+fmt(s.revenue,0)+'亿'+financeTag(s))}</span><span>${esc(financeLabel('净利')+' '+fmt(s.profit,1)+'亿'+financeTag(s))}</span>${isElectronics?`<div class="valuation-summary">${pe}${percentile}</div>`:percentile}`;
+}
 function updateChart(instance,rows,name,mini=false,code=''){
  rows=displayRows(rows);
  const view=peView(rows),{axes,scale,finmax}=chartAxes(rows,mini,view);
@@ -287,7 +297,7 @@ return api;
 const moduleTemplate=document.getElementById('industry-template');
 const industryList=document.getElementById('industry-list');
 const industryLoads=new Map();
-const assetVersion='20261113-electronics-latest';
+const assetVersion='20261113-electronics-layout';
 function loadIndustryJSON(path){return fetch(path+'?v='+assetVersion).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();});}
 function activateIndustry(root){
  const key=root.dataset.industry;if(industryLoads.has(key))return industryLoads.get(key);
