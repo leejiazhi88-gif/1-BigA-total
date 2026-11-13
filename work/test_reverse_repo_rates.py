@@ -41,6 +41,17 @@ class ReverseRepoTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 parse_operation(html, "2026-10-30", "source")
 
+    def test_variable_rate_tender_without_single_quote_is_not_overnight_rate(self):
+        tender = "同时，以固定数量、利率招标、多重价位中标方式开展了3000亿元7天期逆回购操作。"
+        html = announcement(tenor="隔夜", rate="1.25%")[:-6] + '<p>' + tender + '</p></div>'
+        self.assertIsNone(parse_operation(html, "2026-11-13", "source"))
+        # A real seven-day rate table still wins over a tender description.
+        with_rate = announcement()[:-6] + '<p>' + tender + '</p></div>'
+        self.assertEqual(parse_operation(with_rate, "2026-11-13", "source")["reverseRepo7d"], 1.4)
+        for changed in (tender.replace("多重价位中标", "其他方式"), tender.replace("操作。", "操作，利率1.30%。")):
+            with self.assertRaises(ValueError):
+                parse_operation('<div id="zoom">' + changed + '</div>', "2026-11-13", "source")
+
     def test_incremental_refresh_preserves_old_quotes_and_excludes_future(self):
         rows = [("2026-11-04", "future"), ("2026-10-30", "new"), ("2026-09-01", "old")]
         listing = ''.join(f'<a istitle="true" href="{name}">公告</a><span>{date}</span>' for date, name in rows)

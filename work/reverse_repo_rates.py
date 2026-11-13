@@ -118,6 +118,15 @@ def parse_operation(html, date, url):
         raise ValueError(f"Conflicting seven-day rates: {url}")
     if not rates:
         text = re.sub(r"\s+", "", "".join(parser.text))
+        # Variable-rate tenders can disclose a volume without a single seven-day quote.
+        unquoted_tender = any(
+            all(term in sentence for term in ("固定数量", "利率招标", "多重价位中标"))
+            and re.search(r"开展了?\d+(?:\.\d+)?亿元7天(?:期)?逆回购操作", sentence)
+            and not re.search(r"\d+(?:\.\d+)?[%％]", sentence)
+            for sentence in re.findall(r"以固定数量[^。；;]*", text)
+        )
+        if unquoted_tender:
+            return None
         if re.search(r"7天(?:期)?逆回购", text) and not re.search(r"7天(?:期)?逆回购操作量为零", text):
             raise ValueError(f"Unparsed seven-day reverse repo announcement: {url}")
         return None
