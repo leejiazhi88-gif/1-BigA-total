@@ -26,6 +26,7 @@ def main():
         root = SITE / item['path']
         data, sectors, source = [read(root / filename) for filename in ['data.json', 'sectors.json', 'sw-source.json']]
         audit = read(root / 'sw-alignment-audit.json')
+        supplement = read(root / 'latest-quotes-source.json') if (root / 'latest-quotes-source.json').exists() else None
         assert finance_hash(data['series']) == audit['financialHash']
         assert data['meta']['valuationMethod'] == item['valuationSource'] == 'sw_daily'
         assert len(sectors['groups']) == item['subIndustryCount']
@@ -38,6 +39,18 @@ def main():
             assert len(by_date) == len(rows), 'Duplicate date'
             assert list(by_date) == sorted(by_date), 'Unsorted source'
             assert obj['valuationDaily'] == [[r['trade_date'], r['pe']] for r in rows]
+            if supplement:
+                recent = supplement['indices'][code]['rows']
+                assert all(r['ts_code'] == code and r['trade_date'] > source['project2AsOf'] for r in recent)
+                assert len({r['trade_date'] for r in recent}) == len(recent)
+                assert obj['valuationRecent'] == [[r['trade_date'], r['pe']] for r in recent]
+                latest = obj['latestQuote']
+                raw = next((r for r in recent if r['trade_date'] == latest['date']), None)
+                cap, pe = (raw['total_mv'], raw['pe']) if raw else (None, None)
+                assert latest['marketCap'] == (cap / 10000 if positive(cap) else None)
+                assert latest['pe'] == (pe if positive(pe) else None) and latest['peRaw'] == pe
+                assert latest['financialQuarter'] == obj['series'][-1]['quarter']
+                assert latest['date'] > obj['series'][-1]['endDate']
             for quarter in obj['series']:
                 src = by_date.get(quarter['tradeDate'])
                 cap, pe = (src.get('total_mv'), src.get('pe')) if src else (None, None)
@@ -67,7 +80,10 @@ def main():
         for file, expected in [('data.js', data), ('sectors.js', sectors)]:
             assert json.loads((root / file).read_text().split('=', 1)[1].rstrip(';')) == expected
     for item in catalog['industries']:
-        assert item['latest'] == read(SITE / item['path'] / 'data.json')['series'][-1]
+        data = read(SITE / item['path'] / 'data.json')
+        assert item['latest'] == data['series'][-1]
+        if 'latestObservation' in item:
+            assert item['latestObservation'] == data['latestQuote']
     caps = [x['latest']['marketCap'] or 0 for x in catalog['industries']]
     assert caps == sorted(caps, reverse=True)
     assert json.loads((SITE / 'catalog.js').read_text().split('=', 1)[1].rstrip(';')) == catalog
