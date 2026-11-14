@@ -27,8 +27,9 @@ function attachHoldingRatios(data, audit, market) {
         ratios: { stockAmount: null, etfAmount: null, socialAmount: null, huijinAmount: null, otherAmount: null },
         ratioBases: { stockAmount: { amount: null }, etfAmount: { amount: null, count: 0 }, socialAmount: { amount: null } } };
     }
-    const stock = stockRatio(row.stocks, audit.stocks[row.period]);
-    const social = stockRatio(row.social, audit.stocks[row.period]);
+    const pendingCapital = audit.pendingCapitalPeriods?.includes(row.period);
+    const stock = pendingCapital ? { details: row.stocks.map(r => ({ ...r, totalUnits: null, ownershipPct: null })) } : stockRatio(row.stocks, audit.stocks[row.period]);
+    const social = pendingCapital ? { details: row.social.map(r => ({ ...r, totalUnits: null, ownershipPct: null })) } : stockRatio(row.social, audit.stocks[row.period]);
     const allA = market?.periods?.[row.period];
     if (!allA && row.stockStatus === "disclosure_gap" && row.stockAmount === null && row.socialAmount === null) {
       return { ...row, stocks: stock.details, social: social.details, etfs: row.etfs,

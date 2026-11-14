@@ -1,4 +1,5 @@
 {
-  "pendingRatioPeriods": ["20260930"],
-  "note": "2026 Q3 stock and social holding amounts verified; period-matched A-share capital and all-A market denominator pending. ETF holder units not yet verified; do not reuse earlier units."
+  "pendingRatioPeriods": [],
+  "pendingCapitalPeriods": ["20260930"],
+  "note": "2026 Q3 aggregate holding ratios use verified all-A market totals. Individual company ownership ratios remain unavailable without audited A-share capital. All 14 interim and Q3 ETF reports checked: no named top-ten holder table; ETF holdings remain null."
 }

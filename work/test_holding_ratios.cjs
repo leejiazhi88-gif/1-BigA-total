@@ -29,6 +29,7 @@ test('audited history preserves amounts, ETF gaps, social independence and accou
     require('./national_team_etf_history.json'),require('./national_team_stock_history.json')),require('./social_security_history.json'));
   const market=require('./a_share_market_cap.json');
   const audit={...require('./holding_denominators.json'),pendingPeriods:require('./disclosure_status.json').pendingRatioPeriods};
+  audit.pendingCapitalPeriods=require('./disclosure_status.json').pendingCapitalPeriods;
   const result=attachHoldingRatios(base,audit,market);
   assert.equal(result.snapshots.length,65);
   for(const [i,row] of result.snapshots.entries()) {

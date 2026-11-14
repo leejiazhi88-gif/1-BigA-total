@@ -315,7 +315,7 @@ function renderDirectHoldings(data) {
   $("ntDirectPeriod").value = snapshots[selected].period;
   const latest = snapshots.at(-1);
   $("ntDirectGap").textContent = "早期2010—2013年部分季度股东榜明显缺页，曲线在这些报告期断开；缺口不代表减仓。 " + (latest.etfAmount === null
-    ? latest.date + "：本期ETF持有人份额尚无完整可核验数据，ETF及合计金额留空，不代表减仓。" + (latest.ratioPending ? " 本期持仓比例分母待核验，仅展示已核实金额。" : "")
+    ? latest.date + "：14只样本ETF报告已核验，未披露可识别汇金／证金份额的具名前十持有人表，ETF金额、比例及合计留空，不代表减仓。个股明细的单家公司持股比例未核实，不影响以全A市值为分母的整体比例。"
     : "ETF为固定样本中的已披露金额，不代表全市场ETF持仓。");
   const chart = echarts.init($("nationalTeamDirectChart"), null, { renderer: "canvas" });
 
@@ -533,6 +533,7 @@ function renderDirectHoldings(data) {
 function directHoldingsModule() {
   const ratios = JSON.parse(fs.readFileSync(RATIO_SOURCE, "utf8"));
   ratios.pendingPeriods = JSON.parse(fs.readFileSync(path.join(__dirname, "disclosure_status.json"), "utf8")).pendingRatioPeriods;
+  ratios.pendingCapitalPeriods = JSON.parse(fs.readFileSync(path.join(__dirname, "disclosure_status.json"), "utf8")).pendingCapitalPeriods;
   const data = attachHoldingRatios(attachSocialData(buildDirectData(JSON.parse(fs.readFileSync(SOURCE, "utf8")), JSON.parse(fs.readFileSync(HISTORY_SOURCE, "utf8")), JSON.parse(fs.readFileSync(STOCK_HISTORY_SOURCE, "utf8"))), JSON.parse(fs.readFileSync(SOCIAL_HISTORY_SOURCE, "utf8"))), ratios, JSON.parse(fs.readFileSync(MARKET_CAP_SOURCE, "utf8")));
   const payload = JSON.stringify(data).replace(/</g, "\\u003c");
   return { css, html, checkedAt: data.checkedAt,
