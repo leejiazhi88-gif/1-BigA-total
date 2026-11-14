@@ -64,6 +64,13 @@ const css = `
     .panel-subtitle { color: var(--muted); font-size: 11px; margin-top: 4px; }
     .metric-tabs, .range-tabs { display: flex; gap: 7px; flex-wrap: wrap; }
     .metric-tabs { padding: 13px 15px 0; }
+    #valuationSeriesControls { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 11px 16px 0; }
+    #valuationSeriesControls button { display: inline-flex; align-items: center; gap: 6px; padding: 4px 0; border: 0; background: transparent; color: #8fa5bf; font-size: 12px; cursor: pointer; }
+    #valuationSeriesControls button:hover { color: #edf4ff; background: transparent; }
+    #valuationSeriesControls button[aria-pressed="false"] { opacity: .4; }
+    .valuation-series-mark { position: relative; width: 22px; height: 12px; flex: none; }
+    .valuation-series-mark::before { content: ""; position: absolute; left: 0; right: 0; top: 5px; border-top: 2px solid var(--series-color); }
+    .valuation-series-mark::after { content: ""; position: absolute; left: 8px; top: 1px; width: 8px; height: 8px; border: 2px solid #edf4ff; border-radius: 50%; background: var(--series-color); }
     .metric-tab, .range-tab { padding: 7px 10px; font-size: 12px; }
     .range-tab { padding: 5px 8px; }
     .metric-tab[disabled] {
@@ -125,6 +132,10 @@ const moduleHtml = `
             <button class="range-tab" data-years="20">20年</button>
             <button class="range-tab active" data-years="0">全部</button>
           </div>
+        </div>
+        <div id="valuationSeriesControls" role="group" aria-label="选择指数曲线">
+          <button type="button" data-series="sh" aria-pressed="true" style="--series-color:#ff5d73"><span class="valuation-series-mark"></span>上证</button>
+          <button type="button" data-series="sz" aria-pressed="true" style="--series-color:#36c2ff"><span class="valuation-series-mark"></span>深证</button>
         </div>
         <div class="metric-tabs" id="valuationMetricTabs">
           <button class="metric-tab active" data-metric="pe">PE(TTM)</button>
@@ -193,6 +204,7 @@ const js = `
     const valuationChart = echarts.init(document.getElementById("valuationChart"), null, { renderer: "canvas" });
     let activeMetric = "pe";
     let activeYears = 0;
+    const selectedMarkets = new Set(["sh", "sz"]);
 
     function rowsForActiveRange(market, field) {
       const sourceField = field === "pePercentile" ? "pe"
@@ -245,7 +257,7 @@ const js = `
       renderChartLatest("valuationLatestReading", cfg.title, [
         { name: "上证", color: COLORS.sh, value: shPoints.at(-1)?.[1], date: shPoints.at(-1)?.[0], unit: cfg.unit, digits: 2 },
         { name: "深证", color: COLORS.sz, value: szPoints.at(-1)?.[1], date: szPoints.at(-1)?.[0], unit: cfg.unit, digits: 2 }
-      ], cfg.fixedRange ? rangeLabel + "样本" : "");
+      ].filter((_, index) => selectedMarkets.has(index ? "sz" : "sh")), cfg.fixedRange ? rangeLabel + "样本" : "");
 
       const riskArea = cfg.fixedRange ? {
         silent: true,
@@ -297,7 +309,7 @@ const js = `
             sampling: "lttb", lineStyle: { width: 2, color: COLORS.sz },
             itemStyle: { color: COLORS.sz }, emphasis: { focus: "series" }
           }
-        ]
+        ].filter((_, index) => selectedMarkets.has(index ? "sz" : "sh"))
       }, true);
     }
 
@@ -306,6 +318,19 @@ const js = `
         activeMetric = button.dataset.metric;
         document.querySelectorAll("#valuationMetricTabs [data-metric]").forEach(item => item.classList.remove("active"));
         button.classList.add("active");
+        renderValuationChart();
+      });
+    });
+    document.querySelectorAll("#valuationSeriesControls [data-series]").forEach(button => {
+      button.addEventListener("click", () => {
+        const market = button.dataset.series;
+        if (selectedMarkets.has(market)) {
+          if (selectedMarkets.size === 1) return;
+          selectedMarkets.delete(market);
+        } else {
+          selectedMarkets.add(market);
+        }
+        button.setAttribute("aria-pressed", String(selectedMarkets.has(market)));
         renderValuationChart();
       });
     });

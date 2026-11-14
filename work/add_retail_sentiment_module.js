@@ -326,6 +326,7 @@ const script = `
         document.querySelectorAll("#retailRangeTabs [data-years]").forEach(item => item.classList.remove("active"));
         button.classList.add("active");
         renderChart();
+        renderMonthlyCharts();
       });
     });
 
@@ -335,9 +336,15 @@ const script = `
         : null);
     }
 
-    function monthlyOption(rows, field, unit, color, fund = false) {
-      const values = rows.map(row => row[field]);
-      const average = movingAverage(values, index => !fund || rows[index].coverage >= 90);
+    function monthlyOption(allRows, field, unit, color, fund = false) {
+      const values = allRows.map(row => row[field]);
+      const allAverage = movingAverage(values, index => !fund || allRows[index].coverage >= 90);
+      const end = new Date(retailData.series.at(-1).date + "T00:00:00Z");
+      if (activeYears) end.setUTCFullYear(end.getUTCFullYear() - activeYears);
+      const cutoff = activeYears ? end.toISOString().slice(0, 7) : "";
+      const first = activeYears ? allRows.findIndex(row => row.month >= cutoff) : 0;
+      const rows = first < 0 ? [] : allRows.slice(first);
+      const average = first < 0 ? [] : allAverage.slice(first);
       const readingId = fund ? "retailFundsLatest" : "retailAccountsLatest";
       const latest = rows.at(-1);
       renderChartLatest(readingId, fund ? "新基金发行份额" : "上交所A股新开户", [
@@ -383,8 +390,11 @@ const script = `
 
     const accountsChart = echarts.init(document.getElementById("retailAccountsChart"), null, { renderer: "canvas" });
     const fundsChart = echarts.init(document.getElementById("retailFundsChart"), null, { renderer: "canvas" });
-    accountsChart.setOption(monthlyOption(monthlyData.accounts, "accountsWan", "万户", "#f6c85f"));
-    fundsChart.setOption(monthlyOption(monthlyData.funds, "sharesYi", "亿份", "#7ddc82", true));
+    function renderMonthlyCharts() {
+      accountsChart.setOption(monthlyOption(monthlyData.accounts, "accountsWan", "万户", "#f6c85f"), true);
+      fundsChart.setOption(monthlyOption(monthlyData.funds, "sharesYi", "亿份", "#7ddc82", true), true);
+    }
+    renderMonthlyCharts();
     bindLatestLegend(accountsChart, "retailAccountsLatest");
     bindLatestLegend(fundsChart, "retailFundsLatest");
     const latestAccounts = monthlyData.accounts.at(-1);
