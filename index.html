@@ -2527,12 +2527,12 @@ window.addEventListener("resize", () => {
   const unit = () => mode === "ratio" ? "%" : "亿元";
   const seriesDefs = [
     { key: "stockAmount", name: "汇金／证金A股", color: "#36c2ff" },
-    { key: "etfAmount", name: "汇金／证金ETF", color: "#f6c85f" },
     { key: "socialAmount", name: "社保投资组合A股", color: "#6bd98c" },
+    { key: "etfAmount", name: "汇金／证金ETF", color: "#f6c85f" },
     { key: "huijinAmount", name: "汇金投资", color: "#e6a76f", breakdown: true },
     { key: "otherAmount", name: "其他已识别账户", color: "#ff8c9e", breakdown: true }
   ];
-  const active = new Set(seriesDefs.map(def => def.key));
+  const active = new Set(seriesDefs.filter(def => def.key !== "etfAmount").map(def => def.key));
   let breakdown = false;
   let zoom = { start: 0, end: 100 };
   $("ntDirectAsOf").textContent = "汇金／证金核验 " + data.checkedAt + " · 社保核验 " + dateLabel(data.socialCheckedAt) + " · 人民币";
