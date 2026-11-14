@@ -169,7 +169,10 @@ def build(args):
     save(CACHE / "social-export-failures.json", failures)
     if failures:
         raise ValueError(f"Unresolved social security audit: {len(failures)} entries")
-    result = {"checkedAt": args.as_of, "start": args.start, "end": args.end, "unit": "亿元",
+    existing = read(OUTPUT) if OUTPUT.exists() else {}
+    snapshots = {**{r["period"]: r for r in existing.get("snapshots", [])}, **snapshots}
+    snapshots = dict(sorted(snapshots.items()))
+    result = {**existing, "checkedAt": args.as_of, "start": min(snapshots), "end": max(snapshots), "unit": "亿元",
               "scope": "Named national social security investment portfolios, including explicit delegated portfolios; excludes council direct holdings, transferred state shares, basic pension portfolios and ETFs",
               "source": "Eastmoney RPT_DMSK_HOLDERS (top ten shareholders); Tushare top10_holders/daily crosschecks",
               "failures": [], "snapshots": list(snapshots.values())}

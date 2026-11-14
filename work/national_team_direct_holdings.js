@@ -125,7 +125,7 @@ function buildDirectData(audit, historyAudit, stockHistory) {
       combinedAmount: stock.stockAmount === null || etfAmount === null ? null : stock.stockAmount + etfAmount,
       identifiedFunds, disclosedFunds, candidateFunds: history.funds.length, etfReportKind: kind };
   });
-  return { checkedAt: audit.checked_at, historyCheckedAt: history.checkedAt, snapshots: merged };
+  return { checkedAt: stockHistory?.checked_at || audit.checked_at, historyCheckedAt: history.checkedAt, snapshots: merged };
 }
 
 function attachSocialData(data, social) {
@@ -292,7 +292,7 @@ function renderDirectHoldings(data) {
   }) : "--";
   const dateLabel = value => value.slice(0, 4) + "-" + value.slice(4, 6) + "-" + value.slice(6);
   const snapshots = data.snapshots;
-  let selected = snapshots.findLastIndex(row => row.combinedAmount !== null);
+  let selected = snapshots.length - 1;
   if (selected < 0) selected = snapshots.length - 1;
   let view = "stocks";
   let mode = "amount";
@@ -315,7 +315,7 @@ function renderDirectHoldings(data) {
   $("ntDirectPeriod").value = snapshots[selected].period;
   const latest = snapshots.at(-1);
   $("ntDirectGap").textContent = "早期2010—2013年部分季度股东榜明显缺页，曲线在这些报告期断开；缺口不代表减仓。 " + (latest.etfAmount === null
-    ? latest.date + "：核查的" + latest.etfs.length + "只ETF均缺少具名前十名持有人表，本期ETF及合计金额未披露。"
+    ? latest.date + "：本期ETF持有人份额尚无完整可核验数据，ETF及合计金额留空，不代表减仓。" + (latest.ratioPending ? " 本期持仓比例分母待核验，仅展示已核实金额。" : "")
     : "ETF为固定样本中的已披露金额，不代表全市场ETF持仓。");
   const chart = echarts.init($("nationalTeamDirectChart"), null, { renderer: "canvas" });
 
@@ -451,7 +451,7 @@ function renderDirectHoldings(data) {
             (card.key === "stockAmount" ? row.companyCount : row.socialCompanyCount) + "家公司") : card.meta;
       return '<div class="nt-direct-reading" data-metric="' + card.key + '">' +
         '<span class="label">' + (combinedRatio ? "汇金／证金综合比例" : card.label) + '</span><strong class="amount' + (value === null ? ' missing' : '') + '">' +
-        (value === null ? (combinedRatio ? "不合并比例" : card.key === "combinedAmount" ? "暂不可合计" : "未披露") : displayValue(value) + '<small>' + unit() + '</small>') +
+        (value === null ? (combinedRatio ? "不合并比例" : mode === "ratio" && row.ratioPending ? "比例待核验" : card.key === "combinedAmount" ? "暂不可合计" : "未披露") : displayValue(value) + '<small>' + unit() + '</small>') +
         '</strong><div class="meta">截至 ' + row.date + '<br>' + meta + '</div></div>';
     }).join("");
     $("ntDirectCoverage").innerHTML = '<table><thead><tr><th>报告期末</th><th>汇金／证金A股</th><th>ETF具名表 / 样本</th><th>已识别ETF持仓</th><th>社保A股覆盖</th></tr></thead><tbody>' +
@@ -531,7 +531,9 @@ function renderDirectHoldings(data) {
 }
 
 function directHoldingsModule() {
-  const data = attachHoldingRatios(attachSocialData(buildDirectData(JSON.parse(fs.readFileSync(SOURCE, "utf8")), JSON.parse(fs.readFileSync(HISTORY_SOURCE, "utf8")), JSON.parse(fs.readFileSync(STOCK_HISTORY_SOURCE, "utf8"))), JSON.parse(fs.readFileSync(SOCIAL_HISTORY_SOURCE, "utf8"))), JSON.parse(fs.readFileSync(RATIO_SOURCE, "utf8")), JSON.parse(fs.readFileSync(MARKET_CAP_SOURCE, "utf8")));
+  const ratios = JSON.parse(fs.readFileSync(RATIO_SOURCE, "utf8"));
+  ratios.pendingPeriods = JSON.parse(fs.readFileSync(path.join(__dirname, "disclosure_status.json"), "utf8")).pendingRatioPeriods;
+  const data = attachHoldingRatios(attachSocialData(buildDirectData(JSON.parse(fs.readFileSync(SOURCE, "utf8")), JSON.parse(fs.readFileSync(HISTORY_SOURCE, "utf8")), JSON.parse(fs.readFileSync(STOCK_HISTORY_SOURCE, "utf8"))), JSON.parse(fs.readFileSync(SOCIAL_HISTORY_SOURCE, "utf8"))), ratios, JSON.parse(fs.readFileSync(MARKET_CAP_SOURCE, "utf8")));
   const payload = JSON.stringify(data).replace(/</g, "\\u003c");
   return { css, html, checkedAt: data.checkedAt,
     script: '<script id="national-team-direct-script">(' + renderDirectHoldings.toString() + ')(' + payload + ');</script>' };

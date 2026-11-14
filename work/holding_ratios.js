@@ -22,6 +22,11 @@ function attachHoldingRatios(data, audit, market) {
   if (audit.failures.length || market?.failures?.length) throw new Error("Unresolved holding denominator audit");
   if (market?.unit !== "亿元") throw new Error("Invalid market denominator unit");
   return { ...data, ratioCheckedAt: audit.checkedAt, marketCapCheckedAt: market.checkedAt, snapshots: data.snapshots.map(row => {
+    if (audit.pendingPeriods?.includes(row.period)) {
+      return { ...row, ratioPending: true,
+        ratios: { stockAmount: null, etfAmount: null, socialAmount: null, huijinAmount: null, otherAmount: null },
+        ratioBases: { stockAmount: { amount: null }, etfAmount: { amount: null, count: 0 }, socialAmount: { amount: null } } };
+    }
     const stock = stockRatio(row.stocks, audit.stocks[row.period]);
     const social = stockRatio(row.social, audit.stocks[row.period]);
     const allA = market?.periods?.[row.period];

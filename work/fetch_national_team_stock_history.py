@@ -248,6 +248,7 @@ def canonical_holdings(rows, period, as_of, basic):
 def export(args):
     basic = read(CACHE / "stock-names.json")
     corrections = read(ROOT / "work" / "national_team_stock_adjustments.json")
+    corrections.update(read(ROOT / "work" / "national_team_stock_adjustments_q3.json"))
     snapshots, failures = {}, []
     for period in periods_between(args.start, args.end):
         screened = read(CACHE / f"screened-{period}.json")
@@ -317,9 +318,11 @@ def export(args):
             current = snapshots[period]
             if abs(current["total_yi"] - old["total_yi"]) > 0.01 or current["holder_rows"] != old["holder_rows"]:
                 raise ValueError(f"Overlapping audit differs: {period}")
-    save(OUTPUT, {"checked_at": args.as_of[:4] + "-" + args.as_of[4:6] + "-" + args.as_of[6:],
+    existing = read(OUTPUT) if OUTPUT.exists() else {}
+    snapshots = {**existing.get("stocks", {}), **snapshots}
+    save(OUTPUT, {**existing, "checked_at": args.as_of[:4] + "-" + args.as_of[4:6] + "-" + args.as_of[6:],
                   "source": "Eastmoney RPT_DMSK_HOLDERS (top ten shareholders), crosschecked with Tushare top10_holders/daily and CCB reports",
-                  "unit": "CNY 100 million", "start": args.start, "end": args.end,
+                  "unit": "CNY 100 million", "start": min(snapshots), "end": max(snapshots),
                   "scope": "Central Huijin Investment, Central Huijin Asset Management, China Securities Finance and explicit full-name mandates; excludes anonymous plans and securities lending collateral accounts",
                   "failures": [], "stocks": snapshots})
     lines = ["# 国家队直接A股历史核查", "", f"核查截至 {args.as_of}，报告期 {args.start} 至 {args.end}，共 {len(snapshots)} 个季度。金额单位：亿元。", "",

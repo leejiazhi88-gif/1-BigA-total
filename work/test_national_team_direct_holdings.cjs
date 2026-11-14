@@ -104,9 +104,11 @@ test("history cannot override an independently audited overlapping snapshot", ()
 
 test("A-share history reaches June 2010 while sparse disclosures remain gaps", () => {
   const rows = buildDirectData(audit, historyAudit, stockHistory).snapshots;
-  assert.equal(rows.length, 64);
+  assert.equal(rows.length, 65);
   assert.equal(rows[0].period, "20100630");
-  assert.equal(rows.at(-1).period, "20260630");
+  assert.equal(rows.at(-1).period, "20260930");
+  assert.equal(rows.at(-1).companyCount, 35);
+  assert.equal(rows.at(-1).etfAmount, null);
   assert.equal(rows.filter(row => row.stockStatus === "disclosure_gap").length, 6);
   assert(rows.filter(row => row.stockStatus === "disclosure_gap").every(row => row.stockAmount === null));
   assert.equal(Math.round(rows[0].stockAmount), 10621);
@@ -140,8 +142,8 @@ test("social portfolios remain independent of national-team amounts and ETF miss
   const social = require("./social_security_history.json");
   const original = buildDirectData(audit, historyAudit, stockHistory);
   const rows = attachSocialData(original, social).snapshots;
-  assert.equal(rows.length, 64);
-  assert.equal(rows.filter(r => Number.isFinite(r.socialAmount) && r.socialCompanyCount > 0).length, 58);
+  assert.equal(rows.length, 65);
+  assert.equal(rows.filter(r => Number.isFinite(r.socialAmount) && r.socialCompanyCount > 0).length, 59);
   for (const [index, row] of rows.entries()) {
     for (const key of ["stockAmount", "etfAmount", "combinedAmount", "companyCount", "holderCount"]) {
       assert.equal(row[key], original.snapshots[index][key]);
