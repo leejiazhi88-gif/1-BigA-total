@@ -166,6 +166,7 @@ const js = `
       ...valuationExtra[market].filter(row => row.date < DATA[market][0].date && Number.isFinite(row.pe)),
       ...DATA[market]
     ]]));
+    const dailyPeData = __VALUATION_DAILY_PE__;
     const metricConfig = {
       pe: {
         title: "PE(TTM)", unit: "倍", subtitle: "上证与深证 PE(TTM)，周频展示",
@@ -186,6 +187,7 @@ const js = `
     };
 
     function metricRows(market, field) {
+      if (field === "pePercentile") return dailyPeData[market];
       return metricConfig[field].extra ? valuationExtra[market] : valuationData[market];
     }
     const valuationChart = echarts.init(document.getElementById("valuationChart"), null, { renderer: "canvas" });
@@ -226,7 +228,7 @@ const js = `
       const cfg = metricConfig[activeMetric];
       document.getElementById("valuationSamplingExplanation").textContent = ({
         pe: "周频时点值：每个自然周取最后可得的有效PE，横轴为原始观测日期，不是整周PE平均，也不固定为周五。PE中的TTM表示过去12个月盈利，与图表每周采样是不同概念。",
-        pePercentile: "周频样本分位：先取每周最后可得PE，再计算其在当前所选时间范围全部有效周频样本中的位置；横轴沿用PE观测日。不使用全部日线计算，也不是每个时点仅对其之前历史计算的滚动分位。",
+        pePercentile: "日频样本分位：使用当前所选时间范围内全部有效交易日的指数PE(TTM)，按不高于该日PE的样本数÷有效交易日数计算；图表仅在绘制时抽样，不影响分位。当前日频缓存始于2006年，2004—2005年的周频PE不混入计算。不是仅使用当时之前历史的滚动分位。",
         pbPercentile: "周频样本分位：取每周最后可得的有效PB，在当前所选时间范围全部有效周频样本中重算分位；横轴为原始观测日。不是周均PB，也不是日线样本分位或仅使用当时之前历史的滚动分位。",
         equityBondSpread: "周频时点值：取每周最后有效指数观测日的100/PE，减去同日10年期国债收益率；横轴为该观测日。不是周平均或累计；同日债券数据缺失时留空，不用旧利率代替。"
       })[activeMetric];
@@ -371,8 +373,13 @@ if (!fs.existsSync(VALUATION_DATA_FILE)) {
   throw new Error("Missing valuation_data.json. Run fetch_valuation_data.py first.");
 }
 const valuationExtra = JSON.parse(fs.readFileSync(VALUATION_DATA_FILE, "utf8"));
+const overviewDaily = JSON.parse(fs.readFileSync(path.join(ROOT, "work", "market_overview_data.json"), "utf8"));
+const dailyPeData = Object.fromEntries(["sh", "sz"].map(market => [market,
+  overviewDaily[market].filter(row => Number.isFinite(row.pe)).map(({ date, pe }) => ({ date, pe }))
+]));
 const valuationJs = js
-  .replace("__VALUATION_EXTRA__", JSON.stringify(valuationExtra));
+  .replace("__VALUATION_EXTRA__", JSON.stringify(valuationExtra))
+  .replace("__VALUATION_DAILY_PE__", JSON.stringify(dailyPeData));
 const originalHtml = fs.readFileSync(OUTPUT, "utf8");
 let html = stripExistingModule(originalHtml);
 

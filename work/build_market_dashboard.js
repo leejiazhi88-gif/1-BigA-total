@@ -28,13 +28,13 @@ function lastByWeek(rows) {
   return result;
 }
 
-function stats(rows, prices) {
+function stats(rows, prices, dailyRows) {
   const latest = rows[rows.length - 1];
   const latestPrice = prices[prices.length - 1];
   const oneYearAgoDate = new Date(`${latestPrice.date}T00:00:00Z`);
   oneYearAgoDate.setUTCFullYear(oneYearAgoDate.getUTCFullYear() - 1);
   const oneYearAgo = prices.find((row) => row.date >= oneYearAgoDate.toISOString().slice(0, 10)) || prices[0];
-  const peSorted = rows.map((row) => row.pe).sort((a, b) => a - b);
+  const peSorted = dailyRows.map((row) => row.pe).filter(Number.isFinite).sort((a, b) => a - b);
   const rank = peSorted.filter((value) => value <= latest.pe).length / peSorted.length;
   return {
     ...latest,
@@ -452,7 +452,7 @@ async function main() {
   const trading = lastByWeek(inRange(overview.trading));
   const prices = Object.fromEntries(["sh", "sz"].map(market => [market, lastByWeek(inRange(overview.prices?.[market] || overview[market]))]));
   const echartsSource = fs.readFileSync(path.join(ROOT, "work", "echarts.min.js"), "utf8");
-  const data = { sh, sz, trading, prices, stats: { sh: stats(sh, prices.sh), sz: stats(sz, prices.sz) } };
+  const data = { sh, sz, trading, prices, stats: { sh: stats(sh, prices.sh, inRange(overview.sh)), sz: stats(sz, prices.sz, inRange(overview.sz)) } };
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
   fs.writeFileSync(OUTPUT, htmlTemplate(data, echartsSource), "utf8");
   require("./add_valuation_module");
