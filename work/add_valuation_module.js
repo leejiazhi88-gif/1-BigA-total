@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { latestCss, chartShell, latestScript } = require("./chart_latest_readings");
+const { percentileGauge, pairedPeReading } = require("./valuation_reading");
 
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
@@ -83,6 +84,10 @@ const css = `
     }
     .metric-reading { color: var(--text); font-weight: 700; }
     #valuationChart { height: 500px; width: 100%; }
+    #valuationLatestReading .valuation-percentile-row { display: flex; align-items: center; gap: 10px; margin-top: 6px; white-space: nowrap; font-size: 12px; }
+    #valuationLatestReading .module-chart-value { display: flex; align-items: center; gap: 6px; }
+    .valuation-gauge { display: inline-block; position: relative; width: 112px; height: 5px; flex: none; border-radius: 4px; background: linear-gradient(to right,#319a82 0% 20%,#8ebd77 20% 40%,#c2bd77 40% 60%,#d9ac58 60% 80%,#c65d76 80% 100%); }
+    .valuation-gauge i { position: absolute; top: -4px; width: 5px; height: 13px; border: 1px solid #fff5c9; border-radius: 3px; background: #a17b20; transform: translateX(-50%); box-shadow: 0 0 0 2px rgba(246,200,95,.15); }
     .valuation-foot.single-note { grid-template-columns: 1fr; }
     .valuation-foot {
       display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;
@@ -162,6 +167,8 @@ const js = `
   <script id="valuation-module-script">
   (() => {
     ${latestScript}
+    const percentileGauge = ${percentileGauge.toString()};
+    const pairedPeReading = ${pairedPeReading.toString()};
     const valuationExtra = __VALUATION_EXTRA__;
     const fmt = (value, digits = 1) => Number.isFinite(value)
       ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits })
@@ -236,6 +243,7 @@ const js = `
       return rows.map(row => [row.date, row[field]]);
     }
 
+    let renderValuationReading = () => {};
     function renderValuationChart() {
       const cfg = metricConfig[activeMetric];
       document.getElementById("valuationSamplingExplanation").textContent = ({
@@ -254,10 +262,36 @@ const js = `
         (activeMetric === "equityBondSpread" && valuationExtra.meta.bondStatus !== "refreshed"
           ? " 部分日期的国债收益率缺失，收益差仅显示同日数据齐全的观测，最新为 " + latestDate + "。PE与PB独立更新。" : "") +
         (activeMetric === "equityBondSpread" ? " 10年期国债收益率取中债到期收益率曲线；接口不可用时由中债官方公开数据补充。" : "");
-      renderChartLatest("valuationLatestReading", cfg.title, [
-        { name: "上证", color: COLORS.sh, value: shPoints.at(-1)?.[1], date: shPoints.at(-1)?.[0], unit: cfg.unit, digits: 2 },
-        { name: "深证", color: COLORS.sz, value: szPoints.at(-1)?.[1], date: szPoints.at(-1)?.[0], unit: cfg.unit, digits: 2 }
-      ].filter((_, index) => selectedMarkets.has(index ? "sz" : "sh")), cfg.fixedRange ? rangeLabel + "样本" : "");
+      const peView = activeMetric === "pe" || activeMetric === "pePercentile";
+      const peSamples = Object.fromEntries(["sh", "sz"].map(market => {
+        const rows = rowsForActiveRange(market, "pePercentile");
+        return [market, { rows, sorted: rows.map(row => row.pe).sort((a, b) => a - b) }];
+      }));
+      renderValuationReading = date => {
+        const items = ["sh", "sz"].filter(market => selectedMarkets.has(market)).map(market => {
+          const points = market === "sh" ? shPoints : szPoints;
+          if (peView) {
+            const sample = peSamples[market];
+            const pair = pairedPeReading(sample.rows, sample.sorted, date, valuationData[market]);
+            return { name: market === "sh" ? "上证" : "深证", color: COLORS[market], value: pair.pe, percentile: pair.percentile, date: pair.date, unit: "倍", digits: 2 };
+          }
+          const point = date ? points.find(point => point[0] === date) : points.at(-1);
+          return { name: market === "sh" ? "上证" : "深证", color: COLORS[market], value: point?.[1], date: point?.[0], unit: cfg.unit, digits: 2 };
+        });
+        renderChartLatest("valuationLatestReading", peView ? "PE(TTM) · PE历史分位" : cfg.title, items, (peView || cfg.fixedRange) ? rangeLabel + "样本" : "");
+        const root = document.getElementById("valuationLatestReading");
+        if (date) root.querySelector(".module-chart-date").textContent = "观察日期：" + date + " · " + rangeLabel + "样本";
+        root.querySelectorAll(".module-chart-item").forEach((element, index) => {
+          const item = items[index];
+          if (peView) {
+            element.querySelector(".module-chart-value").insertAdjacentText("afterbegin", "PE ");
+            element.insertAdjacentHTML("beforeend", '<div class="valuation-percentile-row"><span>PE分位 ' + (Number.isFinite(item.percentile) ? fmt(item.percentile, 2) + '%' : '--') + '</span>' + percentileGauge(item.percentile) + '</div>');
+          } else if (cfg.fixedRange) {
+            element.querySelector(".module-chart-value").insertAdjacentHTML("beforeend", percentileGauge(item.value));
+          }
+        });
+      };
+      renderValuationReading();
 
       const riskArea = cfg.fixedRange ? {
         silent: true,
@@ -276,6 +310,7 @@ const js = `
           backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
           textStyle: { color: "#edf4ff" },
           formatter(params) {
+            if (peView && params[0]?.value?.[0]) renderValuationReading(params[0].value[0]);
             const lines = params.map(item => item.marker + item.seriesName + "：<b>" +
               fmt(Number(item.value[1]), 2) + cfg.unit + "</b>");
             return "<b>" + (params[0]?.axisValueLabel || "") + "</b><br>" + lines.join("<br>");
@@ -388,6 +423,8 @@ const js = `
       layoutChartLatest(valuationChart, "valuationLatestReading");
       scheduleNavUpdate();
     });
+    valuationChart.getZr().on("globalout", () => renderValuationReading());
+    document.getElementById("valuationChart").addEventListener("mouseleave", () => renderValuationReading());
     renderValuationChart();
     updateNavFromScroll();
   })();
