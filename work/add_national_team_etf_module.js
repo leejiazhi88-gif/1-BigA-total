@@ -5,6 +5,7 @@ const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const FLOW_FILE = path.join(ROOT, "work", "etf_flow_data.json");
 const { flowWindow, summarizeFlows, validateFlowHistory } = require("./etf_flow_history");
+const { buildShareStocks, sumShareStocks } = require("./etf_share_stock");
 const directHoldings = require("./national_team_direct_holdings").directHoldingsModule();
 const etfHistory = require("./national_team_etf_history").etfHistoryModule();
 
@@ -88,6 +89,7 @@ const moduleHtml = `
       <p class="nt-method" id="ntFlowCoverage" aria-live="polite"></p>
       <div id="nationalTeamEtfFlowChart" role="img" aria-label="2010年以来重点宽基ETF日度净申购与区间累计走势图"></div>
       <div class="nt-etf-table nt-flow-table" id="ntFlowTable"></div>
+      <p class="nt-method"><strong>右轴总份额（蓝线）：</strong>与净申购使用同一组9只样本及当前勾选，单位亿份；每天取各已上市样本截至观察日最近15个自然日内的最新份额后汇总，来源日期可能不同。缺少任一样本时留空，不补零；不依赖净值是否可得。为未复权份额存量，受折算影响，不是金额、净申购或国家队持有份额。样本按上市日期加入，早期并非始终9只。双轴刻度独立，不可直接比较两线高低或交点。</p>
       <p class="nt-method"><strong>统计口径：</strong>每日净申购估算＝（当日总份额－前一交易日总份额×当日折算比例）×当日单位净值，单位亿元；无折算时比例为1。累计值从当前可见区间首日重算。正值为净申购，负值为净赎回。来源为Tushare每日份额及净值，已按原始年报核对3次份额折算。</p>
       <p class="nt-method"><strong>历史覆盖：</strong>从2010年首个交易日开始；早期仅上证50ETF纳入，其他基金按上市日期逐步加入。2015年以前采用Tushare历史基金份额与净值，之后采用ETF日度份额接口；历史规模字段有不一致记录，未用于申赎计算。上市募集规模不作为当日申购。缺失不填零、不跨缺失交易日计算；缺失日总量及累计曲线断开，后续累计仅加总已知部分，不代表完整区间净申购。明细＊表示存在缺失，覆盖数量及可得起点随所选区间更新。</p>
       <p class="nt-method"><strong>归属限制：</strong>包含所有投资者及实物申赎，不能等同于现金流入或国家队买入。范围为下表9只宽基ETF，不代表全部宽基基金。<a href="https://github.com/leejiazhi88-gif/1-BigA-total/blob/main/outputs/etf-flow-history-audit.md" target="_blank" rel="noopener noreferrer">历史数据与折算核查</a></p>
@@ -101,6 +103,7 @@ const script = `
     const flowData = __ETF_FLOW_DATA__;
     const flowWindow = ${flowWindow.toString()};
     const summarizeFlows = ${summarizeFlows.toString()};
+    const sumShareStocks = ${sumShareStocks.toString()};
     const fmt = (value, digits = 2) => Number.isFinite(value) ? Number(value).toLocaleString("zh-CN", {
       minimumFractionDigits: digits, maximumFractionDigits: digits
     }) : "暂无";
@@ -126,6 +129,9 @@ const script = `
       const rows = allRows.slice(first, lastIndex + 1);
       const funds = flowData.etfs.filter(row => selectedGroups.has(row.group));
       const summary = summarizeFlows(rows, funds);
+      const stockPoints = sumShareStocks(flowData.shareStocks.filter(row => row.date >= rows[0].date && row.date <= rows.at(-1).date), funds);
+      const stocks = stockPoints.map(row => row.total);
+      const latestStock = stockPoints.at(-1);
       const totals = summary.points.map(row => row.total);
       const cumulative = summary.points.map(row => row.cumulative);
       const cumulativeName = summary.missing ? "已知累计净申购" : "累计净申购";
@@ -137,11 +143,13 @@ const script = `
       document.getElementById("ntFlowReadings").innerHTML = [
         [last.date + " 净申购", fmt(totals[totals.length - 1]) + " 亿"],
         ["区间" + cumulativeName, fmt(summary.knownTotal) + " 亿"],
-        ["完整 / 应有交易日", summary.completeDays + " / " + summary.eligibleDays]
+        ["完整 / 应有交易日", summary.completeDays + " / " + summary.eligibleDays],
+        ["区间末样本总份额", fmt(latestStock?.total) + " 亿份"]
       ].map(([label, value]) => '<div><span>' + label + '</span><strong>' + value + '</strong></div>').join("");
       document.getElementById("ntFlowCoverage").textContent = summary.missing
         ? "当前区间有" + summary.missingDates.length + "个交易日缺少部分数据，涉及" + summary.missing + "条基金日度估算；累计仅包含已知部分。"
         : summary.eligibleDays ? "当前区间已上市样本数据完整。" : funds.length ? "所选区间内，该类别样本尚未上市。" : "";
+      document.getElementById("ntFlowCoverage").textContent += " 总份额有" + stockPoints.filter(row => row.eligible && row.total === null).length + "个观察日缺失；蓝线取最近15日内可得份额，不代表同日全部披露。";
       const axis = gridIndex => ({
         gridIndex, type: "category", data: allRows.map(row => row.date), boundaryGap: true,
         axisLine: { lineStyle: { color: "#344760" } },
@@ -168,7 +176,7 @@ const script = `
       flowChart.setOption({
         animation: false,
         title: summary.eligibleDays ? [] : [{ text: funds.length ? "所选区间尚无已上市样本" : "未选择ETF类别", left: "center", top: "35%", textStyle: { color: "#8fa5bf", fontSize: 14 } }],
-        grid: [{ left: 62, right: 18, top: 40, height: "40%" }, { left: 62, right: 18, top: "64%", bottom: 72 }],
+        grid: [{ left: 62, right: 78, top: 40, height: "40%" }, { left: 62, right: 78, top: "64%", bottom: 72 }],
         axisPointer: { link: [{ xAxisIndex: "all" }] },
         tooltip: {
           trigger: "axis", confine: true, backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
@@ -176,14 +184,18 @@ const script = `
           formatter: params => {
             const point = summary.points[(params[0]?.dataIndex ?? -1) - first];
             if (!point) return "";
+            const stock = stockPoints[(params[0]?.dataIndex ?? -1) - first];
             return point.date + "<br>" + (point.missingSoFar ? "已知累计净申购" : "累计净申购") + "：" + fmt(point.knownCumulative) +
               " 亿元<br>当日净申购：" + fmt(point.total) + " 亿元<br>有效样本：" + point.coverage + " / " + point.eligible + "只" +
               (point.unavailable.length ? "<br>缺失：" + point.unavailable.map(escapeHtml).join("、") + "<br>当日已知部分：" + fmt(point.known) + " 亿元" : "") +
-              (point.corrections.length ? "<br>已剔除份额折算：" + point.corrections.map(escapeHtml).join("、") : "");
+              (point.corrections.length ? "<br>已剔除份额折算：" + point.corrections.map(escapeHtml).join("、") : "") +
+              "<br><span style='color:#36c2ff'>样本总份额：" + fmt(stock?.total) + " 亿份</span>（" + stock?.coverage + "/" + stock?.eligible + "只）" +
+              funds.filter(fund => stock?.dates[fund.ts_code]).map(fund => "<br>" + escapeHtml(fund.name) + "：" + stock.dates[fund.ts_code]).join("");
           }
         },
         xAxis: [axis(0), axis(1)],
-        yAxis: [valueAxis(0, cumulativeName + " / 亿元", cumulative), valueAxis(1, "当日净申购 / 亿元", totals)],
+        yAxis: [valueAxis(0, cumulativeName + " / 亿元", cumulative), valueAxis(1, "当日净申购 / 亿元", totals),
+          { ...valueAxis(0, "总份额 / 亿份", stocks), position: "right", nameTextStyle: { color: "#36c2ff", align: "right" }, axisLabel: { color: "#36c2ff", formatter: value => axisFmt(value, 0) }, splitLine: { show: false } }],
         dataZoom: [
           { type: "slider", xAxisIndex: [0, 1], ...flowZoom, filterMode: "none", height: 22, bottom: 10,
             showDataShadow: false, borderColor: "#344760", fillerColor: "rgba(54,194,255,.12)", textStyle: { color: "#8fa5bf" } },
@@ -191,6 +203,8 @@ const script = `
         series: funds.length ? [
           { name: cumulativeName, type: "line", xAxisIndex: 0, yAxisIndex: 0, data: padded(cumulative),
             showSymbol: false, connectNulls: false, lineStyle: { width: 2.5, color: "#f6c85f" }, itemStyle: { color: "#f6c85f" } },
+          { name: "样本总份额（右轴）", type: "line", xAxisIndex: 0, yAxisIndex: 2, data: padded(stocks),
+            showSymbol: false, connectNulls: false, lineStyle: { width: 2.2, color: "#36c2ff" }, itemStyle: { color: "#36c2ff" } },
           { name: "当日净申购", type: "bar", xAxisIndex: 1, yAxisIndex: 1, data: padded(totals),
             barMaxWidth: 18, itemStyle: { color: params => params.value >= 0 ? "#f6c85f" : "#6bd98c" },
             markLine: { silent: true, symbol: "none", label: { show: false }, lineStyle: { color: "#8fa5bf" }, data: [{ yAxis: 0 }] } }
@@ -245,6 +259,7 @@ function insertBeforeLast(source, marker, content) {
   return source.slice(0, index) + content + source.slice(index);
 }
 const { observations, ...flowDisplay } = flow;
+flowDisplay.shareStocks = buildShareStocks(flow);
 const ntEtfScript = script.replace("__ETF_FLOW_DATA__", JSON.stringify(flowDisplay));
 html = insertBeforeLast(html, "</head>", css + "\n");
 html = insertBeforeLast(html, "</main>", moduleHtml + "\n");
