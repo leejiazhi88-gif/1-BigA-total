@@ -28,7 +28,7 @@ class MarketSplitTests(unittest.TestCase):
     def test_corrected_published_values_reconcile(self):
         path = Path(__file__).with_name("large_money_sentiment_data.json")
         current = json.loads(path.read_text())
-        value = next(r["holderNetShares"] for r in current["series"] if r["date"] == "2017-12-23")
+        value = next(r["holderNetShares"] for r in current["series"] if r["date"] == "2017-12-22")
         self.assertEqual(value, -68.3728)
         for total, sh, sz in zip(current["series"], current["markets"]["sh"], current["markets"]["sz"]):
             if total["holderNetShares"] is not None:

@@ -226,9 +226,9 @@ const script = `
       return rows.filter(row => new Date(row.date + "T00:00:00Z") >= cutoff);
     }
     const samplingNotes = {
-      blockAmount: "周累计：按成交日期将周一至周日全部已披露成交额相加，不是周五单日值或日均值；横轴为该周最后一笔已披露大宗交易日期。",
-      institutionBlockNet: "周累计：按成交日期累计周一至周日机构专用席位买入额减卖出额，不是采样日单日净额；横轴为该周最后一笔已披露大宗交易日期。",
-      holderNetShares: "周累计：按公告日期累计周一至周日披露的增加股数减减少股数，不是周五单日值；横轴为该周最后一条股东变动公告日期，公告所述交易可能发生在更早日期或跨多个交易日。",
+      blockAmount: "周累计：按成交日期将自然周已披露成交额相加，不是周五单日值或日均值；横轴统一用该周最后交易日标签，实际最后成交日另见数据日期。",
+      institutionBlockNet: "周累计：按成交日期累计自然周机构专用席位买入额减卖出额，不是采样日单日净额；横轴统一用该周最后交易日标签。",
+      holderNetShares: "周累计：按公告日期累计周一至周日披露的增加股数减减少股数；横轴用该周最后交易日作周标签，可能包含休市日公告，不代表该交易日已知的单日值。整周无交易时保留原始周标签；公告所述交易可能跨多个交易日。",
       northHoldings: "季度快照：每年3、6、9、12月末最后一个交易日的持仓估值或占比；横轴为该交易日，不是公告发布日期，不进行周采样，也不累计或平均整个季度。",
       fundPosition: "半年报／年报快照：每年6月30日、12月31日报告期末仓位；横轴为报告期末，不是报告公布日，不是周末值或半年度平均。披露后才可取得，期间连线不代表每日仓位。",
       institutionConcentration: "半年报／年报快照：每年6月30日、12月31日报告期末持仓集中度；横轴为报告期末，不是公告日，不做周采样或半年度平均，期间连线不代表每日变化。",
@@ -259,7 +259,7 @@ const script = `
         data: holdingView ? activeRows(northHoldings.series).map(row => [row.date, row[market.key][holdingMode]])
           : fundView ? activeRows(fundReports.series).map(row => [row.date, row[market.key][cfg.field]])
           : etfView ? activeRows(etfShares.series).map(row => [row.date, row[market.key]])
-          : activeRows(smoothedRows(market.rows, activeMetric)).map(row => [row[dateField] || row.date, row[activeMetric]]),
+          : activeRows(smoothedRows(market.rows, activeMetric)).map(row => [row.date, row[activeMetric]]),
         showSymbol: holdingView || fundView, symbolSize: 6, connectNulls: false, sampling: holdingView || fundView || etfView ? undefined : "lttb",
         lineStyle: { width: 2.2, color: market.color }, itemStyle: { color: market.color }
       }));
@@ -332,7 +332,12 @@ const script = `
             const report = fundView ? fundReports.series.find(row => row.date === date) : null;
             const sample = report ? "<br>有效样本：" + report.funds + "只 · 覆盖率 " + fmt(report.coverage, 1) + "%" : "";
             return "<b>" + escapeHtml(params[0]?.axisValueLabel || "") + (smoothable ? " · " + smoothingLabel : "") + "</b><br>" +
-              params.map(item => item.marker + item.seriesName + "：<b>" + fmt(item.value[1], cfg.digits) + cfg.unit + "</b>").join("<br>") + sample;
+              params.map(item => {
+                const source = smoothable ? markets.find(market => market.name === item.seriesName)?.rows.find(row => row.date === date) : null;
+                const observed = source?.[dateField];
+                return item.marker + item.seriesName + "：<b>" + fmt(item.value[1], cfg.digits) + cfg.unit + "</b>" +
+                  (observed && observed !== date ? "（末笔记录 " + escapeHtml(observed) + "）" : "");
+              }).join("<br>") + sample;
           }
         },
         xAxis: {

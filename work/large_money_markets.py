@@ -7,7 +7,8 @@ from collections import defaultdict
 from datetime import datetime
 from holder_trade_corrections import correction_index, identity as correction_identity
 
-from tushare_client import END_DATE, call_api_pages, get_token
+from tushare_client import END_DATE, call_api, call_api_pages, get_token
+from weekly_dates import calendar_week_ends, align_rows
 from refresh_cache import fetch_range, range_path
 from fetch_large_money_sentiment_data import (
     ROOT, OUTPUT, ADJUSTMENTS, aggregate_blocks, apply_adjustments,
@@ -194,6 +195,8 @@ def main(blocks_only=False):
         audit["excludedHolderRows"] = previous.get("meta", {}).get("marketSplit", {}).get("excludedHolderRows")
         audit["holderNonTradingCorrections"] = previous.get("meta", {}).get("marketSplit", {}).get("holderNonTradingCorrections", 0)
         audit["northValidationIssues"] = previous.get("meta", {}).get("marketSplit", {}).get("northValidationIssues", [])
+    ends = calendar_week_ends(token, call_api, series["all"], END_DATE)
+    series = {key: align_rows(rows, ends) for key, rows in series.items()}
     previous["series"] = series.pop("all")
     previous["markets"] = series
     for market, rows in {"all": previous["series"], **series}.items():
@@ -202,6 +205,7 @@ def main(blocks_only=False):
                 raise ValueError(f"No valid {market}/{metric} observations; refusing to publish")
     previous["meta"].update({"start": previous["series"][0]["date"], "end": previous["series"][-1]["date"],
                               "updated": datetime.now().strftime("%Y-%m-%d"),
+                              "weekDateSemantics": "ISO week period labelled by last exchange trading day; full weekly amounts, not Friday-only observations",
                               "marketSplit": {"requestedEnd": END_DATE, "scope": "Shanghai/Shenzhen A shares; northbound by Connect channel",
                                               "northShStart": "2014-11-17", "northSzStart": "2016-12-05", **audit}})
     OUTPUT.write_text(json.dumps(previous, ensure_ascii=False, separators=(",", ":")))

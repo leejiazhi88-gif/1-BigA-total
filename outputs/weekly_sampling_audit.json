@@ -1,0 +1,181 @@
+{
+  "cutoff": "20261113",
+  "rule": "Natural ISO week, last actual exchange trading day. Weekly means/sums keep their numerical definition. Earlier source observations and weeks without trading sessions remain explicit exceptions; no artificial Friday observations.",
+  "series": {
+    "retail_sentiment_data.series": {
+      "points": 1115,
+      "lastDate": "2026-11-13",
+      "weekdayCounts": {
+        "Fri": 1055,
+        "Wed": 23,
+        "Mon": 5,
+        "Tue": 8,
+        "Thu": 24
+      },
+      "nonWeekEndObservationCount": 1,
+      "nonWeekEndExamples": [
+        {
+          "observedDate": "2026-11-12",
+          "calendarWeekEnd": "20261113"
+        }
+      ],
+      "noSessionWeekLabels": []
+    },
+    "retail_sentiment_data.markets.sh": {
+      "points": 1115,
+      "lastDate": "2026-11-13",
+      "weekdayCounts": {
+        "Fri": 1055,
+        "Wed": 23,
+        "Mon": 5,
+        "Tue": 8,
+        "Thu": 24
+      },
+      "nonWeekEndObservationCount": 1,
+      "nonWeekEndExamples": [
+        {
+          "observedDate": "2026-11-12",
+          "calendarWeekEnd": "20261113"
+        }
+      ],
+      "noSessionWeekLabels": []
+    },
+    "retail_sentiment_data.markets.sz": {
+      "points": 1115,
+      "lastDate": "2026-11-13",
+      "weekdayCounts": {
+        "Fri": 1055,
+        "Wed": 23,
+        "Mon": 5,
+        "Tue": 8,
+        "Thu": 24
+      },
+      "nonWeekEndObservationCount": 1,
+      "nonWeekEndExamples": [
+        {
+          "observedDate": "2026-11-12",
+          "calendarWeekEnd": "20261113"
+        }
+      ],
+      "noSessionWeekLabels": []
+    },
+    "large_money_sentiment_data.series": {
+      "points": 1326,
+      "lastDate": "2026-11-13",
+      "weekdayCounts": {
+        "Fri": 1261,
+        "Mon": 6,
+        "Tue": 10,
+        "Wed": 25,
+        "Thu": 24
+      },
+      "nonWeekEndObservationCount": 0,
+      "nonWeekEndExamples": [],
+      "noSessionWeekLabels": [
+        "2020-01-31"
+      ]
+    },
+    "large_money_sentiment_data.markets.sh": {
+      "points": 1326,
+      "lastDate": "2026-11-13",
+      "weekdayCounts": {
+        "Fri": 1261,
+        "Mon": 6,
+        "Tue": 10,
+        "Wed": 25,
+        "Thu": 24
+      },
+      "nonWeekEndObservationCount": 0,
+      "nonWeekEndExamples": [],
+      "noSessionWeekLabels": [
+        "2020-01-31"
+      ]
+    },
+    "large_money_sentiment_data.markets.sz": {
+      "points": 1326,
+      "lastDate": "2026-11-13",
+      "weekdayCounts": {
+        "Fri": 1261,
+        "Mon": 6,
+        "Tue": 10,
+        "Wed": 25,
+        "Thu": 24
+      },
+      "nonWeekEndObservationCount": 0,
+      "nonWeekEndExamples": [],
+      "noSessionWeekLabels": [
+        "2020-01-31"
+      ]
+    },
+    "large_money_etf_shares.series": {
+      "points": 1114,
+      "lastDate": "2026-11-13",
+      "weekdayCounts": {
+        "Fri": 1055,
+        "Wed": 23,
+        "Mon": 5,
+        "Tue": 8,
+        "Thu": 23
+      },
+      "nonWeekEndObservationCount": 0,
+      "nonWeekEndExamples": [],
+      "noSessionWeekLabels": []
+    },
+    "valuation_data.sh": {
+      "points": 1165,
+      "lastDate": "2026-11-13",
+      "weekdayCounts": {
+        "Fri": 1105,
+        "Thu": 24,
+        "Wed": 23,
+        "Mon": 5,
+        "Tue": 8
+      },
+      "nonWeekEndObservationCount": 0,
+      "nonWeekEndExamples": [],
+      "noSessionWeekLabels": []
+    },
+    "valuation_data.sz": {
+      "points": 1165,
+      "lastDate": "2026-11-13",
+      "weekdayCounts": {
+        "Fri": 1105,
+        "Thu": 24,
+        "Wed": 23,
+        "Mon": 5,
+        "Tue": 8
+      },
+      "nonWeekEndObservationCount": 0,
+      "nonWeekEndExamples": [],
+      "noSessionWeekLabels": []
+    },
+    "overview.sh": {
+      "points": 1045,
+      "lastDate": "2026-11-13",
+      "weekdayCounts": {
+        "Fri": 987,
+        "Mon": 5,
+        "Tue": 8,
+        "Thu": 23,
+        "Wed": 22
+      },
+      "nonWeekEndObservationCount": 0,
+      "nonWeekEndExamples": [],
+      "noSessionWeekLabels": []
+    },
+    "overview.sz": {
+      "points": 1045,
+      "lastDate": "2026-11-13",
+      "weekdayCounts": {
+        "Fri": 987,
+        "Mon": 5,
+        "Tue": 8,
+        "Thu": 23,
+        "Wed": 22
+      },
+      "nonWeekEndObservationCount": 0,
+      "nonWeekEndExamples": [],
+      "noSessionWeekLabels": []
+    }
+  }
+}
