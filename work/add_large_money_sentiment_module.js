@@ -123,6 +123,7 @@ const script = `
     const largeMoneyData = __LARGE_MONEY_DATA__;
     const northHoldings = __NORTH_HOLDINGS_DATA__;
     const fundReports = __FUND_REPORTS_DATA__;
+    const fundReportAudit = __FUND_REPORT_AUDIT__;
     const etfShares = __ETF_SHARES_DATA__;
     const fmt = (value, digits = 1) => Number.isFinite(value)
       ? Number(value).toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits })
@@ -293,6 +294,9 @@ const script = `
         coverage.textContent = "数据核验 " + fundReports.meta.checkedAt + " · 可用 " + valid.length + "/" + rows.length + " 期" +
           (last ? " · 最新有效报告 " + last.date + "：" + last.funds + "只样本 / " + (last.navFunds - last.duplicatesExcluded.length) + "只去重后可得净资产基金（原始 " + last.navFunds + "只），覆盖率 " + fmt(last.coverage, 1) + "%" : " · 当前区间暂无达标样本") +
           "。半年度披露不插值为季度或日度数据。";
+        if (fundReportAudit && !fundReportAudit.sameMethodAvailable) {
+          coverage.textContent += " 最新季度 " + fundReportAudit.quarter + " 已于 " + fundReportAudit.checkedAt + " 检查：完整持仓合格样本 " + fundReportAudit.qualifiedFunds + "只，覆盖率 " + fmt(fundReportAudit.coverage, 2) + "%（门槛 " + fundReportAudit.threshold + "%），不接入未达标季度；并非没有季报。";
+        }
       }
       if (etfView) {
         const rows = activeRows(etfShares.series);
@@ -431,6 +435,7 @@ const largeMoneyScript = script
   .replace("__LARGE_MONEY_DATA__", JSON.stringify(data))
   .replace("__NORTH_HOLDINGS_DATA__", JSON.stringify(holdings))
   .replace("__FUND_REPORTS_DATA__", JSON.stringify(reports))
+  .replace("__FUND_REPORT_AUDIT__", fs.existsSync(path.join(ROOT, "work", "active_fund_report_audit.json")) ? fs.readFileSync(path.join(ROOT, "work", "active_fund_report_audit.json"), "utf8").trim() : "null")
   .replace("__ETF_SHARES_DATA__", JSON.stringify(shares));
 html = insertBeforeLast(html, "</head>", css + "\n");
 html = html.includes("<!-- LARGE_MONEY_MODULE -->")
