@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { latestCss, chartShell, latestScript } = require("./chart_latest_readings");
-const { percentileGauge, pairedPeReading } = require("./valuation_reading");
+const { percentileGauge, pairedPeReading, percentileColor } = require("./valuation_reading");
 
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
@@ -84,10 +84,11 @@ const css = `
     }
     .metric-reading { color: var(--text); font-weight: 700; }
     #valuationChart { height: 500px; width: 100%; }
-    #valuationLatestReading .valuation-percentile-row { display: flex; align-items: center; gap: 10px; margin-top: 7px; white-space: nowrap; font-size: 13px; font-weight: 650; line-height: 1.4; }
-    #valuationLatestReading .valuation-reading-main { display: flex; align-items: center; gap: 10px; white-space: nowrap; font-size: 13px; font-weight: 650; line-height: 1.4; }
-    #valuationLatestReading .valuation-reading-main .module-chart-name { font-size: inherit; }
-    #valuationLatestReading .valuation-reading-main small { margin-left: 4px; color: var(--muted); font-size: 12px; font-weight: 400; }
+    #valuationLatestReading .valuation-percentile-row { display: flex; align-items: center; gap: 10px; margin-top: 7px; white-space: nowrap; font-size: 13px; font-weight: 400; line-height: 1.4; }
+    #valuationLatestReading .valuation-reading-main { display: flex; align-items: center; gap: 10px; white-space: nowrap; font-size: 13px; font-weight: 400; line-height: 1.4; }
+    #valuationLatestReading .module-chart-name { font-size: 13px; font-weight: 700; }
+    #valuationLatestReading .module-chart-heading strong, #valuationLatestReading .module-chart-value { font-weight: 400; }
+    #valuationLatestReading .valuation-reading-main small { margin-left: 4px; color: inherit; font-size: 13px; font-weight: 400; }
     #valuationLatestReading .module-chart-value { display: flex; align-items: center; gap: 6px; }
     .valuation-gauge { display: inline-block; position: relative; width: 112px; height: 5px; flex: none; border-radius: 4px; background: linear-gradient(to right,#319a82 0% 20%,#8ebd77 20% 40%,#c2bd77 40% 60%,#d9ac58 60% 80%,#c65d76 80% 100%); }
     .valuation-gauge i { position: absolute; top: -4px; width: 5px; height: 13px; border: 1px solid #fff5c9; border-radius: 3px; background: #a17b20; transform: translateX(-50%); box-shadow: 0 0 0 2px rgba(246,200,95,.15); }
@@ -171,6 +172,7 @@ const js = `
   (() => {
     ${latestScript}
     const percentileGauge = ${percentileGauge.toString()};
+    const percentileColor = ${percentileColor.toString()};
     const pairedPeReading = ${pairedPeReading.toString()};
     const valuationExtra = __VALUATION_EXTRA__;
     const fmt = (value, digits = 1) => Number.isFinite(value)
@@ -289,9 +291,10 @@ const js = `
         if (date) root.querySelector(".module-chart-date").textContent = "观察日期：" + date + " · " + rangeLabel + "样本";
         root.querySelectorAll(".module-chart-item").forEach((element, index) => {
           const item = items[index];
+          element.style.color = "var(--text)";
           if (pairedView) {
             element.innerHTML = '<div class="valuation-reading-main"><span class="module-chart-name">' + item.name + '</span><span>' + valuationLabel + ' ' + (Number.isFinite(item.value) ? fmt(item.value, 2) : '--') + '<small>倍</small></span></div>' +
-              '<div class="valuation-percentile-row"><span>' + valuationLabel + '分位 ' + (Number.isFinite(item.percentile) ? fmt(item.percentile, 2) + '%' : '--') + '</span>' + percentileGauge(item.percentile) + '</div>';
+              '<div class="valuation-percentile-row"><span>' + valuationLabel + '分位 <span style="color:' + percentileColor(item.percentile) + '">' + (Number.isFinite(item.percentile) ? fmt(item.percentile, 2) + '%' : '--') + '</span></span>' + percentileGauge(item.percentile) + '</div>';
           } else if (cfg.fixedRange) {
             element.querySelector(".module-chart-value").insertAdjacentHTML("beforeend", percentileGauge(item.value));
           }
