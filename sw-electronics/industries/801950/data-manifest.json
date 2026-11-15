@@ -1,6 +1,6 @@
 {
   "meta": {
-    "asOf": "2026-11-13",
+    "asOf": "2026-11-15",
     "industry": "煤炭",
     "indexCode": "801950.SI",
     "classification": "申万2021版一级",
@@ -59,8 +59,8 @@
     "companyMarketCapMethod": "daily_basic.total_mv÷10000，全部普通股按A股价格估值，与项目2公司明细同字段；不等于申万行业市值分拆",
     "financialVersusValuation": "财务柱是全公司实际合并报表汇总，不是指数PE分母；不以公布市值÷PE反推真实利润",
     "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/",
-    "financialAsOf": "20261113",
-    "universeAsOf": "20261113",
+    "financialAsOf": "20261115",
+    "universeAsOf": "20261115",
     "companyQuoteAsOf": "20261113",
     "latestQuoteDate": "20261113",
     "latestQuoteMethod": "最右侧最新交易日观察点；市值/PE使用同日申万值，财务沿用最近财报季度；最近4季不重复计入该观察点"
@@ -115,7 +115,7 @@
     "code": "801950.SI",
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
-    "financialAsOf": "20261113",
+    "financialAsOf": "20261115",
     "financialHash": "af34e36b1a0fb93262b0a8f7285ec579f94462395513f8cc753eb6f7d85edc6c",
     "sectorFinancialHashes": {
       "801951.SI": "fc7681c4bcfe26bc24f8a39958242781cbc3a6a02ffeff1c9f5131df3e529210",
@@ -200,7 +200,7 @@
   "latestQuote": {
     "sourceFile": "latest-quotes-source.json",
     "date": "20261113",
-    "financialSnapshot": "2026-11-13",
+    "financialSnapshot": "2026-11-15",
     "quarterlySeriesUnchanged": true,
     "indices": [
       {
@@ -245,9 +245,9 @@
     ]
   },
   "currentRefresh": {
-    "sourceFile": "../../refresh-source.json.gz",
-    "financialAsOf": "20261113",
-    "universeAsOf": "20261113",
+    "sourceFile": "..\\..\\refresh-source.json.gz",
+    "financialAsOf": "20261115",
+    "universeAsOf": "20261115",
     "companyQuoteAsOf": "20261113",
     "estimatedCount": 0,
     "missingCount": 0,

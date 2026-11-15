@@ -13,7 +13,7 @@ function mountIndustry(root,BASE,sectorData,prefix=''){
 const D=BASE,Q=BASE.series,L=Q.at(-1),official=D.meta.valuationMethod==='sw_daily';
 function withLatest(obj){return obj.latestQuote?[...obj.series,{...obj.series.at(-1),...obj.latestQuote,quarter:'最新',endDate:obj.latestQuote.date,tradeDate:obj.latestQuote.date,isLatest:true}]:obj.series;}
 const S=withLatest(D),LATEST=S.at(-1);
-const GROUPS=sectorData.groups.map(g=>({...g,quarterSeries:g.series,series:withLatest(g)})).sort((a,b)=>(b.series.at(-1).marketCap||0)-(a.series.at(-1).marketCap||0)),$=id=>root.querySelector('#'+CSS.escape(id))||root.querySelector('#'+CSS.escape(prefix+id));
+let GROUPS=sectorData.groups.map(g=>({...g,quarterSeries:g.series,series:withLatest(g)})).sort((a,b)=>(b.series.at(-1).marketCap||0)-(a.series.at(-1).marketCap||0)),$=id=>root.querySelector('#'+CSS.escape(id))||root.querySelector('#'+CSS.escape(prefix+id));
 const dailyByCode=new Map([[D.meta.indexCode,[...(D.valuationDaily||[]),...(D.valuationRecent||[])]],...GROUPS.map(g=>[g.code,[...(g.valuationDaily||[]),...(g.valuationRecent||[])]])]);
 const percentileCache=new Map();
 const peLabel=official?'申万PE':'整体 PE（TTM）';
@@ -207,7 +207,19 @@ $('quality-body').innerHTML=S.map((s,i)=>{const q=D.quality[i],notes=[];if(q.fin
 let coverageReady=false,quarterReady=false,companiesReady=false;
 function renderQuarterTable(){const rows=reverseTable?[...S].reverse():S;$('quarter-body').innerHTML=rows.map(s=>`<tr class="${s.estimatedCount?'estimate-row':''}"><td title="${s.isLatest?'财务沿用 '+s.financialQuarter:''}">${pointLabel(s)}</td><td>${fmt(s.marketCap,2)}</td><td title="${official?peLabel+'；'+(s.valuationDate?date(s.valuationDate):peReason(s)):peReason(s)+'；TTM利润 '+fmt(s.peProfit,4)+'亿元'}">${peText(s)}${!official&&s.peCoverage<.9999?' ◦':''}</td><td>${fmt(s.revenue,2)}${s.estimatedCount?' *':s.missingCount?' †':''}</td><td>${fmt(s.profit,2)}${s.estimatedCount?' *':s.missingCount?' †':''}</td><td>${s.companies}</td><td><span class="tag ${s.estimatedCount?'estimate':s.missingCount?'partial':''}">${s.isLatest?'财务沿用 '+s.financialQuarter+(s.estimatedCount?' · 含估算':''):!s.companies?'无样本':s.estimatedCount?s.reportedCount+' 实报 + '+s.estimatedCount+' 估算':s.missingCount?'缺 '+s.missingCount+' 家 · 已知合计':'全部实报'}</span></td></tr>`).join('');}
 $('table-order').addEventListener('click',()=>{reverseTable=!reverseTable;$('table-order').textContent='当前：'+(reverseTable?'由近到远':'由远到近')+' ⇅';renderQuarterTable();});
-const companySector=new Map(GROUPS.flatMap(g=>g.codes.map(code=>[code,g])));
+const companySector=new Map();
+let sectorJob, companyJob, sectorsExpanded=false;
+function ensureSectors(){
+ if(!sectorJob)sectorJob=loadIndustryJSON(root.dataset.path+'sectors.json').then(data=>{
+  GROUPS=data.groups.map(g=>({...g,quarterSeries:g.series,series:withLatest(g)})).sort((a,b)=>(b.series.at(-1).marketCap||0)-(a.series.at(-1).marketCap||0));
+  for(const g of GROUPS){dailyByCode.set(g.code,[...(g.valuationDaily||[]),...(g.valuationRecent||[])]);for(const code of g.codes)companySector.set(code,g);}
+ }).catch(error=>{sectorJob=null;throw error;});
+ return sectorJob;
+}
+function ensureCompanies(){
+ if(!companyJob)companyJob=loadIndustryJSON(root.dataset.path+'companies.json').then(data=>{D.latestCompanies=data;}).catch(error=>{companyJob=null;throw error;});
+ return companyJob;
+}
 function renderCompanies(){
  const query=$('company-search').value.trim().toLowerCase(),only=$('estimated-only').checked;
  const rows=D.latestCompanies.filter(r=>(!only||r.status==='estimated')&&(!query||(r.name+r.code+(companySector.get(r.code)?.name||'')).toLowerCase().includes(query)));
@@ -227,7 +239,16 @@ $('source-links').innerHTML=D.meta.sourceLinks.map(s=>`<a href="${s.url}" target
 
 // Supplementary data: only the selected panel is expanded; initial state is closed.
 const supplementButtons=[...root.querySelectorAll('.supplement-tabs button')];
-function openSupplement(panelId){
+let supplementRequest=0;
+async function openSupplement(panelId){
+ const request=++supplementRequest;
+ if(panelId&&(panelId.endsWith('company-data')||panelId.endsWith('methodology'))){
+  const button=supplementButtons.find(b=>b.getAttribute('aria-controls')===panelId),span=button.querySelector('span');span.textContent='加载中…';
+  try{await Promise.all([ensureSectors(),...(panelId.endsWith('company-data')?[ensureCompanies()]:[])]);}
+  catch(error){span.textContent='加载失败，点击重试';return;}
+  if(request!==supplementRequest){span.textContent='＋';return;}
+ }
+
  if(panelId&&panelId.endsWith('data-table')&&!quarterReady){renderQuarterTable();quarterReady=true;}
  if(panelId&&panelId.endsWith('company-data')&&!companiesReady){renderCompanies();companiesReady=true;}
  if(panelId&&panelId.endsWith('methodology')&&!coverageReady){renderCoverage();coverageReady=true;}
@@ -252,17 +273,11 @@ showLinkedSupplement();
 
 
 // Selected industries appear as separate cards; the main chart always shows electronics.
-$('all-market-cap').textContent=marketLabel(LATEST.marketCap);
-if(D.latestQuote){root.querySelector('.heading-meta').innerHTML=`<span>2005Q1—最新</span><span>行情 ${date(LATEST.tradeDate)} · 财报 ${L.quarter}</span>`;root.querySelector('.sector-menu-title>span').textContent=date(LATEST.tradeDate)+' 总市值';$('sector-grid').setAttribute('aria-label','二级行业图表，按最新交易日市值降序');}
-$('sector-options').innerHTML=GROUPS.map(g=>`<label class="sector-option"><input type="checkbox" data-sector="${g.code}"><span>${esc(g.name)}</span><strong>${marketLabel(g.series.at(-1).marketCap)}</strong></label>`).join('');
+if(D.latestQuote){root.querySelector('.heading-meta').innerHTML='<span>2005Q1—最新</span><span>行情 '+date(LATEST.tradeDate)+' · 财报 '+L.quarter+'</span>';}
 function syncSectorPicker(){
- const count=selectedSectors.size;
- $('sector-all').checked=count===GROUPS.length;$('sector-all').indeterminate=count>0&&count<GROUPS.length;
- root.querySelectorAll('[data-sector]').forEach(input=>input.checked=selectedSectors.has(input.dataset.sector));
- $('sector-selection').textContent='二级行业';$('selected-market-cap').textContent=count+' / '+GROUPS.length;
- $('sector-trigger').setAttribute('aria-label','二级行业，已选 '+count+' 个，下方显示独立图表');
- $('selection-total').textContent=String(count)+' 个小图';
- $('selection-method').textContent=D.meta.industry+'主图显示整体；勾选二级行业后，在主图下方分别显示，按'+(D.latestQuote?'最新交易日':'2026Q3季末')+'市值降序排列。图例开关和时间范围同时控制主图及所有小图，勾选不改变整体统计或底部明细范围。各图纵轴独立缩放，比较金额请看数字和轴刻度。';
+ $('sector-trigger').textContent=sectorsExpanded?'收起二级':'展开二级';
+ $('sector-trigger').setAttribute('aria-expanded',String(sectorsExpanded));
+ $('selection-method').textContent=D.meta.industry+'主图显示整体；展开二级后，下方展示全部二级行业，按最新市值降序排列。时间范围与指标开关同时控制所有图表。';
 }
 function renderMiniCharts(){
  for(const [code,item]of miniCharts){if(!selectedSectors.has(code)){chartObserver.unobserve(item.chart.getDom());item.chart.dispose();item.card.remove();miniCharts.delete(code);}}
@@ -274,17 +289,17 @@ function renderMiniCharts(){
  $('sector-grid').hidden=selectedSectors.size===0;
  syncSectorPicker();
 }
-function closeSectorMenu(){ $('sector-menu').hidden=true;$('sector-trigger').setAttribute('aria-expanded','false');}
-$('sector-trigger').addEventListener('click',()=>{const open=$('sector-menu').hidden;$('sector-menu').hidden=!open;$('sector-trigger').setAttribute('aria-expanded',String(open));});
-function setAllSectors(expanded){selectedSectors.clear();if(expanded)GROUPS.forEach(g=>selectedSectors.add(g.code));renderMiniCharts();}
-$('sector-all').addEventListener('change',e=>setAllSectors(e.target.checked));
-$('sector-options').addEventListener('change',e=>{const code=e.target.dataset.sector;if(!code)return;if(e.target.checked)selectedSectors.add(code);else selectedSectors.delete(code);renderMiniCharts();});
-document.addEventListener('click',e=>{if(!$('sector-picker').contains(e.target))closeSectorMenu();});
-$('sector-picker').addEventListener('keydown',e=>{if(e.key==='Escape'){closeSectorMenu();$('sector-trigger').focus();}});
-$('sector-picker').addEventListener('focusout',e=>{if(e.relatedTarget&&!$('sector-picker').contains(e.relatedTarget))closeSectorMenu();});
+async function setAllSectors(expanded){
+ sectorsExpanded=expanded;syncSectorPicker();
+ if(!expanded){selectedSectors.clear();renderMiniCharts();return;}
+ $('sector-trigger').textContent='加载二级…';
+ try{await ensureSectors();if(!sectorsExpanded)return;selectedSectors.clear();GROUPS.forEach(g=>selectedSectors.add(g.code));renderMiniCharts();}
+ catch(error){sectorsExpanded=false;syncSectorPicker();$('sector-trigger').textContent='加载失败，点击重试';}
+}
+$('sector-trigger').addEventListener('click',()=>setAllSectors(!sectorsExpanded));
 const getState=()=>({first,last,showLabels,financeMode,selectedSectors:[...selectedSectors],visibleMetrics:{...visibleMetrics},latest:LATEST,financialLatest:L,percentileBounds:percentileBounds(),miniOrder:[...$('sector-grid').children].map(e=>e.dataset.sectorCard)});
 const getCharts=()=>({main:chart,children:Object.fromEntries([...miniCharts].map(([code,item])=>[code,item.chart]))});
-redraw();renderMiniCharts();
+redraw();renderMiniCharts();if(GLOBAL_VIEW.expandSectors)setAllSectors(true);
 
 const api={getState,getCharts,setRange,peView,pePercentile,focus,applyGlobal,setAllSectors};
 window.RESEARCH_MODULES[root.dataset.industry]=api;
@@ -295,24 +310,23 @@ return api;
 const moduleTemplate=document.getElementById('industry-template');
 const industryList=document.getElementById('industry-list');
 const industryLoads=new Map();
-const assetVersion='refresh-202611132154290800';
+const assetVersion='refresh-202611152035400800';
 function loadIndustryJSON(path){return fetch(path+'?v='+assetVersion).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();});}
 function activateIndustry(root){
  const key=root.dataset.industry;if(industryLoads.has(key))return industryLoads.get(key);
  const item=window.INDUSTRY_CATALOG.industries.find(g=>g.key===key);
- const job=Promise.all([loadIndustryJSON(item.path+'data.json'),loadIndustryJSON(item.path+'sectors.json')]).then(([data,sectors])=>{
+ const job=loadIndustryJSON(item.path+'main.json').then(data=>{const sectors={groups:[]};
   root.querySelector('.module-loading')?.remove();mountIndustry(root,data,sectors,key==='electronics'?'':key+'-');root.dataset.loaded='true';return window.RESEARCH_MODULES[key];
  }).catch(error=>{industryLoads.delete(key);const status=root.querySelector('.module-loading');if(status){status.textContent='数据加载失败，点击重试';status.onclick=()=>activateIndustry(root);}throw error;});
  industryLoads.set(key,job);return job;
 }
-const moduleObserver=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){moduleObserver.unobserve(entry.target);activateIndustry(entry.target).catch(()=>{});}},{rootMargin:'700px 0px'});
+const moduleObserver=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){moduleObserver.unobserve(entry.target);activateIndustry(entry.target).catch(()=>{});}},{rootMargin:'0px'});
 for(const item of window.INDUSTRY_CATALOG.industries){
- const root=document.createElement('section');root.id='industry-'+item.key;root.className='industry-module';root.dataset.industry=item.key;
+ const root=document.createElement('section');root.id='industry-'+item.key;root.className='industry-module';root.dataset.industry=item.key;root.dataset.path=item.path;
  root.appendChild(moduleTemplate.content.cloneNode(true));
  const prefix=item.key==='electronics'?'':item.key+'-';
  if(prefix)for(const el of root.querySelectorAll('[id],[aria-controls],[aria-labelledby]'))for(const attr of ['id','aria-controls','aria-labelledby'])if(el.hasAttribute(attr))el.setAttribute(attr,prefix+el.getAttribute(attr));
- root.querySelector('.heading-main h2').textContent=item.name;root.dataset.valuationSource=item.valuationSource||'company_aggregate';root.querySelector('.sector-menu-title strong').textContent=item.name+' · 申万二级';root.querySelector('.research-chart').setAttribute('aria-label',item.name+'季度市值、PE、营收与归母净利润');
- root.querySelector('#'+CSS.escape(prefix+'selected-market-cap')).textContent='0 / '+item.subIndustryCount;
+ root.querySelector('.heading-main h2').textContent=item.name;root.dataset.valuationSource=item.valuationSource||'company_aggregate';root.querySelector('.research-chart').setAttribute('aria-label',item.name+'季度市值、PE、营收与归母净利润');
  root.querySelector('.focus-row').textContent=item.name+' · '+item.latest.quarter+' · 总市值 '+(item.latest.marketCap/10000).toLocaleString('zh-CN',{maximumFractionDigits:2})+' 万亿';
  const status=document.createElement('div');status.className='module-loading';status.textContent='加载图表…';root.querySelector('.research-chart').appendChild(status);
  industryList.appendChild(root);moduleObserver.observe(root);

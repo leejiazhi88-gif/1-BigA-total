@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Publish committed 全览图 changes to both GitHub repositories and local mirrors."""
 from pathlib import Path
+import os
 import shutil
 import subprocess
 import sys
@@ -11,8 +12,8 @@ if workspace is None:
     sys.exit('请在全览图原工作区运行同步脚本；需存在 work/deploy/sw-electronics。')
 deploy = workspace / 'work/deploy'
 site = deploy / 'sw-electronics'
-checkout = workspace / 'work/quanlantu'
-remote = 'git@github.com:leejiazhi88-gif/2.2-quanlantu.git'
+checkout = Path(os.environ.get('QUANLANTU_CHECKOUT', str(workspace / 'work/quanlantu')))
+remote = 'https://github.com/leejiazhi88-gif/2.2-quanlantu.git'
 
 def git(directory, *args, capture=False):
     return subprocess.run(['git', '-C', str(directory), *args], check=True,

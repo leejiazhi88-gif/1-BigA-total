@@ -38,6 +38,7 @@ def main():
         print('来源内容和日期均未变化，跳过重复构建；仍执行完整校验。',flush=True)
     else:
         run('apply_refresh.py')
+    run('build_lazy_payloads.py')
     run('validate_sw_data.py')
     audit=json.loads(audit_path.read_text())
     audit['buildInputSha256']=fingerprint

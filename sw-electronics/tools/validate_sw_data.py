@@ -89,6 +89,9 @@ def main():
             assert json.loads((root / file).read_text().split('=', 1)[1].rstrip(';')) == expected
     for item in catalog['industries']:
         data = read(SITE / item['path'] / 'data.json')
+        main_payload = read(SITE / item['path'] / 'main.json')
+        companies = read(SITE / item['path'] / 'companies.json')
+        assert {**main_payload, 'latestCompanies': companies} == data, '按需加载数据与原始数据不一致'
         assert item['latest'] == data['series'][-1]
         if 'latestObservation' in item:
             assert item['latestObservation'] == data['latestQuote']

@@ -30,3 +30,7 @@
 freshness-audit.json记录当次核查日期、请求数、耗时、待披露状态和生成文件SHA256。refresh-source.json.gz保存公开参数、返回字段、响应及实际抓取时间，不含凭据。`python3 tools/check_freshness.py` 校验当天新查询、已披露不得估算、38133条近期公司财报差分、全部聚合、公司报价和文件哈希。缺失、过期或来源不匹配均阻止推送；不能仅修改页面更新日期。
 
 校验：`python3 tools/validate_sw_data.py`，可加 `--project2 PATH` 核对共同历史分位。发布前提交主目录内相关文件，在原工作区运行 `python3 sync-site.py`（项目内副本 tools/sync_site.py），同步旧公开站点、新独立仓库、本地独立副本和outputs/zip。禁止force push；远端和本地有用户改动时先合并。同步入口也执行新鲜度门禁。
+
+## 移动端按需加载
+
+一级行业进入可视区域时加载 main.json；二级数据在点击“展开二级”时加载并全部展示，再点“收起二级”全部收起。公司明细首次打开时加载 companies.json。加载失败可再次点击重试，已成功加载的数据在本次浏览中复用。数据刷新自动生成这两份拆分文件，校验重组后与 data.json 一致。

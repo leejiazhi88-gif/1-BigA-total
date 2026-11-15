@@ -1,6 +1,6 @@
 {
   "meta": {
-    "asOf": "2026-11-13",
+    "asOf": "2026-11-15",
     "industry": "公用事业",
     "indexCode": "801160.SI",
     "classification": "申万2021版一级",
@@ -59,8 +59,8 @@
     "companyMarketCapMethod": "daily_basic.total_mv÷10000，全部普通股按A股价格估值，与项目2公司明细同字段；不等于申万行业市值分拆",
     "financialVersusValuation": "财务柱是全公司实际合并报表汇总，不是指数PE分母；不以公布市值÷PE反推真实利润",
     "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/",
-    "financialAsOf": "20261113",
-    "universeAsOf": "20261113",
+    "financialAsOf": "20261115",
+    "universeAsOf": "20261115",
     "companyQuoteAsOf": "20261113",
     "latestQuoteDate": "20261113",
     "latestQuoteMethod": "最右侧最新交易日观察点；市值/PE使用同日申万值，财务沿用最近财报季度；最近4季不重复计入该观察点"
@@ -116,7 +116,7 @@
     "code": "801160.SI",
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
-    "financialAsOf": "20261113",
+    "financialAsOf": "20261115",
     "financialHash": "d3afdb61ccc0b53a1bdee5992dd27f712170b4568569a6255f1b21aa9927843f",
     "sectorFinancialHashes": {
       "801161.SI": "bf9d8bc7a98b35208b25b9f9060a3111658f9afe36b29e51e5228e8ba4a6850d",
@@ -294,7 +294,7 @@
   "latestQuote": {
     "sourceFile": "latest-quotes-source.json",
     "date": "20261113",
-    "financialSnapshot": "2026-11-13",
+    "financialSnapshot": "2026-11-15",
     "quarterlySeriesUnchanged": true,
     "indices": [
       {
@@ -339,9 +339,9 @@
     ]
   },
   "currentRefresh": {
-    "sourceFile": "../../refresh-source.json.gz",
-    "financialAsOf": "20261113",
-    "universeAsOf": "20261113",
+    "sourceFile": "..\\..\\refresh-source.json.gz",
+    "financialAsOf": "20261115",
+    "universeAsOf": "20261115",
     "companyQuoteAsOf": "20261113",
     "estimatedCount": 0,
     "missingCount": 0,

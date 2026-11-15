@@ -28,7 +28,7 @@ def close(a, b):
 def paths(catalog):
     result = ['catalog.json','catalog.js','all-industries-audit.json','refresh-source.json.gz','app.js','index.html','style.css']
     for item in catalog['industries']:
-        for name in ['data.json','data.js','sectors.json','sectors.js','company-quarterly.csv','quarterly.csv',
+        for name in ['main.json','companies.json','data.json','data.js','sectors.json','sectors.js','company-quarterly.csv','quarterly.csv',
                      'latest-quotes-source.json','sw-alignment-audit.json','data-manifest.json']:
             result.append(str(Path(item['path']) / name))
     return sorted(set(result))
