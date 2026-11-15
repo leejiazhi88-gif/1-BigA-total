@@ -935,7 +935,9 @@
           <button class="range-tab" data-range="1y" aria-pressed="false">1年</button>
           <button class="range-tab" data-range="3y" aria-pressed="false">3年</button>
           <button class="range-tab" data-range="5y" aria-pressed="false">5年</button>
-          <button class="range-tab active" data-range="all" aria-pressed="true">2010至今</button>
+          <button class="range-tab" data-range="10y" aria-pressed="false">10年</button>
+          <button class="range-tab active" data-range="20y" aria-pressed="true">20年</button>
+          <button class="range-tab" data-range="all" aria-pressed="false">全部</button>
         </div>
       </div>
       <div class="nt-flow-funds" id="ntFlowFunds" aria-label="ETF指数类别"></div>
@@ -2898,7 +2900,7 @@ window.addEventListener("resize", () => {
     const flowChart = echarts.init(document.getElementById("nationalTeamEtfFlowChart"), null, { renderer: "canvas" });
     const groups = [...new Set(flowData.etfs.map(row => row.group))];
     const selectedGroups = new Set(groups);
-    let flowRange = "all";
+    let flowRange = "20y";
     const visibleIndicators = { flow: true, shares: true };
     let flowZoom = { start: 0, end: 100 };
     document.getElementById("ntFlowFunds").innerHTML = groups.map(group =>
