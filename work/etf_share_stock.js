@@ -36,4 +36,8 @@ function sumShareStocks(rows, funds) {
       coverage: eligible.length - missing.length, eligible: eligible.length, missing: missing.map(fund => fund.ts_code) };
   });
 }
-module.exports = { buildShareStocks, sumShareStocks };
+function centerZeroAxis(axis) {
+  const bound = Math.max(Math.abs(axis.min), Math.abs(axis.max), 1);
+  return { ...axis, min: -bound, max: bound, interval: bound / 4 };
+}
+module.exports = { buildShareStocks, sumShareStocks, centerZeroAxis };
