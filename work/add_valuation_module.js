@@ -292,8 +292,9 @@ const js = `
         root.querySelectorAll(".module-chart-item").forEach((element, index) => {
           const item = items[index];
           element.style.color = "var(--text)";
+          element.querySelector(".module-chart-name").style.color = item.color;
           if (pairedView) {
-            element.innerHTML = '<div class="valuation-reading-main"><span class="module-chart-name">' + item.name + '</span><span>' + valuationLabel + ' ' + (Number.isFinite(item.value) ? fmt(item.value, 2) : '--') + '<small>倍</small></span></div>' +
+            element.innerHTML = '<div class="valuation-reading-main"><span class="module-chart-name" style="color:' + item.color + '">' + item.name + '</span><span>' + valuationLabel + ' ' + (Number.isFinite(item.value) ? fmt(item.value, 2) : '--') + '<small>倍</small></span></div>' +
               '<div class="valuation-percentile-row"><span>' + valuationLabel + '分位 <span style="color:' + percentileColor(item.percentile) + '">' + (Number.isFinite(item.percentile) ? fmt(item.percentile, 2) + '%' : '--') + '</span></span>' + percentileGauge(item.percentile) + '</div>';
           } else if (cfg.fixedRange) {
             element.querySelector(".module-chart-value").insertAdjacentHTML("beforeend", percentileGauge(item.value));
