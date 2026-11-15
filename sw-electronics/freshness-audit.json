@@ -33,7 +33,7 @@
   "collectionMode": "parallel-4; SW daily batch when cheaper; fresh financial periods + incremental corrections; no cache fallback",
   "payloadSha256": {
     "all-industries-audit.json": "441c80734e62c450ffa988f49b0fa56cab0675d84167021199baa097f992c887",
-    "app.js": "1b5f03a640537f49c0b193acf2207a2d631092936fe851bfbf5710ce379eb0e7",
+    "app.js": "b841867d606f531042e8209805772fa6983d1a169f580ec3d76a864291b23f58",
     "bank\\companies.json": "f5062c5a0035a1408925df8f4e2ad5326b6ff3cef415d3f836e3ad3a3a30d020",
     "bank\\company-quarterly.csv": "07d8658ce02b08b29085820a3b45262118344641eec9ecb0a7785d4b9bff7b1a",
     "bank\\data-manifest.json": "3876c6ff13cbebfb2fb0c09865fd5774aa85bdc47282eeaab1a12f0ef9c2c989",
@@ -52,7 +52,7 @@
     "data-manifest.json": "17b34f429ea6a52dc24507be88dae27aea70013ce633911384822c06f8de3f5b",
     "data.js": "c232cd212305cf2a384ac2666d65448ef606a4f77edb1518f311066da98414ea",
     "data.json": "a0da10531e1fdec2a55b31352a5483b9ed160581cd25d793cfe89b7f63ea980c",
-    "index.html": "4fd67aa7071007879ab53b5a18f1d7119cfb9b39b959c1ccb9749acbcc16c507",
+    "index.html": "0bccff8d1e1c1b20c09ad30727aedb9b5900b1975c62dabdfbd20f764f5b682b",
     "industries\\801010\\companies.json": "4bca7dd0320b0c65b3711d67fae65aacc1c61f4dbd6f23b92a60f25f9b8de0e8",
     "industries\\801010\\company-quarterly.csv": "7ca59d908fca10a04949c6a9b0d4f45d0d4066e03aea1226c67bbfd45df68754",
     "industries\\801010\\data-manifest.json": "0ba09e540efe88b2249ac131ea3c2feee2182129218dadba9c2866c11756e526",

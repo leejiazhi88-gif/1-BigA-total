@@ -1,5 +1,35 @@
 'use strict';
 window.RESEARCH_MODULES={};
+// Touch browsers do not reliably emit mouseout after a tap.
+const tooltipCharts=new Map();
+let touchTooltipTimer=0;
+function dismissChartTooltips(keepTarget=null){
+ for(const [instance,restore] of tooltipCharts){
+  if(instance.isDisposed()){tooltipCharts.delete(instance);continue;}
+  if(keepTarget&&instance.getDom().contains(keepTarget))continue;
+  instance.dispatchAction({type:'updateAxisPointer',currTrigger:'leave'});
+  instance.dispatchAction({type:'hideTip'});restore?.();
+ }
+}
+function cancelTouchTooltipTimer(){clearTimeout(touchTooltipTimer);touchTooltipTimer=0;}
+document.addEventListener('pointerdown',event=>{
+ cancelTouchTooltipTimer();dismissChartTooltips(event.target);
+},{capture:true,passive:true});
+document.addEventListener('touchstart',()=>{
+ cancelTouchTooltipTimer();dismissChartTooltips();
+},{capture:true,passive:true});
+document.addEventListener('touchend',()=>{
+ cancelTouchTooltipTimer();touchTooltipTimer=setTimeout(()=>dismissChartTooltips(),1500);
+},{capture:true,passive:true});
+document.addEventListener('touchmove',()=>{
+ cancelTouchTooltipTimer();dismissChartTooltips();
+ requestAnimationFrame(()=>dismissChartTooltips());
+},{capture:true,passive:true});
+document.addEventListener('touchcancel',()=>{cancelTouchTooltipTimer();dismissChartTooltips();},{capture:true,passive:true});
+document.addEventListener('scroll',()=>dismissChartTooltips(),{capture:true,passive:true});
+window.addEventListener('blur',()=>dismissChartTooltips());
+// End touch tooltip lifecycle.
+
 const GLOBAL_END=window.INDUSTRY_CATALOG.industries.some(i=>i.latestObservation)?87:86;
 const GLOBAL_VIEW={first:47,last:GLOBAL_END,rangePreset:'40',showLabels:true,expandSectors:false,financeMode:'rolling',metrics:{mv:true,pe:false,revenue:true,profit:true}};
 function rollingFinancialRows(rows){return rows.map((s,i)=>{
@@ -153,6 +183,7 @@ function miniSummary(group){
  return `<span>${esc(financeLabel('营收')+' '+fmt(s.revenue,0)+'亿'+financeTag(s))}</span><span>${esc(financeLabel('净利')+' '+fmt(s.profit,1)+'亿'+financeTag(s))}</span><div class="valuation-summary">${pe}${percentile}</div>`;
 }
 function updateChart(instance,rows,name,mini=false,code=''){
+ tooltipCharts.set(instance,mini?null:()=>focus(LATEST));
  rows=displayRows(rows);
  const view=peView(rows),{axes,scale,finmax}=chartAxes(rows,mini,view);
  const peCaption=visibleMetrics.pe?('PE'+(mini?'·':' · ')+'倍'+(view.spikes.size?' · 虚线尖峰':'')):'';
@@ -310,7 +341,7 @@ return api;
 const moduleTemplate=document.getElementById('industry-template');
 const industryList=document.getElementById('industry-list');
 const industryLoads=new Map();
-const assetVersion='refresh-202611152035400800';
+const assetVersion='touch-20261115';
 function loadIndustryJSON(path){return fetch(path+'?v='+assetVersion).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();});}
 function activateIndustry(root){
  const key=root.dataset.industry;if(industryLoads.has(key))return industryLoads.get(key);
