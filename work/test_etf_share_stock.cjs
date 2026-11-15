@@ -1,6 +1,16 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { buildShareStocks, sumShareStocks } = require('./etf_share_stock');
+const { buildShareStocks, sumShareStocks, centerZeroAxis } = require('./etf_share_stock');
+
+test('independent axes center zero at the same midpoint for all value ranges', () => {
+  for (const axis of [{min:-20000,max:5000},{min:0,max:4000},{min:0,max:0.1}]) {
+    const centered = centerZeroAxis(axis);
+    assert.equal(centered.min, -centered.max);
+    assert.equal((0-centered.min)/(centered.max-centered.min), 0.5);
+    assert.equal(centered.max / centered.interval, 4);
+    assert(centered.min <= axis.min && centered.max >= axis.max);
+  }
+});
 
 test('share stock uses past observations only, fifteen-day limit, units and listing dates', () => {
   const etfs = [{ ts_code: 'A', list_date: '20260101' }, { ts_code: 'B', list_date: '20260120' }];

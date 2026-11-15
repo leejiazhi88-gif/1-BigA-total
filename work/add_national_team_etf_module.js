@@ -5,7 +5,7 @@ const ROOT = path.resolve(__dirname, "..");
 const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
 const FLOW_FILE = path.join(ROOT, "work", "etf_flow_data.json");
 const { flowWindow, summarizeFlows, validateFlowHistory } = require("./etf_flow_history");
-const { buildShareStocks, sumShareStocks } = require("./etf_share_stock");
+const { buildShareStocks, sumShareStocks, centerZeroAxis } = require("./etf_share_stock");
 const directHoldings = require("./national_team_direct_holdings").directHoldingsModule();
 const etfHistory = require("./national_team_etf_history").etfHistoryModule();
 
@@ -110,6 +110,7 @@ const script = `
     const flowWindow = ${flowWindow.toString()};
     const summarizeFlows = ${summarizeFlows.toString()};
     const sumShareStocks = ${sumShareStocks.toString()};
+    const centerZeroAxis = ${centerZeroAxis.toString()};
     const fmt = (value, digits = 2) => Number.isFinite(value) ? Number(value).toLocaleString("zh-CN", {
       minimumFractionDigits: digits, maximumFractionDigits: digits
     }) : "暂无";
@@ -201,8 +202,8 @@ const script = `
           }
         },
         xAxis: [axis(0), axis(1)],
-        yAxis: [{ ...valueAxis(0, cumulativeName + " / 亿元", cumulative), show: visibleIndicators.flow }, valueAxis(1, "当日净申购 / 亿元", totals),
-          { ...valueAxis(0, "总份额 / 亿份", stocks), show: visibleIndicators.shares, position: "right", nameTextStyle: { color: "#36c2ff", align: "right" }, axisLabel: { color: "#36c2ff", formatter: value => axisFmt(value, 0) }, splitLine: { show: false } }],
+        yAxis: [{ ...centerZeroAxis(valueAxis(0, cumulativeName + " / 亿元", cumulative)), show: visibleIndicators.flow }, valueAxis(1, "当日净申购 / 亿元", totals),
+          { ...centerZeroAxis(valueAxis(0, "总份额 / 亿份", stocks)), show: visibleIndicators.shares, position: "right", nameTextStyle: { color: "#36c2ff", align: "right" }, axisLabel: { color: "#36c2ff", formatter: value => axisFmt(value, 0) }, splitLine: { show: false } }],
         dataZoom: [
           { type: "slider", xAxisIndex: [0, 1], ...flowZoom, filterMode: "none", height: 22, bottom: 10,
             showDataShadow: false, borderColor: "#344760", fillerColor: "rgba(54,194,255,.12)", textStyle: { color: "#8fa5bf" } },

@@ -2887,6 +2887,10 @@ window.addEventListener("resize", () => {
       coverage: eligible.length - missing.length, eligible: eligible.length, missing: missing.map(fund => fund.ts_code) };
   });
 };
+    const centerZeroAxis = function centerZeroAxis(axis) {
+  const bound = Math.max(Math.abs(axis.min), Math.abs(axis.max), 1);
+  return { ...axis, min: -bound, max: bound, interval: bound / 4 };
+};
     const fmt = (value, digits = 2) => Number.isFinite(value) ? Number(value).toLocaleString("zh-CN", {
       minimumFractionDigits: digits, maximumFractionDigits: digits
     }) : "暂无";
@@ -2978,8 +2982,8 @@ window.addEventListener("resize", () => {
           }
         },
         xAxis: [axis(0), axis(1)],
-        yAxis: [{ ...valueAxis(0, cumulativeName + " / 亿元", cumulative), show: visibleIndicators.flow }, valueAxis(1, "当日净申购 / 亿元", totals),
-          { ...valueAxis(0, "总份额 / 亿份", stocks), show: visibleIndicators.shares, position: "right", nameTextStyle: { color: "#36c2ff", align: "right" }, axisLabel: { color: "#36c2ff", formatter: value => axisFmt(value, 0) }, splitLine: { show: false } }],
+        yAxis: [{ ...centerZeroAxis(valueAxis(0, cumulativeName + " / 亿元", cumulative)), show: visibleIndicators.flow }, valueAxis(1, "当日净申购 / 亿元", totals),
+          { ...centerZeroAxis(valueAxis(0, "总份额 / 亿份", stocks)), show: visibleIndicators.shares, position: "right", nameTextStyle: { color: "#36c2ff", align: "right" }, axisLabel: { color: "#36c2ff", formatter: value => axisFmt(value, 0) }, splitLine: { show: false } }],
         dataZoom: [
           { type: "slider", xAxisIndex: [0, 1], ...flowZoom, filterMode: "none", height: 22, bottom: 10,
             showDataShadow: false, borderColor: "#344760", fillerColor: "rgba(54,194,255,.12)", textStyle: { color: "#8fa5bf" } },
