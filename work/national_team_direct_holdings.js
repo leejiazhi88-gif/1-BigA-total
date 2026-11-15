@@ -206,6 +206,11 @@ const css = `
   .nt-direct-method { font-size: 12px; line-height: 1.8; color: var(--muted); margin-top: 18px; }
   .nt-direct-method summary { color: var(--text); cursor: pointer; padding: 8px 0; }
   .nt-direct-method p { margin: 8px 0; }
+  .nt-list-toggle { margin: 16px 0; }
+  .nt-list-toggle > summary { cursor: pointer; width: fit-content; padding: 8px 12px; border: 1px solid #263b58; border-radius: 8px; color: var(--text); background: #132239; font-size: 13px; }
+  .nt-list-toggle > summary:hover { border-color: var(--accent); }
+  .nt-list-toggle > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .nt-list-toggle[open] > summary { margin-bottom: 12px; }
   .nt-direct-method a { color: #36c2ff; }
   .nt-secondary-label { margin: 32px 0 0; font-size: 14px; color: var(--muted); }
   @media (min-width: 621px) and (max-width: 1000px) {
@@ -251,8 +256,13 @@ const html = `
       <p class="nt-direct-status" id="ntDirectGap"></p>
       <p class="nt-method">A股已披露持仓从2010年6月起回溯。2010至2013年若干季度的来源覆盖明显不足，图上留空断线，不视作减仓或清仓；2015年6月后按季度展示，ETF为已核实的中报、年报时点。虚线仅连接披露快照，不代表每日持仓路径。金额含价格涨跌及股东榜覆盖变化，不能把差额当作实际净买卖额。</p>
       <p class="nt-method">社保曲线为具名投资组合的直接A股持仓，含明确具名的委托组合；不含理事会直持、划转账户、基本养老保险及ETF。社保独立展示，不计入汇金／证金合计。</p>
-      <div class="nt-direct-coverage" id="ntDirectCoverage"></div>
-      <div class="nt-direct-details">
+      <details class="nt-list-toggle" id="ntDirectCoverageFold">
+        <summary>报告期覆盖明细</summary>
+        <div class="nt-direct-coverage" id="ntDirectCoverage"></div>
+      </details>
+      <details class="nt-list-toggle" id="ntDirectHoldingsFold">
+        <summary>持仓明细 · 直接A股 / ETF / 社保</summary>
+        <div class="nt-direct-details">
         <div class="nt-direct-detail-head">
           <div class="range-tabs" id="ntDirectTabs" role="tablist" aria-label="持仓明细类别">
             <button type="button" class="range-tab active" id="ntDirectStockTab" role="tab" aria-selected="true" aria-controls="ntDirectTable" data-view="stocks">直接A股</button>
@@ -263,7 +273,8 @@ const html = `
         </div>
         <div class="nt-direct-count" id="ntDirectTableCount" aria-live="polite"></div>
         <div class="nt-etf-table" id="ntDirectTable" role="tabpanel" aria-labelledby="ntDirectStockTab" tabindex="0"></div>
-      </div>
+        </div>
+      </details>
       <details class="nt-direct-method">
         <summary>统计口径与来源</summary>
         <p>汇金／证金曲线识别中央汇金投资、中央汇金资产管理、中国证券金融，以及明确具名的汇金委托计划。社保投资组合单独识别、单独展示，不加入原有汇金／证金股票与ETF合计；保险、财政部、诚通、国新等未纳入。金额是已披露可识别部分，不是相关机构全部资产。</p>

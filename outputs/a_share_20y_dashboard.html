@@ -385,6 +385,11 @@
   .nt-direct-method { font-size: 12px; line-height: 1.8; color: var(--muted); margin-top: 18px; }
   .nt-direct-method summary { color: var(--text); cursor: pointer; padding: 8px 0; }
   .nt-direct-method p { margin: 8px 0; }
+  .nt-list-toggle { margin: 16px 0; }
+  .nt-list-toggle > summary { cursor: pointer; width: fit-content; padding: 8px 12px; border: 1px solid #263b58; border-radius: 8px; color: var(--text); background: #132239; font-size: 13px; }
+  .nt-list-toggle > summary:hover { border-color: var(--accent); }
+  .nt-list-toggle > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .nt-list-toggle[open] > summary { margin-bottom: 12px; }
   .nt-direct-method a { color: #36c2ff; }
   .nt-secondary-label { margin: 32px 0 0; font-size: 14px; color: var(--muted); }
   @media (min-width: 621px) and (max-width: 1000px) {
@@ -880,8 +885,13 @@
       <p class="nt-direct-status" id="ntDirectGap"></p>
       <p class="nt-method">A股已披露持仓从2010年6月起回溯。2010至2013年若干季度的来源覆盖明显不足，图上留空断线，不视作减仓或清仓；2015年6月后按季度展示，ETF为已核实的中报、年报时点。虚线仅连接披露快照，不代表每日持仓路径。金额含价格涨跌及股东榜覆盖变化，不能把差额当作实际净买卖额。</p>
       <p class="nt-method">社保曲线为具名投资组合的直接A股持仓，含明确具名的委托组合；不含理事会直持、划转账户、基本养老保险及ETF。社保独立展示，不计入汇金／证金合计。</p>
-      <div class="nt-direct-coverage" id="ntDirectCoverage"></div>
-      <div class="nt-direct-details">
+      <details class="nt-list-toggle" id="ntDirectCoverageFold">
+        <summary>报告期覆盖明细</summary>
+        <div class="nt-direct-coverage" id="ntDirectCoverage"></div>
+      </details>
+      <details class="nt-list-toggle" id="ntDirectHoldingsFold">
+        <summary>持仓明细 · 直接A股 / ETF / 社保</summary>
+        <div class="nt-direct-details">
         <div class="nt-direct-detail-head">
           <div class="range-tabs" id="ntDirectTabs" role="tablist" aria-label="持仓明细类别">
             <button type="button" class="range-tab active" id="ntDirectStockTab" role="tab" aria-selected="true" aria-controls="ntDirectTable" data-view="stocks">直接A股</button>
@@ -892,7 +902,8 @@
         </div>
         <div class="nt-direct-count" id="ntDirectTableCount" aria-live="polite"></div>
         <div class="nt-etf-table" id="ntDirectTable" role="tabpanel" aria-labelledby="ntDirectStockTab" tabindex="0"></div>
-      </div>
+        </div>
+      </details>
       <details class="nt-direct-method">
         <summary>统计口径与来源</summary>
         <p>汇金／证金曲线识别中央汇金投资、中央汇金资产管理、中国证券金融，以及明确具名的汇金委托计划。社保投资组合单独识别、单独展示，不加入原有汇金／证金股票与ETF合计；保险、财政部、诚通、国新等未纳入。金额是已披露可识别部分，不是相关机构全部资产。</p>
@@ -948,7 +959,9 @@
         <label><input type="checkbox" data-indicator="shares" checked style="accent-color:#36c2ff">样本总份额（右轴）<span style="color:#36c2ff">━</span></label>
       </div>
       <div id="nationalTeamEtfFlowChart" role="img" aria-label="2010年以来重点宽基ETF日度净申购与区间累计走势图"></div>
-      <div class="nt-etf-table nt-flow-table" id="ntFlowTable"></div>
+      <details class="nt-list-toggle" id="ntFlowTableFold"><summary>ETF申赎样本明细</summary>
+        <div class="nt-etf-table nt-flow-table" id="ntFlowTable"></div>
+      </details>
       <p class="nt-method"><strong>右轴总份额（蓝线）：</strong>与净申购使用同一组9只样本及当前勾选，单位亿份；每天取各已上市样本截至观察日最近15个自然日内的最新份额后汇总，来源日期可能不同。缺少任一样本时留空，不补零；不依赖净值是否可得。为未复权份额存量，受折算影响，不是金额、净申购或国家队持有份额。样本按上市日期加入，早期并非始终9只。双轴刻度独立，不可直接比较两线高低或交点。</p>
       <p class="nt-method"><strong>统计口径：</strong>每日净申购估算＝（当日总份额－前一交易日总份额×当日折算比例）×当日单位净值，单位亿元；无折算时比例为1。累计值从当前可见区间首日重算。正值为净申购，负值为净赎回。来源为Tushare每日份额及净值，已按原始年报核对3次份额折算。</p>
       <p class="nt-method"><strong>历史覆盖：</strong>从2010年首个交易日开始；早期仅上证50ETF纳入，其他基金按上市日期逐步加入。2015年以前采用Tushare历史基金份额与净值，之后采用ETF日度份额接口；历史规模字段有不一致记录，未用于申赎计算。上市募集规模不作为当日申购。缺失不填零、不跨缺失交易日计算；缺失日总量及累计曲线断开，后续累计仅加总已知部分，不代表完整区间净申购。明细＊表示存在缺失，覆盖数量及可得起点随所选区间更新。</p>
