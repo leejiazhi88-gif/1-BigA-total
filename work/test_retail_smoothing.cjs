@@ -101,6 +101,7 @@ observed[40].amount = null;
 observed[70].amount = 0;
 observed.at(-1).amount = null;
 const withGap = mount(script.replace(/const retailData = .*;/, () => 'const retailData = ' + JSON.stringify(gap) + ';'));
+withGap.ranges[1].click();
 withGap.smoothing[1].click();
 const values = points(withGap.chart.option.series[0]);
 assert.equal(values.length, observed.length);

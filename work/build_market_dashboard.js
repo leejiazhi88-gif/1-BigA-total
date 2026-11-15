@@ -177,8 +177,8 @@ function htmlTemplate(data, echartsSource) {
         <button data-years="3">3年</button>
         <button data-years="5">5年</button>
         <button data-years="10">10年</button>
-        <button class="active" data-years="20">20年</button>
-        <button data-years="0">全部</button>
+        <button data-years="20">20年</button>
+        <button class="active" data-years="0">全部</button>
       </div>
       <div class="legend">
         <label class="market-toggle" data-market="sh"><input type="checkbox" checked data-market="sh"><i class="dot" style="background:var(--sh)"></i>上证</label>
@@ -210,7 +210,7 @@ const fmt = (n, digits = 2) => Number(n).toLocaleString("zh-CN", { minimumFracti
 const axisFmt = (n, digits = 1) => Number(n).toLocaleString("zh-CN", { minimumFractionDigits: 0, maximumFractionDigits: digits });
 const chart = echarts.init(document.getElementById("chart"), null, { renderer: "canvas" });
 const visibleMarkets = { sh: true, sz: true };
-let activeYears = 20;
+let activeYears = 0;
 let zoomRange = null;
 const topDates = [
   { xAxis: "2007-10-16", name: "2007顶" },

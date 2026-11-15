@@ -84,7 +84,10 @@ const css = `
     }
     .metric-reading { color: var(--text); font-weight: 700; }
     #valuationChart { height: 500px; width: 100%; }
-    #valuationLatestReading .valuation-percentile-row { display: flex; align-items: center; gap: 10px; margin-top: 6px; white-space: nowrap; font-size: 12px; }
+    #valuationLatestReading .valuation-percentile-row { display: flex; align-items: center; gap: 10px; margin-top: 7px; white-space: nowrap; font-size: 13px; font-weight: 650; line-height: 1.4; }
+    #valuationLatestReading .valuation-reading-main { display: flex; align-items: center; gap: 10px; white-space: nowrap; font-size: 13px; font-weight: 650; line-height: 1.4; }
+    #valuationLatestReading .valuation-reading-main .module-chart-name { font-size: inherit; }
+    #valuationLatestReading .valuation-reading-main small { margin-left: 4px; color: var(--muted); font-size: 12px; font-weight: 400; }
     #valuationLatestReading .module-chart-value { display: flex; align-items: center; gap: 6px; }
     .valuation-gauge { display: inline-block; position: relative; width: 112px; height: 5px; flex: none; border-radius: 4px; background: linear-gradient(to right,#319a82 0% 20%,#8ebd77 20% 40%,#c2bd77 40% 60%,#d9ac58 60% 80%,#c65d76 80% 100%); }
     .valuation-gauge i { position: absolute; top: -4px; width: 5px; height: 13px; border: 1px solid #fff5c9; border-radius: 3px; background: #a17b20; transform: translateX(-50%); box-shadow: 0 0 0 2px rgba(246,200,95,.15); }
@@ -133,9 +136,9 @@ const moduleHtml = `
             <button class="range-tab" data-years="1">1年</button>
             <button class="range-tab" data-years="3">3年</button>
             <button class="range-tab" data-years="5">5年</button>
-            <button class="range-tab" data-years="10">10年</button>
+            <button class="range-tab active" data-years="10">10年</button>
             <button class="range-tab" data-years="20">20年</button>
-            <button class="range-tab active" data-years="0">全部</button>
+            <button class="range-tab" data-years="0">全部</button>
           </div>
         </div>
         <div id="valuationSeriesControls" role="group" aria-label="选择指数曲线">
@@ -210,7 +213,7 @@ const js = `
     }
     const valuationChart = echarts.init(document.getElementById("valuationChart"), null, { renderer: "canvas" });
     let activeMetric = "pe";
-    let activeYears = 0;
+    let activeYears = 10;
     const selectedMarkets = new Set(["sh", "sz"]);
 
     function rowsForActiveRange(market, field) {
@@ -263,29 +266,32 @@ const js = `
           ? " 部分日期的国债收益率缺失，收益差仅显示同日数据齐全的观测，最新为 " + latestDate + "。PE与PB独立更新。" : "") +
         (activeMetric === "equityBondSpread" ? " 10年期国债收益率取中债到期收益率曲线；接口不可用时由中债官方公开数据补充。" : "");
       const peView = activeMetric === "pe" || activeMetric === "pePercentile";
+      const pairedView = peView || activeMetric === "pbPercentile";
+      const valuationLabel = peView ? "PE" : "PB";
       const peSamples = Object.fromEntries(["sh", "sz"].map(market => {
-        const rows = rowsForActiveRange(market, "pePercentile");
+        const rows = peView ? rowsForActiveRange(market, "pePercentile") : rowsForActiveRange(market, "pbPercentile").map(row => ({ date: row.date, pe: row.pb }));
         return [market, { rows, sorted: rows.map(row => row.pe).sort((a, b) => a - b) }];
       }));
       renderValuationReading = date => {
         const items = ["sh", "sz"].filter(market => selectedMarkets.has(market)).map(market => {
           const points = market === "sh" ? shPoints : szPoints;
-          if (peView) {
+          if (pairedView) {
             const sample = peSamples[market];
-            const pair = pairedPeReading(sample.rows, sample.sorted, date, valuationData[market]);
+            const fallback = peView ? valuationData[market] : valuationExtra[market].map(row => ({ date: row.date, pe: row.pb }));
+            const pair = pairedPeReading(sample.rows, sample.sorted, date, fallback);
             return { name: market === "sh" ? "上证" : "深证", color: COLORS[market], value: pair.pe, percentile: pair.percentile, date: pair.date, unit: "倍", digits: 2 };
           }
           const point = date ? points.find(point => point[0] === date) : points.at(-1);
           return { name: market === "sh" ? "上证" : "深证", color: COLORS[market], value: point?.[1], date: point?.[0], unit: cfg.unit, digits: 2 };
         });
-        renderChartLatest("valuationLatestReading", peView ? "PE(TTM) · PE历史分位" : cfg.title, items, (peView || cfg.fixedRange) ? rangeLabel + "样本" : "");
+        renderChartLatest("valuationLatestReading", pairedView ? (peView ? "PE(TTM) · PE历史分位" : "PB · PB历史分位") : cfg.title, items, (pairedView || cfg.fixedRange) ? rangeLabel + "样本" : "");
         const root = document.getElementById("valuationLatestReading");
         if (date) root.querySelector(".module-chart-date").textContent = "观察日期：" + date + " · " + rangeLabel + "样本";
         root.querySelectorAll(".module-chart-item").forEach((element, index) => {
           const item = items[index];
-          if (peView) {
-            element.querySelector(".module-chart-value").insertAdjacentText("afterbegin", "PE ");
-            element.insertAdjacentHTML("beforeend", '<div class="valuation-percentile-row"><span>PE分位 ' + (Number.isFinite(item.percentile) ? fmt(item.percentile, 2) + '%' : '--') + '</span>' + percentileGauge(item.percentile) + '</div>');
+          if (pairedView) {
+            element.innerHTML = '<div class="valuation-reading-main"><span class="module-chart-name">' + item.name + '</span><span>' + valuationLabel + ' ' + (Number.isFinite(item.value) ? fmt(item.value, 2) : '--') + '<small>倍</small></span></div>' +
+              '<div class="valuation-percentile-row"><span>' + valuationLabel + '分位 ' + (Number.isFinite(item.percentile) ? fmt(item.percentile, 2) + '%' : '--') + '</span>' + percentileGauge(item.percentile) + '</div>';
           } else if (cfg.fixedRange) {
             element.querySelector(".module-chart-value").insertAdjacentHTML("beforeend", percentileGauge(item.value));
           }
@@ -310,7 +316,7 @@ const js = `
           backgroundColor: "rgba(7,17,31,.96)", borderColor: "#36506f",
           textStyle: { color: "#edf4ff" },
           formatter(params) {
-            if (peView && params[0]?.value?.[0]) renderValuationReading(params[0].value[0]);
+            if (pairedView && params[0]?.value?.[0]) renderValuationReading(params[0].value[0]);
             const lines = params.map(item => item.marker + item.seriesName + "：<b>" +
               fmt(Number(item.value[1]), 2) + cfg.unit + "</b>");
             return "<b>" + (params[0]?.axisValueLabel || "") + "</b><br>" + lines.join("<br>");

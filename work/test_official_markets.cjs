@@ -41,6 +41,7 @@ const chart = {setOption(next, replace) {option = replace ? next : {...option, .
 vm.runInNewContext(script, {document: {getElementById: element,
   querySelectorAll(selector) {return selector.includes('MetricTabs') ? metrics : selector.includes('Smoothing') ? smoothing : selector.includes('RateControls') ? rates : selector.includes('SeriesControls') ? markets : ranges;}
 }, echarts: {init: () => chart}, window: {addEventListener() {}}});
+ranges.at(-1).click();
 assert.equal(option.series.length, 3);
 option.dataZoom[0].start = 40;
 markets[0].click(); markets[2].click();
@@ -168,6 +169,7 @@ vm.runInNewContext(gapScript, {document: {getElementById: element,
   querySelectorAll(selector) {return selector.includes('MetricTabs') ? metrics : selector.includes('Smoothing') ? smoothing : selector.includes('RateControls') ? rates : selector.includes('SeriesControls') ? markets : ranges;}
 }, echarts: {init: () => chart}, window: {addEventListener() {}}});
 metrics[6].click();
+ranges.at(-1).click();
 assert.equal(option.series[0].data[20][1], null, 'an incomplete month stays as an explicit gap');
 assert.equal(option.series[1].data[20][1], null);
 assert.equal(option.series[2].data[20][1], refinancing.markets.sz[20].refinanceFunds);

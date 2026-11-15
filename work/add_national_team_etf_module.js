@@ -81,8 +81,8 @@ const moduleHtml = `
           <button class="range-tab" data-range="1y" aria-pressed="false">1年</button>
           <button class="range-tab" data-range="3y" aria-pressed="false">3年</button>
           <button class="range-tab" data-range="5y" aria-pressed="false">5年</button>
-          <button class="range-tab" data-range="10y" aria-pressed="false">10年</button>
-          <button class="range-tab active" data-range="20y" aria-pressed="true">20年</button>
+          <button class="range-tab active" data-range="10y" aria-pressed="true">10年</button>
+          <button class="range-tab" data-range="20y" aria-pressed="false">20年</button>
           <button class="range-tab" data-range="all" aria-pressed="false">全部</button>
         </div>
       </div>
@@ -126,7 +126,7 @@ const script = `
     const flowChart = echarts.init(document.getElementById("nationalTeamEtfFlowChart"), null, { renderer: "canvas" });
     const groups = [...new Set(flowData.etfs.map(row => row.group))];
     const selectedGroups = new Set(groups);
-    let flowRange = "20y";
+    let flowRange = "10y";
     const visibleIndicators = { flow: true, shares: true };
     let flowZoom = { start: 0, end: 100 };
     document.getElementById("ntFlowFunds").innerHTML = groups.map(group =>
