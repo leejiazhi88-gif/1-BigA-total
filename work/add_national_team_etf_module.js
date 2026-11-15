@@ -94,7 +94,9 @@ const moduleHtml = `
         <label><input type="checkbox" data-indicator="shares" checked style="accent-color:#36c2ff">样本总份额（右轴）<span style="color:#36c2ff">━</span></label>
       </div>
       <div id="nationalTeamEtfFlowChart" role="img" aria-label="2010年以来重点宽基ETF日度净申购与区间累计走势图"></div>
-      <div class="nt-etf-table nt-flow-table" id="ntFlowTable"></div>
+      <details class="nt-list-toggle" id="ntFlowTableFold"><summary>ETF申赎样本明细</summary>
+        <div class="nt-etf-table nt-flow-table" id="ntFlowTable"></div>
+      </details>
       <p class="nt-method"><strong>右轴总份额（蓝线）：</strong>与净申购使用同一组9只样本及当前勾选，单位亿份；每天取各已上市样本截至观察日最近15个自然日内的最新份额后汇总，来源日期可能不同。缺少任一样本时留空，不补零；不依赖净值是否可得。为未复权份额存量，受折算影响，不是金额、净申购或国家队持有份额。样本按上市日期加入，早期并非始终9只。双轴刻度独立，不可直接比较两线高低或交点。</p>
       <p class="nt-method"><strong>统计口径：</strong>每日净申购估算＝（当日总份额－前一交易日总份额×当日折算比例）×当日单位净值，单位亿元；无折算时比例为1。累计值从当前可见区间首日重算。正值为净申购，负值为净赎回。来源为Tushare每日份额及净值，已按原始年报核对3次份额折算。</p>
       <p class="nt-method"><strong>历史覆盖：</strong>从2010年首个交易日开始；早期仅上证50ETF纳入，其他基金按上市日期逐步加入。2015年以前采用Tushare历史基金份额与净值，之后采用ETF日度份额接口；历史规模字段有不一致记录，未用于申赎计算。上市募集规模不作为当日申购。缺失不填零、不跨缺失交易日计算；缺失日总量及累计曲线断开，后续累计仅加总已知部分，不代表完整区间净申购。明细＊表示存在缺失，覆盖数量及可得起点随所选区间更新。</p>
