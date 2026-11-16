@@ -4,7 +4,7 @@ const { latestCss, chartShell, latestScript } = require("./chart_latest_readings
 const { percentileGauge, pairedPeReading, percentileColor } = require("./valuation_reading");
 
 const ROOT = path.resolve(__dirname, "..");
-const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
+const OUTPUT = process.env.MARKET_BUILD_OUTPUT || (process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html"));
 const VALUATION_DATA_FILE = path.join(ROOT, "work", "valuation_data.json");
 const START_MARKER = "<!-- VALUATION_MODULE_START -->";
 const END_MARKER = "<!-- VALUATION_MODULE_END -->";

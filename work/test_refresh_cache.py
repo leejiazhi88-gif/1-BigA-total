@@ -70,6 +70,10 @@ class IncrementalTests(unittest.TestCase):
         self.assertTrue(due(source, {}, "report", 7, "20261103", True))
         self.assertTrue(due(source, {"report": {"checkedAt": "2026-11-02", "requestedEnd": "20261001"}}, "report", 7, "20261103"))
         self.assertTrue(due(self.path / "missing.json", {}, "report", 7, "20261103"))
+        source.write_text("invalid JSON")
+        self.assertTrue(due(source, {}, "report", 7, "20261103"))
+        cache.write_json(source, {"meta": {"checkedAt": "invalid date"}})
+        self.assertTrue(due(source, {}, "report", 7, "20261103"))
 
 
 if __name__ == "__main__":

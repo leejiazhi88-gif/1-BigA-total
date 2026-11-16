@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
-const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
+const OUTPUT = process.env.MARKET_BUILD_OUTPUT || (process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html"));
 const FLOW_FILE = path.join(ROOT, "work", "etf_flow_data.json");
 const { flowWindow, summarizeFlows, validateFlowHistory } = require("./etf_flow_history");
 const { buildShareStocks, sumShareStocks, centerZeroAxis } = require("./etf_share_stock");

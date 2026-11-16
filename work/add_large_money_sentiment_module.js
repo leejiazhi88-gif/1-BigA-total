@@ -4,9 +4,9 @@ const { guideCss, explanationScript } = require("./sentiment_explanations");
 const { chartShell, latestScript } = require("./chart_latest_readings");
 
 const ROOT = path.resolve(__dirname, "..");
-const OUTPUT = process.argv.includes("--online-only")
+const OUTPUT = process.env.MARKET_BUILD_OUTPUT || (process.argv.includes("--online-only")
   ? path.join(ROOT, "index.html")
-  : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
+  : path.join(ROOT, "outputs", "a_share_20y_dashboard.html"));
 const DATA_FILE = path.join(ROOT, "work", "large_money_sentiment_data.json");
 const HOLDINGS_FILE = path.join(ROOT, "work", "northbound_holdings.json");
 const FUND_REPORTS_FILE = path.join(ROOT, "work", "large_money_fund_reports.json");

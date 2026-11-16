@@ -4,7 +4,7 @@ const { guideCss, explanationScript } = require("./sentiment_explanations");
 const { chartShell, latestScript } = require("./chart_latest_readings");
 
 const ROOT = path.resolve(__dirname, "..");
-const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
+const OUTPUT = process.env.MARKET_BUILD_OUTPUT || (process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html"));
 const DATA_FILE = path.join(ROOT, "work", "official_sentiment_data.json");
 const REFINANCING_FILE = path.join(ROOT, "work", "refinancing_data.json");
 

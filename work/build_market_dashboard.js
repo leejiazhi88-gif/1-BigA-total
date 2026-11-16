@@ -2,7 +2,9 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
-const OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
+const PUBLISH_OUTPUT = process.argv.includes("--online-only") ? path.join(ROOT, "index.html") : path.join(ROOT, "outputs", "a_share_20y_dashboard.html");
+let OUTPUT = PUBLISH_OUTPUT;
+let buildDirectory;
 const ROOT_INDEX = path.join(ROOT, "index.html");
 const START = "2006-06-05";
 let END;
@@ -441,10 +443,14 @@ async function main() {
     throw new Error("Unable to find a usable Python interpreter");
   }
   if (!process.argv.includes("--skip-refresh")) {
-    const flags = ["--full-refresh", "--reports"].filter(flag => process.argv.includes(flag));
+    const flags = ["--full-refresh", "--reports", "--retry-failed"].filter(flag => process.argv.includes(flag));
     execFileSync(python, [path.join(ROOT, "work", "refresh_dashboard.py"), ...flags], { stdio: "inherit" });
   }
   const overview = readMarketOverview();
+  fs.mkdirSync(path.dirname(PUBLISH_OUTPUT), { recursive: true });
+  buildDirectory = fs.mkdtempSync(path.join(path.dirname(PUBLISH_OUTPUT), ".dashboard-build-"));
+  OUTPUT = path.join(buildDirectory, "index.html");
+  process.env.MARKET_BUILD_OUTPUT = OUTPUT;
   END = overview.meta.end;
   const inRange = rows => rows.filter(row => row.date >= START && row.date <= END);
   const sh = lastByWeek(inRange(overview.sh));
@@ -460,11 +466,18 @@ async function main() {
   require("./add_large_money_sentiment_module");
   require("./add_official_sentiment_module");
   require("./add_national_team_etf_module");
-  if (OUTPUT !== ROOT_INDEX) fs.copyFileSync(OUTPUT, ROOT_INDEX);
+  const completed = fs.readFileSync(OUTPUT, "utf8");
+  for (const section of ["valuation", "retail-sentiment", "large-money-sentiment", "official-sentiment", "national-team-etf"]) {
+    if (!completed.includes('id="' + section + '"')) throw new Error("Incomplete dashboard: " + section);
+  }
+  fs.renameSync(OUTPUT, PUBLISH_OUTPUT);
+  if (PUBLISH_OUTPUT !== ROOT_INDEX) fs.copyFileSync(PUBLISH_OUTPUT, ROOT_INDEX);
+  fs.rmSync(buildDirectory, { recursive: true, force: true });
+  buildDirectory = undefined;
   console.log(JSON.stringify({
-    output: OUTPUT,
+    output: PUBLISH_OUTPUT,
     rootIndex: ROOT_INDEX,
-    bytes: fs.statSync(OUTPUT).size,
+    bytes: fs.statSync(PUBLISH_OUTPUT).size,
     shPoints: sh.length,
     szPoints: sz.length,
     shLatest: data.stats.sh,
@@ -473,6 +486,7 @@ async function main() {
 }
 
 main().catch((error) => {
+  if (buildDirectory) fs.rmSync(buildDirectory, { recursive: true, force: true });
   console.error(error);
   process.exit(1);
 });

@@ -23,6 +23,26 @@
 
 ## 运行
 
+### 全页更新与验收
+
+日常更新只生成线上根入口，不维护旧本地HTML副本：
+
+```bash
+MARKET_END_DATE=YYYYMMDD node work/build_market_dashboard.js --online-only
+```
+
+每次生成 [逐项更新验收报告](outputs/refresh-latest.md) 和对应JSON，列明各页签实际数据日期、来源核验日期、缓存复用、缺报、覆盖不足及失败原因。月报／季报保留真实报告期，不用当天日期冒充新持仓。失败任务还原原输出，任何取数或清单检查失败均阻止新页面构建；各模块全部构建成功后才替换正式入口。
+
+网络失败后，沿用同一截止日重试；成功任务仅在代码、参数和全部输出校验值未变时复用：
+
+```bash
+MARKET_END_DATE=YYYYMMDD node work/build_market_dashboard.js --online-only --retry-failed
+```
+
+只检查现有数据、不取数：`MARKET_END_DATE=YYYYMMDD python3 work/refresh_dashboard.py --audit-only`。不覆盖失败重试检查点，也不会把检查缓存记录为重新访问来源。国家队／社保直接持仓等独立披露快照若缺少新的适用报告期，会阻断验收，仍需按下文的报告核查流程补齐；已核实的未披露项目保留空值。
+
+低频数据沿用现有复查周期；`--reports` 强制重新核验调度中的低频任务，`--full-refresh` 重新核查历史接口缓存。原始响应、运行日志和失败重试检查点留在不入库的 `.tools/`，换电脑后首次更新会重新取数。完整规则见 [HANDOFF.md](HANDOFF.md#数据更新验收与失败重试2026-11-16)。
+
 ### 大资金市场拆分
 
 `work/large_money_markets.py` 从2000年开始按月抓取大宗交易、按年分页抓取股东增减持及北向资金，使用 `.tools/large-money-markets/` 缓存并复用既有大宗交易核验缓存。普通 `fetch_large_money_sentiment_data.py` 刷新已使用同一流程，避免后续更新丢失沪深拆分；`--blocks-only` 只替换大宗交易指标，保留其他指标。数据输出为 `large_money_sentiment_data.json` 的 `series`（两市合计）和 `markets.sh/sz`。
@@ -45,7 +65,7 @@ node work/test_large_money_ui.cjs
 生成页面：
 
 ```powershell
-node ./work/build_market_dashboard.js
+node ./work/build_market_dashboard.js --online-only
 ```
 
 本地预览：
@@ -62,7 +82,7 @@ http://127.0.0.1:9876
 
 ## 主要文件
 
-- `outputs/a_share_20y_dashboard.html`：生成后的仪表盘
+- `index.html`：线上仪表盘唯一正式入口
 - `work/build_market_dashboard.js`：总览生成入口
 - `work/fetch_market_overview_data.py`：总览价格、PE(TTM)、过去12个月合计利润数据更新脚本
 - `work/market_overview_data.json`：总览数据缓存

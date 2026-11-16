@@ -5,6 +5,8 @@ const { pathToFileURL } = require('node:url');
 const { chromium } = require('playwright');
 
 const root = path.resolve(__dirname, '..');
+const valuationSource = JSON.parse(fs.readFileSync(path.join(root, 'work/valuation_data.json')));
+const overviewSource = JSON.parse(fs.readFileSync(path.join(root, 'work/market_overview_data.json')));
 const artifacts = path.join(root, '.tools/qa/module-latest');
 const modules = [
   { prefix: 'valuation', chart: 'valuationChart', reading: 'valuationLatestReading' },
@@ -23,6 +25,7 @@ async function checkChart(page, config) {
     const chartRect = chart.getDom().getBoundingClientRect();
     const plot = chart.getModel().getComponent('grid').coordinateSystem.getRect();
     const items = [...header.querySelectorAll('.module-chart-item')];
+    const valuationMetric = chartId === 'valuationChart' ? document.querySelector('#valuationMetricTabs [data-metric].active')?.dataset.metric : null;
     const monthly = chartId === 'retailAccountsChart' || chartId === 'retailFundsChart';
     return {
       topClearance: chartRect.top + plot.y - headerRect.bottom,
@@ -30,11 +33,13 @@ async function checkChart(page, config) {
       axisName: option.yAxis.some(axis => axis.name),
       texts: items.map(item => ({
         name: item.querySelector('.module-chart-name').textContent,
-        value: item.querySelector('.module-chart-value').firstChild.textContent,
-        font: getComputedStyle(item.querySelector('.module-chart-value')).fontSize,
+        value: (item.querySelector('.module-chart-value') || item.querySelector('.valuation-reading-main > span:last-child')).firstChild.textContent.replace(/^(PE|PB)\s+/, ''),
+        paired: Boolean(item.querySelector('.valuation-reading-main')),
+        font: getComputedStyle(item.querySelector('.module-chart-value') || item.querySelector('.valuation-reading-main > span:last-child')).fontSize,
         inside: item.getBoundingClientRect().left >= shell.left && item.getBoundingClientRect().right <= shell.right,
-        color: getComputedStyle(item).color
+        color: getComputedStyle(item.querySelector('.module-chart-name')).color
       })),
+      valuationMetric,
       points: option.series.map(series => {
         let point;
         if (monthly) {
@@ -63,6 +68,13 @@ async function checkChart(page, config) {
   for (const text of result.texts) {
     const point = result.points.find(point => config.chart === 'valuationChart' ? point.name.startsWith(text.name) : point.name === text.name);
     assert.ok(point, `${config.chart}: missing series ${text.name}`);
+    if (text.paired) {
+      const market = text.name === '上证' ? 'sh' : 'sz';
+      const field = result.valuationMetric === 'pbPercentile' ? 'pb' : 'pe';
+      const source = field === 'pb' ? valuationSource : overviewSource;
+      point.value = source[market].find(row => row.date === point.date)?.[field];
+      assert.ok(Number.isFinite(point.value), `${config.chart}: missing paired source reading`);
+    }
     assert.equal(text.font, '13px');
     assert.equal(text.color, 'rgb(' + point.color.slice(1).match(/../g).map(value => parseInt(value, 16)).join(', ') + ')');
     assert.equal(text.inside, true, `${config.chart}: ${text.name} overflows`);
@@ -71,7 +83,7 @@ async function checkChart(page, config) {
       const digits = text.value.split('.')[1]?.length || 0;
       const expected = Number(point.value.toLocaleString('en-US', { useGrouping: false, minimumFractionDigits: digits, maximumFractionDigits: digits }));
       assert.equal(number, expected, `${config.chart}: incorrect latest value`);
-    } else assert.equal(text.value, '--');
+    } else if (!Number.isFinite(point.value)) assert.equal(text.value, '--');
     if (point.date) assert.ok(result.dateText.includes(point.date), `${config.chart}: missing actual date ${point.date}`);
   }
 }

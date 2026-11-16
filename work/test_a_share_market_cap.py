@@ -39,8 +39,10 @@ class MarketCapTests(unittest.TestCase):
     def test_committed_history_has_early_and_later_market_totals(self):
         data = read(ROOT / "work" / "a_share_market_cap.json")
         holdings = read(ROOT / "work" / "holding_denominators.json")
-        self.assertEqual(set(data["periods"]), set(holdings["stocks"]))
-        self.assertEqual(len(data["periods"]), 58)
+        pending = set(read(ROOT / "work" / "disclosure_status.json")["pendingCapitalPeriods"])
+        self.assertEqual(set(data["periods"]), set(holdings["stocks"]) | pending)
+        self.assertFalse(pending & set(holdings["stocks"]))
+        self.assertGreaterEqual(len(data["periods"]), 58)
         for row in data["periods"].values():
             self.assertAlmostEqual(row["amount"], sum(r["amount"] for r in row["exchanges"].values()))
             self.assertEqual(row["count"], sum(r["count"] for r in row["exchanges"].values()))

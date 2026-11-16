@@ -1,13 +1,13 @@
 """Probe the latest quarterly holdings against existing full-portfolio criteria."""
 import json
 import fetch_large_money_fund_metrics as metrics
+from refresh_inventory import applicable_periods
 
 metrics.CACHE = metrics.CACHE / metrics.TODAY
 token = metrics.get_token()
 basic = metrics.basics(token)
 funds = {code: fund for code, fund in basic.items() if metrics.is_active(fund)}
-period = max(f'{year}{quarter}' for year in range(2005, int(metrics.END_DATE[:4]) + 1)
-             for quarter in ('0331', '0630', '0930', '1231') if f'{year}{quarter}' < metrics.END_DATE)
+period = applicable_periods(metrics.END_DATE)[-1]
 nav = []
 for market in ('E', 'O'):
     nav.extend(metrics.request(token, 'fund_nav', {'nav_date': period, 'market': market}, 'ts_code,nav_date,net_asset'))
