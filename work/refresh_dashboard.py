@@ -69,7 +69,7 @@ def write_report(report):
         clean = lambda value: str(value or "—").replace("|", "／").replace("\n", " ")
         display = {**row, "status": row.get("statusLabel", row["status"])}
         lines.append("| " + " | ".join(clean(display.get(key)) for key in ("label", "latest", "checkedAt", "status", "reason")) + " |")
-    lines += ["", "## 阻断项", ""] + ["- " + str(item) for item in report["blockingIssues"]]
+    lines += ["", "## 阻断项", ""] + (["- " + str(item) for item in report["blockingIssues"]] or ["无。"])
     target = ROOT / "outputs" / "refresh-latest.md"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text("\n".join(lines) + "\n", encoding="utf-8")

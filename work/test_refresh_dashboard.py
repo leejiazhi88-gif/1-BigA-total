@@ -70,6 +70,8 @@ class RefreshDashboardTests(unittest.TestCase):
         self.assertFalse(dashboard.STATE.exists())
         self.assertTrue((self.logs / "audit-latest.json").exists())
         self.assertTrue(all(row["checkedAt"] is None for row in self.report()["jobs"].values()))
+        markdown = (self.root / "outputs" / "refresh-latest.md").read_text()
+        self.assertTrue(markdown.endswith("无。\n"))
 
     def test_inventory_crash_produces_failure_report(self):
         self.audit.side_effect = ValueError("invalid periods")
