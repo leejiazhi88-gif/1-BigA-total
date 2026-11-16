@@ -6,6 +6,7 @@ import argparse
 import csv
 import json
 import math
+import hashlib
 from bisect import bisect_right
 from pathlib import Path
 import sys
@@ -91,7 +92,18 @@ def main():
         data = read(SITE / item['path'] / 'data.json')
         main_payload = read(SITE / item['path'] / 'main.json')
         companies = read(SITE / item['path'] / 'companies.json')
-        assert {**main_payload, 'latestCompanies': companies} == data, '按需加载数据与原始数据不一致'
+        assert {**main_payload, 'latestCompanies': data['latestCompanies']} == data, '主图数据与原始数据不一致'
+        assert companies['schema']==2
+        records=[dict(zip(companies['fields'],row)) for row in companies['rows']]
+        assert len(records)==len(data['latestCompanies'])
+        groups=read(SITE/item['path']/'sectors.json')['groups']
+        ordered=sorted(groups,key=lambda g:g['latestQuote']['marketCap'] or 0,reverse=True)
+        assert companies['groups']==[[g['code'],g['name'],g['latestQuote']['marketCap']] for g in ordered]
+        for projected,original in zip(records,data['latestCompanies']):
+            assert all(projected[k]==original.get(k) for k in companies['fields'] if k not in ['sector','valuation']), '公司展示字段变动'
+            assert original['code'] in ordered[projected['sector']]['codes'], '公司归属变动'
+        for name,version in item['payloadVersions'].items():
+            assert hashlib.sha256((SITE/item['path']/name).read_bytes()).hexdigest()[:16]==version, '缓存版本不符'
         assert item['latest'] == data['series'][-1]
         if 'latestObservation' in item:
             assert item['latestObservation'] == data['latestQuote']

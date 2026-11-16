@@ -63,3 +63,11 @@ html{scroll-padding-top:0}
 #industry-electronics .company-percentile .pe-percentile-track{flex:0 0 88px;width:88px;height:4px}
 #industry-electronics .with-company-valuations td,#industry-electronics .with-company-valuations th{padding-left:13px;padding-right:13px}
 @media(max-width:720px){#industry-electronics .with-company-valuations table{min-width:990px}#industry-electronics .company-pe-rank{width:158px}#industry-electronics .company-percentile .pe-percentile-track{flex-basis:74px;width:74px}}
+
+.company-heading-with-nav{display:flex;align-items:center;gap:20px;min-width:0;flex:1}
+.company-heading-with-nav h2{flex:none}
+.company-sector-nav{display:flex;gap:5px;min-width:0;overflow-x:auto;scrollbar-width:thin;white-space:nowrap;padding:3px 1px}
+.company-sector-nav button{flex:none;border:1px solid #dce5df;border-radius:5px;background:transparent;color:#6c8178;padding:3px 9px;font-size:11px;line-height:1.5}
+.company-sector-nav button[aria-pressed="true"]{background:#147b76;border-color:#147b76;color:#fff}
+.company-sector-nav button:disabled{opacity:.35;cursor:default}
+@media(max-width:720px){.companies-section .section-header>.company-heading-with-nav{flex-direction:column;align-items:flex-start;width:100%;gap:6px}.company-sector-nav{width:100%}.company-sector-nav button{font-size:10px;padding:3px 8px}}

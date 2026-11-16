@@ -26,7 +26,7 @@ def close(a, b):
         assert abs(float(a)-float(b)) <= max(1e-6, abs(float(a))*1e-12), (a,b)
 
 def paths(catalog):
-    result = ['company-pe.json','company-pe-source.json.gz','catalog.json','catalog.js','all-industries-audit.json','refresh-source.json.gz','app.js','index.html','style.css']
+    result = ['company-pe-source.json.gz','catalog.json','catalog.js','all-industries-audit.json','refresh-source.json.gz','app.js','index.html','style.css']
     for item in catalog['industries']:
         for name in ['main.json','companies.json','data.json','data.js','sectors.json','sectors.js','company-quarterly.csv','quarterly.csv',
                      'latest-quotes-source.json','sw-alignment-audit.json','data-manifest.json']:

@@ -113,7 +113,7 @@ def collect(asof=None):
     quote_codes = set()
     quote_starts = []
     jobs['basics'] = ('stock_basic', {'list_status': 'L'}, 'ts_code,name,list_date,list_status', 10000)
-    jobs['companyQuotes'] = ('daily_basic', {'trade_date': quote_day}, 'ts_code,trade_date,total_mv', 6000)
+    jobs['companyQuotes'] = ('daily_basic', {'trade_date': quote_day}, 'ts_code,trade_date,total_mv,pe_ttm', 6000)
     for i in catalog['industries']:
         jobs['members:' + i['code']] = ('index_member_all', {'l1_code': i['code'], 'is_new': 'Y'}, '', 7000)
         source = read(SITE / i['path'] / 'sw-source.json')
@@ -157,7 +157,7 @@ def collect(asof=None):
     quoted = {r['ts_code'] for r in result['companyQuotes'] if r.get('total_mv') is not None}
     missing_quotes = [r['ts_code'] for r in result['basics'] if r['ts_code'] not in quoted]
     with cf.ThreadPoolExecutor(max_workers=4) as pool:
-        pending = {pool.submit(client.call, 'daily_basic', {'ts_code': code, 'start_date': '20050101', 'end_date': asof}, 'ts_code,trade_date,total_mv', 6000): code for code in missing_quotes}
+        pending = {pool.submit(client.call, 'daily_basic', {'ts_code': code, 'start_date': '20050101', 'end_date': asof}, 'ts_code,trade_date,total_mv,pe_ttm', 6000): code for code in missing_quotes}
         for future in cf.as_completed(pending):
             result['carry:' + pending[future]] = future.result()
     source = dict(asOf=asof, quoteDate=quote_day, latestPeriod=latest_period, periods=periods,

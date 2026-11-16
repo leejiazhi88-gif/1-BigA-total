@@ -240,7 +240,7 @@ let coverageReady=false,quarterReady=false,companiesReady=false;
 function renderQuarterTable(){const rows=reverseTable?[...S].reverse():S;$('quarter-body').innerHTML=rows.map(s=>`<tr class="${s.estimatedCount?'estimate-row':''}"><td title="${s.isLatest?'财务沿用 '+s.financialQuarter:''}">${pointLabel(s)}</td><td>${fmt(s.marketCap,2)}</td><td title="${official?peLabel+'；'+(s.valuationDate?date(s.valuationDate):peReason(s)):peReason(s)+'；TTM利润 '+fmt(s.peProfit,4)+'亿元'}">${peText(s)}${!official&&s.peCoverage<.9999?' ◦':''}</td><td>${fmt(s.revenue,2)}${s.estimatedCount?' *':s.missingCount?' †':''}</td><td>${fmt(s.profit,2)}${s.estimatedCount?' *':s.missingCount?' †':''}</td><td>${s.companies}</td><td><span class="tag ${s.estimatedCount?'estimate':s.missingCount?'partial':''}">${s.isLatest?'财务沿用 '+s.financialQuarter+(s.estimatedCount?' · 含估算':''):!s.companies?'无样本':s.estimatedCount?s.reportedCount+' 实报 + '+s.estimatedCount+' 估算':s.missingCount?'缺 '+s.missingCount+' 家 · 已知合计':'全部实报'}</span></td></tr>`).join('');}
 $('table-order').addEventListener('click',()=>{reverseTable=!reverseTable;$('table-order').textContent='当前：'+(reverseTable?'由近到远':'由远到近')+' ⇅';renderQuarterTable();});
 const companySector=new Map();
-let sectorJob, companyJob, companyValuations=null, companyRangeKey=null, sectorsExpanded=false;
+let sectorJob, companyJob, companyValuations=null, companyRangeKey=null, companyGroups=[], sectorsExpanded=false;
 if(companyValuationsEnabled){
  root.querySelector('.company-table thead th:nth-child(4)').insertAdjacentHTML('beforebegin','<th class="company-pe-heading">PE <small>TTM · 倍</small></th><th class="company-percentile-heading">PE分位</th>');
  root.querySelector('.company-table').classList.add('with-company-valuations');
@@ -253,35 +253,67 @@ function ensureSectors(){
  return sectorJob;
 }
 function ensureCompanies(){
- if(!companyJob)companyJob=Promise.all([loadIndustryJSON(root.dataset.path+'companies.json'),companyValuationsEnabled?loadIndustryJSON(root.dataset.path+'company-pe.json'):null]).then(([data,valuations])=>{D.latestCompanies=data;companyValuations=valuations;}).catch(error=>{companyJob=null;throw error;});
+ if(!companyJob)companyJob=loadIndustryJSON(root.dataset.path+'companies.json').then(table=>{
+  companyGroups=table.groups.map(([code,name,marketCap])=>({code,name,series:[{marketCap}],codes:[]}));
+  D.latestCompanies=table.rows.map(row=>{
+   const record=Object.fromEntries(table.fields.map((field,i)=>[field,row[i]])),group=companyGroups[record.sector];
+   group.codes.push(record.code);companySector.set(record.code,group);return record;
+  });
+  companyValuations=table.valuation||null;
+ }).catch(error=>{companyJob=null;throw error;});
  return companyJob;
 }
 function companyValuationCells(company){
- const value=companyValuations?.companies[company.code],pe=value?.peTtm,{start,end}=percentileBounds();
+ const [pe,offset=0,deltas=[],windows=[]]=company.valuation||[],{start,end}=percentileBounds();
  let total=0,below=0;
- if(value){
-  const preset=S[last].isLatest?GLOBAL_VIEW.rangePreset:null;
-  if(preset&&value.presets[preset])[total,below]=value.presets[preset];
-  else{const from=value.cumulative[first],to=value.cumulative[last+1];total=to[0]-from[0];below=to[1]-from[1];}
- }
+ const preset=S[last].isLatest?GLOBAL_VIEW.rangePreset:null,index=companyValuations.presetKeys.indexOf(preset);
+ if(index>=0){total=windows[index*2]||0;below=windows[index*2+1]||0;}
+ else for(let i=0;i<deltas.length;i+=2){const quarter=offset+i/2;if(quarter>=first&&quarter<=last){total+=deltas[i];below+=deltas[i+1];}}
  const rank=positivePE(pe)&&total?below/total:null,color=rank==null?'#839194':rank<=.2?'#28866a':rank>=.8?'#b55766':'#a28130';
- const hint=`${date(value?.quoteDate)} PE(TTM)；区间 ${date(start)}—${date(end)}；${total} 个有效正日度样本；包含相等值`;
- return `<td class="company-pe" title="${esc(date(value?.quoteDate)+' daily_basic.pe_ttm'+(!positivePE(pe)?'；非正或无可用PE':''))}">${positivePE(pe)?fmt(pe,2):'—'}</td><td class="company-pe-rank"><span class="pe-percentile company-percentile${rank==null?' percentile-unavailable':''}" style="--pe-color:${color}" title="${esc(hint)}"><strong>${rank==null?'—':pct(rank,1)}</strong><i class="pe-percentile-track" aria-hidden="true">${rank==null?'':`<b style="left:${rank*100}%"></b>`}</i></span></td>`;
+ const hint=positivePE(pe)?`${date(company.quoteDate)} PE(TTM)；区间 ${date(start)}—${date(end)}；${total} 个有效正日度样本；包含相等值`:`${date(company.quoteDate)} 最新PE非正或无值，分位不适用`;
+ return `<td class="company-pe" title="${esc(date(company.quoteDate)+' daily_basic.pe_ttm'+(!positivePE(pe)?'；非正或无可用PE':''))}">${positivePE(pe)?fmt(pe,2):'—'}</td><td class="company-pe-rank"><span class="pe-percentile company-percentile${rank==null?' percentile-unavailable':''}" style="--pe-color:${color}" title="${esc(hint)}"><strong>${rank==null?'—':pct(rank,1)}</strong><i class="pe-percentile-track" aria-hidden="true">${rank==null?'':`<b style="left:${rank*100}%"></b>`}</i></span></td>`;
 }
+const companyHeading=root.querySelector('.companies-section .section-header>div');
+companyHeading.classList.add('company-heading-with-nav');
+const companyNavigation=document.createElement('nav');companyNavigation.className='company-sector-nav';companyNavigation.setAttribute('aria-label','公司明细二级行业跳转');companyHeading.appendChild(companyNavigation);
+const companyScroll=root.querySelector('.company-table');let companyNavigationFrame=0;
+function syncCompanyNavigation(){
+ companyNavigationFrame=0;
+ const headers=[...$('company-body').querySelectorAll('[data-company-group]')];if(!headers.length)return;
+ const top=companyScroll.getBoundingClientRect().top+companyScroll.querySelector('thead').getBoundingClientRect().height+2;
+ let active=headers[0].dataset.companyGroup;
+ for(const header of headers){if(header.getBoundingClientRect().top<=top)active=header.dataset.companyGroup;else break;}
+ if(companyScroll.scrollHeight>companyScroll.clientHeight+1&&companyScroll.scrollTop+companyScroll.clientHeight>=companyScroll.scrollHeight-2)active=headers.at(-1).dataset.companyGroup;
+ for(const button of companyNavigation.querySelectorAll('button')){
+  const selected=button.dataset.companyJump===active&&!button.disabled;
+  button.setAttribute('aria-pressed',String(selected));
+  if(selected){const r=button.getBoundingClientRect(),nav=companyNavigation.getBoundingClientRect();if(r.left<nav.left)companyNavigation.scrollLeft+=r.left-nav.left;else if(r.right>nav.right)companyNavigation.scrollLeft+=r.right-nav.right;}
+ }
+}
+companyScroll.addEventListener('scroll',()=>{if(!companyNavigationFrame)companyNavigationFrame=requestAnimationFrame(syncCompanyNavigation);},{passive:true});
+companyNavigation.addEventListener('click',event=>{
+ const button=event.target.closest('[data-company-jump]');if(!button||button.disabled)return;
+ const target=[...$('company-body').querySelectorAll('[data-company-group]')].find(el=>el.dataset.companyGroup===button.dataset.companyJump);if(!target)return;
+ const top=companyScroll.scrollTop+target.getBoundingClientRect().top-companyScroll.getBoundingClientRect().top-companyScroll.querySelector('thead').getBoundingClientRect().height-1;
+ companyScroll.scrollTo({top:Math.max(0,top),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+ requestAnimationFrame(syncCompanyNavigation);
+});
 function renderCompanies(){
  companyRangeKey=JSON.stringify(percentileBounds());
  const query=$('company-search').value.trim().toLowerCase(),only=$('estimated-only').checked,columns=companyValuationsEnabled?9:7;
  if(companyValuationsEnabled)root.querySelector('.company-percentile-heading').textContent='PE分位 · '+percentileWindowLabel();
  const rows=D.latestCompanies.filter(r=>(!only||r.status==='estimated')&&(!query||(r.name+r.code+(companySector.get(r.code)?.name||'')).toLowerCase().includes(query)));
  $('company-count').textContent=`财报 ${short(L.quarter)} · 市值 ${date(D.meta.companyQuoteAsOf)}${companyValuationsEnabled?' · PE分位 '+percentileWindowLabel():''} · 显示 ${rows.length} / ${D.latestCompanies.length} 家 · 二级行业及公司按市值降序`;
- const companyGroups=[...GROUPS].sort((a,b)=>(b.series.at(-1).marketCap||0)-(a.series.at(-1).marketCap||0));
- const sections=companyGroups.map(group=>({group,rows:rows.filter(r=>companySector.get(r.code)?.code===group.code)}));
+ const orderedGroups=companyGroups;
+ const sections=orderedGroups.map(group=>({group,rows:rows.filter(r=>companySector.get(r.code)?.code===group.code)}));
  const unassigned=rows.filter(r=>!companySector.has(r.code));if(unassigned.length)sections.push({group:{code:'unassigned',name:'未分类',series:[]},rows:unassigned});
+ companyNavigation.innerHTML=sections.map(({group,rows})=>`<button type="button" data-company-jump="${esc(group.code)}" aria-pressed="false" ${rows.length?'':'disabled'}>${esc(group.name)}</button>`).join('');
  $('company-body').innerHTML=sections.filter(section=>section.rows.length).map(({group,rows:groupRows})=>{
   groupRows.sort((a,b)=>(b.marketCap??-Infinity)-(a.marketCap??-Infinity)||a.code.localeCompare(b.code));
   const header=`<tr class="company-group" data-company-group="${esc(group.code)}"><th colspan="${columns}" scope="rowgroup"><span>${esc(group.name)}</span><small>${groupRows.length} 家</small><strong>${official?'申万行业市值':'行业总市值'} ${fmt(group.series?.at(-1)?.marketCap,2)} 亿</strong></th></tr>`;
   return header+groupRows.map(r=>`<tr data-company-code="${esc(r.code)}" data-company-sector="${esc(group.code)}" class="${r.status==='estimated'?'estimate-row':''}"><td>${esc(r.name)}</td><td>${esc(r.code)}</td><td class="company-market-cap" title="${date(r.quoteDate)} 公司总股本×A股价${r.quoteCarried?'；沿用 '+date(r.quoteDate):''}">${fmt(r.marketCap,2)}</td>${companyValuationsEnabled?companyValuationCells(r):''}<td>${fmt(r.revenue,2)}</td><td>${fmt(r.profit,2)}</td><td>${date(r.announcementDate)}</td><td><span class="tag ${r.status==='estimated'?'estimate':r.status==='missing'?'partial':''}">${r.status==='estimated'?'估算':r.status==='missing'?'财务缺失':'已披露'}</span></td></tr>`).join('');
  }).join('')||`<tr><td colspan="${columns}" style="text-align:center">没有匹配的公司</td></tr>`;
+ requestAnimationFrame(syncCompanyNavigation);
 }
 $('company-search').addEventListener('input',renderCompanies);$('estimated-only').addEventListener('change',renderCompanies);
 $('source-links').innerHTML=D.meta.sourceLinks.map(s=>`<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.name} ↗</a>`).join('');
@@ -294,7 +326,7 @@ async function openSupplement(panelId){
  const request=++supplementRequest;
  if(panelId&&(panelId.endsWith('company-data')||panelId.endsWith('methodology'))){
   const button=supplementButtons.find(b=>b.getAttribute('aria-controls')===panelId),span=button.querySelector('span');span.textContent='加载中…';
-  try{await Promise.all([ensureSectors(),...(panelId.endsWith('company-data')?[ensureCompanies()]:[])]);}
+  try{await (panelId.endsWith('company-data')?ensureCompanies():ensureSectors());}
   catch(error){span.textContent='加载失败，点击重试';return;}
   if(request!==supplementRequest){span.textContent='＋';return;}
  }
@@ -360,8 +392,14 @@ return api;
 const moduleTemplate=document.getElementById('industry-template');
 const industryList=document.getElementById('industry-list');
 const industryLoads=new Map();
-const assetVersion='refresh-202611161421010800';
-function loadIndustryJSON(path){return fetch(path+'?v='+assetVersion).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();});}
+const assetVersion='refresh-202611161443210800';
+const payloadRequests=new Map();
+function loadIndustryJSON(path){
+ const owner=window.INDUSTRY_CATALOG.industries.find(item=>['main.json','companies.json','sectors.json'].some(name=>item.path+name===path));
+ const name=path.slice(owner?.path.length||0),version=owner?.payloadVersions?.[name]||assetVersion,url=path+'?v='+version;
+ if(!payloadRequests.has(url))payloadRequests.set(url,fetch(url).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();}).catch(error=>{payloadRequests.delete(url);throw error;}));
+ return payloadRequests.get(url);
+}
 function activateIndustry(root){
  const key=root.dataset.industry;if(industryLoads.has(key))return industryLoads.get(key);
  const item=window.INDUSTRY_CATALOG.industries.find(g=>g.key===key);
