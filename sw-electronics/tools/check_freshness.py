@@ -26,11 +26,11 @@ def close(a, b):
         assert abs(float(a)-float(b)) <= max(1e-6, abs(float(a))*1e-12), (a,b)
 
 def paths(catalog):
-    result = ['catalog.json','catalog.js','all-industries-audit.json','refresh-source.json.gz','app.js','index.html','style.css']
+    result = ['company-pe.json','company-pe-source.json.gz','catalog.json','catalog.js','all-industries-audit.json','refresh-source.json.gz','app.js','index.html','style.css']
     for item in catalog['industries']:
         for name in ['main.json','companies.json','data.json','data.js','sectors.json','sectors.js','company-quarterly.csv','quarterly.csv',
                      'latest-quotes-source.json','sw-alignment-audit.json','data-manifest.json']:
-            result.append(str(Path(item['path']) / name))
+            result.append((Path(item['path']) / name).as_posix())
     return sorted(set(result))
 
 def verify(seal=False):
@@ -171,13 +171,15 @@ def verify(seal=False):
                     expected=base*value(ref,'revenue')/value(old,'revenue')
                     close(r['revenue'],expected);close(r['profit'],expected*value(ref,'profit')/value(ref,'revenue'))
     assert len(seen)==audit['activeCompanies']
+    from company_pe import verify as verify_company_pe
+    verify_company_pe()
     hashes={p:digest(SITE/p) for p in paths(catalog)}
     if seal:
         audit['payloadSha256']=hashes
         audit['verifiedFinancialRows']=checks
         (SITE/'freshness-audit.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2)+'\n')
     else:
-        assert hashes==audit.get('payloadSha256'), '生成文件与核查封存不符，重新运行刷新/校验流程'
+        assert hashes=={k.replace('\\','/'):v for k,v in audit.get('payloadSha256',{}).items()}, '生成文件与核查封存不符，重新运行刷新/校验流程'
     print(f'PASS freshness {today}; {len(seen)} companies; {checks} newly checked financial rows; {len(hashes)} sealed files')
 
 if __name__=='__main__':

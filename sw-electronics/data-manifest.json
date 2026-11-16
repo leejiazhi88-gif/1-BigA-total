@@ -1,6 +1,6 @@
 {
   "meta": {
-    "asOf": "2026-11-15",
+    "asOf": "2026-11-16",
     "industry": "电子",
     "indexCode": "801080.SI",
     "classification": "申万2021版一级",
@@ -86,8 +86,8 @@
     "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/",
     "latestQuoteDate": "20261113",
     "latestQuoteMethod": "最右侧最新交易日观察点；市值/PE使用同日申万值，财务沿用最近财报季度；最近4季不重复计入该观察点",
-    "financialAsOf": "20261115",
-    "universeAsOf": "20261115",
+    "financialAsOf": "20261116",
+    "universeAsOf": "20261116",
     "companyQuoteAsOf": "20261113"
   },
   "rawIncomeRows": 30378,
@@ -119,15 +119,15 @@
     "code": "801080.SI",
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
-    "financialAsOf": "20261115",
-    "financialHash": "e3a3b7ef9f00c78f273e697c169e76992ee9c54e0cff3ff28a085c23a1d669aa",
+    "financialAsOf": "20261116",
+    "financialHash": "d9219860f7fb32960c6dfa1b43f93fd69c7cbfa9acde18255f6e3d429bee44c3",
     "sectorFinancialHashes": {
       "801081.SI": "0924a0fc6fc5c27be6425d4a14a82d9327bf7197ed0a6bb48fdc058827ae984f",
       "801085.SI": "fc641c7d3cfa3e34b7fce5c10089782dd9c66304c5d03353b9dfa90c306318a6",
       "801083.SI": "58e23ee68efa039fe32b93e000327a8c111b0bd7b10f78df65b4fdcaf40065ed",
       "801084.SI": "0dd6eed830d2da90f58dec792e8628a6929619e0f2623240dacc8e58c41c8e8b",
       "801086.SI": "f50a5c703bdf110a69e0ef6adad70a253a0ffb5232eafaf11376f866e9fe2f5b",
-      "801082.SI": "3c576ea723d747a53760e8fccb782aa14bd2d6ddb5144a9dadee227c5959bf5f"
+      "801082.SI": "21a461630afbc1f631ee6376713c5eb8a906b8dc1ab5348eb0dbe799ad776aef"
     },
     "latest": {
       "quarter": "2026Q3",
@@ -138,7 +138,7 @@
       "marketCapObserved": 218190.4815,
       "pe": 58.55,
       "revenue": 17122.6275242068,
-      "profit": 1649.0509020665,
+      "profit": 1649.0485567036,
       "reportedCount": 520,
       "estimatedCount": 0,
       "missingCount": 0,
@@ -478,7 +478,7 @@
   "latestQuote": {
     "sourceFile": "latest-quotes-source.json",
     "date": "20261113",
-    "financialSnapshot": "2026-11-15",
+    "financialSnapshot": "2026-11-16",
     "quarterlySeriesUnchanged": true,
     "indices": [
       {
@@ -576,8 +576,8 @@
   },
   "currentRefresh": {
     "sourceFile": "refresh-source.json.gz",
-    "financialAsOf": "20261115",
-    "universeAsOf": "20261115",
+    "financialAsOf": "20261116",
+    "universeAsOf": "20261116",
     "companyQuoteAsOf": "20261113",
     "estimatedCount": 0,
     "missingCount": 0,
