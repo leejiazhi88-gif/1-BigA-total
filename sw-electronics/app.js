@@ -307,7 +307,7 @@ function renderCompanies(){
  const orderedGroups=companyGroups;
  const sections=orderedGroups.map(group=>({group,rows:rows.filter(r=>companySector.get(r.code)?.code===group.code)}));
  const unassigned=rows.filter(r=>!companySector.has(r.code));if(unassigned.length)sections.push({group:{code:'unassigned',name:'未分类',series:[]},rows:unassigned});
- companyNavigation.innerHTML=sections.map(({group,rows})=>`<button type="button" data-company-jump="${esc(group.code)}" aria-pressed="false" ${rows.length?'':'disabled'}>${esc(group.name)}</button>`).join('');
+ companyNavigation.innerHTML=sections.map(({group,rows})=>`<button type="button" data-company-jump="${esc(group.code)}" aria-pressed="false" ${rows.length?'':'disabled'} title="${esc(group.name)} · ${rows.length} 家公司"><span class="company-sector-name">${esc(group.name)}</span> <small>${rows.length}</small></button>`).join('');
  $('company-body').innerHTML=sections.filter(section=>section.rows.length).map(({group,rows:groupRows})=>{
   groupRows.sort((a,b)=>(b.marketCap??-Infinity)-(a.marketCap??-Infinity)||a.code.localeCompare(b.code));
   const header=`<tr class="company-group" data-company-group="${esc(group.code)}"><th colspan="${columns}" scope="rowgroup"><span>${esc(group.name)}</span><small>${groupRows.length} 家</small><strong>${official?'申万行业市值':'行业总市值'} ${fmt(group.series?.at(-1)?.marketCap,2)} 亿</strong></th></tr>`;
@@ -392,7 +392,7 @@ return api;
 const moduleTemplate=document.getElementById('industry-template');
 const industryList=document.getElementById('industry-list');
 const industryLoads=new Map();
-const assetVersion='refresh-202611161443210800';
+const assetVersion='refresh-202611161443210800-company-counts';
 const payloadRequests=new Map();
 function loadIndustryJSON(path){
  const owner=window.INDUSTRY_CATALOG.industries.find(item=>['main.json','companies.json','sectors.json'].some(name=>item.path+name===path));

@@ -33,7 +33,7 @@
   "collectionMode": "parallel-4; SW daily batch when cheaper; fresh financial periods + incremental corrections; no cache fallback",
   "payloadSha256": {
     "all-industries-audit.json": "92de3ab3267a52b65b411c1e4a01e1c3a74bb6695e1c8973edf51414aaac1706",
-    "app.js": "9fc8270d65c64ccf5b10707fd496494be2605620c5117bb0295723f8ad0b89c6",
+    "app.js": "52c90489f745bc32d6251d86edb3bf6d0fe56e3c1b2bda9e05ad1015987fdefa",
     "bank/companies.json": "fa9a04e5d6f6804fc4b75ff577fec5a50f22cbf882330b06e37a02f04c611baf",
     "bank/company-quarterly.csv": "07d8658ce02b08b29085820a3b45262118344641eec9ecb0a7785d4b9bff7b1a",
     "bank/data-manifest.json": "cc5d50e7174f4208761e16632a8f5e9caab56e74fa9110f1ae16a080d94a1172",
@@ -53,7 +53,7 @@
     "data-manifest.json": "d0aa841fa7700261be3397618ee71cc8d1b466e66e4db3980cc99c9d01b9989b",
     "data.js": "90c95b6a27fc8837a4ee5fc9306ea722dff0672ea9ba6fb552f998dab0c8cb29",
     "data.json": "e9f7a9194ef9762da138bbff6394fc26b73b080833950679ca52b027cc5ee0e9",
-    "index.html": "723ec66b5501bc9a222cf574c4cc07e58d010e0fd5f4e9214416f16a1c4b0b2f",
+    "index.html": "22bfaa178d95b3079ef5d5453e52da52b23ef34425c759b72d19893caf238933",
     "industries/801010/companies.json": "bca74004ce64a996980f31461a04ca841203af9631910557b9a60a52545d0024",
     "industries/801010/company-quarterly.csv": "7ca59d908fca10a04949c6a9b0d4f45d0d4066e03aea1226c67bbfd45df68754",
     "industries/801010/data-manifest.json": "c92009d052cd2c9d72742a2db5af55ea78e295957b51590bb1bc79f3851d3670",
@@ -379,7 +379,7 @@
     "refresh-source.json.gz": "7c6962d0e1b8ee135f5b44bbf32278957b30ba9aaffd9065c2262a1f4936e70c",
     "sectors.js": "6c4c7c073230f964622c1fd48a3eea8d25b34378263bce01e9239ccb1ce1ff7f",
     "sectors.json": "c0391b89daab156fb619b7b066880488a06ee140ab9b5944b82f33855f1c1af2",
-    "style.css": "d5fd19476cab611c7823e8c6f0a9a2c500f1802b0db134a8389a0c7c9acee268",
+    "style.css": "5c574e1154d51e09b99264dc0ad4e4f893862c1c4cdc6e0918939e5157a13f00",
     "sw-alignment-audit.json": "7db1b38e15c1d831243a4d8e77f4e78bbb6cec88115079f7c90f252cdc96826c"
   },
   "verifiedFinancialRows": 38133
