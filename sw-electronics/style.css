@@ -54,15 +54,15 @@ html{scroll-padding-top:0}
 .industry-module .mini-summary .valuation-summary>.pe-percentile{flex:0 1 auto;margin-top:0}
 @media(max-width:720px){.industry-module .valuation-summary{gap:12px}.industry-module .valuation-summary>.summary-pe{gap:4px}}
 
-/* Electronics trial: compact valuation columns in the company details table. */
-#industry-electronics .with-company-valuations table{min-width:1080px}
-#industry-electronics .company-pe{color:#52676c}
-#industry-electronics .company-pe-rank{width:184px}
-#industry-electronics .company-percentile{display:flex;justify-content:flex-end;gap:9px}
-#industry-electronics .company-percentile strong{min-width:44px;font-size:11px;font-weight:600}
-#industry-electronics .company-percentile .pe-percentile-track{flex:0 0 88px;width:88px;height:4px}
-#industry-electronics .with-company-valuations td,#industry-electronics .with-company-valuations th{padding-left:13px;padding-right:13px}
-@media(max-width:720px){#industry-electronics .with-company-valuations table{min-width:990px}#industry-electronics .company-pe-rank{width:158px}#industry-electronics .company-percentile .pe-percentile-track{flex-basis:74px;width:74px}}
+/* Compact valuation columns shared by every industry company table. */
+.industry-module .with-company-valuations table{min-width:1080px}
+.industry-module .company-pe{color:#52676c}
+.industry-module .company-pe-rank{width:184px}
+.industry-module .company-percentile{display:flex;justify-content:flex-end;gap:9px}
+.industry-module .company-percentile strong{min-width:44px;font-size:11px;font-weight:600}
+.industry-module .company-percentile .pe-percentile-track{flex:0 0 88px;width:88px;height:4px}
+.industry-module .with-company-valuations td,.industry-module .with-company-valuations th{padding-left:13px;padding-right:13px}
+@media(max-width:720px){.industry-module .with-company-valuations table{min-width:990px}.industry-module .company-pe-rank{width:158px}.industry-module .company-percentile .pe-percentile-track{flex-basis:74px;width:74px}}
 
 .company-heading-with-nav{display:flex;align-items:center;gap:20px;min-width:0;flex:1}
 .company-heading-with-nav h2{flex:none}

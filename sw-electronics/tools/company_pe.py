@@ -2,7 +2,7 @@
 
 Initial history is queried once per new company. Incremental PE reuses the
 current daily_basic response and trading calendar from the financial refresh.
-Receipts keep only the requested electronics projection, with original query
+Receipts keep only the requested industry projection, with original query
 metadata and hashes; there is no second stored copy of reconstructed history.
 """
 from bisect import bisect_right
@@ -38,12 +38,21 @@ def unpack(receipt):
 
 def pack(receipt,wanted,retain_day=None):
     columns=['trade_date','pe_ttm'] if receipt['params'].get('ts_code') else FIELDS.split(',')
+    metadata={k:receipt[k] for k in ['api','params','fetchedAt']}
+    if receipt.get('columns')==columns and receipt.get('responseSha256'):
+        # Compact receipts already carry the verified original response hash.
+        # Filter their columns directly, without recreating millions of dicts.
+        di=columns.index('trade_date');ci=columns.index('ts_code') if 'ts_code' in columns else None
+        retained=[row for row in receipt['rows'] if (row[ci] if ci is not None else receipt['params']['ts_code']) in wanted and (not retain_day or row[di]==retain_day)]
+        return dict(**metadata,fields=FIELDS.split(','),columns=columns,rows=retained,
+            responseRows=receipt['responseRows'],responseSha256=receipt['responseSha256'],
+            projection='current industry companies; ts_code repeated by query is omitted',
+            **({'retainedDate':retain_day} if retain_day else {}))
     raw=list(unpack(receipt))
     retained=[r for r in raw if r['ts_code'] in wanted and (not retain_day or r['trade_date']==retain_day)]
-    metadata={k:receipt[k] for k in ['api','params','fetchedAt']}
     return dict(**metadata,fields=FIELDS.split(','),columns=columns,rows=[[r.get(f) for f in columns] for r in retained],
         responseRows=receipt.get('responseRows',len(raw)),responseSha256=receipt.get('responseSha256',fingerprint(raw)),
-        projection='electronic table companies; ts_code repeated by query is omitted',
+        projection='current industry companies; ts_code repeated by query is omitted',
         **({'retainedDate':retain_day} if retain_day else {}))
 
 def normalize(source,wanted):
@@ -93,68 +102,109 @@ def build(source,data):
         companies[code]=[target,offset,packed,windows]
     return dict(meta=dict(field='daily_basic.pe_ttm',quoteDate=end,boundaries=boundaries,presetKeys=PRESETS,presetStarts=starts),companies=companies)
 
-def write_source(source):
-    # Fixed gzip header avoids rewriting bytes merely due to compression time.
+def write_source(source,path):
+    # Fixed gzip header avoids changing bytes only due to compression time.
     raw=json.dumps(source,ensure_ascii=False,separators=(',',':'),allow_nan=False).encode()
-    (SITE/SOURCE).write_bytes(gzip.compress(raw,mtime=0))
+    encoded=gzip.compress(raw,mtime=0)
+    if not path.exists() or path.read_bytes()!=encoded:path.write_bytes(encoded)
+
+def initial_history(code,end,cache):
+    # Checkpoints live outside either public repository. Interrupted initial
+    # builds reuse complete, hashed responses instead of repeating thousands
+    # of successful calls; latest quotes always come from this refresh.
+    params=dict(ts_code=code,start_date='20050101',end_date=end)
+    path=cache/(code+'-'+end+'.json.gz')
+    if path.exists():
+        saved=json.load(gzip.open(path,'rt'));receipt=saved['receipt']
+        assert saved['sha256']==fingerprint(receipt) and receipt['params']==params
+        assert receipt['api']=='daily_basic' and receipt['columns']==['trade_date','pe_ttm']
+        assert len(receipt['rows'])<6000
+        return receipt,False
+    client=Client();client.call('daily_basic',params,FIELDS,6000)
+    receipt=pack(client.requests[0],{code})
+    assert all('20050101'<=d<=end and (v is None or math.isfinite(v)) for d,v in receipt['rows'])
+    cache.mkdir(parents=True,exist_ok=True)
+    raw=json.dumps(dict(receipt=receipt,sha256=fingerprint(receipt)),ensure_ascii=False,separators=(',',':'),allow_nan=False).encode()
+    temporary=path.with_suffix('.tmp');temporary.write_bytes(gzip.compress(raw,mtime=0));temporary.replace(path)
+    return receipt,True
 
 def collect():
-    data=read(SITE/'data.json');end=data['latestQuote']['date'];wanted={r['code'] for r in data['latestCompanies']}
     shared=json.load(gzip.open(SITE/'refresh-source.json.gz','rt'))
-    assert shared['asOf']==today() and shared['quoteDate']==end
-    original=json.load(gzip.open(SITE/SOURCE,'rt')) if (SITE/SOURCE).exists() else None
-    source=normalize(original,wanted) if original else dict(schema=2,codes=sorted(wanted),requests=[])
-    old_history=histories(source) if original else {}
-    missing=[code for code in sorted(wanted) if not old_history.get(code)]
-    client=Client()
-    with cf.ThreadPoolExecutor(max_workers=4) as pool:
-        jobs={pool.submit(client.call,'daily_basic',dict(ts_code=code,start_date='20050101',end_date=end),FIELDS,6000):code for code in missing}
-        for i,future in enumerate(cf.as_completed(jobs),1):
-            future.result()
-            if i%40==0:print(f'新增公司PE历史 {i}/{len(missing)}',flush=True)
-    source['requests'].extend(pack(r,wanted) for r in client.requests if r['api']=='daily_basic')
-    start=min(original['quoteDate'],end) if original else end
-    calendar=next((r for r in shared['requests'] if r['api']=='trade_cal' and r['params'].get('start_date','99999999')<=start and r['params'].get('end_date','')>=end),None)
-    rows=calendar['rows'] if calendar else client.call('trade_cal',dict(exchange='SSE',start_date=start,end_date=end,is_open='1'))
-    days=sorted(r['cal_date'] for r in rows if r.get('is_open') in ['1',1] and start<=r['cal_date']<=end)
-    assert days and days[-1]==end
+    end=shared['quoteDate'];assert shared['asOf']==today()
+    catalog=read(SITE/'catalog.json')['industries']
     shared_quote=next(r for r in shared['requests'] if r['api']=='daily_basic' and r['params'].get('trade_date')==end)
-    assert 'pe_ttm' in shared_quote['fields'],'统一市值查询需包含pe_ttm，禁止再发一份重复查询'
-    with cf.ThreadPoolExecutor(max_workers=4) as pool:
-        jobs={pool.submit(client.call,'daily_basic',dict(trade_date=d),FIELDS,6000):d for d in days if d!=end}
-        for future in cf.as_completed(jobs):assert future.result(),'增量PE日行情为空'
-    source['requests'].extend(pack(r,wanted) for r in client.requests if r['api']=='daily_basic' and r['params'].get('trade_date'))
-    source['requests'].append(pack(shared_quote,wanted))
-    for company in data['latestCompanies']:
-        if company.get('quoteCarried'):
-            code=company['code'];receipt=next(r for r in shared['requests'] if r['api']=='daily_basic' and r['params'].get('ts_code')==code)
-            assert 'pe_ttm' in receipt['fields']
-            source['requests'].append(pack(receipt,wanted,company['quoteDate']))
-    source.update(checkedThrough=today(),quoteDate=end,fetchedAt=shared['collectedAt'])
-    source=normalize(source,wanted)
-    write_source(source)
-    print(f'电子PE复用统一行情；额外请求 {len(client.requests)} 次；归档 {len(source["requests"])} 份去重凭证',flush=True)
+    assert 'pe_ttm' in shared_quote['fields'],'统一市值查询需包含pe_ttm，禁止重复查询'
+    client=Client();incremental={};calendars={};requested=0;total=0
+    cache=SITE.parent/'.quanlantu-pe-history-cache'
+    for item in catalog:
+        folder=SITE/item['path'];data=read(folder/'data.json');assert data['latestQuote']['date']==end
+        wanted={r['code'] for r in data['latestCompanies']};path=folder/SOURCE
+        original=json.load(gzip.open(path,'rt')) if path.exists() else None
+        source=normalize(original,wanted) if original else dict(schema=2,codes=sorted(wanted),requests=[])
+        covered={r['params']['ts_code'] for r in source['requests'] if r['params'].get('ts_code') and r['params'].get('start_date')=='20050101' and not r.get('retainedDate')}
+        missing=sorted(wanted-covered)
+        print(f'{item["name"]}：复用 {len(wanted)-len(missing)} 家历史，首次补齐 {len(missing)} 家',flush=True)
+        with cf.ThreadPoolExecutor(max_workers=4) as pool:
+            jobs={pool.submit(initial_history,code,end,cache):code for code in missing}
+            for i,future in enumerate(cf.as_completed(jobs),1):
+                receipt,is_new=future.result();source['requests'].append(receipt);requested+=is_new
+                if i%40==0:print(f'{item["name"]} PE历史 {i}/{len(missing)}',flush=True)
+        start=min(original['quoteDate'],end) if original else end
+        calendar=next((r for r in shared['requests'] if r['api']=='trade_cal' and r['params'].get('start_date','99999999')<=start and r['params'].get('end_date','')>=end),None)
+        if calendar:rows=calendar['rows']
+        else:
+            if start not in calendars:calendars[start]=client.call('trade_cal',dict(exchange='SSE',start_date=start,end_date=end,is_open='1'))
+            rows=calendars[start]
+        days=sorted(r['cal_date'] for r in rows if r.get('is_open') in ['1',1] and start<=r['cal_date']<=end)
+        assert days and days[-1]==end
+        for day in days:
+            if day==end:continue
+            if day not in incremental:
+                result=client.call('daily_basic',dict(trade_date=day),FIELDS,6000);assert result,'增量PE日行情为空'
+                incremental[day]=client.requests[-1]
+            source['requests'].append(pack(incremental[day],wanted))
+        source['requests'].append(pack(shared_quote,wanted))
+        for company in data['latestCompanies']:
+            if company.get('quoteCarried'):
+                code=company['code'];receipt=next(r for r in shared['requests'] if r['api']=='daily_basic' and r['params'].get('ts_code')==code)
+                assert 'pe_ttm' in receipt['fields']
+                source['requests'].append(pack(receipt,wanted,company['quoteDate']))
+        source.update(checkedThrough=today(),quoteDate=end,fetchedAt=shared['collectedAt'])
+        source=normalize(source,wanted);write_source(source,path);total+=len(wanted)
+        print(f'{item["name"]} PE归档完成：{len(wanted)} 家，{len(source["requests"])} 份去重凭证',flush=True)
+    print(f'全部31行业PE复用统一行情；{total} 家；首次历史请求 {requested} 次，增量/日历额外请求 {len(client.requests)} 次',flush=True)
 
 def verify():
-    source=json.load(gzip.open(SITE/SOURCE,'rt'));data=read(SITE/'data.json');table=read(SITE/'companies.json')
-    assert source['schema']==2 and source['quoteDate']==data['latestQuote']['date']
-    assert source['checkedThrough']==data['meta']['financialAsOf']
-    wanted={r['code'] for r in data['latestCompanies']};assert set(source['codes'])==wanted
-    keys=[fingerprint([r['api'],r['params'],r.get('retainedDate')]) for r in source['requests']]
-    assert len(keys)==len(set(keys)), 'PE源凭证重复'
-    for r in source['requests']:
-        assert 'pe_ttm' in r['fields'] and len(r['rows'])<6000
-        assert all(len(row)==len(r['columns']) for row in r['rows'])
     fresh=json.load(gzip.open(SITE/'refresh-source.json.gz','rt'))
-    current=next(r for r in source['requests'] if r['params'].get('trade_date')==source['quoteDate'])
-    shared=next(r for r in fresh['requests'] if r['api']=='daily_basic' and r['params'].get('trade_date')==source['quoteDate'])
-    assert current==pack(shared,wanted),'PE未复用本次统一行情或来源不匹配'
-    assert current['fetchedAt'][:10].replace('-','')==source['checkedThrough']
-    calculated=build(source,data)
-    assert table['valuation']==calculated['meta']
-    vi=table['fields'].index('valuation');ci=table['fields'].index('code')
-    assert {r[ci]:r[vi] for r in table['rows']}==calculated['companies'],'公司表PE统计与日度来源不符'
-    print(f'PASS single PE archive, shared quote receipt, {len(wanted)} companies and exact selectable-window counts')
+    shared=next(r for r in fresh['requests'] if r['api']=='daily_basic' and r['params'].get('trade_date')==fresh['quoteDate'])
+    seen=set();checked=0
+    for item in read(SITE/'catalog.json')['industries']:
+        folder=SITE/item['path'];source=json.load(gzip.open(folder/SOURCE,'rt'));data=read(folder/'data.json');table=read(folder/'companies.json')
+        assert source['schema']==2 and source['quoteDate']==data['latestQuote']['date']==fresh['quoteDate']
+        assert source['checkedThrough']==data['meta']['financialAsOf']==fresh['asOf']
+        wanted={r['code'] for r in data['latestCompanies']};assert set(source['codes'])==wanted
+        assert not seen&wanted,'公司PE源跨行业重复';seen|=wanted
+        keys=[fingerprint([r['api'],r['params'],r.get('retainedDate')]) for r in source['requests']]
+        assert len(keys)==len(set(keys)), 'PE源凭证重复'
+        covered=set()
+        for r in source['requests']:
+            assert 'pe_ttm' in r['fields'] and len(r['rows'])<6000
+            assert all(len(row)==len(r['columns']) for row in r['rows'])
+            assert all(row['ts_code'] in wanted for row in unpack(r)), 'PE历史公司归属不匹配'
+            if r['params'].get('start_date')=='20050101' and not r.get('retainedDate'):covered.add(r['params'].get('ts_code'))
+        assert wanted<=covered,'缺少公司完整历史查询凭证'
+        current=next(r for r in source['requests'] if r['params'].get('trade_date')==source['quoteDate'])
+        assert current==pack(shared,wanted),'PE未复用本次统一行情或来源不匹配'
+        assert current['fetchedAt'][:10].replace('-','')==source['checkedThrough']
+        for company in data['latestCompanies']:
+            if company.get('quoteCarried'):
+                receipt=next(r for r in fresh['requests'] if r['api']=='daily_basic' and r['params'].get('ts_code')==company['code'])
+                assert pack(receipt,wanted,company['quoteDate']) in source['requests'],'停牌公司PE未复用本次核查'
+        calculated=build(source,data);assert table['valuation']==calculated['meta']
+        vi=table['fields'].index('valuation');ci=table['fields'].index('code')
+        assert {r[ci]:r[vi] for r in table['rows']}==calculated['companies'],'公司表PE统计与日度来源不符'
+        checked+=1
+    print(f'PASS {checked} separate PE archives, shared quotes, {len(seen)} companies and exact selectable-window counts')
 
 if __name__=='__main__':
     if '--verify' in sys.argv:verify()

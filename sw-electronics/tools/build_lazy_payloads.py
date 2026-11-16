@@ -18,12 +18,12 @@ def build(root):
             if b'\r\n' in raw:file.write_bytes(raw.replace(b'\r\n',b'\n'))
 
     catalog=json.loads((root/'catalog.json').read_text())
-    source=json.load(gzip.open(root/'company-pe-source.json.gz','rt'))
     for item in catalog['industries']:
         folder=root/item['path'];data=json.loads((folder/'data.json').read_text());sectors=json.loads((folder/'sectors.json').read_text())
         groups=sorted(sectors['groups'],key=lambda g:g['latestQuote']['marketCap'] or 0,reverse=True)
         index={code:i for i,g in enumerate(groups) for code in g['codes']}
-        fields=list(FIELDS);valuations=build_valuations(source,data) if item['code']=='801080.SI' else None
+        source=json.load(gzip.open(folder/'company-pe-source.json.gz','rt'))
+        fields=list(FIELDS);valuations=build_valuations(source,data)
         if valuations:fields.append('valuation')
         rows=[]
         for r in data['latestCompanies']:
