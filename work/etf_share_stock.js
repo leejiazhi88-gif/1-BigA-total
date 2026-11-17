@@ -40,4 +40,42 @@ function centerZeroAxis(axis) {
   const bound = Math.max(Math.abs(axis.min), Math.abs(axis.max), 1);
   return { ...axis, min: -bound, max: bound, interval: bound / 4 };
 }
-module.exports = { buildShareStocks, sumShareStocks, centerZeroAxis };
+
+function buildAssetStocks(data) {
+  const histories = Object.fromEntries(data.etfs.map(fund => {
+    const byDate = new Map();
+    for (const row of data.observations[fund.ts_code] || []) {
+      const prior = byDate.get(row.trade_date);
+      if (prior && (prior.total_share !== row.total_share || prior.nav !== row.nav)) {
+        throw new Error('Conflicting ETF shares/NAV');
+      }
+      byDate.set(row.trade_date, row);
+    }
+    return [fund.ts_code, byDate];
+  }));
+  return data.series.map(point => {
+    const date = point.date.replaceAll('-', '');
+    const assets = {};
+    for (const fund of data.etfs) {
+      if (date < fund.list_date) continue;
+      const row = histories[fund.ts_code].get(date);
+      // Shares are in ten-thousand units; NAV is yuan per unit. Use matching
+      // dates and the verified inputs, never the inconsistent raw size field.
+      assets[fund.ts_code] = Number.isFinite(row?.total_share) && row.total_share >= 0
+        && Number.isFinite(row?.nav) && row.nav > 0 ? row.total_share * row.nav / 10000 : null;
+    }
+    return { date: point.date, assets };
+  });
+}
+
+function sumAssetStocks(rows, funds) {
+  return rows.map(row => {
+    const eligible = funds.filter(fund => Object.hasOwn(row.assets, fund.ts_code));
+    const missing = eligible.filter(fund => !Number.isFinite(row.assets[fund.ts_code]));
+    return { ...row, total: eligible.length && !missing.length
+      ? eligible.reduce((sum, fund) => sum + row.assets[fund.ts_code], 0) : null,
+      coverage: eligible.length - missing.length, eligible: eligible.length,
+      missing: missing.map(fund => fund.ts_code) };
+  });
+}
+module.exports = { buildShareStocks, sumShareStocks, buildAssetStocks, sumAssetStocks, centerZeroAxis };
