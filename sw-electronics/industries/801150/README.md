@@ -9,3 +9,5 @@
 分位使用所选范围全部有效正日度PE，含并列值；快捷范围截至最新时向前推整年。与项目2比较须对齐指数、观察日和区间。完整约定见项目根SW_DATA_CONTRACT.md；后续统一通过tools/refresh_data.py联网刷新、重算及校验。
 
 接口缺字段的原文核对记录见项目根 financial-supplements.json 和本行业 data.json 的 financialSupplements：仅补经核实的实际累计值；每次刷新复核报表版本、利润及前后差分依赖。
+
+备用财务表只补主源缺字段；原文核实零值计实报。历史缺差分前值时在同年已知累计数之间按季均分并标*，保持累计总额，具体依据见data.json的estimates。所有公司全部历史季度均进行缺口检查，未解决缺口阻止发布；申万PE与自由流通权重、亏损处理差异见根目录PE_METHOD_REVIEW.md。

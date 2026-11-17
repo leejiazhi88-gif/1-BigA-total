@@ -1,7 +1,7 @@
 ﻿quarter,endDate,tradeDate,companies,marketCap,marketCapObserved,pe,revenue,profit,reportedCount,estimatedCount,missingCount,estimatedRevenue,estimatedProfit,carriedCount,marketMissingCount,financialCoverage,peRaw,valuationSource,valuationCode,valuationDate,peStatus,peNote
 2005Q1,20050331,20050331,59,,,,414.0480959236,12.9569625457,59,0,0,0,0,0,0,1.0,,sw_daily,801880.SI,,source_missing,申万未提供该日PE
-2005Q2,20050630,20050630,60,,,,476.4070372172,12.6726760166,59,0,1,0,0,1,0,0.9833333333333333,,sw_daily,801880.SI,,source_missing,申万未提供该日PE
-2005Q3,20050930,20050930,60,,,,477.9224017429,10.0305769006,59,0,1,0,0,2,0,0.9833333333333333,,sw_daily,801880.SI,,source_missing,申万未提供该日PE
+2005Q2,20050630,20050630,60,,,,483.8453048572,12.6726760166,60,0,0,0,0,1,0,1.0,,sw_daily,801880.SI,,source_missing,申万未提供该日PE
+2005Q3,20050930,20050930,60,,,,486.5372376529,10.0305769006,60,0,0,0,0,2,0,1.0,,sw_daily,801880.SI,,source_missing,申万未提供该日PE
 2005Q4,20051231,20051230,60,,,,526.0817299478,-2.6194484911999996,60,0,0,0,0,8,0,1.0,,sw_daily,801880.SI,,source_missing,申万未提供该日PE
 2006Q1,20060331,20060331,60,,,,494.7093739749,13.2911830788,60,0,0,0,0,13,0,1.0,,sw_daily,801880.SI,,source_missing,申万未提供该日PE
 2006Q2,20060630,20060630,60,,,,569.7604409171,16.2072684185,60,0,0,0,0,11,0,1.0,,sw_daily,801880.SI,,source_missing,申万未提供该日PE

@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from financial_supplements import FILE as SUPPLEMENT_FILE, load as load_supplements, scopes as supplement_scopes, apply as apply_supplements
+from financial_recovery import FILE as RECOVERY_FILE, load as load_recovery, scopes as recovery_scopes, secondary_actuals, historical_quarter, audit as recovery_audit
 
 SITE = Path(__file__).resolve().parents[1]
 
@@ -27,7 +28,7 @@ def close(a, b):
         assert abs(float(a)-float(b)) <= max(1e-6, abs(float(a))*1e-12), (a,b)
 
 def paths(catalog):
-    result = [SUPPLEMENT_FILE,'company-pe-source.json.gz','catalog.json','catalog.js','all-industries-audit.json','refresh-source.json.gz','app.js','index.html','style.css']
+    result = [SUPPLEMENT_FILE,RECOVERY_FILE,'company-pe-source.json.gz','catalog.json','catalog.js','all-industries-audit.json','refresh-source.json.gz','app.js','index.html','style.css']
     for item in catalog['industries']:
         for name in ['company-pe-source.json.gz','main.json','companies.json','data.json','data.js','sectors.json','sectors.js','company-quarterly.csv','quarterly.csv',
                      'latest-quotes-source.json','sw-alignment-audit.json','data-manifest.json']:
@@ -84,6 +85,19 @@ def verify(seal=False):
             assert all(r['ts_code']==code and r['end_date']==period and str(r['report_type'])==report for r in rows)
         elif key.startswith('carry:'):
             received(rows,matching('daily_basic',ts_code=key[6:]))
+        elif key.startswith('incomeHistory:'):
+            _,code,report=key.split(':')
+            queries=matching('income',ts_code=code,report_type=report)
+            queries=[q for q in queries if not q['params'].get('period')]
+            received(rows,queries)
+            assert Counter(canonical(r) for r in rows)==Counter(canonical(r) for q in queries for r in q['rows'])
+            assert all(r['ts_code']==code and str(r['report_type'])==report for r in rows)
+        elif key.startswith('secondary:'):
+            code=key[10:]
+            queries=matching('eastmoney_income',filter=f'(SECUCODE="{code}")')
+            received(rows,queries)
+            assert Counter(canonical(r) for r in rows)==Counter(canonical(r) for q in queries for r in q['rows'])
+            assert all(r['SECUCODE']==code for r in rows)
         elif key.startswith('disclosure:'):
             received(rows,matching('disclosure_date',ts_code=key[11:]))
     for report in ['1','4','5']:
@@ -97,16 +111,23 @@ def verify(seal=False):
         assert r['end_date'] in source['periods'], '更正公告未纳入重新取数范围'
     supplements=load_supplements()
     targets,dependencies=supplement_scopes(supplements,source['latestPeriod'])
+    repair_targets,repair_codes=recovery_scopes(source['recoveryScope'],source['latestPeriod'])
+    required,_=recovery_scopes(load_recovery(),source['latestPeriod'])
+    assert required <= repair_targets, '历史修复范围未重新查询'
+    targets |= repair_targets
     assert {tuple(pair) for pair in source['targetedFinancialRows']}==targets
     for code,period in dependencies:
         for report in ['1','4','5']:
-            key=f'income:{period}:{report}' if period in source['periods'] else f'incomeCompany:{code}:{period}:{report}'
+            key=f'income:{period}:{report}' if period in source['periods'] else f'incomeHistory:{code}:{report}' if code in repair_codes else f'incomeCompany:{code}:{period}:{report}'
             assert key in fresh, '原文补充的累计差分依赖未重新查询'
+    for code in repair_codes:
+        assert 'secondary:'+code in fresh
+        assert all(f'incomeHistory:{code}:{report}' in fresh for report in ['1','4','5'])
     # Independently select published cumulative statements, then compare their
     # single-quarter differences to every rebuilt company and sector total.
     candidates=defaultdict(list)
     for key,rows in fresh.items():
-        if key.startswith(('income:', 'incomeCompany:')):
+        if key.startswith(('income:', 'incomeCompany:', 'incomeHistory:')):
             for r in rows:
                 if (r.get('f_ann_date') or r.get('ann_date') or '99999999')<=today:
                     candidates[(r['ts_code'],r['end_date'])].append(r)
@@ -119,6 +140,8 @@ def verify(seal=False):
                 peers=[x for x in reversed(rows) if (x.get('f_ann_date') or x.get('ann_date'))==(r.get('f_ann_date') or r.get('ann_date')) and str(x['report_type'])==str(r['report_type'])]
                 r[field]=next((x[field] for x in peers if x.get(field) is not None),None)
         reports[key]=r
+    recovered=secondary_actuals(reports,fresh,repair_targets,today)
+    assert audit['financialRecovery']==recovered
     applied=apply_supplements(reports,supplements,today)
     assert audit['financialSupplements']==[dict(code=r['code'],period=r['period'],metric=r['metric'],value=r['value']) for r in applied]
     def value(r,key):
@@ -145,6 +168,7 @@ def verify(seal=False):
         assert not seen&codes;seen|=codes
         assert codes=={c for g in groups for c in g['codes']}
         assert d.get('financialSupplements',[])==[r for r in applied if r['code'] in codes]
+        assert d.get('financialRecovery',[])==[r for r in recovered if r['code'] in codes]
         for obj,code in [(d,item['code'])]+[(g,g['code']) for g in groups]:
             rows=fresh['quote:'+code]
             queries=[r for r in complete if r['api']=='sw_daily' and (r['params'].get('ts_code')==code or r['params'].get('trade_date'))]
@@ -162,6 +186,12 @@ def verify(seal=False):
                 if rv is not None and pv is not None:
                     assert r['status']=='reported', '已披露仍使用估算'
                     close(float(r['revenue']),rv);close(float(r['profit']),pv);checks+=1
+                elif r['endDate'] < source['latestPeriod']:
+                    est=historical_quarter(reports,r['code'],r['endDate'])
+                    assert est and r['status']=='estimated', '历史缺口须有可复算的估算依据'
+                    close(float(r['revenue']),est['revenue']);close(float(r['profit']),est['profit'])
+                    assert any(e['code']==r['code'] and e['quarter']==r['quarter'] and e['method']==est['method'] and e['dependencies']==est['dependencies'] for e in d['estimates'])
+                    checks+=1
         for obj,scope in [(d,codes)]+[(g,set(g['codes'])) for g in groups]:
             for point in obj['series']:
                 rows=[r for r in byquarter[point['quarter']] if r['code'] in scope]
@@ -190,6 +220,7 @@ def verify(seal=False):
                     expected=base*value(ref,'revenue')/value(old,'revenue')
                     close(r['revenue'],expected);close(r['profit'],expected*value(ref,'profit')/value(ref,'revenue'))
     assert len(seen)==audit['activeCompanies']
+    assert audit['financialCompleteness']==recovery_audit(SITE)
     from company_pe import verify as verify_company_pe
     verify_company_pe()
     hashes={p:digest(SITE/p) for p in paths(catalog)}

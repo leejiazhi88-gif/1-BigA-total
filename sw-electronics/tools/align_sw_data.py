@@ -158,11 +158,12 @@ def main():
             marketCapMethod='申万 sw_daily.total_mv（万元）÷10000；季度最后交易日公布值',
             peMethod='直接采用申万 sw_daily.pe 公布值；不使用公司市值和财报利润重新合成',
             percentileMethod='所选起始季度首日至结束季度末日的全部有效正日度PE；含相等值；与项目2同源同公式，日期范围需一致',
-            source='Tushare sw_daily（申万行情） / index_member_all SW2021（财务样本） / income（财报）',
+            source='Tushare sw_daily（申万行情） / index_member_all SW2021（财务样本） / income（财报）；缺失字段以备用财务源及核实公告补充',
+            estimateMethod='未披露最新季：上年同季营收×近期累计同比倍数及净利率；历史缺差分前值：同年实际累计数之间按季均分，保持已知累计总额并标估算',
             universeType='行情为申万指数历史；财务为最新在市SW2021成分固定回溯，上市后纳入',
             quoteCarryMethod='申万季末行情不沿用旧值；公司明细保留此前有效报价并显示日期',
             companyMarketCapMethod='daily_basic.total_mv÷10000，全部普通股按A股价格估值，与项目2公司明细同字段；不等于申万行业市值分拆',
-            financialVersusValuation='财务柱是全公司实际合并报表汇总，不是指数PE分母；不以公布市值÷PE反推真实利润',
+            financialVersusValuation='财务柱汇总全公司合并报表及标注估算，含亏损、不按自由流通比例缩放；申万PE采用独立指数口径，方法核对见PE_METHOD_REVIEW.md，不以公布市值÷PE反推实际利润',
             project2URL=SOURCE_URL)
         for old in ['peAuditDate', 'peVersionRule']:
             data['meta'].pop(old, None)

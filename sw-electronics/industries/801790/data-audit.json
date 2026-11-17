@@ -1957,11 +1957,11 @@
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
     "financialAsOf": "20261117",
-    "financialHash": "0cfe73a2e9bf721fab1b258f77aae33f1bb7bb8d16635a4b7e62ce6d221550c4",
+    "financialHash": "b3792841c16ed17f1bcb987f670526e3606b8c504e06904412888ca9ccc055ad",
     "sectorFinancialHashes": {
       "801193.SI": "b955964f749bc68ef1c4fd46eb2272ad981f385ac6f66fd50398ece6e365f9e1",
       "801194.SI": "9bcdf2ea10aa5397e77035754c0f586228e42d14f1da43892ec33ccc34424864",
-      "801191.SI": "5d11c7665b26e8fc6029a4293352424e2f51f7cd6d925d3f2be9729f1775d49c"
+      "801191.SI": "296769dde7d143d906c75f8c836e598db77e7f559ddf9c4f60daeb010263d4fc"
     },
     "latest": {
       "quarter": "2026Q3",

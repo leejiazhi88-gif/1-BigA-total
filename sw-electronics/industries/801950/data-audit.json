@@ -1236,9 +1236,9 @@
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
     "financialAsOf": "20261117",
-    "financialHash": "af34e36b1a0fb93262b0a8f7285ec579f94462395513f8cc753eb6f7d85edc6c",
+    "financialHash": "838a80fbe624018ecd7071ce6de1de0ba76f184cb2173810d1b51ba2e62a7eb5",
     "sectorFinancialHashes": {
-      "801951.SI": "fc7681c4bcfe26bc24f8a39958242781cbc3a6a02ffeff1c9f5131df3e529210",
+      "801951.SI": "ecf2b00395c41024b8741d348fdc40e92855bf1d9f6b4a566060ca53d9ca7819",
       "801952.SI": "aec1a9622093297f09ac9a42ad9f71f7bf7513e4b346b42ab7965c800c8dc90c"
     },
     "latest": {

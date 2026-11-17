@@ -8,9 +8,9 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "d9219860f7fb32960c6dfa1b43f93fd69c7cbfa9acde18255f6e3d429bee44c3",
+      "financialHash": "85320e8a6087e8c19121a2cdc67c8b2f2b28e538ad2878e32dc8e88153a95cba",
       "sectorFinancialHashes": {
-        "801081.SI": "0924a0fc6fc5c27be6425d4a14a82d9327bf7197ed0a6bb48fdc058827ae984f",
+        "801081.SI": "7ef4b56aecaf59c6bc5be5e645531b94b7c612d03a6b0985b4e1e1a3a1fc5965",
         "801085.SI": "fc641c7d3cfa3e34b7fce5c10089782dd9c66304c5d03353b9dfa90c306318a6",
         "801083.SI": "58e23ee68efa039fe32b93e000327a8c111b0bd7b10f78df65b4fdcaf40065ed",
         "801084.SI": "0dd6eed830d2da90f58dec792e8628a6929619e0f2623240dacc8e58c41c8e8b",
@@ -321,10 +321,10 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "fce3bb08c76a7a2b7adf5a3c63ea38cd0f99432d1dbdb2daafed6540190842fa",
+      "financialHash": "cc9c9e8eb5802898104749249b565fe085ae2751af66df2d4ce9d9b5ce465c5c",
       "sectorFinancialHashes": {
         "801782.SI": "34db4dbbc9e0b40c83244bc8e6f28004c90856de71c447a300d6b2fa8fe5ea60",
-        "801783.SI": "fcba57459ff68d0976ea99bea200c64c7d6b57c4eb08d762f75ff575676007f0",
+        "801783.SI": "06414464259d6aa7616b1adebed038dbdcfc46a91d5d4fa44370ec8c068b8127",
         "801784.SI": "e882cc73f778d6e8dd18a64f97ba77c35e0e4824aca76733e74e6d5ea4192e8f",
         "801785.SI": "2db1c273894d615aaf47eb792dd084ae55f696e4820d9699b3e177cced47f5f8",
         "801786.SI": "b9c07e0ddd47f8ec4ffd734729b45a424279e3ca2288db47af4074759bd6c376"
@@ -607,13 +607,13 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "2f7a22294a20e97512a43045779166033f5c33b923a9084f7cb50bfb57b703f6",
+      "financialHash": "4fce6b6d338df78c5f719a383356b2fb860fdbf7f114ac58e08e69a158fd3579",
       "sectorFinancialHashes": {
         "801737.SI": "c25df4f08e419911c550a9fd2ca1c9f9d7d2d28a23058a2d47af716cbfe8138a",
         "801738.SI": "797c20ffa8c9de7c0cea468ab52ba2c5aa76ede8d9f381468fae735eda31544b",
         "801735.SI": "2d9169c012e36ccad33d7c3c914fb2ee4e6e6ff32bd84d3dfc7bd78e4403d285",
         "801733.SI": "87069202b5fbb2005c49b5be5052d6cc1941f01232653e17ca971337b3bc2273",
-        "801736.SI": "240b05699527275bc388437bc77e09159b56649a2c08a44ac79529435cfd3223",
+        "801736.SI": "68ecd576e4f2ae53b9807ea2fab260f65706b301a6b49cddf076a6923cd7faf7",
         "801731.SI": "a72f607fd030cfd60c0e2c030b084b41a67571108b750b691186cf13f20a062d"
       },
       "latest": {
@@ -824,9 +824,9 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "3cfad2971d805c8e92684c8f32c6ce44afe8d066dab50a75564655f9aafca807",
+      "financialHash": "6e151955d62482cffe504e0d12ad2702e983b37e8d49da4e6a6426f0cca63e8a",
       "sectorFinancialHashes": {
-        "801151.SI": "0afe8d07690fdd415534f3d161e04e249168387b4e41d7e6318870828b426962",
+        "801151.SI": "aebc37faa625c1f373cb067d523167fc2c51fe24653da60bd8bafbfb293b1c1b",
         "801153.SI": "7398825a95f146a9b0d8b3c1f5443ee0e9027ce3075409ab9bd7b734afe83c66",
         "801156.SI": "255dd835564e0178ea6c8a70a287f2f407361719224c85680dbc18bba1e42b3d",
         "801152.SI": "a34452969f2792991303c7db3f7e7bb33e78372c849d55c7cad89dae09e7ff97",
@@ -1147,11 +1147,11 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "0cfe73a2e9bf721fab1b258f77aae33f1bb7bb8d16635a4b7e62ce6d221550c4",
+      "financialHash": "b3792841c16ed17f1bcb987f670526e3606b8c504e06904412888ca9ccc055ad",
       "sectorFinancialHashes": {
         "801193.SI": "b955964f749bc68ef1c4fd46eb2272ad981f385ac6f66fd50398ece6e365f9e1",
         "801194.SI": "9bcdf2ea10aa5397e77035754c0f586228e42d14f1da43892ec33ccc34424864",
-        "801191.SI": "5d11c7665b26e8fc6029a4293352424e2f51f7cd6d925d3f2be9729f1775d49c"
+        "801191.SI": "296769dde7d143d906c75f8c836e598db77e7f559ddf9c4f60daeb010263d4fc"
       },
       "latest": {
         "quarter": "2026Q3",
@@ -1354,11 +1354,11 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "a7650fdc730516c49f73193ee9da670d14df540ddd4035bc22f35d53fd10d13e",
+      "financialHash": "5b73927ec08c9bea34adf5273eec8195b8c5a47301226153ed046cd9f27050b4",
       "sectorFinancialHashes": {
         "801072.SI": "3a49668056361dc0f16f583e764c21005d55e0322af5ff8441f55d83053e0b27",
         "801074.SI": "770fb1951f2daacf02db6997daeb39b3977f8ac0682ddf95af265527a478ddd0",
-        "801078.SI": "579dd74596715212aee4dfa3a8a4824e69c5de037612139d85e885172c0c42cf",
+        "801078.SI": "b2f6f8454394cd1ce458c969182e1781eaa5ae223cdfdd6450a4852b6abb16bd",
         "801077.SI": "f3011063839f9de502daa22266c901b987972489b5a5f686ab6bc866b6fa257d",
         "801076.SI": "dddbc53c87e820e58f48b939d172d639217512e046a2d0e26e6922348174b831"
       },
@@ -1586,10 +1586,10 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "d3afdb61ccc0b53a1bdee5992dd27f712170b4568569a6255f1b21aa9927843f",
+      "financialHash": "d01a4970fac17386f4de8400f9c0ae8ef7e7727ecd6c5375780f92f10b55176c",
       "sectorFinancialHashes": {
-        "801161.SI": "bf9d8bc7a98b35208b25b9f9060a3111658f9afe36b29e51e5228e8ba4a6850d",
-        "801163.SI": "2a97ee7295c1045e3459139ae8383f11c56aea0989a64ba860ccc2a96df71f74"
+        "801161.SI": "1f8802ca4469921df48053f4e7208ee19d851754266568be1b9876df51b2d74d",
+        "801163.SI": "03c50c9d299570fe011834cde12e276738a43f667c834637308529dfe6809853"
       },
       "latest": {
         "quarter": "2026Q3",
@@ -1913,11 +1913,11 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "94b0dc3f2de7ea54d529ed16d83b4a44f4c0a95c18255589baaa4eae4a52efb8",
+      "financialHash": "e085a38b08acc489b9613a48f83f6b864e016bb480e85e205f7d7470a79ee7c8",
       "sectorFinancialHashes": {
-        "801055.SI": "7266d916a44ac48a17b7d243e8a6777a3e4c5068c7cdbd3553bbbad23bbb0602",
-        "801054.SI": "d2058795afb72f09484ab39b7a89f5a9720cd0d206e42f5767a51edefa15900f",
-        "801053.SI": "2af977cf1fd713c7ce77d558497e7944bf97f11ffd9def250555758ebb4f5cae",
+        "801055.SI": "6b32b98177726d357cca08bd9966c9a10807d7b3016aec9e97874cc4f4729393",
+        "801054.SI": "71d07eefd4c07f5ea1230f1dfbdd702bf75a82648fbb2c25eff42f940f9982a0",
+        "801053.SI": "3f96f880d38b737fa245cf7f6da1676eaeaeb1170941870c9b81e04c09491407",
         "801051.SI": "b7e9aba640472d3bb5918a4d1323517daa811ff4b79e95d9872baacb8b79205f",
         "801056.SI": "065a1219ad3ecb20399b868633ac07f24cdea1e503749f4d59b25763603423f2"
       },
@@ -2182,10 +2182,10 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "c22d849c86b5a83024d3ea94d85ef28ca1b37022fe10da22cc1692bc91ca909c",
+      "financialHash": "6c81ee7b3e7d0efe8a997c1904fef2ddfb9dd2cddb4738e82b7830b7cdbe629d",
       "sectorFinancialHashes": {
-        "801034.SI": "b3f677d8a8762d93b0f3724a11ac693892de5cccd5667f60075d275a519f352e",
-        "801038.SI": "ba2c98038b96172bbd2b42a15a58a96f2d2ad4b8d94cb222b99b0c7f3139bffa",
+        "801034.SI": "7d70416662eaa4cb69ff65964e102c7962b0c0846e650cdc74b40d407fded97f",
+        "801038.SI": "183c19dde7a2f15f6c8a3ed1b993d336fb71d717f51482799137eb84fae37b05",
         "801033.SI": "f4a69ca6bacb8c254349ebcb001226006aebc6664f395d3759252bf110e9feb7",
         "801036.SI": "482da75f65ee920815dad4c1cf197cff816ac6fdf716a925ab9317c813481d29",
         "801032.SI": "6fb5d5371d652b1702f404af02ee26200ab769aa6c10068230316d3f24c2cfa4",
@@ -2832,9 +2832,9 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "5f9bb7ff8a365501ca31313a18cfe27d370270b57ed5b3b3c8a7e1e73107f940",
+      "financialHash": "80cc5b6a59da6f97649355128d44306e26ea6c8321cb5aa0a616132dbbf3fc23",
       "sectorFinancialHashes": {
-        "801093.SI": "b335d591fc6c967bb1b0eeaaa5128989d511a42c71f88e87ba4f88851d2d2f21",
+        "801093.SI": "c20e40f2874c5e1daea3fa619796eee1fdcb1fa7d00ea760f6a54e9c984560d1",
         "801095.SI": "65818b2cbee1c18057228c5cfb0d9c01888bb5d78d3aee3b95cb59e7b07f5910",
         "801096.SI": "fa1675f3b0d0c85f076284d100b4f051b416113f714ab9340196897ff936e95a",
         "801881.SI": "0abcb0938cdfefa21352a8fded5941e304c97dbbb7458b42b1c97204def15363",
@@ -3229,11 +3229,11 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "4eb5ecb7c981f1ea78634e015cda4ca62123eedec05d695f06e28e0072a20f13",
+      "financialHash": "cb17c62c848d14942df4e15bd470efc06cbc1c4071de5ea9f018c87746b17476",
       "sectorFinancialHashes": {
-        "801992.SI": "10705b33900cd308f42d7d3236327f1de1e196c5ff3f7826c8d7b8912abeee7d",
-        "801179.SI": "49738186634358a4dc2441251e2967949b9b99e84846cbcc5c6bc3f3c4a186d9",
-        "801178.SI": "15209ff28dd63a74170d05289ff5eca43b32037e05d31c4c7728c5b5e5feed53",
+        "801992.SI": "62d2038a8127581e49ecfb5cc5d01b8bc066aa2902444ea16db5415dd810dbb9",
+        "801179.SI": "ee556bd1a35ee06b60b190d31ea6ee37aeb1b23b9d95f808ca39b76108d95533",
+        "801178.SI": "f9c2ba0d0c769017d7e6e61f2f844971051c03dc703266b2ae9726e3a0f8559d",
         "801991.SI": "86b45035889ecedc3e067303e13b8fcc4330deea6431a942381ef5132cccbe69"
       },
       "latest": {
@@ -3658,9 +3658,9 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "af34e36b1a0fb93262b0a8f7285ec579f94462395513f8cc753eb6f7d85edc6c",
+      "financialHash": "838a80fbe624018ecd7071ce6de1de0ba76f184cb2173810d1b51ba2e62a7eb5",
       "sectorFinancialHashes": {
-        "801951.SI": "fc7681c4bcfe26bc24f8a39958242781cbc3a6a02ffeff1c9f5131df3e529210",
+        "801951.SI": "ecf2b00395c41024b8741d348fdc40e92855bf1d9f6b4a566060ca53d9ca7819",
         "801952.SI": "aec1a9622093297f09ac9a42ad9f71f7bf7513e4b346b42ab7965c800c8dc90c"
       },
       "latest": {
@@ -3724,14 +3724,14 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "8f49b224e237f733103fca09556ddff8d3dfdc85a1979c17f48d62138a8aa299",
+      "financialHash": "98c0077591ba64c4e694d19a0d6564bd83c6e611d792e69b0bfa372c6aa40ff1",
       "sectorFinancialHashes": {
         "801111.SI": "dc0a2dd0f5e61631d4fa1259d16cb1fdda2d858025b739b1a47dda3efa75cc5b",
         "801116.SI": "876ec1b5abe08e8c97b8a40d25125cd3cc164309c0205a1d86ba4234ddf03c1b",
         "801113.SI": "16e3749a237ae222f74fe94f7f8b1d2f3721a141ca5bb6d2b621d9de16350686",
         "801112.SI": "570307d26c1cd264024ed42888f3da09dd2797e362d4adb11db274c3957775e0",
         "801115.SI": "9aa78d318e2c04c8209c140079a248b62a0141408b03f8d39e5fb845db1b20b0",
-        "801114.SI": "38be7ac6dd3ab7d8785e0809271e9d5183954d59607951e7c1ffe8a13006b2fb",
+        "801114.SI": "9a91e21ff7fb5020a4108012b095aafe84a12e75bc4af3997dfc2bb6315c1820",
         "801117.SI": "bc8b6cc160e624fb1473bd8304b4f2f0da55e18491004f5c46f14ed2cae356bf"
       },
       "latest": {
@@ -4021,9 +4021,9 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "34676688ea5bdb369896ac30657a99065d8baebee3e8bb63703d32ec471da074",
+      "financialHash": "120c17e5ba4733058a5088f95d6f7ab118802688198e20c9d5398e0b1e59cd9a",
       "sectorFinancialHashes": {
-        "801723.SI": "0dd0f77d84e5603edb5b67151ed8ce6d49b6d0aba11e0c365782b7d31b8eec8a",
+        "801723.SI": "348ccf222970336492e28df5a24d0e76c36759a2b196768e2e66036f3617d60a",
         "801724.SI": "d9c8fee1de818be4ae7c3cbda0d9048456c15c2ebdaa6ffd159983bf02cd8d45",
         "801721.SI": "3ee98a98ae76fd1de7f94f97040055324bd4ce3dbbf1b2a7713d76885489c973",
         "801726.SI": "acf71754f43a89a9a81fb60388506768f235a89ac514a02b425da468db36dd7f",
@@ -4302,12 +4302,12 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "4e1527b47dba52a94e2ac0012e162367ddb1ca4c1fc772068f51a196384f8fb9",
+      "financialHash": "f8dbdc8246c712d55a8ec21319f547ca7bcb3414c6520b2a72e982ccc0959798",
       "sectorFinancialHashes": {
-        "801764.SI": "fda3f61043cd0962a559b11623d4fa9730f768a9502ce9f0a00273b4c325c0f1",
+        "801764.SI": "84a4ecd2554b1359c1b442c19e190bf263f881c60dc2dbd75b399bdb01667682",
         "801769.SI": "6733fb95cd9428324cdfdb7b0a91133274d4ac958ae5c71c3459cc51580b2b74",
-        "801765.SI": "7173ff29c3cc0d5e86b505e2e97e4bb6765a0862be1dc3c6ed8c36d5a03387a4",
-        "801766.SI": "67e5e96c2b7cc2ad8f3ae03bc7f85050274eb2892b25456dd1a6496bc348ac44",
+        "801765.SI": "dd4aad0b937145c37e1eb8ad959ba14459c046576da96bed74bd08b1bd7e49c3",
+        "801766.SI": "6461a5810f178ab0c1afd764930f4e95f0e3fca441d09bf633237d00f33c879a",
         "801995.SI": "756ba0fad04f1d84d63f44ec0625ad6147bdb0b36e5e182d6296172f5cbdef65",
         "801767.SI": "692142dbe83d7856e5132f0c1e9770645e6fdf528f335b41baf1ea570caeac3a",
         "801768.SI": "b9c07e0ddd47f8ec4ffd734729b45a424279e3ca2288db47af4074759bd6c376"
@@ -5255,10 +5255,10 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "27ab42c8df9c7066373890e0091425362cf77ea79d749415254a63d581c0b9dc",
+      "financialHash": "04b21115b9025f6cf8311e7626bda7043169b24a84465cbc2c944ab97a65c6ba",
       "sectorFinancialHashes": {
-        "801181.SI": "bbdf4f711ad62e859a6d6b3066d7bb93b318a5ac25bc53c2fa36e204d2297403",
-        "801183.SI": "2404121722376d58070889ea71963b4db41ebba2ab552b2b1ae4c343e4ef1841"
+        "801181.SI": "75230c6085178b40bf4f7640bfd29d3e4379d889b76929e688d9beea21937e8e",
+        "801183.SI": "59d64b40b0980ec281dfe35949bca86dffa1966de9a52c38a8185b440a5fdef9"
       },
       "latest": {
         "quarter": "2026Q3",
@@ -6034,9 +6034,9 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "57655605ae109ae55ec2ea8da5b3e06d2cddb6081b325351368fd8d11cd17676",
+      "financialHash": "7166894e25b055734cf3259f4dd5493bc44747194f7589de38ea4968d67f5157",
       "sectorFinancialHashes": {
-        "801971.SI": "c3d4539f0ba17d2f2f39cd1356029150e7efcd4ce6f856d973bfd41edd5db455",
+        "801971.SI": "b774ce3167fd303aec0bdabb6e89b940a60392944c778bf107e779e31f79aa0d",
         "801972.SI": "95828a62bdd9898116c84a528506b3bf704a52bfba1d751009f6371176e136ec"
       },
       "latest": {
@@ -6269,10 +6269,10 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "6265fdb379b6ee11af1429d6187c2e237069702b2e730d3fb881e4ef7268b0ff",
+      "financialHash": "5c67ae675cf537cf75a002ff4408cb1f357a75706f3ec499359d51a470e3ceee",
       "sectorFinancialHashes": {
         "801218.SI": "a25f139b45a341e005e00844da8690e7545d8c8aa5d72f18ecd40b711ca6e3dc",
-        "801993.SI": "dc777f2dbe60cf728faf673d48ede7a3e486cb5c593e2c68d29b34e53c21db77",
+        "801993.SI": "1143b43cd7ddbb66219d05cb4fa05086d17935698be348c65904de26da5abde4",
         "801994.SI": "a322f843c3842ab373ace42af096b9119897a88c6a7f86b997f90ae38333b085",
         "801219.SI": "67a578519fa7d7fcce46986fb3400b84f9be09e8c59619634808ff2a98f94d48",
         "801216.SI": "a32aa0825d5d643b06768611b67dc5bee87dea987ff565e8098a0ced155ec137",
@@ -6582,9 +6582,9 @@
       "scope": "SW公布市值/PE与财报汇总分离",
       "project2AsOf": "20261110",
       "financialAsOf": "20261117",
-      "financialHash": "6e9fa15aa599765ff9fac66fc46e494656948f79ca48e968290ec1d2ff661cdf",
+      "financialHash": "1996ea2d9833f98c065c021551059d4a676e61bf78b2dbeea0dfaabe73a5678e",
       "sectorFinancialHashes": {
-        "801982.SI": "569041233fe83523e35353f105bab13df5749202b774dd92ebba5dcccc6d2e17",
+        "801982.SI": "416bc0659bf7335d14c476c0f045098dee20a1c8fef6dae75bf45cbc6170afb7",
         "801981.SI": "01a8c555f1e2bda51ce8aa111a211428fbf489dbc2672368d1bccf3d11fd4d15",
         "801983.SI": "949df50b5b04c9ff1c79dbe446cdcce62abdef04532903eb6e08f8fb75997a95"
       },
@@ -7990,10 +7990,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2005Q3",
-        "2005Q4"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "银行",
@@ -8039,9 +8036,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2007Q2"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "电力设备",
@@ -8087,9 +8082,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2026Q2"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "医药生物",
@@ -8135,10 +8128,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2005Q2",
-        "2005Q3"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "非银金融",
@@ -8184,10 +8174,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2005Q3",
-        "2005Q4"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "机械设备",
@@ -8233,9 +8220,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2026Q2"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "公用事业",
@@ -8281,11 +8266,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2005Q3",
-        "2005Q4",
-        "2006Q4"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "食品饮料",
@@ -8377,19 +8358,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2005Q3",
-        "2005Q4",
-        "2007Q2",
-        "2008Q3",
-        "2008Q4",
-        "2009Q1",
-        "2009Q2",
-        "2009Q3",
-        "2009Q4",
-        "2010Q1",
-        "2010Q2"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "基础化工",
@@ -8435,10 +8404,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2005Q3",
-        "2005Q4"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "计算机",
@@ -8576,10 +8542,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2005Q2",
-        "2005Q3"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "通信",
@@ -8671,23 +8634,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2005Q3",
-        "2005Q4",
-        "2006Q4",
-        "2007Q2",
-        "2007Q4",
-        "2009Q1",
-        "2009Q2",
-        "2010Q1",
-        "2010Q2",
-        "2010Q3",
-        "2010Q4",
-        "2011Q1",
-        "2011Q2",
-        "2012Q1",
-        "2012Q2"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "国防军工",
@@ -8779,10 +8726,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2006Q2",
-        "2006Q4"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "家用电器",
@@ -8828,10 +8772,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2005Q2",
-        "2005Q3"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "建筑装饰",
@@ -8877,13 +8818,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2007Q4",
-        "2011Q1",
-        "2011Q2",
-        "2011Q3",
-        "2011Q4"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "传媒",
@@ -8929,16 +8864,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2009Q1",
-        "2009Q2",
-        "2009Q3",
-        "2009Q4",
-        "2011Q1",
-        "2011Q2",
-        "2012Q1",
-        "2012Q2"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "农林牧渔",
@@ -9076,15 +9002,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2005Q3",
-        "2005Q4",
-        "2006Q1",
-        "2006Q2",
-        "2009Q1",
-        "2009Q2",
-        "2009Q3"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "商贸零售",
@@ -9268,10 +9186,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2005Q3",
-        "2005Q4"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "纺织服饰",
@@ -9363,10 +9278,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2011Q1",
-        "2011Q2"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "美容护理",
@@ -9412,10 +9324,7 @@
         "peNote": "",
         "financialQuarter": "2026Q3"
       },
-      "financialIncompleteQuarters": [
-        "2005Q3",
-        "2005Q4"
-      ]
+      "financialIncompleteQuarters": []
     },
     {
       "industry": "综合",

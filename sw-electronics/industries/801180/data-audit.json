@@ -3114,10 +3114,10 @@
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
     "financialAsOf": "20261117",
-    "financialHash": "27ab42c8df9c7066373890e0091425362cf77ea79d749415254a63d581c0b9dc",
+    "financialHash": "04b21115b9025f6cf8311e7626bda7043169b24a84465cbc2c944ab97a65c6ba",
     "sectorFinancialHashes": {
-      "801181.SI": "bbdf4f711ad62e859a6d6b3066d7bb93b318a5ac25bc53c2fa36e204d2297403",
-      "801183.SI": "2404121722376d58070889ea71963b4db41ebba2ab552b2b1ae4c343e4ef1841"
+      "801181.SI": "75230c6085178b40bf4f7640bfd29d3e4379d889b76929e688d9beea21937e8e",
+      "801183.SI": "59d64b40b0980ec281dfe35949bca86dffa1966de9a52c38a8185b440a5fdef9"
     },
     "latest": {
       "quarter": "2026Q3",

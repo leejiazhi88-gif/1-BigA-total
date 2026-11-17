@@ -2,8 +2,8 @@
   "checkedThrough": "20261117",
   "quoteDate": "20261117",
   "financialPeriod": "20260930",
-  "fetchedAt": "2026-11-17T20:55:30+08:00",
-  "requests": 98,
+  "fetchedAt": "2026-11-17T21:55:16+08:00",
+  "requests": 254,
   "modules": 31,
   "indices": 165,
   "activeCompanies": 5579,
@@ -46,392 +46,991 @@
       "period": "20260331",
       "metric": "revenue",
       "value": 0
+    },
+    {
+      "code": "000498.SZ",
+      "period": "20110331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "000498.SZ",
+      "period": "20110930",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "000688.SZ",
+      "period": "20080930",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "000688.SZ",
+      "period": "20090331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "000688.SZ",
+      "period": "20090930",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "000688.SZ",
+      "period": "20100331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "000736.SZ",
+      "period": "20060331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "000892.SZ",
+      "period": "20090331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "000892.SZ",
+      "period": "20090930",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "600180.SH",
+      "period": "20090331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "600180.SH",
+      "period": "20100331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "600180.SH",
+      "period": "20100930",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "600180.SH",
+      "period": "20110331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "600556.SH",
+      "period": "20120331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "600706.SH",
+      "period": "20110331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "600715.SH",
+      "period": "20110331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "600753.SH",
+      "period": "20120331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "600094.SH",
+      "period": "20090331",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "600094.SH",
+      "period": "20090331",
+      "metric": "profit",
+      "value": 0
+    },
+    {
+      "code": "600094.SH",
+      "period": "20090630",
+      "metric": "revenue",
+      "value": 0
+    },
+    {
+      "code": "600094.SH",
+      "period": "20090630",
+      "metric": "profit",
+      "value": 0
     }
   ],
-  "buildInputSha256": "3566a4f340d900dd9e55013fc561af8c33662bfb8ddaf25666beb274646e2061",
-  "refreshElapsedSeconds": 107.56,
+  "financialRecovery": [
+    {
+      "code": "000506.SZ",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 31468444.75,
+        "profit": -41894372.71
+      }
+    },
+    {
+      "code": "000532.SZ",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 111876031.55,
+        "profit": 2233493.14
+      }
+    },
+    {
+      "code": "000593.SZ",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 125275260.36,
+        "profit": 317007.49
+      }
+    },
+    {
+      "code": "000756.SZ",
+      "period": "20050630",
+      "metrics": [
+        "revenue"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20060731",
+      "values": {
+        "revenue": 871680519.3
+      }
+    },
+    {
+      "code": "000875.SZ",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 920083504.43,
+        "profit": -43407662.09
+      }
+    },
+    {
+      "code": "002035.SZ",
+      "period": "20050630",
+      "metrics": [
+        "revenue"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20060731",
+      "values": {
+        "revenue": 424931420.17
+      }
+    },
+    {
+      "code": "600096.SH",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 2069309587.86,
+        "profit": 530107182.6
+      }
+    },
+    {
+      "code": "600119.SH",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 591983328.32,
+        "profit": 8122208.8
+      }
+    },
+    {
+      "code": "600168.SH",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 127182835.87,
+        "profit": 13942447.96
+      }
+    },
+    {
+      "code": "600315.SH",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 1541480316.08,
+        "profit": 44687058.76
+      }
+    },
+    {
+      "code": "600660.SH",
+      "period": "20050630",
+      "metrics": [
+        "revenue"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20060731",
+      "values": {
+        "revenue": 1245837476
+      }
+    },
+    {
+      "code": "600681.SH",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 143812992.4,
+        "profit": -14938593.95
+      }
+    },
+    {
+      "code": "600684.SH",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 139037498.16,
+        "profit": 7452505.11
+      }
+    },
+    {
+      "code": "600745.SH",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 1848894.7,
+        "profit": -62389806.95
+      }
+    },
+    {
+      "code": "600794.SH",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 75675254.58,
+        "profit": 5522758.54
+      }
+    },
+    {
+      "code": "600866.SH",
+      "period": "20050930",
+      "metrics": [
+        "revenue",
+        "profit"
+      ],
+      "source": "Eastmoney RPT_F10_FINANCE_GINCOME",
+      "announcementDate": "20061031",
+      "values": {
+        "revenue": 412132039.9,
+        "profit": 12145083.89
+      }
+    }
+  ],
+  "recoveryScope": {
+    "cases": [
+      {
+        "code": "000498.SZ",
+        "year": "2011"
+      },
+      {
+        "code": "000506.SZ",
+        "year": "2005"
+      },
+      {
+        "code": "000532.SZ",
+        "year": "2005"
+      },
+      {
+        "code": "000593.SZ",
+        "year": "2005"
+      },
+      {
+        "code": "000688.SZ",
+        "year": "2008"
+      },
+      {
+        "code": "000688.SZ",
+        "year": "2009"
+      },
+      {
+        "code": "000688.SZ",
+        "year": "2010"
+      },
+      {
+        "code": "000736.SZ",
+        "year": "2006"
+      },
+      {
+        "code": "000756.SZ",
+        "year": "2005"
+      },
+      {
+        "code": "000875.SZ",
+        "year": "2005"
+      },
+      {
+        "code": "000892.SZ",
+        "year": "2009"
+      },
+      {
+        "code": "002035.SZ",
+        "year": "2005"
+      },
+      {
+        "code": "600094.SH",
+        "year": "2009"
+      },
+      {
+        "code": "600096.SH",
+        "year": "2005"
+      },
+      {
+        "code": "600119.SH",
+        "year": "2005"
+      },
+      {
+        "code": "600168.SH",
+        "year": "2005"
+      },
+      {
+        "code": "600180.SH",
+        "year": "2009"
+      },
+      {
+        "code": "600180.SH",
+        "year": "2010"
+      },
+      {
+        "code": "600180.SH",
+        "year": "2011"
+      },
+      {
+        "code": "600315.SH",
+        "year": "2005"
+      },
+      {
+        "code": "600556.SH",
+        "year": "2012"
+      },
+      {
+        "code": "600660.SH",
+        "year": "2005"
+      },
+      {
+        "code": "600681.SH",
+        "year": "2005"
+      },
+      {
+        "code": "600684.SH",
+        "year": "2005"
+      },
+      {
+        "code": "600706.SH",
+        "year": "2011"
+      },
+      {
+        "code": "600715.SH",
+        "year": "2011"
+      },
+      {
+        "code": "600745.SH",
+        "year": "2005"
+      },
+      {
+        "code": "600753.SH",
+        "year": "2012"
+      },
+      {
+        "code": "600794.SH",
+        "year": "2005"
+      },
+      {
+        "code": "600866.SH",
+        "year": "2005"
+      },
+      {
+        "code": "601001.SH",
+        "year": "2006"
+      },
+      {
+        "code": "601333.SH",
+        "year": "2006"
+      },
+      {
+        "code": "601390.SH",
+        "year": "2007"
+      },
+      {
+        "code": "601600.SH",
+        "year": "2007"
+      },
+      {
+        "code": "601666.SH",
+        "year": "2006"
+      },
+      {
+        "code": "601866.SH",
+        "year": "2007"
+      },
+      {
+        "code": "601872.SH",
+        "year": "2006"
+      },
+      {
+        "code": "601919.SH",
+        "year": "2007"
+      },
+      {
+        "code": "601991.SH",
+        "year": "2006"
+      },
+      {
+        "code": "601998.SH",
+        "year": "2007"
+      },
+      {
+        "code": "920096.BJ",
+        "year": "2026"
+      },
+      {
+        "code": "920178.BJ",
+        "year": "2026"
+      },
+      {
+        "code": "920200.BJ",
+        "year": "2026"
+      }
+    ]
+  },
+  "financialCompleteness": {
+    "companyQuarterRows": 259041,
+    "unresolvedCount": 0,
+    "estimatedRows": [
+      {
+        "industry": "银行",
+        "code": "601998.SH",
+        "quarter": "2007Q2"
+      },
+      {
+        "industry": "电力设备",
+        "code": "920200.BJ",
+        "quarter": "2026Q2"
+      },
+      {
+        "industry": "医药生物",
+        "code": "688613.SH",
+        "quarter": "2026Q3"
+      },
+      {
+        "industry": "机械设备",
+        "code": "920096.BJ",
+        "quarter": "2026Q2"
+      },
+      {
+        "industry": "机械设备",
+        "code": "920178.BJ",
+        "quarter": "2026Q2"
+      },
+      {
+        "industry": "公用事业",
+        "code": "601991.SH",
+        "quarter": "2006Q4"
+      },
+      {
+        "industry": "有色金属",
+        "code": "601600.SH",
+        "quarter": "2007Q2"
+      },
+      {
+        "industry": "交通运输",
+        "code": "601333.SH",
+        "quarter": "2006Q4"
+      },
+      {
+        "industry": "交通运输",
+        "code": "601866.SH",
+        "quarter": "2007Q4"
+      },
+      {
+        "industry": "交通运输",
+        "code": "601872.SH",
+        "quarter": "2006Q4"
+      },
+      {
+        "industry": "交通运输",
+        "code": "601919.SH",
+        "quarter": "2007Q2"
+      },
+      {
+        "industry": "煤炭",
+        "code": "601001.SH",
+        "quarter": "2006Q2"
+      },
+      {
+        "industry": "煤炭",
+        "code": "601666.SH",
+        "quarter": "2006Q4"
+      },
+      {
+        "industry": "建筑装饰",
+        "code": "601390.SH",
+        "quarter": "2007Q4"
+      }
+    ]
+  },
+  "buildInputSha256": "06e0551070e9db07f7f91c1eea00f752e0266131a45d87e707090fc3433170de",
+  "refreshElapsedSeconds": 103.24,
   "collectionMode": "parallel-4; SW daily batch when cheaper; fresh financial periods + incremental corrections; no cache fallback",
   "payloadSha256": {
-    "all-industries-audit.json": "46834b0239b3c2fb1fc1ac750161319550f89a43ef798bff436ce77000c37262",
-    "app.js": "b0d7e58a8a1c6bbd8fde69da3f57c0afa023a8cc157763adbbe5fd6e8c85cfce",
+    "all-industries-audit.json": "4560828971b58e61aa317661bd64326d28ff75c178480ee2b89ff330100c4eaa",
+    "app.js": "44dd738ffa255ff3f1092d684bd31dd25160e69c0589260c83168e4ae1a50986",
     "bank/companies.json": "fa25ededa3855024b04d73c1da33248a5c16802c218d25f2b72650bcc5f191e6",
-    "bank/company-pe-source.json.gz": "aea80f523d340611e91107397d4d8492914b7880b2be752aae2bc09461b1c959",
-    "bank/company-quarterly.csv": "684d0da6e70a858c854e5b56b598a255094422168878964886bbe90355f91733",
-    "bank/data-manifest.json": "ae2e1ceb8889e3f226e9938756b13e7c05e67cce8744ef6207dbe769501ea6b8",
-    "bank/data.js": "d62c792ff10f92d72130c9d2ea0293b7f86c0534cae021584a978ff7ae6596df",
-    "bank/data.json": "1bfde604dbe4d0b47d5c15bea5a78103222bc142e64bb6c63b9866afe6673aa5",
-    "bank/latest-quotes-source.json": "e0b7ccfa9e99a61b94ed946e2783245a44d34dfd3efd40d14bfa25375e523222",
-    "bank/main.json": "57f8759f145573d74a5a217e72aa71a92d092ec91c0f149d71fb85ce101816ce",
-    "bank/quarterly.csv": "3b93152792edd6bc86ddaff184bc25f2529c9f67a3b389d815d97ff86994aa81",
-    "bank/sectors.js": "74f6342eed0cd1bb14e340a7630dd64ea26d92021b79432bb663354b95cdf1f0",
-    "bank/sectors.json": "a24e6c921278aa688033f94f38a8fcc6c7cf7db221d43504fddf931c9a71e772",
-    "bank/sw-alignment-audit.json": "493e8dcd7163543020b1c76aba5c0678311bb1e77ff8bf0c29221dd857d5194c",
-    "catalog.js": "5714f698e13916f1841de33a8ca4d659396d25bd7a9df3c6a26348b1f55075cb",
-    "catalog.json": "34ef57a5931210a3fe5ff81e352b61ce495fcb0d94d46416e204b04934280e70",
+    "bank/company-pe-source.json.gz": "fb025f9fad524711b18db3c12e21e2a0055dd2bcfb15db8d4810785ce1417bdd",
+    "bank/company-quarterly.csv": "0d8dd9c6b270ab0a1325bc6b61f9f51b362b82c3bfab0188c87945d7c7572984",
+    "bank/data-manifest.json": "4be9c15f0ed87d953a8243006caf323ae80e150f1b23c1a953046e20e84fca0b",
+    "bank/data.js": "3633bc50f7175285dceb161b4c2d6b5d93d2134ab8a1ec68c8ccf2fd3eafad98",
+    "bank/data.json": "0d8a141a8b0b6f6ae162b8b8c7b3ba064544cdf1f2c0125a8da45942341ead2a",
+    "bank/latest-quotes-source.json": "eeaf8f53b3712b0b235ab5296dbba83eb2a36a302d2a281e0991e4bbad417cb6",
+    "bank/main.json": "99a77ce35f7f637f729f2e2a408e9820fec0b8819b5700696abcdbc1c0eb0935",
+    "bank/quarterly.csv": "c8bb5a6b992b158b591f8d712eb8d9ad9ffecd98eb1440f8360b9dabb8440500",
+    "bank/sectors.js": "6ada4191ce0a13b88c08a6d086ff515759f648d29d8ada8b0a34c47d8ea2084b",
+    "bank/sectors.json": "7738393ee949ef4311685673d604fa467602fc377a0316b2fe9355bd30d02d2b",
+    "bank/sw-alignment-audit.json": "3947ef4235107b56a0c463010e73ad676b7feec8c09fd74e2ff9238d3a1cb3ef",
+    "catalog.js": "540c6a79e15363a4a034e34252e1418a7bf3e89a378f8b9a5f15942308f38520",
+    "catalog.json": "a4f772b442af88aac7bd1eebc6d46188166771fa3f5e8e00ec5fc7ffb6b46997",
     "companies.json": "49b160ef7467d52b7b1cd8b8be8a9562370afc33a6263fe2f81a12ee3ac71f1f",
-    "company-pe-source.json.gz": "dd792b8a7e60eb2a9fca00db844be8a554d644cbcb2dc46b37e0355ff7694ff8",
-    "company-quarterly.csv": "f4311c7b8ef5039e69fb1468e06317995335e459e74d5042948360e5d87b613a",
-    "data-manifest.json": "650b2ab9cd62c0d2422e8022b4065ed047feceec85fa95196075b29c44dc822a",
-    "data.js": "6db45c7b4d614441207e76d69274976c43d423ff1aec02b9cfec039517c81676",
-    "data.json": "c0d5c8bf4abf40b3f80b6df85cec4c521b79c24eca74df9dbf92865f4781b8e3",
-    "financial-supplements.json": "27b442acd523caf43354eb8e0b0e17333bdc31057eb18de0db9e5881da6a86a8",
-    "index.html": "69d9d85c25ac783b0131946dd7be84707b58fedb8e2bc4b35cec0ea907710a76",
+    "company-pe-source.json.gz": "452f69d5bad9db711fab032834bd814a596d2886eb46e8b40e4ae119940f0191",
+    "company-quarterly.csv": "70c3fe90c26acfeb5b7cf94b2b1b9701cefc9947fb316fd4bf5d72461f818a5d",
+    "data-manifest.json": "ffb7e6e61302e40a78a55fa4675bf1dd8aa90a885a7d964fc8246737ec370570",
+    "data.js": "030031a8ac13f5543a14866f355cc92894114332b3b5ecd14265acc02ef79724",
+    "data.json": "e45c3547fa358705ae8d72a9ec3c458e2d92b5b87d30ec7a2437082dd35a3c00",
+    "financial-recovery.json": "15c2be1ffb2f0f5e974f0ece3b2e576699c6131149f7da5da5dc000d4838f845",
+    "financial-supplements.json": "d882fedeb76165aa29ff08b7d424cde8254938992ddce66ee83ed56993e4141b",
+    "index.html": "0d35e05c4faabba8740c3ec534c5371ce2f60951394f411d4c8a87c4b963c4eb",
     "industries/801010/companies.json": "4e1052eca54e3619b40dec08e5bfcae4c9be3cf93f19f0289d2ea93840a0ae9b",
-    "industries/801010/company-pe-source.json.gz": "446aa5209a1e993b83556dadb5dd74082bc38cb6b2ca6ac60d08d232bad88c63",
+    "industries/801010/company-pe-source.json.gz": "06d5874672796970946903e477ed6d378b1755cdbc24f41240e0fc6723bc213a",
     "industries/801010/company-quarterly.csv": "08f470d6bbe38939392598bc6a0f24de19614b3f0465743c1f6e2974bf1c3b5d",
-    "industries/801010/data-manifest.json": "5387e301346189ae23d10b6091a28716df117f2b2f303cb7af918d2e539cebd7",
-    "industries/801010/data.js": "97837178445d1b26bf380c18888206c7554067cd22d16c2198996e68dab25ea7",
-    "industries/801010/data.json": "d6f9e9e321d10c6f6b46f39677e918e189775d0719bec61b76eba42a1a5348d3",
-    "industries/801010/latest-quotes-source.json": "72a64db10f9654b26e9d0082eb38ea8d0487da52ad167378deab0e2f4114e854",
-    "industries/801010/main.json": "5f36870ba347b27fa8dd8937ee55c0e0475759eab5638417a524f616cbcb55a9",
+    "industries/801010/data-manifest.json": "8150852c694daecf057846f9d7f365004a35592d4c2d8703cdace6e08a09bc6f",
+    "industries/801010/data.js": "fd4a637109d51e59d9613a7b3fdcc9cdb34253597eab99190a088279c2d4f713",
+    "industries/801010/data.json": "ca2bb90a1438b6ee0c16862999169ddc382246246990d28721572348bf37623b",
+    "industries/801010/latest-quotes-source.json": "c885e90e55d55ec18a1d7e26395698ec3101645c60360f4802683f0827014e37",
+    "industries/801010/main.json": "3c8b517892e937fc46e10912416f43789dccb38692805a886d55cd68abba2975",
     "industries/801010/quarterly.csv": "0b1bde1f0f4648e5aeab5bb01eb5a100932acc859b6a0ca6ceff98aec5ea8201",
     "industries/801010/sectors.js": "2556befef3a7a5613babb6e722265cf97b60d0aeab3087909e22f4eaba72c146",
     "industries/801010/sectors.json": "e6fb4204d1381897afa7691f67e83a53f421a959e23c2a0aa6a343373026447b",
     "industries/801010/sw-alignment-audit.json": "27d0c16fad3345e4959822004f4d24420499b28d50e9a5e2191de2f9cfcb8ff1",
     "industries/801030/companies.json": "b0bf22369254e2c622c6f76037bfd6726afece026b9d52b0c00f49e40d8a4bff",
-    "industries/801030/company-pe-source.json.gz": "12c3c863504395b78c256c0bcbb25b4b76c80d5022c3ddf7f644f82dc5c13dc2",
-    "industries/801030/company-quarterly.csv": "5b3d7bccfb0e9135e33335eac329d63091eb266e18647b5c8e0f09d809f7b54c",
-    "industries/801030/data-manifest.json": "9a8bf41d9a464968aa034b7c2331a6c272eb921bedfe39262a80c64165f0049f",
-    "industries/801030/data.js": "ab119c1296b2349d8e4e5811ba6e94c3785580a74839feb90bd81b429fe4a92a",
-    "industries/801030/data.json": "6b9f40eae56d57eee0518048c7e4a0b87e5c758918c496e8fd72e87f0d851cd6",
-    "industries/801030/latest-quotes-source.json": "d1bd740e896ffa6ee23e7711c79b0559f52e4b189d57f13333dad2e5a553bd56",
-    "industries/801030/main.json": "7b0c76914e731bdaf629a74edeeb3c9c28304f750648113d6e4e9a300ac211f2",
-    "industries/801030/quarterly.csv": "010f21f8da3489d4314bb387e9db036cb7711738df11242ff4beda659e6c9934",
-    "industries/801030/sectors.js": "1b54df0e53af23a53b9cfe236e19e71aa9173ac21ed8561d975e789e4b001736",
-    "industries/801030/sectors.json": "d514119f98972f2a59e9748a812f376c90a70f77b19c391f6e7efd01faf7af59",
-    "industries/801030/sw-alignment-audit.json": "46e6a1408686dba9339f87140efe7a2d687a8d73367bdadbba97775ce5566662",
+    "industries/801030/company-pe-source.json.gz": "beb9a9b49ef8194fa87c0c3fc9410f0dae4b449007b1982a070bbd01206b915f",
+    "industries/801030/company-quarterly.csv": "10bae29d040d9d7988ddb323d6882350335921712a5c725cab182ab6fc36c5c7",
+    "industries/801030/data-manifest.json": "e1f99e2a17d411e49f6b552357d713f3562cf3e0202d67e472c4f95318a74770",
+    "industries/801030/data.js": "2e7820d717266abe3cd2565d109a41d962315cfefba8f3a5ca6af9816a1fa4b1",
+    "industries/801030/data.json": "c50ee1d8db8fa4090e4bbf516fe504fcd2da51f09ec3cb96669895c055677975",
+    "industries/801030/latest-quotes-source.json": "c9eb4115eddb0439e92c0973b5f382d8f4e31e8c35ea8d3f07bc34e416e4949b",
+    "industries/801030/main.json": "8e00aa74e5640cfb08c4cc440a45c37e741d0899c9099af72aa4445d915f0d9b",
+    "industries/801030/quarterly.csv": "fa04ebc977e630b0de2a6f8cff2ee69506df251a37a259482bb6c952e6ad7b1a",
+    "industries/801030/sectors.js": "033f69f2873cb9dbf52c365377a2534c1988a9f493244e9756509b2d3c4d5233",
+    "industries/801030/sectors.json": "8e50f6c6377a37cd125641276bdcd7408a34e1dd2a9d5551fdba9471eb0a6ea1",
+    "industries/801030/sw-alignment-audit.json": "eadefdd3831c99eab1d5504d7babf65b8f7424981595d5dc2717675cc6f656be",
     "industries/801040/companies.json": "e3e99b90a208bb70026839af1033e5b3b23628d7d2a50b4f61b34adea582531c",
-    "industries/801040/company-pe-source.json.gz": "05a8b6086cb3c3f60cb1fb1495ef4972ad2aae1ea03b92c3b71ba01b525c8fb1",
+    "industries/801040/company-pe-source.json.gz": "5640572b5b4be8226f5595287df976c5522d7d63a3ec95a5755f6d5c3c1df540",
     "industries/801040/company-quarterly.csv": "9c19d936b124089f1e4ae3a828b874bb017582a8e0dd60828e2274e1e178e094",
-    "industries/801040/data-manifest.json": "3fef6aabefcc0d32a6a00910458db79caad9acef6c4eb36fccc73a19c9b001f7",
-    "industries/801040/data.js": "fa60f39e89ac538c839306dc9dfa546a26d03d707abc5dad8a34210f387f18c3",
-    "industries/801040/data.json": "3d05cb6767518f020ff5cb7664dc46656b23a45101a0007a5fbbfb45648abd35",
-    "industries/801040/latest-quotes-source.json": "989f774e3e7332e4485c76959369d1bcca4130e635302a3d287afe94ce5a4f97",
-    "industries/801040/main.json": "eed0e5ebb097562a5d3e8fe6d93ab51f40aa8a6000aa42ce8b7d48da26a9c4f1",
+    "industries/801040/data-manifest.json": "dff0d11931365297c957e39c2ab7757c79b51d720b7ff488c729053eaaf63540",
+    "industries/801040/data.js": "997ae0fb183c909ac148a99d4739f24ecda5d26441b95f9b051a7d36bddf7c9e",
+    "industries/801040/data.json": "d6749b91a776daf1aea3368f5e7974b8de652bf15c4878481799cbec57a921a3",
+    "industries/801040/latest-quotes-source.json": "eb31779a5c0ff8e373a5fc67aad3e5327f0d69a7015ccfad87d8a6693cfa1799",
+    "industries/801040/main.json": "2c68febf09f9aab66f98ded1bbc3e7d142dbdfb20067bec9010813c0b35304fb",
     "industries/801040/quarterly.csv": "ecea17d2dd4e0eb64d9d717a0d9d4ea56f3a81f5f4150a10d353d25967f840bf",
     "industries/801040/sectors.js": "94e9b96056e7d60e562733afab2630a86ffb253df136cbb483578c9606cde00b",
     "industries/801040/sectors.json": "5c8240679acbd137419aa98a3bc68d7da8cf225eb6d4b86bca720cc4234ba416",
     "industries/801040/sw-alignment-audit.json": "bec3a3c799b6d1dd1a4e4212e64c0417475648129176312d1c8eeec9c487c9ef",
     "industries/801050/companies.json": "47bdf0581e4e58c66e09e0a7256bd07d3c15efd6b05edb20327f3eacb244e184",
-    "industries/801050/company-pe-source.json.gz": "d7fa48fa4cf2d9b559638cf31fe43e896083ba2535a5b55c7561e97c1fd77e25",
-    "industries/801050/company-quarterly.csv": "57ef55a1093f05dd6f34daff2782a7fb7cfe18471eaa6a6f969f1607bd29b790",
-    "industries/801050/data-manifest.json": "2127694af923a3a4601effd6a87cc61bf83b5ec8be598cc17a16d3734b5cbd82",
-    "industries/801050/data.js": "18d5551acd0ccf00eb345ee4e7a709f18051b8345b65b12cd14b922136f9807a",
-    "industries/801050/data.json": "c036c36ef8527594489f0af76cabef6988392730f3114ea0b67675cb81d0f80d",
-    "industries/801050/latest-quotes-source.json": "a69ff5efb7c38cb376b1309c704438a099fce2d70bf4ea4ab5d87bf42b4a5353",
-    "industries/801050/main.json": "d15f95d26543e9592e21107db50e5de02e7cf1db61ada3d27c756d8e3a25effb",
-    "industries/801050/quarterly.csv": "9b548cce636756da3b5a1fff02d44b79096f4712447cbc25c7da24e2c835e837",
-    "industries/801050/sectors.js": "3af2e60249c075865265388ed3a70ecfbe525a18bff54dc108da24534719110b",
-    "industries/801050/sectors.json": "b511afa7c6ff8e2f4938047d336dcce6179c0592e97cf0a8ec1c46b8c6a615bf",
-    "industries/801050/sw-alignment-audit.json": "9b5fbf223506c1b7ffb18ec7b8c5161f96202387b5ac0a3347ecc52ef05c8343",
+    "industries/801050/company-pe-source.json.gz": "2ea8c5fe4a717b1213f380211078957731b8b235690cf45cf4aec261b768dcaf",
+    "industries/801050/company-quarterly.csv": "f09fbd5a2e48a189847a6847669f541c2a7bc92af131399e996472db14831aa8",
+    "industries/801050/data-manifest.json": "1f151eb9e583798e33efb8de6f6e9073d9122dc7fe81dbbdab0821135b3ec325",
+    "industries/801050/data.js": "68e338a96979d6f075cd6418b9f6bf3e1fcd006274395c0458630b532645457c",
+    "industries/801050/data.json": "e52b23a85e5e4027ffcfeb979f73d35fa01a78233a20738aeb82168e199338cf",
+    "industries/801050/latest-quotes-source.json": "df77d5d6f35a668cc1640d4630de4fa9d6ad76116efdb8c5b47c8da986d32f4d",
+    "industries/801050/main.json": "648c5036f4464ed31030151fcb2716d663b02b2b541ea5d5621e9b1cb53d499c",
+    "industries/801050/quarterly.csv": "a82efca63ccfb26bbd701cce30b2c1a9a6c0314c19ce108ae0004a7ef0778687",
+    "industries/801050/sectors.js": "2a7547426ab660e68ffec510b29c54620d3a8aebf215591b10de7ddbb920c980",
+    "industries/801050/sectors.json": "68c3cab7b8eed320657791a6d5bb957bc5ba36da5e2f5ab17a9ec847ece903d0",
+    "industries/801050/sw-alignment-audit.json": "182b7f7affecc8865ab0e0b4b532e795ffec69aff46a9d46d65f281463c52f17",
     "industries/801110/companies.json": "6acc58e0782b8c0739fea41b0de751d16e243198de16c93fb5f839164e6984b2",
-    "industries/801110/company-pe-source.json.gz": "dabfd4b8e9974b4b363d3a9fde35f6af1a467609b786a975d1528daf03fd3ef5",
-    "industries/801110/company-quarterly.csv": "41ae7d8866f806120fe0c73eeea532b1303c8216d21502828e37e27955a42fd8",
-    "industries/801110/data-manifest.json": "e10fa11f1cd14c9bb744ea83aabbdf58976fd90b70046c4d068febc9bc33c952",
-    "industries/801110/data.js": "b065d4aa253874aba75dc0b79e629a0658ba5926203e69635005e3a9778c0dde",
-    "industries/801110/data.json": "1466ccfb3369abb5246aeeed6a30afa6e88d9753015315cd98abdafee05734e7",
-    "industries/801110/latest-quotes-source.json": "5fa8337f6dceb23ec091406dc93edfb2ff9e1e4437c3f6620d6d5340d9972be2",
-    "industries/801110/main.json": "c49e0da123fed8a12a79eb1e0780988a096e412de2cff27cebe0c4d1f655a85a",
-    "industries/801110/quarterly.csv": "ec7b8a3290b4302719cc44202ce676d0f87958b2167ec132e6adcce71ba2fd1f",
-    "industries/801110/sectors.js": "1e9da5658384dc86a50b701b4d91ece4e017c5ab231a3ef27c9f7a7816632024",
-    "industries/801110/sectors.json": "c90790a87d622aae021712fd3dd9540c7a5025fd3d617dfd3614ff013a0f65d7",
-    "industries/801110/sw-alignment-audit.json": "fc9c9a640c8695a64c907e2608286481cb7265a45f25490feb6a8737533683be",
+    "industries/801110/company-pe-source.json.gz": "72e3d072606a1e3e7bf98a76d9be98b4b4047ad3b46729578b2b72e2a689e1ae",
+    "industries/801110/company-quarterly.csv": "605152a3f3f566b9af2364ed30424a83fa1ff71d5bf0145591688a3eaa54a46a",
+    "industries/801110/data-manifest.json": "3ea1231eb46c4f479c2f07ac5066ee3238db130779a2c0b24c87a73200a51ca2",
+    "industries/801110/data.js": "137791f8483dd3e5fb54542ee4a2f7c0e82fe878fdb17cddf8c509b72cbd9248",
+    "industries/801110/data.json": "9806023dd5c7077bc4e8b5440e60e52e30020be921f03368f8a90717080baf74",
+    "industries/801110/latest-quotes-source.json": "a8b11b336cdce95697901496774687299c8c3fbc041fa8496572f82357779622",
+    "industries/801110/main.json": "850bbf4b185eb53124d644d52dc3875e991f14ff33b32d0bdc72db9c15e79df3",
+    "industries/801110/quarterly.csv": "5001a3415cba3bd7bad7494aefefac5776af5f8439533582d87246b9de89e78d",
+    "industries/801110/sectors.js": "5fe1bfa2a1368200e66ac76c72ca137b602e56b322d3e90f9c6e40ea92e00332",
+    "industries/801110/sectors.json": "59cf5f7bbf3af197947c52f998147c98a4aa421dd0a4faddcb83d62b01c820aa",
+    "industries/801110/sw-alignment-audit.json": "621be99099996b666be60061ec8905f7a79f6172377d4651a11b0391089c931b",
     "industries/801120/companies.json": "1dce8660d4027bfc991ff9151eab3b903a351ad747f536affce6be086b5e6b6f",
-    "industries/801120/company-pe-source.json.gz": "948af9ed4a377a507789bb1c70c2d4ed3c1b213a73fbca41fce2b88657ee813e",
+    "industries/801120/company-pe-source.json.gz": "27e1284c2ceda5d9a7b7c914db2223d7136706f654f7bb7cb18822910bbcf53f",
     "industries/801120/company-quarterly.csv": "2b62d0845ebf67915c7c87d4316d502ae6d7ec8981e4f69736a2835545574467",
-    "industries/801120/data-manifest.json": "2dbcd1872128fddff5694c33928bb99ef3be4492c10bd0bcbe8e0ea8656f4b21",
-    "industries/801120/data.js": "a345504406733fd20bdbf823505b178e433001535c71f691b2b7fddb4db49a86",
-    "industries/801120/data.json": "2650e426651befaded44277f1f99a5715ac67721a0782c82ee665254e38df4cc",
-    "industries/801120/latest-quotes-source.json": "4f259b33f79925cc690091f1e3d7133f67ecaae643d5685d93528aebedda544e",
-    "industries/801120/main.json": "f8542feec4b3d8064a7fa552378ba378d036ddbda05887f3f149dafd33eb12e6",
+    "industries/801120/data-manifest.json": "dd4fe2d24eeb6486abd96520ff4e5a935bd8a9e1c065c6f4c6796c6e533cc6d3",
+    "industries/801120/data.js": "d38d4843c6486cfea1625a690e4dec9e74b7a26260f1c3739683783226f40c69",
+    "industries/801120/data.json": "adde4403b1597b787d09d545c654421682f1dc7859822a7f4349a84b7dd7d50e",
+    "industries/801120/latest-quotes-source.json": "2c1e8611dfbfd906acee0a19bdeefda5ac73e098fc0376fafa369889d65617da",
+    "industries/801120/main.json": "c1f3acc954460879dcbce993dc57404cf4881b3a9b1c8d14bbdc099e4f22999d",
     "industries/801120/quarterly.csv": "ce23a3c0099af6839fb4d9e892b7afeb7edcdcdb9ce1ea46d516d047b7b8212d",
     "industries/801120/sectors.js": "7655623ee30142ade101bf352f3e8c84c31495589c3278ffb98e25e7654a51b8",
     "industries/801120/sectors.json": "0ac0b2ac414997d749f031ad392ddfe3586014c8810d19e28c07cfc3063da63d",
     "industries/801120/sw-alignment-audit.json": "e072ad75627bf358a3e128ea301db714356384f05daf24117484d3186f00e56f",
     "industries/801130/companies.json": "a9919c7ca347c51b180fd9a93d5a2371eeb0218d1b9a7851e283b7769be5ff3a",
-    "industries/801130/company-pe-source.json.gz": "1125b2dde9ecc3b460ce30b4d4fd243bf1af3cf6eb6a34c113f16e5533f28839",
+    "industries/801130/company-pe-source.json.gz": "5b231493e326dfc818dcd03e233f41b2a90f1d860d6e5f5c364a8447debcd493",
     "industries/801130/company-quarterly.csv": "44f48216c1f6e707ef63822ec28ab253edc4bd149b294668d9f4378df9acbab9",
-    "industries/801130/data-manifest.json": "d2e37b8c055c942ce03a56793fe819a4455d29bd34c734bea28761491b5f6b52",
-    "industries/801130/data.js": "3b04d241ac4d1ce270fe70f7d3c052e2904950cd3c554fc17493b94c324c02e2",
-    "industries/801130/data.json": "3b5de8d4ec06355bba4a27ae00d46997953a38c6b11d32cea246539dbc65ed1b",
-    "industries/801130/latest-quotes-source.json": "d8ae922d58df5dc8adad461ec1a850318b1b95495b076735d661b6bf7c2661e3",
-    "industries/801130/main.json": "c6770ebd567f12560328552d6265fd57dbf78cd58696a1d510ca3aa5c6930662",
+    "industries/801130/data-manifest.json": "c1efbe7acf36b7741f520f3339b8ba3ba7494c4ee108b9563598aaab0cc4fea7",
+    "industries/801130/data.js": "b2a03545f923795990616499b961a515fd34c58e77884cce1f34bfa6f0df5bda",
+    "industries/801130/data.json": "71a5cc1a71d7469f11277fcd07fada319c540ac40a2324633bccefbab64663c7",
+    "industries/801130/latest-quotes-source.json": "23769854f7fac86e2e982396dcbededfb4231c518a3b55ffee72d322e3d78186",
+    "industries/801130/main.json": "92dee18fbcad342b130fbd51c84ad864f6e1ba5334ad683e092b0ab1c44699c3",
     "industries/801130/quarterly.csv": "77d16d4c17788eaa6d0bbd0fd89fcc29513638429721e154ca8f203ea5c34204",
     "industries/801130/sectors.js": "634f38de15323a91b0dc0cb39f9ac85908acf2fb827e3997a622302fa90a63e4",
     "industries/801130/sectors.json": "4e5dd84989fe1c11dc642a9a33ae007dfda0ef51afe09c4dd52e9f77bc8b494f",
     "industries/801130/sw-alignment-audit.json": "e052e056408692a0f586a6c62cd662c3b5c6ed38f6bfa5cf784abcff0b83ad35",
     "industries/801140/companies.json": "14633f9ffc65046dc3f1b0f1364e176eb1419a0715a6fb1951d78855c2d9dbdf",
-    "industries/801140/company-pe-source.json.gz": "8cc629a070b91b63e65d1ab74e25e91bfd1d1c7774669a245bdb4c17bca086e3",
+    "industries/801140/company-pe-source.json.gz": "b05d684e31fe87904a6370299087da29f90f465c51cb519687c7aab085bbdd39",
     "industries/801140/company-quarterly.csv": "9157ba7226b246d8a8bfa265ac0672cc04d880f18486d61ab6d0896060dc612f",
-    "industries/801140/data-manifest.json": "6b21855a1e8fdc4a3ff751b74e2f221e87063dc2f2e2afad2d3394a8789efed7",
-    "industries/801140/data.js": "3b687e2da4c2a94105cdf8d2e7d0ce2783bacf921aba815f195b5cb720827500",
-    "industries/801140/data.json": "ef4c26d820505ea9804af8a2857af05069243d9753083ce33e3c4e6be1c5fc2b",
-    "industries/801140/latest-quotes-source.json": "80d33bb1f66291249498bf41b21f24e8ca2f82bc0faed8339bb62c5d16dd91e0",
-    "industries/801140/main.json": "9ac8e59a8591a57f03673cd896cb82eacd0ff31a5b13c7f66f404c05df9f05b7",
+    "industries/801140/data-manifest.json": "b15a091d7b9a739b01d89c6161b0ffc1df32cb448764e83f86ab91f13059875d",
+    "industries/801140/data.js": "4421fa3b5275d0417d6864ac782d3d7bea2c3fce20daee7c7ad8db3a688dce27",
+    "industries/801140/data.json": "a0bdb3ecd0ce339f8112be0b47bb1e33617346ad6ba832c9b8689082bb7bfd26",
+    "industries/801140/latest-quotes-source.json": "8401d49d672ade15016b51a1628d9d43dbfae128e608f4b304f6c3299c487ba1",
+    "industries/801140/main.json": "01245a13f11938287b75115852cf568b0e831817574f46ca86bb9e8b079fcaa7",
     "industries/801140/quarterly.csv": "0b68cb04f5854ac5909705dd1e191450af21589d7a95886195fa4054853fca7c",
     "industries/801140/sectors.js": "ba052ff8574ddf9257d9c851db1af4b86981737645ccf6a57783c41abaf4a78d",
     "industries/801140/sectors.json": "d4f1b81f8f4180f5e277d9622ba89fc49563597a58d4401110cae07378efa73b",
     "industries/801140/sw-alignment-audit.json": "d70bbabaf00cc790073511d8b4325831ccec16b5e18c4ef3619ad2e4db4d0b59",
     "industries/801150/companies.json": "75b51784c5746c20fe3465848c8c3b96e9a84d39a87e588811698d48b352742d",
-    "industries/801150/company-pe-source.json.gz": "dc66e2aa9ea9681765cceb5cf22aa1a810e05869d7f3220bde8501c72571b878",
-    "industries/801150/company-quarterly.csv": "f08c9c71b9779649879c62ea65aead3ff338afb4e99cc9c7068a01961c47c6a1",
-    "industries/801150/data-manifest.json": "105e831b62e082998f560e568c1b18359f215d28871f662d1e51b475b3d6d1da",
-    "industries/801150/data.js": "157a2b778d3f8d3e8d1ad03c2cd604e4b3c69878ea95c63737575561a3135d61",
-    "industries/801150/data.json": "fb5d85d794f74bfab9afbc5414f551abe052fcef7c9068fca44332570bc6c34b",
-    "industries/801150/latest-quotes-source.json": "ff9e5e2f3a482711fd3329ec06408985d50837402f81fba09d4ac1a9686afe77",
-    "industries/801150/main.json": "e61d27839d454361f7d22f28f883079497b47c6e57458d8d7a0a4964b05151af",
-    "industries/801150/quarterly.csv": "cc8c926ecdf7007d477d0e3079e02d1ea8138c4da5fc36ec0fa599c1135c95ce",
-    "industries/801150/sectors.js": "b88f0b1492f0dc5600585870d25181aada3f0d5c9fdce88a2c5aa539eea552e6",
-    "industries/801150/sectors.json": "8cc5d3364002f8ac43d0ce9c06784c37436fd8e93b328432443e6ad4c2028a99",
-    "industries/801150/sw-alignment-audit.json": "aa83bdbd6c8b6da8519f6f59cb918a1f8f3b80be21c4802273b5844ccac1a58b",
+    "industries/801150/company-pe-source.json.gz": "7f5b461d4b83e3ec97754e824a8aacdeabf0f052f853a4133f6e717630c7c6ed",
+    "industries/801150/company-quarterly.csv": "b05c8c51c6444369642d7d866ba0cfc08d582ad4da85862d8c59a670faa249a8",
+    "industries/801150/data-manifest.json": "78483a8ade92871e52a7e1185f0265cb6ed5d264a7ecbad4b5252a82e3c857ff",
+    "industries/801150/data.js": "9081ee7301d3b86e566a1ea877d57e997fd63a431456160438447afe9df37709",
+    "industries/801150/data.json": "8e90ee9d67f55078a066377c3732eb4cc4c21be23e08c9ba503703cd67829754",
+    "industries/801150/latest-quotes-source.json": "950df748cceccc1d9ea5270700e6ea5d334fd54e09b43b05e8499e12fefddcdd",
+    "industries/801150/main.json": "240b57dd4e0de141082d7e03efc810b0044e28c6065c70dd803bcdf2bb893321",
+    "industries/801150/quarterly.csv": "e6f90a8db268be1976d5b0ea58d5a5283983f90e8f5ad500040ce00c99ccf1ed",
+    "industries/801150/sectors.js": "cb5867757a9bc127a7783e2b8ff113f5d92cc258ce6f6fa8145a6ab59a3e6afe",
+    "industries/801150/sectors.json": "4cd3d233454c01a2a9aed0ee373a97854ac793bd87ed72c25660c109ce840897",
+    "industries/801150/sw-alignment-audit.json": "3e8af0dd183adb765b8f0ee0636815addf0b6a503a50c8d71fae6ddf8ab78d0f",
     "industries/801160/companies.json": "715503ca9f62a478528de05a6b11a52d2776626cd28886195d2aabe9a09fe82e",
-    "industries/801160/company-pe-source.json.gz": "6a1bc539d4f2c9dcd49bde1eaa34dbcd5e95414f6cc596fe3783327d49858bcf",
-    "industries/801160/company-quarterly.csv": "a55895688a01b43c812db6f31e59228f34cb486c31648bbe0159a2f4661ab8f7",
-    "industries/801160/data-manifest.json": "21a364467c37eca8a59094c9f2ec9a6640fa809cef8d91a907585fde51b2738c",
-    "industries/801160/data.js": "0891eb170b675a3619c0a72a37aae079199a2a475a7d9551543576ff31d5d481",
-    "industries/801160/data.json": "a1a3202df11850a5b9407a90b8006fea18443b32e4ab9491ed3cc1adbbe0f83a",
-    "industries/801160/latest-quotes-source.json": "0d0c38802922c4b7ee7f4be24a77ac0a17dffc5c2a1e7674f4154ad941a439d0",
-    "industries/801160/main.json": "978a1706cfd4188352eb37e1538784636c146e12f7776aca9b29e0354604054d",
-    "industries/801160/quarterly.csv": "f0724da43af3f2c8da4c18407220394567e6381aca878a2e4d845ef62d2e2853",
-    "industries/801160/sectors.js": "6b728613f5a17bedda6b00a171201e257a4ba82cd1db9622a1339a2084df103d",
-    "industries/801160/sectors.json": "b0cae5ace4bac4fb2df669523a61f727b6d32b43bf7d95c1af8fbb5787189293",
-    "industries/801160/sw-alignment-audit.json": "ad929b361e9000c006ec9d20561bf312c9e54cfd3912b2c4042283ec2ec60b40",
+    "industries/801160/company-pe-source.json.gz": "5f902e95c68316a8de2b4b7a62b05198339c708bdb7aef247f6aa27daf816ca1",
+    "industries/801160/company-quarterly.csv": "8916deee3dfdd820ddd71136553223751f875be38ded4ea2e8f5607134d11eb0",
+    "industries/801160/data-manifest.json": "3451f07702c13fc37133150072f4401c6d08d2740d30915f71b5eaf602151fb9",
+    "industries/801160/data.js": "97fd8742ff160a4f08dcdca544dd9a22a4f85196417abe57bfe6ea63a15ab1ae",
+    "industries/801160/data.json": "4bddd5bd92124e479423c5474f95c6681b0ad110a9b729cf741c1348f5575f6a",
+    "industries/801160/latest-quotes-source.json": "4b1ae224594815243c5913bb16a7862478ff225181a5b849d7701d09384300e4",
+    "industries/801160/main.json": "dd94ad2e4c5589cfe24cb8e903c29d0d9d8958eb9c6529bfbced772568d12e0f",
+    "industries/801160/quarterly.csv": "55aa5bfd572fce420c427ea4a9d67c41fe515b7e83debbd0dae1d999724eda4d",
+    "industries/801160/sectors.js": "e24b06cef4bc5324dbf99c2ec5ed27d2c2f2c9c8dbe9b3bc8cb098e9720b443b",
+    "industries/801160/sectors.json": "556ea02de746013f6787def9dc718b25bb1daa9cb0f9e5f44dddd95d4a0e66a1",
+    "industries/801160/sw-alignment-audit.json": "5a188308e521e62fc5fbcc4f926462e3f263c120944c3d4e0fe7f290dc3fbff8",
     "industries/801170/companies.json": "c9062d6bc2bb1e0d3401a0f6730c2092e99d9b110ed5388b112cd53b00e683ec",
-    "industries/801170/company-pe-source.json.gz": "33d2e8b14632da022e1dd0e9e6a94e11d6105c04d9d8bb24cf313c1160f9be3d",
-    "industries/801170/company-quarterly.csv": "7b0d29820a5d0d46e56dc270cf7fc087216e0666d17764540bab372ae4ab4f0c",
-    "industries/801170/data-manifest.json": "2f7d7635a9cc0c55630b027048fc6e3a3fe0f316ab96e708c66ff24ff5fc8664",
-    "industries/801170/data.js": "1ef2ab912b0016f236028948f5aff614e189a7e948ce30f5919cae3e6e1fef77",
-    "industries/801170/data.json": "c5994dbde3bdf4367b248d4869737c5715712b70a8a6e3c296f986c12268e997",
-    "industries/801170/latest-quotes-source.json": "db6df7976af10c49fed742b9aa5796db6687432214399fdfcc126779b93952e8",
-    "industries/801170/main.json": "bc2fcf0b09365815f067954343147a41f3c37d7ef6edcd6e9f6808df3c7198ee",
-    "industries/801170/quarterly.csv": "b416578ad204499625757818fbde707d7c9dbed136de3c9392051755485dfa36",
-    "industries/801170/sectors.js": "a6879344b80585be78740f7906fb1851cc0e0bbd297a5606734a569503007898",
-    "industries/801170/sectors.json": "d588c8e19325a331df306cb010b35a64c99ef5ca96ed53c671ad1e8fc92bd23c",
-    "industries/801170/sw-alignment-audit.json": "29c343d480e49ee99540ab86cb221c8e19e6ab6456c11a24b4ffd21df6338e67",
+    "industries/801170/company-pe-source.json.gz": "a281e5d7c70dbea12ff3d0448155fa0211c02c3dd2c6955380bcc995eea12cd3",
+    "industries/801170/company-quarterly.csv": "104274405f90bb40fa6ab4becd3f05e4dacd35480bf09c63b8f18d374a8ae4ba",
+    "industries/801170/data-manifest.json": "ec6e927151568958d30ec75145424b5249f2fbce728c209391bdf749e5b016a2",
+    "industries/801170/data.js": "44271477e10bfa4baf9e6d1532f9d17a1dbb96400c1954c8dc726861f76138c1",
+    "industries/801170/data.json": "dccd1940673ef8c34ffa34c222ae30bcf35e6f3a86c920531d80e016dcb7e834",
+    "industries/801170/latest-quotes-source.json": "d4a8d2603af83dda0882e147de13cce2d5a119efa347f1e16216da50a1172222",
+    "industries/801170/main.json": "c2cc27648e3008fc1dca8545029e242642bc0035ea9a7af135a2bddd7e963247",
+    "industries/801170/quarterly.csv": "c3f695d3c6e4d7443c01f0635f222b81d1f4f899145dfee60c112d7c18a2f5dd",
+    "industries/801170/sectors.js": "5f5abdfd0f4fd8749ca194c93e0a81f61c58376d6e1b808f905345c664d051e1",
+    "industries/801170/sectors.json": "f53268fdbf56b1bfb4a671b3797b9dbfa5844e74e9efa53020e1525c6da9f70d",
+    "industries/801170/sw-alignment-audit.json": "74451e36e9a9d970b0c7bd10606f1ad8f0e5cde6887155274bc757ac682ec349",
     "industries/801180/companies.json": "b19603eb9133185add0d09e4d5fceac9e82c67c322c58037015481907b5e2d55",
-    "industries/801180/company-pe-source.json.gz": "8a017299547e0fed620d29b68fdd21135d4247e27ac806703b1a4de08da348bd",
-    "industries/801180/company-quarterly.csv": "bd4b5b95f1cb1151ffa9b0f54430ddccdb3aa07ab9271b79ffa3b0e43310d8a6",
-    "industries/801180/data-manifest.json": "1de6699516129442c37aae7f155dc96d93d15ada9f620cf5f40d5b780bdcc061",
-    "industries/801180/data.js": "450841cbd433aa5bcbfa8e4d53f77c5800c5d6d575fd75ee96fd5d358876ef4e",
-    "industries/801180/data.json": "aa9b03ada4c6700c7659aa9102b93c42459c62b51345126f50ff88f568fc4706",
-    "industries/801180/latest-quotes-source.json": "2e97b74dced594c5681587e89c13072487af11c40729eb193750d1c1da343a64",
-    "industries/801180/main.json": "0e8afba3e6379ab40de405af8a163d2ca332d9295adc61cae9067dba616b48ff",
-    "industries/801180/quarterly.csv": "8b8b85954eaf58a93ae36222e8bb82aab4eb453f7c353a1b150488efab517f17",
-    "industries/801180/sectors.js": "85f6f74aab6da12de0be594ee4ec30ddcb42494a095223367443674a739c5ff2",
-    "industries/801180/sectors.json": "25b4428b423864d91fd24e82dddef21130c6b54bc0653d95383d6ba148c37fbd",
-    "industries/801180/sw-alignment-audit.json": "d1a2425cbd4b4cfa1fd5f0a7dcc2639f1e4fdece03166721c516f9b36c4b8172",
+    "industries/801180/company-pe-source.json.gz": "0170c0ae684a1772b6e7d673c51c4258912c7c8faa2f2d2bc4252faed2631f3b",
+    "industries/801180/company-quarterly.csv": "1308cc5196e832254c62e7ca399fb51564724fbdb823d83ae1c7f30a6db3f1fc",
+    "industries/801180/data-manifest.json": "a525272781f4f5d8ed79f7b56c0ab52b2a160eaa8326f040ee16ae4ad922d358",
+    "industries/801180/data.js": "e22eb7eca870647fb4c497f568275b8e6ad65bb043edb86a71745c8033e343aa",
+    "industries/801180/data.json": "24b1c5f9045a3ac84bd166784675f04ae3b2af04ed6bd53e4157614f3c0cab4d",
+    "industries/801180/latest-quotes-source.json": "ad55d797be916d5f8961233cc323cfe0b76d978607395d0c764c05b02855e1db",
+    "industries/801180/main.json": "edec22b03be55bedc902b815229c8372fe09f12b7930db4ddd651813752e9338",
+    "industries/801180/quarterly.csv": "c7d3275b1eba930f8ed6480b96472010d1cd3ad66aded45083a7bcaafcaafbf1",
+    "industries/801180/sectors.js": "2522303a9a3c1a5acda4fe4548d0dff42a3c2a8d2e4ef4ded499bc351fbde3ff",
+    "industries/801180/sectors.json": "2d3972556fdba4b09456acf9b845721f9fdecda0015bcff678688082805f0ccd",
+    "industries/801180/sw-alignment-audit.json": "5ea370da9b1c411663f21ae567106f95825c186271e5ff808b0706220de65eaa",
     "industries/801200/companies.json": "b1e6a085d5e702489c58af0a48e06671d518a8e94cc92a8cda6e0d44c1a1f3f0",
-    "industries/801200/company-pe-source.json.gz": "d9802d2befb9548d5abb0bdc0dfce36f996d4b672a841d896eeb8895faf5333a",
+    "industries/801200/company-pe-source.json.gz": "2eaed1d42a6d67d3588437bd032d1354ffc7483d4b5b56f6dcb4d1011add341d",
     "industries/801200/company-quarterly.csv": "5012a43f32ddfe9beece7aa1fc0bdc7ba256f5b718a2f9dbc3a48c95c9d71fc7",
-    "industries/801200/data-manifest.json": "b0200cbccc3bb69b25edc96f8af98408c354b9d63deb91bf7f00f0b62d26fd4c",
-    "industries/801200/data.js": "10d8b8c3bb6e9bbee9d872bde532b5d77cd677bbdbb27c1ef1a5d2e979f3f907",
-    "industries/801200/data.json": "471f6e430b5b62c9d1af5c40f8e6ca0148c561df0257ca38799de16e84da4c87",
-    "industries/801200/latest-quotes-source.json": "c1fd4f7408b44ba4abe3d870525ea76ad6b540c1bd7d03551125e68fc1d436b7",
-    "industries/801200/main.json": "b7d8de876fe8145be9fcab56ca06bcfa11a182a93d5cef2f7cc18d4723834df1",
+    "industries/801200/data-manifest.json": "ddd0c8064f3dd86c6b30b04263fa57dbde1ba26b975f60355eb18914fb289f6f",
+    "industries/801200/data.js": "523a7239c8b428a3191ac7fdd871bb877498fd09809eb1b61a1a432065b4feef",
+    "industries/801200/data.json": "96bb24ea99cc34ff3db27ded10a6bff66f7b52638d627c8ff9977bf23c994b39",
+    "industries/801200/latest-quotes-source.json": "8dfc0ec7c76a0fd02771a70333510b498d626923285258db5eff6b7ec83f8636",
+    "industries/801200/main.json": "9ffc386b80aebebab4b54b5c3bc1accfb4fd85e2975ebc733c03d53dbc040253",
     "industries/801200/quarterly.csv": "358baa4db98f6515749249af6546607a6b831b6f1763f5cff7a03617230610bf",
     "industries/801200/sectors.js": "4ca1b4632402484b4fba23b4ca5d835f6f44599e277b1e8f65bc72f84995b064",
     "industries/801200/sectors.json": "fac81f2cb634082d6aeb8f23dd40242244031678df244e3ddbc663bed97be3a0",
     "industries/801200/sw-alignment-audit.json": "97b3e5354a6d48afe40a958cccd7a47695a4bd489c80fbb2aec80292d3acbb25",
     "industries/801210/companies.json": "b72c82dc1373ab2b8ab9388f65a993afc6622c10062a9c6ea93c396618c9d683",
-    "industries/801210/company-pe-source.json.gz": "92b826905ebf105652cab0f991eff9798b761906730aa99ac37157667ff22bb5",
-    "industries/801210/company-quarterly.csv": "1822125404270ae4ed39c290194d4619aeecfc994f9782be279fbd77b8d0187a",
-    "industries/801210/data-manifest.json": "eddd95456ce380d9ded773d7d5050ff102c4c67771cf9ab5eabff5e210cf36a0",
-    "industries/801210/data.js": "74a32c53852762e4146be390d11d2f1c1134ab5abbf4d9d82440bf0bafebf574",
-    "industries/801210/data.json": "3ba98f33d3aac7cc3b087b819fcfb30c78dec33485b116d865df044025945bd7",
-    "industries/801210/latest-quotes-source.json": "32ea0967114493053895f190e284b18ec5fc0c1d2f3a261b491cf76dd1c85c9b",
-    "industries/801210/main.json": "0a231700167c33bb3f6e8f988358257213f07ccf89175926d65133d17725690c",
-    "industries/801210/quarterly.csv": "5c177412314f9a0bd465a407d56dcb41f26e7cf0e5ad65003ef9657bdc8b8faa",
-    "industries/801210/sectors.js": "22f96485b80a5fc4219ce0a605b467c555071a31937d5a573019fd07a2c4742e",
-    "industries/801210/sectors.json": "877a2da9b15292e29f4ed237c8984ee9e21a4c09dec0dbd248f4c98843cb3be4",
-    "industries/801210/sw-alignment-audit.json": "b0911361fa2dcb26daa25ba853bf8673fcdb9b9f8a2a82ec5b4e6fdf54ecb4bc",
+    "industries/801210/company-pe-source.json.gz": "5d22c97256d05b3f572f35d0fed79828b673cc587ca467f9a33f9a87aa2188d9",
+    "industries/801210/company-quarterly.csv": "6156baebd65cb6d39167ffea02d49f8e6f02574b9253425a563bf37c68e49a4a",
+    "industries/801210/data-manifest.json": "2a2fadff2e91f6ff1ea8ffe103dff792ed1e22b07a337dcf1152b9b9024419a7",
+    "industries/801210/data.js": "ab247c1c5e13ae08cfe0b837ff50010f45cf6fc15a2a1c1eaddee3ed9bb7467e",
+    "industries/801210/data.json": "103f49aba2f6167f6c653c36211ad862f6c04fbaed9368a0510ebd01a0097f7f",
+    "industries/801210/latest-quotes-source.json": "9f5d5b0cb3e77ecc56c21b86b096c4dbf62d8af290f9ef2b2b21348297bc0588",
+    "industries/801210/main.json": "c997825a306d27d3094428e83dcd670b0de0e2d2381adb20f1f91deeefae0f04",
+    "industries/801210/quarterly.csv": "60ced3a2866fbc826d60fe1471b1865e906140c901cd1fcda995bb898be5845d",
+    "industries/801210/sectors.js": "59aa3887ec30901feeab273885af1eba06f9eb8880c801d2d6d4f897b1885cef",
+    "industries/801210/sectors.json": "c58692d28d7ddee0f463308ab47881e70af1d2fdceb4d3527d4107a73657cf05",
+    "industries/801210/sw-alignment-audit.json": "9ddf9c4b58a00ca00e9b4936272f3db0757c59372736a00a552a13f65b2c1b88",
     "industries/801230/companies.json": "453e25687da5a0feabd105758116182d37a3dd9c270c1d69ad68f04289584c87",
-    "industries/801230/company-pe-source.json.gz": "7c80e65aa9e039c64ba1a033e68449ccc5ce6e5698c06a379ab6e9bce73d698c",
+    "industries/801230/company-pe-source.json.gz": "15e8b997cccb0dfe01d3a274e2ae71d1a4adac1b51e442d02a61b7bba7aa044c",
     "industries/801230/company-quarterly.csv": "af56e86231c1ebb398f888814a960f380380e9d3b85064693a6a0d2abb6620e4",
-    "industries/801230/data-manifest.json": "b00d09e6b240c2513e0ba7c0c67ae6677f5005b62b02a55ace3646192ab1638d",
-    "industries/801230/data.js": "c47ac45958a2c787559ac9c4322bfb1161e50ed2ca6bb6be9e8a375691c494b7",
-    "industries/801230/data.json": "eeec2e03cde43ac04dee9f29841ad82fa999daa48ba58d0653ffbb7aef916522",
-    "industries/801230/latest-quotes-source.json": "bdea9747cda2d6bac2d9a960c47a3cb39fb84cb3cea8a1bdd6ec044564b94c7c",
-    "industries/801230/main.json": "9dff424efb177dd428ec3867832d73af1848cfccbc5b6ea961326137d3512f0d",
+    "industries/801230/data-manifest.json": "3d63368bb43ebd6f13abd3d40ca23f7576b107cbda8ad53fd59c8bf12a4dcd96",
+    "industries/801230/data.js": "5fec5a199f52023833efb4199febc8bf7b9f3f198e8a79f37bc4762154a9235d",
+    "industries/801230/data.json": "7f7d55f1d8adc51f79962f4d64f17bbd2747063b5955f7ea22d7739f5ed9519b",
+    "industries/801230/latest-quotes-source.json": "7e94a00b09c149579af5caa395e40bd1978481d1e1f4634377e6a6dbc757b469",
+    "industries/801230/main.json": "a579ab3ad216d0cd7312ab7b1b0adcdf73f5bc7d9650b36acb5e1f6bafcc93c3",
     "industries/801230/quarterly.csv": "b36193054a8f58cf78a6648922efa4941f468e26236e38f34a5bd1304438ce81",
     "industries/801230/sectors.js": "3d6d4f8332bdbb86ac6cc3eee84c9f91cdf1a4f7aa09da5dfb5238c48f0fd9e4",
     "industries/801230/sectors.json": "a942fc38ea212c937e73df15ed52ee2306935bfc2225e2626db8086171df555b",
     "industries/801230/sw-alignment-audit.json": "f57ba383ad9d77d54c0e0869929d8380f1b3bb9083efc7e5438d4ea327bc9877",
     "industries/801710/companies.json": "59ed94bda260f0fe5eda4be32713f4bf3953ef763472e652d300b88d5d14551f",
-    "industries/801710/company-pe-source.json.gz": "a239b93122fde2c7f19f2f34bbd43bd7488dd12c0a6933a4b7d555469815ecdd",
+    "industries/801710/company-pe-source.json.gz": "144ca4c35fa9ba663dc1f197443857d497d0d3d87959534798b9f8338c8c9d46",
     "industries/801710/company-quarterly.csv": "c341b334952d24fd1f80b069784d351ecd20036e197c0d7b2d71937d104226fe",
-    "industries/801710/data-manifest.json": "6ead176b414199a96db26d3392dad1d85207becd316b11307a7e48912f0fde93",
-    "industries/801710/data.js": "328eb612d44e29d3172a12f5d5615aa8f7853e2c285ec76cab768eb671351d16",
-    "industries/801710/data.json": "4bb4c1b4cd03398543f69de51a51593f673bece40109e7521a07f8fd53260f3f",
-    "industries/801710/latest-quotes-source.json": "1dbfb4b35d3b9d76a70585457388a4a5839ef098735057617a077cf5528d59f0",
-    "industries/801710/main.json": "dd8939e28f3c3f219fa7ce9a65b10d99c26f5f4f9b54dd0e202edf9de7a7fe52",
+    "industries/801710/data-manifest.json": "d7134ddf8a298aaf3cb5c4774729151668e2adcbebd0cd4159ac7077c66c7ae9",
+    "industries/801710/data.js": "89072aff2c534db33918441d84e06c17a8d1d563ded36ff7774eabdf945608c0",
+    "industries/801710/data.json": "ea4215565dc705c87d6422f78512bc8a0bbe77c3ae562bdd6760ababbbbc4315",
+    "industries/801710/latest-quotes-source.json": "c92458c1622394f96553db393d3fe31fe02ace929364d886430dfaf29b4a5172",
+    "industries/801710/main.json": "f88e5aec32e07049dd982affcae99937debae2a426a8faa52c0f05fc9dbc8875",
     "industries/801710/quarterly.csv": "55dd352a5fa8c5f5484766f039681d157e34299e060b904bf1134e9bdbea59c0",
     "industries/801710/sectors.js": "16cbfba83f25bb5f1e640c3129eaed2323818c54e2a7918dfa00cce0b940da07",
     "industries/801710/sectors.json": "b23bac6bb2a3932a819bf1776f0f937d402f73daf67210c0cd8b1ab96ca19f6e",
     "industries/801710/sw-alignment-audit.json": "34e5add3b2076cb6871388da196255d10288e1fcfd3d3094a8703e6791f612d3",
     "industries/801720/companies.json": "286fe168ac3b5dd67c720708d157628981d21c85a62ceabe83ce95059699ff38",
-    "industries/801720/company-pe-source.json.gz": "6d07cc098d68ed7015af233eee06fa1d2792945c0654cb2dd79a11ff97ed5eff",
-    "industries/801720/company-quarterly.csv": "1e2caba62cbd05493e8a6ddc504ef8cc3cdb98b7a32c00df905f5f05f46a6cc2",
-    "industries/801720/data-manifest.json": "308b421696d6092458caf831cb98a24ce60eedcb00f6b86b57b4803631b69fdc",
-    "industries/801720/data.js": "03ad058dd6da31ae96ec16024abe6e806b81a3332f53923e6c6da5f359a1a181",
-    "industries/801720/data.json": "481a580e40904cad776d2e5175a26bf2e0ef194ecdeffc4dfa5367766719c442",
-    "industries/801720/latest-quotes-source.json": "b796d080d9eb9910392988c32c6199200af6820ef6a2bf8b3026ed815e242800",
-    "industries/801720/main.json": "c1af0bfa2c415b3d8f13089cd17bc0448a32fe233631efb3880960130c0882e6",
-    "industries/801720/quarterly.csv": "a0ae2cb5ce96ca2a8ca083b0cb895b8afe4cbc39514cee968827b78ea90ff320",
-    "industries/801720/sectors.js": "7356ab3856a33182be6416a24778f190ef7fc9a1787a5de2656dbcdd0a8b5c8e",
-    "industries/801720/sectors.json": "5bfc1e2debcdd15067fc387ca086283546813350d251e83a13070d161bffd071",
-    "industries/801720/sw-alignment-audit.json": "9aa7b85bafb0191b003ce4048126849965c13d69435b9d7a962a36a35d3d0b63",
-    "industries/801730/companies.json": "0c2f8bcd64b9f0b3ef9bf69d455aff6bdfe064c513d754fb871ea3fe7e48d514",
-    "industries/801730/company-pe-source.json.gz": "ebf71cad6fc2feb49c30f9f572a6dff61e3198689ce7c6bddb2b80cbad6d7429",
-    "industries/801730/company-quarterly.csv": "809eca3024e21de4203254e57e3b81e3d21dde7e1211c7b2cb614a94ec320a85",
-    "industries/801730/data-manifest.json": "fb36fc97ca6da1060b822538d08999f8236855c623be6af9c0bf44a6c6fbc26a",
-    "industries/801730/data.js": "60b0e5a89be33e5265d44a34494403391e905f11aadd1509880959b21a0fecf9",
-    "industries/801730/data.json": "5da522ce76d9303869c3a2553d836b70ce1753bd5c1847ce20990dfab4fa98ea",
-    "industries/801730/latest-quotes-source.json": "59c1bc74e67e8ba314efa5f7326465905c7f95dea37670c8576f19d9c79e9564",
-    "industries/801730/main.json": "7af59070a0aecda178b812e04e3f660db03cc50da300d56f577790ac55cb19d4",
-    "industries/801730/quarterly.csv": "34db968488ba114d63874f9f776777e67bc5f0cf34115ac84b49eb9ec2e6cacc",
-    "industries/801730/sectors.js": "d004c94948e0271be099ee90a702009a33175b910eb7df9a43af042f2a7b7362",
-    "industries/801730/sectors.json": "c87c004ca3ce4f9d5c1b783350734dfcaca1f543337a2d7a183ff086a1af2296",
-    "industries/801730/sw-alignment-audit.json": "7896f3fad1e92b3fb6983759dcbf259d29b45b0d77b7b65acea1ac08cf51ffe6",
+    "industries/801720/company-pe-source.json.gz": "c039d8c339a8e8c9f263098142c657aecfeb559fd27853b22e20865b2a51934c",
+    "industries/801720/company-quarterly.csv": "7209cc50bdcfbd1aa00bda5ca92b00a5693da84dd5eed113fbcf05aee3fb3791",
+    "industries/801720/data-manifest.json": "fcfe627ce59687bce8030ccdf78f40a1b375123fc8f467021750cc64fb0e0b00",
+    "industries/801720/data.js": "f03f0fa900bc73a55eb7c7002ea4894738ae4d1b7a0ed2b7b7154998d1e4545c",
+    "industries/801720/data.json": "86f7372ae2df8401ad242a4a853e04ebc3bd4505e3583bc970e431a4e4defa04",
+    "industries/801720/latest-quotes-source.json": "6f214bd1d86804b0615a179b6a05d10dc3c792ba6f1085c726f4894fabcfa4cf",
+    "industries/801720/main.json": "b52bc00b7fd8fad567d1b0b4a34701b47e5ff55034f21167b85231fdbcc4033a",
+    "industries/801720/quarterly.csv": "65e0846d8be48bd5aa824b88ed8c3cbfcdb60e60fe2267a136d31e53de957ed5",
+    "industries/801720/sectors.js": "9a1439aefe7232bed40e05fa406a827e942781ad562d4640cee0146dd1b31df7",
+    "industries/801720/sectors.json": "234ec95b059046330ad974a5938b66e40bcd76c6750b60c34bb426e0b3e9d545",
+    "industries/801720/sw-alignment-audit.json": "9fb5474b44e5407be68a2657d7066d6446e2b817eb874728ad5645225630074c",
+    "industries/801730/companies.json": "cb4e1231e3384fd2d38daeea2251ab9588bc30befe54b4e8e097f89516a6c487",
+    "industries/801730/company-pe-source.json.gz": "6535d1a8694e409b0c4fc0774c9e98f70dde48a7d509755d44080c5da16c9c64",
+    "industries/801730/company-quarterly.csv": "a8370ea559846e0d5eeffa38b5845b0a2f3d2de474b02554db1a85ce4663fd00",
+    "industries/801730/data-manifest.json": "a0d01f4619dc78e8524feff414fb0535d0c1ee8cec8622ca2cfa2cbe90660fd3",
+    "industries/801730/data.js": "554dbadc2d1c9b7554eb7a2dc17e9ab05dabf340c371a24a814babb6f52264d3",
+    "industries/801730/data.json": "5a1dc6393590286e1e29920619a015f487f22b012309ade6da6772355f677e4a",
+    "industries/801730/latest-quotes-source.json": "392dce628320f6dfa24a3692fb71c39cd76c0a6de320c40c49f8278a70314926",
+    "industries/801730/main.json": "6ee6111f347b457febeb082ffaae896de5706777bfd49f20d2dd72371d7214cc",
+    "industries/801730/quarterly.csv": "6a9a0e886716babe632b73b4728f0b5d7cff0c18044850a641d116e9fde0eaca",
+    "industries/801730/sectors.js": "377d73b34b17105d9b8093442e475cfffe2f9b53c1597c34cf65fca3955c04ff",
+    "industries/801730/sectors.json": "44bc354e82c32fca1e05e7ca8166f408a8cacbb8a8e3a01c28c7b69f88f37c85",
+    "industries/801730/sw-alignment-audit.json": "24bb1c6f25b2c94130fc01bf669d1e6b64ec71d36faa998659fe3832c7d934a2",
     "industries/801740/companies.json": "f4b3d2bb46f843b698b783472221b2ea23a77cbde538778ab10e8e8633f4c933",
-    "industries/801740/company-pe-source.json.gz": "0825f19c62ba4930298bbba6d20d38b35af4188635b0d4f626585550d7ebc2c6",
+    "industries/801740/company-pe-source.json.gz": "6d3e3d821f9367f2f756788a1d12f27ba0d50b9cecdcaeca1169575c6babad47",
     "industries/801740/company-quarterly.csv": "e88233328a933f9a4926e6060ed5a42c92115c3bd5e8fc42999884892029dd80",
-    "industries/801740/data-manifest.json": "d490f501010d4f4003d69c123d8189d0c94bef6070bcab2a0637a8450a073fd5",
-    "industries/801740/data.js": "04a7637766041844bac3fbecffc4a8f1a28f70ae0c0232c3b0e9c1f4b9464ed0",
-    "industries/801740/data.json": "021ea4b093aec04af52a623c3728a2c21c1a9fae4f2a330010cea3edd78700b7",
-    "industries/801740/latest-quotes-source.json": "cfc549e00af67ddcd3ea954e2d9a0d44f0492315fe6cebe8031d3275d41553b3",
-    "industries/801740/main.json": "8ef2632ad951ae41fbe9ccb35637467a87ba91f3f57dd5588db59ecf157979f4",
+    "industries/801740/data-manifest.json": "b39022a7f9de37bc111c2724031347a00588ee4208031f818c84e08b27cd38b1",
+    "industries/801740/data.js": "9377c90db1b2ee60a9a4e9369f43762fa8f7395f573f1b1769a589905c16de9b",
+    "industries/801740/data.json": "d8b27bcd81430f56f0ef98c156ff67c73b3e7bdbefa1656f71eae4e6cb986245",
+    "industries/801740/latest-quotes-source.json": "2ebb9cad60836e104849285a165577da51daebbd7959cb2def42befdcc3e3cfc",
+    "industries/801740/main.json": "047ebecbd04e270da94e4f582e432c686c68c310792b59c6e6565aecbeff04f2",
     "industries/801740/quarterly.csv": "8c4c8346714e337807bc4bb4d19a6a7cfce5859a72e3b8918c4220b2de1b33be",
     "industries/801740/sectors.js": "c79cbc70841beb4e77e43b12aff723514b67fc356c9b0747fe4b4a8630cf7f50",
     "industries/801740/sectors.json": "adb16033e5350aa8da971c418a0a0086c900f98444ea78e839e7eefee429867c",
     "industries/801740/sw-alignment-audit.json": "e64dc370fab48fbefd3db2bce296aaecd0cb75928927e9cf9eab946fd4d12424",
     "industries/801750/companies.json": "098cec335e611dd521f4fe28f326677f7bdcaddba7f93d193d00dc6688a40af9",
-    "industries/801750/company-pe-source.json.gz": "d0dee67a12b583c4b12306a125b737bc3fdc9c0d7290d81b784c805d64495087",
+    "industries/801750/company-pe-source.json.gz": "500a5ee3b1eea81590b2e722973f455c2f3a28b83b7f96c16407833bb37a40db",
     "industries/801750/company-quarterly.csv": "f92469a9147711b25af17f172d34659a5c255382d986837f96a013538c52467c",
-    "industries/801750/data-manifest.json": "e952b5c8cc3eba69ef49e9d51c529574b3ac0f8a0eaa7d51ca1af112b59532d5",
-    "industries/801750/data.js": "e9cf0b583c8de31fa29138303229085c5aac109bf43b04e42148f56ab046074e",
-    "industries/801750/data.json": "92e01b1065be4c87395fbef70ecd3c8bf3ba1468aac828cc2561c55adf06f742",
-    "industries/801750/latest-quotes-source.json": "4cf9bc46aaa755b87204795444c559ac7982cf79598561b4f8c1046fd4f467a4",
-    "industries/801750/main.json": "a65083c2dd310fc075c56d6e6a62e4132d73039391ef819d427e3b6d3660418a",
+    "industries/801750/data-manifest.json": "10de842fcb87152a1e0ba4b2f41f9cb85376073f548b513f5fc5b9c55d411709",
+    "industries/801750/data.js": "65cbd374aab5181692d1f81ec0d6a36fadc6e97834c8d3fa23b126a099650a0f",
+    "industries/801750/data.json": "1990bf152b5d07682184131af552307ce6390048f93a70df8fe94b0862c708a9",
+    "industries/801750/latest-quotes-source.json": "f3c4a212c0ab8e010e86b90f69e3b09b255cca182494f905d46ed8931302107d",
+    "industries/801750/main.json": "0e0e2085f8e9e04162d33c5e0df23135c86aace0a71533cb2f9d6e5f5c8dd881",
     "industries/801750/quarterly.csv": "88a18e05be95472242e3d9ca8912f672f14f6a3da4d0a141179b6c6fc4370232",
     "industries/801750/sectors.js": "c266a4f0c44366adc4bd19c028c0e0a4afafea15a2779347011e30d560d119d1",
     "industries/801750/sectors.json": "af661ddb6ad82b70750bc4421f8c529523aa9b3ec0204bd8b3d7854da219c0b7",
     "industries/801750/sw-alignment-audit.json": "9a675778064c7a2d496a563342501fb7566a768b85caf40bcc63a4271489f60a",
     "industries/801760/companies.json": "9eaa1eff16b167835c8e91b9f4dad6b3df8769ce910bd307875beab3317caa5d",
-    "industries/801760/company-pe-source.json.gz": "ba4158610db1a2882ffeed43d9e0e720e5a3427f4a2abe0dd22456a62e2bbf1f",
-    "industries/801760/company-quarterly.csv": "addee8b41afcb211d87f6e9e1541bfecc535ecee13c1b0edb0dec7530464f697",
-    "industries/801760/data-manifest.json": "8a705cf77f1f07b78e94add4b522483b26ce7dd7639e7cecaf96e2f5b27c0146",
-    "industries/801760/data.js": "b8e8638e6ed2f23605de2cf96a21473ccda6a56ec71e776c39f0e436d6802752",
-    "industries/801760/data.json": "d330410c3d21984af29ea66573e297b9b1f3da13a953fd59e30cce48f290d3b6",
-    "industries/801760/latest-quotes-source.json": "08a5df1181571d2e7141243c24fc4cbc22ecf46edf19ad650c8f9fdc3f3f7f46",
-    "industries/801760/main.json": "ff3fd11b3530d887a596d1fa2b062fde418ee0c31433fca92f686588e845df19",
-    "industries/801760/quarterly.csv": "7023b649cc7b0e8744b7f531cfe280b4742ba3a1d3ff8332e51edb70b49dc06a",
-    "industries/801760/sectors.js": "f51616b54a3e0ff081c3357c21a2789cadf2321823f906ebbc383d16f309ee81",
-    "industries/801760/sectors.json": "dcfb0c05e036e062173b34c245ad3482e68929ff062c3125e5cc815be014db21",
-    "industries/801760/sw-alignment-audit.json": "698eea97f286c51a7d51ec1b43763e9c14000f35996e9c30723381d3822afa96",
+    "industries/801760/company-pe-source.json.gz": "fb2e53c649bff9d5743898c8634dca2ad0f95d580eea8582ee8d2bb166dc21bf",
+    "industries/801760/company-quarterly.csv": "5e9d26572a8c6d395488fceb383492838442ed6146dce7fe15e076c676c2c121",
+    "industries/801760/data-manifest.json": "b1c7ef4a7787b36dd5cfc3b1b7432b9bd2233817b611757ee4354eb6a0c86383",
+    "industries/801760/data.js": "c367f2b016a474a77ad2e64fc67e4d4bc9b924c6912ff3737b3e1c51bb4f24ae",
+    "industries/801760/data.json": "930d7579abf55a1c70db0a6e2b3e5f916fddb2d72f6501e7fe69283aeb6b180c",
+    "industries/801760/latest-quotes-source.json": "79c750293f6748f2565c70ef00d60eb23378ec442b25d29f09457ca2adfa45dc",
+    "industries/801760/main.json": "d7ebb4e1c72e4030aedd2268e96c0efe812d4487c0e44291e256d0df2b317c37",
+    "industries/801760/quarterly.csv": "fe5b58514a15df9a54b6e4f936d942f0f9673fe1096f0c6a13a062adf75778af",
+    "industries/801760/sectors.js": "fcd1b5c9b6edcfc0ca446d2b365860b9c13c83b9ce894f01d8325ab864f36b4b",
+    "industries/801760/sectors.json": "5e058aeb305af797df33489f6125ca4e790dd65c54ead403b9e3bf0b9b741c7e",
+    "industries/801760/sw-alignment-audit.json": "d04b92ab16bfd97b545c32dae2860aedeb8c6b604c2df1d1bf359eaecea55550",
     "industries/801770/companies.json": "041b37f626d0fdd5a4b16f5f5e44afad0a4d1e63861690ec0b8e93c7bc27ae3b",
-    "industries/801770/company-pe-source.json.gz": "1876c020519b48e3867073c142d0a99e19c8b7daa76ffe5ed1c8c1e8d9264393",
+    "industries/801770/company-pe-source.json.gz": "60440e9ce7f2426b18e67bcdbd5f0df9659f66ff68c9f63bc08449cc22263913",
     "industries/801770/company-quarterly.csv": "70f286e52b1997e24b22f0822f2b12a7c71ace43d682eab1dc578e25f82992f6",
-    "industries/801770/data-manifest.json": "8486e8f91c2db66b45d62024dbc0c2b10b4f23d571b418ab3e7bb51dee4553cc",
-    "industries/801770/data.js": "6536d05331f02b8f273db38b183f47b349f304c7f1499e364da7c1219e361c76",
-    "industries/801770/data.json": "d184587758a189d1e8da7d6f866dadd5195e097adc8d5756c4adb563dd2d0439",
-    "industries/801770/latest-quotes-source.json": "492aaed759c6507ed8cfad0eed8334c0baa050dbc3eaa58c60104f7bad2fdf93",
-    "industries/801770/main.json": "2279cf81886df5d6f653b1becf5999cf4037fc18db4f7891b4b076df8aa2a172",
+    "industries/801770/data-manifest.json": "e77115406b91f28b065c6187a7155d49ed1d64b8fb44600979c1c0041bf33d02",
+    "industries/801770/data.js": "368adc7d7da5023c51346d0f16a0a58b2598a6dac78ef2e42cb7e86facdcc864",
+    "industries/801770/data.json": "1be26f6dc23d8f02f5315ed16c11a7c61d9eff63ebed05fabf4cfde2113cdfa9",
+    "industries/801770/latest-quotes-source.json": "4a062ca32bb3c7fa6159ac5d8ffc10cfb93f4f9a14b16f88e4459b320e7c98e8",
+    "industries/801770/main.json": "a3d765d2efc619a9cd45002b93e547de9b7813f00119172c84b2c3e29b7a4899",
     "industries/801770/quarterly.csv": "4562677fcf6437e74f970d0fac49e95d1eca0100946eac5b920c2ca3b8a7b66a",
     "industries/801770/sectors.js": "a12b5f968a92e784d1bd3cfa8cd9516e7a20527802b64646d036765409238b30",
     "industries/801770/sectors.json": "64155586a3781943027106f43786838fcd2bed1d33ad8d076f1c2826d8217730",
     "industries/801770/sw-alignment-audit.json": "333fa4fb99dcf01658747f28faccf315f1b3e6123ce286777f107a41594ad669",
     "industries/801790/companies.json": "452dfab4949251957eb820c86a7572db365a225d86dabfcc9f0d8ae96a46a5ff",
-    "industries/801790/company-pe-source.json.gz": "138e8519df458f50ce6dbe3f324bac958ec13d51749ce6a4fbec1da49af572db",
-    "industries/801790/company-quarterly.csv": "d73588b7fd1ce453fe8f83ab0ecd217317c0c109f831279c0624190183fe1750",
-    "industries/801790/data-manifest.json": "83baa645ca514c9db1a3adc745f79190256b4686ad8ebffa5a72103a3d813114",
-    "industries/801790/data.js": "b1a0f408312d2cac93222c2e2d701429f87cb5daa1338210725334978a862bb4",
-    "industries/801790/data.json": "16f72e82bb7f336b83ca7412e91c113a0dc36d56b17d998ef9c2fe5fb075e541",
-    "industries/801790/latest-quotes-source.json": "bfefe0233d6cb15ab2afebfadf523b72546fa9db19132093af2a316e47d6b4f4",
-    "industries/801790/main.json": "75c9319dc6e927c7643a1e9d6595e12c8ea82da001cd9353978b1cc6bc5e6ef9",
-    "industries/801790/quarterly.csv": "a675d2190a14a13d3df1cf220d1759a06292c3f09f2183ac533aa60e13c8ab8c",
-    "industries/801790/sectors.js": "bc250c64e1d6b303261b3250f07b43b5f6c841a179d3f2fd84fefd73529946b6",
-    "industries/801790/sectors.json": "50838a9e9a42bb51535cb720ff4d939498c2ef300ad79dcc35c49e8032f4f5fd",
-    "industries/801790/sw-alignment-audit.json": "4cff5dd0ac3f790760a2424807eaee3a08ebe2eacc70dadf676ecd3b36405ece",
+    "industries/801790/company-pe-source.json.gz": "e10f45022a599d04428016be6258b9f32a5d387664ad9b4e8136f5894d2bebae",
+    "industries/801790/company-quarterly.csv": "7b69cb14489e993a7a5dbaa726895b2b93bd2c39a4a40b50588d9f15de4b36a9",
+    "industries/801790/data-manifest.json": "db21378d1e830baa407943d409856b21af93d8587d6c5ff240997f24d48eb639",
+    "industries/801790/data.js": "3ea6f29800a55e8f99d0fbd459866162a19c4dfe45ada3c2b7d641746b6fe41c",
+    "industries/801790/data.json": "d3344510e5b5ad1e71b1b998fd322a7637058bace1b445fa90fc44edfa622651",
+    "industries/801790/latest-quotes-source.json": "7c23ccdfefb74736d5fd9919a978d39c258363bcf37e009b3eb8bcf25f705181",
+    "industries/801790/main.json": "cb2b0e84c6c03c1153405cbf5a52253c3d9595b9ffbf37ef360dd8f3872ea87a",
+    "industries/801790/quarterly.csv": "58388e6f09583dd0e6395ffef7829526d8350fe634e7e6d044e78c65dae63d4f",
+    "industries/801790/sectors.js": "ec746160488407bffcad57218ccba798d3b17eb4e05aaed2ec354c95aba8550e",
+    "industries/801790/sectors.json": "f8d25ea760f5a692c87811406be558fc7714b38a638b9c7065f2529d26ec6854",
+    "industries/801790/sw-alignment-audit.json": "8aa77f85d0394aeb9a607beb55b9d4c6fc14456af0b16415b13a2e1eecea7ebb",
     "industries/801880/companies.json": "92fa5df915772fda1e0c823e6205a57bf6a5c8b812cdd00f840044c0b448b2b5",
-    "industries/801880/company-pe-source.json.gz": "4dd6f6a2b85cd3300e217d4b8cbceec72f263181d059deb280c8848e8f3286b1",
-    "industries/801880/company-quarterly.csv": "214ea6dea0a218f6a8a55dca020f72a4813fd5a0aa90a85be76f6c601ebe038e",
-    "industries/801880/data-manifest.json": "cf3c47dcb507d42891980a259db67dcce9d61e8ac4d7d434e045693d95bee5f9",
-    "industries/801880/data.js": "618352a3196b05c534059607878e28b3fe7d229e9c6e6a861ab4b7dc4db18ef7",
-    "industries/801880/data.json": "f0647c90a5c7995e8be3af9595dc6932b552f45bb2da433d030624042f2dfd91",
-    "industries/801880/latest-quotes-source.json": "767a6f2e446111e505370fdfe7efd9e3d8c5c6fdb66f0dee63336f64292b2745",
-    "industries/801880/main.json": "ddf7baf239b036d84dc082166281828be16b12c7e448785fb1ae572b177b5f9b",
-    "industries/801880/quarterly.csv": "ad80fdef954984d519ec0900b1f5c484db6c4ec54778346e95418f939961327e",
-    "industries/801880/sectors.js": "f1b9765c7e6e52f0b16d13f5d76f09af5ec41696b74edf417ce3a27c843d8101",
-    "industries/801880/sectors.json": "36816a220c26f0be8bdbf47f7a489100d87f53b8d2f3c86625ee86a9a6a19245",
-    "industries/801880/sw-alignment-audit.json": "244b8a567e98b366c6ed8a3d3115a5059ea52d1ad8d08c2d32a61b12ed6c5387",
-    "industries/801890/companies.json": "c66f53940d337f14751520ea480dc8881c580f709c2831eee8219b82723f2bee",
-    "industries/801890/company-pe-source.json.gz": "f1614902209eb60bebbbf5b371224bf080210926b2ea5cb22a230e73af584e74",
-    "industries/801890/company-quarterly.csv": "c970edca7c0930e50e4995d755360bc1d304da5f4bba89b2fb513da7ee962308",
-    "industries/801890/data-manifest.json": "8c83f954266883e1bd9f6a27d322612d2e0f561df6ab41629b86103f9fca6120",
-    "industries/801890/data.js": "a378963fb610c1d820892ca739a65781929c0a158d472ded9f05f6261ddc3449",
-    "industries/801890/data.json": "b440535e1bae2f20169f1ea1081becc07171cd488b9402672946fbb17c4ca447",
-    "industries/801890/latest-quotes-source.json": "26c9f8f87c24bbff5a2de2e130bb686584c6d4dd990db924e13f7ed25d6fed15",
-    "industries/801890/main.json": "908e324d04a8a405e668c5fb4c010e0255e099eb2f9596042c76972d2c5b0ac8",
-    "industries/801890/quarterly.csv": "a8828cf5af7077c93aa87a9705e4379795e5afbd1000937da6a02f2e890d9d9a",
-    "industries/801890/sectors.js": "ab3582d9373d4ab61554be1ce075941473d87d0087d373fa64a462adcf305365",
-    "industries/801890/sectors.json": "028465bda8bfdda3fce40e111c157a7c67387f4a978c1ae2688446af193be641",
-    "industries/801890/sw-alignment-audit.json": "81bfc1394f8cb6a0d47435accd4b9b61abb456563560494d2ad3bfec69fccb00",
+    "industries/801880/company-pe-source.json.gz": "c7ab861505639d43ba8ea44942293b785140371251c48a4ac21e284e2650f99f",
+    "industries/801880/company-quarterly.csv": "ee0c7fd8a5d98f9ddfd3bc4fe1873fd911de2d3347ffe95fffbae7e93ae12b7c",
+    "industries/801880/data-manifest.json": "c811a62e0842bef78860fcd0bf6be2e5c09be9874729c0182efc450af11ef834",
+    "industries/801880/data.js": "b5cbb0c22047a35b7fbef277a1917c91d893c4e006527439e4cad49d359593eb",
+    "industries/801880/data.json": "c7bc0e8fa1bd370d60c29ca1892adbf9ac05c055a67e8dc3b98f0445f54d9a88",
+    "industries/801880/latest-quotes-source.json": "bf6cc3561267d5b39eb22003b3d635258257cd217932348ade0296a215346658",
+    "industries/801880/main.json": "4eb850be4497b23b43cd3a5f9dfa06ecd3d2ac5645a87e05036706d261496a52",
+    "industries/801880/quarterly.csv": "3903b72da0bdfb3989269f90089b878742c70fb85cdb25c395c5f92b93b925a9",
+    "industries/801880/sectors.js": "4b09c1570c3b1b5d7cd50d6e9a261bb3162602b807625f2c4d137941c31014a8",
+    "industries/801880/sectors.json": "96a392c0701244e80bdd80c71ce15fa355aaea33e0f43fe923c40d939225c9d3",
+    "industries/801880/sw-alignment-audit.json": "54db3d6543fd9b32389d71729cdc54366cd74a612fe328c4662ec71247eff7f7",
+    "industries/801890/companies.json": "ab7199b39a0a4fb275574efe439909deb976337dfe360c955b20b7460ed043c4",
+    "industries/801890/company-pe-source.json.gz": "eba9d95226f28f2eb42f116fac0c96eae6dafd295029e33192dd3e6b6da8386c",
+    "industries/801890/company-quarterly.csv": "71799f5cc65bf4732ffd601bbf18cbadbc4ca40af1122238bf798503272ad4d3",
+    "industries/801890/data-manifest.json": "cdbf7e070975a555de286fe5c1ce01036c9bd206e0f27aa22b0ded8be8efd1be",
+    "industries/801890/data.js": "c776f57f48144441eb3c7472ed3fccd3a1d6d9ef9a0890670c0a77632ce3e5d0",
+    "industries/801890/data.json": "333ef5661f89fc91cd726f529d0c3d5d91b26741d22b3ba153ba52565fcc6596",
+    "industries/801890/latest-quotes-source.json": "493076097c665beb5bf4723524a9d3d0ae9d553a4bb73eeaba9201a9dd931436",
+    "industries/801890/main.json": "1f53ef4b9622fcf48be9f95a5b6670f8774bd99a484967127cf10d391d62cf1f",
+    "industries/801890/quarterly.csv": "b0cf5e070b36b344510fcae05d5a5acad01236b0a2676274f1fd5f7a5458fdb2",
+    "industries/801890/sectors.js": "2ccc8c8402f3aa37a1c61da0c5fefcf0ad0560b3340fb8222dc06cb44f4ae756",
+    "industries/801890/sectors.json": "2af148b77fd7f86ae87bd0b920a197d4cd0d0c8dd05b89d08a6c30fb48ef9ed3",
+    "industries/801890/sw-alignment-audit.json": "2f10438bbcbf0742f1a1c0aaf9cc1d980f8539373c3e02bae6003b82a211a632",
     "industries/801950/companies.json": "08a596af429f0979dea455be903eac558773c5350be849947a835c8e29497199",
-    "industries/801950/company-pe-source.json.gz": "09a23b39cac99271072b2e80bd87c9e711dfdd96d65f3d28e1e772dbe61313cf",
-    "industries/801950/company-quarterly.csv": "6bfe508827ab57317569c0101554b90bdda7a1575464476162247546db0375de",
-    "industries/801950/data-manifest.json": "455cbcc479b3ebfe28a39a71337a0e4b42e633a62fd14a72fd26c4836c5ca6f2",
-    "industries/801950/data.js": "9bea2405d53bf9f2e9d89b5372ae9f6cd55104bd38c654d051dea11b80267898",
-    "industries/801950/data.json": "e2e6225ebc548e582b824c73b43023527d8024208fa9068ab536573cf98443e4",
-    "industries/801950/latest-quotes-source.json": "5340a757c09a2db02cc11119eff1683f6dc945546b5be5a4ae8e92fc3d7b57ef",
-    "industries/801950/main.json": "34ca40a3001f8facddb0623510765754a72c7112245918389c5c899f3e33dada",
-    "industries/801950/quarterly.csv": "f8da2b7addd70772c21c2aeadbaac35de7f06251411d450c48ba3a1d2d06254a",
-    "industries/801950/sectors.js": "7ab031c007eb2d7fd7bb883143381e8b8e1a5c587cf8b85bcbf36f900dce6bd7",
-    "industries/801950/sectors.json": "f245b460065fe2e23bd8ecebfd8bdc0138bd10a3e4db3f6c75e8e9920d948eab",
-    "industries/801950/sw-alignment-audit.json": "fde048c002ad3ef6be95f91b632c3a9193d0521c771883279c5f3997b52cfc75",
+    "industries/801950/company-pe-source.json.gz": "bbb52c443830f0024a372d189f95228faa9e151ea6921bab2f3219248f3c6f4f",
+    "industries/801950/company-quarterly.csv": "0f12ead0f1e21a204c3a7b79a0a5925c70e7818f7f47f91f1dac7cd8291a873a",
+    "industries/801950/data-manifest.json": "87eaaaaec2ad41708c30dea7dbd74e4d20e55caf7ed900076254c1dea30e4fbd",
+    "industries/801950/data.js": "d5fd496bc3761ba9719b6467c4f35b5fe728fdff98837fd8b1803fa377a98226",
+    "industries/801950/data.json": "c360217f98ae47296a68007d444c68179c576d87bb5c9499caafa057aa527947",
+    "industries/801950/latest-quotes-source.json": "12f73eb0208baa351c744382aaf3b399d0146b1b85a0c75aee659d69859c5a7e",
+    "industries/801950/main.json": "e6914dbae575b7a82b896d515e4cf1f8f1c60e0d2e86c3ff35acc52c7b8aae9f",
+    "industries/801950/quarterly.csv": "ceffc2a0bd318754b31269fd2bcd923a1495eb09a708b74073ccbaee8fe2b0a0",
+    "industries/801950/sectors.js": "727351a456c113e963d367d06b488fc8a36a729b9a3a27c793707aaebe6e3f33",
+    "industries/801950/sectors.json": "d609fea1e9f929e93335cdf31994dcbb58f434113a26837521cefcb2ada876b2",
+    "industries/801950/sw-alignment-audit.json": "868687604031b74a938825431ce742cf1d3d589c51e28adacc3cd3bec494c657",
     "industries/801960/companies.json": "f5278efe26fc5a10bfd4e7473793bc2545bcc4fef99c263c2c250a30320fd4d6",
-    "industries/801960/company-pe-source.json.gz": "8707fb84f37cefb1147a266b8acfbb148b3c62e9bd490dcd88649344bf5a15aa",
+    "industries/801960/company-pe-source.json.gz": "623c1eee413399b6ae1afb1579b3bf85c59b003583bfe1bc74f58fddc86a38b2",
     "industries/801960/company-quarterly.csv": "9b17429c4141a86606f5021b8ce59c1ad2834c5efc92d6d3086f9e59f08e79d8",
-    "industries/801960/data-manifest.json": "76d693865ea9d781964167768fec90a603cc790cba37638b2a0dfbc536498a03",
-    "industries/801960/data.js": "393d8c687e50d955a79d974baf826f779b74f493f3545d5df9c433d38396a5f0",
-    "industries/801960/data.json": "d6c31dedd89beca4a61f10b3b678884f3111299e289740f304ffd06360c38c66",
-    "industries/801960/latest-quotes-source.json": "9612ecf4fb58fb7776aeaf2c1b36e201dded7c1900e2a180c24b6fbe4f34ec70",
-    "industries/801960/main.json": "d7a7710b39975231eff7602f36e6239821a06888b09f13218330011d15a52e97",
+    "industries/801960/data-manifest.json": "c9b2e67bfa366d4a7f1033ba43f01963239d995bcef9263fd46d5a21078a915d",
+    "industries/801960/data.js": "a3b0038df466492f7620086837e53ee1d7b127d814495f28cd413f64dfc46544",
+    "industries/801960/data.json": "0be7197d2e46c959c67d3c9d47107376212cd0c2204608e12ad4d55a166bcd65",
+    "industries/801960/latest-quotes-source.json": "4189cb59df0f3abba5aebaf324031214046a0e330d062ebccea0e9591b0fb053",
+    "industries/801960/main.json": "4ccc82a93de58b4ffbac3757afb2f726a7d66648fc7164b0d94121982580c3a1",
     "industries/801960/quarterly.csv": "632ca2d3210e419b96532053df1559a04c120a7b47bd88f56838f9c26550d643",
     "industries/801960/sectors.js": "232fbddb8250b5371cadc18472f80b397eb281af498ccd4e435e98289befe4b9",
     "industries/801960/sectors.json": "ae10d22fb40f8617eb6c0099dd63ab08b23fc987d430a8efb5cc4579b550334d",
     "industries/801960/sw-alignment-audit.json": "a77242c3f2355d8b2a9ad1eb1b4559265af3bb99f2ed5b197f7485d0df11288c",
     "industries/801970/companies.json": "1d3e51edfa8838a78f4c431c3fbf17904d6fa1dd94bf64bf32d5f416f86c5011",
-    "industries/801970/company-pe-source.json.gz": "2f8433be68eb76a3e1feaf620d3f182369dff42b0a49b416273462de15d0efd8",
-    "industries/801970/company-quarterly.csv": "461abe48c2a4711a7bdc2ce5eff1d4c95162586e4697e05b3c9deda1afdcd9fd",
-    "industries/801970/data-manifest.json": "e8ebac8b2c0036e2b4e35eb0f606e3f7af6cba07e8c160fcc21d3397fd2d5dfd",
-    "industries/801970/data.js": "161212d1767877b5930b60f2f367cab1c8344c80b7350b3ab6c045930ee5ef0c",
-    "industries/801970/data.json": "7e7441ad4d5a89eb8a9ae9513cd4d976dfbe56b66c7717034e1599380ba5502f",
-    "industries/801970/latest-quotes-source.json": "b5d8cf0d0e90cf614f7893acd5238c89d7046523c0b0110403f5c033cd57f7e6",
-    "industries/801970/main.json": "6981ae7d8cfbd3da2dec8523517f3830f89972a07e07d9cf036dc5048106f801",
-    "industries/801970/quarterly.csv": "edd828f605a9dc571265fd1bb1939f0db1f15fa28bbf7418445a76f4256f9b2e",
-    "industries/801970/sectors.js": "db0581ec73ebba502314c1e2673ee34116a1ebd693eab532279ce947b9a6e343",
-    "industries/801970/sectors.json": "700b61ae57f817f653834aa3a6838536a81df4b3d7d2d35543aef1825c254cbd",
-    "industries/801970/sw-alignment-audit.json": "7124ec93a519f47677c3d835e6df4a52152326b52cb2bb4b851f3ab1c26463e0",
+    "industries/801970/company-pe-source.json.gz": "232f9a83327056c4c19283b5ec3200419a7ef757ee11de816bf91b3488d354d4",
+    "industries/801970/company-quarterly.csv": "3b9c355017687bbd1b6250645db2ae713883e05312e526b26373c6be338130ce",
+    "industries/801970/data-manifest.json": "6e63b38a470c0e8d451da8bc995fea35ef711a6bd7dc1c624ee924a7ca9e850d",
+    "industries/801970/data.js": "2f67fb06c713a9c553da42dcba4cbc060bf764c24b07c83349a54c033b40f97a",
+    "industries/801970/data.json": "21328ce02d3e174a17070de8192657239f5aa7520321cc3f60b7b70fa7761129",
+    "industries/801970/latest-quotes-source.json": "65ed76f329fb982e52fcd510b4d37b8d2d4c6aadb78bcfb6c9497854b7ddefdc",
+    "industries/801970/main.json": "a02207ebe7220b905313d553bc84de4b5bb20c471cd2e21cc2b0374ded70f85b",
+    "industries/801970/quarterly.csv": "b4a3378fa515cd40436ef4eb761c61651909fe44371cba6b31f72652e0d5eaf6",
+    "industries/801970/sectors.js": "77060ec6e4cb05dc038397733e616007321621f20d3e1a507dfd3e34ceb5a434",
+    "industries/801970/sectors.json": "b6b2d780df60643d5cf60114569e613b0a717f25534adbc0566d67f99339b549",
+    "industries/801970/sw-alignment-audit.json": "9c5ae9fec310e5d18e245fd6982143e926631f5a5d4d1fc641b4534a66962003",
     "industries/801980/companies.json": "ede83b82702104bfdebe24f1d45d81c60758d22112c47e173bda4a21203365c3",
-    "industries/801980/company-pe-source.json.gz": "56de786e94adfedf80db77dcda00b6b3a8590a57c086a21c5eeb5297f572165d",
-    "industries/801980/company-quarterly.csv": "d281ccd9d25c5d55fff431115385288cb5cce0af26b661ad9a93527754961c35",
-    "industries/801980/data-manifest.json": "6b9ec85a3d6e6fe2899fc41770b2a866479559d0e5fd3ae1a828946f660e1028",
-    "industries/801980/data.js": "6d70b00101ec068d03c6eed1de51f0a2e0ae94459ae978207aee3d46c1b20f2a",
-    "industries/801980/data.json": "a0a80acd1f7515bdb8cfdda22bc9f9dc72304372ee90195ad9f2177ae0fd28bf",
-    "industries/801980/latest-quotes-source.json": "16c61f12986aab70ada2856e99b1184e9d5da8765f1c73887cb5e8398db3b745",
-    "industries/801980/main.json": "c4d29294526f521abd7dbc6e0566bb98f5e29bae58b37f6f147ccf7f4ef5af47",
-    "industries/801980/quarterly.csv": "07230029879a781dfd77c74419ca6fd3f98ad984ec218c7eb9782fbab238c94e",
-    "industries/801980/sectors.js": "c62ec9ca8ba1e7b13c1b19e0ff0e0a42043d16efec121426c90c71726a1b0b8f",
-    "industries/801980/sectors.json": "48eb6aae42b754ee4feffd913d5414851e6bf3ef2a53558eb6e749702977a48e",
-    "industries/801980/sw-alignment-audit.json": "4873af5a9f0fd17835e4ff890558d56d195e578d0148025f79c901f1c5fe376b",
-    "latest-quotes-source.json": "5bb3cf3c14fc77a6a1e6ece48cae609904e5c25d6c29f4aba9dee5ca43300129",
-    "main.json": "e9129682879888faa6dcb2315eeff90e9e6ea16fd66750631a5c8bb44c8ea7e9",
-    "quarterly.csv": "147dcbca48c33b3ad9566200390bdb2373ed4944d32a1b5c14a1b86d19011c65",
-    "refresh-source.json.gz": "0737c23adcbc4718d3b8dcd828cef2ed4073c24608031ae78a197b25205249e3",
-    "sectors.js": "6c210a27debedab9032bab04e896aa36a918615ab38042bd4b144de52df4db9f",
-    "sectors.json": "3511642dbe11d7c0cd7169dc8efe15ff1e64eb9a5fe967cb99763da3b7c8227e",
+    "industries/801980/company-pe-source.json.gz": "4239b999205775bbe895255d2f93d8fd5860b447d7b0cfb08470e02b3161191a",
+    "industries/801980/company-quarterly.csv": "9462a38c5ca8d676bea5bd7f641d5461c7e6d5ecc086383584448e12aac42f29",
+    "industries/801980/data-manifest.json": "4bab4a6c8d95c60a7a0fd2af1a6cc30aaa78d2796e41e8b2da09c49461f30b32",
+    "industries/801980/data.js": "c876a0e8e174303bfbb05cb7f16939565d2985917f6206fb37ad8f1670834e73",
+    "industries/801980/data.json": "e30b30b0f01e160b9f036867a2aad38398ad753d18ec640d15ac63dbad6010a6",
+    "industries/801980/latest-quotes-source.json": "08300aab1562a5d18f4ebd9b298239a602bf55f768d506aecba5439cf90e0631",
+    "industries/801980/main.json": "a7e218216389613a61841b48eabf6ab44841510ef84a2fc3b0bcec04b5b76ec3",
+    "industries/801980/quarterly.csv": "2511b5e68cad192905363d918f48514c01866b436b4fabd92b16c4d7ebc0d2e6",
+    "industries/801980/sectors.js": "f5a55c9481f486cb81fa2e3e55f9536739410ccf34fe9babe56c57555453dc54",
+    "industries/801980/sectors.json": "c74630d2faeda458500080ea68e99a592d9e023214278909f5d38cc06ee91a1a",
+    "industries/801980/sw-alignment-audit.json": "23959b4d6484df033f9b4183f636e3d85287314aff0777faf574a858180464b0",
+    "latest-quotes-source.json": "6e5ff68ff428cd6d749b47d86f2aa1a2ce98d85229a680e5a26d24a1214bbd6e",
+    "main.json": "e111111292cde5dedf5dc31f1f166f8b821d30945529fa9235fe86729a929bab",
+    "quarterly.csv": "279db84e606f81907964d75fee826bc194547dcbcec2f95aba81cacfffb7a5ad",
+    "refresh-source.json.gz": "616897de4e0101156870bb16d5b5d413bb21a6d6e38618487905f9e4c254dd18",
+    "sectors.js": "d08c6d43d4812dd83b2d5bcb06d58583058aa2da36a49581ca38a3e16a144b5b",
+    "sectors.json": "23cb949149b7d6169a5a69e3b0d8d7db5e83884a36febc8ae72940621cb367cb",
     "style.css": "d52f376611e50193670547d9c8a380aeb77b99dbc987f5a5dca912ac331b2721",
-    "sw-alignment-audit.json": "288c41ecf40a3fd46090168d7cfe35f6b75448a613722c01a72c345024d18a5d"
+    "sw-alignment-audit.json": "40428fb46b567efd68fe8120edbfeac88eddd06245c8072bd4be3e62a5b717ff"
   },
-  "verifiedFinancialRows": 38138
+  "verifiedFinancialRows": 38279
 }

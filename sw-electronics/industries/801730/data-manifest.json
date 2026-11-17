@@ -75,11 +75,11 @@
     ],
     "latestQuarter": "2026Q3",
     "quarters": 87,
-    "source": "Tushare sw_daily（申万行情） / index_member_all SW2021（财务样本） / income（财报）",
+    "source": "Tushare sw_daily（申万行情） / index_member_all SW2021（财务样本） / income（财报）；缺失字段以备用财务源及核实公告补充",
     "currencyUnit": "亿元人民币",
     "peMethod": "直接采用申万 sw_daily.pe 公布值；不使用公司市值和财报利润重新合成",
     "financialMethod": "合并营业总收入（缺失时营业收入）及归母净利润；累计财报差分为单季；采用截至取数日已披露版本",
-    "estimateMethod": "最新季度缺报：上年同季营收×最近累计营收同比增长倍数；估算营收×最近累计归母净利率",
+    "estimateMethod": "未披露最新季：上年同季营收×近期累计同比倍数及净利率；历史缺差分前值：同年实际累计数之间按季均分，保持已知累计总额并标估算",
     "quoteCarryMethod": "申万季末行情不沿用旧值；公司明细保留此前有效报价并显示日期",
     "sourceLinks": [
       {
@@ -109,7 +109,7 @@
     "marketCapMethod": "申万 sw_daily.total_mv（万元）÷10000；季度最后交易日公布值",
     "percentileMethod": "所选起始季度首日至结束季度末日的全部有效正日度PE；含相等值；与项目2同源同公式，日期范围需一致",
     "companyMarketCapMethod": "daily_basic.total_mv÷10000，全部普通股按A股价格估值，与项目2公司明细同字段；不等于申万行业市值分拆",
-    "financialVersusValuation": "财务柱是全公司实际合并报表汇总，不是指数PE分母；不以公布市值÷PE反推真实利润",
+    "financialVersusValuation": "财务柱汇总全公司合并报表及标注估算，含亏损、不按自由流通比例缩放；申万PE采用独立指数口径，方法核对见PE_METHOD_REVIEW.md，不以公布市值÷PE反推实际利润",
     "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/",
     "financialAsOf": "20261117",
     "universeAsOf": "20261117",
@@ -122,9 +122,7 @@
   "collectionFailures": [],
   "validation": {
     "uniqueQuarters": 87,
-    "financialIncompleteQuarters": [
-      "2026Q2"
-    ],
+    "financialIncompleteQuarters": [],
     "marketIncompleteQuarters": []
   },
   "collection": {
@@ -167,13 +165,13 @@
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
     "financialAsOf": "20261117",
-    "financialHash": "2f7a22294a20e97512a43045779166033f5c33b923a9084f7cb50bfb57b703f6",
+    "financialHash": "4fce6b6d338df78c5f719a383356b2fb860fdbf7f114ac58e08e69a158fd3579",
     "sectorFinancialHashes": {
       "801737.SI": "c25df4f08e419911c550a9fd2ca1c9f9d7d2d28a23058a2d47af716cbfe8138a",
       "801738.SI": "797c20ffa8c9de7c0cea468ab52ba2c5aa76ede8d9f381468fae735eda31544b",
       "801735.SI": "2d9169c012e36ccad33d7c3c914fb2ee4e6e6ff32bd84d3dfc7bd78e4403d285",
       "801733.SI": "87069202b5fbb2005c49b5be5052d6cc1941f01232653e17ca971337b3bc2273",
-      "801736.SI": "240b05699527275bc388437bc77e09159b56649a2c08a44ac79529435cfd3223",
+      "801736.SI": "68ecd576e4f2ae53b9807ea2fab260f65706b301a6b49cddf076a6923cd7faf7",
       "801731.SI": "a72f607fd030cfd60c0e2c030b084b41a67571108b750b691186cf13f20a062d"
     },
     "latest": {
@@ -522,6 +520,8 @@
     "estimatedCount": 0,
     "missingCount": 0,
     "auditFile": "freshness-audit.json (project root)",
-    "financialSupplementCount": 0
+    "financialSupplementCount": 0,
+    "secondaryFinancialRecords": 0,
+    "historicalEstimatedRows": 1
   }
 }

@@ -98,6 +98,588 @@
           "excerpt": "报告期内，公司尚未实现营业收入。作为第一季度零营收判断的交叉核对。"
         }
       ]
+    },
+    {
+      "code": "000498.SZ",
+      "name": "山东路桥",
+      "period": "20110331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20120423",
+        "reportType": "4",
+        "profit": -373483.82
+      },
+      "evidence": [
+        {
+          "title": "*ST 丹化：2011年第一季度报告全文",
+          "announcementDate": "20110426",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201203020004814226_1.pdf",
+          "pages": [
+            1,
+            7
+          ],
+          "sha256": "db8c9652f3f8000f63a0465d402452c457892ac5ce7ced2354359ce66c4f31b4",
+          "excerpt": "营业总收入0.00元，归母净利润-373,483.82元。"
+        }
+      ]
+    },
+    {
+      "code": "000498.SZ",
+      "name": "山东路桥",
+      "period": "20110930",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20121019",
+        "reportType": "4",
+        "profit": -1405626.08
+      },
+      "evidence": [
+        {
+          "title": "*ST 丹化：2011年第三季度报告全文",
+          "announcementDate": "20111026",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201203030004933267_1.pdf",
+          "pages": [
+            1,
+            7
+          ],
+          "sha256": "522557a45b2a183b4774e147826b8c13a7e73573a24641613534bdec9c947842",
+          "excerpt": "2011年1—9月营业总收入0.00元，归母净利润-1,405,626.08元；无生产经营业务。"
+        }
+      ]
+    },
+    {
+      "code": "000688.SZ",
+      "name": "国城矿业",
+      "period": "20080930",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20081022",
+        "reportType": "1",
+        "profit": -13330911.39
+      },
+      "evidence": [
+        {
+          "title": "S*ST朝华：2008年第三季度报告",
+          "announcementDate": "20081022",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201202270004223080_1.pdf",
+          "pages": [
+            2,
+            6
+          ],
+          "sha256": "687395be39b86c4f476606491e96f52ef5896bb29e4c699b7c4e7d9c03eb47d6",
+          "excerpt": "年初至期末无主营业务；营业利润-13,310,706.99元与营业总成本13,310,706.99元相抵，投资收益等本期为空，核实累计营收为零。"
+        }
+      ]
+    },
+    {
+      "code": "000688.SZ",
+      "name": "国城矿业",
+      "period": "20090331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20100422",
+        "reportType": "4",
+        "profit": -1656802.87
+      },
+      "evidence": [
+        {
+          "title": "S*ST朝华：2009年第一季度报告",
+          "announcementDate": "20090416",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201202280004373584_1.pdf",
+          "pages": [
+            2,
+            5
+          ],
+          "sha256": "dbc06274fae19e1196a000d9ab919a6389549b901d9c820aa73f050562607402",
+          "excerpt": "无主营业务收入；营业利润-1,656,802.87＋管理费用1,658,297.07＋财务费用-3,976.09＋减值2,481.89＝0元营收。"
+        }
+      ]
+    },
+    {
+      "code": "000688.SZ",
+      "name": "国城矿业",
+      "period": "20090930",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20101028",
+        "reportType": "4",
+        "profit": -4575724.24
+      },
+      "evidence": [
+        {
+          "title": "*ST朝华：2010年第三季度报告全文",
+          "announcementDate": "20101028",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201203010004691288_1.pdf",
+          "pages": [
+            9,
+            10
+          ],
+          "sha256": "2d47ccefe94d515b2a9f6421ec57e7480012954f74b0fa4b1caf334bd6ab5ed8",
+          "excerpt": "上年同期调整后营业总收入0.00元，营业总成本4,575,724.24元，归母净利润-4,575,724.24元。"
+        }
+      ]
+    },
+    {
+      "code": "000688.SZ",
+      "name": "国城矿业",
+      "period": "20100331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20110426",
+        "reportType": "4",
+        "profit": -1822732.89
+      },
+      "evidence": [
+        {
+          "title": "*ST朝华：2010年第一季度报告全文",
+          "announcementDate": "20100422",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201203010004588220_1.pdf",
+          "pages": [
+            4,
+            7
+          ],
+          "sha256": "2ac4183c7201ed65d7cffe43162dcf73664eacbdc7ca3c43fcd1805b8e3ab21a",
+          "excerpt": "公司无主营业务收入；营业利润-1,822,732.89＋管理费用1,823,680.85＋财务费用-559.00＋资产减值-388.96＝0元营收。"
+        }
+      ]
+    },
+    {
+      "code": "000736.SZ",
+      "name": "中交发展",
+      "period": "20060331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20070430",
+        "reportType": "4",
+        "profit": -7945698.28
+      },
+      "evidence": [
+        {
+          "title": "S*ST重实：2007年第一季度报告",
+          "announcementDate": "20070430",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201202270004158713_1.pdf",
+          "pages": [
+            8
+          ],
+          "sha256": "42ddee6a293a60ec567c9fa0102e58b5d6aae76443ed6f2c6f194defbd04f04b",
+          "excerpt": "上年同期营业成本4,556,765.18元、投资收益-3,388,933.10元、营业利润-7,945,698.28元；差额核实营收为零。"
+        }
+      ]
+    },
+    {
+      "code": "000892.SZ",
+      "name": "欢瑞世纪",
+      "period": "20090331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20100423",
+        "reportType": "4",
+        "profit": -430149.7
+      },
+      "evidence": [
+        {
+          "title": "*ST 星美：2009年第一季度报告",
+          "announcementDate": "20090423",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201202280004372629_1.pdf",
+          "pages": [
+            1,
+            6,
+            7
+          ],
+          "sha256": "2635555558a0a5575403a8e28ebeeda424eedbe7f58735ad767147999e96bf7c",
+          "excerpt": "营业总收入0.00元，归母净利润-430,149.70元。"
+        }
+      ]
+    },
+    {
+      "code": "000892.SZ",
+      "name": "欢瑞世纪",
+      "period": "20090930",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20101020",
+        "reportType": "4",
+        "profit": -2303702.17
+      },
+      "evidence": [
+        {
+          "title": "ST 星 美：2009年第三季度报告",
+          "announcementDate": "20091027",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201202290004489296_1.pdf",
+          "pages": [
+            1,
+            9
+          ],
+          "sha256": "adab6621d042e9f5572fd8d8e82e5bf8e41f00adc7bc8c1bd36b5a4a93c9eb0a",
+          "excerpt": "2009年1—9月营业总收入0.00元，归母净利润-2,303,702.17元。"
+        }
+      ]
+    },
+    {
+      "code": "600180.SH",
+      "name": "*ST瑞茂",
+      "period": "20090331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20100430",
+        "reportType": "4",
+        "profit": -287924.0
+      },
+      "evidence": [
+        {
+          "title": "*ST九发：2010年第一季度报告",
+          "announcementDate": "20100430",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201203010004598172_1.pdf",
+          "pages": [
+            7
+          ],
+          "sha256": "606628cad8f1f4f5c5ca6c9dbf84aecd31d1259429368d29a982cde5c2161495",
+          "excerpt": "上年同期调整后营业利润-287,924.00元＝0营收−287,924.00元管理费用；利润表其他经营损益空白。"
+        }
+      ]
+    },
+    {
+      "code": "600180.SH",
+      "name": "*ST瑞茂",
+      "period": "20100331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20110430",
+        "reportType": "4",
+        "profit": -843804.86
+      },
+      "evidence": [
+        {
+          "title": "*ST九发：2010年第一季度报告",
+          "announcementDate": "20100430",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201203010004598172_1.pdf",
+          "pages": [
+            7
+          ],
+          "sha256": "606628cad8f1f4f5c5ca6c9dbf84aecd31d1259429368d29a982cde5c2161495",
+          "excerpt": "本期营业利润-843,804.86元＝0营收−843,804.86元管理费用。"
+        }
+      ]
+    },
+    {
+      "code": "600180.SH",
+      "name": "*ST瑞茂",
+      "period": "20100930",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20111025",
+        "reportType": "4",
+        "profit": -1110247.76
+      },
+      "evidence": [
+        {
+          "title": "*ST九发：2010年第三季度报告",
+          "announcementDate": "20101027",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201203010004692727_1.pdf",
+          "pages": [
+            9
+          ],
+          "sha256": "705a454a2790ce4bf7af06b5ca8a02296cd36c0da85d00bdd72abc6877b66d4a",
+          "excerpt": "1—9月营业利润-1,110,247.76元＝0营收−1,110,247.76元营业总成本。"
+        }
+      ]
+    },
+    {
+      "code": "600180.SH",
+      "name": "*ST瑞茂",
+      "period": "20110331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20120428",
+        "reportType": "4",
+        "profit": -354659.64
+      },
+      "evidence": [
+        {
+          "title": "ST九发：2012年第一季度报告",
+          "announcementDate": "20120428",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201205070005175780_1.pdf",
+          "pages": [
+            6,
+            7
+          ],
+          "sha256": "d58e8b83eaa16819fa68dcc54a3bd32f41a9c85ac0749522ca40256f421b7888",
+          "excerpt": "上年同期调整后营业利润-354,659.64元＝0营收−356,500.07元管理费用−(-1,840.43)元财务费用。"
+        }
+      ]
+    },
+    {
+      "code": "600556.SH",
+      "name": "天下秀",
+      "period": "20120331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20130427",
+        "reportType": "4",
+        "profit": -866214.13
+      },
+      "evidence": [
+        {
+          "title": "*ST北生：2012年第一季度报告",
+          "announcementDate": "20120428",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201205070005175164_1.pdf",
+          "pages": [
+            9
+          ],
+          "sha256": "816d5f807c917a370ed7d6578168c323ce8f476880ac1d3b77c3095d2a0a0d91",
+          "excerpt": "营业利润-866,214.13元＋营业总成本866,214.13元＝0元营收，其他经营收益为空。"
+        }
+      ]
+    },
+    {
+      "code": "600706.SH",
+      "name": "曲江文旅",
+      "period": "20110331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20120421",
+        "reportType": "4",
+        "profit": -2888079.26
+      },
+      "evidence": [
+        {
+          "title": "ST长信：2011年第一季度报告",
+          "announcementDate": "20110426",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201203020004815860_1.pdf",
+          "pages": [
+            11
+          ],
+          "sha256": "d5b1529113234a88adb8f823ea282b76d2d6863d2ee1bba36cd76a7fd10e247e",
+          "excerpt": "本期营业利润-2,888,094.63元＋营业总成本2,888,094.63元＝0元营收；归母净利润-2,888,079.26元。"
+        }
+      ]
+    },
+    {
+      "code": "600715.SH",
+      "name": "文投控股",
+      "period": "20110331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20120427",
+        "reportType": "4",
+        "profit": -5943845.21
+      },
+      "evidence": [
+        {
+          "title": "ST松辽：2011年第一季度报告",
+          "announcementDate": "20110428",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201203020004818886_1.pdf",
+          "pages": [
+            4,
+            8
+          ],
+          "sha256": "236ffe0bb528f5f7c29ed47128b3377205c6dfff22f698fd68cbc2b561cf1b84",
+          "excerpt": "营业收入0元；原因明确为当期停产无营业收入。"
+        }
+      ]
+    },
+    {
+      "code": "600753.SH",
+      "name": "ST海钦",
+      "period": "20120331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20130426",
+        "reportType": "4",
+        "profit": -515822.54
+      },
+      "evidence": [
+        {
+          "title": "东方银星：2012年第一季度报告",
+          "announcementDate": "20120427",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201205070005172337_1.pdf",
+          "pages": [
+            10
+          ],
+          "sha256": "43b1d359317e010c5b4409bf89590f5e09207aed5d5431ca9abe1a503422e8c5",
+          "excerpt": "本期营业利润-573,301.83元＋营业总成本573,301.83元＝0元营收；3,504.27元位于上年同期列。"
+        }
+      ]
+    },
+    {
+      "code": "600094.SH",
+      "name": "大名城",
+      "period": "20090331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "missingReport": true,
+        "profit": null
+      },
+      "evidence": [
+        {
+          "title": "*ST华 源：2009年第一季度报告",
+          "announcementDate": "20090430",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201202280004365101_1.pdf",
+          "pages": [
+            4,
+            8
+          ],
+          "sha256": "9640a90d69de8bf646b6a19823d74120d6a2cc70fc1fa45de5530e177fb72236",
+          "excerpt": "公司执行重整计划；本期营收较105,528,476.60元下降100%，净利润较-89,827,842.86元改善100%，均为0；利润表数字位于上期列。"
+        }
+      ]
+    },
+    {
+      "code": "600094.SH",
+      "name": "大名城",
+      "period": "20090331",
+      "metric": "profit",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "missingReport": true,
+        "profit": null
+      },
+      "evidence": [
+        {
+          "title": "*ST华 源：2009年第一季度报告",
+          "announcementDate": "20090430",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201202280004365101_1.pdf",
+          "pages": [
+            4,
+            8
+          ],
+          "sha256": "9640a90d69de8bf646b6a19823d74120d6a2cc70fc1fa45de5530e177fb72236",
+          "excerpt": "公司执行重整计划；本期营收较105,528,476.60元下降100%，净利润较-89,827,842.86元改善100%，均为0；利润表数字位于上期列。"
+        }
+      ]
+    },
+    {
+      "code": "600094.SH",
+      "name": "大名城",
+      "period": "20090630",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20090831",
+        "reportType": "1",
+        "profit": null
+      },
+      "evidence": [
+        {
+          "title": "*ST华源：2009年半年度报告",
+          "announcementDate": "20090831",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201202290004470728_1.pdf",
+          "pages": [
+            4,
+            13,
+            33
+          ],
+          "sha256": "1676eb7b5dc03d6b712e656f3beb595404d1fcda8c747dbd13e97b363a64e62a",
+          "excerpt": "主要指标明确本期营业利润、利润总额、净利润均为0；公司没有开展经营业务；利润表及收入附注本期为空、数字均为上期列，核实本期营收0。"
+        }
+      ]
+    },
+    {
+      "code": "600094.SH",
+      "name": "大名城",
+      "period": "20090630",
+      "metric": "profit",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20090831",
+        "reportType": "1",
+        "profit": null
+      },
+      "evidence": [
+        {
+          "title": "*ST华源：2009年半年度报告",
+          "announcementDate": "20090831",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN201202290004470728_1.pdf",
+          "pages": [
+            4,
+            13,
+            33
+          ],
+          "sha256": "1676eb7b5dc03d6b712e656f3beb595404d1fcda8c747dbd13e97b363a64e62a",
+          "excerpt": "主要指标明确本期营业利润、利润总额、净利润均为0；公司没有开展经营业务；利润表及收入附注本期为空、数字均为上期列，核实本期营收0。"
+        }
+      ]
     }
   ]
 }

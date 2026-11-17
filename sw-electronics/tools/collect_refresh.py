@@ -14,6 +14,7 @@ import subprocess
 import threading
 from zoneinfo import ZoneInfo
 from financial_supplements import load as load_supplements, scopes as supplement_scopes
+from financial_recovery import discover as recovery_discover, scopes as recovery_scopes
 
 SITE = Path(__file__).resolve().parents[1]
 FIN_FIELDS = 'ts_code,ann_date,f_ann_date,end_date,report_type,total_revenue,revenue,n_income_attr_p,update_flag'
@@ -43,6 +44,24 @@ class Client:
         self.lock = threading.Lock()
 
     def call(self, api, params, fields='', cap=None):
+        if api == 'eastmoney_income':
+            args = ['curl', '--silent', '--show-error', '--fail-with-body', '--max-time', '45', '--retry', '2', '--get',
+                    'https://datacenter.eastmoney.com/securities/api/data/v1/get']
+            for key, value in params.items():
+                args += ['--data-urlencode', f'{key}={value}']
+            proc = subprocess.run(args, text=True, capture_output=True)
+            if proc.returncode:
+                raise RuntimeError('备用财务源查询失败，停止刷新。')
+            result = json.loads(proc.stdout)
+            if not result.get('success') or not result.get('result'):
+                raise RuntimeError('备用财务源未返回合法数据表，停止刷新。')
+            data = result['result']; rows = data['data']
+            if data['pages'] != 1 or len(rows) != data['count']:
+                raise RuntimeError('备用财务源结果截断，停止刷新。')
+            with self.lock:
+                self.requests.append(dict(api=api, params=params, fields=params['columns'].split(','), rows=rows,
+                    fetchedAt=datetime.now(ZoneInfo('Asia/Shanghai')).isoformat(timespec='seconds')))
+            return rows
         if self.endpoint:
             payload = {'jsonrpc': '2.0', 'id': 1, 'method': 'tools/call', 'params': {
                 'name': api, 'arguments': {**params, **({'fields': fields.split(',')} if fields else {})}}}
@@ -140,8 +159,18 @@ def collect(asof=None):
         for report in ['1', '4', '5']:
             jobs['income:' + period + ':' + report] = ('income_vip', {'period': period, 'report_type': report}, FIN_FIELDS, 9000)
     targets, dependencies = supplement_scopes(load_supplements(), latest_period)
+    recovery = recovery_discover(SITE, latest_period)
+    repair_targets, repair_codes = recovery_scopes(recovery, latest_period)
+    targets |= repair_targets
+    for code in sorted(repair_codes):
+        for report in ['1', '4', '5']:
+            jobs[f'incomeHistory:{code}:{report}'] = ('income', {'ts_code':code, 'report_type':report}, FIN_FIELDS, 1000)
+        params = dict(reportName='RPT_F10_FINANCE_GINCOME',
+            columns='SECUCODE,SECURITY_NAME_ABBR,REPORT_DATE,NOTICE_DATE,REPORT_TYPE,TOTAL_OPERATE_INCOME,OPERATE_INCOME,PARENT_NETPROFIT',
+            filter=f'(SECUCODE="{code}")', pageSize=200, pageNumber=1, source='HSF10', client='PC')
+        jobs['secondary:'+code] = ('eastmoney_income', params, '', None)
     for code, period in sorted(dependencies):
-        if period not in periods:
+        if period not in periods and code not in repair_codes:
             for report in ['1', '4', '5']:
                 jobs[f'incomeCompany:{code}:{period}:{report}'] = ('income', {'ts_code': code, 'period': period, 'report_type': report}, FIN_FIELDS, 1000)
     for d in modules.values():
@@ -167,6 +196,7 @@ def collect(asof=None):
         for future in cf.as_completed(pending):
             result['carry:' + pending[future]] = future.result()
     source = dict(asOf=asof, quoteDate=quote_day, latestPeriod=latest_period, periods=periods,
+        recoveryScope=recovery,
         targetedFinancialRows=[list(pair) for pair in sorted(targets)],
         incrementalStart=checked, incremental=incremental, data=result, requests=client.requests,
         collectedAt=datetime.now(ZoneInfo('Asia/Shanghai')).isoformat(timespec='seconds'))

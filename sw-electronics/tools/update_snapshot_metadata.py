@@ -26,6 +26,8 @@ def update():
             'companyQuoteAsOf':d['meta']['companyQuoteAsOf'],'estimatedCount':latest['estimatedCount'],'missingCount':latest['missingCount'],
             'auditFile':'freshness-audit.json (project root)'}
         manifest['currentRefresh']['financialSupplementCount']=len(d.get('financialSupplements',[]))
+        manifest['currentRefresh']['secondaryFinancialRecords']=len(d.get('financialRecovery',[]))
+        manifest['currentRefresh']['historicalEstimatedRows']=sum(r['method']=='historical_cumulative_interpolation' for r in d['estimates'])
         if 'validation' in manifest:
             manifest['validation']['financialIncompleteQuarters']=[r['quarter'] for r in d['series'] if r['missingCount']]
         manifest['collectionScopeNote']='历史取数统计与旧公司估值审计仅作历史资料；本次新查询见项目根refresh-source.json.gz，核查与哈希见freshness-audit.json。'
@@ -34,6 +36,7 @@ def update():
             companyQuarterRows=count,quarters=len(d['series']),latest=latest,latestObservation=quote,
             financialIncompleteQuarters=[r['quarter'] for r in d['series'] if r['missingCount']]))
         supplement_note=('\n接口缺字段的原文核对记录见项目根 financial-supplements.json 和本行业 data.json 的 financialSupplements：仅补经核实的实际累计值；每次刷新复核报表版本、利润及前后差分依赖。\n' if d.get('financialSupplements') else '')
+        supplement_note += '\n备用财务表只补主源缺字段；原文核实零值计实报。历史缺差分前值时在同年已知累计数之间按季均分并标*，保持累计总额，具体依据见data.json的estimates。所有公司全部历史季度均进行缺口检查，未解决缺口阻止发布；申万PE与自由流通权重、亏损处理差异见根目录PE_METHOD_REVIEW.md。\n'
         if item['key']!='electronics':
             (root/'README.md').write_text(f'''# {item['name']} · 全览图
 

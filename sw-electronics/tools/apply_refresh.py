@@ -14,6 +14,7 @@ import sys
 sys.dont_write_bytecode = True
 from align_sw_data import SITE, read, write
 from financial_supplements import load as load_supplements, apply as apply_supplements
+from financial_recovery import secondary_actuals, historical_quarter, scopes as recovery_scopes
 
 
 def number(value):
@@ -41,7 +42,7 @@ def apply():
                 quotes[key[6:]] = max(valid, key=lambda r: r['trade_date'])
     candidates = defaultdict(list)
     for key, rows in fresh.items():
-        if key.startswith(('income:', 'incomeCompany:')):
+        if key.startswith(('income:', 'incomeCompany:', 'incomeHistory:')):
             for r in rows:
                 if ann(r) <= asof:
                     candidates[(r['ts_code'], r['end_date'])].append(r)
@@ -54,6 +55,8 @@ def apply():
             if current.get(field) is None:
                 current[field] = next((r[field] for r in reversed(same) if r.get(field) is not None), None)
         reports[key] = current
+    repair_targets, _ = recovery_scopes(source['recoveryScope'], period)
+    secondary = secondary_actuals(reports, fresh, repair_targets, asof)
     supplements = apply_supplements(reports, load_supplements(), asof)
     targeted = {tuple(pair) for pair in source['targetedFinancialRows']}
 
@@ -142,7 +145,10 @@ def apply():
                     else:
                         if row['status'] == 'reported':
                             raise RuntimeError(f'{code} {end} 刷新报表缺失，停止发布。')
-                        status = 'missing'
+                        est = historical_quarter(reports, code, end)
+                        if not est:
+                            raise RuntimeError(f'{code} {end} 历史缺口无可靠累计拆分依据，停止发布。')
+                        rv, pv, status = est['revenue'], est['profit'], 'estimated'
                     row.update(revenue=rv, profit=pv, status=status,
                         announcementDate=ann(report) if report else None,
                         reportType=report['report_type'] if report else None)
@@ -206,6 +212,7 @@ def apply():
             record['reportType'] = record.get('reportType') or None
             latest.append(record)
         data.update(estimates=estimates, latestCompanies=latest)
+        data['financialRecovery'] = [r for r in secondary if r['code'] in codes]
         relevant = [r for r in supplements if r['code'] in codes]
         if relevant:
             data['financialSupplements'] = relevant
@@ -245,7 +252,8 @@ def apply():
         fetchedAt=source['collectedAt'], requests=len(source['requests']), modules=31, indices=165,
         activeCompanies=len(active_codes), removedCodes=sorted(old_universe-active_codes), addedCodes=sorted(active_codes-old_universe),
         financialChanges=changes, stillPending=pending, sourceFile='refresh-source.json.gz',
-        financialSupplements=[dict(code=r['code'], period=r['period'], metric=r['metric'], value=r['value']) for r in supplements])
+        financialSupplements=[dict(code=r['code'], period=r['period'], metric=r['metric'], value=r['value']) for r in supplements],
+        financialRecovery=secondary, recoveryScope=source['recoveryScope'])
     write(SITE / 'freshness-audit.json', audit)
     print(f'已刷新31个一级/134个二级；财务变更 {len(changes)} 项；当前在市样本 {len(active_codes)} 家；仍待披露 {len(pending)} 家')
 
