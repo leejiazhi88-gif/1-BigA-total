@@ -12,12 +12,14 @@ import sys
 import time
 sys.dont_write_bytecode=True
 from collect_refresh import collect
+from financial_supplements import FILE as SUPPLEMENT_FILE
 
 SITE=Path(__file__).resolve().parents[1]
 
 def signature(source):
-    payload={k:source[k] for k in ['asOf','quoteDate','latestPeriod','periods']}
-    payload['builderSha256']={name:hashlib.sha256((SITE/'tools'/name).read_bytes()).hexdigest() for name in ['apply_refresh.py','align_sw_data.py','build_latest_quotes.py','update_snapshot_metadata.py']}
+    payload={k:source[k] for k in ['asOf','quoteDate','latestPeriod','periods','targetedFinancialRows']}
+    payload['supplementsSha256']=hashlib.sha256((SITE/SUPPLEMENT_FILE).read_bytes()).hexdigest()
+    payload['builderSha256']={name:hashlib.sha256((SITE/'tools'/name).read_bytes()).hexdigest() for name in ['apply_refresh.py','align_sw_data.py','build_latest_quotes.py','update_snapshot_metadata.py','financial_supplements.py']}
     payload['data']={k:sorted(rows,key=lambda r:json.dumps(r,sort_keys=True,ensure_ascii=False)) for k,rows in source['data'].items() if not k.startswith('quoteDay:')}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
 

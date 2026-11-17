@@ -148,12 +148,7 @@
     "uniqueQuarters": 87,
     "financialIncompleteQuarters": [
       "2005Q2",
-      "2005Q3",
-      "2021Q3",
-      "2021Q4",
-      "2025Q4",
-      "2026Q1",
-      "2026Q2"
+      "2005Q3"
     ],
     "marketIncompleteQuarters": []
   },
@@ -197,9 +192,9 @@
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
     "financialAsOf": "20261117",
-    "financialHash": "4e0cab25f88175614540589c5df9d144f310d5d8ef0e760c4f8be522428b3d1a",
+    "financialHash": "3cfad2971d805c8e92684c8f32c6ce44afe8d066dab50a75564655f9aafca807",
     "sectorFinancialHashes": {
-      "801151.SI": "01ef5090f1e3062bc04cda642999a0b1f582b06e2bdfca11a241d66a380c2bcc",
+      "801151.SI": "0afe8d07690fdd415534f3d161e04e249168387b4e41d7e6318870828b426962",
       "801153.SI": "7398825a95f146a9b0d8b3c1f5443ee0e9027ce3075409ab9bd7b734afe83c66",
       "801156.SI": "255dd835564e0178ea6c8a70a287f2f407361719224c85680dbc18bba1e42b3d",
       "801152.SI": "a34452969f2792991303c7db3f7e7bb33e78372c849d55c7cad89dae09e7ff97",
@@ -657,6 +652,7 @@
     "companyQuoteAsOf": "20261117",
     "estimatedCount": 1,
     "missingCount": 0,
-    "auditFile": "freshness-audit.json (project root)"
+    "auditFile": "freshness-audit.json (project root)",
+    "financialSupplementCount": 3
   }
 }

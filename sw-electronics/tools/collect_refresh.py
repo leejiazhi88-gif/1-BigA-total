@@ -13,6 +13,7 @@ import re
 import subprocess
 import threading
 from zoneinfo import ZoneInfo
+from financial_supplements import load as load_supplements, scopes as supplement_scopes
 
 SITE = Path(__file__).resolve().parents[1]
 FIN_FIELDS = 'ts_code,ann_date,f_ann_date,end_date,report_type,total_revenue,revenue,n_income_attr_p,update_flag'
@@ -138,6 +139,11 @@ def collect(asof=None):
     for period in periods:
         for report in ['1', '4', '5']:
             jobs['income:' + period + ':' + report] = ('income_vip', {'period': period, 'report_type': report}, FIN_FIELDS, 9000)
+    targets, dependencies = supplement_scopes(load_supplements(), latest_period)
+    for code, period in sorted(dependencies):
+        if period not in periods:
+            for report in ['1', '4', '5']:
+                jobs[f'incomeCompany:{code}:{period}:{report}'] = ('income', {'ts_code': code, 'period': period, 'report_type': report}, FIN_FIELDS, 1000)
     for d in modules.values():
         for c in d['latestCompanies']:
             if c['status'] != 'reported':
@@ -161,6 +167,7 @@ def collect(asof=None):
         for future in cf.as_completed(pending):
             result['carry:' + pending[future]] = future.result()
     source = dict(asOf=asof, quoteDate=quote_day, latestPeriod=latest_period, periods=periods,
+        targetedFinancialRows=[list(pair) for pair in sorted(targets)],
         incrementalStart=checked, incremental=incremental, data=result, requests=client.requests,
         collectedAt=datetime.now(ZoneInfo('Asia/Shanghai')).isoformat(timespec='seconds'))
     with gzip.open(SITE / 'refresh-source.json.gz', 'wt', encoding='utf-8') as stream:

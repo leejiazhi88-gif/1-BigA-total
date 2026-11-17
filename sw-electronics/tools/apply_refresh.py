@@ -13,6 +13,7 @@ import subprocess
 import sys
 sys.dont_write_bytecode = True
 from align_sw_data import SITE, read, write
+from financial_supplements import load as load_supplements, apply as apply_supplements
 
 
 def number(value):
@@ -40,7 +41,7 @@ def apply():
                 quotes[key[6:]] = max(valid, key=lambda r: r['trade_date'])
     candidates = defaultdict(list)
     for key, rows in fresh.items():
-        if key.startswith('income:'):
+        if key.startswith(('income:', 'incomeCompany:')):
             for r in rows:
                 if ann(r) <= asof:
                     candidates[(r['ts_code'], r['end_date'])].append(r)
@@ -53,6 +54,8 @@ def apply():
             if current.get(field) is None:
                 current[field] = next((r[field] for r in reversed(same) if r.get(field) is not None), None)
         reports[key] = current
+    supplements = apply_supplements(reports, load_supplements(), asof)
+    targeted = {tuple(pair) for pair in source['targetedFinancialRows']}
 
     def single(code, end, metric):
         current = reports.get((code, end))
@@ -119,7 +122,7 @@ def apply():
             for row in old_rows.get(code, []):
                 row['name'] = basics[code]['name']
                 end = row['endDate']
-                if end in source['periods']:
+                if end in source['periods'] or (code, end) in targeted:
                     before = {k: row[k] for k in ['revenue', 'profit', 'status', 'announcementDate', 'reportType']}
                     rv, pv = single(code, end, 'revenue'), single(code, end, 'profit')
                     report = reports.get((code, end))
@@ -203,6 +206,11 @@ def apply():
             record['reportType'] = record.get('reportType') or None
             latest.append(record)
         data.update(estimates=estimates, latestCompanies=latest)
+        relevant = [r for r in supplements if r['code'] in codes]
+        if relevant:
+            data['financialSupplements'] = relevant
+        else:
+            data.pop('financialSupplements', None)
         data['meta'].update(asOf=asof[:4]+'-'+asof[4:6]+'-'+asof[6:], financialAsOf=asof,
             universeAsOf=asof, companyQuoteAsOf=source['quoteDate'], universeCount=len(codes), rawMembershipCount=len(raw_members),
             excludedInactive=[dict(code=r['ts_code'], name=r['name']) for r in raw_members if r['ts_code'] not in basics])
@@ -236,7 +244,8 @@ def apply():
     audit = dict(checkedThrough=asof, quoteDate=source['quoteDate'], financialPeriod=period,
         fetchedAt=source['collectedAt'], requests=len(source['requests']), modules=31, indices=165,
         activeCompanies=len(active_codes), removedCodes=sorted(old_universe-active_codes), addedCodes=sorted(active_codes-old_universe),
-        financialChanges=changes, stillPending=pending, sourceFile='refresh-source.json.gz')
+        financialChanges=changes, stillPending=pending, sourceFile='refresh-source.json.gz',
+        financialSupplements=[dict(code=r['code'], period=r['period'], metric=r['metric'], value=r['value']) for r in supplements])
     write(SITE / 'freshness-audit.json', audit)
     print(f'已刷新31个一级/134个二级；财务变更 {len(changes)} 项；当前在市样本 {len(active_codes)} 家；仍待披露 {len(pending)} 家')
 

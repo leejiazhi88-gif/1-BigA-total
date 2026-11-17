@@ -276,15 +276,6 @@
         ]
       },
       {
-        "code": "801078.SI",
-        "name": "自动化设备",
-        "dailyCount": 5306,
-        "firstDate": "20050104",
-        "lastDate": "20261110",
-        "quarterQuotes": 87,
-        "missingQuarterQuotes": []
-      },
-      {
         "code": "801074.SI",
         "name": "专用设备",
         "dailyCount": 3466,
@@ -323,6 +314,15 @@
           "2012Q1",
           "2012Q2"
         ]
+      },
+      {
+        "code": "801078.SI",
+        "name": "自动化设备",
+        "dailyCount": 5306,
+        "firstDate": "20050104",
+        "lastDate": "20261110",
+        "quarterQuotes": 87,
+        "missingQuarterQuotes": []
       },
       {
         "code": "801077.SI",
@@ -507,6 +507,7 @@
     "companyQuoteAsOf": "20261117",
     "estimatedCount": 0,
     "missingCount": 0,
-    "auditFile": "freshness-audit.json (project root)"
+    "auditFile": "freshness-audit.json (project root)",
+    "financialSupplementCount": 0
   }
 }

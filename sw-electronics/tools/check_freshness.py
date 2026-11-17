@@ -8,6 +8,7 @@ import hashlib
 import json
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from financial_supplements import FILE as SUPPLEMENT_FILE, load as load_supplements, scopes as supplement_scopes, apply as apply_supplements
 
 SITE = Path(__file__).resolve().parents[1]
 
@@ -26,7 +27,7 @@ def close(a, b):
         assert abs(float(a)-float(b)) <= max(1e-6, abs(float(a))*1e-12), (a,b)
 
 def paths(catalog):
-    result = ['company-pe-source.json.gz','catalog.json','catalog.js','all-industries-audit.json','refresh-source.json.gz','app.js','index.html','style.css']
+    result = [SUPPLEMENT_FILE,'company-pe-source.json.gz','catalog.json','catalog.js','all-industries-audit.json','refresh-source.json.gz','app.js','index.html','style.css']
     for item in catalog['industries']:
         for name in ['company-pe-source.json.gz','main.json','companies.json','data.json','data.js','sectors.json','sectors.js','company-quarterly.csv','quarterly.csv',
                      'latest-quotes-source.json','sw-alignment-audit.json','data-manifest.json']:
@@ -75,6 +76,12 @@ def verify(seal=False):
             queries=matching('income_vip',period=period,report_type=report)
             received(rows,queries)
             assert Counter(canonical(r) for r in rows)==Counter(canonical(r) for q in queries for r in q['rows']), '财报查询缺少行'
+        elif key.startswith('incomeCompany:'):
+            _,code,period,report=key.split(':')
+            queries=matching('income',ts_code=code,period=period,report_type=report)
+            received(rows,queries)
+            assert Counter(canonical(r) for r in rows)==Counter(canonical(r) for q in queries for r in q['rows']), '定向财报查询缺少行'
+            assert all(r['ts_code']==code and r['end_date']==period and str(r['report_type'])==report for r in rows)
         elif key.startswith('carry:'):
             received(rows,matching('daily_basic',ts_code=key[6:]))
         elif key.startswith('disclosure:'):
@@ -88,11 +95,18 @@ def verify(seal=False):
     assert not any(r['end_date']>source['latestPeriod'] for r in source['incremental']), '发现新财报季度，必须推进季度构建'
     for r in source['incremental']:
         assert r['end_date'] in source['periods'], '更正公告未纳入重新取数范围'
+    supplements=load_supplements()
+    targets,dependencies=supplement_scopes(supplements,source['latestPeriod'])
+    assert {tuple(pair) for pair in source['targetedFinancialRows']}==targets
+    for code,period in dependencies:
+        for report in ['1','4','5']:
+            key=f'income:{period}:{report}' if period in source['periods'] else f'incomeCompany:{code}:{period}:{report}'
+            assert key in fresh, '原文补充的累计差分依赖未重新查询'
     # Independently select published cumulative statements, then compare their
     # single-quarter differences to every rebuilt company and sector total.
     candidates=defaultdict(list)
     for key,rows in fresh.items():
-        if key.startswith('income:'):
+        if key.startswith(('income:', 'incomeCompany:')):
             for r in rows:
                 if (r.get('f_ann_date') or r.get('ann_date') or '99999999')<=today:
                     candidates[(r['ts_code'],r['end_date'])].append(r)
@@ -105,6 +119,8 @@ def verify(seal=False):
                 peers=[x for x in reversed(rows) if (x.get('f_ann_date') or x.get('ann_date'))==(r.get('f_ann_date') or r.get('ann_date')) and str(x['report_type'])==str(r['report_type'])]
                 r[field]=next((x[field] for x in peers if x.get(field) is not None),None)
         reports[key]=r
+    applied=apply_supplements(reports,supplements,today)
+    assert audit['financialSupplements']==[dict(code=r['code'],period=r['period'],metric=r['metric'],value=r['value']) for r in applied]
     def value(r,key):
         return (r.get('total_revenue') if r.get('total_revenue') is not None else r.get('revenue')) if key=='revenue' else r.get('n_income_attr_p')
     def quarter(code,period,key):
@@ -128,6 +144,7 @@ def verify(seal=False):
         codes={r['ts_code'] for r in members}&active
         assert not seen&codes;seen|=codes
         assert codes=={c for g in groups for c in g['codes']}
+        assert d.get('financialSupplements',[])==[r for r in applied if r['code'] in codes]
         for obj,code in [(d,item['code'])]+[(g,g['code']) for g in groups]:
             rows=fresh['quote:'+code]
             queries=[r for r in complete if r['api']=='sw_daily' and (r['params'].get('ts_code')==code or r['params'].get('trade_date'))]
@@ -140,7 +157,7 @@ def verify(seal=False):
         byquarter=defaultdict(list)
         for r in records:
             byquarter[r['quarter']].append(r)
-            if r['endDate'] in source['periods']:
+            if r['endDate'] in source['periods'] or (r['code'],r['endDate']) in targets:
                 rv,pv=[quarter(r['code'],r['endDate'],k) for k in ['revenue','profit']]
                 if rv is not None and pv is not None:
                     assert r['status']=='reported', '已披露仍使用估算'
@@ -152,6 +169,8 @@ def verify(seal=False):
                 for metric in ['revenue','profit']:
                     close(point[metric],sum(float(r[metric] or 0) for r in rows) if rows else None)
                 assert point['estimatedCount']==sum(r['status']=='estimated' for r in rows)
+                assert point['missingCount']==sum(r['status']=='missing' for r in rows)
+                assert point['reportedCount']==sum(r['status']=='reported' for r in rows)
         for r in d['latestCompanies']:
             code=r['code']; q=quotes.get(code)
             close(r['marketCap'],q['total_mv']/10000 if q else None)

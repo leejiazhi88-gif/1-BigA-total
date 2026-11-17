@@ -25,6 +25,7 @@ def update():
             'financialAsOf':d['meta']['financialAsOf'],'universeAsOf':d['meta']['universeAsOf'],
             'companyQuoteAsOf':d['meta']['companyQuoteAsOf'],'estimatedCount':latest['estimatedCount'],'missingCount':latest['missingCount'],
             'auditFile':'freshness-audit.json (project root)'}
+        manifest['currentRefresh']['financialSupplementCount']=len(d.get('financialSupplements',[]))
         if 'validation' in manifest:
             manifest['validation']['financialIncompleteQuarters']=[r['quarter'] for r in d['series'] if r['missingCount']]
         manifest['collectionScopeNote']='历史取数统计与旧公司估值审计仅作历史资料；本次新查询见项目根refresh-source.json.gz，核查与哈希见freshness-audit.json。'
@@ -32,6 +33,7 @@ def update():
         summaries.append(dict(industry=item['name'],code=item['code'],companies=d['meta']['universeCount'],
             companyQuarterRows=count,quarters=len(d['series']),latest=latest,latestObservation=quote,
             financialIncompleteQuarters=[r['quarter'] for r in d['series'] if r['missingCount']]))
+        supplement_note=('\n接口缺字段的原文核对记录见项目根 financial-supplements.json 和本行业 data.json 的 financialSupplements：仅补经核实的实际累计值；每次刷新复核报表版本、利润及前后差分依赖。\n' if d.get('financialSupplements') else '')
         if item['key']!='electronics':
             (root/'README.md').write_text(f'''# {item['name']} · 全览图
 
@@ -42,7 +44,7 @@ def update():
 公司明细按最新申万二级市值分组，再按最新公司市值排序，停牌注明沿用日期；公司市值不是申万指数逐股分拆。公司明细均含 daily_basic.pe_ttm 与所选区间日度PE分位彩色条，非正/缺失为—；标签数字显示当前筛选后的公司数，点击跳转、滚动自动高亮。公司数据与分位计数合并在紧凑 companies.json，首次打开按需加载，未变文件按内容哈希复用缓存；原始历史仅保存在本目录 company-pe-source.json.gz。所有图PE紧邻分位，利润数字在柱底外侧。默认近10年、最近4季财务、PE曲线隐藏，汇总不随指标开关隐藏。
 
 分位使用所选范围全部有效正日度PE，含并列值；快捷范围截至最新时向前推整年。与项目2比较须对齐指数、观察日和区间。完整约定见项目根SW_DATA_CONTRACT.md；后续统一通过tools/refresh_data.py联网刷新、重算及校验。
-''')
+{supplement_note}''')
     overall.update(asOf=catalog['asOf'],companyCount=sum(r['companies'] for r in summaries),
         companyQuarterRows=sum(r['companyQuarterRows'] for r in summaries),sorting='latest-day SW market cap descending',
         industries=summaries,financialSource='refresh-source.json.gz',freshnessAudit='freshness-audit.json')

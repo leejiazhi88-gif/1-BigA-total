@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "policy": "仅补已人工核对原文且接口为空的实际累计值；已知实报不覆盖；每次刷新复查接口版本、归母净利润和前后差分依赖；不把无依据空值当零。",
+  "records": [
+    {
+      "code": "688091.SH",
+      "name": "上海谊众",
+      "period": "20210930",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20221031",
+        "reportType": "4",
+        "profit": -20123712.28
+      },
+      "evidence": [
+        {
+          "title": "上海谊众2021年年度报告",
+          "announcementDate": "20220331",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN202203301556140506_1.pdf",
+          "officialUrl": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2022-03-31/688091_20220331_6_pxmHL3O0.pdf",
+          "pages": [
+            11
+          ],
+          "sha256": "a559cee90955f428a3992619f222f1755cc7c0e15656c8e7412d7ba92c1b45dd",
+          "excerpt": "分季度营业收入：第一季度0、第二季度0、第三季度0、第四季度4,077,536.27元；季度数据与已披露定期报告数据差异说明：不适用。"
+        }
+      ]
+    },
+    {
+      "code": "688759.SH",
+      "name": "必贝特",
+      "period": "20251231",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20260428",
+        "reportType": "1",
+        "profit": -154016445.24
+      },
+      "evidence": [
+        {
+          "title": "必贝特2025年年度报告",
+          "announcementDate": "20260428",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN202604271821615302_1.pdf",
+          "officialUrl": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-28/688759_20260428_XN51.pdf",
+          "pages": [
+            9
+          ],
+          "sha256": "77d727de109b0811aa19442c87ac55fda4662a9fab62a7fd6d0646cc29ea7ba0",
+          "excerpt": "报告期内，公司尚未实现营业收入。分季度营业收入四个季度均为0.00元。"
+        }
+      ]
+    },
+    {
+      "code": "688759.SH",
+      "name": "必贝特",
+      "period": "20260331",
+      "metric": "revenue",
+      "basis": "reported_cumulative",
+      "value": 0,
+      "unit": "CNY",
+      "reviewedOn": "2026-11-17",
+      "expectedSource": {
+        "announcementDate": "20260428",
+        "reportType": "1",
+        "profit": -52735696.52
+      },
+      "evidence": [
+        {
+          "title": "必贝特2026年第一季度报告",
+          "announcementDate": "20260428",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN202604271821615297_1.pdf",
+          "officialUrl": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-28/688759_20260428_E29Q.pdf",
+          "pages": [
+            1,
+            10
+          ],
+          "sha256": "983ae8263008c01de604ea1e608334e9209196b440d25df6622c5ac96b71e033",
+          "excerpt": "营业收入及营业总收入列为横线；合并营业利润-52,776,780.03＝0−56,437,000.53＋869,760.19＋2,543,716.65＋351,058.08−104,314.42元，按全表勾稽核实零营收。"
+        },
+        {
+          "title": "必贝特2026年半年度报告",
+          "announcementDate": "20260825",
+          "url": "https://pdf.dfcfw.com/pdf/H2_AN202608241828368305_1.pdf",
+          "officialUrl": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-25/688759_20260825_ONLU.pdf",
+          "pages": [
+            8,
+            24
+          ],
+          "sha256": "958242242d8f3a5446336779ade2ec10f19ed78f01749204681f23223a271765",
+          "excerpt": "报告期内，公司尚未实现营业收入。作为第一季度零营收判断的交叉核对。"
+        }
+      ]
+    }
+  ]
+}

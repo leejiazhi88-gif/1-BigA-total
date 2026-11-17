@@ -652,6 +652,7 @@
     "companyQuoteAsOf": "20261117",
     "estimatedCount": 0,
     "missingCount": 0,
-    "auditFile": "freshness-audit.json (project root)"
+    "auditFile": "freshness-audit.json (project root)",
+    "financialSupplementCount": 0
   }
 }

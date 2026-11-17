@@ -242,8 +242,8 @@
         ]
       },
       {
-        "code": "801713.SI",
-        "name": "装修建材",
+        "code": "801711.SI",
+        "name": "水泥",
         "dailyCount": 3093,
         "firstDate": "20140221",
         "lastDate": "20261110",
@@ -288,8 +288,8 @@
         ]
       },
       {
-        "code": "801711.SI",
-        "name": "水泥",
+        "code": "801713.SI",
+        "name": "装修建材",
         "dailyCount": 3093,
         "firstDate": "20140221",
         "lastDate": "20261110",
@@ -427,6 +427,7 @@
     "companyQuoteAsOf": "20261117",
     "estimatedCount": 0,
     "missingCount": 0,
-    "auditFile": "freshness-audit.json (project root)"
+    "auditFile": "freshness-audit.json (project root)",
+    "financialSupplementCount": 0
   }
 }
