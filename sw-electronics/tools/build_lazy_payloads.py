@@ -1,11 +1,36 @@
 """Derive view-only company fields and stable cache keys from canonical data."""
 import hashlib
 import json
+import csv
+import math
+from collections import defaultdict
 from pathlib import Path
 import gzip
 from company_pe import build as build_valuations
 
 FIELDS=['code','name','marketCap','quoteDate','quoteCarried','revenue','profit','announcementDate','status','sector']
+
+def rolling_financials(records, quarters):
+    """Compact latest four-quarter actuals; absence is never treated as zero."""
+    wanted=set(quarters)
+    assert len(quarters)==4 and len(wanted)==4
+    by_company=defaultdict(dict)
+    for row in records:
+        if row['quarter'] not in wanted:
+            continue
+        company=by_company[row['code']]
+        assert row['quarter'] not in company, '重复的公司季度财报'
+        company[row['quarter']]=row
+    result={}
+    for code, by_quarter in by_company.items():
+        rows=[by_quarter[q] for q in quarters if q in by_quarter]
+        valid=lambda r: r['status'] in ['reported','estimated'] and all(
+            r.get(k) not in [None,''] and math.isfinite(float(r[k])) for k in ['revenue','profit'])
+        estimated=sum(r['status']=='estimated' for r in rows)
+        missing=sum(not valid(r) for r in rows)
+        complete=len(rows)==4 and not missing
+        result[code]=[sum(float(r[k]) for r in rows) if complete else None for k in ['revenue','profit']]+[len(rows),estimated,missing]
+    return result
 
 def save(path,value):
     raw=(json.dumps(value,ensure_ascii=False,separators=(',',':'),allow_nan=False)+'\n').encode()
@@ -23,14 +48,18 @@ def build(root):
         groups=sorted(sectors['groups'],key=lambda g:g['latestQuote']['marketCap'] or 0,reverse=True)
         index={code:i for i,g in enumerate(groups) for code in g['codes']}
         source=json.load(gzip.open(folder/'company-pe-source.json.gz','rt'))
-        fields=list(FIELDS);valuations=build_valuations(source,data)
+        quarters=[r['quarter'] for r in data['series'][-4:]]
+        with (folder/'company-quarterly.csv').open(encoding='utf-8-sig',newline='') as stream:
+            financials=rolling_financials(csv.DictReader(stream),quarters)
+        fields=[*FIELDS,'rollingFinancials'];valuations=build_valuations(source,data)
         if valuations:fields.append('valuation')
         rows=[]
         for r in data['latestCompanies']:
-            record={**r,'sector':index[r['code']]}
+            record={**r,'sector':index[r['code']],'rollingFinancials':financials.get(r['code'],[None,None,0,0,0])}
             if valuations:record['valuation']=valuations['companies'][r['code']]
             rows.append([record.get(f) for f in fields])
         table=dict(schema=2,fields=fields,groups=[[g['code'],g['name'],g['latestQuote']['marketCap']] for g in groups],rows=rows)
+        table['financialWindow']=dict(quarters=quarters,fields=['revenue','profit','availableQuarters','estimatedQuarters','missingQuarters'])
         if valuations:table['valuation']=valuations['meta']
         data.pop('latestCompanies')
         save(folder/'main.json',data);save(folder/'companies.json',table)

@@ -7,6 +7,7 @@ import csv
 import json
 import math
 import hashlib
+from collections import defaultdict
 from bisect import bisect_right
 from pathlib import Path
 import sys
@@ -96,12 +97,30 @@ def main():
         assert companies['schema']==2
         records=[dict(zip(companies['fields'],row)) for row in companies['rows']]
         assert len(records)==len(data['latestCompanies'])
+        window=[p['quarter'] for p in data['series'][-4:]]
+        assert companies['financialWindow']==dict(quarters=window,fields=['revenue','profit','availableQuarters','estimatedQuarters','missingQuarters'])
+        financial_rows=defaultdict(dict)
+        with (SITE/item['path']/'company-quarterly.csv').open(encoding='utf-8-sig') as stream:
+            for row in csv.DictReader(stream):
+                if row['quarter'] in window:
+                    assert row['quarter'] not in financial_rows[row['code']], '重复财务季度'
+                    financial_rows[row['code']][row['quarter']]=row
         groups=read(SITE/item['path']/'sectors.json')['groups']
         ordered=sorted(groups,key=lambda g:g['latestQuote']['marketCap'] or 0,reverse=True)
         assert companies['groups']==[[g['code'],g['name'],g['latestQuote']['marketCap']] for g in ordered]
         for projected,original in zip(records,data['latestCompanies']):
-            assert all(projected[k]==original.get(k) for k in companies['fields'] if k not in ['sector','valuation']), '公司展示字段变动'
+            assert all(projected[k]==original.get(k) for k in companies['fields'] if k not in ['sector','valuation','rollingFinancials']), '公司展示字段变动'
             assert original['code'] in ordered[projected['sector']]['codes'], '公司归属变动'
+            history=financial_rows[original['code']]
+            used=[history[q] for q in window if q in history]
+            missing=sum(r['status'] not in ['reported','estimated'] or any(r[k]=='' or not math.isfinite(float(r[k])) for k in ['revenue','profit']) for r in used)
+            actual=projected['rollingFinancials']
+            assert actual[2:]==[len(used),sum(r['status']=='estimated' for r in used),missing]
+            for i,key in enumerate(['revenue','profit']):
+                if len(used)<4 or missing:
+                    assert actual[i] is None, '不足四季或缺值不得伪装完整合计'
+                else:
+                    assert math.isclose(actual[i],sum(float(r[key]) for r in used),rel_tol=1e-12,abs_tol=1e-8), '公司近4季财务与原始季度记录不符'
         for name,version in item['payloadVersions'].items():
             assert hashlib.sha256((SITE/item['path']/name).read_bytes()).hexdigest()[:16]==version, '缓存版本不符'
         assert item['latest'] == data['series'][-1]
