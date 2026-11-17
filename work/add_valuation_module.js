@@ -259,13 +259,15 @@ const js = `
       })[activeMetric];
       const shPoints = valuationPoints("sh", activeMetric);
       const szPoints = valuationPoints("sz", activeMetric);
-      const latestDate = shPoints[shPoints.length - 1]?.[0] || "暂无";
+      const latestDate = shPoints.findLast(point => Number.isFinite(point[1]))?.[0] || "暂无";
       const rangeLabel = activeYears ? activeYears + "年" : "全部可用";
       document.getElementById("valuationMetricSubtitle").textContent =
         cfg.fixedRange ? cfg.subtitle + "（" + rangeLabel + "样本动态计算）" : cfg.subtitle;
       document.getElementById("valuationMetricNote").textContent = cfg.note +
         (activeMetric === "equityBondSpread" && valuationExtra.meta.bondStatus !== "refreshed"
           ? " 部分日期的国债收益率缺失，收益差仅显示同日数据齐全的观测，最新为 " + latestDate + "。PE与PB独立更新。" : "") +
+        (activeMetric === "equityBondSpread" && valuationExtra.meta.pendingBondDates?.length
+          ? " 中债官网当天曲线查询仍为空，待公布日期：" + valuationExtra.meta.pendingBondDates.join("、") + "。" : "") +
         (activeMetric === "equityBondSpread" ? " 10年期国债收益率取中债到期收益率曲线；接口不可用时由中债官方公开数据补充。" : "");
       const peView = activeMetric === "pe" || activeMetric === "pePercentile";
       const pairedView = peView || activeMetric === "pbPercentile";

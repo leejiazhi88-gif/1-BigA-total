@@ -6,7 +6,7 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from fetch_market_overview_data import build_trading
-from fetch_valuation_data import build_index_series, parse_chinabond_yield
+from fetch_valuation_data import build_index_series, parse_chinabond_yield, CurveNotPublished, update_bond_observation
 from fetch_etf_flow_data import daily_flow, build_series
 from fetch_national_team_etf_data import normalized_holdings, disclosed_rows, history_point, holder_snapshot
 from tushare_client import call_api_pages
@@ -16,6 +16,35 @@ import fetch_etf_flow_data as etf_flow
 
 
 class DataPipelineTests(unittest.TestCase):
+    def test_only_complete_empty_chinabond_template_is_pending(self):
+        html = '<html><script>function bzqxYearQuery(){} var ctx="/cbweb-mn";</script><body> </body></html>'
+        with self.assertRaises(CurveNotPublished):
+            parse_chinabond_yield(html, "2026-11-17")
+        for invalid in ("", "<html><body></body></html>", html.replace("</html>", ""),
+                        html.replace("<body> ", "<body>Service unavailable"),
+                        html.replace("<body> ", "<body><table></table>")):
+            with self.assertRaises(ValueError) as caught:
+                parse_chinabond_yield(invalid, "2026-11-17")
+            self.assertNotIsInstance(caught.exception, CurveNotPublished)
+
+    def test_pending_bond_requires_today_and_live_previous_curve(self):
+        quotes = {"20261116": 1.6285}
+        with patch("fetch_valuation_data.chinabond_yield", side_effect=[CurveNotPublished("empty"), 1.6285]) as source:
+            self.assertEqual(update_bond_observation("20261117", quotes, today="20261117"), "pending")
+        self.assertEqual(source.call_args_list[-1].args, ("20261116",))
+        self.assertNotIn("20261117", quotes)
+        for failure in (OSError("network failed"), ValueError("page changed"), 1.7):
+            with patch("fetch_valuation_data.chinabond_yield", side_effect=[CurveNotPublished("empty"), failure]), \
+                 self.assertRaises((OSError, ValueError)):
+                update_bond_observation("20261117", quotes, today="20261117")
+
+    def test_old_missing_bond_or_network_error_never_becomes_pending(self):
+        for day, quotes, error in (("20261116", {"20261113": 1.6}, CurveNotPublished("old gap")),
+                                   ("20261117", {}, CurveNotPublished("no prior curve")),
+                                   ("20261117", {"20261116": 1.6}, OSError("timeout"))):
+            with patch("fetch_valuation_data.chinabond_yield", side_effect=error), self.assertRaises((OSError, ValueError)):
+                update_bond_observation(day, quotes, today="20261117")
+
     def test_partial_year_etf_cache_cannot_replace_full_year_history(self):
         code = "510050.SH"
         observation = {"ts_code": code, "trade_date": "20140102", "total_share": 100,

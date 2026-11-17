@@ -72,11 +72,15 @@ def fetch_lpr_history(token, end=END_DATE, previous=None):
     # Check the official feed once a monthly quote may be due; holidays can delay it.
     cutoff = datetime.strptime(end, "%Y%m%d")
     expected_month = cutoff if cutoff.day >= 20 else cutoff.replace(day=1) - timedelta(days=1)
-    if series[-1]["date"][:7] < expected_month.strftime("%Y-%m"):
-        rows.extend(official_quotes(series[-1]["date"], cutoff.strftime("%Y-%m-%d")))
-        series = normalize_quotes(rows, end)
     known_dates = {row["date"] for row in (previous or {}).get("series", [])
                    if row["date"] <= cutoff.strftime("%Y-%m-%d")}
+    missing = known_dates - {row["date"] for row in series}
+    if missing or series[-1]["date"][:7] < expected_month.strftime("%Y-%m"):
+        # A vendor catching up on the latest month may still omit an earlier
+        # official supplement. Recheck that gap before replacing the series.
+        start = min([series[-1]["date"], *missing])
+        rows.extend(official_quotes(start, cutoff.strftime("%Y-%m-%d")))
+        series = normalize_quotes(rows, end)
     if not known_dates.issubset({row["date"] for row in series}):
         raise ValueError("LPR refresh lost previously verified quotes; retaining published cache")
     return {"meta": {

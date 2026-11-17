@@ -6,6 +6,7 @@ import urllib.request
 from datetime import datetime
 from html.parser import HTMLParser
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from tushare_client import END_DATE, call_api, get_token
 from refresh_cache import fetch_range
@@ -21,8 +22,13 @@ class YieldTable(HTMLParser):
     def __init__(self):
         super().__init__()
         self.rows, self.row, self.cell, self.links = [], [], None, []
+        self.in_body, self.saw_body, self.body_empty = False, False, True
 
     def handle_starttag(self, tag, attrs):
+        if tag == "body":
+            self.in_body, self.saw_body = True, True
+        elif self.in_body:
+            self.body_empty = False
         if tag == "tr":
             self.row = []
         elif tag == "td":
@@ -31,10 +37,14 @@ class YieldTable(HTMLParser):
             self.links.append(dict(attrs).get("href", ""))
 
     def handle_data(self, data):
+        if self.in_body and data.strip():
+            self.body_empty = False
         if self.cell is not None:
             self.cell.append(data)
 
     def handle_endtag(self, tag):
+        if tag == "body":
+            self.in_body = False
         if tag == "td" and self.cell is not None:
             self.row.append("".join(self.cell).strip())
             self.cell = None
@@ -42,9 +52,17 @@ class YieldTable(HTMLParser):
             self.rows.append(self.row)
 
 
+class CurveNotPublished(ValueError):
+    pass
+
+
 def parse_chinabond_yield(html, date):
     table = YieldTable()
     table.feed(html)
+    if (table.saw_body and not table.in_body and table.body_empty
+            and "function bzqxYearQuery" in html and "/cbweb-mn" in html
+            and "</html>" in html):
+        raise CurveNotPublished("ChinaBond returned an empty curve page: " + date)
     if "中债国债收益率曲线(到期)" not in html or not any(f"workTime={date}" in link for link in table.links):
         raise ValueError(f"ChinaBond did not return the requested curve/date: {date}")
     values = [float(row[1]) for row in table.rows if len(row) == 2 and row[0] == "10.0y"]
@@ -61,6 +79,23 @@ def chinabond_yield(date):
                                      data=b"", headers={"User-Agent": "Mozilla/5.0"}, method="POST")
     with urllib.request.urlopen(request, timeout=25, context=ssl._create_unverified_context()) as response:
         return parse_chinabond_yield(response.read().decode("utf-8"), iso)
+
+
+def update_bond_observation(date, bond_by_date, today=None):
+    """Only a verified empty current-day curve can be treated as pending."""
+    try:
+        bond_by_date[date] = chinabond_yield(date)
+        return "refreshed"
+    except CurveNotPublished:
+        today = today or datetime.now(ZoneInfo("Asia/Shanghai")).strftime("%Y%m%d")
+        previous = max((key for key in bond_by_date if key < date), default=None)
+        if date != today or not previous:
+            raise
+        # Confirm the same source still serves the preceding curve; a source
+        # outage or changed page format must remain a blocking fetch failure.
+        if abs(chinabond_yield(previous) - bond_by_date[previous]) > .0001:
+            raise ValueError("Previous ChinaBond curve changed during pending-date check")
+        return "pending"
 
 
 
@@ -129,6 +164,7 @@ def main():
     bond_status = "refreshed"
     bond_source = "Tushare yc_cb"
     missing_bond_dates = []
+    pending_bond_dates = []
     try:
         bond_rows = fetch_by_year(
             token, "yc_cb", {"ts_code": "1001.CB", "curve_type": "0", "curve_term": 10},
@@ -141,17 +177,19 @@ def main():
                         for row in cached["sh"] if row.get("bond10y") is not None and row["date"].replace("-", "") <= END_DATE}
         bond_source = "ChinaBond official public 10-year maturity yield; dated cache for earlier observations"
         last_cached = max(bond_by_date, default="20060101")
-        retry_dates = set(cached.get("meta", {}).get("missingBondDates", []))
+        retry_dates = set(cached.get("meta", {}).get("missingBondDates", [])) | set(cached.get("meta", {}).get("pendingBondDates", []))
         print("Tushare bond access unavailable; refreshing from the official ChinaBond curve.", flush=True)
         for row in last_by_week(sh_rows):
             date = row["trade_date"]
             if (date >= last_cached or date in retry_dates) and date not in bond_by_date:
                 try:
-                    bond_by_date[date] = chinabond_yield(date)
+                    if update_bond_observation(date, bond_by_date) == "pending":
+                        pending_bond_dates.append(date)
+                        print(f"ChinaBond {date}: current-day curve pending; preceding curve rechecked.", flush=True)
                 except (ValueError, OSError) as source_error:
                     missing_bond_dates.append(date)
                     print(f"ChinaBond {date}: {source_error}", flush=True)
-        bond_status = "partial" if missing_bond_dates else "refreshed"
+        bond_status = "partial" if missing_bond_dates else "pending" if pending_bond_dates else "refreshed"
     bond_dates = sorted(bond_by_date)
     result = {
         "meta": {
@@ -163,6 +201,7 @@ def main():
             "bondSource": bond_source,
             "bondSourceUrl": "https://yield.chinabond.com.cn/cbweb-mn/yield_main?locale=zh_CN",
             "missingBondDates": missing_bond_dates,
+            "pendingBondDates": pending_bond_dates,
             "bond": "中债国债收益率曲线 10年期到期收益率",
             "spread": "100 / PE(TTM) - 10年期国债收益率",
         },

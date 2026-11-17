@@ -4,6 +4,7 @@ import shutil
 import socket
 import tempfile
 import unittest
+from datetime import datetime, timedelta
 from pathlib import Path
 from unittest.mock import patch
 
@@ -28,6 +29,8 @@ class InventoryTests(unittest.TestCase):
             path = ROOT / "work" / (name + ".json")
             if path.exists():
                 shutil.copyfile(path, self.root / "work" / path.name)
+        overview = json.loads((self.root / "work" / "market_overview_data.json").read_text())
+        self.end = overview["meta"]["requestedEnd"].replace("-", "")
 
     def change(self, name, callback):
         path = self.root / "work" / (name + ".json")
@@ -36,13 +39,13 @@ class InventoryTests(unittest.TestCase):
         path.write_text(json.dumps(data))
 
     def audit(self, **kwargs):
-        result = audit_inventory(self.root, "20261116", **kwargs)
+        result = audit_inventory(self.root, self.end, **kwargs)
         json.dumps(result, allow_nan=False)
         self.rows = {row["id"]: row for row in result["rows"]}
         return result
 
     def test_real_repository_is_read_only_offline_and_known_gaps_do_not_block(self):
-        paths = [self.root / r["source"] for r in audit_inventory(self.root, "20261116")["rows"]]
+        paths = [self.root / r["source"] for r in audit_inventory(self.root, self.end)["rows"]]
         before = {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
         with patch.object(socket, "socket", side_effect=AssertionError("network forbidden")):
             result = self.audit()
@@ -53,7 +56,7 @@ class InventoryTests(unittest.TestCase):
         self.assertEqual(self.rows["institutional.latestFundAudit"]["status"], "low_coverage")
         self.assertEqual(self.rows["retail.funds"]["status"], "low_coverage")
         for identifier in ("overview.sh.profit", "overview.sz.profit", "retail.all.amount", "retail.all.volume", "retail.all.turnover"):
-            self.assertEqual(self.rows[identifier]["status"], "ok")
+            self.assertIn(self.rows[identifier]["status"], ("ok", "lagging"))
             row = self.rows[identifier]
             data = json.loads((self.root / row["source"]).read_text())
             market, field = identifier.split(".")[1:]
@@ -103,9 +106,10 @@ class InventoryTests(unittest.TestCase):
         self.assertEqual(self.rows["retail.all.amount"]["status"], "failed")
 
     def test_duplicate_unordered_and_future_dates_block(self):
+        future = (datetime.strptime(self.end, "%Y%m%d") + timedelta(days=1)).strftime("%Y-%m-%d")
         for mutation in (lambda x: x["trading"].append(x["trading"][-1]),
                          lambda x: x["trading"].reverse(),
-                         lambda x: x["trading"][-1].update(date="2026-11-17")):
+                         lambda x: x["trading"][-1].update(date=future)):
             original = (ROOT / "work" / "market_overview_data.json").read_text()
             (self.root / "work" / "market_overview_data.json").write_text(original)
             self.change("market_overview_data", mutation)

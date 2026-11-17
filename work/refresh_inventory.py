@@ -166,8 +166,12 @@ def audit_inventory(root, end, job_results=None, state=None):
             metric(f"overview.{market}.{field}", f"Overview {market} {field}", "market_overview_data",
                    "market_overview", "daily", "prices." + market if field == "close" else market, field)
         for field in ("pe", "pb", "equityBondSpread"):
-            metric(f"valuation.{market}.{field}", f"Valuation {market} {field}", "valuation_data",
-                   "valuation", "weekly", market, field)
+            row = metric(f"valuation.{market}.{field}", f"Valuation {market} {field}", "valuation_data",
+                         "valuation", "weekly", market, field)
+            pending = load("valuation_data").get("meta", {}).get("pendingBondDates", [])
+            if field == "equityBondSpread" and pending and row["status"] != "failed":
+                row.update(status="unavailable", reason="中债官网当天曲线查询为空，前一期曲线已重新核实；待公布日期："
+                           + ", ".join(pending) + "。当日利差留空，所列日期为最后有效值日期")
     for field in ("amount", "volume"):
         metric("overview.trading." + field, "Overview trading " + field, "market_overview_data",
                "market_overview", "daily", "trading", field)

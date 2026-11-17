@@ -49,6 +49,22 @@ class LprRatesTests(unittest.TestCase):
              patch("lpr_rates.official_quotes", return_value=[]), self.assertRaises(ValueError):
             fetch_lpr_history("test", "20261103", previous)
 
+    def test_current_vendor_month_does_not_erase_earlier_official_supplement(self):
+        vendor = {"date": "20261020", "1y": 3, "5y": 3.5}
+        previous = {"series": [{"date": "2026-09-20"}, {"date": "2026-10-20"}]}
+        supplement = [{"date": "20260920", "1y": 3, "5y": 3.5, "source": "ChinaMoney"}]
+        with patch("lpr_rates.fetch_range", return_value=[vendor]), \
+             patch("lpr_rates.official_quotes", return_value=supplement) as official:
+            result = fetch_lpr_history("test", "20261117", previous)
+        official.assert_called_once_with("2026-09-20", "2026-11-17")
+        self.assertEqual([row["date"] for row in result["series"]], ["2026-09-20", "2026-10-20"])
+
+    def test_missing_official_supplement_still_blocks_current_vendor_month(self):
+        vendor = {"date": "20261020", "1y": 3, "5y": 3.5}
+        with patch("lpr_rates.fetch_range", return_value=[vendor]), \
+             patch("lpr_rates.official_quotes", return_value=[]), self.assertRaisesRegex(ValueError, "lost"):
+            fetch_lpr_history("test", "20261117", {"series": [{"date": "2026-09-20"}]})
+
 
 if __name__ == "__main__":
     unittest.main()

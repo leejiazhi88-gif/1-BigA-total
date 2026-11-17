@@ -7,6 +7,7 @@ const { chromium } = require('playwright');
 const root = path.resolve(__dirname, '..');
 const valuationSource = JSON.parse(fs.readFileSync(path.join(root, 'work/valuation_data.json')));
 const overviewSource = JSON.parse(fs.readFileSync(path.join(root, 'work/market_overview_data.json')));
+const largeMoneySource = JSON.parse(fs.readFileSync(path.join(root, 'work/large_money_sentiment_data.json')));
 const artifacts = path.join(root, '.tools/qa/module-latest');
 const modules = [
   { prefix: 'valuation', chart: 'valuationChart', reading: 'valuationLatestReading' },
@@ -40,6 +41,7 @@ async function checkChart(page, config) {
         color: getComputedStyle(item.querySelector('.module-chart-name')).color
       })),
       valuationMetric,
+      largeMoneyMetric: chartId === 'largeMoneyChart' ? document.querySelector('#largeMoneyMetricTabs [data-metric].active')?.dataset.metric : null,
       points: option.series.map(series => {
         let point;
         if (monthly) {
@@ -68,6 +70,12 @@ async function checkChart(page, config) {
   for (const text of result.texts) {
     const point = result.points.find(point => config.chart === 'valuationChart' ? point.name.startsWith(text.name) : point.name === text.name);
     assert.ok(point, `${config.chart}: missing series ${text.name}`);
+    if (['blockAmount', 'institutionBlockNet', 'holderNetShares'].includes(result.largeMoneyMetric)) {
+      const market = text.name === '两市合计' ? 'all' : text.name === '沪市' ? 'sh' : 'sz';
+      const rows = market === 'all' ? largeMoneySource.series : largeMoneySource.markets[market];
+      const observation = rows.find(row => row.date === point.date);
+      point.date = observation?.[result.largeMoneyMetric === 'holderNetShares' ? 'holderDate' : 'blockDate'] || point.date;
+    }
     if (text.paired) {
       const market = text.name === '上证' ? 'sh' : 'sz';
       const field = result.valuationMetric === 'pbPercentile' ? 'pb' : 'pe';
