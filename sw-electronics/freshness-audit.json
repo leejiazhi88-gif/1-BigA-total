@@ -651,7 +651,7 @@
   "collectionMode": "parallel-4; SW daily batch when cheaper; fresh financial periods + incremental corrections; no cache fallback",
   "payloadSha256": {
     "all-industries-audit.json": "eb4a91c666ecaad0e83db1feb59bd8485b7e2ba857f2bd885a91c48fdf1cc4f7",
-    "app.js": "aad80495642e5698c4d7bc0da79e1f6156fe0969cfa586d781c43d8f340b01eb",
+    "app.js": "c086f2616d8fdd278a202a99bb08ec8ac772c4f062ab03b1b1612cc86828c5ac",
     "bank/companies.json": "e6b258d63ecdf21f2fc27edc0c31174fc25aedc5dc1469dfd0e8a041ceaf8dd9",
     "bank/company-pe-source.json.gz": "ac4a4ab6025a9dc0bc9ed60433d367cf9b689464310829d958b4778bdf16b633",
     "bank/company-quarterly.csv": "0d8dd9c6b270ab0a1325bc6b61f9f51b362b82c3bfab0188c87945d7c7572984",
@@ -674,7 +674,7 @@
     "data.json": "fe410850ea2777193f142a802125f212f34bdfee6cf597a8b55151169895ccef",
     "financial-recovery.json": "15c2be1ffb2f0f5e974f0ece3b2e576699c6131149f7da5da5dc000d4838f845",
     "financial-supplements.json": "d882fedeb76165aa29ff08b7d424cde8254938992ddce66ee83ed56993e4141b",
-    "index.html": "ca307b3fd29013e6adfcb6ca6958078880dd775432bf326de35da493ea67eb49",
+    "index.html": "b2b7fd9a1ca616d1eb5b4e2b005220f25bdb3ee9502a158c7090eac7fc5430ea",
     "industries/801010/companies.json": "9f2aca776e1b0964a443051ad8f5c2fb1ecd72d0364c12954ffa210937b04ce8",
     "industries/801010/company-pe-source.json.gz": "2673151932ee6ed2688e71ebad185e101fea881b19ace79bd8496cb6e509464f",
     "industries/801010/company-quarterly.csv": "08f470d6bbe38939392598bc6a0f24de19614b3f0465743c1f6e2974bf1c3b5d",
@@ -1029,7 +1029,7 @@
     "refresh-source.json.gz": "336cd49627dd45b56db07458d35dc4005a258fb4a2db2d18f5ac5bcc52a78c42",
     "sectors.js": "42a7083429fb58ac122ddf8000c688c18d8023138c873c8b93e570b0087209f4",
     "sectors.json": "e72955d259db575cda1f26bdea89c300798287d56d2b1871c20480d9c904d51d",
-    "style.css": "8ba951f2242bc7b6f85bce2586b96e9139752867036789e217d0261f352ab455",
+    "style.css": "fee4013775c01ff00761ce6327139624f1e5daa303c997d34542273eb751b081",
     "sw-alignment-audit.json": "d5a4970f5b7c4f7ec484fe2bd41b052accc17cf4962df732a38554a7367ba299"
   },
   "verifiedFinancialRows": 38279

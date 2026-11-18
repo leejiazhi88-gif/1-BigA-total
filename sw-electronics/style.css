@@ -84,3 +84,52 @@ html{scroll-padding-top:0}
 .industry-module .company-group .group-announcement{font-size:10px;font-weight:400;color:#80948a}
 .industry-module .company-group .negative{color:#9b5b4f}
 .industry-module .company-group:hover td{background:#e8f1eb}
+
+/* A quiet lamp switch in the page heading. */
+.page-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;flex:none;width:36px;height:36px;padding:8px;border:1px solid #dce5df;border-radius:50%;background:#fff;color:#6a7d74;cursor:pointer}
+.theme-toggle:hover{background:#eef3ee;color:#446b5b}
+.theme-toggle svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.theme-toggle .bulb-fill{fill:transparent;stroke:none}
+.theme-toggle .bulb-rays{opacity:.45}
+:root{color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#10181d;--paper:#182329;--ink:#dce7ec;--muted:#9bafb5;--line:#304149;--teal:#65c9ba;--pe:#edaf6e;--revenue:#344d5e;--profit:#5b9aaf;--amber:#e0c478;scrollbar-color:#45616b #172329}
+[data-theme="dark"] .theme-toggle{background:#24312d;border-color:#6f6343;color:#eed08a}
+[data-theme="dark"] .theme-toggle:hover{background:#2d3a32;border-color:#b19c64}
+[data-theme="dark"] .theme-toggle .bulb-fill{fill:#d8b96b;opacity:.28}
+[data-theme="dark"] .theme-toggle .bulb-rays{opacity:1}
+[data-theme="dark"] .floating-controls,[data-theme="dark"] .industry-navigation{background:rgba(16,24,29,.98);border-color:#304149;box-shadow:0 3px 12px #0003}
+[data-theme="dark"] .chart-card,[data-theme="dark"] .mini-card,[data-theme="dark"] .table-scroll,[data-theme="dark"] .compact-methodology,[data-theme="dark"] .sector-menu{background:#182329;border-color:#304149;box-shadow:none}
+[data-theme="dark"] .focus-row,[data-theme="dark"] .supplement-tabs,[data-theme="dark"] .segments,[data-theme="dark"] th{background:#1d2d32;border-color:#304149}
+[data-theme="dark"] .button,[data-theme="dark"] .sector-trigger,[data-theme="dark"] input[type="search"],[data-theme="dark"] select{background:#1c2a30;border-color:#3b5058;color:#bdcdd3}
+[data-theme="dark"] .button:hover,[data-theme="dark"] .sector-trigger:hover,[data-theme="dark"] .legend button:hover,[data-theme="dark"] .navigation-links a:hover,[data-theme="dark"] .supplement-tabs button:hover{background:#263b3d;border-color:#486760;color:#e2eeeb}
+[data-theme="dark"] .segments button,[data-theme="dark"] .date-selectors,[data-theme="dark"] .supplement-tabs button,[data-theme="dark"] .navigation-links a,[data-theme="dark"] .company-sector-nav button{color:#aabfc2}
+[data-theme="dark"] .segments button.active,[data-theme="dark"] .supplement-tabs button[aria-expanded="true"]{background:#304b47;color:#d5f0e6;border-color:#476a5c;box-shadow:none}
+[data-theme="dark"] .navigation-links a[aria-current="location"],[data-theme="dark"] .company-sector-nav button[aria-pressed="true"]{background:#28685e;color:#edfff6;border-color:#41796b}
+[data-theme="dark"] .legend button[aria-pressed="false"]{background:transparent;opacity:.45}
+[data-theme="dark"] .legend small,[data-theme="dark"] .legend button small{color:#9bafb5}
+[data-theme="dark"] .company-sector-nav button{background:transparent;border-color:#3b5058}
+[data-theme="dark"] .heading-main>span,[data-theme="dark"] .heading-meta,[data-theme="dark"] .focus-row span,[data-theme="dark"] .focus-row small,[data-theme="dark"] .mini-summary,[data-theme="dark"] .mini-cap,[data-theme="dark"] .mini-period,[data-theme="dark"] .mini-axes,[data-theme="dark"] .company-controls,[data-theme="dark"] .label-toggle,[data-theme="dark"] .navigation-label,[data-theme="dark"] .module-loading,[data-theme="dark"] .muted,[data-theme="dark"] .section-header p{color:#9fb3b8}
+[data-theme="dark"] .axis-caption,[data-theme="dark"] .mini-axis-mv,[data-theme="dark"] .axis-caption .mv-text{color:#9fc4be}
+[data-theme="dark"] .axis-caption .pe-text,[data-theme="dark"] .mini-axis-pe{color:#d4ad84}
+[data-theme="dark"] td,[data-theme="dark"] th,[data-theme="dark"] .industry-module .company-pe{color:#bfd0d7;border-color:#2c3b43}
+[data-theme="dark"] th{color:#a9c2c1}
+[data-theme="dark"] th small,[data-theme="dark"] .company-group th>small{color:#92aaa6}
+[data-theme="dark"] tbody tr:hover td{background:#21343b}
+[data-theme="dark"] tbody tr.estimate-row td{background:#302c23}
+[data-theme="dark"] .company-market-cap{color:#99cbb9}
+[data-theme="dark"] .industry-module .company-group th,[data-theme="dark"] .industry-module .company-group td{background:#203630;border-color:#365348;color:#b4d8c7}
+[data-theme="dark"] .industry-module .company-group:hover td{background:#284238}
+[data-theme="dark"] .industry-module .company-group .group-announcement{color:#a0b8ac}
+[data-theme="dark"] .industry-module .company-group .negative{color:#edaa9d}
+[data-theme="dark"] .tag{background:#284337;color:#aed4bd}
+[data-theme="dark"] .tag.estimate{background:#51442a;color:#e4c887}
+[data-theme="dark"] .tag.partial{background:#4d332e;color:#e3b0a4}
+[data-theme="dark"] .compact-methodology p,[data-theme="dark"] .compact-methodology h3,[data-theme="dark"] .compact-methodology>summary,[data-theme="dark"] .quality-note,[data-theme="dark"] .quality-details summary,[data-theme="dark"] .compact-footer{color:#a7bac0}
+[data-theme="dark"] .method-content,[data-theme="dark"] .quality-details,[data-theme="dark"] .quality-details .table-scroll,[data-theme="dark"] .industry-module+.industry-module,[data-theme="dark"] footer{border-color:#304149}
+[data-theme="dark"] .compact-methodology .estimate-panel{color:#a7bac0}
+[data-theme="dark"] .source-links a{border-color:#58746b;color:#a7ccbb}
+[data-theme="dark"] .percentile-unavailable .pe-percentile-track{background:#42545d}
+[data-theme="dark"] .pe-percentile-track{background:linear-gradient(90deg,#4b9f83 0 20%,#b9a265 20% 80%,#b6677b 80% 100%)}
+[data-theme="dark"] .pe-percentile-track b{border-color:#d7e5df;box-shadow:0 1px 4px #0008}
+@media(max-width:720px){.theme-toggle{width:34px;height:34px;padding:7px}}
