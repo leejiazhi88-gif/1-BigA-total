@@ -1,6 +1,6 @@
 {
   "meta": {
-    "asOf": "2026-11-17",
+    "asOf": "2026-11-18",
     "industry": "通信",
     "indexCode": "801770.SI",
     "classification": "申万2021版一级",
@@ -107,8 +107,8 @@
     "companyMarketCapMethod": "daily_basic.total_mv÷10000，全部普通股按A股价格估值，与项目2公司明细同字段；不等于申万行业市值分拆",
     "financialVersusValuation": "财务柱汇总全公司合并报表及标注估算，含亏损、不按自由流通比例缩放；申万PE采用独立指数口径，方法核对见PE_METHOD_REVIEW.md，不以公布市值÷PE反推实际利润",
     "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/",
-    "financialAsOf": "20261117",
-    "universeAsOf": "20261117",
+    "financialAsOf": "20261118",
+    "universeAsOf": "20261118",
     "companyQuoteAsOf": "20261117",
     "latestQuoteDate": "20261117",
     "latestQuoteMethod": "最右侧最新交易日观察点；市值/PE使用同日申万值，财务沿用最近财报季度；最近4季不重复计入该观察点"
@@ -160,7 +160,7 @@
     "code": "801770.SI",
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
-    "financialAsOf": "20261117",
+    "financialAsOf": "20261118",
     "financialHash": "853e2ff0d3e0f4fbfcfd1e977b6c4169666caf43ae51edf1cf921f8c45fb15de",
     "sectorFinancialHashes": {
       "801102.SI": "2e2800bb03e0fe6b9a50471fe2b363bb71560adaa322cc4cb5c0581eb9d9efa0",
@@ -344,7 +344,7 @@
   "latestQuote": {
     "sourceFile": "latest-quotes-source.json",
     "date": "20261117",
-    "financialSnapshot": "2026-11-17",
+    "financialSnapshot": "2026-11-18",
     "quarterlySeriesUnchanged": true,
     "indices": [
       {
@@ -390,8 +390,8 @@
   },
   "currentRefresh": {
     "sourceFile": "../../refresh-source.json.gz",
-    "financialAsOf": "20261117",
-    "universeAsOf": "20261117",
+    "financialAsOf": "20261118",
+    "universeAsOf": "20261118",
     "companyQuoteAsOf": "20261117",
     "estimatedCount": 0,
     "missingCount": 0,

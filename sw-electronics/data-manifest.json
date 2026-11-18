@@ -1,6 +1,6 @@
 {
   "meta": {
-    "asOf": "2026-11-17",
+    "asOf": "2026-11-18",
     "industry": "电子",
     "indexCode": "801080.SI",
     "classification": "申万2021版一级",
@@ -86,8 +86,8 @@
     "project2URL": "https://leejiazhi88-gif.github.io/2-BigAtotal2/",
     "latestQuoteDate": "20261117",
     "latestQuoteMethod": "最右侧最新交易日观察点；市值/PE使用同日申万值，财务沿用最近财报季度；最近4季不重复计入该观察点",
-    "financialAsOf": "20261117",
-    "universeAsOf": "20261117",
+    "financialAsOf": "20261118",
+    "universeAsOf": "20261118",
     "companyQuoteAsOf": "20261117"
   },
   "rawIncomeRows": 30378,
@@ -116,7 +116,7 @@
     "code": "801080.SI",
     "scope": "SW公布市值/PE与财报汇总分离",
     "project2AsOf": "20261110",
-    "financialAsOf": "20261117",
+    "financialAsOf": "20261118",
     "financialHash": "85320e8a6087e8c19121a2cdc67c8b2f2b28e538ad2878e32dc8e88153a95cba",
     "sectorFinancialHashes": {
       "801081.SI": "7ef4b56aecaf59c6bc5be5e645531b94b7c612d03a6b0985b4e1e1a3a1fc5965",
@@ -475,7 +475,7 @@
   "latestQuote": {
     "sourceFile": "latest-quotes-source.json",
     "date": "20261117",
-    "financialSnapshot": "2026-11-17",
+    "financialSnapshot": "2026-11-18",
     "quarterlySeriesUnchanged": true,
     "indices": [
       {
@@ -573,8 +573,8 @@
   },
   "currentRefresh": {
     "sourceFile": "refresh-source.json.gz",
-    "financialAsOf": "20261117",
-    "universeAsOf": "20261117",
+    "financialAsOf": "20261118",
+    "universeAsOf": "20261118",
     "companyQuoteAsOf": "20261117",
     "estimatedCount": 0,
     "missingCount": 0,
