@@ -6,7 +6,7 @@ import math
 from collections import defaultdict
 from pathlib import Path
 import gzip
-from company_pe import build as build_valuations
+from company_pe import build as build_valuations, pack_percentile
 
 FIELDS=['code','name','marketCap','quoteDate','quoteCarried','revenue','profit','announcementDate','status','sector']
 
@@ -59,6 +59,22 @@ def build(root):
             if valuations:record['valuation']=valuations['companies'][r['code']]
             rows.append([record.get(f) for f in fields])
         table=dict(schema=2,fields=fields,groups=[[g['code'],g['name'],g['latestQuote']['marketCap']] for g in groups],rows=rows)
+        # Project existing industry sources into small table summaries; no history download.
+        summaries=[]
+        for group in groups:
+            quote=group['latestQuote'];latest=group['series'][-1];window=group['series'][-4:]
+            complete=len(window)==4 and all(r['companies'] and not r['missingCount'] and all(
+                isinstance(r[k],(int,float)) and math.isfinite(r[k]) for k in ['revenue','profit']) for r in window)
+            summaries.append(dict(quoteDate=quote['date'],valuation=pack_percentile(
+                [*group.get('valuationDaily',[]),*group.get('valuationRecent',[])],quote['pe'],
+                valuations['meta']['boundaries'],valuations['meta']['presetStarts']),
+                revenue=latest['revenue'],profit=latest['profit'],status='estimated' if latest['estimatedCount'] else 'reported',
+                estimatedCount=latest['estimatedCount'],missingCount=latest['missingCount'],
+                companies=latest['companies'],reportedCount=latest['reportedCount'],
+                rollingFinancials=[sum(r[k] for r in window) if complete else None for k in ['revenue','profit']]+
+                    [len(window),sum(r['estimatedCount'] for r in window),sum(r['missingCount'] for r in window)],
+                latestAnnouncementDate=max((r['announcementDate'] for r in data['latestCompanies'] if r['code'] in group['codes'] and r.get('announcementDate')),default=None)))
+        table['groupSummaries']=summaries
         table['financialWindow']=dict(quarters=quarters,fields=['revenue','profit','availableQuarters','estimatedQuarters','missingQuarters'])
         if valuations:table['valuation']=valuations['meta']
         data.pop('latestCompanies')

@@ -75,3 +75,12 @@ html{scroll-padding-top:0}
 .company-sector-nav button small{font-size:10px;font-variant-numeric:tabular-nums;opacity:.8}
 
 .mini-head h2{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mini-period{font-size:10px;font-weight:400;color:#839194}
+
+/* Align sector totals with company columns without expanding the group row. */
+.industry-module .company-group th,.industry-module .company-group td{background:#edf4f0;border-top:1px solid #d5e3da;border-bottom:1px solid #e0eae3;padding-top:9px;padding-bottom:9px;font-size:11px;color:#416b5b;font-weight:550}
+.industry-module .company-group th{font-size:12px}
+.industry-module .company-group th>small{font-size:10px;font-weight:400;margin-left:9px}
+.industry-module .company-group .company-pe{color:#416b5b}
+.industry-module .company-group .group-announcement{font-size:10px;font-weight:400;color:#80948a}
+.industry-module .company-group .negative{color:#9b5b4f}
+.industry-module .company-group:hover td{background:#e8f1eb}

@@ -79,6 +79,20 @@ def histories(source):
             if row['ts_code'] in result:result[row['ts_code']][row['trade_date']]=row.get('pe_ttm')
     return {code:sorted(values.items()) for code,values in result.items()}
 
+def pack_percentile(rows,target,boundaries,starts):
+    """Shared compact counts for company and SW industry daily histories."""
+    if not positive(target):return [target]
+    days=sorted(d for d,pe in rows if positive(pe))
+    le=sorted(d for d,pe in rows if positive(pe) and pe<=target)
+    prefix=[[bisect_right(days,b),bisect_right(le,b)] for b in boundaries]
+    deltas=[[b[0]-a[0],b[1]-a[1]] for a,b in zip(prefix,prefix[1:])]
+    offset=next((i for i,pair in enumerate(deltas) if pair!=[0,0]),len(deltas))
+    stop=len(deltas)
+    while stop>offset and deltas[stop-1]==[0,0]:stop-=1
+    packed=[value for pair in deltas[offset:stop] for value in pair]
+    windows=[v for key in PRESETS for v in [sum(d>=starts[key] for d in days),sum(d>=starts[key] for d in le)]]
+    return [target,offset,packed,windows]
+
 def build(source,data):
     end=source['quoteDate'];boundaries=['20041231']+[r['endDate'] for r in data['series']]+[end]
     assert boundaries==sorted(boundaries)
@@ -89,17 +103,7 @@ def build(source,data):
         code=company['code'];rows=history[code];by_day=dict(rows);target=by_day.get(company['quoteDate'])
         assert company['quoteDate'] is None or company['quoteDate'] in by_day,(code,'PE报价日缺失')
         assert all('20050101'<=d<=end and (pe is None or math.isfinite(pe)) for d,pe in rows)
-        if not positive(target):
-            companies[code]=[target];continue
-        days=[d for d,pe in rows if positive(pe)];le=[d for d,pe in rows if positive(pe) and pe<=target]
-        prefix=[[bisect_right(days,b),bisect_right(le,b)] for b in boundaries]
-        deltas=[[b[0]-a[0],b[1]-a[1]] for a,b in zip(prefix,prefix[1:])]
-        offset=next((i for i,pair in enumerate(deltas) if pair!=[0,0]),len(deltas))
-        stop=len(deltas)
-        while stop>offset and deltas[stop-1]==[0,0]:stop-=1
-        packed=[value for pair in deltas[offset:stop] for value in pair]
-        windows=[v for key in PRESETS for v in [sum(d>=starts[key] for d in days),sum(d>=starts[key] for d in le)]]
-        companies[code]=[target,offset,packed,windows]
+        companies[code]=pack_percentile(rows,target,boundaries,starts)
     return dict(meta=dict(field='daily_basic.pe_ttm',quoteDate=end,boundaries=boundaries,presetKeys=PRESETS,presetStarts=starts),companies=companies)
 
 def write_source(source,path):

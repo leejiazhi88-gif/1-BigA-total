@@ -108,6 +108,24 @@ def main():
         groups=read(SITE/item['path']/'sectors.json')['groups']
         ordered=sorted(groups,key=lambda g:g['latestQuote']['marketCap'] or 0,reverse=True)
         assert companies['groups']==[[g['code'],g['name'],g['latestQuote']['marketCap']] for g in ordered]
+        assert len(companies['groupSummaries'])==len(ordered), '二级汇总数量不符'
+        boundaries=companies['valuation']['boundaries'];starts=companies['valuation']['presetStarts']
+        for summary,group in zip(companies['groupSummaries'],ordered):
+            latest=group['series'][-1];used=group['series'][-4:];quote=group['latestQuote']
+            assert summary['quoteDate']==quote['date']
+            assert all(summary[k]==latest[k] for k in ['revenue','profit','companies','estimatedCount','missingCount','reportedCount'])
+            assert summary['status']==('estimated' if latest['estimatedCount'] else 'reported')
+            complete=len(used)==4 and all(r['companies'] and not r['missingCount'] and all(isinstance(r[k],(int,float)) and math.isfinite(r[k]) for k in ['revenue','profit']) for r in used)
+            assert summary['rollingFinancials']==[sum(r[k] for r in used) if complete else None for k in ['revenue','profit']]+[len(used),sum(r['estimatedCount'] for r in used),sum(r['missingCount'] for r in used)]
+            assert summary['latestAnnouncementDate']==max((r['announcementDate'] for r in data['latestCompanies'] if r['code'] in group['codes'] and r.get('announcementDate')),default=None)
+            packed=summary['valuation'];target=quote['pe'];assert packed[0]==target
+            if not positive(target):assert packed==[target];continue
+            days=[(d,v) for d,v in [*group.get('valuationDaily',[]),*group.get('valuationRecent',[])] if positive(v)]
+            _,offset,deltas,windows=packed
+            for i,(lo,hi) in enumerate(zip(boundaries,boundaries[1:])):
+                actual=deltas[(i-offset)*2:(i-offset)*2+2] if offset<=i<offset+len(deltas)//2 else [0,0]
+                assert actual==[sum(lo<d<=hi for d,v in days),sum(lo<d<=hi and v<=target for d,v in days)], '行业分位区间计数不符'
+            assert windows==[v for key in companies['valuation']['presetKeys'] for v in [sum(d>=starts[key] for d,p in days),sum(d>=starts[key] and p<=target for d,p in days)]], '行业分位预设区间不符'
         for projected,original in zip(records,data['latestCompanies']):
             assert all(projected[k]==original.get(k) for k in companies['fields'] if k not in ['sector','valuation','rollingFinancials']), '公司展示字段变动'
             assert original['code'] in ordered[projected['sector']]['codes'], '公司归属变动'
