@@ -168,7 +168,7 @@ function htmlTemplate(data, echartsSource) {
   <header>
     <div>
       <div class="eyebrow">A-SHARE MARKET DASHBOARD</div>
-      <h1>A股20年：股价、合计利润与市盈率</h1>
+      <h1>1 BigATotal</h1>
       <div class="subtitle">上证综指 × 深证成指，共享同一时间横轴</div>
     </div>
   </header>
