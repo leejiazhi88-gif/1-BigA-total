@@ -29,6 +29,16 @@ def read(path):
     return json.loads(path.read_text())
 
 
+def latest_quote_day(calendar, now):
+    """Try the current trading day after close; availability is verified below."""
+    current = now.strftime('%Y%m%d')
+    available = [r['cal_date'] for r in calendar if r['cal_date'] < current or
+                 (r['cal_date'] == current and now.strftime('%H%M') >= '1500')]
+    if not available:
+        raise RuntimeError('交易日历没有已收盘交易日，停止刷新。')
+    return max(available)
+
+
 class Client:
     def __init__(self, asof=None):
         self.asof = asof or today()
@@ -127,8 +137,7 @@ def collect(asof=None):
         raise RuntimeError('发现更新的财报季度，需要先推进季度数据构建；停止发布旧季度刷新。')
     calendar = client.call('trade_cal', dict(exchange='SSE', start_date=(date.fromisoformat(asof[:4]+'-'+asof[4:6]+'-'+asof[6:])-timedelta(days=20)).strftime('%Y%m%d'), end_date=asof, is_open='1'))
     now = datetime.now(ZoneInfo('Asia/Shanghai'))
-    available_days = [r['cal_date'] for r in calendar if r['cal_date'] < today() or now.strftime('%H%M') >= '1830']
-    quote_day = max(available_days)  # sw_daily is published after 18:30, not intraday
+    quote_day = latest_quote_day(calendar, now)
     jobs = {}
     quote_codes = set()
     quote_starts = []
