@@ -439,7 +439,7 @@ return api;
 const moduleTemplate=document.getElementById('industry-template');
 const industryList=document.getElementById('industry-list');
 const industryLoads=new Map();
-const assetVersion='refresh-202611192201460800';
+const assetVersion='refresh-202611201911210800';
 const payloadRequests=new Map();
 function loadIndustryJSON(path){
  const owner=window.INDUSTRY_CATALOG.industries.find(item=>['main.json','companies.json','sectors.json'].some(name=>item.path+name===path));
